@@ -108,6 +108,12 @@
             this.L_Seed = new System.Windows.Forms.Label();
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.CalcList = new System.Windows.Forms.Button();
+            this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.L_frame = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Frame_max = new System.Windows.Forms.NumericUpDown();
+            this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_H = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_A = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,7 +124,6 @@
             this.dgv_nature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_synced = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_hiddenpower = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_needle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_psv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ability = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,6 +168,9 @@
             this.Condition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
+            this.RNGInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,7 +202,7 @@
             this.SearchSettingBox.Controls.Add(this.StatPanel);
             this.SearchSettingBox.Location = new System.Drawing.Point(372, 6);
             this.SearchSettingBox.Name = "SearchSettingBox";
-            this.SearchSettingBox.Size = new System.Drawing.Size(399, 291);
+            this.SearchSettingBox.Size = new System.Drawing.Size(396, 272);
             this.SearchSettingBox.TabIndex = 4;
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
@@ -202,7 +210,7 @@
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
-            this.ShowStats.Location = new System.Drawing.Point(200, 254);
+            this.ShowStats.Location = new System.Drawing.Point(203, 244);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(86, 17);
             this.ShowStats.TabIndex = 75;
@@ -221,7 +229,7 @@
             // ByIVs
             // 
             this.ByIVs.AutoSize = true;
-            this.ByIVs.Location = new System.Drawing.Point(18, 42);
+            this.ByIVs.Location = new System.Drawing.Point(18, 28);
             this.ByIVs.Name = "ByIVs";
             this.ByIVs.Size = new System.Drawing.Size(85, 17);
             this.ByIVs.TabIndex = 72;
@@ -233,7 +241,7 @@
             // ByStats
             // 
             this.ByStats.AutoSize = true;
-            this.ByStats.Location = new System.Drawing.Point(104, 42);
+            this.ByStats.Location = new System.Drawing.Point(104, 28);
             this.ByStats.Name = "ByStats";
             this.ByStats.Size = new System.Drawing.Size(85, 17);
             this.ByStats.TabIndex = 71;
@@ -285,7 +293,7 @@
             // DisableFilters
             // 
             this.DisableFilters.AutoSize = true;
-            this.DisableFilters.Location = new System.Drawing.Point(299, 254);
+            this.DisableFilters.Location = new System.Drawing.Point(302, 244);
             this.DisableFilters.Name = "DisableFilters";
             this.DisableFilters.Size = new System.Drawing.Size(74, 17);
             this.DisableFilters.TabIndex = 51;
@@ -295,7 +303,7 @@
             // ShinyOnly
             // 
             this.ShinyOnly.AutoSize = true;
-            this.ShinyOnly.Location = new System.Drawing.Point(299, 227);
+            this.ShinyOnly.Location = new System.Drawing.Point(302, 217);
             this.ShinyOnly.Name = "ShinyOnly";
             this.ShinyOnly.Size = new System.Drawing.Size(74, 17);
             this.ShinyOnly.TabIndex = 8;
@@ -340,7 +348,7 @@
             // L_S
             // 
             this.L_S.AutoSize = true;
-            this.L_S.Location = new System.Drawing.Point(10, 258);
+            this.L_S.Location = new System.Drawing.Point(10, 244);
             this.L_S.Name = "L_S";
             this.L_S.Size = new System.Drawing.Size(31, 13);
             this.L_S.TabIndex = 29;
@@ -349,7 +357,7 @@
             // L_C
             // 
             this.L_C.AutoSize = true;
-            this.L_C.Location = new System.Drawing.Point(10, 198);
+            this.L_C.Location = new System.Drawing.Point(10, 184);
             this.L_C.Name = "L_C";
             this.L_C.Size = new System.Drawing.Size(31, 13);
             this.L_C.TabIndex = 27;
@@ -358,7 +366,7 @@
             // L_B
             // 
             this.L_B.AutoSize = true;
-            this.L_B.Location = new System.Drawing.Point(10, 168);
+            this.L_B.Location = new System.Drawing.Point(10, 154);
             this.L_B.Name = "L_B";
             this.L_B.Size = new System.Drawing.Size(31, 13);
             this.L_B.TabIndex = 26;
@@ -367,7 +375,7 @@
             // L_H
             // 
             this.L_H.AutoSize = true;
-            this.L_H.Location = new System.Drawing.Point(10, 108);
+            this.L_H.Location = new System.Drawing.Point(10, 94);
             this.L_H.Name = "L_H";
             this.L_H.Size = new System.Drawing.Size(22, 13);
             this.L_H.TabIndex = 24;
@@ -376,7 +384,7 @@
             // L_A
             // 
             this.L_A.AutoSize = true;
-            this.L_A.Location = new System.Drawing.Point(10, 138);
+            this.L_A.Location = new System.Drawing.Point(10, 124);
             this.L_A.Name = "L_A";
             this.L_A.Size = new System.Drawing.Size(31, 13);
             this.L_A.TabIndex = 25;
@@ -385,7 +393,7 @@
             // L_D
             // 
             this.L_D.AutoSize = true;
-            this.L_D.Location = new System.Drawing.Point(10, 228);
+            this.L_D.Location = new System.Drawing.Point(10, 214);
             this.L_D.Name = "L_D";
             this.L_D.Size = new System.Drawing.Size(31, 13);
             this.L_D.TabIndex = 28;
@@ -413,7 +421,7 @@
             this.IVPanel.Controls.Add(this.ivmax2);
             this.IVPanel.Controls.Add(this.ivmax4);
             this.IVPanel.Controls.Add(this.ivmax3);
-            this.IVPanel.Location = new System.Drawing.Point(40, 73);
+            this.IVPanel.Location = new System.Drawing.Point(40, 59);
             this.IVPanel.Name = "IVPanel";
             this.IVPanel.Size = new System.Drawing.Size(147, 209);
             this.IVPanel.TabIndex = 24;
@@ -709,7 +717,7 @@
             this.StatPanel.Controls.Add(this.Stat5);
             this.StatPanel.Controls.Add(this.BS_1);
             this.StatPanel.Controls.Add(this.BS_0);
-            this.StatPanel.Location = new System.Drawing.Point(40, 73);
+            this.StatPanel.Location = new System.Drawing.Point(40, 59);
             this.StatPanel.Name = "StatPanel";
             this.StatPanel.Size = new System.Drawing.Size(147, 209);
             this.StatPanel.TabIndex = 42;
@@ -907,17 +915,18 @@
             this.工具箱.Location = new System.Drawing.Point(12, 23);
             this.工具箱.Name = "工具箱";
             this.工具箱.SelectedIndex = 0;
-            this.工具箱.Size = new System.Drawing.Size(1206, 329);
+            this.工具箱.Size = new System.Drawing.Size(1202, 311);
             this.工具箱.TabIndex = 5;
             // 
             // SearchTarget
             // 
+            this.SearchTarget.Controls.Add(this.RNGInfo);
             this.SearchTarget.Controls.Add(this.Condition);
             this.SearchTarget.Controls.Add(this.SearchSettingBox);
             this.SearchTarget.Location = new System.Drawing.Point(4, 22);
             this.SearchTarget.Name = "SearchTarget";
             this.SearchTarget.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTarget.Size = new System.Drawing.Size(1198, 303);
+            this.SearchTarget.Size = new System.Drawing.Size(1194, 285);
             this.SearchTarget.TabIndex = 0;
             this.SearchTarget.Text = "目标检索";
             this.SearchTarget.UseVisualStyleBackColor = true;
@@ -1013,7 +1022,7 @@
             this.SearchTool.Location = new System.Drawing.Point(4, 22);
             this.SearchTool.Name = "SearchTool";
             this.SearchTool.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTool.Size = new System.Drawing.Size(1198, 303);
+            this.SearchTool.Size = new System.Drawing.Size(1194, 285);
             this.SearchTool.TabIndex = 1;
             this.SearchTool.Text = "工具箱";
             this.SearchTool.UseVisualStyleBackColor = true;
@@ -1118,7 +1127,6 @@
             this.dgv_nature,
             this.dgv_synced,
             this.dgv_hiddenpower,
-            this.dgv_needle,
             this.dgv_psv,
             this.dgv_gender,
             this.dgv_ability,
@@ -1134,7 +1142,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGV.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGV.Location = new System.Drawing.Point(12, 354);
+            this.DGV.Location = new System.Drawing.Point(12, 336);
             this.DGV.Name = "DGV";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -1148,8 +1156,93 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1206, 276);
+            this.DGV.Size = new System.Drawing.Size(1202, 304);
             this.DGV.TabIndex = 89;
+            // 
+            // CalcList
+            // 
+            this.CalcList.Location = new System.Drawing.Point(244, 72);
+            this.CalcList.Name = "CalcList";
+            this.CalcList.Size = new System.Drawing.Size(92, 28);
+            this.CalcList.TabIndex = 90;
+            this.CalcList.Text = "检索";
+            this.CalcList.UseVisualStyleBackColor = true;
+            this.CalcList.Click += new System.EventHandler(this.CalcList_Click);
+            // 
+            // RNGInfo
+            // 
+            this.RNGInfo.Controls.Add(this.CalcList);
+            this.RNGInfo.Controls.Add(this.L_frame);
+            this.RNGInfo.Controls.Add(this.label7);
+            this.RNGInfo.Controls.Add(this.Frame_max);
+            this.RNGInfo.Controls.Add(this.Frame_min);
+            this.RNGInfo.Location = new System.Drawing.Point(11, 163);
+            this.RNGInfo.Name = "RNGInfo";
+            this.RNGInfo.Size = new System.Drawing.Size(355, 115);
+            this.RNGInfo.TabIndex = 91;
+            this.RNGInfo.TabStop = false;
+            this.RNGInfo.Text = "乱数信息";
+            // 
+            // L_frame
+            // 
+            this.L_frame.AutoSize = true;
+            this.L_frame.Location = new System.Drawing.Point(9, 34);
+            this.L_frame.Name = "L_frame";
+            this.L_frame.Size = new System.Drawing.Size(55, 13);
+            this.L_frame.TabIndex = 46;
+            this.L_frame.Text = "检索范围";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(161, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "~";
+            // 
+            // Frame_max
+            // 
+            this.Frame_max.AccessibleName = "";
+            this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_max.Increment = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.Frame_max.Location = new System.Drawing.Point(176, 31);
+            this.Frame_max.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_max.Minimum = new decimal(new int[] {
+            418,
+            0,
+            0,
+            0});
+            this.Frame_max.Name = "Frame_max";
+            this.Frame_max.Size = new System.Drawing.Size(75, 22);
+            this.Frame_max.TabIndex = 41;
+            this.Frame_max.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Frame_min
+            // 
+            this.Frame_min.AccessibleName = "";
+            this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_min.Location = new System.Drawing.Point(82, 31);
+            this.Frame_min.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_min.Name = "Frame_min";
+            this.Frame_min.Size = new System.Drawing.Size(75, 22);
+            this.Frame_min.TabIndex = 40;
             // 
             // dgv_Frame
             // 
@@ -1211,12 +1304,6 @@
             this.dgv_hiddenpower.Name = "dgv_hiddenpower";
             this.dgv_hiddenpower.Width = 48;
             // 
-            // dgv_needle
-            // 
-            this.dgv_needle.HeaderText = "针";
-            this.dgv_needle.Name = "dgv_needle";
-            this.dgv_needle.Width = 35;
-            // 
             // dgv_psv
             // 
             this.dgv_psv.HeaderText = "PSV";
@@ -1239,7 +1326,7 @@
             // 
             this.dgv_rand.HeaderText = "乱数值";
             this.dgv_rand.Name = "dgv_rand";
-            this.dgv_rand.Width = 125;
+            this.dgv_rand.Width = 65;
             // 
             // dgv_pid
             // 
@@ -1354,6 +1441,10 @@
             this.Condition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
+            this.RNGInfo.ResumeLayout(false);
+            this.RNGInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1440,6 +1531,12 @@
         private System.Windows.Forms.ComboBox Poke;
         private System.Windows.Forms.CheckBox AlwaysSynced;
         private System.Windows.Forms.DataGridView DGV;
+        private System.Windows.Forms.Button CalcList;
+        private System.Windows.Forms.GroupBox RNGInfo;
+        private System.Windows.Forms.Label L_frame;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown Frame_max;
+        private System.Windows.Forms.NumericUpDown Frame_min;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_H;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_A;
@@ -1450,7 +1547,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_nature;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_synced;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hiddenpower;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_needle;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_psv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ability;

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Gen6RNGTool.RNG;
 using System.Windows.Forms;
 using static PKHeX.Util;
 
@@ -17,6 +15,11 @@ namespace Gen6RNGTool
         private string version = "0.10";
         private static readonly string[] ANY_STR = { "Any", "任意" };
         private static readonly string[] NONE_STR = { "None", "无" };
+        private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
+
+
+        private RNGSetting setting = new RNGSetting();
+        private RNGFilters filter = new RNGFilters();
         #endregion
 
         public MainForm()
@@ -86,6 +89,7 @@ namespace Gen6RNGTool
                 Stat3.Value = value[3]; Stat4.Value = value[4]; Stat5.Value = value[5];
             }
         }
+        private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();
         #endregion
 
         private string curlanguage;
@@ -95,7 +99,6 @@ namespace Gen6RNGTool
 
         private void ChangeLanguage(object sender, EventArgs e)
         {
-
             string lang = langlist[lindex];
 
             if (lang == curlanguage)
@@ -111,14 +114,14 @@ namespace Gen6RNGTool
             StringItem.naturestr = getStringList("Natures", curlanguage);
             StringItem.hpstr = getStringList("Types", curlanguage);
             StringItem.species = getStringList("Species", curlanguage);
-            
+
             for (int i = 1; i < Pokemon.SpecForm.Length; i++)
                 Poke.Items[i] = StringItem.species[Pokemon.SpecForm[i] & 0x7FF];
-            
+
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
             Nature.Items.AddRange(StringItem.NatureList);
-            
+
             SyncNature.Items[0] = NONE_STR[lindex];
             for (int i = 0; i < StringItem.naturestr.Length; i++)
                 SyncNature.Items[i + 1] = StringItem.naturestr[i];
@@ -135,6 +138,13 @@ namespace Gen6RNGTool
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DGV.Columns["dgv_Rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_PID"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            Type dgvtype = typeof(DataGridView);
+            System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            dgvPropertyInfo.SetValue(DGV, true, null);
+
             Gender.Items.AddRange(StringItem.genderstr);
 
             Poke.Items.Add("-");
@@ -176,9 +186,10 @@ namespace Gen6RNGTool
             Properties.Settings.Default.ShinyCharm = ShinyCharm.Checked;
             Properties.Settings.Default.Save();
         }
-        
+
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
+            dgv_research.Visible = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -195,7 +206,7 @@ namespace Gen6RNGTool
             StatPanel.Visible = ByStats.Checked;
             ShowStats.Enabled = ShowStats.Checked = ByStats.Checked;
         }
-        
+
         private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (AlwaysSynced.Checked)
@@ -207,7 +218,7 @@ namespace Gen6RNGTool
         }
         #endregion
         #region DataEntry
-        
+
         private void SetPersonalInfo(int Species, int Form)
         {
             if (Species == 0)
@@ -236,5 +247,148 @@ namespace Gen6RNGTool
         }
         #endregion
 
+        #region UI communication
+
+        private void getsetting(MersenneTwister mt)
+        {
+            dgvrowlist.Clear();
+            DGV.Rows.Clear();
+
+            filter = FilterSettings;
+            RefreshRNGSettings(mt);
+            setting = new RNGSetting();
+        }
+
+        private RNGFilters FilterSettings => new RNGFilters
+        {
+            Nature = Nature.CheckBoxItems.Skip(1).Select(e => e.Checked).ToArray(),
+            HPType = HiddenPower.CheckBoxItems.Skip(1).Select(e => e.Checked).ToArray(),
+            Gender = (byte)Gender.SelectedIndex,
+            Ability = (byte)Ability.SelectedIndex,
+            IVlow = IVlow,
+            IVup = IVup,
+            BS = ByStats.Checked ? BS : null,
+            Stats = ByStats.Checked ? Stats : null,
+            ShinyOnly = ShinyOnly.Checked,
+            Skip = DisableFilters.Checked,
+            Lv = (byte)Lv_Search.Value,
+            PerfectIVs = (byte)PerfectIVs.Value,
+        };
+
+        private void RefreshRNGSettings(MersenneTwister mt)
+        {
+            byte gender_threshold = 0;
+            switch (GenderRatio.SelectedIndex)
+            {
+                case 1: gender_threshold = 126; break;
+                case 2: gender_threshold = 30; break;
+                case 3: gender_threshold = 63; break;
+                case 4: gender_threshold = 189; break;
+            }
+            RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            RNGSetting.TSV = (int)TSV.Value;
+            RNGSetting.AlwaysSynchro = AlwaysSynced.Checked;
+            RNGSetting.ShinyCharm = ShinyCharm.Checked;
+            RNGSetting.Fix3v = Fix3v.Checked;
+            RNGSetting.nogender = GenderRatio.SelectedIndex == 0;
+            RNGSetting.gender_ratio = gender_threshold;
+            RNGSetting.PokeLv = (byte)(Poke.SelectedIndex > 0 ? 0 : 0);
+
+            RNGSetting.CreateBuffer(200, mt);
+        }
+        #endregion
+        
+        #region Start Calculation
+        private void CalcList_Click(object sender, EventArgs e)
+        {
+            if (ivmin0.Value > ivmax0.Value)
+                Error(SETTINGERROR_STR[lindex] + L_H.Text);
+            else if (ivmin1.Value > ivmax1.Value)
+                Error(SETTINGERROR_STR[lindex] + L_A.Text);
+            else if (ivmin2.Value > ivmax2.Value)
+                Error(SETTINGERROR_STR[lindex] + L_B.Text);
+            else if (ivmin3.Value > ivmax3.Value)
+                Error(SETTINGERROR_STR[lindex] + L_C.Text);
+            else if (ivmin4.Value > ivmax4.Value)
+                Error(SETTINGERROR_STR[lindex] + L_D.Text);
+            else if (ivmin5.Value > ivmax5.Value)
+                Error(SETTINGERROR_STR[lindex] + L_S.Text);
+            else if (Frame_min.Value > Frame_max.Value)
+                Error(SETTINGERROR_STR[lindex] + L_frame.Text);
+            else
+                StationarySearch();
+        }
+
+        private DataGridViewRow getRow(int i,RNGResult result)
+        {
+            string true_nature = StringItem.naturestr[result.Nature];
+            string SynchronizeFlag = result.Synchronize ? "O" : "X";
+            string PSV = result.PSV.ToString("D4");
+            string Lv = result.Lv == 0 ? "-" : result.Lv.ToString();
+            string randstr = result.RandNum.ToString("X8");
+            string PID = result.PID.ToString("X8");
+            string EC = result.EC.ToString("X8");
+
+            int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
+
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(DGV);
+
+            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum % 32).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
+
+            row.SetValues(
+                i,
+                Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
+                true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
+                randstr, PID, EC, research
+                );
+
+            if (result.Shiny)
+                row.DefaultCellStyle.BackColor = Color.LightCyan;
+            
+            Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+            for (int k = 0; k < 6; k++)
+            {
+                if (result.IVs[k] < 1)
+                {
+                    row.Cells[1 + k].Style.Font = BoldFont;
+                    row.Cells[1 + k].Style.ForeColor = Color.OrangeRed;
+                }
+                else if (result.IVs[k] > 29)
+                {
+                    row.Cells[1 + k].Style.Font = BoldFont;
+                    row.Cells[1 + k].Style.ForeColor = Color.MediumSeaGreen;
+                }
+            }
+            return row;
+        }
+
+        private void StationarySearch()
+        {
+            // Blinkflag
+            MersenneTwister mt = new MersenneTwister((uint)Seed.Value);
+            int max, min;
+            min = (int)Frame_min.Value;
+            max = (int)Frame_max.Value;
+            // Advance
+            for (int i = 0; i < min; i++)
+                mt.Nextuint();
+            // Prepare
+            getsetting(mt);
+            // Start
+            for (int i = min; i <= max; i++, RNGSetting.RandList.RemoveAt(0), RNGSetting.RandList.Add(mt.Nextuint()))
+            {
+                RNGResult result = setting.Generate();
+                if (!filter.CheckResult(result))
+                    continue;
+                dgvrowlist.Add(getRow(i, result));
+                if (dgvrowlist.Count > 100000)
+                    break;
+            }
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+        }
+
+        #endregion
     }
 }

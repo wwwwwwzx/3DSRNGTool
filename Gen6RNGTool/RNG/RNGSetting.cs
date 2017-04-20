@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Gen6RNGTool.RNG
@@ -19,13 +18,13 @@ namespace Gen6RNGTool.RNG
         public static byte gender_ratio;
 
         public static MersenneTwister mtrng;
-        public static List<uint> RandList;
+        public static List<uint> RandList = new List<uint>();
         public static int index;
         public uint getrand => RandList[index++];
 
         // Generated Info
         public static int PerfectIVCount => Fix3v ? 3 : 0;
-        public static int PIDroll_count => ShinyCharm ? 3 : 0;
+        public static int PIDroll_count => ShinyCharm ? 3 : 1;
 
         public static void CreateBuffer(int buffersize, MersenneTwister rng)
         {
@@ -35,11 +34,16 @@ namespace Gen6RNGTool.RNG
                 RandList.Add(mtrng.Nextuint());
         }
 
-        public RNGResult generate()
+        public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            rt.randnum = RandList[0];
+            index = 0;
+            rt.RandNum = RandList[0];
             rt.Lv = PokeLv;
+
+            // Sync
+            if (AlwaysSynchro)
+                rt.Synchronize = true;
 
             //Encryption Constant
             rt.EC = getrand;

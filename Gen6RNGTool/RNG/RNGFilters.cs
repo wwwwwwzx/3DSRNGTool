@@ -6,13 +6,14 @@ namespace Gen6RNGTool.RNG
     {
         public bool[] Nature;
         public bool[] HPType;
-        public int Ability = -1;
-        public int Gender = -1;
+        public bool ShinyOnly;
+        public byte Ability;
+        public byte Gender;
         public int[] IVup, IVlow, Stats;
         public byte PerfectIVs;
         public bool Skip;
         public byte Lv;
-        public bool[] Slot;
+        public int[] BS;
 
         public bool CheckIVs(RNGResult result)
         {
@@ -24,7 +25,7 @@ namespace Gen6RNGTool.RNG
             return true;
         }
 
-        public bool CheckStats(RNGResult result, int[] BS)
+        public bool CheckStats(RNGResult result)
         {
             int[] IV = result.IVs;
             result.Stats = new int[6];
@@ -44,6 +45,7 @@ namespace Gen6RNGTool.RNG
             if (Nature.All(n => !n)) return true;
             return Nature[resultnature];
         }
+
         public bool CheckHiddenPower(RNGResult result)
         {
             var val = Pokemon.getHiddenPowerValue(result.IVs);
@@ -52,10 +54,24 @@ namespace Gen6RNGTool.RNG
             return HPType[val];
         }
 
-        public bool CheckSlot(int slot)
+        public bool CheckResult(RNGResult result)
         {
-            if (Slot.All(n => !n)) return true;
-            return Slot[slot];
+            if (Skip)
+                return true;
+            if (ShinyOnly && !result.Shiny)
+                return false;
+            if (BS == null ? !CheckIVs(result) : !CheckStats(result))
+                return false;
+            if (!CheckHiddenPower(result))
+                return false;
+            if (!CheckNature(result.Nature))
+                return false;
+            if (Gender != 0 && Gender != result.Gender)
+                return false;
+            if (Ability != 0 && Ability != result.Ability)
+                return false;
+
+            return true;
         }
     }
 }
