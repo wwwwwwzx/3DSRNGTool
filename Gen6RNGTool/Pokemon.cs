@@ -7,7 +7,15 @@ namespace Gen6RNGTool
         public readonly static int[] SpecForm =
         {
             0,
-            0,
+            377,
+            378,
+            379,
+            380,
+            381,
+            382,
+            383,
+            384,
+            386,
         };
         public static bool ShinyLocked(int index)
         {

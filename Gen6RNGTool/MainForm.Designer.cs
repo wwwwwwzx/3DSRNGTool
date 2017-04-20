@@ -31,6 +31,8 @@
             Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
             Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             this.SearchSettingBox = new System.Windows.Forms.GroupBox();
+            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -87,17 +89,24 @@
             this.Stat5 = new System.Windows.Forms.NumericUpDown();
             this.BS_1 = new System.Windows.Forms.NumericUpDown();
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
-            this.SearchTarget = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.工具箱 = new System.Windows.Forms.TabControl();
+            this.SearchTarget = new System.Windows.Forms.TabPage();
+            this.Condition = new System.Windows.Forms.GroupBox();
+            this.L_SyncNature = new System.Windows.Forms.Label();
+            this.GenderRatio = new System.Windows.Forms.ComboBox();
+            this.SyncNature = new System.Windows.Forms.ComboBox();
+            this.Fix3v = new System.Windows.Forms.CheckBox();
+            this.L_Poke = new System.Windows.Forms.Label();
+            this.Poke = new System.Windows.Forms.ComboBox();
+            this.AlwaysSynced = new System.Windows.Forms.CheckBox();
+            this.SearchTool = new System.Windows.Forms.TabPage();
             this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
             this.L_TSV = new System.Windows.Forms.Label();
             this.L_Seed = new System.Windows.Forms.Label();
             this.TSV = new System.Windows.Forms.NumericUpDown();
-            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
             this.SearchSettingBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_Search)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -127,9 +136,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
+            this.工具箱.SuspendLayout();
             this.SearchTarget.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.Condition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchSettingBox
@@ -165,6 +176,34 @@
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
             // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
+            // 
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
@@ -194,6 +233,7 @@
             this.ByIVs.TabStop = true;
             this.ByIVs.Text = "通过个体值";
             this.ByIVs.UseVisualStyleBackColor = true;
+            this.ByIVs.CheckedChanged += new System.EventHandler(this.SearchMethod_CheckedChanged);
             // 
             // ByStats
             // 
@@ -205,6 +245,7 @@
             this.ByStats.TabStop = true;
             this.ByStats.Text = "通过能力值";
             this.ByStats.UseVisualStyleBackColor = true;
+            this.ByStats.CheckedChanged += new System.EventHandler(this.SearchMethod_CheckedChanged);
             // 
             // L_Lv_S
             // 
@@ -864,36 +905,123 @@
             this.BS_0.Size = new System.Drawing.Size(55, 22);
             this.BS_0.TabIndex = 0;
             // 
+            // 工具箱
+            // 
+            this.工具箱.Controls.Add(this.SearchTarget);
+            this.工具箱.Controls.Add(this.SearchTool);
+            this.工具箱.Location = new System.Drawing.Point(12, 23);
+            this.工具箱.Name = "工具箱";
+            this.工具箱.SelectedIndex = 0;
+            this.工具箱.Size = new System.Drawing.Size(1206, 329);
+            this.工具箱.TabIndex = 5;
+            // 
             // SearchTarget
             // 
-            this.SearchTarget.Controls.Add(this.tabPage1);
-            this.SearchTarget.Controls.Add(this.tabPage2);
-            this.SearchTarget.Location = new System.Drawing.Point(12, 23);
+            this.SearchTarget.Controls.Add(this.Condition);
+            this.SearchTarget.Controls.Add(this.SearchSettingBox);
+            this.SearchTarget.Location = new System.Drawing.Point(4, 22);
             this.SearchTarget.Name = "SearchTarget";
-            this.SearchTarget.SelectedIndex = 0;
-            this.SearchTarget.Size = new System.Drawing.Size(1206, 338);
-            this.SearchTarget.TabIndex = 5;
+            this.SearchTarget.Padding = new System.Windows.Forms.Padding(3);
+            this.SearchTarget.Size = new System.Drawing.Size(1198, 303);
+            this.SearchTarget.TabIndex = 0;
+            this.SearchTarget.Text = "目标检索";
+            this.SearchTarget.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // Condition
             // 
-            this.tabPage1.Controls.Add(this.SearchSettingBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1198, 312);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Condition.Controls.Add(this.L_SyncNature);
+            this.Condition.Controls.Add(this.GenderRatio);
+            this.Condition.Controls.Add(this.SyncNature);
+            this.Condition.Controls.Add(this.Fix3v);
+            this.Condition.Controls.Add(this.L_Poke);
+            this.Condition.Controls.Add(this.Poke);
+            this.Condition.Controls.Add(this.AlwaysSynced);
+            this.Condition.Location = new System.Drawing.Point(11, 13);
+            this.Condition.Name = "Condition";
+            this.Condition.Size = new System.Drawing.Size(355, 144);
+            this.Condition.TabIndex = 89;
+            this.Condition.TabStop = false;
+            this.Condition.Text = "条件设置";
             // 
-            // tabPage2
+            // L_SyncNature
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1198, 312);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.L_SyncNature.AutoSize = true;
+            this.L_SyncNature.Location = new System.Drawing.Point(6, 66);
+            this.L_SyncNature.Name = "L_SyncNature";
+            this.L_SyncNature.Size = new System.Drawing.Size(55, 13);
+            this.L_SyncNature.TabIndex = 70;
+            this.L_SyncNature.Text = "同步性格";
+            // 
+            // GenderRatio
+            // 
+            this.GenderRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GenderRatio.Items.AddRange(new object[] {
+            "-",
+            "♂1：♀1",
+            "♂7：♀1",
+            "♂3：♀1",
+            "♂1：♀3"});
+            this.GenderRatio.Location = new System.Drawing.Point(173, 26);
+            this.GenderRatio.Name = "GenderRatio";
+            this.GenderRatio.Size = new System.Drawing.Size(76, 21);
+            this.GenderRatio.TabIndex = 8;
+            // 
+            // SyncNature
+            // 
+            this.SyncNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SyncNature.Location = new System.Drawing.Point(72, 63);
+            this.SyncNature.Name = "SyncNature";
+            this.SyncNature.Size = new System.Drawing.Size(65, 21);
+            this.SyncNature.TabIndex = 3;
+            this.SyncNature.SelectedIndexChanged += new System.EventHandler(this.SyncNature_SelectedIndexChanged);
+            // 
+            // Fix3v
+            // 
+            this.Fix3v.AutoSize = true;
+            this.Fix3v.Location = new System.Drawing.Point(273, 28);
+            this.Fix3v.Name = "Fix3v";
+            this.Fix3v.Size = new System.Drawing.Size(63, 17);
+            this.Fix3v.TabIndex = 1;
+            this.Fix3v.Text = "固定3V";
+            this.Fix3v.UseVisualStyleBackColor = true;
+            // 
+            // L_Poke
+            // 
+            this.L_Poke.AutoSize = true;
+            this.L_Poke.Location = new System.Drawing.Point(5, 30);
+            this.L_Poke.Name = "L_Poke";
+            this.L_Poke.Size = new System.Drawing.Size(43, 13);
+            this.L_Poke.TabIndex = 37;
+            this.L_Poke.Text = "宝可梦";
+            // 
+            // Poke
+            // 
+            this.Poke.FormattingEnabled = true;
+            this.Poke.Location = new System.Drawing.Point(58, 26);
+            this.Poke.Name = "Poke";
+            this.Poke.Size = new System.Drawing.Size(100, 21);
+            this.Poke.TabIndex = 36;
+            this.Poke.SelectedIndexChanged += new System.EventHandler(this.Poke_SelectedIndexChanged);
+            // 
+            // AlwaysSynced
+            // 
+            this.AlwaysSynced.AutoSize = true;
+            this.AlwaysSynced.Location = new System.Drawing.Point(155, 65);
+            this.AlwaysSynced.Name = "AlwaysSynced";
+            this.AlwaysSynced.Size = new System.Drawing.Size(74, 17);
+            this.AlwaysSynced.TabIndex = 9;
+            this.AlwaysSynced.Text = "必定同步";
+            this.AlwaysSynced.UseVisualStyleBackColor = true;
+            // 
+            // SearchTool
+            // 
+            this.SearchTool.Location = new System.Drawing.Point(4, 22);
+            this.SearchTool.Name = "SearchTool";
+            this.SearchTool.Padding = new System.Windows.Forms.Padding(3);
+            this.SearchTool.Size = new System.Drawing.Size(1198, 303);
+            this.SearchTool.TabIndex = 1;
+            this.SearchTool.Text = "工具箱";
+            this.SearchTool.UseVisualStyleBackColor = true;
             // 
             // Lang
             // 
@@ -903,7 +1031,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(733, 11);
+            this.Lang.Location = new System.Drawing.Point(714, 12);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(76, 21);
             this.Lang.TabIndex = 87;
@@ -919,6 +1047,7 @@
             this.Advanced.TabIndex = 86;
             this.Advanced.Text = "高级模式";
             this.Advanced.UseVisualStyleBackColor = true;
+            this.Advanced.CheckedChanged += new System.EventHandler(this.Advanced_CheckedChanged);
             // 
             // ShinyCharm
             // 
@@ -930,6 +1059,7 @@
             this.ShinyCharm.TabIndex = 85;
             this.ShinyCharm.Text = "闪耀护符";
             this.ShinyCharm.UseVisualStyleBackColor = true;
+            this.ShinyCharm.CheckedChanged += new System.EventHandler(this.ShinyCharm_CheckedChanged);
             // 
             // L_TSV
             // 
@@ -945,7 +1075,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(823, 15);
+            this.L_Seed.Location = new System.Drawing.Point(804, 16);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -965,49 +1095,34 @@
             this.TSV.Size = new System.Drawing.Size(54, 22);
             this.TSV.TabIndex = 82;
             this.TSV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TSV.ValueChanged += new System.EventHandler(this.TSV_ValueChanged);
             // 
-            // HiddenPower
+            // Seed
             // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties2;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Hexadecimal = true;
+            this.Seed.Location = new System.Drawing.Point(842, 11);
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(78, 22);
+            this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 607);
+            this.Controls.Add(this.Seed);
             this.Controls.Add(this.Lang);
             this.Controls.Add(this.Advanced);
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
-            this.Controls.Add(this.SearchTarget);
+            this.Controls.Add(this.工具箱);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Gen6RNGTool";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SearchSettingBox.ResumeLayout(false);
             this.SearchSettingBox.PerformLayout();
@@ -1041,9 +1156,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
+            this.工具箱.ResumeLayout(false);
             this.SearchTarget.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.Condition.ResumeLayout(false);
+            this.Condition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1110,15 +1228,24 @@
         private System.Windows.Forms.NumericUpDown Stat5;
         private System.Windows.Forms.NumericUpDown BS_1;
         private System.Windows.Forms.NumericUpDown BS_0;
-        private System.Windows.Forms.TabControl SearchTarget;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl 工具箱;
+        private System.Windows.Forms.TabPage SearchTarget;
+        private System.Windows.Forms.TabPage SearchTool;
         private System.Windows.Forms.ComboBox Lang;
         private System.Windows.Forms.CheckBox Advanced;
         private System.Windows.Forms.CheckBox ShinyCharm;
         private System.Windows.Forms.Label L_TSV;
         private System.Windows.Forms.Label L_Seed;
         private System.Windows.Forms.NumericUpDown TSV;
+        private Controls.HexNumericUpdown Seed;
+        private System.Windows.Forms.GroupBox Condition;
+        private System.Windows.Forms.Label L_SyncNature;
+        private System.Windows.Forms.ComboBox GenderRatio;
+        private System.Windows.Forms.ComboBox SyncNature;
+        private System.Windows.Forms.CheckBox Fix3v;
+        private System.Windows.Forms.Label L_Poke;
+        private System.Windows.Forms.ComboBox Poke;
+        private System.Windows.Forms.CheckBox AlwaysSynced;
     }
 }
 

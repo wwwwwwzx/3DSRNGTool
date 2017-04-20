@@ -18,6 +18,7 @@ namespace Gen6RNGTool
         private static readonly string[] ANY_STR = { "Any", "任意" };
         private static readonly string[] NONE_STR = { "None", "无" };
         #endregion
+
         public MainForm()
         {
             InitializeComponent();
@@ -109,10 +110,18 @@ namespace Gen6RNGTool
 
             StringItem.naturestr = getStringList("Natures", curlanguage);
             StringItem.hpstr = getStringList("Types", curlanguage);
-
+            StringItem.species = getStringList("Species", curlanguage);
+            
+            for (int i = 1; i < Pokemon.SpecForm.Length; i++)
+                Poke.Items[i] = StringItem.species[Pokemon.SpecForm[i] & 0x7FF];
+            
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
             Nature.Items.AddRange(StringItem.NatureList);
+            
+            SyncNature.Items[0] = NONE_STR[lindex];
+            for (int i = 0; i < StringItem.naturestr.Length; i++)
+                SyncNature.Items[i + 1] = StringItem.naturestr[i];
 
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
@@ -128,6 +137,13 @@ namespace Gen6RNGTool
         {
             Gender.Items.AddRange(StringItem.genderstr);
 
+            Poke.Items.Add("-");
+            for (int i = 1; i < Pokemon.SpecForm.Length; i++)
+                Poke.Items.Add("");
+
+            for (int i = 0; i <= StringItem.naturestr.Length; i++)
+                SyncNature.Items.Add("");
+
             string l = Properties.Settings.Default.Language;
             int lang = Array.IndexOf(langlist, l);
             if (lang < 0) lang = Array.IndexOf(langlist, "en");
@@ -137,13 +153,87 @@ namespace Gen6RNGTool
 
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
+            SyncNature.SelectedIndex = 0;
 
-            //Seed.Value = Properties.Settings.Default.Seed;
+            Poke.SelectedIndex = Properties.Settings.Default.Pokemon;
+            Seed.Value = Properties.Settings.Default.Seed;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             Advanced.Checked = Properties.Settings.Default.Advance;
 
             ByIVs.Checked = true;
         }
+
+        #region Basic UI
+        private void TSV_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.TSV = (short)TSV.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void ShinyCharm_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShinyCharm = ShinyCharm.Checked;
+            Properties.Settings.Default.Save();
+        }
+        
+        private void Advanced_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Advance = Advanced.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void Seed_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Seed = Seed.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SearchMethod_CheckedChanged(object sender, EventArgs e)
+        {
+            IVPanel.Visible = ByIVs.Checked;
+            StatPanel.Visible = ByStats.Checked;
+            ShowStats.Enabled = ShowStats.Checked = ByStats.Checked;
+        }
+        
+        private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AlwaysSynced.Checked)
+            {
+                Nature.ClearSelection();
+                if (SyncNature.SelectedIndex > 0)
+                    Nature.CheckBoxItems[SyncNature.SelectedIndex].Checked = true;
+            }
+        }
+        #endregion
+        #region DataEntry
+        
+        private void SetPersonalInfo(int Species, int Form)
+        {
+            if (Species == 0)
+                return;
+            var t = PersonalTable.ORAS.getFormeEntry(Species, Form);
+            BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
+            switch (t.Gender)
+            {
+                case 127: GenderRatio.SelectedIndex = 1; break;
+                case 031: GenderRatio.SelectedIndex = 2; break;
+                case 063: GenderRatio.SelectedIndex = 3; break;
+                case 191: GenderRatio.SelectedIndex = 4; break;
+                default: GenderRatio.SelectedIndex = 0; break;
+            }
+            Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
+        }
+        private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
+
+
+        private void Poke_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Pokemon = (byte)Poke.SelectedIndex;
+            Properties.Settings.Default.Save();
+            SetPersonalInfo(Pokemon.SpecForm[Poke.SelectedIndex]);
+        }
+        #endregion
+
     }
 }

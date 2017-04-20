@@ -11,6 +11,8 @@ namespace Gen6RNGTool
         public static string[] genderstr = { "-", "♂", "♀" };
         public static string[] abilitystr = { "-", "1", "2", "H" };
 
+        public static string[] species;
+
         public static ComboItem[] NatureList
             => naturestr.Select((str, i) => new ComboItem(str, i)).ToArray();
 

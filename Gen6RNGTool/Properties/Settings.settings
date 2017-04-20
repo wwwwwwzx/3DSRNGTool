@@ -11,10 +11,13 @@
     <Setting Name="Advance" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Seed" Type="System.UInt64" Scope="User">
+    <Setting Name="Seed" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="TSV" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Pokemon" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>

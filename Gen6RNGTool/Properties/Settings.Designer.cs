@@ -62,9 +62,9 @@ namespace Gen6RNGTool.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public ulong Seed {
+        public decimal Seed {
             get {
-                return ((ulong)(this["Seed"]));
+                return ((decimal)(this["Seed"]));
             }
             set {
                 this["Seed"] = value;
@@ -80,6 +80,18 @@ namespace Gen6RNGTool.Properties {
             }
             set {
                 this["TSV"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte Pokemon {
+            get {
+                return ((byte)(this["Pokemon"]));
+            }
+            set {
+                this["Pokemon"] = value;
             }
         }
     }
