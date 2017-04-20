@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace SMEncounterRNGTool.Controls
+namespace Gen6RNGTool.Controls
 {
 
     public class HexNumericUpdown : NumericUpDown

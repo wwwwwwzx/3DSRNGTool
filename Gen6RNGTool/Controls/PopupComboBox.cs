@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace SMEncounterRNGTool.Controls
+namespace Gen6RNGTool.Controls
 {
     /// <summary>
     ///     CodeProject.com "Simple pop-up control" "http://www.codeproject.com/cs/miscctrl/simplepopup.asp".

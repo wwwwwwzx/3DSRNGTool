@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using SMEncounterRNGTool.Controls;
+using Gen6RNGTool.Controls;
 
-namespace SMEncounterRNGTool
+namespace Gen6RNGTool
 {
     class StringItem
     {

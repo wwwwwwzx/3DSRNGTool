@@ -1,4 +1,4 @@
-﻿namespace SMEncounterRNGTool.Controls
+﻿namespace Gen6RNGTool.Controls
 {    
     partial class GlassComboBox
     {

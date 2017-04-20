@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using SMEncounterRNGTool.Properties;
+using Gen6RNGTool.Properties;
 
 namespace PKHeX
 {

@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace SMEncounterRNGTool.Controls
+namespace Gen6RNGTool.Controls
 {
     /// <summary>
     ///     Represents a glass button control.

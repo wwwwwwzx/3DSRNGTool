@@ -66,6 +66,9 @@
       <DependentUpon>GlassComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\GripBounds.cs" />
+    <Compile Include="Controls\HexNumericUpdown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\NativeMethods.cs" />
     <Compile Include="Controls\Popup.cs">
       <SubType>Component</SubType>
@@ -87,6 +90,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Pokemon\PersonalInfo.cs" />
+    <Compile Include="Pokemon\PersonalInfoORAS.cs" />
+    <Compile Include="Pokemon\PersonalTable.cs" />
+    <Compile Include="Resources\FormUtil.cs" />
     <Compile Include="RNG\RNGFilters.cs" />
     <Compile Include="RNG\RNGResult.cs" />
     <Compile Include="RNG\RNGSetting.cs" />
@@ -94,6 +101,9 @@
     <Compile Include="RNG\MTRNG.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -102,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,9 +123,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\personal_ao" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\lang_cn.txt" />
+    <Content Include="Resources\lang_en.txt" />
+    <Content Include="Resources\text_Natures_cn.txt" />
+    <Content Include="Resources\text_Natures_en.txt" />
+    <Content Include="Resources\text_Species_cn.txt" />
+    <Content Include="Resources\text_Species_en.txt" />
+    <Content Include="Resources\text_Types_cn.txt" />
+    <Content Include="Resources\text_Types_en.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

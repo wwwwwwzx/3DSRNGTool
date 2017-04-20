@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace SMEncounterRNGTool.Controls
+namespace Gen6RNGTool.Controls
 {
     /// <summary>
     ///     Martin Lottering : 2007-10-27

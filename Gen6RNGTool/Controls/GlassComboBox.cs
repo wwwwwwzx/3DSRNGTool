@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace SMEncounterRNGTool.Controls
+namespace Gen6RNGTool.Controls
 {
     public partial class GlassComboBox : ComboBox
     {

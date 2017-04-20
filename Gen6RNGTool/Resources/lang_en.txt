@@ -12,7 +12,7 @@
 ! Make sure that each edit has a ' = ' between Control name and new Text!
 ! -----------------------------------------------------
 - DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
-! MainForm = SMEncounterRNGTool
+! MainForm = Gen6RNGTool
 - Change stuff below this line, not above.
 ---------------------Global Setting------------------------
 L_Seed = Seed
