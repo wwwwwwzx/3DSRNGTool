@@ -232,6 +232,7 @@ namespace Gen6RNGTool
             Properties.Settings.Default.Pokemon = (byte)Poke.SelectedIndex;
             Properties.Settings.Default.Save();
             SetPersonalInfo(Pokemon.SpecForm[Poke.SelectedIndex]);
+            Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = Poke.SelectedIndex == 0;
         }
         #endregion
 
