@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             this.SearchSettingBox = new System.Windows.Forms.GroupBox();
-            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -137,6 +135,8 @@
             this.GameVersion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
+            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.SearchSettingBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_Search)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -209,34 +209,6 @@
             this.SearchSettingBox.TabIndex = 4;
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
-            // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties2;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -1162,7 +1134,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(570, 10);
+            this.Lang.Location = new System.Drawing.Point(149, 10);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(76, 21);
             this.Lang.TabIndex = 87;
@@ -1172,7 +1144,7 @@
             // 
             this.Advanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Advanced.AutoSize = true;
-            this.Advanced.Location = new System.Drawing.Point(1126, 14);
+            this.Advanced.Location = new System.Drawing.Point(705, 14);
             this.Advanced.Name = "Advanced";
             this.Advanced.Size = new System.Drawing.Size(74, 17);
             this.Advanced.TabIndex = 86;
@@ -1184,7 +1156,7 @@
             // 
             this.ShinyCharm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShinyCharm.AutoSize = true;
-            this.ShinyCharm.Location = new System.Drawing.Point(1046, 14);
+            this.ShinyCharm.Location = new System.Drawing.Point(625, 14);
             this.ShinyCharm.Name = "ShinyCharm";
             this.ShinyCharm.Size = new System.Drawing.Size(74, 17);
             this.ShinyCharm.TabIndex = 85;
@@ -1196,7 +1168,7 @@
             // 
             this.L_TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(920, 16);
+            this.L_TSV.Location = new System.Drawing.Point(499, 16);
             this.L_TSV.Name = "L_TSV";
             this.L_TSV.Size = new System.Drawing.Size(28, 13);
             this.L_TSV.TabIndex = 84;
@@ -1206,7 +1178,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(793, 16);
+            this.L_Seed.Location = new System.Drawing.Point(372, 16);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -1216,7 +1188,7 @@
             // 
             this.TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TSV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV.Location = new System.Drawing.Point(961, 11);
+            this.TSV.Location = new System.Drawing.Point(540, 11);
             this.TSV.Maximum = new decimal(new int[] {
             4095,
             0,
@@ -1283,7 +1255,7 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1202, 304);
+            this.DGV.Size = new System.Drawing.Size(1202, 278);
             this.DGV.TabIndex = 89;
             // 
             // dgv_Frame
@@ -1398,7 +1370,7 @@
             "Y",
             "OR",
             "AS"});
-            this.GameVersion.Location = new System.Drawing.Point(733, 11);
+            this.GameVersion.Location = new System.Drawing.Point(312, 11);
             this.GameVersion.Name = "GameVersion";
             this.GameVersion.Size = new System.Drawing.Size(51, 21);
             this.GameVersion.TabIndex = 91;
@@ -1408,7 +1380,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(662, 15);
+            this.L_GameVersion.Location = new System.Drawing.Point(241, 15);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -1419,18 +1391,46 @@
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(837, 11);
+            this.Seed.Location = new System.Drawing.Point(416, 11);
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(78, 22);
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 642);
+            this.ClientSize = new System.Drawing.Size(803, 616);
             this.Controls.Add(this.GameVersion);
             this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.DGV);

@@ -237,8 +237,10 @@ namespace Gen6RNGTool
 
         private void SetPersonalInfo(int Species, int Form)
         {
+            SyncNature.Enabled = !(iPM?.Nature >= 0);
             if (Species == 0)
                 return;
+
             // Load from personal table
             var t = PersonalTable.ORAS.getFormeEntry(Species, Form);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
@@ -251,21 +253,27 @@ namespace Gen6RNGTool
                 default: GenderRatio.SelectedIndex = 0; break;
             }
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
-            // Load from pokemonlist
-            RNGSetting.PM = Pokemonlist.FirstOrDefault(p => p.Species == Species && p.Form == Form);
+
+            // Load from Pokemonlist
             if (iPM == null)
                 return;
             Lv_Search.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
             ShinyLocked.Checked = iPM.ShinyLocked;
+            if (!iPM.RandomGender)
+                GenderRatio.SelectedIndex = 0;
+            if (iPM.Nature >= 0)
+                SyncNature.SelectedIndex = (int)iPM.Nature + 1;
         }
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Pokemon = (int)(Poke.SelectedValue);
+            int specform = (int)(Poke.SelectedValue);
+            Properties.Settings.Default.Pokemon = specform;
             Properties.Settings.Default.Save();
-            SetPersonalInfo((int)Poke.SelectedValue);
+            RNGSetting.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
+            SetPersonalInfo(specform);
             ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = Poke.SelectedIndex == 0;
         }
         #endregion
@@ -304,13 +312,13 @@ namespace Gen6RNGTool
             RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             RNGSetting.TSV = (int)TSV.Value;
             RNGSetting.ShinyCharm = ShinyCharm.Checked;
-
+            // Load from template
             if (RNGSetting.HasTemplate)
             {
                 RNGSetting.UseTemplate();
                 return;
             }
-
+            // Load from UI
             byte gender_threshold = 0;
             switch (GenderRatio.SelectedIndex)
             {
@@ -364,7 +372,7 @@ namespace Gen6RNGTool
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV);
 
-            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum % 32).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
+            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum >> 27).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
 
             row.SetValues(
                 i,
@@ -395,7 +403,6 @@ namespace Gen6RNGTool
 
         private void StationarySearch()
         {
-            // Blinkflag
             MersenneTwister mt = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;

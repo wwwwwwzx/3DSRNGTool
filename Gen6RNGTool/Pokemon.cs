@@ -123,7 +123,7 @@ namespace Gen6RNGTool
             // Starters and Fossil
 
             //new Pokemon { Species = 448, Level = 32, Ability = 1, Nature = Nature.Hasty, Gender = 0, IVs = new[] {6, 25, 16, 31, 25, 19}, Gift = true, ShinyLocked = true }, // Lucario
-            //new Pokemon { Species = 131, Level = 30, Nature = Nature.Docile, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
+            new Pokemon { Species = 131, Level = 30, Nature = Nature.Docile, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
             
             //new Pokemon { Species = 143, Level = 15,}, // Snorlax
             //new Pokemon { Species = 568, Wild = true, Levelmin = 35, Levelmax = 38 }, // Trubbish
