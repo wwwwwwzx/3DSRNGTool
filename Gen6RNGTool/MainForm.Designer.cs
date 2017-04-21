@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             this.SearchSettingBox = new System.Windows.Forms.GroupBox();
+            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -92,7 +94,14 @@
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
             this.工具箱 = new System.Windows.Forms.TabControl();
             this.SearchTarget = new System.Windows.Forms.TabPage();
+            this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.CalcList = new System.Windows.Forms.Button();
+            this.L_frame = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Frame_max = new System.Windows.Forms.NumericUpDown();
+            this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.Condition = new System.Windows.Forms.GroupBox();
+            this.ShinyLocked = new System.Windows.Forms.CheckBox();
             this.L_SyncNature = new System.Windows.Forms.Label();
             this.GenderRatio = new System.Windows.Forms.ComboBox();
             this.SyncNature = new System.Windows.Forms.ComboBox();
@@ -108,12 +117,6 @@
             this.L_Seed = new System.Windows.Forms.Label();
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
-            this.CalcList = new System.Windows.Forms.Button();
-            this.RNGInfo = new System.Windows.Forms.GroupBox();
-            this.L_frame = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Frame_max = new System.Windows.Forms.NumericUpDown();
-            this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_H = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_A = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,9 +134,9 @@
             this.dgv_pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_EC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_research = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GameVersion = new System.Windows.Forms.ComboBox();
+            this.L_GameVersion = new System.Windows.Forms.Label();
             this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
-            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.SearchSettingBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_Search)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -165,12 +168,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
             this.工具箱.SuspendLayout();
             this.SearchTarget.SuspendLayout();
-            this.Condition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.RNGInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
+            this.Condition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,6 +209,34 @@
             this.SearchSettingBox.TabIndex = 4;
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
+            // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -931,8 +962,94 @@
             this.SearchTarget.Text = "目标检索";
             this.SearchTarget.UseVisualStyleBackColor = true;
             // 
+            // RNGInfo
+            // 
+            this.RNGInfo.Controls.Add(this.CalcList);
+            this.RNGInfo.Controls.Add(this.L_frame);
+            this.RNGInfo.Controls.Add(this.label7);
+            this.RNGInfo.Controls.Add(this.Frame_max);
+            this.RNGInfo.Controls.Add(this.Frame_min);
+            this.RNGInfo.Location = new System.Drawing.Point(11, 163);
+            this.RNGInfo.Name = "RNGInfo";
+            this.RNGInfo.Size = new System.Drawing.Size(355, 115);
+            this.RNGInfo.TabIndex = 91;
+            this.RNGInfo.TabStop = false;
+            this.RNGInfo.Text = "乱数信息";
+            // 
+            // CalcList
+            // 
+            this.CalcList.Location = new System.Drawing.Point(244, 72);
+            this.CalcList.Name = "CalcList";
+            this.CalcList.Size = new System.Drawing.Size(92, 28);
+            this.CalcList.TabIndex = 90;
+            this.CalcList.Text = "检索";
+            this.CalcList.UseVisualStyleBackColor = true;
+            this.CalcList.Click += new System.EventHandler(this.CalcList_Click);
+            // 
+            // L_frame
+            // 
+            this.L_frame.AutoSize = true;
+            this.L_frame.Location = new System.Drawing.Point(9, 34);
+            this.L_frame.Name = "L_frame";
+            this.L_frame.Size = new System.Drawing.Size(55, 13);
+            this.L_frame.TabIndex = 46;
+            this.L_frame.Text = "检索范围";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(161, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "~";
+            // 
+            // Frame_max
+            // 
+            this.Frame_max.AccessibleName = "";
+            this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_max.Increment = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.Frame_max.Location = new System.Drawing.Point(176, 31);
+            this.Frame_max.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_max.Minimum = new decimal(new int[] {
+            418,
+            0,
+            0,
+            0});
+            this.Frame_max.Name = "Frame_max";
+            this.Frame_max.Size = new System.Drawing.Size(75, 22);
+            this.Frame_max.TabIndex = 41;
+            this.Frame_max.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Frame_min
+            // 
+            this.Frame_min.AccessibleName = "";
+            this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_min.Location = new System.Drawing.Point(82, 31);
+            this.Frame_min.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_min.Name = "Frame_min";
+            this.Frame_min.Size = new System.Drawing.Size(75, 22);
+            this.Frame_min.TabIndex = 40;
+            // 
             // Condition
             // 
+            this.Condition.Controls.Add(this.ShinyLocked);
             this.Condition.Controls.Add(this.L_SyncNature);
             this.Condition.Controls.Add(this.GenderRatio);
             this.Condition.Controls.Add(this.SyncNature);
@@ -946,6 +1063,16 @@
             this.Condition.TabIndex = 89;
             this.Condition.TabStop = false;
             this.Condition.Text = "条件设置";
+            // 
+            // ShinyLocked
+            // 
+            this.ShinyLocked.AutoSize = true;
+            this.ShinyLocked.Location = new System.Drawing.Point(251, 66);
+            this.ShinyLocked.Name = "ShinyLocked";
+            this.ShinyLocked.Size = new System.Drawing.Size(74, 17);
+            this.ShinyLocked.TabIndex = 71;
+            this.ShinyLocked.Text = "必定不闪";
+            this.ShinyLocked.UseVisualStyleBackColor = true;
             // 
             // L_SyncNature
             // 
@@ -1035,7 +1162,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(708, 12);
+            this.Lang.Location = new System.Drawing.Point(570, 10);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(76, 21);
             this.Lang.TabIndex = 87;
@@ -1159,91 +1286,6 @@
             this.DGV.Size = new System.Drawing.Size(1202, 304);
             this.DGV.TabIndex = 89;
             // 
-            // CalcList
-            // 
-            this.CalcList.Location = new System.Drawing.Point(244, 72);
-            this.CalcList.Name = "CalcList";
-            this.CalcList.Size = new System.Drawing.Size(92, 28);
-            this.CalcList.TabIndex = 90;
-            this.CalcList.Text = "检索";
-            this.CalcList.UseVisualStyleBackColor = true;
-            this.CalcList.Click += new System.EventHandler(this.CalcList_Click);
-            // 
-            // RNGInfo
-            // 
-            this.RNGInfo.Controls.Add(this.CalcList);
-            this.RNGInfo.Controls.Add(this.L_frame);
-            this.RNGInfo.Controls.Add(this.label7);
-            this.RNGInfo.Controls.Add(this.Frame_max);
-            this.RNGInfo.Controls.Add(this.Frame_min);
-            this.RNGInfo.Location = new System.Drawing.Point(11, 163);
-            this.RNGInfo.Name = "RNGInfo";
-            this.RNGInfo.Size = new System.Drawing.Size(355, 115);
-            this.RNGInfo.TabIndex = 91;
-            this.RNGInfo.TabStop = false;
-            this.RNGInfo.Text = "乱数信息";
-            // 
-            // L_frame
-            // 
-            this.L_frame.AutoSize = true;
-            this.L_frame.Location = new System.Drawing.Point(9, 34);
-            this.L_frame.Name = "L_frame";
-            this.L_frame.Size = new System.Drawing.Size(55, 13);
-            this.L_frame.TabIndex = 46;
-            this.L_frame.Text = "检索范围";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(161, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 13);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "~";
-            // 
-            // Frame_max
-            // 
-            this.Frame_max.AccessibleName = "";
-            this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame_max.Increment = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.Frame_max.Location = new System.Drawing.Point(176, 31);
-            this.Frame_max.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame_max.Minimum = new decimal(new int[] {
-            418,
-            0,
-            0,
-            0});
-            this.Frame_max.Name = "Frame_max";
-            this.Frame_max.Size = new System.Drawing.Size(75, 22);
-            this.Frame_max.TabIndex = 41;
-            this.Frame_max.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
-            // Frame_min
-            // 
-            this.Frame_min.AccessibleName = "";
-            this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame_min.Location = new System.Drawing.Point(82, 31);
-            this.Frame_min.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame_min.Name = "Frame_min";
-            this.Frame_min.Size = new System.Drawing.Size(75, 22);
-            this.Frame_min.TabIndex = 40;
-            // 
             // dgv_Frame
             // 
             this.dgv_Frame.HeaderText = "帧数";
@@ -1347,8 +1389,34 @@
             this.dgv_research.Visible = false;
             this.dgv_research.Width = 70;
             // 
+            // GameVersion
+            // 
+            this.GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GameVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GameVersion.Items.AddRange(new object[] {
+            "X",
+            "Y",
+            "OR",
+            "AS"});
+            this.GameVersion.Location = new System.Drawing.Point(733, 11);
+            this.GameVersion.Name = "GameVersion";
+            this.GameVersion.Size = new System.Drawing.Size(51, 21);
+            this.GameVersion.TabIndex = 91;
+            this.GameVersion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
+            // 
+            // L_GameVersion
+            // 
+            this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_GameVersion.AutoSize = true;
+            this.L_GameVersion.Location = new System.Drawing.Point(662, 15);
+            this.L_GameVersion.Name = "L_GameVersion";
+            this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
+            this.L_GameVersion.TabIndex = 90;
+            this.L_GameVersion.Text = "游戏版本";
+            // 
             // Seed
             // 
+            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
             this.Seed.Location = new System.Drawing.Point(837, 11);
@@ -1358,39 +1426,13 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties2;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 642);
+            this.Controls.Add(this.GameVersion);
+            this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.Seed);
             this.Controls.Add(this.Lang);
@@ -1437,14 +1479,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
             this.工具箱.ResumeLayout(false);
             this.SearchTarget.ResumeLayout(false);
-            this.Condition.ResumeLayout(false);
-            this.Condition.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
+            this.Condition.ResumeLayout(false);
+            this.Condition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1554,6 +1596,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_research;
+        private System.Windows.Forms.ComboBox GameVersion;
+        private System.Windows.Forms.Label L_GameVersion;
+        private System.Windows.Forms.CheckBox ShinyLocked;
     }
 }
 

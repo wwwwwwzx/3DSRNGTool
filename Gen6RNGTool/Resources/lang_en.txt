@@ -26,8 +26,7 @@ SearchTool = Tool Kit
 ---
 Condition = Conditions
 L_Poke = Pokemon
-UB = UB
-SOS = SOS Chaining
+ShinyLocked = Shiny Locked
 Fishing = Fishing
 Honey = Honey
 Wild = Wild

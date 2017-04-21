@@ -26,8 +26,7 @@ SearchTool = 辅助工具
 ---
 Condition = 条件设置
 L_Poke = 宝可梦
-UB = UB
-SOS = 帮手连锁
+ShinyLocked = 固定不闪
 Fishing = 钓鱼
 Honey = 甜甜蜜
 Wild = 野生

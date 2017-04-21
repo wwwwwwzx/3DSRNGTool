@@ -17,7 +17,10 @@
     <Setting Name="TSV" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pokemon" Type="System.Byte" Scope="User">
+    <Setting Name="Pokemon" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GameVersion" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>

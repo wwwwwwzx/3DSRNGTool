@@ -86,12 +86,24 @@ namespace Gen6RNGTool.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public byte Pokemon {
+        public int Pokemon {
             get {
-                return ((byte)(this["Pokemon"]));
+                return ((int)(this["Pokemon"]));
             }
             set {
                 this["Pokemon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte GameVersion {
+            get {
+                return ((byte)(this["GameVersion"]));
+            }
+            set {
+                this["GameVersion"] = value;
             }
         }
     }

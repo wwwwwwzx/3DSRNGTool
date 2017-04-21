@@ -6,7 +6,7 @@ namespace Gen6RNGTool.RNG
     class RNGSetting
     {
         // Background Info (Global variables)
-        public static bool AlwaysSynchro;
+        public static bool AlwaysSync;
         public static byte Synchro_Stat;
         public static bool Fix3v;
         public static int TSV;
@@ -16,13 +16,36 @@ namespace Gen6RNGTool.RNG
         public static byte PokeLv;
         public static bool nogender;
         public static byte gender_ratio;
+        public static byte ability;
+        public static int[] IVs;
 
         public static MersenneTwister mtrng;
         public static List<uint> RandList = new List<uint>();
         public static int index;
         public uint getrand => RandList[index++];
 
-        // Generated Info
+        public static Pokemon PM;
+        public static void UseTemplate()
+        {
+            if (!HasTemplate)
+                return;
+            AlwaysSync = PM.AlwaysSync;
+            Fix3v = PM.IV3;
+            IsShinyLocked = PM.ShinyLocked;
+            ability = PM.Ability;
+            IVs = PM.IVs;
+            PokeLv = PM.Level;
+            nogender = !PM.RandomGender;
+            ability = PM.Ability;
+            gender_ratio = PM.GenderRatio;
+            if (PM.Nature != Nature.Random)
+            {
+                Synchro_Stat = (byte)(PM.Nature);
+                AlwaysSync = true;
+            }
+        }
+        // Generated Attributes
+        public static bool HasTemplate => PM != null;
         public static int PerfectIVCount => Fix3v ? 3 : 0;
         public static int PIDroll_count => ShinyCharm ? 3 : 1;
 
@@ -42,8 +65,12 @@ namespace Gen6RNGTool.RNG
             rt.Lv = PokeLv;
 
             // Sync
-            if (AlwaysSynchro)
+            if (AlwaysSync)
                 rt.Synchronize = true;
+            else
+                rt.Synchronize = (int)(getrand % 100) >= 50;
+
+            rt.Synchronize &= Synchro_Stat < 25;
 
             //Encryption Constant
             rt.EC = getrand;
@@ -60,7 +87,7 @@ namespace Gen6RNGTool.RNG
             rt.Shiny = rt.PSV == TSV;
 
             //IV
-            rt.IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            rt.IVs = (int[])IVs?.Clone() ?? new[] { -1, -1, -1, -1, -1, -1 };
             while (rt.IVs.Count(iv => iv == 31) < PerfectIVCount)
                 rt.IVs[(int)(getrand % 6)] = 31;
             for (int i = 0; i < 6; i++)
@@ -75,6 +102,5 @@ namespace Gen6RNGTool.RNG
 
             return rt;
         }
-        // Generated Attributes
     }
 }

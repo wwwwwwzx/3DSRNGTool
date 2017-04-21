@@ -17,7 +17,8 @@ namespace Gen6RNGTool
         private static readonly string[] NONE_STR = { "None", "无" };
         private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
 
-
+        private Pokemon[] Pokemonlist;
+        private Pokemon iPM => RNGSetting.PM;
         private RNGSetting setting = new RNGSetting();
         private RNGFilters filter = new RNGFilters();
         #endregion
@@ -115,8 +116,7 @@ namespace Gen6RNGTool
             StringItem.hpstr = getStringList("Types", curlanguage);
             StringItem.species = getStringList("Species", curlanguage);
 
-            for (int i = 1; i < Pokemon.SpecForm.Length; i++)
-                Poke.Items[i] = StringItem.species[Pokemon.SpecForm[i] & 0x7FF];
+            LoadSpecies();
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
@@ -147,10 +147,6 @@ namespace Gen6RNGTool
 
             Gender.Items.AddRange(StringItem.genderstr);
 
-            Poke.Items.Add("-");
-            for (int i = 1; i < Pokemon.SpecForm.Length; i++)
-                Poke.Items.Add("");
-
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -164,14 +160,27 @@ namespace Gen6RNGTool
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
             SyncNature.SelectedIndex = 0;
+            GenderRatio.SelectedIndex = 0;
 
-            Poke.SelectedIndex = Properties.Settings.Default.Pokemon;
+            GameVersion.SelectedIndex = Properties.Settings.Default.GameVersion;
+            Poke.SelectedValue = Properties.Settings.Default.Pokemon;
             Seed.Value = Properties.Settings.Default.Seed;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             Advanced.Checked = Properties.Settings.Default.Advance;
 
             ByIVs.Checked = true;
+        }
+
+        private void LoadSpecies()
+        {
+            Pokemonlist = Pokemon.getSpecFormList(GameVersion.SelectedIndex);
+            var List = Pokemonlist.Select(s => new Controls.ComboItem(StringItem.species[s.Species], s.SpecForm));
+            List = new[] { new Controls.ComboItem("-", 0) }.Concat(List);
+            Poke.DisplayMember = "Text";
+            Poke.ValueMember = "Value";
+            Poke.DataSource = new BindingSource(List, null);
+            Poke.SelectedIndex = 0;
         }
 
         #region Basic UI
@@ -200,6 +209,13 @@ namespace Gen6RNGTool
             Properties.Settings.Default.Save();
         }
 
+        private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GameVersion = (byte)GameVersion.SelectedIndex;
+            Properties.Settings.Default.Save();
+            LoadSpecies();
+        }
+
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
         {
             IVPanel.Visible = ByIVs.Checked;
@@ -223,6 +239,7 @@ namespace Gen6RNGTool
         {
             if (Species == 0)
                 return;
+            // Load from personal table
             var t = PersonalTable.ORAS.getFormeEntry(Species, Form);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             switch (t.Gender)
@@ -234,21 +251,26 @@ namespace Gen6RNGTool
                 default: GenderRatio.SelectedIndex = 0; break;
             }
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
+            // Load from pokemonlist
+            RNGSetting.PM = Pokemonlist.FirstOrDefault(p => p.Species == Species && p.Form == Form);
+            if (iPM == null)
+                return;
+            Lv_Search.Value = iPM.Level;
+            AlwaysSynced.Checked = iPM.AlwaysSync;
+            ShinyLocked.Checked = iPM.ShinyLocked;
         }
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
 
-
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Pokemon = (byte)Poke.SelectedIndex;
+            Properties.Settings.Default.Pokemon = (int)(Poke.SelectedValue);
             Properties.Settings.Default.Save();
-            SetPersonalInfo(Pokemon.SpecForm[Poke.SelectedIndex]);
-            Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = Poke.SelectedIndex == 0;
+            SetPersonalInfo((int)Poke.SelectedValue);
+            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = Poke.SelectedIndex == 0;
         }
         #endregion
 
         #region UI communication
-
         private void getsetting(MersenneTwister mt)
         {
             dgvrowlist.Clear();
@@ -277,6 +299,18 @@ namespace Gen6RNGTool
 
         private void RefreshRNGSettings(MersenneTwister mt)
         {
+            RNGSetting.CreateBuffer(200, mt);
+
+            RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            RNGSetting.TSV = (int)TSV.Value;
+            RNGSetting.ShinyCharm = ShinyCharm.Checked;
+
+            if (RNGSetting.HasTemplate)
+            {
+                RNGSetting.UseTemplate();
+                return;
+            }
+
             byte gender_threshold = 0;
             switch (GenderRatio.SelectedIndex)
             {
@@ -285,19 +319,15 @@ namespace Gen6RNGTool
                 case 3: gender_threshold = 63; break;
                 case 4: gender_threshold = 189; break;
             }
-            RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
-            RNGSetting.TSV = (int)TSV.Value;
-            RNGSetting.AlwaysSynchro = AlwaysSynced.Checked;
-            RNGSetting.ShinyCharm = ShinyCharm.Checked;
             RNGSetting.Fix3v = Fix3v.Checked;
-            RNGSetting.nogender = GenderRatio.SelectedIndex == 0;
             RNGSetting.gender_ratio = gender_threshold;
-            RNGSetting.PokeLv = (byte)(Poke.SelectedIndex > 0 ? 0 : 0);
-
-            RNGSetting.CreateBuffer(200, mt);
+            RNGSetting.nogender = GenderRatio.SelectedIndex == 0;
+            RNGSetting.AlwaysSync = AlwaysSynced.Checked;
+            RNGSetting.PokeLv = (byte)Lv_Search.Value;
+            RNGSetting.IsShinyLocked = ShinyLocked.Checked;
         }
         #endregion
-        
+
         #region Start Calculation
         private void CalcList_Click(object sender, EventArgs e)
         {
@@ -319,7 +349,7 @@ namespace Gen6RNGTool
                 StationarySearch();
         }
 
-        private DataGridViewRow getRow(int i,RNGResult result)
+        private DataGridViewRow getRow(int i, RNGResult result)
         {
             string true_nature = StringItem.naturestr[result.Nature];
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
@@ -345,7 +375,7 @@ namespace Gen6RNGTool
 
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
-            
+
             Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
             for (int k = 0; k < 6; k++)
             {
