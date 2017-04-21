@@ -18,5 +18,16 @@ namespace Gen6RNGTool
 
         public static ComboItem[] HiddenPowerList
             => hpstr.Skip(1).Take(16).Select((str, i) => new ComboItem(str, i)).ToArray();
+
+        public static ComboItem[] GenderRatioList =
+        {
+            new ComboItem("Genderless", 255),
+            new ComboItem("♂1：♀1", 127),
+            new ComboItem("♂7：♀1", 031),
+            new ComboItem("♂3：♀1", 063),
+            new ComboItem("♂1：♀3", 191),
+            new ComboItem("♂ Only", 000),
+            new ComboItem("♀ Only", 254),
+        };
     }
 }

@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             this.SearchSettingBox = new System.Windows.Forms.GroupBox();
+            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -135,8 +137,6 @@
             this.GameVersion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
-            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.SearchSettingBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_Search)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -209,6 +209,34 @@
             this.SearchSettingBox.TabIndex = 4;
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
+            // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -1058,12 +1086,6 @@
             // GenderRatio
             // 
             this.GenderRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GenderRatio.Items.AddRange(new object[] {
-            "-",
-            "♂1：♀1",
-            "♂7：♀1",
-            "♂3：♀1",
-            "♂1：♀3"});
             this.GenderRatio.Location = new System.Drawing.Point(173, 26);
             this.GenderRatio.Name = "GenderRatio";
             this.GenderRatio.Size = new System.Drawing.Size(76, 21);
@@ -1397,34 +1419,6 @@
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties2;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
             // 
             // MainForm
             // 

@@ -21,23 +21,8 @@ namespace Gen6RNGTool
         public int SpecForm => Species + (Form << 11);
         public PKHeX.Core.PersonalInfo info => PersonalTable.ORAS.getFormeEntry(Species, Form);
         public bool AlwaysSync => Gift;
-        public bool RandomGender => Gender == 0 && GenderRatio < 255;
-        public byte GenderRatio
-        {
-            get
-            {
-                int tmp = info.Gender;
-                switch (tmp)
-                {
-                    case 127: return 126;
-                    case 031: return 030;
-                    case 063: return 063; 
-                    case 191: return 189;
-                    default: return 255;
-                }
-            }
-        }
         public bool IV3 => info.EggGroups[0] == 0xF;
+        public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
         #endregion
 
         public static Pokemon[] getSpecFormList(int Gameversion)

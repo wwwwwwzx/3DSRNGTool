@@ -147,6 +147,11 @@ namespace Gen6RNGTool
 
             Gender.Items.AddRange(StringItem.genderstr);
 
+            GenderRatio.DisplayMember = "Text";
+            GenderRatio.ValueMember = "Value";
+            GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
+            GenderRatio.SelectedIndex = 0;
+
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -160,7 +165,6 @@ namespace Gen6RNGTool
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
             SyncNature.SelectedIndex = 0;
-            GenderRatio.SelectedIndex = 0;
 
             GameVersion.SelectedIndex = Properties.Settings.Default.GameVersion;
             Poke.SelectedValue = Properties.Settings.Default.Pokemon;
@@ -244,14 +248,7 @@ namespace Gen6RNGTool
             // Load from personal table
             var t = PersonalTable.ORAS.getFormeEntry(Species, Form);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
-            switch (t.Gender)
-            {
-                case 127: GenderRatio.SelectedIndex = 1; break;
-                case 031: GenderRatio.SelectedIndex = 2; break;
-                case 063: GenderRatio.SelectedIndex = 3; break;
-                case 191: GenderRatio.SelectedIndex = 4; break;
-                default: GenderRatio.SelectedIndex = 0; break;
-            }
+            GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
 
             // Load from Pokemonlist
@@ -260,8 +257,7 @@ namespace Gen6RNGTool
             Lv_Search.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
             ShinyLocked.Checked = iPM.ShinyLocked;
-            if (!iPM.RandomGender)
-                GenderRatio.SelectedIndex = 0;
+            GenderRatio.SelectedValue = (int)iPM.GenderRatio;
             if (iPM.Nature >= 0)
                 SyncNature.SelectedIndex = (int)iPM.Nature + 1;
         }
@@ -312,24 +308,19 @@ namespace Gen6RNGTool
             RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             RNGSetting.TSV = (int)TSV.Value;
             RNGSetting.ShinyCharm = ShinyCharm.Checked;
+
             // Load from template
             if (RNGSetting.HasTemplate)
             {
                 RNGSetting.UseTemplate();
                 return;
             }
+
             // Load from UI
-            byte gender_threshold = 0;
-            switch (GenderRatio.SelectedIndex)
-            {
-                case 1: gender_threshold = 126; break;
-                case 2: gender_threshold = 30; break;
-                case 3: gender_threshold = 63; break;
-                case 4: gender_threshold = 189; break;
-            }
+            int gender = (int)GenderRatio.SelectedValue;
             RNGSetting.Fix3v = Fix3v.Checked;
-            RNGSetting.gender_ratio = gender_threshold;
-            RNGSetting.nogender = GenderRatio.SelectedIndex == 0;
+            RNGSetting.Gender = RNGSetting.getGenderRatio(gender);
+            RNGSetting.RandomGender = RNGSetting.IsRandomGender(gender);
             RNGSetting.AlwaysSync = AlwaysSynced.Checked;
             RNGSetting.PokeLv = (byte)Lv_Search.Value;
             RNGSetting.IsShinyLocked = ShinyLocked.Checked;

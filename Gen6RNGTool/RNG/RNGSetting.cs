@@ -14,8 +14,8 @@ namespace Gen6RNGTool.RNG
         public static bool ShinyCharm;
 
         public static byte PokeLv;
-        public static bool nogender;
-        public static byte gender_ratio;
+        public static byte Gender;
+        public static bool RandomGender;
         public static byte ability;
         public static int[] IVs;
 
@@ -35,9 +35,9 @@ namespace Gen6RNGTool.RNG
             ability = PM.Ability;
             IVs = PM.IVs;
             PokeLv = PM.Level;
-            nogender = !PM.RandomGender;
             ability = PM.Ability;
-            gender_ratio = PM.GenderRatio;
+            Gender = getGenderRatio(PM.GenderRatio);
+            RandomGender = IsRandomGender(PM.GenderRatio);
             if (PM.Nature != Nature.Random)
             {
                 Synchro_Stat = (byte)(PM.Nature);
@@ -98,9 +98,27 @@ namespace Gen6RNGTool.RNG
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
 
             //Gender
-            rt.Gender = (byte)(nogender ? 0 : ((int)(getrand % 252) >= gender_ratio ? 1 : 2));
+            rt.Gender = (byte)(RandomGender ? ((int)(getrand % 252) >= Gender ? 1 : 2) : Gender);
 
             return rt;
         }
+
+        public static byte getGenderRatio(int gender)
+        {
+            switch (gender)
+            {
+                // random
+                case 127: return 126;
+                case 031: return 030;
+                case 063: return 063;
+                case 191: return 189;
+                // fixed
+                case 0: return 1;
+                case 254: return 2;
+                default: return 0;
+            }
+        }
+
+        public static bool IsRandomGender(int gender) => 10 < gender && gender < 200;
     }
 }
