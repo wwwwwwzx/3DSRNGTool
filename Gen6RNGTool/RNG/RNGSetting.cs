@@ -83,25 +83,6 @@ namespace Gen6RNGTool.RNG
             return rt;
         }
 
-
-        public static byte getGenderRatio(int genderratio)
-        {
-            switch (genderratio)
-            {
-                // random
-                case 127: return 126;
-                case 031: return 030;
-                case 063: return 063;
-                case 191: return 189;
-                // fixed
-                case 0: return 1;
-                case 254: return 2;
-                default: return 0;
-            }
-        }
-
-        public static bool IsRandomGender(int genderratio) => 10 < genderratio && genderratio < 200;
-
         public static void UseTemplate()
         {
             AlwaysSync = PM.AlwaysSync;
@@ -110,8 +91,8 @@ namespace Gen6RNGTool.RNG
             Ability = PM.Ability;
             IVs = PM.IVs;
             Level = PM.Level;
-            Gender = getGenderRatio(PM.GenderRatio);
-            RandomGender = IsRandomGender(PM.GenderRatio);
+            Gender = FuncUtil.getGenderRatio(PM.GenderRatio);
+            RandomGender = FuncUtil.IsRandomGender(PM.GenderRatio);
             if (PM.Nature != Nature.Random)
                 Synchro_Stat = (byte)(PM.Nature);
         }

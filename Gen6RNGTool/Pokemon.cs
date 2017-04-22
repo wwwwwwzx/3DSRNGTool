@@ -144,6 +144,16 @@ namespace Gen6RNGTool
         {
             return 15 * IVs.Select((iv, i) => (iv & 1) << Reorder2[i]).Sum() / 63;
         }
+
+        public static int[] getStats(int[] IVs, int Nature, int Lv, int[] BS)
+        {
+            int[] Stats = new int[6];
+            Stats[0] = (((BS[0] * 2 + IVs[0]) * Lv) / 100) + Lv + 10;
+            for (int i = 1; i < 6; i++)
+                Stats[i] = (((BS[i] * 2 + IVs[i]) * Lv) / 100) + 5;
+            NatureAdjustment(Stats, Nature);
+            return Stats;
+        }
         #endregion
     }
 }
