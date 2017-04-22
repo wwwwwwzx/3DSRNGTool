@@ -25,15 +25,19 @@ namespace Gen6RNGTool.RNG
             return true;
         }
 
+        public int[] getStats(int[] IVs, int Nature, int Lv)
+        {
+            int[] Stats = new int[6];
+            Stats[0] = (((BS[0] * 2 + IVs[0]) * Lv) / 100) + Lv + 10;
+            for (int i = 1; i < 6; i++)
+                Stats[i] = (((BS[i] * 2 + IVs[i]) * Lv) / 100) + 5;
+            Pokemon.NatureAdjustment(Stats, Nature);
+            return Stats;
+        }
+
         public bool CheckStats(RNGResult result)
         {
-            int[] IV = result.IVs;
-            result.Stats = new int[6];
-            result.Stats[0] = (((BS[0] * 2 + IV[0]) * result.Lv) / 100) + result.Lv + 10;
-            for (int i = 1; i < 6; i++)
-                result.Stats[i] = (((BS[i] * 2 + IV[i]) * result.Lv) / 100) + 5;
-            Pokemon.NatureAdjustment(result.Stats, result.Nature);
-
+            result.Stats = getStats(result.IVs, result.Nature, result.Lv);
             for (int i = 0; i < 6; i++)
                 if (Stats[i] != 0 && Stats[i] != result.Stats[i])
                     return false;

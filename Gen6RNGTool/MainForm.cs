@@ -239,6 +239,20 @@ namespace Gen6RNGTool
                     Nature.CheckBoxItems[SyncNature.SelectedIndex].Checked = true;
             }
         }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            IVlow = new int[6];
+            IVup = new[] { 31, 31, 31, 31, 31, 31 };
+            Stats = new int[6];
+            Filter_Lv.Value = 0;
+
+            Nature.ClearSelection();
+            HiddenPower.ClearSelection();
+            Gender.SelectedIndex = Ability.SelectedIndex = 0;
+
+            ShinyOnly.Checked = DisableFilters.Checked = false;
+        }
         #endregion
 
         #region DataEntry
@@ -258,7 +272,7 @@ namespace Gen6RNGTool
             // Load from Pokemonlist
             if (iPM == null)
                 return;
-            Lv_Search.Value = iPM.Level;
+            Filter_Lv.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
             ShinyLocked.Checked = iPM.ShinyLocked;
             GenderRatio.SelectedValue = (int)iPM.GenderRatio;
@@ -269,6 +283,7 @@ namespace Gen6RNGTool
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Reset_Click(null, null);
             int specform = (int)(Poke.SelectedValue);
             Properties.Settings.Default.Pokemon = specform;
             Properties.Settings.Default.Save();
@@ -301,7 +316,7 @@ namespace Gen6RNGTool
             Stats = ByStats.Checked ? Stats : null,
             ShinyOnly = ShinyOnly.Checked,
             Skip = DisableFilters.Checked,
-            Lv = (byte)Lv_Search.Value,
+            Lv = (byte)Filter_Lv.Value,
             PerfectIVs = (byte)PerfectIVs.Value,
         };
 
@@ -326,7 +341,7 @@ namespace Gen6RNGTool
             RNGSetting.Gender = RNGSetting.getGenderRatio(gender);
             RNGSetting.RandomGender = RNGSetting.IsRandomGender(gender);
             RNGSetting.AlwaysSync = AlwaysSynced.Checked;
-            RNGSetting.Level = (byte)Lv_Search.Value;
+            RNGSetting.Level = (byte)Filter_Lv.Value;
             RNGSetting.IsShinyLocked = ShinyLocked.Checked;
         }
         #endregion
@@ -421,5 +436,6 @@ namespace Gen6RNGTool
             DGV.CurrentCell = null;
         }
         #endregion
+
     }
 }
