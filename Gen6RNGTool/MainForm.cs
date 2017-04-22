@@ -49,6 +49,7 @@ namespace Gen6RNGTool
             }
         }
         #endregion
+
         #region Controls Grouping
         private int[] IVup
         {
@@ -93,6 +94,7 @@ namespace Gen6RNGTool
         private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();
         #endregion
 
+        #region Translation and Form Loading
         private string curlanguage;
 
         private int lindex { get { return Lang.SelectedIndex; } set { Lang.SelectedIndex = value; } }
@@ -186,6 +188,7 @@ namespace Gen6RNGTool
             Poke.DataSource = new BindingSource(List, null);
             Poke.SelectedIndex = 0;
         }
+        #endregion
 
         #region Basic UI
         private void TSV_ValueChanged(object sender, EventArgs e)
@@ -237,6 +240,7 @@ namespace Gen6RNGTool
             }
         }
         #endregion
+
         #region DataEntry
 
         private void SetPersonalInfo(int Species, int Form)
@@ -318,11 +322,11 @@ namespace Gen6RNGTool
 
             // Load from UI
             int gender = (int)GenderRatio.SelectedValue;
-            RNGSetting.Fix3v = Fix3v.Checked;
+            RNGSetting.IV3 = Fix3v.Checked;
             RNGSetting.Gender = RNGSetting.getGenderRatio(gender);
             RNGSetting.RandomGender = RNGSetting.IsRandomGender(gender);
             RNGSetting.AlwaysSync = AlwaysSynced.Checked;
-            RNGSetting.PokeLv = (byte)Lv_Search.Value;
+            RNGSetting.Level = (byte)Lv_Search.Value;
             RNGSetting.IsShinyLocked = ShinyLocked.Checked;
         }
         #endregion
@@ -416,7 +420,6 @@ namespace Gen6RNGTool
             DGV.Rows.AddRange(dgvrowlist.ToArray());
             DGV.CurrentCell = null;
         }
-
         #endregion
     }
 }

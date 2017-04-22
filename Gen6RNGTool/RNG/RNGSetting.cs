@@ -8,53 +8,33 @@ namespace Gen6RNGTool.RNG
         // Background Info (Global variables)
         public static bool AlwaysSync;
         public static byte Synchro_Stat;
-        public static bool Fix3v;
+        public static bool IV3;
         public static int TSV;
         public static bool IsShinyLocked;
         public static bool ShinyCharm;
 
-        public static byte PokeLv;
+        public static byte Level;
         public static byte Gender;
         public static bool RandomGender;
-        public static byte ability;
+        public static byte Ability;
         public static int[] IVs;
-
-        public static MersenneTwister mtrng;
+        
         public static List<uint> RandList = new List<uint>();
-        public static int index;
-        public uint getrand => RandList[index++];
+        private static int index;
+        private static uint getrand => RandList[index++];
 
         public static Pokemon PM;
-        public static void UseTemplate()
-        {
-            if (!HasTemplate)
-                return;
-            AlwaysSync = PM.AlwaysSync;
-            Fix3v = PM.IV3;
-            IsShinyLocked = PM.ShinyLocked;
-            ability = PM.Ability;
-            IVs = PM.IVs;
-            PokeLv = PM.Level;
-            ability = PM.Ability;
-            Gender = getGenderRatio(PM.GenderRatio);
-            RandomGender = IsRandomGender(PM.GenderRatio);
-            if (PM.Nature != Nature.Random)
-            {
-                Synchro_Stat = (byte)(PM.Nature);
-                AlwaysSync = true;
-            }
-        }
+
         // Generated Attributes
         public static bool HasTemplate => PM != null;
-        public static int PerfectIVCount => Fix3v ? 3 : 0;
+        public static int PerfectIVCount => IV3 ? 3 : 0;
         public static int PIDroll_count => ShinyCharm ? 3 : 1;
 
         public static void CreateBuffer(int buffersize, MersenneTwister rng)
         {
-            mtrng = rng;
             RandList.Clear();
             for (int i = 0; i < buffersize; i++)
-                RandList.Add(mtrng.Nextuint());
+                RandList.Add(rng.Nextuint());
         }
 
         public RNGResult Generate()
@@ -62,9 +42,9 @@ namespace Gen6RNGTool.RNG
             RNGResult rt = new RNGResult();
             index = 0;
             rt.RandNum = RandList[0];
-            rt.Lv = PokeLv;
+            rt.Lv = Level;
 
-            // Sync
+            //Sync
             if (AlwaysSync)
                 rt.Synchronize = true;
             else
@@ -103,9 +83,10 @@ namespace Gen6RNGTool.RNG
             return rt;
         }
 
-        public static byte getGenderRatio(int gender)
+
+        public static byte getGenderRatio(int genderratio)
         {
-            switch (gender)
+            switch (genderratio)
             {
                 // random
                 case 127: return 126;
@@ -119,6 +100,20 @@ namespace Gen6RNGTool.RNG
             }
         }
 
-        public static bool IsRandomGender(int gender) => 10 < gender && gender < 200;
+        public static bool IsRandomGender(int genderratio) => 10 < genderratio && genderratio < 200;
+
+        public static void UseTemplate()
+        {
+            AlwaysSync = PM.AlwaysSync;
+            IV3 = PM.IV3;
+            IsShinyLocked = PM.ShinyLocked;
+            Ability = PM.Ability;
+            IVs = PM.IVs;
+            Level = PM.Level;
+            Gender = getGenderRatio(PM.GenderRatio);
+            RandomGender = IsRandomGender(PM.GenderRatio);
+            if (PM.Nature != Nature.Random)
+                Synchro_Stat = (byte)(PM.Nature);
+        }
     }
 }

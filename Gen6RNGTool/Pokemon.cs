@@ -20,7 +20,7 @@ namespace Gen6RNGTool
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
         public PKHeX.Core.PersonalInfo info => PersonalTable.ORAS.getFormeEntry(Species, Form);
-        public bool AlwaysSync => Gift;
+        public bool AlwaysSync => Gift || Nature >= 0;
         public bool IV3 => info.EggGroups[0] == 0xF;
         public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
         #endregion
