@@ -90,6 +90,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\Nature.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />

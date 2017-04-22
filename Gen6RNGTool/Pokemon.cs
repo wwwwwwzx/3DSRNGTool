@@ -37,7 +37,7 @@ namespace Gen6RNGTool
             }
         }
 
-        #region tables
+        #region tables (from PKHeX)
         public readonly static Pokemon[] Species_ORAS =
         {
             // Starters and Fossil
@@ -46,7 +46,7 @@ namespace Gen6RNGTool
             //new Pokemon { Species = 175, Level = 1, Ability = 1, Gift = true,}, // Togepi
             //new Pokemon { Species = 374, Level = 1, Ability = 1, IVs = new[] {-1, -1, 31, -1, -1, 31}, Gift = true }, // Beldum
 
-            //new Pokemon { Species = 351, Level = 30, Nature = Nature.Lax, Ability = 1, IVs = new[] {-1, -1, -1, -1, 31, -1}, Gift = true }, // Castform
+            new Pokemon { Species = 351, Level = 30, Nature = Nature.Lax, Ability = 1, IVs = new[] {-1, -1, -1, -1, 31, -1}, Gift = true }, // Castform
             //new Pokemon { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = Nature.Adamant, Gift = true }, // Sharpedo
             //new Pokemon { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = Nature.Quiet, Gift = true }, // Camerupt
             //new Pokemon { Species = 352, Level = 30, }, // Kecleon @ Route 119
@@ -145,35 +145,5 @@ namespace Gen6RNGTool
             return 15 * IVs.Select((iv, i) => (iv & 1) << Reorder2[i]).Sum() / 63;
         }
         #endregion
-    }
-
-    public enum GameVersion
-    {
-        // Not actually stored values, but assigned as properties.
-        Any = -1,
-
-        // Version IDs, also stored in PKM structure
-        /*Gen6*/
-        X = 24, Y = 25, AS = 26, OR = 27,
-
-        // Game Groupings (SaveFile type)
-        XY = 106,
-        ORAS = 108,
-    }
-
-    public static class Extension
-    {
-        public static bool Contains(this GameVersion g1, GameVersion g2)
-        {
-            if (g1 == g2 || g1 == GameVersion.Any)
-                return true;
-
-            switch (g1)
-            {
-                case GameVersion.XY: return g2 == GameVersion.X || g2 == GameVersion.Y;
-                case GameVersion.ORAS: return g2 == GameVersion.OR || g2 == GameVersion.AS;
-                default: return false;
-            }
-        }
     }
 }
