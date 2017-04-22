@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Gen6RNGTool.RNG;
@@ -27,28 +26,6 @@ namespace Gen6RNGTool
         {
             InitializeComponent();
         }
-        #region HexNumericFunction
-        private void NumericUpDown_Enter(object sender, EventArgs e)
-        {
-            NumericUpDown NumericUpDown = sender as NumericUpDown;
-            NumericUpDown.Select(0, NumericUpDown.Text.Length);
-        }
-
-        private void NumericUpDown_Check(object sender, CancelEventArgs e)
-        {
-            NumericUpDown NumericUpDown = sender as NumericUpDown;
-            Control ctrl = NumericUpDown;
-            if (ctrl == null)
-                return;
-            if (!string.IsNullOrEmpty(NumericUpDown.Text))
-                return;
-            foreach (var box in ((NumericUpDown)ctrl).Controls.OfType<TextBox>())
-            {
-                box.Undo();
-                break;
-            }
-        }
-        #endregion
 
         #region Controls Grouping
         private int[] IVup

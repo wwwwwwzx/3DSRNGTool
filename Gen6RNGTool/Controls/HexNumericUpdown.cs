@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Gen6RNGTool.Controls
 {
@@ -49,6 +50,24 @@ namespace Gen6RNGTool.Controls
             finally
             {
                 base.UserEdit = false;
+            }
+        }
+
+        protected override void OnClick(EventArgs e)
+        {
+            base.OnClick(e);
+            Select(0, Text.Length);
+        }
+
+        protected override void OnValidating(CancelEventArgs e)
+        {
+            base.OnValidating(e);
+            if (!string.IsNullOrEmpty(base.Text))
+                return;
+            foreach (var box in base.Controls.OfType<TextBox>())
+            {
+                box.Undo();
+                break;
             }
         }
     }
