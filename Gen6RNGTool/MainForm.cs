@@ -315,8 +315,8 @@ namespace Gen6RNGTool
             // Load from UI
             int gender = (int)GenderRatio.SelectedValue;
             RNGSetting.IV3 = Fix3v.Checked;
-            RNGSetting.Gender = RNGSetting.getGenderRatio(gender);
-            RNGSetting.RandomGender = RNGSetting.IsRandomGender(gender);
+            RNGSetting.Gender = FuncUtil.getGenderRatio(gender);
+            RNGSetting.RandomGender = FuncUtil.IsRandomGender(gender);
             RNGSetting.AlwaysSync = AlwaysSynced.Checked;
             RNGSetting.Level = (byte)Filter_Lv.Value;
             RNGSetting.IsShinyLocked = ShinyLocked.Checked;

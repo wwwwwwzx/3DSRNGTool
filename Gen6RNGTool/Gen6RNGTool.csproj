@@ -96,6 +96,7 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="Resources\FormUtil.cs" />
+    <Compile Include="Resources\FuncUtil.cs" />
     <Compile Include="RNG\RNGFilters.cs" />
     <Compile Include="RNG\RNGResult.cs" />
     <Compile Include="RNG\RNGSetting.cs" />
