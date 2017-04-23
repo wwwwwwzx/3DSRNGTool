@@ -86,12 +86,12 @@ namespace Gen6RNGTool.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Pokemon {
+        public int PKM {
             get {
-                return ((int)(this["Pokemon"]));
+                return ((int)(this["PKM"]));
             }
             set {
-                this["Pokemon"] = value;
+                this["PKM"] = value;
             }
         }
         

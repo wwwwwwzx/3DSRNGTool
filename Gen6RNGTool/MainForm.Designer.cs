@@ -101,6 +101,9 @@
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.Condition = new System.Windows.Forms.GroupBox();
+            this.L_Category = new System.Windows.Forms.Label();
+            this.CB_Category = new System.Windows.Forms.ComboBox();
+            this.L_GenderRatio = new System.Windows.Forms.Label();
             this.ShinyLocked = new System.Windows.Forms.CheckBox();
             this.L_SyncNature = new System.Windows.Forms.Label();
             this.GenderRatio = new System.Windows.Forms.ComboBox();
@@ -134,7 +137,7 @@
             this.dgv_pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_EC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_research = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GameVersion = new System.Windows.Forms.ComboBox();
+            this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
             this.SearchSettingBox.SuspendLayout();
@@ -947,7 +950,7 @@
             this.工具箱.Location = new System.Drawing.Point(12, 23);
             this.工具箱.Name = "工具箱";
             this.工具箱.SelectedIndex = 0;
-            this.工具箱.Size = new System.Drawing.Size(800, 307);
+            this.工具箱.Size = new System.Drawing.Size(780, 311);
             this.工具箱.TabIndex = 5;
             // 
             // SearchTarget
@@ -958,7 +961,7 @@
             this.SearchTarget.Location = new System.Drawing.Point(4, 22);
             this.SearchTarget.Name = "SearchTarget";
             this.SearchTarget.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTarget.Size = new System.Drawing.Size(792, 281);
+            this.SearchTarget.Size = new System.Drawing.Size(772, 285);
             this.SearchTarget.TabIndex = 0;
             this.SearchTarget.Text = "目标检索";
             this.SearchTarget.UseVisualStyleBackColor = true;
@@ -1050,6 +1053,9 @@
             // 
             // Condition
             // 
+            this.Condition.Controls.Add(this.L_Category);
+            this.Condition.Controls.Add(this.CB_Category);
+            this.Condition.Controls.Add(this.L_GenderRatio);
             this.Condition.Controls.Add(this.ShinyLocked);
             this.Condition.Controls.Add(this.L_SyncNature);
             this.Condition.Controls.Add(this.GenderRatio);
@@ -1065,10 +1071,38 @@
             this.Condition.TabStop = false;
             this.Condition.Text = "条件设置";
             // 
+            // L_Category
+            // 
+            this.L_Category.AutoSize = true;
+            this.L_Category.Location = new System.Drawing.Point(9, 28);
+            this.L_Category.Name = "L_Category";
+            this.L_Category.Size = new System.Drawing.Size(31, 13);
+            this.L_Category.TabIndex = 74;
+            this.L_Category.Text = "分类";
+            // 
+            // CB_Category
+            // 
+            this.CB_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Category.FormattingEnabled = true;
+            this.CB_Category.Location = new System.Drawing.Point(62, 24);
+            this.CB_Category.Name = "CB_Category";
+            this.CB_Category.Size = new System.Drawing.Size(106, 21);
+            this.CB_Category.TabIndex = 73;
+            this.CB_Category.SelectedIndexChanged += new System.EventHandler(this.Category_SelectedIndexChanged);
+            // 
+            // L_GenderRatio
+            // 
+            this.L_GenderRatio.AutoSize = true;
+            this.L_GenderRatio.Location = new System.Drawing.Point(9, 71);
+            this.L_GenderRatio.Name = "L_GenderRatio";
+            this.L_GenderRatio.Size = new System.Drawing.Size(43, 13);
+            this.L_GenderRatio.TabIndex = 72;
+            this.L_GenderRatio.Text = "性别比";
+            // 
             // ShinyLocked
             // 
             this.ShinyLocked.AutoSize = true;
-            this.ShinyLocked.Location = new System.Drawing.Point(251, 66);
+            this.ShinyLocked.Location = new System.Drawing.Point(262, 69);
             this.ShinyLocked.Name = "ShinyLocked";
             this.ShinyLocked.Size = new System.Drawing.Size(74, 17);
             this.ShinyLocked.TabIndex = 71;
@@ -1078,7 +1112,7 @@
             // L_SyncNature
             // 
             this.L_SyncNature.AutoSize = true;
-            this.L_SyncNature.Location = new System.Drawing.Point(6, 66);
+            this.L_SyncNature.Location = new System.Drawing.Point(9, 114);
             this.L_SyncNature.Name = "L_SyncNature";
             this.L_SyncNature.Size = new System.Drawing.Size(55, 13);
             this.L_SyncNature.TabIndex = 70;
@@ -1087,7 +1121,7 @@
             // GenderRatio
             // 
             this.GenderRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GenderRatio.Location = new System.Drawing.Point(173, 26);
+            this.GenderRatio.Location = new System.Drawing.Point(81, 67);
             this.GenderRatio.Name = "GenderRatio";
             this.GenderRatio.Size = new System.Drawing.Size(76, 21);
             this.GenderRatio.TabIndex = 8;
@@ -1095,16 +1129,16 @@
             // SyncNature
             // 
             this.SyncNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SyncNature.Location = new System.Drawing.Point(72, 63);
+            this.SyncNature.Location = new System.Drawing.Point(81, 110);
             this.SyncNature.Name = "SyncNature";
-            this.SyncNature.Size = new System.Drawing.Size(65, 21);
+            this.SyncNature.Size = new System.Drawing.Size(76, 21);
             this.SyncNature.TabIndex = 3;
             this.SyncNature.SelectedIndexChanged += new System.EventHandler(this.SyncNature_SelectedIndexChanged);
             // 
             // Fix3v
             // 
             this.Fix3v.AutoSize = true;
-            this.Fix3v.Location = new System.Drawing.Point(273, 28);
+            this.Fix3v.Location = new System.Drawing.Point(176, 69);
             this.Fix3v.Name = "Fix3v";
             this.Fix3v.Size = new System.Drawing.Size(63, 17);
             this.Fix3v.TabIndex = 1;
@@ -1114,7 +1148,7 @@
             // L_Poke
             // 
             this.L_Poke.AutoSize = true;
-            this.L_Poke.Location = new System.Drawing.Point(5, 30);
+            this.L_Poke.Location = new System.Drawing.Point(187, 28);
             this.L_Poke.Name = "L_Poke";
             this.L_Poke.Size = new System.Drawing.Size(43, 13);
             this.L_Poke.TabIndex = 37;
@@ -1122,17 +1156,18 @@
             // 
             // Poke
             // 
+            this.Poke.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Poke.FormattingEnabled = true;
-            this.Poke.Location = new System.Drawing.Point(58, 26);
+            this.Poke.Location = new System.Drawing.Point(244, 24);
             this.Poke.Name = "Poke";
-            this.Poke.Size = new System.Drawing.Size(100, 21);
+            this.Poke.Size = new System.Drawing.Size(92, 21);
             this.Poke.TabIndex = 36;
             this.Poke.SelectedIndexChanged += new System.EventHandler(this.Poke_SelectedIndexChanged);
             // 
             // AlwaysSynced
             // 
             this.AlwaysSynced.AutoSize = true;
-            this.AlwaysSynced.Location = new System.Drawing.Point(155, 65);
+            this.AlwaysSynced.Location = new System.Drawing.Point(176, 112);
             this.AlwaysSynced.Name = "AlwaysSynced";
             this.AlwaysSynced.Size = new System.Drawing.Size(74, 17);
             this.AlwaysSynced.TabIndex = 9;
@@ -1144,7 +1179,7 @@
             this.SearchTool.Location = new System.Drawing.Point(4, 22);
             this.SearchTool.Name = "SearchTool";
             this.SearchTool.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTool.Size = new System.Drawing.Size(1194, 285);
+            this.SearchTool.Size = new System.Drawing.Size(772, 285);
             this.SearchTool.TabIndex = 1;
             this.SearchTool.Text = "工具箱";
             this.SearchTool.UseVisualStyleBackColor = true;
@@ -1384,20 +1419,20 @@
             this.dgv_research.Visible = false;
             this.dgv_research.Width = 70;
             // 
-            // GameVersion
+            // Gameversion
             // 
-            this.GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GameVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GameVersion.Items.AddRange(new object[] {
+            this.Gameversion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Gameversion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Gameversion.Items.AddRange(new object[] {
             "X",
             "Y",
             "OR",
             "AS"});
-            this.GameVersion.Location = new System.Drawing.Point(303, 11);
-            this.GameVersion.Name = "GameVersion";
-            this.GameVersion.Size = new System.Drawing.Size(51, 21);
-            this.GameVersion.TabIndex = 91;
-            this.GameVersion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
+            this.Gameversion.Location = new System.Drawing.Point(303, 11);
+            this.Gameversion.Name = "Gameversion";
+            this.Gameversion.Size = new System.Drawing.Size(51, 21);
+            this.Gameversion.TabIndex = 91;
+            this.Gameversion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
             // 
             // L_GameVersion
             // 
@@ -1426,7 +1461,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 616);
-            this.Controls.Add(this.GameVersion);
+            this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.Seed);
@@ -1437,7 +1472,6 @@
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.工具箱);
-            this.MaximumSize = new System.Drawing.Size(810, 1600);
             this.MinimumSize = new System.Drawing.Size(810, 650);
             this.Name = "MainForm";
             this.Text = "Gen6RNGTool";
@@ -1593,9 +1627,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_research;
-        private System.Windows.Forms.ComboBox GameVersion;
+        private System.Windows.Forms.ComboBox Gameversion;
         private System.Windows.Forms.Label L_GameVersion;
         private System.Windows.Forms.CheckBox ShinyLocked;
+        private System.Windows.Forms.ComboBox CB_Category;
+        private System.Windows.Forms.Label L_GenderRatio;
+        private System.Windows.Forms.Label L_Category;
     }
 }
 

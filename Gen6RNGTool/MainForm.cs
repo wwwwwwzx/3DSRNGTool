@@ -16,6 +16,7 @@ namespace Gen6RNGTool
         private static readonly string[] NONE_STR = { "None", "无" };
         private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
 
+        private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
         private Pokemon iPM => RNGSetting.PM;
         private RNGSetting setting = new RNGSetting();
@@ -94,8 +95,9 @@ namespace Gen6RNGTool
             StringItem.naturestr = getStringList("Natures", curlanguage);
             StringItem.hpstr = getStringList("Types", curlanguage);
             StringItem.species = getStringList("Species", curlanguage);
+            StringItem.genderratio = getStringList("Genderratio", curlanguage);
 
-            LoadSpecies();
+            LoadCategory();
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
@@ -108,6 +110,11 @@ namespace Gen6RNGTool
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
             HiddenPower.Items.AddRange(StringItem.HiddenPowerList);
+
+            GenderRatio.DisplayMember = "Text";
+            GenderRatio.ValueMember = "Value";
+            GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
+            GenderRatio.SelectedIndex = 0;
 
             // display something upon loading
             Nature.CheckBoxItems[0].Checked = true;
@@ -124,12 +131,14 @@ namespace Gen6RNGTool
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
 
-            Gender.Items.AddRange(StringItem.genderstr);
+            Seed.Value = Properties.Settings.Default.Seed;
+            var LastGameversion = Properties.Settings.Default.GameVersion;
+            var Lastpkm = Properties.Settings.Default.PKM;
+            ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
+            TSV.Value = Properties.Settings.Default.TSV;
+            Advanced.Checked = Properties.Settings.Default.Advance;
 
-            GenderRatio.DisplayMember = "Text";
-            GenderRatio.ValueMember = "Value";
-            GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
-            GenderRatio.SelectedIndex = 0;
+            Gender.Items.AddRange(StringItem.genderstr);
 
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
@@ -144,26 +153,43 @@ namespace Gen6RNGTool
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
             SyncNature.SelectedIndex = 0;
-
-            GameVersion.SelectedIndex = Properties.Settings.Default.GameVersion;
-            Poke.SelectedValue = Properties.Settings.Default.Pokemon;
-            Seed.Value = Properties.Settings.Default.Seed;
-            ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
-            TSV.Value = Properties.Settings.Default.TSV;
-            Advanced.Checked = Properties.Settings.Default.Advance;
+            Gameversion.SelectedIndex = LastGameversion;
+            FindLastSetting(Lastpkm);
 
             ByIVs.Checked = true;
         }
 
+        private void FindLastSetting(int Lastpkm)
+        {
+            var Category = Pokemon.getCategoryList(ver);
+            for (int i = 0; i < Category.Length; i++)
+                if (Category[i].List.Any(t => t.SpecForm == Lastpkm))
+                {
+                    CB_Category.SelectedIndex = i;
+                    Poke.SelectedValue = Lastpkm;
+                    return;
+                }
+            CB_Category.SelectedIndex = 0;
+        }
+
         private void LoadSpecies()
         {
-            Pokemonlist = Pokemon.getSpecFormList(GameVersion.SelectedIndex);
-            var List = Pokemonlist.Select(s => new Controls.ComboItem(StringItem.species[s.Species], s.SpecForm));
-            List = new[] { new Controls.ComboItem("-", 0) }.Concat(List);
+            Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex);
+            var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
             Poke.SelectedIndex = 0;
+        }
+
+        private void LoadCategory()
+        {
+            ver = Math.Max(ver, 0);
+            CB_Category.Items.Clear();
+            var Category = Pokemon.getCategoryList(ver).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
+            CB_Category.Items.AddRange(Category);
+            CB_Category.SelectedIndex = 0;
+            LoadSpecies();
         }
         #endregion
 
@@ -195,11 +221,15 @@ namespace Gen6RNGTool
 
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.GameVersion = (byte)GameVersion.SelectedIndex;
+            Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
             Properties.Settings.Default.Save();
-            LoadSpecies();
+            LoadCategory();
         }
 
+        private void Category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSpecies();
+        }
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
         {
             IVPanel.Visible = ByIVs.Checked;
@@ -255,6 +285,11 @@ namespace Gen6RNGTool
             GenderRatio.SelectedValue = (int)iPM.GenderRatio;
             if (iPM.Nature >= 0)
                 SyncNature.SelectedIndex = (int)iPM.Nature + 1;
+            if (iPM.IVs != null)
+            {
+                IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
+                IVup = iPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
+            }
         }
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
 
@@ -262,11 +297,11 @@ namespace Gen6RNGTool
         {
             Reset_Click(null, null);
             int specform = (int)(Poke.SelectedValue);
-            Properties.Settings.Default.Pokemon = specform;
+            Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
             RNGSetting.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
-            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = Poke.SelectedIndex == 0;
+            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = specform == 0;
         }
         #endregion
 

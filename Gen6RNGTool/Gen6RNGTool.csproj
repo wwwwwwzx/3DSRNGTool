@@ -132,14 +132,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\lang_cn.txt" />
-    <Content Include="Resources\lang_en.txt" />
-    <Content Include="Resources\text_Natures_cn.txt" />
-    <Content Include="Resources\text_Natures_en.txt" />
-    <Content Include="Resources\text_Species_cn.txt" />
-    <Content Include="Resources\text_Species_en.txt" />
-    <Content Include="Resources\text_Types_cn.txt" />
-    <Content Include="Resources\text_Types_en.txt" />
+    <None Include="Resources\lang_cn.txt" />
+    <None Include="Resources\lang_en.txt" />
+    <None Include="Resources\text_Genderratio_en.txt" />
+    <None Include="Resources\text_Genderratio_cn.txt" />
+    <None Include="Resources\text_Natures_cn.txt" />
+    <None Include="Resources\text_Natures_en.txt" />
+    <None Include="Resources\text_Species_cn.txt" />
+    <None Include="Resources\text_Species_en.txt" />
+    <None Include="Resources\text_Types_cn.txt" />
+    <None Include="Resources\text_Types_en.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

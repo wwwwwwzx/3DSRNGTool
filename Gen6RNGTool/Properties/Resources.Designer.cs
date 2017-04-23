@@ -75,7 +75,7 @@ namespace Gen6RNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = SM遇敌乱数 [rest of string was truncated]&quot;;.
+        ///! MainForm = 6代乱数工具 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_cn {
             get {
@@ -98,7 +98,7 @@ namespace Gen6RNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = SMEnco [rest of string was truncated]&quot;;.
+        ///! MainForm = Gen6RN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
             get {
@@ -113,6 +113,36 @@ namespace Gen6RNGTool.Properties {
             get {
                 object obj = ResourceManager.GetObject("personal_ao", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 无性别
+        ///♂1：♀1
+        ///♂7：♀1
+        ///♂3：♀1
+        ///♂1：♀3
+        ///只有♂
+        ///只有♀.
+        /// </summary>
+        internal static string text_Genderratio_cn {
+            get {
+                return ResourceManager.GetString("text_Genderratio_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Genderless
+        ///♂1：♀1
+        ///♂7：♀1
+        ///♂3：♀1
+        ///♂1：♀3
+        ///♂ Only
+        ///♀ Only.
+        /// </summary>
+        internal static string text_Genderratio_en {
+            get {
+                return ResourceManager.GetString("text_Genderratio_en", resourceCulture);
             }
         }
         
