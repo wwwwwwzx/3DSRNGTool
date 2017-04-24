@@ -363,7 +363,7 @@ namespace Gen6RNGTool
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
             // Load from template
-            if (RNGPool.HasTemplate)
+            if (!iPM.Conceptual)
             {
                 setting.UseTemplate(RNGPool.PM);
                 return setting;

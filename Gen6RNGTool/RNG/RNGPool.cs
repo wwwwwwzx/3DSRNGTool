@@ -11,7 +11,7 @@ namespace Gen6RNGTool.RNG
         public static void ResetIndex() => index = 0;
         private static void Advance(int d) => index += d;
 
-        public static void CreateBuffer(int buffersize, MersenneTwister rng)
+        public static void CreateBuffer(int buffersize, IRNG rng)
         {
             RandList.Clear();
             for (int i = 0; i < buffersize; i++)
@@ -25,7 +25,6 @@ namespace Gen6RNGTool.RNG
         }
 
         public static Pokemon PM;
-        public static bool HasTemplate => !PM.Conceptual;
         public static RNGSetting rngsetting;
         public static EventRule e;
 
