@@ -9,6 +9,7 @@ namespace Gen6RNGTool
         public bool Gift;
         public bool Egg;
         public bool ShinyLocked;
+        public bool Conceptual;
         //public bool Wild;
         //public byte Levelmin, Levelmax;
 
@@ -19,11 +20,12 @@ namespace Gen6RNGTool
 
         public override string ToString()
         {
-            switch (Species)
-            {
-                case 000: return "-";
-                case 151: return "Event";
-            }
+            if (Conceptual)
+                switch (Species)
+                {
+                    case 000: return "-";
+                    case 151: return "Event";
+                }
             if (Egg) return StringItem.species[Species] + " (" + StringItem.species[0] + ")";
             return StringItem.species[Species];
         }
@@ -31,8 +33,8 @@ namespace Gen6RNGTool
 
         public class PokemonList
         {
-            public string Text = "-";
-            public Pokemon[] List = new[] { new Pokemon { Species = 0, }, new Pokemon { Species = 151, } };
+            public string Text;
+            public Pokemon[] List;
             public override string ToString() => Text;
         }
 
@@ -52,19 +54,30 @@ namespace Gen6RNGTool
         {
             switch (Gameversion)
             {
-                case 0: case 1:
+                case 0:
+                case 1:
                     return Species_XY;
-                case 2: case 3:
+                case 2:
+                case 3:
                     return Species_ORAS;
                 default: return new PokemonList[0];
             }
         }
 
         #region tables (from PKHeX)
-
+        public readonly static PokemonList Default = new PokemonList
+        {
+            Text = "-",
+            List = new[]
+            {
+                new Pokemon { Conceptual = true, Species= 000, Level = 50, },
+                new Pokemon { Conceptual = true, Species= 151, Level = 50, },
+            }
+        };
+        
         public readonly static PokemonList[] Species_ORAS =
         {
-            new PokemonList(),
+            Default,
             new PokemonList
             {
                 Text = "Hoenn Legendary",
@@ -205,7 +218,7 @@ namespace Gen6RNGTool
 
         public readonly static PokemonList[] Species_XY =
         {
-            new PokemonList(),
+            Default,
             new PokemonList
             {
                 Text = "Legendary",

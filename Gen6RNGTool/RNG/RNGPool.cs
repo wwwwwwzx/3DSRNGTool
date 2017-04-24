@@ -26,7 +26,7 @@ namespace Gen6RNGTool.RNG
         }
 
         public static Pokemon PM;
-        public static bool HasTemplate => PM != null;
+        public static bool HasTemplate => !PM.Conceptual;
         public static RNGSetting rngsetting;
         public static EventRule e;
 
