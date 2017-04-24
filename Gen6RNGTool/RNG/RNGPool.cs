@@ -9,8 +9,7 @@ namespace Gen6RNGTool.RNG
 
         public static uint getrand => RandList[index++];
         public static void ResetIndex() => index = 0;
-        public static uint CurrSeed => RandList[0];
-        public static void Advance(int d) => index += d;
+        private static void Advance(int d) => index += d;
 
         public static void CreateBuffer(int buffersize, MersenneTwister rng)
         {
@@ -32,7 +31,10 @@ namespace Gen6RNGTool.RNG
 
         public static RNGResult Generate()
         {
-            return e == null ? rngsetting.Generate() : e.Generate();
+            index = 0;
+            var result = e == null ? rngsetting.Generate() : e.Generate();
+            result.RandNum = RandList[0];
+            return result;
         }
     }
 }

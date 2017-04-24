@@ -21,8 +21,6 @@
         public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            RNGPool.ResetIndex();
-            rt.RandNum = RNGPool.CurrSeed;
             rt.Lv = Level;
 
             //Encryption Constant

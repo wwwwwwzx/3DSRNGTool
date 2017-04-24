@@ -28,8 +28,6 @@ namespace Gen6RNGTool.RNG
         public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            RNGPool.ResetIndex();
-            rt.RandNum = RNGPool.CurrSeed;
             rt.Lv = Level;
 
             //Sync
