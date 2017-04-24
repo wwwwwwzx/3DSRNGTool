@@ -23,6 +23,7 @@ namespace Gen6RNGTool
         public PKHeX.Core.PersonalInfo info => PersonalTable.ORAS.getFormeEntry(Species, Form);
         public bool AlwaysSync => Gift || Nature >= 0;
         public bool IV3 => info.EggGroups[0] == 0xF;
+        public bool IsEvent => Species == 151;
         public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
         public override string ToString()
         {
@@ -37,7 +38,7 @@ namespace Gen6RNGTool
         public class PokemonList
         {
             public string Text = "-";
-            public Pokemon[] List = new[] { new Pokemon { Species = 0, } };
+            public Pokemon[] List = new[] { new Pokemon { Species = 0, }, new Pokemon { Species = 151, } };
             public override string ToString() => Text;
         }
 

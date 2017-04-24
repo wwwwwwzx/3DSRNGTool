@@ -15,6 +15,12 @@ namespace Gen6RNGTool
         private static readonly string[] ANY_STR = { "Any", "任意" };
         private static readonly string[] NONE_STR = { "None", "无" };
         private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
+        private static readonly string[] FILEERRORSTR = { "Invalid file!", "文件格式不正确" };
+        private static readonly string[,] PIDTYPE_STR =
+        {
+            { "Random", "Nonshiny", "Shiny","Specified"},
+            { "随机", "必不闪", "必闪","特定"}
+        };
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -69,6 +75,8 @@ namespace Gen6RNGTool
                 Stat3.Value = value[3]; Stat4.Value = value[4]; Stat5.Value = value[5];
             }
         }
+        private NumericUpDown[] EventIV { get { return new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, }; } }
+        private CheckBox[] EventIVLocked { get { return new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, }; } }
         private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();
         #endregion
 
@@ -99,13 +107,16 @@ namespace Gen6RNGTool
 
             LoadCategory();
 
+            for (int i = 0; i < 4; i++)
+                Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
+
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
             Nature.Items.AddRange(StringItem.NatureList);
 
             SyncNature.Items[0] = NONE_STR[lindex];
             for (int i = 0; i < StringItem.naturestr.Length; i++)
-                SyncNature.Items[i + 1] = StringItem.naturestr[i];
+                Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
 
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
@@ -138,8 +149,12 @@ namespace Gen6RNGTool
             TSV.Value = Properties.Settings.Default.TSV;
             Advanced.Checked = Properties.Settings.Default.Advance;
 
-            Gender.Items.AddRange(StringItem.genderstr);
+            for (int i = 0; i < 6; i++)
+                EventIV[i].Enabled = false;
 
+            Gender.Items.AddRange(StringItem.genderstr);
+            Event_Gender.Items.AddRange(StringItem.genderstr);
+            Event_Nature.Items.AddRange(StringItem.naturestr);
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -153,13 +168,14 @@ namespace Gen6RNGTool
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
             SyncNature.SelectedIndex = 0;
+            Event_PIDType.SelectedIndex = Event_Nature.SelectedIndex = Event_Ability.SelectedIndex = Event_Gender.SelectedIndex = 0;
             Gameversion.SelectedIndex = LastGameversion;
-            FindLastSetting(Lastpkm);
+            FindSetting(Lastpkm);
 
             ByIVs.Checked = true;
         }
 
-        private void FindLastSetting(int Lastpkm)
+        private void FindSetting(int Lastpkm)
         {
             var Category = Pokemon.getCategoryList(ver);
             for (int i = 0; i < Category.Length; i++)

@@ -89,6 +89,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm_Event.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pokemon.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\Nature.cs" />

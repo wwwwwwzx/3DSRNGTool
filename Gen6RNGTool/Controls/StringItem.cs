@@ -7,10 +7,11 @@ namespace Gen6RNGTool
     {
         public static string[] naturestr = new bool[25].Select(i => "").ToArray();
         public static string[] hpstr = new bool[18].Select(i => "").ToArray();
-        public static string[] genderratio = new bool[18].Select(i => "").ToArray();
+        public static string[] genderratio = new bool[7].Select(i => "").ToArray();
 
         public static string[] genderstr = { "-", "♂", "♀" };
         public static string[] abilitystr = { "-", "1", "2", "H" };
+        public static string[] eventabilitystr = { "1/2", "1/2/H" };
 
         public static string[] species;
 

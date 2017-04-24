@@ -92,7 +92,7 @@
             this.Stat5 = new System.Windows.Forms.NumericUpDown();
             this.BS_1 = new System.Windows.Forms.NumericUpDown();
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
-            this.工具箱 = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.SearchTarget = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
             this.CalcList = new System.Windows.Forms.Button();
@@ -112,7 +112,44 @@
             this.L_Poke = new System.Windows.Forms.Label();
             this.Poke = new System.Windows.Forms.ComboBox();
             this.AlwaysSynced = new System.Windows.Forms.CheckBox();
-            this.SearchTool = new System.Windows.Forms.TabPage();
+            this.EventSetting = new System.Windows.Forms.TabPage();
+            this.Event_EC = new Gen6RNGTool.Controls.HexNumericUpdown();
+            this.Event_PID = new Gen6RNGTool.Controls.HexNumericUpdown();
+            this.L_IVLock = new System.Windows.Forms.Label();
+            this.L_Event_PID = new System.Windows.Forms.Label();
+            this.EventIV0 = new System.Windows.Forms.NumericUpDown();
+            this.L_EventSpecies = new System.Windows.Forms.Label();
+            this.EventIV1 = new System.Windows.Forms.NumericUpDown();
+            this.IsEgg = new System.Windows.Forms.CheckBox();
+            this.EventIV2 = new System.Windows.Forms.NumericUpDown();
+            this.OtherInfo = new System.Windows.Forms.CheckBox();
+            this.EventIV3 = new System.Windows.Forms.NumericUpDown();
+            this.L_Event_TSV = new System.Windows.Forms.Label();
+            this.EventIV4 = new System.Windows.Forms.NumericUpDown();
+            this.Event_Ability = new System.Windows.Forms.ComboBox();
+            this.EventIV5 = new System.Windows.Forms.NumericUpDown();
+            this.L_TID = new System.Windows.Forms.Label();
+            this.Event_IV_Fix0 = new System.Windows.Forms.CheckBox();
+            this.Event_Gender = new System.Windows.Forms.ComboBox();
+            this.Event_IV_Fix1 = new System.Windows.Forms.CheckBox();
+            this.Event_Nature = new System.Windows.Forms.ComboBox();
+            this.Event_IV_Fix2 = new System.Windows.Forms.CheckBox();
+            this.Event_TID = new System.Windows.Forms.NumericUpDown();
+            this.Event_IV_Fix3 = new System.Windows.Forms.CheckBox();
+            this.B_Open = new System.Windows.Forms.Button();
+            this.Event_IV_Fix4 = new System.Windows.Forms.CheckBox();
+            this.L_PID = new System.Windows.Forms.Label();
+            this.Event_IV_Fix5 = new System.Windows.Forms.CheckBox();
+            this.Event_PIDType = new System.Windows.Forms.ComboBox();
+            this.NatureLocked = new System.Windows.Forms.CheckBox();
+            this.L_SID = new System.Windows.Forms.Label();
+            this.GenderLocked = new System.Windows.Forms.CheckBox();
+            this.YourID = new System.Windows.Forms.CheckBox();
+            this.IVsCount = new System.Windows.Forms.NumericUpDown();
+            this.L_EC = new System.Windows.Forms.Label();
+            this.L_IVsCount = new System.Windows.Forms.Label();
+            this.AbilityLocked = new System.Windows.Forms.CheckBox();
+            this.Event_SID = new System.Windows.Forms.NumericUpDown();
             this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
@@ -169,12 +206,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
-            this.工具箱.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SearchTarget.SuspendLayout();
             this.RNGInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Condition.SuspendLayout();
+            this.EventSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_TID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IVsCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
@@ -943,15 +992,18 @@
             this.BS_0.Size = new System.Drawing.Size(55, 22);
             this.BS_0.TabIndex = 0;
             // 
-            // 工具箱
+            // tabControl1
             // 
-            this.工具箱.Controls.Add(this.SearchTarget);
-            this.工具箱.Controls.Add(this.SearchTool);
-            this.工具箱.Location = new System.Drawing.Point(12, 23);
-            this.工具箱.Name = "工具箱";
-            this.工具箱.SelectedIndex = 0;
-            this.工具箱.Size = new System.Drawing.Size(780, 311);
-            this.工具箱.TabIndex = 5;
+            this.tabControl1.AllowDrop = true;
+            this.tabControl1.Controls.Add(this.SearchTarget);
+            this.tabControl1.Controls.Add(this.EventSetting);
+            this.tabControl1.Location = new System.Drawing.Point(12, 23);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(780, 311);
+            this.tabControl1.TabIndex = 5;
+            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
+            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
             // SearchTarget
             // 
@@ -1174,15 +1226,483 @@
             this.AlwaysSynced.Text = "必定同步";
             this.AlwaysSynced.UseVisualStyleBackColor = true;
             // 
-            // SearchTool
+            // EventSetting
             // 
-            this.SearchTool.Location = new System.Drawing.Point(4, 22);
-            this.SearchTool.Name = "SearchTool";
-            this.SearchTool.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTool.Size = new System.Drawing.Size(772, 285);
-            this.SearchTool.TabIndex = 1;
-            this.SearchTool.Text = "工具箱";
-            this.SearchTool.UseVisualStyleBackColor = true;
+            this.EventSetting.Controls.Add(this.Event_EC);
+            this.EventSetting.Controls.Add(this.Event_PID);
+            this.EventSetting.Controls.Add(this.L_IVLock);
+            this.EventSetting.Controls.Add(this.L_Event_PID);
+            this.EventSetting.Controls.Add(this.EventIV0);
+            this.EventSetting.Controls.Add(this.L_EventSpecies);
+            this.EventSetting.Controls.Add(this.EventIV1);
+            this.EventSetting.Controls.Add(this.IsEgg);
+            this.EventSetting.Controls.Add(this.EventIV2);
+            this.EventSetting.Controls.Add(this.OtherInfo);
+            this.EventSetting.Controls.Add(this.EventIV3);
+            this.EventSetting.Controls.Add(this.L_Event_TSV);
+            this.EventSetting.Controls.Add(this.EventIV4);
+            this.EventSetting.Controls.Add(this.Event_Ability);
+            this.EventSetting.Controls.Add(this.EventIV5);
+            this.EventSetting.Controls.Add(this.L_TID);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix0);
+            this.EventSetting.Controls.Add(this.Event_Gender);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix1);
+            this.EventSetting.Controls.Add(this.Event_Nature);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix2);
+            this.EventSetting.Controls.Add(this.Event_TID);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix3);
+            this.EventSetting.Controls.Add(this.B_Open);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix4);
+            this.EventSetting.Controls.Add(this.L_PID);
+            this.EventSetting.Controls.Add(this.Event_IV_Fix5);
+            this.EventSetting.Controls.Add(this.Event_PIDType);
+            this.EventSetting.Controls.Add(this.NatureLocked);
+            this.EventSetting.Controls.Add(this.L_SID);
+            this.EventSetting.Controls.Add(this.GenderLocked);
+            this.EventSetting.Controls.Add(this.YourID);
+            this.EventSetting.Controls.Add(this.IVsCount);
+            this.EventSetting.Controls.Add(this.L_EC);
+            this.EventSetting.Controls.Add(this.L_IVsCount);
+            this.EventSetting.Controls.Add(this.AbilityLocked);
+            this.EventSetting.Controls.Add(this.Event_SID);
+            this.EventSetting.Location = new System.Drawing.Point(4, 22);
+            this.EventSetting.Name = "EventSetting";
+            this.EventSetting.Padding = new System.Windows.Forms.Padding(3);
+            this.EventSetting.Size = new System.Drawing.Size(772, 285);
+            this.EventSetting.TabIndex = 1;
+            this.EventSetting.Text = "配信乱数";
+            this.EventSetting.UseVisualStyleBackColor = true;
+            // 
+            // Event_EC
+            // 
+            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_EC.Hexadecimal = true;
+            this.Event_EC.Location = new System.Drawing.Point(361, 227);
+            this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(78, 22);
+            this.Event_EC.TabIndex = 93;
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Visible = false;
+            // 
+            // Event_PID
+            // 
+            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_PID.Hexadecimal = true;
+            this.Event_PID.Location = new System.Drawing.Point(361, 191);
+            this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(78, 22);
+            this.Event_PID.TabIndex = 92;
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Visible = false;
+            // 
+            // L_IVLock
+            // 
+            this.L_IVLock.AutoSize = true;
+            this.L_IVLock.Location = new System.Drawing.Point(18, 25);
+            this.L_IVLock.Name = "L_IVLock";
+            this.L_IVLock.Size = new System.Drawing.Size(79, 13);
+            this.L_IVLock.TabIndex = 42;
+            this.L_IVLock.Text = "固定个体值项";
+            // 
+            // L_Event_PID
+            // 
+            this.L_Event_PID.AutoSize = true;
+            this.L_Event_PID.Location = new System.Drawing.Point(164, 130);
+            this.L_Event_PID.Name = "L_Event_PID";
+            this.L_Event_PID.Size = new System.Drawing.Size(52, 13);
+            this.L_Event_PID.TabIndex = 71;
+            this.L_Event_PID.Text = "PID Type";
+            // 
+            // EventIV0
+            // 
+            this.EventIV0.AccessibleName = "";
+            this.EventIV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV0.Location = new System.Drawing.Point(80, 57);
+            this.EventIV0.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV0.Name = "EventIV0";
+            this.EventIV0.Size = new System.Drawing.Size(47, 22);
+            this.EventIV0.TabIndex = 6;
+            this.EventIV0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // L_EventSpecies
+            // 
+            this.L_EventSpecies.AutoSize = true;
+            this.L_EventSpecies.Location = new System.Drawing.Point(329, 64);
+            this.L_EventSpecies.Name = "L_EventSpecies";
+            this.L_EventSpecies.Size = new System.Drawing.Size(63, 13);
+            this.L_EventSpecies.TabIndex = 74;
+            this.L_EventSpecies.Text = "Species: ----";
+            this.L_EventSpecies.Visible = false;
+            // 
+            // EventIV1
+            // 
+            this.EventIV1.AccessibleName = "";
+            this.EventIV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV1.Location = new System.Drawing.Point(80, 91);
+            this.EventIV1.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV1.Name = "EventIV1";
+            this.EventIV1.Size = new System.Drawing.Size(47, 22);
+            this.EventIV1.TabIndex = 7;
+            this.EventIV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // IsEgg
+            // 
+            this.IsEgg.AutoSize = true;
+            this.IsEgg.Location = new System.Drawing.Point(235, 96);
+            this.IsEgg.Name = "IsEgg";
+            this.IsEgg.Size = new System.Drawing.Size(38, 17);
+            this.IsEgg.TabIndex = 70;
+            this.IsEgg.Text = "蛋";
+            this.IsEgg.UseVisualStyleBackColor = true;
+            // 
+            // EventIV2
+            // 
+            this.EventIV2.AccessibleName = "";
+            this.EventIV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV2.Location = new System.Drawing.Point(80, 125);
+            this.EventIV2.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV2.Name = "EventIV2";
+            this.EventIV2.Size = new System.Drawing.Size(47, 22);
+            this.EventIV2.TabIndex = 8;
+            this.EventIV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // OtherInfo
+            // 
+            this.OtherInfo.AutoSize = true;
+            this.OtherInfo.Location = new System.Drawing.Point(329, 24);
+            this.OtherInfo.Name = "OtherInfo";
+            this.OtherInfo.Size = new System.Drawing.Size(74, 17);
+            this.OtherInfo.TabIndex = 54;
+            this.OtherInfo.Text = "其他信息";
+            this.OtherInfo.UseVisualStyleBackColor = true;
+            this.OtherInfo.CheckedChanged += new System.EventHandler(this.OtherInfo_CheckedChanged);
+            // 
+            // EventIV3
+            // 
+            this.EventIV3.AccessibleName = "";
+            this.EventIV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV3.Location = new System.Drawing.Point(80, 159);
+            this.EventIV3.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV3.Name = "EventIV3";
+            this.EventIV3.Size = new System.Drawing.Size(47, 22);
+            this.EventIV3.TabIndex = 9;
+            this.EventIV3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // L_Event_TSV
+            // 
+            this.L_Event_TSV.AutoSize = true;
+            this.L_Event_TSV.Location = new System.Drawing.Point(329, 164);
+            this.L_Event_TSV.Name = "L_Event_TSV";
+            this.L_Event_TSV.Size = new System.Drawing.Size(64, 13);
+            this.L_Event_TSV.TabIndex = 73;
+            this.L_Event_TSV.Text = "TSV:   0000";
+            this.L_Event_TSV.Visible = false;
+            // 
+            // EventIV4
+            // 
+            this.EventIV4.AccessibleName = "";
+            this.EventIV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV4.Location = new System.Drawing.Point(80, 193);
+            this.EventIV4.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV4.Name = "EventIV4";
+            this.EventIV4.Size = new System.Drawing.Size(47, 22);
+            this.EventIV4.TabIndex = 10;
+            this.EventIV4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Event_Ability
+            // 
+            this.Event_Ability.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Event_Ability.Items.AddRange(new object[] {
+            "-",
+            "1",
+            "2",
+            "H"});
+            this.Event_Ability.Location = new System.Drawing.Point(247, 161);
+            this.Event_Ability.Name = "Event_Ability";
+            this.Event_Ability.Size = new System.Drawing.Size(62, 21);
+            this.Event_Ability.TabIndex = 66;
+            // 
+            // EventIV5
+            // 
+            this.EventIV5.AccessibleName = "";
+            this.EventIV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EventIV5.Location = new System.Drawing.Point(80, 227);
+            this.EventIV5.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.EventIV5.Name = "EventIV5";
+            this.EventIV5.Size = new System.Drawing.Size(47, 22);
+            this.EventIV5.TabIndex = 11;
+            this.EventIV5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // L_TID
+            // 
+            this.L_TID.AutoSize = true;
+            this.L_TID.Location = new System.Drawing.Point(329, 100);
+            this.L_TID.Name = "L_TID";
+            this.L_TID.Size = new System.Drawing.Size(25, 13);
+            this.L_TID.TabIndex = 51;
+            this.L_TID.Text = "TID";
+            // 
+            // Event_IV_Fix0
+            // 
+            this.Event_IV_Fix0.AutoSize = true;
+            this.Event_IV_Fix0.Location = new System.Drawing.Point(20, 58);
+            this.Event_IV_Fix0.Name = "Event_IV_Fix0";
+            this.Event_IV_Fix0.Size = new System.Drawing.Size(41, 17);
+            this.Event_IV_Fix0.TabIndex = 8;
+            this.Event_IV_Fix0.Text = "HP";
+            this.Event_IV_Fix0.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix0.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // Event_Gender
+            // 
+            this.Event_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Event_Gender.Enabled = false;
+            this.Event_Gender.Location = new System.Drawing.Point(247, 227);
+            this.Event_Gender.Name = "Event_Gender";
+            this.Event_Gender.Size = new System.Drawing.Size(62, 21);
+            this.Event_Gender.TabIndex = 62;
+            // 
+            // Event_IV_Fix1
+            // 
+            this.Event_IV_Fix1.AutoSize = true;
+            this.Event_IV_Fix1.Location = new System.Drawing.Point(20, 92);
+            this.Event_IV_Fix1.Name = "Event_IV_Fix1";
+            this.Event_IV_Fix1.Size = new System.Drawing.Size(50, 17);
+            this.Event_IV_Fix1.TabIndex = 37;
+            this.Event_IV_Fix1.Text = "攻击";
+            this.Event_IV_Fix1.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix1.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // Event_Nature
+            // 
+            this.Event_Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Event_Nature.Enabled = false;
+            this.Event_Nature.Location = new System.Drawing.Point(247, 194);
+            this.Event_Nature.Name = "Event_Nature";
+            this.Event_Nature.Size = new System.Drawing.Size(62, 21);
+            this.Event_Nature.TabIndex = 61;
+            // 
+            // Event_IV_Fix2
+            // 
+            this.Event_IV_Fix2.AutoSize = true;
+            this.Event_IV_Fix2.Location = new System.Drawing.Point(20, 126);
+            this.Event_IV_Fix2.Name = "Event_IV_Fix2";
+            this.Event_IV_Fix2.Size = new System.Drawing.Size(50, 17);
+            this.Event_IV_Fix2.TabIndex = 38;
+            this.Event_IV_Fix2.Text = "防御";
+            this.Event_IV_Fix2.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix2.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // Event_TID
+            // 
+            this.Event_TID.AccessibleName = "";
+            this.Event_TID.Enabled = false;
+            this.Event_TID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_TID.Location = new System.Drawing.Point(358, 95);
+            this.Event_TID.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.Event_TID.Name = "Event_TID";
+            this.Event_TID.Size = new System.Drawing.Size(63, 22);
+            this.Event_TID.TabIndex = 55;
+            this.Event_TID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Event_IV_Fix3
+            // 
+            this.Event_IV_Fix3.AutoSize = true;
+            this.Event_IV_Fix3.Location = new System.Drawing.Point(20, 160);
+            this.Event_IV_Fix3.Name = "Event_IV_Fix3";
+            this.Event_IV_Fix3.Size = new System.Drawing.Size(50, 17);
+            this.Event_IV_Fix3.TabIndex = 39;
+            this.Event_IV_Fix3.Text = "特攻";
+            this.Event_IV_Fix3.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix3.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // B_Open
+            // 
+            this.B_Open.Location = new System.Drawing.Point(189, 19);
+            this.B_Open.Name = "B_Open";
+            this.B_Open.Size = new System.Drawing.Size(120, 25);
+            this.B_Open.TabIndex = 29;
+            this.B_Open.Text = "从文件导入";
+            this.B_Open.UseVisualStyleBackColor = true;
+            this.B_Open.Click += new System.EventHandler(this.B_Open_Click);
+            // 
+            // Event_IV_Fix4
+            // 
+            this.Event_IV_Fix4.AutoSize = true;
+            this.Event_IV_Fix4.Location = new System.Drawing.Point(20, 194);
+            this.Event_IV_Fix4.Name = "Event_IV_Fix4";
+            this.Event_IV_Fix4.Size = new System.Drawing.Size(50, 17);
+            this.Event_IV_Fix4.TabIndex = 40;
+            this.Event_IV_Fix4.Text = "特防";
+            this.Event_IV_Fix4.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix4.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // L_PID
+            // 
+            this.L_PID.AutoSize = true;
+            this.L_PID.Location = new System.Drawing.Point(329, 197);
+            this.L_PID.Name = "L_PID";
+            this.L_PID.Size = new System.Drawing.Size(25, 13);
+            this.L_PID.TabIndex = 58;
+            this.L_PID.Text = "PID";
+            this.L_PID.Visible = false;
+            // 
+            // Event_IV_Fix5
+            // 
+            this.Event_IV_Fix5.AutoSize = true;
+            this.Event_IV_Fix5.Location = new System.Drawing.Point(20, 228);
+            this.Event_IV_Fix5.Name = "Event_IV_Fix5";
+            this.Event_IV_Fix5.Size = new System.Drawing.Size(50, 17);
+            this.Event_IV_Fix5.TabIndex = 41;
+            this.Event_IV_Fix5.Text = "速度";
+            this.Event_IV_Fix5.UseVisualStyleBackColor = true;
+            this.Event_IV_Fix5.CheckedChanged += new System.EventHandler(this.IVLocked_CheckedChanged);
+            // 
+            // Event_PIDType
+            // 
+            this.Event_PIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Event_PIDType.Items.AddRange(new object[] {
+            "",
+            "",
+            "",
+            ""});
+            this.Event_PIDType.Location = new System.Drawing.Point(235, 126);
+            this.Event_PIDType.Name = "Event_PIDType";
+            this.Event_PIDType.Size = new System.Drawing.Size(74, 21);
+            this.Event_PIDType.TabIndex = 49;
+            this.Event_PIDType.SelectedIndexChanged += new System.EventHandler(this.Event_PIDType_SelectedIndexChanged);
+            // 
+            // NatureLocked
+            // 
+            this.NatureLocked.AutoSize = true;
+            this.NatureLocked.Location = new System.Drawing.Point(150, 196);
+            this.NatureLocked.Name = "NatureLocked";
+            this.NatureLocked.Size = new System.Drawing.Size(74, 17);
+            this.NatureLocked.TabIndex = 43;
+            this.NatureLocked.Text = "固定性格";
+            this.NatureLocked.UseVisualStyleBackColor = true;
+            this.NatureLocked.CheckedChanged += new System.EventHandler(this.NatureLocked_CheckedChanged);
+            // 
+            // L_SID
+            // 
+            this.L_SID.AutoSize = true;
+            this.L_SID.Location = new System.Drawing.Point(329, 133);
+            this.L_SID.Name = "L_SID";
+            this.L_SID.Size = new System.Drawing.Size(25, 13);
+            this.L_SID.TabIndex = 52;
+            this.L_SID.Text = "SID";
+            // 
+            // GenderLocked
+            // 
+            this.GenderLocked.AutoSize = true;
+            this.GenderLocked.Location = new System.Drawing.Point(151, 229);
+            this.GenderLocked.Name = "GenderLocked";
+            this.GenderLocked.Size = new System.Drawing.Size(74, 17);
+            this.GenderLocked.TabIndex = 44;
+            this.GenderLocked.Text = "固定性别";
+            this.GenderLocked.UseVisualStyleBackColor = true;
+            this.GenderLocked.CheckedChanged += new System.EventHandler(this.GenderLocked_CheckedChanged);
+            // 
+            // YourID
+            // 
+            this.YourID.AutoSize = true;
+            this.YourID.Location = new System.Drawing.Point(153, 96);
+            this.YourID.Name = "YourID";
+            this.YourID.Size = new System.Drawing.Size(49, 17);
+            this.YourID.TabIndex = 48;
+            this.YourID.Text = "自ID";
+            this.YourID.UseVisualStyleBackColor = true;
+            // 
+            // IVsCount
+            // 
+            this.IVsCount.AccessibleName = "";
+            this.IVsCount.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IVsCount.Location = new System.Drawing.Point(262, 62);
+            this.IVsCount.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.IVsCount.Name = "IVsCount";
+            this.IVsCount.Size = new System.Drawing.Size(47, 22);
+            this.IVsCount.TabIndex = 45;
+            this.IVsCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // L_EC
+            // 
+            this.L_EC.AutoSize = true;
+            this.L_EC.Location = new System.Drawing.Point(329, 230);
+            this.L_EC.Name = "L_EC";
+            this.L_EC.Size = new System.Drawing.Size(21, 13);
+            this.L_EC.TabIndex = 57;
+            this.L_EC.Text = "EC";
+            this.L_EC.Visible = false;
+            // 
+            // L_IVsCount
+            // 
+            this.L_IVsCount.AutoSize = true;
+            this.L_IVsCount.Location = new System.Drawing.Point(150, 64);
+            this.L_IVsCount.Name = "L_IVsCount";
+            this.L_IVsCount.Size = new System.Drawing.Size(74, 13);
+            this.L_IVsCount.TabIndex = 46;
+            this.L_IVsCount.Text = "保底随机V数";
+            // 
+            // AbilityLocked
+            // 
+            this.AbilityLocked.AutoSize = true;
+            this.AbilityLocked.Checked = true;
+            this.AbilityLocked.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AbilityLocked.Location = new System.Drawing.Point(150, 163);
+            this.AbilityLocked.Name = "AbilityLocked";
+            this.AbilityLocked.Size = new System.Drawing.Size(74, 17);
+            this.AbilityLocked.TabIndex = 47;
+            this.AbilityLocked.Text = "固定特性";
+            this.AbilityLocked.UseVisualStyleBackColor = true;
+            this.AbilityLocked.CheckedChanged += new System.EventHandler(this.AbilityLocked_CheckedChanged);
+            // 
+            // Event_SID
+            // 
+            this.Event_SID.AccessibleName = "";
+            this.Event_SID.Enabled = false;
+            this.Event_SID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_SID.Location = new System.Drawing.Point(358, 129);
+            this.Event_SID.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.Event_SID.Name = "Event_SID";
+            this.Event_SID.Size = new System.Drawing.Size(63, 22);
+            this.Event_SID.TabIndex = 56;
+            this.Event_SID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Lang
             // 
@@ -1471,7 +1991,7 @@
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
-            this.Controls.Add(this.工具箱);
+            this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(810, 650);
             this.Name = "MainForm";
             this.Text = "Gen6RNGTool";
@@ -1508,7 +2028,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
-            this.工具箱.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.SearchTarget.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
@@ -1516,6 +2036,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Condition.ResumeLayout(false);
             this.Condition.PerformLayout();
+            this.EventSetting.ResumeLayout(false);
+            this.EventSetting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventIV5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_TID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IVsCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
@@ -1585,9 +2118,9 @@
         private System.Windows.Forms.NumericUpDown Stat5;
         private System.Windows.Forms.NumericUpDown BS_1;
         private System.Windows.Forms.NumericUpDown BS_0;
-        private System.Windows.Forms.TabControl 工具箱;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage SearchTarget;
-        private System.Windows.Forms.TabPage SearchTool;
+        private System.Windows.Forms.TabPage EventSetting;
         private System.Windows.Forms.ComboBox Lang;
         private System.Windows.Forms.CheckBox Advanced;
         private System.Windows.Forms.CheckBox ShinyCharm;
@@ -1633,6 +2166,43 @@
         private System.Windows.Forms.ComboBox CB_Category;
         private System.Windows.Forms.Label L_GenderRatio;
         private System.Windows.Forms.Label L_Category;
+        private System.Windows.Forms.Label L_Event_PID;
+        private System.Windows.Forms.Label L_EventSpecies;
+        private System.Windows.Forms.CheckBox IsEgg;
+        private System.Windows.Forms.CheckBox OtherInfo;
+        private System.Windows.Forms.Label L_Event_TSV;
+        private System.Windows.Forms.ComboBox Event_Ability;
+        private System.Windows.Forms.Label L_TID;
+        private System.Windows.Forms.ComboBox Event_Gender;
+        private System.Windows.Forms.ComboBox Event_Nature;
+        private System.Windows.Forms.NumericUpDown Event_TID;
+        private System.Windows.Forms.Button B_Open;
+        private System.Windows.Forms.Label L_PID;
+        private System.Windows.Forms.ComboBox Event_PIDType;
+        private System.Windows.Forms.Label L_SID;
+        private System.Windows.Forms.CheckBox YourID;
+        private System.Windows.Forms.Label L_EC;
+        private System.Windows.Forms.CheckBox AbilityLocked;
+        private System.Windows.Forms.NumericUpDown Event_SID;
+        private System.Windows.Forms.Label L_IVsCount;
+        private System.Windows.Forms.NumericUpDown IVsCount;
+        private System.Windows.Forms.CheckBox GenderLocked;
+        private System.Windows.Forms.CheckBox NatureLocked;
+        private System.Windows.Forms.Label L_IVLock;
+        private System.Windows.Forms.CheckBox Event_IV_Fix5;
+        private System.Windows.Forms.CheckBox Event_IV_Fix4;
+        private System.Windows.Forms.CheckBox Event_IV_Fix3;
+        private System.Windows.Forms.CheckBox Event_IV_Fix2;
+        private System.Windows.Forms.CheckBox Event_IV_Fix1;
+        private System.Windows.Forms.CheckBox Event_IV_Fix0;
+        private System.Windows.Forms.NumericUpDown EventIV5;
+        private System.Windows.Forms.NumericUpDown EventIV4;
+        private System.Windows.Forms.NumericUpDown EventIV3;
+        private System.Windows.Forms.NumericUpDown EventIV2;
+        private System.Windows.Forms.NumericUpDown EventIV1;
+        private System.Windows.Forms.NumericUpDown EventIV0;
+        private Controls.HexNumericUpdown Event_EC;
+        private Controls.HexNumericUpdown Event_PID;
     }
 }
 
