@@ -141,3 +141,4 @@ GenderLocked = Gender Locked
 B_Open = Import from .wc6 File
 OtherInfo = Other Information
 L_Species = Species
+L_Forme = Form

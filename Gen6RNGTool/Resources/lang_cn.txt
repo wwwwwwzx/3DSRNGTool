@@ -138,3 +138,4 @@ AbilityLocked = 固定特性
 B_Open = 从wc6文件导入
 OtherInfo = 其他信息
 L_Species = 种类
+L_Forme = 形态

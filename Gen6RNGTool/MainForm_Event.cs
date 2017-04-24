@@ -89,6 +89,7 @@ namespace Gen6RNGTool
             EventRule e = new EventRule
             {
                 Species = (short)Event_Species.SelectedIndex,
+                Form = (byte)Event_Forme.SelectedIndex,
                 IVs = (int[])IVs.Clone(),
                 IVsCount = (byte)IVsCount.Value,
                 YourID = YourID.Checked,
@@ -186,8 +187,18 @@ namespace Gen6RNGTool
 
         private void Event_Species_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Event_Species.SelectedIndex > 0)
-                SetPersonalInfo(Event_Species.SelectedIndex);
+            int species = Event_Species.SelectedIndex;
+            if (species > 0)
+            {
+                SetPersonalInfo(species);
+                int formcount = PersonalTable.ORAS.getFormeEntry(species, 0).FormeCount;
+                L_Forme.Visible = Event_Forme.Visible = formcount > 1;
+                if (formcount == Event_Forme.Items.Count)
+                    return;
+                Event_Forme.Items.Clear();
+                Event_Forme.Items.AddRange(new bool[formcount].Select((t, i) => i.ToString()).ToArray());
+                Event_Forme.SelectedIndex = 0;
+            }
         }
         #endregion
     }
