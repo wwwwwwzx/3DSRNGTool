@@ -289,7 +289,7 @@ namespace Gen6RNGTool
 
         private void SetPersonalInfo(int Species, int Form)
         {
-            SyncNature.Enabled = !(iPM?.Nature >= 0);
+            SyncNature.Enabled = !(iPM?.Nature < 25);
             if (Species == 0)
                 return;
 
@@ -300,7 +300,7 @@ namespace Gen6RNGTool
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
 
             // Load from Pokemonlist
-            if (iPM == null)
+            if (IsEvent || iPM == null)
                 return;
             Filter_Lv.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
