@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
-            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Gen6RNGTool.Controls.CheckBoxProperties();
+            Gen6RNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Gen6RNGTool.Controls.CheckBoxProperties();
             this.SearchSettingBox = new System.Windows.Forms.GroupBox();
-            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -113,8 +111,6 @@
             this.Poke = new System.Windows.Forms.ComboBox();
             this.AlwaysSynced = new System.Windows.Forms.CheckBox();
             this.EventSetting = new System.Windows.Forms.TabPage();
-            this.Event_EC = new Gen6RNGTool.Controls.HexNumericUpdown();
-            this.Event_PID = new Gen6RNGTool.Controls.HexNumericUpdown();
             this.L_IVLock = new System.Windows.Forms.Label();
             this.L_Event_PID = new System.Windows.Forms.Label();
             this.EventIV0 = new System.Windows.Forms.NumericUpDown();
@@ -177,6 +173,10 @@
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.Seed = new Gen6RNGTool.Controls.HexNumericUpdown();
+            this.HiddenPower = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Gen6RNGTool.Controls.CheckBoxComboBox();
+            this.Event_EC = new Gen6RNGTool.Controls.HexNumericUpdown();
+            this.Event_PID = new Gen6RNGTool.Controls.HexNumericUpdown();
             this.SearchSettingBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -213,8 +213,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Condition.SuspendLayout();
             this.EventSetting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV2)).BeginInit();
@@ -227,6 +225,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchSettingBox
@@ -257,43 +257,15 @@
             this.SearchSettingBox.Controls.Add(this.StatPanel);
             this.SearchSettingBox.Location = new System.Drawing.Point(372, 6);
             this.SearchSettingBox.Name = "SearchSettingBox";
-            this.SearchSettingBox.Size = new System.Drawing.Size(396, 272);
+            this.SearchSettingBox.Size = new System.Drawing.Size(397, 262);
             this.SearchSettingBox.TabIndex = 4;
             this.SearchSettingBox.TabStop = false;
             this.SearchSettingBox.Text = "个体检索";
             // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties2;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
-            // 
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
-            this.ShowStats.Location = new System.Drawing.Point(203, 244);
+            this.ShowStats.Location = new System.Drawing.Point(203, 217);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(86, 17);
             this.ShowStats.TabIndex = 75;
@@ -377,7 +349,7 @@
             // DisableFilters
             // 
             this.DisableFilters.AutoSize = true;
-            this.DisableFilters.Location = new System.Drawing.Point(302, 244);
+            this.DisableFilters.Location = new System.Drawing.Point(302, 220);
             this.DisableFilters.Name = "DisableFilters";
             this.DisableFilters.Size = new System.Drawing.Size(74, 17);
             this.DisableFilters.TabIndex = 51;
@@ -387,7 +359,7 @@
             // ShinyOnly
             // 
             this.ShinyOnly.AutoSize = true;
-            this.ShinyOnly.Location = new System.Drawing.Point(302, 217);
+            this.ShinyOnly.Location = new System.Drawing.Point(302, 193);
             this.ShinyOnly.Name = "ShinyOnly";
             this.ShinyOnly.Size = new System.Drawing.Size(74, 17);
             this.ShinyOnly.TabIndex = 8;
@@ -432,7 +404,7 @@
             // L_S
             // 
             this.L_S.AutoSize = true;
-            this.L_S.Location = new System.Drawing.Point(10, 244);
+            this.L_S.Location = new System.Drawing.Point(10, 236);
             this.L_S.Name = "L_S";
             this.L_S.Size = new System.Drawing.Size(31, 13);
             this.L_S.TabIndex = 29;
@@ -441,7 +413,7 @@
             // L_C
             // 
             this.L_C.AutoSize = true;
-            this.L_C.Location = new System.Drawing.Point(10, 184);
+            this.L_C.Location = new System.Drawing.Point(10, 176);
             this.L_C.Name = "L_C";
             this.L_C.Size = new System.Drawing.Size(31, 13);
             this.L_C.TabIndex = 27;
@@ -450,7 +422,7 @@
             // L_B
             // 
             this.L_B.AutoSize = true;
-            this.L_B.Location = new System.Drawing.Point(10, 154);
+            this.L_B.Location = new System.Drawing.Point(10, 146);
             this.L_B.Name = "L_B";
             this.L_B.Size = new System.Drawing.Size(31, 13);
             this.L_B.TabIndex = 26;
@@ -459,7 +431,7 @@
             // L_H
             // 
             this.L_H.AutoSize = true;
-            this.L_H.Location = new System.Drawing.Point(10, 94);
+            this.L_H.Location = new System.Drawing.Point(10, 86);
             this.L_H.Name = "L_H";
             this.L_H.Size = new System.Drawing.Size(22, 13);
             this.L_H.TabIndex = 24;
@@ -468,7 +440,7 @@
             // L_A
             // 
             this.L_A.AutoSize = true;
-            this.L_A.Location = new System.Drawing.Point(10, 124);
+            this.L_A.Location = new System.Drawing.Point(10, 116);
             this.L_A.Name = "L_A";
             this.L_A.Size = new System.Drawing.Size(31, 13);
             this.L_A.TabIndex = 25;
@@ -477,7 +449,7 @@
             // L_D
             // 
             this.L_D.AutoSize = true;
-            this.L_D.Location = new System.Drawing.Point(10, 214);
+            this.L_D.Location = new System.Drawing.Point(10, 206);
             this.L_D.Name = "L_D";
             this.L_D.Size = new System.Drawing.Size(31, 13);
             this.L_D.TabIndex = 28;
@@ -505,7 +477,7 @@
             this.IVPanel.Controls.Add(this.ivmax2);
             this.IVPanel.Controls.Add(this.ivmax4);
             this.IVPanel.Controls.Add(this.ivmax3);
-            this.IVPanel.Location = new System.Drawing.Point(40, 59);
+            this.IVPanel.Location = new System.Drawing.Point(40, 51);
             this.IVPanel.Name = "IVPanel";
             this.IVPanel.Size = new System.Drawing.Size(147, 209);
             this.IVPanel.TabIndex = 24;
@@ -801,7 +773,7 @@
             this.StatPanel.Controls.Add(this.Stat5);
             this.StatPanel.Controls.Add(this.BS_1);
             this.StatPanel.Controls.Add(this.BS_0);
-            this.StatPanel.Location = new System.Drawing.Point(40, 59);
+            this.StatPanel.Location = new System.Drawing.Point(40, 51);
             this.StatPanel.Name = "StatPanel";
             this.StatPanel.Size = new System.Drawing.Size(147, 209);
             this.StatPanel.TabIndex = 42;
@@ -997,10 +969,10 @@
             this.tabControl1.AllowDrop = true;
             this.tabControl1.Controls.Add(this.SearchTarget);
             this.tabControl1.Controls.Add(this.EventSetting);
-            this.tabControl1.Location = new System.Drawing.Point(12, 23);
+            this.tabControl1.Location = new System.Drawing.Point(12, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(780, 311);
+            this.tabControl1.Size = new System.Drawing.Size(785, 298);
             this.tabControl1.TabIndex = 5;
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
@@ -1013,7 +985,7 @@
             this.SearchTarget.Location = new System.Drawing.Point(4, 22);
             this.SearchTarget.Name = "SearchTarget";
             this.SearchTarget.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTarget.Size = new System.Drawing.Size(772, 285);
+            this.SearchTarget.Size = new System.Drawing.Size(777, 272);
             this.SearchTarget.TabIndex = 0;
             this.SearchTarget.Text = "目标检索";
             this.SearchTarget.UseVisualStyleBackColor = true;
@@ -1027,14 +999,14 @@
             this.RNGInfo.Controls.Add(this.Frame_min);
             this.RNGInfo.Location = new System.Drawing.Point(11, 163);
             this.RNGInfo.Name = "RNGInfo";
-            this.RNGInfo.Size = new System.Drawing.Size(355, 115);
+            this.RNGInfo.Size = new System.Drawing.Size(355, 105);
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
             // 
             // CalcList
             // 
-            this.CalcList.Location = new System.Drawing.Point(244, 72);
+            this.CalcList.Location = new System.Drawing.Point(257, 56);
             this.CalcList.Name = "CalcList";
             this.CalcList.Size = new System.Drawing.Size(92, 28);
             this.CalcList.TabIndex = 90;
@@ -1268,37 +1240,15 @@
             this.EventSetting.Location = new System.Drawing.Point(4, 22);
             this.EventSetting.Name = "EventSetting";
             this.EventSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.EventSetting.Size = new System.Drawing.Size(772, 285);
+            this.EventSetting.Size = new System.Drawing.Size(777, 272);
             this.EventSetting.TabIndex = 1;
             this.EventSetting.Text = "配信乱数";
             this.EventSetting.UseVisualStyleBackColor = true;
             // 
-            // Event_EC
-            // 
-            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_EC.Hexadecimal = true;
-            this.Event_EC.Location = new System.Drawing.Point(361, 227);
-            this.Event_EC.Name = "Event_EC";
-            this.Event_EC.Size = new System.Drawing.Size(78, 22);
-            this.Event_EC.TabIndex = 93;
-            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_EC.Visible = false;
-            // 
-            // Event_PID
-            // 
-            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_PID.Hexadecimal = true;
-            this.Event_PID.Location = new System.Drawing.Point(361, 191);
-            this.Event_PID.Name = "Event_PID";
-            this.Event_PID.Size = new System.Drawing.Size(78, 22);
-            this.Event_PID.TabIndex = 92;
-            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_PID.Visible = false;
-            // 
             // L_IVLock
             // 
             this.L_IVLock.AutoSize = true;
-            this.L_IVLock.Location = new System.Drawing.Point(18, 25);
+            this.L_IVLock.Location = new System.Drawing.Point(18, 31);
             this.L_IVLock.Name = "L_IVLock";
             this.L_IVLock.Size = new System.Drawing.Size(79, 13);
             this.L_IVLock.TabIndex = 42;
@@ -1307,7 +1257,7 @@
             // L_Event_PID
             // 
             this.L_Event_PID.AutoSize = true;
-            this.L_Event_PID.Location = new System.Drawing.Point(164, 130);
+            this.L_Event_PID.Location = new System.Drawing.Point(164, 136);
             this.L_Event_PID.Name = "L_Event_PID";
             this.L_Event_PID.Size = new System.Drawing.Size(52, 13);
             this.L_Event_PID.TabIndex = 71;
@@ -1317,7 +1267,7 @@
             // 
             this.EventIV0.AccessibleName = "";
             this.EventIV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV0.Location = new System.Drawing.Point(80, 57);
+            this.EventIV0.Location = new System.Drawing.Point(80, 63);
             this.EventIV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1331,7 +1281,7 @@
             // L_EventSpecies
             // 
             this.L_EventSpecies.AutoSize = true;
-            this.L_EventSpecies.Location = new System.Drawing.Point(329, 64);
+            this.L_EventSpecies.Location = new System.Drawing.Point(329, 70);
             this.L_EventSpecies.Name = "L_EventSpecies";
             this.L_EventSpecies.Size = new System.Drawing.Size(63, 13);
             this.L_EventSpecies.TabIndex = 74;
@@ -1342,7 +1292,7 @@
             // 
             this.EventIV1.AccessibleName = "";
             this.EventIV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV1.Location = new System.Drawing.Point(80, 91);
+            this.EventIV1.Location = new System.Drawing.Point(80, 97);
             this.EventIV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1356,7 +1306,7 @@
             // IsEgg
             // 
             this.IsEgg.AutoSize = true;
-            this.IsEgg.Location = new System.Drawing.Point(235, 96);
+            this.IsEgg.Location = new System.Drawing.Point(235, 102);
             this.IsEgg.Name = "IsEgg";
             this.IsEgg.Size = new System.Drawing.Size(38, 17);
             this.IsEgg.TabIndex = 70;
@@ -1367,7 +1317,7 @@
             // 
             this.EventIV2.AccessibleName = "";
             this.EventIV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV2.Location = new System.Drawing.Point(80, 125);
+            this.EventIV2.Location = new System.Drawing.Point(80, 131);
             this.EventIV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1381,7 +1331,7 @@
             // OtherInfo
             // 
             this.OtherInfo.AutoSize = true;
-            this.OtherInfo.Location = new System.Drawing.Point(329, 24);
+            this.OtherInfo.Location = new System.Drawing.Point(329, 30);
             this.OtherInfo.Name = "OtherInfo";
             this.OtherInfo.Size = new System.Drawing.Size(74, 17);
             this.OtherInfo.TabIndex = 54;
@@ -1393,7 +1343,7 @@
             // 
             this.EventIV3.AccessibleName = "";
             this.EventIV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV3.Location = new System.Drawing.Point(80, 159);
+            this.EventIV3.Location = new System.Drawing.Point(80, 165);
             this.EventIV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1407,7 +1357,7 @@
             // L_Event_TSV
             // 
             this.L_Event_TSV.AutoSize = true;
-            this.L_Event_TSV.Location = new System.Drawing.Point(329, 164);
+            this.L_Event_TSV.Location = new System.Drawing.Point(329, 170);
             this.L_Event_TSV.Name = "L_Event_TSV";
             this.L_Event_TSV.Size = new System.Drawing.Size(64, 13);
             this.L_Event_TSV.TabIndex = 73;
@@ -1418,7 +1368,7 @@
             // 
             this.EventIV4.AccessibleName = "";
             this.EventIV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV4.Location = new System.Drawing.Point(80, 193);
+            this.EventIV4.Location = new System.Drawing.Point(80, 199);
             this.EventIV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1437,7 +1387,7 @@
             "1",
             "2",
             "H"});
-            this.Event_Ability.Location = new System.Drawing.Point(247, 161);
+            this.Event_Ability.Location = new System.Drawing.Point(247, 167);
             this.Event_Ability.Name = "Event_Ability";
             this.Event_Ability.Size = new System.Drawing.Size(62, 21);
             this.Event_Ability.TabIndex = 66;
@@ -1446,7 +1396,7 @@
             // 
             this.EventIV5.AccessibleName = "";
             this.EventIV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EventIV5.Location = new System.Drawing.Point(80, 227);
+            this.EventIV5.Location = new System.Drawing.Point(80, 233);
             this.EventIV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1460,7 +1410,7 @@
             // L_TID
             // 
             this.L_TID.AutoSize = true;
-            this.L_TID.Location = new System.Drawing.Point(329, 100);
+            this.L_TID.Location = new System.Drawing.Point(329, 106);
             this.L_TID.Name = "L_TID";
             this.L_TID.Size = new System.Drawing.Size(25, 13);
             this.L_TID.TabIndex = 51;
@@ -1469,7 +1419,7 @@
             // Event_IV_Fix0
             // 
             this.Event_IV_Fix0.AutoSize = true;
-            this.Event_IV_Fix0.Location = new System.Drawing.Point(20, 58);
+            this.Event_IV_Fix0.Location = new System.Drawing.Point(20, 64);
             this.Event_IV_Fix0.Name = "Event_IV_Fix0";
             this.Event_IV_Fix0.Size = new System.Drawing.Size(41, 17);
             this.Event_IV_Fix0.TabIndex = 8;
@@ -1481,7 +1431,7 @@
             // 
             this.Event_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Gender.Enabled = false;
-            this.Event_Gender.Location = new System.Drawing.Point(247, 227);
+            this.Event_Gender.Location = new System.Drawing.Point(247, 233);
             this.Event_Gender.Name = "Event_Gender";
             this.Event_Gender.Size = new System.Drawing.Size(62, 21);
             this.Event_Gender.TabIndex = 62;
@@ -1489,7 +1439,7 @@
             // Event_IV_Fix1
             // 
             this.Event_IV_Fix1.AutoSize = true;
-            this.Event_IV_Fix1.Location = new System.Drawing.Point(20, 92);
+            this.Event_IV_Fix1.Location = new System.Drawing.Point(20, 98);
             this.Event_IV_Fix1.Name = "Event_IV_Fix1";
             this.Event_IV_Fix1.Size = new System.Drawing.Size(50, 17);
             this.Event_IV_Fix1.TabIndex = 37;
@@ -1501,7 +1451,7 @@
             // 
             this.Event_Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Nature.Enabled = false;
-            this.Event_Nature.Location = new System.Drawing.Point(247, 194);
+            this.Event_Nature.Location = new System.Drawing.Point(247, 200);
             this.Event_Nature.Name = "Event_Nature";
             this.Event_Nature.Size = new System.Drawing.Size(62, 21);
             this.Event_Nature.TabIndex = 61;
@@ -1509,7 +1459,7 @@
             // Event_IV_Fix2
             // 
             this.Event_IV_Fix2.AutoSize = true;
-            this.Event_IV_Fix2.Location = new System.Drawing.Point(20, 126);
+            this.Event_IV_Fix2.Location = new System.Drawing.Point(20, 132);
             this.Event_IV_Fix2.Name = "Event_IV_Fix2";
             this.Event_IV_Fix2.Size = new System.Drawing.Size(50, 17);
             this.Event_IV_Fix2.TabIndex = 38;
@@ -1522,7 +1472,7 @@
             this.Event_TID.AccessibleName = "";
             this.Event_TID.Enabled = false;
             this.Event_TID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_TID.Location = new System.Drawing.Point(358, 95);
+            this.Event_TID.Location = new System.Drawing.Point(358, 101);
             this.Event_TID.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -1536,7 +1486,7 @@
             // Event_IV_Fix3
             // 
             this.Event_IV_Fix3.AutoSize = true;
-            this.Event_IV_Fix3.Location = new System.Drawing.Point(20, 160);
+            this.Event_IV_Fix3.Location = new System.Drawing.Point(20, 166);
             this.Event_IV_Fix3.Name = "Event_IV_Fix3";
             this.Event_IV_Fix3.Size = new System.Drawing.Size(50, 17);
             this.Event_IV_Fix3.TabIndex = 39;
@@ -1546,7 +1496,7 @@
             // 
             // B_Open
             // 
-            this.B_Open.Location = new System.Drawing.Point(189, 19);
+            this.B_Open.Location = new System.Drawing.Point(189, 25);
             this.B_Open.Name = "B_Open";
             this.B_Open.Size = new System.Drawing.Size(120, 25);
             this.B_Open.TabIndex = 29;
@@ -1557,7 +1507,7 @@
             // Event_IV_Fix4
             // 
             this.Event_IV_Fix4.AutoSize = true;
-            this.Event_IV_Fix4.Location = new System.Drawing.Point(20, 194);
+            this.Event_IV_Fix4.Location = new System.Drawing.Point(20, 200);
             this.Event_IV_Fix4.Name = "Event_IV_Fix4";
             this.Event_IV_Fix4.Size = new System.Drawing.Size(50, 17);
             this.Event_IV_Fix4.TabIndex = 40;
@@ -1568,7 +1518,7 @@
             // L_PID
             // 
             this.L_PID.AutoSize = true;
-            this.L_PID.Location = new System.Drawing.Point(329, 197);
+            this.L_PID.Location = new System.Drawing.Point(329, 203);
             this.L_PID.Name = "L_PID";
             this.L_PID.Size = new System.Drawing.Size(25, 13);
             this.L_PID.TabIndex = 58;
@@ -1578,7 +1528,7 @@
             // Event_IV_Fix5
             // 
             this.Event_IV_Fix5.AutoSize = true;
-            this.Event_IV_Fix5.Location = new System.Drawing.Point(20, 228);
+            this.Event_IV_Fix5.Location = new System.Drawing.Point(20, 234);
             this.Event_IV_Fix5.Name = "Event_IV_Fix5";
             this.Event_IV_Fix5.Size = new System.Drawing.Size(50, 17);
             this.Event_IV_Fix5.TabIndex = 41;
@@ -1594,7 +1544,7 @@
             "",
             "",
             ""});
-            this.Event_PIDType.Location = new System.Drawing.Point(235, 126);
+            this.Event_PIDType.Location = new System.Drawing.Point(235, 132);
             this.Event_PIDType.Name = "Event_PIDType";
             this.Event_PIDType.Size = new System.Drawing.Size(74, 21);
             this.Event_PIDType.TabIndex = 49;
@@ -1603,7 +1553,7 @@
             // NatureLocked
             // 
             this.NatureLocked.AutoSize = true;
-            this.NatureLocked.Location = new System.Drawing.Point(150, 196);
+            this.NatureLocked.Location = new System.Drawing.Point(150, 202);
             this.NatureLocked.Name = "NatureLocked";
             this.NatureLocked.Size = new System.Drawing.Size(74, 17);
             this.NatureLocked.TabIndex = 43;
@@ -1614,7 +1564,7 @@
             // L_SID
             // 
             this.L_SID.AutoSize = true;
-            this.L_SID.Location = new System.Drawing.Point(329, 133);
+            this.L_SID.Location = new System.Drawing.Point(329, 139);
             this.L_SID.Name = "L_SID";
             this.L_SID.Size = new System.Drawing.Size(25, 13);
             this.L_SID.TabIndex = 52;
@@ -1623,7 +1573,7 @@
             // GenderLocked
             // 
             this.GenderLocked.AutoSize = true;
-            this.GenderLocked.Location = new System.Drawing.Point(151, 229);
+            this.GenderLocked.Location = new System.Drawing.Point(151, 235);
             this.GenderLocked.Name = "GenderLocked";
             this.GenderLocked.Size = new System.Drawing.Size(74, 17);
             this.GenderLocked.TabIndex = 44;
@@ -1634,7 +1584,7 @@
             // YourID
             // 
             this.YourID.AutoSize = true;
-            this.YourID.Location = new System.Drawing.Point(153, 96);
+            this.YourID.Location = new System.Drawing.Point(153, 102);
             this.YourID.Name = "YourID";
             this.YourID.Size = new System.Drawing.Size(49, 17);
             this.YourID.TabIndex = 48;
@@ -1645,7 +1595,7 @@
             // 
             this.IVsCount.AccessibleName = "";
             this.IVsCount.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IVsCount.Location = new System.Drawing.Point(262, 62);
+            this.IVsCount.Location = new System.Drawing.Point(262, 68);
             this.IVsCount.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1659,7 +1609,7 @@
             // L_EC
             // 
             this.L_EC.AutoSize = true;
-            this.L_EC.Location = new System.Drawing.Point(329, 230);
+            this.L_EC.Location = new System.Drawing.Point(329, 236);
             this.L_EC.Name = "L_EC";
             this.L_EC.Size = new System.Drawing.Size(21, 13);
             this.L_EC.TabIndex = 57;
@@ -1669,7 +1619,7 @@
             // L_IVsCount
             // 
             this.L_IVsCount.AutoSize = true;
-            this.L_IVsCount.Location = new System.Drawing.Point(150, 64);
+            this.L_IVsCount.Location = new System.Drawing.Point(150, 70);
             this.L_IVsCount.Name = "L_IVsCount";
             this.L_IVsCount.Size = new System.Drawing.Size(74, 13);
             this.L_IVsCount.TabIndex = 46;
@@ -1680,7 +1630,7 @@
             this.AbilityLocked.AutoSize = true;
             this.AbilityLocked.Checked = true;
             this.AbilityLocked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AbilityLocked.Location = new System.Drawing.Point(150, 163);
+            this.AbilityLocked.Location = new System.Drawing.Point(150, 169);
             this.AbilityLocked.Name = "AbilityLocked";
             this.AbilityLocked.Size = new System.Drawing.Size(74, 17);
             this.AbilityLocked.TabIndex = 47;
@@ -1693,7 +1643,7 @@
             this.Event_SID.AccessibleName = "";
             this.Event_SID.Enabled = false;
             this.Event_SID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_SID.Location = new System.Drawing.Point(358, 129);
+            this.Event_SID.Location = new System.Drawing.Point(358, 135);
             this.Event_SID.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -1712,7 +1662,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(152, 11);
+            this.Lang.Location = new System.Drawing.Point(162, 11);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(76, 21);
             this.Lang.TabIndex = 87;
@@ -1722,7 +1672,7 @@
             // 
             this.Advanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Advanced.AutoSize = true;
-            this.Advanced.Location = new System.Drawing.Point(696, 14);
+            this.Advanced.Location = new System.Drawing.Point(706, 14);
             this.Advanced.Name = "Advanced";
             this.Advanced.Size = new System.Drawing.Size(74, 17);
             this.Advanced.TabIndex = 86;
@@ -1734,7 +1684,7 @@
             // 
             this.ShinyCharm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShinyCharm.AutoSize = true;
-            this.ShinyCharm.Location = new System.Drawing.Point(616, 14);
+            this.ShinyCharm.Location = new System.Drawing.Point(626, 14);
             this.ShinyCharm.Name = "ShinyCharm";
             this.ShinyCharm.Size = new System.Drawing.Size(74, 17);
             this.ShinyCharm.TabIndex = 85;
@@ -1746,7 +1696,7 @@
             // 
             this.L_TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(490, 16);
+            this.L_TSV.Location = new System.Drawing.Point(500, 16);
             this.L_TSV.Name = "L_TSV";
             this.L_TSV.Size = new System.Drawing.Size(28, 13);
             this.L_TSV.TabIndex = 84;
@@ -1756,7 +1706,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(363, 16);
+            this.L_Seed.Location = new System.Drawing.Point(373, 16);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -1766,7 +1716,7 @@
             // 
             this.TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TSV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV.Location = new System.Drawing.Point(531, 11);
+            this.TSV.Location = new System.Drawing.Point(541, 11);
             this.TSV.Maximum = new decimal(new int[] {
             4095,
             0,
@@ -1819,7 +1769,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGV.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGV.Location = new System.Drawing.Point(12, 336);
+            this.DGV.Location = new System.Drawing.Point(12, 328);
             this.DGV.Name = "DGV";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -1833,7 +1783,7 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(772, 278);
+            this.DGV.Size = new System.Drawing.Size(781, 321);
             this.DGV.TabIndex = 89;
             // 
             // dgv_Frame
@@ -1948,7 +1898,7 @@
             "Y",
             "OR",
             "AS"});
-            this.Gameversion.Location = new System.Drawing.Point(303, 11);
+            this.Gameversion.Location = new System.Drawing.Point(313, 11);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(51, 21);
             this.Gameversion.TabIndex = 91;
@@ -1958,7 +1908,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(232, 15);
+            this.L_GameVersion.Location = new System.Drawing.Point(242, 15);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -1969,18 +1919,68 @@
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(407, 11);
+            this.Seed.Location = new System.Drawing.Point(417, 11);
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(78, 22);
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
+            // 
+            // Event_EC
+            // 
+            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_EC.Hexadecimal = true;
+            this.Event_EC.Location = new System.Drawing.Point(361, 233);
+            this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(78, 22);
+            this.Event_EC.TabIndex = 93;
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Visible = false;
+            // 
+            // Event_PID
+            // 
+            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_PID.Hexadecimal = true;
+            this.Event_PID.Location = new System.Drawing.Point(361, 197);
+            this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(78, 22);
+            this.Event_PID.TabIndex = 92;
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 616);
+            this.ClientSize = new System.Drawing.Size(804, 652);
             this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.DGV);
@@ -1992,7 +1992,8 @@
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.tabControl1);
-            this.MinimumSize = new System.Drawing.Size(810, 650);
+            this.MaximumSize = new System.Drawing.Size(820, 1200);
+            this.MinimumSize = new System.Drawing.Size(820, 650);
             this.Name = "MainForm";
             this.Text = "Gen6RNGTool";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -2038,8 +2039,6 @@
             this.Condition.PerformLayout();
             this.EventSetting.ResumeLayout(false);
             this.EventSetting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV2)).EndInit();
@@ -2052,6 +2051,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
