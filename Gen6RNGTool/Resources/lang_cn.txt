@@ -114,9 +114,6 @@ dgv_PID = PID
 dgv_EC = 加密常数
 dgv_time = 时间
 ---
-SOSSetting = 帮手连锁设置
-L_ChainLength = 连锁数
----
 WildEncounterSetting = 野生草丛遇敌设置
 L_Location = 地点
 L_Species = 种类
@@ -140,3 +137,4 @@ GenderLocked = 固定性别
 AbilityLocked = 固定特性
 B_Open = 从wc6文件导入
 OtherInfo = 其他信息
+L_Species = 种类

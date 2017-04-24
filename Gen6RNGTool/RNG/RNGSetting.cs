@@ -6,42 +6,30 @@ namespace Gen6RNGTool.RNG
     class RNGSetting
     {
         // Background Info (Global variables)
-        public static bool AlwaysSync;
-        public static byte Synchro_Stat;
-        public static bool IV3;
-        public static int TSV;
-        public static bool IsShinyLocked;
-        public static bool ShinyCharm;
+        public bool AlwaysSync;
+        public byte Synchro_Stat;
+        public bool IV3;
+        public int TSV;
+        public bool IsShinyLocked;
+        public bool ShinyCharm;
 
-        public static byte Level;
-        public static byte Gender;
-        public static bool RandomGender;
-        public static byte Ability;
-        public static int[] IVs;
-        
-        public static List<uint> RandList = new List<uint>();
-        private static int index;
-        private static uint getrand => RandList[index++];
+        public byte Level;
+        public byte Gender;
+        public bool RandomGender;
+        public byte Ability;
+        public int[] IVs;
 
-        public static Pokemon PM;
+        private static uint getrand => RNGPool.getrand;
 
         // Generated Attributes
-        public static bool HasTemplate => PM != null;
-        public static int PerfectIVCount => IV3 ? 3 : 0;
-        public static int PIDroll_count => ShinyCharm ? 3 : 1;
-
-        public static void CreateBuffer(int buffersize, MersenneTwister rng)
-        {
-            RandList.Clear();
-            for (int i = 0; i < buffersize; i++)
-                RandList.Add(rng.Nextuint());
-        }
+        public int PerfectIVCount => IV3 ? 3 : 0;
+        public int PIDroll_count => ShinyCharm ? 3 : 1;
 
         public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            index = 0;
-            rt.RandNum = RandList[0];
+            RNGPool.ResetIndex();
+            rt.RandNum = RNGPool.CurrSeed;
             rt.Lv = Level;
 
             //Sync
@@ -83,7 +71,7 @@ namespace Gen6RNGTool.RNG
             return rt;
         }
 
-        public static void UseTemplate()
+        public void UseTemplate(Pokemon PM)
         {
             AlwaysSync = PM.AlwaysSync;
             IV3 = PM.IV3;
@@ -91,10 +79,10 @@ namespace Gen6RNGTool.RNG
             Ability = PM.Ability;
             IVs = PM.IVs;
             Level = PM.Level;
-            Gender = FuncUtil.getGenderRatio(PM.GenderRatio);
-            RandomGender = FuncUtil.IsRandomGender(PM.GenderRatio);
-            if (PM.Nature != Nature.Random)
-                Synchro_Stat = (byte)(PM.Nature);
+            Gender = PM.SettingGender;
+            RandomGender = PM.IsRandomGender;
+            if (PM.Nature < 25)
+                Synchro_Stat = PM.Nature;
         }
     }
 }

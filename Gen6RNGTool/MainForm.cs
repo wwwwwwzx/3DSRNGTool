@@ -24,8 +24,9 @@ namespace Gen6RNGTool
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
-        private Pokemon iPM => RNGSetting.PM;
-        private RNGSetting setting = new RNGSetting();
+        private Pokemon iPM => RNGPool.PM;
+        private EventRule rule => RNGPool.e;
+        private bool IsEvent => iPM.IsEvent;
         private RNGFilters filter = new RNGFilters();
         #endregion
 
@@ -105,10 +106,10 @@ namespace Gen6RNGTool
             StringItem.species = getStringList("Species", curlanguage);
             StringItem.genderratio = getStringList("Genderratio", curlanguage);
 
-            LoadCategory();
-
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
+
+            LoadCategory();
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
@@ -117,6 +118,9 @@ namespace Gen6RNGTool
             SyncNature.Items[0] = NONE_STR[lindex];
             for (int i = 0; i < StringItem.naturestr.Length; i++)
                 Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
+
+            for (int i = 1; i < StringItem.species.Length; i++)
+                Event_Species.Items[i] = StringItem.species[i];
 
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
@@ -155,6 +159,8 @@ namespace Gen6RNGTool
             Gender.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
+            for (int i = 0; i <= 721; i++)
+                Event_Species.Items.Add("-");
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -168,7 +174,8 @@ namespace Gen6RNGTool
             Gender.SelectedIndex = 0;
             Ability.SelectedIndex = 0;
             SyncNature.SelectedIndex = 0;
-            Event_PIDType.SelectedIndex = Event_Nature.SelectedIndex = Event_Ability.SelectedIndex = Event_Gender.SelectedIndex = 0;
+            Event_Species.SelectedIndex = Event_PIDType.SelectedIndex = Event_Nature.SelectedIndex = 0;
+            Event_Ability.SelectedIndex = Event_Gender.SelectedIndex = 0;
             Gameversion.SelectedIndex = LastGameversion;
             FindSetting(Lastpkm);
 
@@ -299,8 +306,8 @@ namespace Gen6RNGTool
             AlwaysSynced.Checked = iPM.AlwaysSync;
             ShinyLocked.Checked = iPM.ShinyLocked;
             GenderRatio.SelectedValue = (int)iPM.GenderRatio;
-            if (iPM.Nature >= 0)
-                SyncNature.SelectedIndex = (int)iPM.Nature + 1;
+            if (iPM.Nature < 25)
+                SyncNature.SelectedIndex = iPM.Nature + 1;
             if (iPM.IVs != null)
             {
                 IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
@@ -315,7 +322,7 @@ namespace Gen6RNGTool
             int specform = (int)(Poke.SelectedValue);
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
-            RNGSetting.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
+            RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
             ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = specform == 0;
         }
@@ -328,8 +335,9 @@ namespace Gen6RNGTool
             DGV.Rows.Clear();
 
             filter = FilterSettings;
-            RefreshRNGSettings(mt);
-            setting = new RNGSetting();
+            RNGPool.CreateBuffer(200, mt);
+            RNGPool.e = IsEvent ? geteventsetting() : null;
+            RNGPool.rngsetting = getRNGSettings();
         }
 
         private RNGFilters FilterSettings => new RNGFilters
@@ -348,29 +356,28 @@ namespace Gen6RNGTool
             PerfectIVs = (byte)PerfectIVs.Value,
         };
 
-        private void RefreshRNGSettings(MersenneTwister mt)
+        private RNGSetting getRNGSettings()
         {
-            RNGSetting.CreateBuffer(200, mt);
-
-            RNGSetting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
-            RNGSetting.TSV = (int)TSV.Value;
-            RNGSetting.ShinyCharm = ShinyCharm.Checked;
-
+            RNGSetting setting = new RNGSetting();
+            setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            setting.TSV = (int)TSV.Value;
+            setting.ShinyCharm = ShinyCharm.Checked;
             // Load from template
-            if (RNGSetting.HasTemplate)
+            if (RNGPool.HasTemplate)
             {
-                RNGSetting.UseTemplate();
-                return;
+                setting.UseTemplate(RNGPool.PM);
+                return setting;
             }
 
             // Load from UI
             int gender = (int)GenderRatio.SelectedValue;
-            RNGSetting.IV3 = Fix3v.Checked;
-            RNGSetting.Gender = FuncUtil.getGenderRatio(gender);
-            RNGSetting.RandomGender = FuncUtil.IsRandomGender(gender);
-            RNGSetting.AlwaysSync = AlwaysSynced.Checked;
-            RNGSetting.Level = (byte)Filter_Lv.Value;
-            RNGSetting.IsShinyLocked = ShinyLocked.Checked;
+            setting.IV3 = Fix3v.Checked;
+            setting.Gender = FuncUtil.getGenderRatio(gender);
+            setting.RandomGender = FuncUtil.IsRandomGender(gender);
+            setting.AlwaysSync = AlwaysSynced.Checked;
+            setting.Level = (byte)Filter_Lv.Value;
+            setting.IsShinyLocked = ShinyLocked.Checked;
+            return setting;
         }
         #endregion
 
@@ -451,9 +458,9 @@ namespace Gen6RNGTool
             // Prepare
             getsetting(mt);
             // Start
-            for (int i = min; i <= max; i++, RNGSetting.RandList.RemoveAt(0), RNGSetting.RandList.Add(mt.Nextuint()))
+            for (int i = min; i <= max; i++, RNGPool.Next(mt.Nextuint()))
             {
-                RNGResult result = setting.Generate();
+                RNGResult result = RNGPool.Generate();
                 if (!filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getRow(i, result));
@@ -464,6 +471,5 @@ namespace Gen6RNGTool
             DGV.CurrentCell = null;
         }
         #endregion
-
     }
 }

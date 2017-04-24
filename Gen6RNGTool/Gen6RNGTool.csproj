@@ -93,14 +93,16 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Pokemon\IPKM.cs" />
+    <Compile Include="RNG\EventRule.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />
-    <Compile Include="Pokemon\Nature.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="Resources\FormUtil.cs" />
     <Compile Include="Resources\FuncUtil.cs" />
     <Compile Include="RNG\RNGFilters.cs" />
+    <Compile Include="RNG\RNGPool.cs" />
     <Compile Include="RNG\RNGResult.cs" />
     <Compile Include="RNG\RNGSetting.cs" />
     <Compile Include="RNG\IRNG.cs" />

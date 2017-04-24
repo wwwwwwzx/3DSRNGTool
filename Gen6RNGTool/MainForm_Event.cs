@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using Gen6RNGTool.RNG;
 using static PKHeX.Util;
 
 namespace Gen6RNGTool
@@ -19,8 +21,7 @@ namespace Gen6RNGTool
                 byte[] PIDType_Order = new byte[] { 3, 0, 2, 1 };
                 byte[] Stats_index = new byte[] { 0xAF, 0xB0, 0xB1, 0xB3, 0xB4, 0xB2 };
                 ushort sp = BitConverter.ToUInt16(Data, 0x82);
-                L_EventSpecies.Text = StringItem.species[sp];
-                L_EventSpecies.Visible = true;
+                Event_Species.SelectedIndex = sp;
                 FindSetting(151); // Switch to Event, set to Mew
                 byte form = Data[0x84];
                 SetPersonalInfo(sp, form); // Set pkm personal rule before wc6 rule
@@ -71,6 +72,47 @@ namespace Gen6RNGTool
                 return false;
             }
             return true;
+        }
+
+        //Converter
+        private EventRule geteventsetting()
+        {
+            int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            for (int i = 0; i < 6; i++)
+                if (EventIVLocked[i].Checked)
+                    IVs[i] = (int)EventIV[i].Value;
+            if (IVsCount.Value > 0 && IVs.Count(iv => iv >= 0) + IVsCount.Value > 5)
+            {
+                Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
+                IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            }
+            EventRule e = new EventRule
+            {
+                Species = (short)Event_Species.SelectedIndex,
+                IVs = (int[])IVs.Clone(),
+                IVsCount = (byte)IVsCount.Value,
+                YourID = YourID.Checked,
+                PIDType = (byte)Event_PIDType.SelectedIndex,
+                AbilityLocked = AbilityLocked.Checked,
+                NatureLocked = NatureLocked.Checked,
+                GenderLocked = GenderLocked.Checked,
+                OtherInfo = OtherInfo.Checked,
+                EC = (uint)Event_EC.Value,
+                Ability = (byte)Event_Ability.SelectedIndex,
+                Nature = (byte)Event_Nature.SelectedIndex,
+                Gender = (byte)Event_Gender.SelectedIndex,
+                IsEgg = IsEgg.Checked
+            };
+            if (e.YourID)
+                e.TSV = (uint)TSV.Value;
+            else
+            {
+                e.TID = (int)Event_TID.Value;
+                e.SID = (int)Event_SID.Value;
+                e.TSV = (uint)(e.TID ^ e.SID) >> 4;
+                e.PID = (uint)Event_PID.Value;
+            }
+            return e;
         }
 
         #region Event_UI
@@ -140,6 +182,12 @@ namespace Gen6RNGTool
             if (!OtherInfo.Checked)
                 Event_EC.Value = (Event_PIDType.SelectedIndex == 3) ? 0x12 : 0;
             L_EC.Visible = Event_EC.Visible = L_PID.Visible = Event_PID.Visible = Event_PIDType.SelectedIndex == 3;
+        }
+
+        private void Event_Species_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Event_Species.SelectedIndex > 0)
+                SetPersonalInfo(Event_Species.SelectedIndex);
         }
         #endregion
     }

@@ -2,16 +2,10 @@
 
 namespace Gen6RNGTool
 {
-    class Pokemon
+    class Pokemon : IPKM
     {
-        public ushort Species;
-        public byte Form;
-        public int[] IVs;
-        public byte Level;
         public GameVersion Version = GameVersion.Any;
-        public byte Gender;
-        public byte Ability;
-        public Nature Nature = Nature.Random;
+        public new byte Nature = 0xFF;
         public bool Gift;
         public bool Egg;
         public bool ShinyLocked;
@@ -20,20 +14,20 @@ namespace Gen6RNGTool
 
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
-        public PKHeX.Core.PersonalInfo info => PersonalTable.ORAS.getFormeEntry(Species, Form);
-        public bool AlwaysSync => Gift || Nature >= 0;
-        public bool IV3 => info.EggGroups[0] == 0xF;
+        public bool AlwaysSync => Gift || Nature < 25;
         public bool IsEvent => Species == 151;
-        public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
+
         public override string ToString()
         {
-            if (Species == 0) return "-";
+            switch (Species)
+            {
+                case 000: return "-";
+                case 151: return "Event";
+            }
             if (Egg) return StringItem.species[Species] + " (" + StringItem.species[0] + ")";
             return StringItem.species[Species];
         }
-        
         #endregion
-
 
         public class PokemonList
         {
@@ -150,9 +144,9 @@ namespace Gen6RNGTool
                     new Pokemon { Species = 175, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Togepi
                     new Pokemon { Species = 374, Level = 1, Ability = 1, IVs = new[] {-1, -1, 31, -1, -1, 31}, Gift = true }, // Beldum
 
-                    new Pokemon { Species = 351, Level = 30, Nature = Nature.Lax, Ability = 1, IVs = new[] {-1, -1, -1, -1, 31, -1}, Gift = true }, // Castform
-                    new Pokemon { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = Nature.Adamant, Gift = true }, // Sharpedo
-                    new Pokemon { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = Nature.Quiet, Gift = true }, // Camerupt
+                    new Pokemon { Species = 351, Level = 30, Nature = 09, Ability = 1, IVs = new[] {-1, -1, -1, -1, 31, -1}, Gift = true }, // Castform
+                    new Pokemon { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = 03, Gift = true }, // Sharpedo
+                    new Pokemon { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = 17, Gift = true }, // Camerupt
                     new Pokemon { Species = 025, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
                 }
             },
@@ -233,8 +227,8 @@ namespace Gen6RNGTool
                 Text = "Gift",
                 List = new[]
                 {
-                    new Pokemon { Species = 448, Level = 32, Ability = 1, Nature = Nature.Hasty, Gender = 1, IVs = new[] {6, 25, 16, 31, 25, 19}, Gift = true, ShinyLocked = true }, // Lucario
-                    new Pokemon { Species = 131, Level = 30, Nature = Nature.Docile, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
+                    new Pokemon { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 31, 25, 19}, Gift = true, ShinyLocked = true }, // Lucario
+                    new Pokemon { Species = 131, Level = 30, Nature = 6, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
                 }
             },
             new PokemonList
