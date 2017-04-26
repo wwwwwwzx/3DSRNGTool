@@ -337,9 +337,9 @@ namespace Gen6RNGTool
 
         private void StationarySearch()
         {
-            //uint[] status = new uint[] { 0xBEEFFACE, 0xDEADBEEF, 0xDEADFACE, 0x12345678, };
-            //var rng = new TinyMT(status);
-            var rng = new MersenneTwister((uint)Seed.Value);
+            uint[] status = new uint[] { 0xBEEFFACE, 0xDEADBEEF, 0xDEADFACE, 0x12345678, };
+            var rng = new TinyMT(status);
+            //var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;

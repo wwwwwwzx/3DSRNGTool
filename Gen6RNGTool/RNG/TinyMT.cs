@@ -15,27 +15,15 @@
         private const int TINYMT32_SH1 = 10;
         private const int TINYMT32_SH8 = 8;
 
-        public TinyMT(uint seed, uint[] para = null)
+        public TinyMT(uint seed)
         {
-            if (para != null && para.Length == 3)
-            {
-                mat1 = para[0];
-                mat2 = para[1];
-                tmat = para[2];
-            }
             init(seed);
         }
 
-        public TinyMT(uint[] st, uint[] para = null)
+        public TinyMT(uint[] st)
         {
             status = new uint[4];
             st.CopyTo(status, 0);
-            if (para != null && para.Length == 3)
-            {
-                mat1 = para[0];
-                mat2 = para[1];
-                tmat = para[2];
-            }
         }
 
         public void init(uint seed)
