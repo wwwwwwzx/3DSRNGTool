@@ -15,9 +15,21 @@
         private const int TINYMT32_SH1 = 10;
         private const int TINYMT32_SH8 = 8;
 
+        public TinyMT(uint seed, uint[] para = null)
+        {
+            if (para != null && para.Length == 3)
+            {
+                mat1 = para[0];
+                mat2 = para[1];
+                tmat = para[2];
+            }
+            init(seed);
+        }
+
         public TinyMT(uint[] st, uint[] para = null)
         {
-            st.CopyTo(status,0);
+            status = new uint[4];
+            st.CopyTo(status, 0);
             if (para != null && para.Length == 3)
             {
                 mat1 = para[0];
@@ -31,7 +43,7 @@
             status = new uint[] { seed, mat1, mat2, tmat };
 
             for (int i = 1; i < MIN_LOOP; i++)
-                status[i & 3] ^= (uint)i + 1812433253 * (status[(i - 1) & 3] ^ (status[(i - 1) & 3] >> 30));
+                status[i & 3] ^= (uint)i + 1812433253U * (status[(i - 1) & 3] ^ (status[(i - 1) & 3] >> 30));
 
             period_certification();
 
@@ -71,10 +83,9 @@
         }
 
         #region IRNG Member
-        public uint Next()
+        public void Next()
         {
             nextState();
-            return temper();
         }
 
         public uint Nextuint()

@@ -2,7 +2,7 @@
 {
     internal interface IRNG
     {
-        uint Next();
+        void Next();
         uint Nextuint();
         void Reseed(uint seed);
     }

@@ -218,13 +218,13 @@ namespace Gen6RNGTool
         #endregion
 
         #region UI communication
-        private void getsetting(MersenneTwister mt)
+        private void getsetting(IRNG rng)
         {
             dgvrowlist.Clear();
             DGV.Rows.Clear();
 
             filter = FilterSettings;
-            RNGPool.CreateBuffer(200, mt);
+            RNGPool.CreateBuffer(200, rng);
             RNGPool.e = IsEvent ? geteventsetting() : null;
             RNGPool.rngsetting = getRNGSettings();
         }
@@ -337,17 +337,19 @@ namespace Gen6RNGTool
 
         private void StationarySearch()
         {
-            MersenneTwister mt = new MersenneTwister((uint)Seed.Value);
+            //uint[] status = new uint[] { 0xBEEFFACE, 0xDEADBEEF, 0xDEADFACE, 0x12345678, };
+            //var rng = new TinyMT(status);
+            var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;
             // Advance
             for (int i = 0; i < min; i++)
-                mt.Nextuint();
+                rng.Next();
             // Prepare
-            getsetting(mt);
+            getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(mt.Nextuint()))
+            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()))
             {
                 RNGResult result = RNGPool.Generate();
                 if (!filter.CheckResult(result))
