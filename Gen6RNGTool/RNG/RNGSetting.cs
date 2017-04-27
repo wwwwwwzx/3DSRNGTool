@@ -23,7 +23,7 @@ namespace Gen6RNGTool.RNG
 
         // Generated Attributes
         public int PerfectIVCount => IV3 ? 3 : 0;
-        public int PIDroll_count => ShinyCharm ? 3 : 1;
+        public int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
         public RNGResult Generate()
         {
@@ -58,7 +58,7 @@ namespace Gen6RNGTool.RNG
                 rt.IVs[(int)(getrand % 6)] = 31;
             for (int i = 0; i < 6; i++)
                 if (rt.IVs[i] < 0)
-                    rt.IVs[i] = (int)(getrand >> 27);
+                    rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
