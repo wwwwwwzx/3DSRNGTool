@@ -1,4 +1,4 @@
-﻿namespace pkm3dsRNG.RNG
+﻿namespace pkm3dsRNG.Core
 {
     public class RNGResult : IPKM
     {

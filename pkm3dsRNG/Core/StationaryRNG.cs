@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-namespace pkm3dsRNG.RNG
+namespace pkm3dsRNG.Core
 {
     class StationaryRNG
     {

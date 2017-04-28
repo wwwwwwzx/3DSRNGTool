@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using pkm3dsRNG.RNG;
+using System.Collections.Generic;
 
-namespace pkm3dsRNG.RNG
+namespace pkm3dsRNG.Core
 {
     class RNGPool
     {

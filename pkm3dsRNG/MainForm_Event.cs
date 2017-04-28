@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using pkm3dsRNG.RNG;
+using pkm3dsRNG.Core;
 using static PKHeX.Util;
 
 namespace pkm3dsRNG

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using pkm3dsRNG.RNG;
+using pkm3dsRNG.Core;
 using System.Windows.Forms;
 using static PKHeX.Util;
 
@@ -290,7 +291,7 @@ namespace pkm3dsRNG
             else if (ivmin5.Value > ivmax5.Value)
                 Error(SETTINGERROR_STR[lindex] + L_S.Text);
             else if (Frame_min.Value > Frame_max.Value)
-                Error(SETTINGERROR_STR[lindex] + L_frame.Text);
+                Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
             else
                 StationarySearch();
         }
@@ -365,5 +366,11 @@ namespace pkm3dsRNG
             DGV.CurrentCell = null;
         }
         #endregion
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(this.Filters);
+            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(this.RNGInfo);
+        }
     }
 }
