@@ -9,6 +9,8 @@
 
     internal interface IRNG64
     {
-        ulong Next();
+        void Next();
+        ulong Nextulong();
+        void Reseed(uint seed);
     }
 }
