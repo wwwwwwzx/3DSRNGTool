@@ -155,9 +155,9 @@ namespace Gen6RNGTool
                 {
                     new Pokemon { Species = 360, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Wynaut
                     new Pokemon { Species = 175, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Togepi
-                    new Pokemon { Species = 374, Level = 1, Ability = 1, IVs = new[] {-1, -1, 31, -1, -1, 31}, Gift = true }, // Beldum
+                    new Pokemon { Species = 374, Level = 1, Ability = 1, IVs = new[] {-1, -1, 31, -1, 31, -1}, Gift = true }, // Beldum
 
-                    new Pokemon { Species = 351, Level = 30, Nature = 09, Ability = 1, IVs = new[] {-1, -1, -1, -1, 31, -1}, Gift = true }, // Castform
+                    new Pokemon { Species = 351, Level = 30, Nature = 09, Ability = 1, IVs = new[] {-1, -1, -1, 31, -1, -1}, Gift = true }, // Castform
                     new Pokemon { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = 03, Gift = true }, // Sharpedo
                     new Pokemon { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = 17, Gift = true }, // Camerupt
                     new Pokemon { Species = 025, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
@@ -240,7 +240,7 @@ namespace Gen6RNGTool
                 Text = "Gift",
                 List = new[]
                 {
-                    new Pokemon { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 31, 25, 19}, Gift = true, ShinyLocked = true }, // Lucario
+                    new Pokemon { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario
                     new Pokemon { Species = 131, Level = 30, Nature = 6, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
                 }
             },

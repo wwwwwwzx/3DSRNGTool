@@ -33,7 +33,7 @@ namespace Gen6RNGTool
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();
             TranslateInterface(this, lang);
-            Text = Text + $" v{version} @wwwwwwzx";
+            Text = Text + $" v{version}";
 
             StringItem.naturestr = getStringList("Natures", curlanguage);
             StringItem.hpstr = getStringList("Types", curlanguage);
