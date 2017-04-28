@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace pkm3dsRNG.RNG
 {
-    class RNGSetting
+    class StationaryRNG
     {
         // Background Info (Global variables)
         public bool AlwaysSync;
@@ -28,7 +28,7 @@ namespace pkm3dsRNG.RNG
         public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            rt.Lv = Level;
+            rt.Level = Level;
 
             //Sync
             if (AlwaysSync)

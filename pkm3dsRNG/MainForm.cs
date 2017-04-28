@@ -15,7 +15,7 @@ namespace pkm3dsRNG
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
         private Pokemon iPM => RNGPool.PM;
-        private EventRule rule => RNGPool.e;
+        private EventRNG rule => RNGPool.event_rng;
         private bool IsEvent => iPM.IsEvent;
         private RNGFilters filter = new RNGFilters();
         #endregion
@@ -78,7 +78,7 @@ namespace pkm3dsRNG
                 if (Category[i].List.Any(t => t.SpecForm == Lastpkm))
                 {
                     CB_Category.SelectedIndex = i;
-                    Poke.SelectedValue = Lastpkm;
+                    Sta_Poke.SelectedValue = Lastpkm;
                     return;
                 }
             CB_Category.SelectedIndex = 0;
@@ -88,10 +88,10 @@ namespace pkm3dsRNG
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex);
             var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
-            Poke.DisplayMember = "Text";
-            Poke.ValueMember = "Value";
-            Poke.DataSource = new BindingSource(List, null);
-            Poke.SelectedIndex = 0;
+            Sta_Poke.DisplayMember = "Text";
+            Sta_Poke.ValueMember = "Value";
+            Sta_Poke.DataSource = new BindingSource(List, null);
+            Sta_Poke.SelectedIndex = 0;
         }
 
         private void LoadCategory()
@@ -178,7 +178,7 @@ namespace pkm3dsRNG
 
         private void SetPersonalInfo(int Species, int Form)
         {
-            SyncNature.Enabled = !(iPM?.Nature < 25);
+            SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
             if (Species == 0)
                 return;
 
@@ -189,31 +189,34 @@ namespace pkm3dsRNG
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
 
             // Load from Pokemonlist
-            if (IsEvent || iPM == null)
+            if (iPM == null)
                 return;
             Filter_Lv.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
             ShinyLocked.Checked = iPM.ShinyLocked;
             GenderRatio.SelectedValue = (int)iPM.GenderRatio;
-            if (iPM.Nature < 25)
-                SyncNature.SelectedIndex = iPM.Nature + 1;
             if (iPM.IVs != null)
             {
                 IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
                 IVup = iPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
             }
+            if (!iPM.Syncable)
+                SyncNature.SelectedIndex = 0;
+            if (iPM.Nature < 25)
+                SyncNature.SelectedIndex = iPM.Nature + 1;
         }
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
             Reset_Click(null, null);
-            int specform = (int)(Poke.SelectedValue);
+            int specform = (int)(Sta_Poke.SelectedValue);
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
             RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
-            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = AlwaysSynced.Enabled = specform == 0;
+            AlwaysSynced.Enabled = iPM.Conceptual && specform == 0;
+            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual && (specform == 0 || specform == 151);
         }
         #endregion
 
@@ -225,8 +228,9 @@ namespace pkm3dsRNG
 
             filter = FilterSettings;
             RNGPool.CreateBuffer(200, rng);
-            RNGPool.e = IsEvent ? geteventsetting() : null;
-            RNGPool.rngsetting = getRNGSettings();
+            RNGPool.RNGMethod = (byte)(IsEvent ? 0 : 1); //to-do
+            RNGPool.sta_rng = getRNGSettings();
+            RNGPool.event_rng = geteventsetting();
         }
 
         private RNGFilters FilterSettings => new RNGFilters
@@ -245,9 +249,9 @@ namespace pkm3dsRNG
             PerfectIVs = (byte)PerfectIVs.Value,
         };
 
-        private RNGSetting getRNGSettings()
+        private StationaryRNG getRNGSettings()
         {
-            RNGSetting setting = new RNGSetting();
+            StationaryRNG setting = new StationaryRNG();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -296,7 +300,7 @@ namespace pkm3dsRNG
             string true_nature = StringItem.naturestr[result.Nature];
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
-            string Lv = result.Lv == 0 ? "-" : result.Lv.ToString();
+            string Lv = result.Level == 0 ? "-" : result.Level.ToString();
             string randstr = result.RandNum.ToString("X8");
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");

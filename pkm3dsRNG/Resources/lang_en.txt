@@ -20,8 +20,8 @@ L_TSV = TSV
 L_GameVersion = GameVersion
 ShinyCharm = Shiny Charm
 Advanced = Advanced
-SearchTarget = Target Search
-SearchTool = Tool Kit
+StationaryRNG = Stationary RNG
+EventRNG = Event RNG
 ---------------------TabPage1----------------------------------
 ---
 Condition = Conditions
@@ -39,7 +39,7 @@ Fix3v = 3IVs
 L_Encounter_th = Enctr Rate
 L_Lv = Lv Range
 ---
-SearchSettingBox = Filters
+Filters = Filters
 L_H = HP
 L_A = Atk
 L_B = Def
@@ -123,7 +123,6 @@ L_Species = Species
 Day = Day
 Night = Night
 ---------------------TabPage2----------------------------------
-EventSetting = Event RNG
 Event_IV_Fix0 = HP
 Event_IV_Fix1 = Atk
 Event_IV_Fix2 = Def

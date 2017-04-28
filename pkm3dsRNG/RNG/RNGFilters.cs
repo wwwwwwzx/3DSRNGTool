@@ -27,7 +27,7 @@ namespace pkm3dsRNG.RNG
         
         public bool CheckStats(RNGResult result)
         {
-            result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Lv, BS);
+            result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
             for (int i = 0; i < 6; i++)
                 if (Stats[i] != 0 && Stats[i] != result.Stats[i])
                     return false;
@@ -53,7 +53,7 @@ namespace pkm3dsRNG.RNG
             if (Skip)
             {
                 result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);
-                if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Lv, BS);
+                if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
                 return true;
             }
             if (ShinyOnly && !result.Shiny)

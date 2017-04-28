@@ -75,7 +75,7 @@ namespace pkm3dsRNG
         }
 
         //Converter
-        private EventRule geteventsetting()
+        private EventRNG geteventsetting()
         {
             int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
             for (int i = 0; i < 6; i++)
@@ -86,7 +86,7 @@ namespace pkm3dsRNG
                 Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
                 IVs = new[] { -1, -1, -1, -1, -1, -1 };
             }
-            EventRule e = new EventRule
+            EventRNG e = new EventRNG
             {
                 Species = (short)Event_Species.SelectedIndex,
                 Form = (byte)Event_Forme.SelectedIndex,

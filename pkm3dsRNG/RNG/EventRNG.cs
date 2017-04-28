@@ -1,6 +1,6 @@
 ﻿namespace pkm3dsRNG.RNG
 {
-    public class EventRule : IPKM
+    public class EventRNG : IPKM
     {
         public uint TSV;
         public byte IVsCount;
@@ -21,7 +21,7 @@
         public RNGResult Generate()
         {
             RNGResult rt = new RNGResult();
-            rt.Lv = Level;
+            rt.Level = Level;
 
             //Encryption Constant
             rt.EC = EC > 0 ? EC : getrand;
@@ -62,7 +62,7 @@
             }
             for (int i = 0; i < 6; i++)
                 if (rt.IVs[i] < 0)
-                    rt.IVs[i] = (int)(getrand >> 27);
+                    rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability
             rt.Ability = AbilityLocked ? Ability : (byte)(Ability == 0 ? (getrand & 1) + 1 : getrand % 3 + 1);

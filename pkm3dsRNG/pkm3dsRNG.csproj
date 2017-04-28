@@ -100,7 +100,7 @@
     </Compile>
     <Compile Include="Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
-    <Compile Include="RNG\EventRule.cs" />
+    <Compile Include="RNG\EventRNG.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
@@ -110,9 +110,9 @@
     <Compile Include="RNG\RNGFilters.cs" />
     <Compile Include="RNG\RNGPool.cs" />
     <Compile Include="RNG\RNGResult.cs" />
-    <Compile Include="RNG\RNGSetting.cs" />
+    <Compile Include="RNG\StationaryRNG.cs" />
     <Compile Include="RNG\IRNG.cs" />
-    <Compile Include="RNG\MTRNG.cs" />
+    <Compile Include="RNG\MT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RNG\SFMT.cs" />

@@ -20,8 +20,8 @@ L_TSV = TSV
 L_GameVersion = 游戏版本
 ShinyCharm = 闪耀护符
 Advanced = 高级模式
-SearchTarget = 目标检索
-SearchTool = 辅助工具
+StationaryRNG = 定点乱数
+EventRNG = 配信乱数
 ---------------------TabPage1----------------------------------
 ---
 Condition = 条件设置
@@ -39,7 +39,7 @@ L_SyncNature = 同步性格
 L_Encounter_th = 出现率
 L_Lv = 等级范围
 ---
-SearchSettingBox = 个体筛选
+Filters = 个体筛选
 L_H = HP
 L_A = 攻击
 L_B = 防御
@@ -120,7 +120,6 @@ L_Species = 种类
 Day = 白天
 Night = 夜晚
 ---------------------TabPage2----------------------------------
-EventSetting = 配信乱数
 Event_IV_Fix0 = HP
 Event_IV_Fix1 = 攻击
 Event_IV_Fix2 = 防御

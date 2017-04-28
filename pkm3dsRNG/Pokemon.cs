@@ -9,6 +9,7 @@ namespace pkm3dsRNG
         public bool Gift;
         public bool Egg;
         public bool ShinyLocked;
+        public bool Syncable = true;
         public bool Conceptual;
         //public bool Wild;
         //public byte Levelmin, Levelmax;
@@ -71,7 +72,7 @@ namespace pkm3dsRNG
             List = new[]
             {
                 new Pokemon { Conceptual = true, Species= 000, Level = 50, },
-                new Pokemon { Conceptual = true, Species= 151, Level = 50, },
+                new Pokemon { Conceptual = true, Species= 151, Level = 50, Syncable = false},
             }
         };
         
@@ -179,9 +180,9 @@ namespace pkm3dsRNG
                 Text = "Starters",
                 List = new[]
                 {
-                    new Pokemon { Gift = true, Species = 252, Level = 5, }, // Treeko
-                    new Pokemon { Gift = true, Species = 255, Level = 5, }, // Torchic
-                    new Pokemon { Gift = true, Species = 258, Level = 5, }, // Mudkip
+                    new Pokemon { Gift = true, Species = 252, Level = 5, Syncable = false,}, // Treeko
+                    new Pokemon { Gift = true, Species = 255, Level = 5, Syncable = false,}, // Torchic
+                    new Pokemon { Gift = true, Species = 258, Level = 5, Syncable = false,}, // Mudkip
             
                     new Pokemon { Gift = true, Species = 152, Level = 5, }, // Chikorita
                     new Pokemon { Gift = true, Species = 155, Level = 5, }, // Cyndaquil
@@ -261,9 +262,9 @@ namespace pkm3dsRNG
                 Text = "Starters",
                 List = new[]
                 {
-                    new Pokemon { Gift = true, Species = 650, Level = 5,}, // Chespin
-                    new Pokemon { Gift = true, Species = 653, Level = 5,}, // Fennekin
-                    new Pokemon { Gift = true, Species = 656, Level = 5,}, // Froakie
+                    new Pokemon { Gift = true, Species = 650, Level = 5, Syncable = false, }, // Chespin
+                    new Pokemon { Gift = true, Species = 653, Level = 5, Syncable = false, }, // Fennekin
+                    new Pokemon { Gift = true, Species = 656, Level = 5, Syncable = false, }, // Froakie
 
                     new Pokemon { Gift = true, Species = 1, Level = 10,}, // Bulbasaur
                     new Pokemon { Gift = true, Species = 4, Level = 10,}, // Charmander
