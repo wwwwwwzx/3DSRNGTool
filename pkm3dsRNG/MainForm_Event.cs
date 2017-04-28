@@ -10,7 +10,7 @@ namespace pkm3dsRNG
     public partial class MainForm : Form
     {
         // Reader
-        private bool ReadWc6(string filename)
+        private bool ReadWc(string filename)
         {
             BinaryReader br = new BinaryReader(File.Open(filename, FileMode.Open));
             try
@@ -86,24 +86,22 @@ namespace pkm3dsRNG
                 Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
                 IVs = new[] { -1, -1, -1, -1, -1, -1 };
             }
-            EventRNG e = new EventRNG
-            {
-                Species = (short)Event_Species.SelectedIndex,
-                Form = (byte)Event_Forme.SelectedIndex,
-                IVs = (int[])IVs.Clone(),
-                IVsCount = (byte)IVsCount.Value,
-                YourID = YourID.Checked,
-                PIDType = (byte)Event_PIDType.SelectedIndex,
-                AbilityLocked = AbilityLocked.Checked,
-                NatureLocked = NatureLocked.Checked,
-                GenderLocked = GenderLocked.Checked,
-                OtherInfo = OtherInfo.Checked,
-                EC = (uint)Event_EC.Value,
-                Ability = (byte)Event_Ability.SelectedIndex,
-                Nature = (byte)Event_Nature.SelectedIndex,
-                Gender = (byte)Event_Gender.SelectedIndex,
-                IsEgg = IsEgg.Checked
-            };
+            EventRNG e = Gen6 ? new Event6() : null;
+            e.Species = (short)Event_Species.SelectedIndex;
+            e.Form = (byte)Event_Forme.SelectedIndex;
+            e.IVs = (int[])IVs.Clone();
+            e.IVsCount = (byte)IVsCount.Value;
+            e.YourID = YourID.Checked;
+            e.PIDType = (byte)Event_PIDType.SelectedIndex;
+            e.AbilityLocked = AbilityLocked.Checked;
+            e.NatureLocked = NatureLocked.Checked;
+            e.GenderLocked = GenderLocked.Checked;
+            e.OtherInfo = OtherInfo.Checked;
+            e.EC = (uint)Event_EC.Value;
+            e.Ability = (byte)Event_Ability.SelectedIndex;
+            e.Nature = (byte)Event_Nature.SelectedIndex;
+            e.Gender = (byte)Event_Gender.SelectedIndex;
+            e.IsEgg = IsEgg.Checked;
             if (e.YourID)
                 e.TSV = (uint)TSV.Value;
             else
@@ -120,10 +118,10 @@ namespace pkm3dsRNG
         private void B_Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Gen6 Wonder Card Files|*.wc6";
+            openFileDialog1.Filter = "Gen6/7 Wonder Card Files|*.wc6,*.wc7";
             openFileDialog1.Title = "Select a Wonder Card File";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                if (!ReadWc6(openFileDialog1.FileName))
+                if (!ReadWc(openFileDialog1.FileName))
                     Error(FILEERRORSTR[lindex]);
         }
 
@@ -135,7 +133,7 @@ namespace pkm3dsRNG
         private void DragDropWC(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length == 1 && !ReadWc6(files[0]))
+            if (files.Length == 1 && !ReadWc(files[0]))
                 Error(FILEERRORSTR[lindex]);
         }
 

@@ -72,7 +72,6 @@ namespace pkm3dsRNG
             List = new[]
             {
                 new Pokemon { Conceptual = true, Species= 000, Level = 50, },
-                new Pokemon { Conceptual = true, Species= 151, Level = 50, Syncable = false},
             }
         };
         

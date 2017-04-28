@@ -57,8 +57,8 @@ namespace pkm3dsRNG.Core
         {
             switch (RNGMethod)
             {
-                case 0: return sta_rng.Generate();
-                case 1: return event_rng.Generate();
+                case 0: return (sta_rng as Stationary6).Generate();
+                case 1: return (event_rng as Event6).Generate();
             }
             return null;
         }

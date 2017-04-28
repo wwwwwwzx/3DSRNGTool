@@ -11,13 +11,12 @@ namespace pkm3dsRNG
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.10";
+        private string version = "0.20";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
         private Pokemon iPM => RNGPool.PM;
-        private EventRNG rule => RNGPool.event_rng;
-        private bool IsEvent => iPM.IsEvent;
+        private bool Gen6 => ver < 4;
         private RNGFilters filter = new RNGFilters();
         #endregion
 
@@ -229,8 +228,8 @@ namespace pkm3dsRNG
 
             filter = FilterSettings;
             RNGPool.CreateBuffer(200, rng);
-            RNGPool.RNGMethod = (byte)(IsEvent ? 0 : 1); //to-do
-            RNGPool.sta_rng = getRNGSettings();
+            RNGPool.RNGMethod = (byte)tabControl1.SelectedIndex;
+            RNGPool.sta_rng = getStaSettings();
             RNGPool.event_rng = geteventsetting();
         }
 
@@ -250,9 +249,9 @@ namespace pkm3dsRNG
             PerfectIVs = (byte)PerfectIVs.Value,
         };
 
-        private StationaryRNG getRNGSettings()
+        private StationaryRNG getStaSettings()
         {
-            StationaryRNG setting = new StationaryRNG();
+            StationaryRNG setting = Gen6 ? new Stationary6() : null;
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -271,6 +270,7 @@ namespace pkm3dsRNG
             setting.AlwaysSync = AlwaysSynced.Checked;
             setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
+
             return setting;
         }
         #endregion
