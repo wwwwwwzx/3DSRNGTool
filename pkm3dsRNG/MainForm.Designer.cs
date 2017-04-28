@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties3 = new pkm3dsRNG.Controls.CheckBoxProperties();
             pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties1 = new pkm3dsRNG.Controls.CheckBoxProperties();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties2 = new pkm3dsRNG.Controls.CheckBoxProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.HiddenPower = new pkm3dsRNG.Controls.CheckBoxComboBox();
             this.Nature = new pkm3dsRNG.Controls.CheckBoxComboBox();
@@ -92,7 +92,7 @@
             this.Stat5 = new System.Windows.Forms.NumericUpDown();
             this.BS_1 = new System.Windows.Forms.NumericUpDown();
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.RNGMethod = new System.Windows.Forms.TabControl();
             this.StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
             this.RB_FrameRange = new System.Windows.Forms.RadioButton();
@@ -209,7 +209,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.RNGMethod.SuspendLayout();
             this.StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -270,8 +270,8 @@
             // HiddenPower
             // 
             this.HiddenPower.BlankText = null;
-            checkBoxProperties3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties3;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
             this.HiddenPower.DisplayMemberSingleItem = "";
             this.HiddenPower.DropDownHeight = 400;
             this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -284,8 +284,8 @@
             // Nature
             // 
             this.Nature.BlankText = "Any";
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties1;
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties2;
             this.Nature.DisplayMemberSingleItem = "";
             this.Nature.DropDownHeight = 400;
             this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -997,19 +997,19 @@
             this.BS_0.Size = new System.Drawing.Size(55, 22);
             this.BS_0.TabIndex = 0;
             // 
-            // tabControl1
+            // RNGMethod
             // 
-            this.tabControl1.AllowDrop = true;
-            this.tabControl1.Controls.Add(this.StationaryRNG);
-            this.tabControl1.Controls.Add(this.EventRNG);
-            this.tabControl1.Location = new System.Drawing.Point(12, 32);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(978, 323);
-            this.tabControl1.TabIndex = 5;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
-            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
+            this.RNGMethod.AllowDrop = true;
+            this.RNGMethod.Controls.Add(this.StationaryRNG);
+            this.RNGMethod.Controls.Add(this.EventRNG);
+            this.RNGMethod.Location = new System.Drawing.Point(12, 32);
+            this.RNGMethod.Name = "RNGMethod";
+            this.RNGMethod.SelectedIndex = 0;
+            this.RNGMethod.Size = new System.Drawing.Size(978, 323);
+            this.RNGMethod.TabIndex = 5;
+            this.RNGMethod.SelectedIndexChanged += new System.EventHandler(this.RNGMethod_SelectedIndexChanged);
+            this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
+            this.RNGMethod.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
             // StationaryRNG
             // 
@@ -1826,14 +1826,14 @@
             this.DGV.AllowUserToResizeColumns = false;
             this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_Frame,
@@ -1853,24 +1853,24 @@
             this.dgv_pid,
             this.dgv_EC,
             this.dgv_research});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGV.Location = new System.Drawing.Point(12, 352);
             this.DGV.Name = "DGV";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGV.RowHeadersWidth = 18;
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
@@ -1989,7 +1989,9 @@
             "X",
             "Y",
             "OR",
-            "AS"});
+            "AS",
+            "Sun",
+            "Moon"});
             this.Gameversion.Location = new System.Drawing.Point(510, 11);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(51, 21);
@@ -2033,7 +2035,7 @@
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.RNGMethod);
             this.Name = "MainForm";
             this.Text = "pkm3dsRNG";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -2069,7 +2071,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Stat5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.RNGMethod.ResumeLayout(false);
             this.StationaryRNG.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
@@ -2160,7 +2162,7 @@
         private System.Windows.Forms.NumericUpDown Stat5;
         private System.Windows.Forms.NumericUpDown BS_1;
         private System.Windows.Forms.NumericUpDown BS_0;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl RNGMethod;
         private System.Windows.Forms.TabPage StationaryRNG;
         private System.Windows.Forms.TabPage EventRNG;
         private System.Windows.Forms.ComboBox Lang;

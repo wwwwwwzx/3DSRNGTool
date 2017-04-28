@@ -17,6 +17,7 @@ namespace pkm3dsRNG
         private Pokemon[] Pokemonlist;
         private Pokemon iPM => RNGPool.PM;
         private bool Gen6 => ver < 4;
+        private bool Gen7 => ver > 3;
         private RNGFilters filter = new RNGFilters();
         #endregion
 
@@ -48,7 +49,7 @@ namespace pkm3dsRNG
             Gender.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
-            for (int i = 0; i <= 721; i++)
+            for (int i = 0; i <= 802; i++)
                 Event_Species.Items.Add("-");
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
@@ -142,6 +143,7 @@ namespace pkm3dsRNG
         {
             LoadSpecies();
         }
+
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
         {
             IVPanel.Visible = ByIVs.Checked;
@@ -172,6 +174,12 @@ namespace pkm3dsRNG
 
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
+
+        private void RNGMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RNGMethod.TabPages[RNGMethod.SelectedIndex].Controls.Add(this.Filters);
+            RNGMethod.TabPages[RNGMethod.SelectedIndex].Controls.Add(this.RNGInfo);
+        }
         #endregion
 
         #region DataEntry
@@ -183,7 +191,7 @@ namespace pkm3dsRNG
                 return;
 
             // Load from personal table
-            var t = PersonalTable.ORAS.getFormeEntry(Species, Form);
+            var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Form) : PersonalTable.SM.getFormeEntry(Species, Form);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
@@ -228,7 +236,8 @@ namespace pkm3dsRNG
 
             filter = FilterSettings;
             RNGPool.CreateBuffer(200, rng);
-            RNGPool.RNGMethod = (byte)tabControl1.SelectedIndex;
+            RNGPool.RNGMethod = (byte)RNGMethod.SelectedIndex;
+            if (Gen7) RNGPool.RNGMethod += 16;
             RNGPool.sta_rng = getStaSettings();
             RNGPool.event_rng = geteventsetting();
         }
@@ -293,11 +302,14 @@ namespace pkm3dsRNG
             else if (Frame_min.Value > Frame_max.Value)
                 Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
             else
-                StationarySearch();
+                Search();
         }
 
         private DataGridViewRow getRow(int i, RNGResult result)
         {
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(DGV);
+
             string true_nature = StringItem.naturestr[result.Nature];
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
@@ -308,10 +320,7 @@ namespace pkm3dsRNG
 
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
-            DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(DGV);
-
-            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum >> 27).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
+            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum & 0x1F).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
 
             row.SetValues(
                 i,
@@ -340,7 +349,7 @@ namespace pkm3dsRNG
             return row;
         }
 
-        private void StationarySearch()
+        private void Search()
         {
             var rng = new TinyMT((uint)Seed.Value);
             //var rng = new MersenneTwister((uint)Seed.Value);
@@ -366,11 +375,5 @@ namespace pkm3dsRNG
             DGV.CurrentCell = null;
         }
         #endregion
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(this.Filters);
-            tabControl1.TabPages[tabControl1.SelectedIndex].Controls.Add(this.RNGInfo);
-        }
     }
 }

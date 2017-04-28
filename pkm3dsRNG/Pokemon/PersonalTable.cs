@@ -5,18 +5,30 @@ namespace pkm3dsRNG
 {
     public class PersonalTable
     {
-        public static readonly PersonalTable ORAS = new PersonalTable(Properties.Resources.personal_ao);
+        public static readonly PersonalTable ORAS = new PersonalTable(Properties.Resources.personal_ao, GameVersion.ORAS);
+        public static readonly PersonalTable SM = new PersonalTable(Properties.Resources.personal_sm, GameVersion.SM);
 
-        private PersonalTable(byte[] data)
+        private PersonalTable(byte[] data, GameVersion ver)
         {
-           int size = PersonalInfoORAS.SIZE; 
-            if (size == 0)
-            { Table = null; return; }
-
+            int size = 0;
+            switch (ver)
+            {
+                case GameVersion.ORAS: size = PersonalInfoORAS.SIZE; break;
+                case GameVersion.SM: size = PersonalInfoSM.SIZE; break;
+            }
             byte[][] entries = splitBytes(data, size);
             PersonalInfo[] d = new PersonalInfo[data.Length / size];
-            for (int i = 0; i < d.Length; i++)
-                d[i] = new PersonalInfoORAS(entries[i]);
+            switch (ver)
+            {
+                case GameVersion.ORAS:
+                    for (int i = 0; i < d.Length; i++)
+                        d[i] = new PersonalInfoORAS(entries[i]);
+                    break;
+                case GameVersion.SM:
+                    for (int i = 0; i < d.Length; i++)
+                        d[i] = new PersonalInfoSM(entries[i]);
+                    break;
+            }
             Table = d;
         }
 

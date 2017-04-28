@@ -98,7 +98,7 @@ namespace pkm3dsRNG.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = Pkm3ds [rest of string was truncated]&quot;;.
+        ///! MainForm = pkm3ds [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
             get {
@@ -112,6 +112,16 @@ namespace pkm3dsRNG.Properties {
         internal static byte[] personal_ao {
             get {
                 object obj = ResourceManager.GetObject("personal_ao", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] personal_sm {
+            get {
+                object obj = ResourceManager.GetObject("personal_sm", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -5,6 +5,7 @@ namespace PKHeX.Core
     public class PersonalInfoORAS : PersonalInfo
     {
         public const int SIZE = 0x50;
+        protected PersonalInfoORAS() { }
         public PersonalInfoORAS(byte[] data)
         {
             if (data.Length != SIZE)

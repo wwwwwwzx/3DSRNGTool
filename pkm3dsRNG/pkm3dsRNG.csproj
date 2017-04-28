@@ -84,8 +84,14 @@
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
     <Compile Include="Gen6\Event6.cs" />
+    <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\Event7.cs" />
+    <Compile Include="Gen7\ModelStatus.cs" />
+    <Compile Include="Gen7\PKM7.cs" />
+    <Compile Include="Gen7\Result7.cs" />
+    <Compile Include="Gen7\Stationary7.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,12 +107,13 @@
     <Compile Include="MainForm_Trans.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pokemon.cs" />
+    <Compile Include="Core\Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
     <Compile Include="Core\EventRNG.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
+    <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="Resources\FormUtil.cs" />
     <Compile Include="Resources\FuncUtil.cs" />
@@ -150,6 +157,7 @@
   <ItemGroup>
     <None Include="Resources\lang_cn.txt" />
     <None Include="Resources\lang_en.txt" />
+    <None Include="Resources\personal_sm" />
     <None Include="Resources\text_Genderratio_en.txt" />
     <None Include="Resources\text_Genderratio_cn.txt" />
     <None Include="Resources\text_Natures_cn.txt" />

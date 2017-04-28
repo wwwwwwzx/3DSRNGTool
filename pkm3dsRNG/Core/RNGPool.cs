@@ -57,10 +57,55 @@ namespace pkm3dsRNG.Core
         {
             switch (RNGMethod)
             {
-                case 0: return (sta_rng as Stationary6).Generate();
-                case 1: return (event_rng as Event6).Generate();
+                case 00: return (sta_rng as Stationary6).Generate();
+                case 01: return (event_rng as Event6).Generate();
+                case 16: return (sta_rng as Stationary7).Generate();
+                case 17: return (event_rng as Event7).Generate();
             }
             return null;
         }
+
+
+        #region Gen7 Time keeping
+
+        public static int PreHoneyCorrection;
+        public static int delaytime = 93; //For honey 186F =3.1s
+        public static byte modelnumber;
+        public static int[] remain_frame;
+
+        //public static bool route17, phase;
+
+        private static void ResetModelStatus()
+        {
+            remain_frame = new int[modelnumber];
+            //phase = false;
+        }
+
+        public static void time_elapse(int n)
+        {
+            for (int totalframe = 0; totalframe < n; totalframe++)
+            {
+                for (int i = 0; i < modelnumber; i++)
+                {
+                    if (remain_frame[i] > 1)                       //Cooldown 2nd part
+                    {
+                        remain_frame[i]--;
+                        continue;
+                    }
+                    if (remain_frame[i] < 0)                       //Cooldown 1st part
+                    {
+                        if (++remain_frame[i] == 0)                //Blinking
+                            remain_frame[i] = (int)(getrand % 3) == 0 ? 36 : 30;
+                        continue;
+                    }
+                    if ((int)(getrand & 0x7F) == 0)                //Not Blinking
+                        remain_frame[i] = -5;
+                }
+                //if (route17 && (phase = !phase))
+                //    Advance(2);
+            }
+        }
+            
+        #endregion
     }
 }

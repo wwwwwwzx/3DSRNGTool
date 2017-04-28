@@ -8,10 +8,16 @@
         // Version IDs, also stored in PKM structure
         /*Gen6*/
         X = 24, Y = 25, AS = 26, OR = 27,
+        /*Gen7*/
+        SN = 30, MN = 31,
 
         // Game Groupings (SaveFile type)
         XY = 106,
         ORAS = 108,
+        SM = 109,
+
+        Gen6,
+        Gen7,
     }
 
     public static class Extension
@@ -25,6 +31,12 @@
             {
                 case GameVersion.XY: return g2 == GameVersion.X || g2 == GameVersion.Y;
                 case GameVersion.ORAS: return g2 == GameVersion.OR || g2 == GameVersion.AS;
+                case GameVersion.Gen6:
+                    return GameVersion.XY.Contains(g2) || GameVersion.ORAS.Contains(g2);
+
+                case GameVersion.SM:
+                case GameVersion.Gen7:
+                    return g2 == GameVersion.SN || g2 == GameVersion.MN;
                 default: return false;
             }
         }
