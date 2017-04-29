@@ -38,6 +38,7 @@ namespace pkm3dsRNG
             StringItem.naturestr = getStringList("Natures", curlanguage);
             StringItem.hpstr = getStringList("Types", curlanguage);
             StringItem.species = getStringList("Species", curlanguage);
+            StringItem.items = getStringList("Items", curlanguage);
             StringItem.genderratio = getStringList("Genderratio", curlanguage);
             StringItem.smlocation = getStringList("Location_sm", curlanguage);
 
@@ -55,17 +56,22 @@ namespace pkm3dsRNG
             for (int i = 0; i < StringItem.naturestr.Length; i++)
                 Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
 
+            M_Items.Items[0] = F_Items.Items[0] = NONE_STR[lindex];
+            for (int i = 0; i < StringItem.items.Length; i++)
+                M_Items.Items[i + 1] = F_Items.Items[i + 1] = StringItem.items[i];
+
             for (int i = 1; i < StringItem.species.Length; i++)
                 Event_Species.Items[i] = StringItem.species[i];
 
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
             HiddenPower.Items.AddRange(StringItem.HiddenPowerList);
-
-            GenderRatio.DisplayMember = "Text";
-            GenderRatio.ValueMember = "Value";
+            
             GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
             GenderRatio.SelectedIndex = 0;
+
+            Egg_GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
+            Egg_GenderRatio.SelectedIndex = 1;
 
             // display something upon loading
             Nature.CheckBoxItems[0].Checked = true;

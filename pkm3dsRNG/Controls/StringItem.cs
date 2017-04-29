@@ -17,6 +17,7 @@ namespace pkm3dsRNG
 
         public static string[] species;
         public static string[] smlocation;
+        public static string[] items;
 
         public static ComboItem[] NatureList
             => naturestr.Select((str, i) => new ComboItem(str, i)).ToArray();

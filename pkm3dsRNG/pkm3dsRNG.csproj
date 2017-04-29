@@ -176,6 +176,8 @@
     <None Include="Resources\text_Types_en.txt" />
     <None Include="Resources\text_Location_sm_cn.txt" />
     <None Include="Resources\text_Location_sm_en.txt" />
+    <None Include="Resources\text_Items_cn.txt" />
+    <None Include="Resources\text_Items_en.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

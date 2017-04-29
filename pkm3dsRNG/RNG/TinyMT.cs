@@ -1,4 +1,6 @@
-﻿namespace pkm3dsRNG.RNG
+﻿using System.Linq;
+
+namespace pkm3dsRNG.RNG
 {
     public class TinyMT : IRNG
     {
@@ -69,6 +71,8 @@
             }
             return t0;
         }
+
+        public override string ToString() => string.Join(",", status.Select(v => v.ToString("X8")).Reverse());
 
         #region IRNG Member
         public void Next()

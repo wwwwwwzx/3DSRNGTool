@@ -136,6 +136,12 @@
   <data name="text_Genderratio_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text_Genderratio_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="text_Items_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text_Items_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Items_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text_Items_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
   <data name="text_Location_sm_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text_Location_sm_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

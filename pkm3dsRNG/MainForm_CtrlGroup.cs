@@ -45,6 +45,26 @@ namespace pkm3dsRNG
                 Stat3.Value = value[3]; Stat4.Value = value[4]; Stat5.Value = value[5];
             }
         }
+        private int[] IV_Male
+        {
+            get { return new[] { (int)M_IV0.Value, (int)M_IV1.Value, (int)M_IV2.Value, (int)M_IV3.Value, (int)M_IV4.Value, (int)M_IV5.Value, }; }
+            set
+            {
+                if (value.Length < 6) return;
+                M_IV0.Value = value[0]; M_IV1.Value = value[1]; M_IV2.Value = value[2];
+                M_IV3.Value = value[3]; M_IV4.Value = value[4]; M_IV5.Value = value[5];
+            }
+        }
+        private int[] IV_Female
+        {
+            get { return new[] { (int)F_IV0.Value, (int)F_IV1.Value, (int)F_IV2.Value, (int)F_IV3.Value, (int)F_IV4.Value, (int)F_IV5.Value, }; }
+            set
+            {
+                if (value.Length < 6) return;
+                F_IV0.Value = value[0]; F_IV1.Value = value[1]; F_IV2.Value = value[2];
+                F_IV3.Value = value[3]; F_IV4.Value = value[4]; F_IV5.Value = value[5];
+            }
+        }
         private NumericUpDown[] EventIV { get { return new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, }; } }
         private CheckBox[] EventIVLocked { get { return new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, }; } }
         private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();

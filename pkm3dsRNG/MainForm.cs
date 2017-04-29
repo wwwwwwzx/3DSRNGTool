@@ -20,7 +20,7 @@ namespace pkm3dsRNG
         private byte method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => method == 1;
         private bool Gen6 => ver < 4;
-        private bool Gen7 => ver > 3;
+        private bool Gen7 => 4 <= ver && ver < 6;
         private EncounterArea7 ea = new EncounterArea7();
         private bool IsMoon => ver == 5;
         private bool IsNight => Night.Checked;
@@ -48,6 +48,7 @@ namespace pkm3dsRNG
             Seed.Value = Properties.Settings.Default.Seed;
             var LastGameversion = Properties.Settings.Default.GameVersion;
             var Lastpkm = Properties.Settings.Default.PKM;
+            var LastMethod = Properties.Settings.Default.Method;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             Advanced.Checked = Properties.Settings.Default.Advance;
@@ -56,6 +57,7 @@ namespace pkm3dsRNG
                 EventIV[i].Enabled = false;
 
             Gender.Items.AddRange(StringItem.genderstr);
+            Ball.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
             for (int i = 0; i <= 802; i++)
@@ -70,16 +72,25 @@ namespace pkm3dsRNG
             lindex = lang;
             ChangeLanguage(null, null);
 
-            Gender.SelectedIndex = 0;
-            Ability.SelectedIndex = 0;
-            SyncNature.SelectedIndex = 0;
-            Event_Species.SelectedIndex = Event_PIDType.SelectedIndex = Event_Nature.SelectedIndex = 0;
-            Event_Ability.SelectedIndex = Event_Gender.SelectedIndex = 0;
+
+            Gender.SelectedIndex = 
+            Ball.SelectedIndex = 
+            Ability.SelectedIndex =
+            SyncNature.SelectedIndex =
+            Event_Species.SelectedIndex = Event_PIDType.SelectedIndex =
+            Event_Ability.SelectedIndex = Event_Gender.SelectedIndex =
+            M_ability.SelectedIndex = F_ability.SelectedIndex =
+            M_Items.SelectedIndex = F_Items.SelectedIndex =
+            0;
+            Egg_GenderRatio.SelectedIndex = 1;
+
             Gameversion.SelectedIndex = LastGameversion;
+            RNGMethod.SelectedIndex = LastMethod;
+            RNGMethod_Changed(null, null);
+
             FindSetting(Lastpkm);
 
             ByIVs.Checked = true;
-            RNGMethod_SelectedIndexChanged(null, null);
         }
 
         private void FindSetting(int Lastpkm)
@@ -93,6 +104,26 @@ namespace pkm3dsRNG
                     return;
                 }
             CB_Category.SelectedIndex = 0;
+        }
+
+        private void LoadPKM()
+        {
+            Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
+            var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
+            Poke.DisplayMember = "Text";
+            Poke.ValueMember = "Value";
+            Poke.DataSource = new BindingSource(List, null);
+            Poke.SelectedIndex = 0;
+        }
+
+        private void LoadCategory()
+        {
+            ver = Math.Max(ver, 0);
+            CB_Category.Items.Clear();
+            var Category = Pokemon.getCategoryList(ver, method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
+            CB_Category.Items.AddRange(Category);
+            CB_Category.SelectedIndex = 0;
+            LoadPKM();
         }
 
         private void RefreshLocation()
@@ -124,26 +155,6 @@ namespace pkm3dsRNG
             SlotSpecies.DataSource = new BindingSource(List, null);
             if (0 <= tmp && tmp < SlotSpecies.Items.Count)
                 SlotSpecies.SelectedIndex = tmp;
-        }
-
-        private void LoadPKM()
-        {
-            Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
-            var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
-            Poke.DisplayMember = "Text";
-            Poke.ValueMember = "Value";
-            Poke.DataSource = new BindingSource(List, null);
-            Poke.SelectedIndex = 0;
-        }
-
-        private void LoadCategory()
-        {
-            ver = Math.Max(ver, 0);
-            CB_Category.Items.Clear();
-            var Category = Pokemon.getCategoryList(ver, method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
-            CB_Category.Items.AddRange(Category);
-            CB_Category.SelectedIndex = 0;
-            LoadPKM();
         }
 
         private void LoadSlotSpeciesInfo()
@@ -190,12 +201,8 @@ namespace pkm3dsRNG
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
-            Properties.Settings.Default.Save();
 
-            LoadCategory();
             Frame_min.Value = Gen7 ? 418 : 0;
-
-            dgv_rand.Visible = Gen6;
 
             var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
             Slot.Items.Clear();
@@ -204,17 +211,7 @@ namespace pkm3dsRNG
             Slot.CheckBoxItems[0].Checked = true;
             Slot.CheckBoxItems[0].Checked = false;
 
-            BlinkFOnly.Visible = SafeFOnly.Visible =
-            CreateTimeline.Visible = TimeSpan.Visible =
-            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
-
-            if (Gen6)
-            {
-                if (CreateTimeline.Checked)
-                    RB_FrameRange.Checked = true;
-                BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked = false;
-            }
-
+            RNGMethod_Changed(null, null);
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
@@ -255,18 +252,41 @@ namespace pkm3dsRNG
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
 
-        private void RNGMethod_SelectedIndexChanged(object sender, EventArgs e)
+        private void RNGMethod_Changed(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Method = method;
+            Properties.Settings.Default.Save();
+
             RNGMethod.TabPages[method].Controls.Add(this.Filters);
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            if (0 == method || method == 2)
+            {
+                LoadCategory();
+                Poke_SelectedIndexChanged(null, null);
+            }
+
+            dgv_rand.Visible = Gen6;
+
+            BlinkFOnly.Visible = SafeFOnly.Visible =
+            CreateTimeline.Visible = TimeSpan.Visible =
+            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7 && method < 3;
+
+            if (Gen6)
+            {
+                if (CreateTimeline.Checked)
+                    RB_FrameRange.Checked = true;
+                BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked = false;
+            }
+
             L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
+            L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
             dgv_Lv.Visible = dgv_slot.Visible =
             L_Slot.Visible = Slot.Visible = method == 2;
             switch (method)
             {
-                case 0: Poke_SelectedIndexChanged(null, null); Sta_Setting.Controls.Add(EnctrPanel); LoadCategory(); return;
-                case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
-                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); LoadCategory(); Timedelay.Value = 8; return;
+                case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
+                case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
+                case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
             }
         }
 
@@ -286,6 +306,7 @@ namespace pkm3dsRNG
             ControlOFF.Visible = ControlOFF.Checked = false;
         }
 
+        // Wild RNG
         private void MetLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Gen7)
@@ -362,10 +383,10 @@ namespace pkm3dsRNG
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reset_Click(null, null);
             int specform = (int)(Poke.SelectedValue);
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
+            Reset_Click(null, null);
             RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
             if (method == 2)
@@ -384,6 +405,7 @@ namespace pkm3dsRNG
         #endregion
 
         #region UI communication
+
         private void getsetting(IRNG rng)
         {
             dgvrowlist.Clear();
@@ -706,5 +728,32 @@ namespace pkm3dsRNG
             DGV.CurrentCell = null;
         }
         #endregion
+
+        #region Egg RNG UI
+        private void B_EggReset_Click(object sender, EventArgs e)
+        {
+            IV_Male = new[] { 31, 31, 31, 31, 31, 31 };
+            IV_Female = new[] { 31, 31, 31, 31, 31, 31 };
+            Egg_GenderRatio.SelectedIndex = 1;
+            M_Items.SelectedIndex = F_Items.SelectedIndex = 0;
+            M_ditto.Checked = F_ditto.Checked = false;
+            M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
+        }
+        #endregion
+
+        private void Ditto_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as CheckBox)?.Checked ?? false)
+            {
+                (sender == F_ditto ? M_ditto : F_ditto).Checked = false;
+                Heterogeneity.Enabled = false;
+                Heterogeneity.Checked = true;
+            }
+            else
+            {
+                Heterogeneity.Checked = false;
+                Heterogeneity.Enabled = true;
+            }
+        }
     }
 }

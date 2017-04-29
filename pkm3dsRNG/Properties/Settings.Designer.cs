@@ -106,5 +106,17 @@ namespace pkm3dsRNG.Properties {
                 this["GameVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte Method {
+            get {
+                return ((byte)(this["Method"]));
+            }
+            set {
+                this["Method"] = value;
+            }
+        }
     }
 }

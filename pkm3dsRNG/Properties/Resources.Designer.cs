@@ -157,6 +157,38 @@ namespace pkm3dsRNG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 不变之石
+        ///红线
+        ///力量负重
+        ///力量护腕
+        ///力量腰带
+        ///力量镜
+        ///力量束带
+        ///力量护踝.
+        /// </summary>
+        internal static string text_Items_cn {
+            get {
+                return ResourceManager.GetString("text_Items_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Everstone
+        ///Destiny Knot
+        ///Power Weight
+        ///Power Bracer
+        ///Power Belt
+        ///Power Lens
+        ///Power Band
+        ///Power Anklet.
+        /// </summary>
+        internal static string text_Items_en {
+            get {
+                return ResourceManager.GetString("text_Items_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to －－－－－－－－－－
         ///
         ///神秘的地方

@@ -23,6 +23,7 @@ Advanced = Advanced
 TP_StationaryRNG = Stationary RNG
 TP_EventRNG = Event RNG
 TP_WildRNG = Wild RNG
+TP_EggRNG = Egg RNG
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting
@@ -58,6 +59,7 @@ L_HP = Hidden Power
 L_Ability = Ability
 L_Lv_S = Lv
 L_Slot = Encounter Slot
+L_Ball = Ball
 DisableFilters = Disable Filters
 SpecialOnly = UB/QR Only
 ShinyOnly = Shiny Only
@@ -98,7 +100,6 @@ dgv_hiddenpower = HPType
 dgv_needle = Clk
 dgv_psv = PSV
 dgv_delay = Delay
-dgv_ubvalue = UB?
 dgv_slot = Slot
 dgv_lv = Lv
 dgv_gender = Gender
@@ -136,3 +137,26 @@ L_Location = Location
 L_Slots = Slots
 Day = Day
 Night = Night
+---------------------TabPage4----------------------------------
+---
+TinyMT_Status = Status
+B_Load = Load...
+B_Backup = Backup
+---
+Parents_Info = Parents Infomation
+L_Egg_H = HP
+L_Egg_A = Atk
+L_Egg_B = Def
+L_Egg_C = SpA
+L_Egg_D = SpD
+L_Egg_S = Spe
+L_EggAbility = Ability
+L_Ditto = Ditto
+L_Items = Items
+L_Male = Male
+L_Female = Female
+MM = Masuda Method
+Heterogeneity = Different Dex #
+L_Egg_GR = Gender Ratio
+B_EggReset = Reset
+dgv_status = Status
