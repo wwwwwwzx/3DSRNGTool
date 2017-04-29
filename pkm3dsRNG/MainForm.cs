@@ -97,10 +97,15 @@ namespace pkm3dsRNG
 
         private void RefreshLocation()
         {
-            if (Gen6) return; // not impled
-            var locationlist = iPM.Conceptual ? LocationTable7.SMLocationList : (iPM as PKMW7)?.Location ?? null;
-            if (locationlist == null) return;
-            var Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
+            if (Gen6)
+                Locationlist.Clear(); // not impled
+            else if (Gen7)
+            {
+                var locationlist = iPM.Conceptual ? LocationTable7.SMLocationList : (iPM as PKMW7)?.Location ?? null;
+                if (locationlist == null) return;
+                Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
+            }
+
             MetLocation.DisplayMember = "Text";
             MetLocation.ValueMember = "Value";
             MetLocation.DataSource = new BindingSource(Locationlist, null);
@@ -111,7 +116,8 @@ namespace pkm3dsRNG
         private void LoadSpecies()
         {
             int tmp = SlotSpecies.SelectedIndex;
-            var List = slotspecies.Skip(1).Distinct().Select(SpecForm => new Controls.ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
+            var species = slotspecies ?? new int[1];
+            var List = species.Skip(1).Distinct().Select(SpecForm => new Controls.ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
             List = new[] { new Controls.ComboItem("-", 0) }.Concat(List);
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -272,13 +278,12 @@ namespace pkm3dsRNG
 
         private void NPC_ValueChanged(object sender, EventArgs e)
         {
-            if (Gen7)
-            {
-                var ControlON = NPC.Value == 0 ? BlinkFOnly : SafeFOnly;
-                var ControlOFF = NPC.Value == 0 ? SafeFOnly : BlinkFOnly;
-                ControlON.Visible = true;
-                ControlOFF.Visible = ControlOFF.Checked = false;
-            }
+            if (!Gen7)
+                return;
+            var ControlON = NPC.Value == 0 ? BlinkFOnly : SafeFOnly;
+            var ControlOFF = NPC.Value == 0 ? SafeFOnly : BlinkFOnly;
+            ControlON.Visible = true;
+            ControlOFF.Visible = ControlOFF.Checked = false;
         }
 
         private void MetLocation_SelectedIndexChanged(object sender, EventArgs e)
@@ -488,6 +493,7 @@ namespace pkm3dsRNG
             {
                 slottype = 2;
             }
+
             setting.Markslots();
             setting.SlotSplitter = WildRNG.SlotDistribution[slottype];
 
