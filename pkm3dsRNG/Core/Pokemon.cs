@@ -34,34 +34,44 @@ namespace pkm3dsRNG
             public override string ToString() => Text;
         }
 
-        public static Pokemon[] getSpecFormList(int Gameversion, int groupidx)
+        public static Pokemon[] getSpecFormList(int Gameversion, int groupidx, int method)
         {
+            var list = getCategoryList(Gameversion, method)[groupidx].List;
             switch (Gameversion)
             {
-                case 0: return PKM6.Species_XY[groupidx].List.Where(s => s.Version.Contains(GameVersion.X)).ToArray();
-                case 1: return PKM6.Species_XY[groupidx].List.Where(s => s.Version.Contains(GameVersion.Y)).ToArray();
-                case 2: return PKM6.Species_ORAS[groupidx].List.Where(s => s.Version.Contains(GameVersion.OR)).ToArray();
-                case 3: return PKM6.Species_ORAS[groupidx].List.Where(s => s.Version.Contains(GameVersion.AS)).ToArray();
-                case 4: return PKM7.Species_SM[groupidx].List.Where(s => s.Version.Contains(GameVersion.SN)).ToArray();
-                case 5: return PKM7.Species_SM[groupidx].List.Where(s => s.Version.Contains(GameVersion.MN)).ToArray();
+                case 0: return list.Where(s => s.Version.Contains(GameVersion.X)).ToArray();
+                case 1: return list.Where(s => s.Version.Contains(GameVersion.Y)).ToArray();
+                case 2: return list.Where(s => s.Version.Contains(GameVersion.OR)).ToArray();
+                case 3: return list.Where(s => s.Version.Contains(GameVersion.AS)).ToArray();
+                case 4: return list.Where(s => s.Version.Contains(GameVersion.SN)).ToArray();
+                case 5: return list.Where(s => s.Version.Contains(GameVersion.MN)).ToArray();
                 default: return new Pokemon[0];
             }
         }
 
-        public static PokemonList[] getCategoryList(int Gameversion)
+        public readonly static PokemonList[] Default = new[]
+        {
+            new PokemonList
+            {
+                Text = "Not Impled",
+                List = new[]{ new Pokemon { Conceptual = true, Species= 000, Level = 50, },}
+            },
+        };
+
+        public static PokemonList[] getCategoryList(int Gameversion, int method)
         {
             switch (Gameversion)
             {
                 case 0:
                 case 1:
-                    return PKM6.Species_XY;
+                    return method == 0 ? PKM6.Species_XY : Default; //Wild not impled
                 case 2:
                 case 3:
-                    return PKM6.Species_ORAS;
+                    return method == 0 ? PKM6.Species_ORAS : Default; //Wild not impled
                 case 4:
                 case 5:
-                    return PKM7.Species_SM;
-                default: return new PokemonList[0];
+                    return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;
+                default: return Default;
             }
         }
 

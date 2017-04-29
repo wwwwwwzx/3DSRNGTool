@@ -78,7 +78,7 @@ namespace pkm3dsRNG
 
         private void FindSetting(int Lastpkm)
         {
-            var Category = Pokemon.getCategoryList(ver);
+            var Category = Pokemon.getCategoryList(ver, method);
             for (int i = 0; i < Category.Length; i++)
                 if (Category[i].List.Any(t => t.SpecForm == Lastpkm))
                 {
@@ -91,7 +91,7 @@ namespace pkm3dsRNG
 
         private void LoadSpecies()
         {
-            Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex);
+            Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
             var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
             Sta_Poke.DisplayMember = "Text";
             Sta_Poke.ValueMember = "Value";
@@ -103,7 +103,7 @@ namespace pkm3dsRNG
         {
             ver = Math.Max(ver, 0);
             CB_Category.Items.Clear();
-            var Category = Pokemon.getCategoryList(ver).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
+            var Category = Pokemon.getCategoryList(ver, method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
             CB_Category.Items.AddRange(Category);
             CB_Category.SelectedIndex = 0;
             LoadSpecies();
@@ -196,9 +196,9 @@ namespace pkm3dsRNG
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
             switch (method)
             {
-                case 0: Poke_SelectedIndexChanged(null, null); Sta_Setting.Controls.Add(EnctrPanel); return;
+                case 0: Poke_SelectedIndexChanged(null, null); Sta_Setting.Controls.Add(EnctrPanel); LoadCategory(); return;
                 case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
-                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); return;
+                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); LoadCategory(); return;
             }
         }
 
@@ -235,7 +235,7 @@ namespace pkm3dsRNG
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
 
             // Load from Pokemonlist
-            if (iPM == null)
+            if (iPM == null || IsEvent)
                 return;
             Filter_Lv.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
@@ -252,6 +252,10 @@ namespace pkm3dsRNG
                 SyncNature.SelectedIndex = iPM.Nature + 1;
             Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
             NPC.Value = (iPM as PKM7)?.NPC ?? 1;
+            if (iPM is PKMW7)
+            {
+                // load location and slots
+            }
         }
 
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);

@@ -2315,6 +2315,8 @@
             this.Controls.Add(this.L_Seed);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.RNGMethod);
+            this.MaximumSize = new System.Drawing.Size(1110, 1000);
+            this.MinimumSize = new System.Drawing.Size(1110, 600);
             this.Name = "MainForm";
             this.Text = "pkm3dsRNG";
             this.Load += new System.EventHandler(this.MainForm_Load);

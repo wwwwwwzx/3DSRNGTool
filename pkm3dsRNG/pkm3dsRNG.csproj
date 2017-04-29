@@ -87,6 +87,7 @@
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\PKMW7.cs" />
     <Compile Include="Gen7\SMEncounter\EncounterArea.cs" />
     <Compile Include="Gen7\Event7.cs" />
     <Compile Include="Gen7\SMEncounter\LocationTable.cs" />
