@@ -15,6 +15,8 @@ namespace pkm3dsRNG.Core
         public byte Lv;
         public int[] BS;
 
+        public bool BlinkFOnly, SafeFOnly;
+
         public bool CheckIVs(RNGResult result)
         {
             for (int i = 0; i < 6; i++)
@@ -48,6 +50,15 @@ namespace pkm3dsRNG.Core
             return HPType[val];
         }
 
+        private bool CheckBlink(int blinkflag)
+        {
+            if (BlinkFOnly)
+                return blinkflag > 4;
+            if (SafeFOnly)
+                return blinkflag < 2;
+            return true;
+        }
+
         public bool CheckResult(RNGResult result)
         {
             if (Skip)
@@ -56,6 +67,8 @@ namespace pkm3dsRNG.Core
                 if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
                 return true;
             }
+            if (result is Result7 && !CheckBlink((result as Result7).Blink))
+                return false;
             if (ShinyOnly && !result.Shiny)
                 return false;
             if (BS == null ? !CheckIVs(result) : !CheckStats(result))

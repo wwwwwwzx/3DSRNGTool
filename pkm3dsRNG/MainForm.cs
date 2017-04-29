@@ -143,6 +143,7 @@ namespace pkm3dsRNG
             LoadCategory();
             Frame_min.Value = Gen7 ? 418 : 0;
             dgv_rand.Visible = Gen6;
+            BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
             Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
             if (Gen6 && CreateTimeline.Checked)
@@ -200,6 +201,17 @@ namespace pkm3dsRNG
         {
             ConsiderDelay.Enabled = !CreateTimeline.Checked;
             if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
+        }
+
+        private void NPC_ValueChanged(object sender, EventArgs e)
+        {
+            if (Gen7)
+            {
+                var ControlON = NPC.Value == 0 ? BlinkFOnly : SafeFOnly;
+                var ControlOFF = NPC.Value == 0 ? SafeFOnly : BlinkFOnly;
+                ControlON.Visible = true;
+                ControlOFF.Visible = ControlOFF.Checked = false;
+            }
         }
         #endregion
 
@@ -295,6 +307,9 @@ namespace pkm3dsRNG
             Skip = DisableFilters.Checked,
             Lv = (byte)Filter_Lv.Value,
             PerfectIVs = (byte)PerfectIVs.Value,
+
+            BlinkFOnly = BlinkFOnly.Checked,
+            SafeFOnly = SafeFOnly.Checked,
         };
 
         private StationaryRNG getStaSettings()
