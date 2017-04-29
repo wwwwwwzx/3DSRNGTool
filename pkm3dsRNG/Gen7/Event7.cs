@@ -4,7 +4,6 @@ namespace pkm3dsRNG
 {
     class Event7 : EventRNG
     {
-        public new GameVersion Version = GameVersion.Gen7;
         public static ulong getrand => RNGPool.getrand64;
 
         public override RNGResult Generate()

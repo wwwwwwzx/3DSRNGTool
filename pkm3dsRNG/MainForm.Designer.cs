@@ -1259,9 +1259,8 @@
             // Sta_Setting
             // 
             this.Sta_Setting.Controls.Add(this.EnctrPanel);
-            this.Sta_Setting.Controls.Add(this.L_GenderRatio);
             this.Sta_Setting.Controls.Add(this.ShinyLocked);
-            this.Sta_Setting.Controls.Add(this.GenderRatio);
+            this.Sta_Setting.Controls.Add(this.AlwaysSynced);
             this.Sta_Setting.Controls.Add(this.Fix3v);
             this.Sta_Setting.Location = new System.Drawing.Point(6, 6);
             this.Sta_Setting.Name = "Sta_Setting";
@@ -1273,9 +1272,10 @@
             // EnctrPanel
             // 
             this.EnctrPanel.Controls.Add(this.L_Category);
+            this.EnctrPanel.Controls.Add(this.L_GenderRatio);
             this.EnctrPanel.Controls.Add(this.CB_Category);
-            this.EnctrPanel.Controls.Add(this.AlwaysSynced);
             this.EnctrPanel.Controls.Add(this.Sta_Poke);
+            this.EnctrPanel.Controls.Add(this.GenderRatio);
             this.EnctrPanel.Controls.Add(this.L_SyncNature);
             this.EnctrPanel.Controls.Add(this.L_Poke);
             this.EnctrPanel.Controls.Add(this.SyncNature);
@@ -1306,7 +1306,7 @@
             // AlwaysSynced
             // 
             this.AlwaysSynced.AutoSize = true;
-            this.AlwaysSynced.Location = new System.Drawing.Point(174, 52);
+            this.AlwaysSynced.Location = new System.Drawing.Point(11, 114);
             this.AlwaysSynced.Name = "AlwaysSynced";
             this.AlwaysSynced.Size = new System.Drawing.Size(74, 17);
             this.AlwaysSynced.TabIndex = 9;
@@ -1353,7 +1353,7 @@
             // L_GenderRatio
             // 
             this.L_GenderRatio.AutoSize = true;
-            this.L_GenderRatio.Location = new System.Drawing.Point(9, 115);
+            this.L_GenderRatio.Location = new System.Drawing.Point(187, 54);
             this.L_GenderRatio.Name = "L_GenderRatio";
             this.L_GenderRatio.Size = new System.Drawing.Size(43, 13);
             this.L_GenderRatio.TabIndex = 72;
@@ -1362,7 +1362,7 @@
             // ShinyLocked
             // 
             this.ShinyLocked.AutoSize = true;
-            this.ShinyLocked.Location = new System.Drawing.Point(262, 113);
+            this.ShinyLocked.Location = new System.Drawing.Point(242, 114);
             this.ShinyLocked.Name = "ShinyLocked";
             this.ShinyLocked.Size = new System.Drawing.Size(74, 17);
             this.ShinyLocked.TabIndex = 71;
@@ -1372,7 +1372,7 @@
             // GenderRatio
             // 
             this.GenderRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GenderRatio.Location = new System.Drawing.Point(81, 111);
+            this.GenderRatio.Location = new System.Drawing.Point(259, 50);
             this.GenderRatio.Name = "GenderRatio";
             this.GenderRatio.Size = new System.Drawing.Size(76, 21);
             this.GenderRatio.TabIndex = 8;
@@ -1380,7 +1380,7 @@
             // Fix3v
             // 
             this.Fix3v.AutoSize = true;
-            this.Fix3v.Location = new System.Drawing.Point(176, 113);
+            this.Fix3v.Location = new System.Drawing.Point(132, 114);
             this.Fix3v.Name = "Fix3v";
             this.Fix3v.Size = new System.Drawing.Size(63, 17);
             this.Fix3v.TabIndex = 1;

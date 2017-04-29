@@ -83,11 +83,14 @@
       <DependentUpon>PopupComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
+    <Compile Include="Core\IGenerator.cs" />
+    <Compile Include="Core\WildRNG.cs" />
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
     <Compile Include="Gen7\PKMW7.cs" />
+    <Compile Include="Gen7\ResultW7.cs" />
     <Compile Include="Gen7\SMEncounter\EncounterArea.cs" />
     <Compile Include="Gen7\Event7.cs" />
     <Compile Include="Gen7\SMEncounter\LocationTable.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Gen7\PKM7.cs" />
     <Compile Include="Gen7\Result7.cs" />
     <Compile Include="Gen7\Stationary7.cs" />
+    <Compile Include="Gen7\Wild7.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -2,7 +2,7 @@
 
 namespace pkm3dsRNG.Core
 {
-    class RNGFilters
+    public class RNGFilters
     {
         public bool[] Nature;
         public bool[] HPType;

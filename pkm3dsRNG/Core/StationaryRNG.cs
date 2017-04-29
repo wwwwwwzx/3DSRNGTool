@@ -1,6 +1,6 @@
 ﻿namespace pkm3dsRNG.Core
 {
-    class StationaryRNG
+    public abstract class StationaryRNG : IGenerator
     {
         // Background Info (Global variables)
         public bool AlwaysSync;
@@ -20,10 +20,7 @@
         public virtual int PerfectIVCount { get; }
         public virtual int PIDroll_count { get; }
 
-        public virtual RNGResult Generate()
-        {
-            return new RNGResult();
-        }
+        public abstract RNGResult Generate();
 
         public void UseTemplate(Pokemon PM)
         {

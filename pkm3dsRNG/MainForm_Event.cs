@@ -86,7 +86,7 @@ namespace pkm3dsRNG
                 Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
                 IVs = new[] { -1, -1, -1, -1, -1, -1 };
             }
-            EventRNG e = Gen6 ? new Event6() : null;
+            EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
             e.Species = (short)Event_Species.SelectedIndex;
             e.Form = (byte)Event_Forme.SelectedIndex;
             e.IVs = (int[])IVs.Clone();

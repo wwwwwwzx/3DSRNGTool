@@ -49,7 +49,7 @@ namespace pkm3dsRNG
             }
         }
 
-        public readonly static PokemonList[] Default = new[]
+        public readonly static PokemonList[] NotImpled = new[]
         {
             new PokemonList
             {
@@ -64,14 +64,14 @@ namespace pkm3dsRNG
             {
                 case 0:
                 case 1:
-                    return method == 0 ? PKM6.Species_XY : Default; //Wild not impled
+                    return method == 0 ? PKM6.Species_XY : NotImpled; //Wild not impled
                 case 2:
                 case 3:
-                    return method == 0 ? PKM6.Species_ORAS : Default; //Wild not impled
+                    return method == 0 ? PKM6.Species_ORAS : NotImpled; //Wild not impled
                 case 4:
                 case 5:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;
-                default: return Default;
+                default: return NotImpled;
             }
         }
 

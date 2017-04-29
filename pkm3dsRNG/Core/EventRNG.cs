@@ -1,24 +1,21 @@
 ﻿namespace pkm3dsRNG.Core
 {
-    public class EventRNG : IPKM
+    public abstract class EventRNG : IPKM, IGenerator
     {
-        public uint TSV;
-        public byte IVsCount;
-        public bool YourID;
-        public bool IsEgg;
-        public byte PIDType;
-        public bool AbilityLocked;
-        public bool NatureLocked;
-        public bool GenderLocked;
-        public bool OtherInfo;
-        public int TID = -1;
-        public int SID = -1;
-        public uint EC;
-        public uint PID;
+        public uint TSV { get; set; }
+        public byte IVsCount { get; set; }
+        public bool YourID { get; set; }
+        public bool IsEgg { get; set; }
+        public byte PIDType { get; set; }
+        public bool AbilityLocked { get; set; }
+        public bool NatureLocked { get; set; }
+        public bool GenderLocked { get; set; }
+        public bool OtherInfo { get; set; }
+        public int TID { get; set; } = -1;
+        public int SID { get; set; } = -1;
+        public uint EC { get; set; }
+        public uint PID { get; set; }
 
-        public virtual RNGResult Generate()
-        {
-            return new RNGResult();
-        }
+        public abstract RNGResult Generate();
     }
 }
