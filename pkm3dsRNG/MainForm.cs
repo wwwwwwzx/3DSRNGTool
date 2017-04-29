@@ -448,9 +448,9 @@ namespace pkm3dsRNG
             for (int i = 0; i < StartFrame; i++)
                 sfmt.Next();
             // Prepare
-            getsetting(sfmt);
             ModelStatus status = new ModelStatus(modelnum, sfmt);
             ModelStatus stmp = new ModelStatus(modelnum, sfmt);
+            getsetting(sfmt);
             int frameadvance;
             int realtime = 0;
             // Start
@@ -493,8 +493,8 @@ namespace pkm3dsRNG
             for (int i = 0; i < start_frame; i++)
                 sfmt.Next();
             // Prepare
-            getsetting(sfmt);
             ModelStatus status = new ModelStatus(modelnum, sfmt);
+            getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
