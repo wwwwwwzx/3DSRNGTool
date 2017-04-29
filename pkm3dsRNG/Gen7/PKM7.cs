@@ -2,7 +2,6 @@
 {
     public class PKM7 : Pokemon
     {
-        public new GameVersion Version = GameVersion.Gen7;
         public byte NPC;
         public short Delay;
 

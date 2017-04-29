@@ -2,8 +2,6 @@
 {
     public class PKM6 : Pokemon
     {
-        public new GameVersion Version = GameVersion.Gen6;
-        
         public readonly static PokemonList Default = new PokemonList
         {
             Text = "-",
