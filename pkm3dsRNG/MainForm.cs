@@ -143,7 +143,10 @@ namespace pkm3dsRNG
             LoadCategory();
             Frame_min.Value = Gen7 ? 418 : 0;
             dgv_rand.Visible = Gen6;
-            dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
+            CreateTimeline.Visible = TimeSpan.Visible =
+            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
+            if (Gen6 && CreateTimeline.Checked)
+                RB_FrameRange.Checked = true;
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,7 +194,12 @@ namespace pkm3dsRNG
                 case 0: Poke_SelectedIndexChanged(null, null); return;
                 case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
             }
+        }
 
+        private void CreateTimeline_CheckedChanged(object sender, EventArgs e)
+        {
+            ConsiderDelay.Enabled = !CreateTimeline.Checked;
+            if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
         }
         #endregion
 
@@ -346,7 +354,7 @@ namespace pkm3dsRNG
 
             string true_nature = StringItem.naturestr[result.Nature];
             byte blink = (result as Result7)?.Blink ?? 0;
-            string delay = (result as Result7)?.frameshift.ToString("+#;0") ?? "";
+            string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
             string BlinkFlag = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
@@ -384,6 +392,7 @@ namespace pkm3dsRNG
             }
             return row;
         }
+        #endregion
 
         private void Search6()
         {
@@ -391,6 +400,10 @@ namespace pkm3dsRNG
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;
+            if (AroundTarget.Checked)
+            {
+                min = (int)Frame_max.Value - 100; max = (int)Frame_max.Value + 100;
+            }
             // Advance
             for (int i = 0; i < min; i++)
                 rng.Next();
@@ -410,40 +423,45 @@ namespace pkm3dsRNG
             DGV.CurrentCell = null;
         }
 
+        #region Gen7 Search
         private void Search7()
         {
-            if (RB_FrameRange.Checked)
-                Search7_Normal();
             if (CreateTimeline.Checked)
                 Search7_Timeline();
+            else
+                Search7_Normal();
         }
 
         private void Search7_Normal()
         {
-            // Blinkflag
             SFMT sfmt = new SFMT((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
-
+            if (AroundTarget.Checked)
+            {
+                min = (int)Frame_max.Value - 100; max = (int)Frame_max.Value + 100;
+            }
+            // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, modelnum);
             // Advance
-            for (int i = 0; i < min; i++)
+            int StartFrame = (int)Frame_min.Value;
+            for (int i = 0; i < StartFrame; i++)
                 sfmt.Next();
             // Prepare
             getsetting(sfmt);
             ModelStatus status = new ModelStatus(modelnum, sfmt);
-            ModelStatus statustmp = new ModelStatus(modelnum, sfmt);
+            ModelStatus stmp = new ModelStatus(modelnum, sfmt);
             int frameadvance;
             int realtime = 0;
             // Start
-            for (int i = min; i <= max;)
+            for (int i = StartFrame; i <= max;)
             {
-                status.CopyTo(statustmp);
+                status.CopyTo(stmp);
                 frameadvance = status.NextState();
 
                 while (frameadvance > 0)
                 {
-                    RNGPool.CopyStatus(statustmp);
+                    RNGPool.CopyStatus(stmp);
                     var result = RNGPool.Generate7();
 
                     RNGPool.Next(sfmt.Nextulong());

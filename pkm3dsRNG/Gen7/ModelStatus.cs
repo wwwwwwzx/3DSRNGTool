@@ -4,12 +4,12 @@ namespace pkm3dsRNG
 {
     class ModelStatus
     {
-        public SFMT sfmt;
-        public int cnt;
-        public byte Modelnumber;
+        private SFMT sfmt;
+        private int cnt;
+        private byte Modelnumber;
+        private ulong getrand { get { cnt++; return sfmt.Nextulong(); } }
+        
         public int[] remain_frame;
-        public ulong getrand { get { cnt++; return sfmt.Nextulong(); } }
-
         public bool route17, phase;
 
         public ModelStatus(byte n, SFMT st)

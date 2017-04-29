@@ -21,6 +21,7 @@ namespace pkm3dsRNG.Core
                 RandList64.Clear();
                 for (int i = 0; i < buffersize; i++)
                     RandList64.Add((rng as IRNG64).Nextulong());
+                return;
             }
             RandList.Clear();
             for (int i = 0; i < buffersize; i++)
@@ -120,10 +121,10 @@ namespace pkm3dsRNG.Core
                     if (remain_frame[i] < 0)                       //Cooldown 1st part
                     {
                         if (++remain_frame[i] == 0)                //Blinking
-                            remain_frame[i] = (int)(getrand % 3) == 0 ? 36 : 30;
+                            remain_frame[i] = (int)(getrand64 % 3) == 0 ? 36 : 30;
                         continue;
                     }
-                    if ((int)(getrand & 0x7F) == 0)                //Not Blinking
+                    if ((int)(getrand64 & 0x7F) == 0)                //Not Blinking
                         remain_frame[i] = -5;
                 }
                 if (route17 && (phase = !phase))
@@ -143,16 +144,16 @@ namespace pkm3dsRNG.Core
         private static void time_delay()
         {
             time_elapse(2); // Buttom press delay
-            //if (IsSolgaleo || IsLunala)
-            //{
-            //    int crydelay = IsSolgaleo ? 79 : 76;
-            //    time_elapse(delaytime - crydelay - 19);
-            //    if (modelnumber == 7) SolLunaRearrange();
-            //    time_elapse(19);
-            //    Advance(1);     //Cry Inside Time Delay
-            //    time_elapse(crydelay);
-            //    return;
-            //}
+            if (IsSolgaleo || IsLunala)
+            {
+                int crydelay = IsSolgaleo ? 79 : 76;
+                time_elapse(delaytime - crydelay - 19);
+                if (modelnumber == 7) SolLunaRearrange();
+                time_elapse(19);
+                Advance(1);     //Cry Inside Time Delay
+                time_elapse(crydelay);
+                return;
+            }
             time_elapse(delaytime);
         }
 
