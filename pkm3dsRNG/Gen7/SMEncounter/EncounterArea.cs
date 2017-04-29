@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace SMEncounter
+namespace pkm3dsRNG
 {
-    public class EncounterArea
+    public class EncounterArea7
     {
         public byte Location, idx;
         public int Locationidx => Location + (idx << 8);

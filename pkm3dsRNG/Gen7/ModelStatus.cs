@@ -10,7 +10,9 @@ namespace pkm3dsRNG
         private ulong getrand { get { cnt++; return sfmt.Nextulong(); } }
         
         public int[] remain_frame;
-        public bool route17, phase;
+        public bool phase;
+
+        public static bool route17;
 
         public ModelStatus(byte n, SFMT st)
         {

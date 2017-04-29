@@ -2,8 +2,8 @@
 {
     public class PKMW7 : Pokemon
     {
-        byte[] Rate;
-        int[] Location;
+        public byte[] Rate;
+        public int[] Location;
 
         public readonly static PokemonList[] Species_SM =
         {
@@ -32,7 +32,7 @@
             },
             new PokemonList
             {
-                Text = "QR",
+                Text = "Island Scan",
                 List = new[]
                 {
                     new PKMW7 { Species = 155, Level = 12, Location = new[]{ 266, 522 }, }, // Cyndaquil @ Route 3

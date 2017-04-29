@@ -22,7 +22,7 @@ namespace pkm3dsRNG
                 rt.Synchronize = (int)(getrand % 100) >= 50;
 
             rt.Synchronize &= Synchro_Stat < 25;
-
+            
             //Encryption Constant
             rt.EC = getrand;
 

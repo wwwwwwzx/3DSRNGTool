@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 using System.Linq;
 using pkm3dsRNG.RNG;
 using pkm3dsRNG.Core;
@@ -20,6 +21,10 @@ namespace pkm3dsRNG
         private bool IsEvent => method == 1;
         private bool Gen6 => ver < 4;
         private bool Gen7 => ver > 3;
+        private EncounterArea7 ea = new EncounterArea7();
+        private bool IsMoon => ver == 5;
+        private bool IsNight => Night.Checked;
+        private int[] slotspecies => Gen7 ? ea.getSpecies(IsMoon, IsNight) : null;
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         #endregion
@@ -74,6 +79,7 @@ namespace pkm3dsRNG
             FindSetting(Lastpkm);
 
             ByIVs.Checked = true;
+            RNGMethod_SelectedIndexChanged(null, null);
         }
 
         private void FindSetting(int Lastpkm)
@@ -83,20 +89,45 @@ namespace pkm3dsRNG
                 if (Category[i].List.Any(t => t.SpecForm == Lastpkm))
                 {
                     CB_Category.SelectedIndex = i;
-                    Sta_Poke.SelectedValue = Lastpkm;
+                    Poke.SelectedValue = Lastpkm;
                     return;
                 }
             CB_Category.SelectedIndex = 0;
         }
 
+        private void RefreshLocation()
+        {
+            if (Gen6) return; // not impled
+            var locationlist = iPM.Conceptual ? LocationTable7.SMLocationList : (iPM as PKMW7)?.Location ?? null;
+            if (locationlist == null) return;
+            var Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
+            MetLocation.DisplayMember = "Text";
+            MetLocation.ValueMember = "Value";
+            MetLocation.DataSource = new BindingSource(Locationlist, null);
+
+            LoadSpecies();
+        }
+
         private void LoadSpecies()
+        {
+            int tmp = SlotSpecies.SelectedIndex;
+            var List = slotspecies.Skip(1).Distinct().Select(SpecForm => new Controls.ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
+            List = new[] { new Controls.ComboItem("-", 0) }.Concat(List);
+            SlotSpecies.DisplayMember = "Text";
+            SlotSpecies.ValueMember = "Value";
+            SlotSpecies.DataSource = new BindingSource(List, null);
+            if (0 <= tmp && tmp < SlotSpecies.Items.Count)
+                SlotSpecies.SelectedIndex = tmp;
+        }
+
+        private void LoadPKM()
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
             var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
-            Sta_Poke.DisplayMember = "Text";
-            Sta_Poke.ValueMember = "Value";
-            Sta_Poke.DataSource = new BindingSource(List, null);
-            Sta_Poke.SelectedIndex = 0;
+            Poke.DisplayMember = "Text";
+            Poke.ValueMember = "Value";
+            Poke.DataSource = new BindingSource(List, null);
+            Poke.SelectedIndex = 0;
         }
 
         private void LoadCategory()
@@ -106,7 +137,21 @@ namespace pkm3dsRNG
             var Category = Pokemon.getCategoryList(ver, method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
             CB_Category.Items.AddRange(Category);
             CB_Category.SelectedIndex = 0;
-            LoadSpecies();
+            LoadPKM();
+        }
+
+        private void LoadSlotSpeciesInfo()
+        {
+            int SpecForm = (int)SlotSpecies.SelectedValue;
+            if (Gen6) return; // not impled
+            byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
+            List<int> Slotidx = new List<int>();
+            for (int i = Array.IndexOf(slotspecies, SpecForm); i > -1; i = Array.IndexOf(slotspecies, SpecForm, i + 1))
+                Slotidx.Add(i);
+            for (int i = 0; i < 10; i++)
+                Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(Slottype[i]);
+
+            SetPersonalInfo(SpecForm > 0 ? SpecForm : iPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0);
         }
         #endregion
 
@@ -125,7 +170,7 @@ namespace pkm3dsRNG
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            Timedelay.Enabled = Advanced.Checked;
+            Special_th.Enabled = Timedelay.Enabled = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -146,17 +191,31 @@ namespace pkm3dsRNG
 
             dgv_rand.Visible = Gen6;
 
+            var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
+            Slot.Items.Clear();
+            Slot.BlankText = "-";
+            Slot.Items.AddRange(slotnum);
+            Slot.CheckBoxItems[0].Checked = true;
+            Slot.CheckBoxItems[0].Checked = false;
+
             BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
             Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
 
-            if (Gen6 && CreateTimeline.Checked)
-                RB_FrameRange.Checked = true;
+            if (Gen6)
+            {
+                if (CreateTimeline.Checked)
+                    RB_FrameRange.Checked = true;
+                BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked = false;
+            }
+
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadSpecies();
+            LoadPKM();
+            Poke_SelectedIndexChanged(null, null);
+            SpecialOnly.Visible = Gen7 && CB_Category.SelectedIndex > 0;
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -194,11 +253,14 @@ namespace pkm3dsRNG
         {
             RNGMethod.TabPages[method].Controls.Add(this.Filters);
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
+            dgv_Lv.Visible = dgv_slot.Visible =
+            L_Slot.Visible = Slot.Visible = method == 2;
             switch (method)
             {
                 case 0: Poke_SelectedIndexChanged(null, null); Sta_Setting.Controls.Add(EnctrPanel); LoadCategory(); return;
                 case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
-                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); LoadCategory(); return;
+                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); LoadCategory(); Timedelay.Value = 8; return;
             }
         }
 
@@ -218,11 +280,44 @@ namespace pkm3dsRNG
                 ControlOFF.Visible = ControlOFF.Checked = false;
             }
         }
+
+        private void MetLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Gen7)
+            {
+                ea = LocationTable7.Table.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+                NPC.Value = ea.NPC;
+                Correction.Value = ea.Correction;
+
+                Lv_min.Value = ea.SunMoonDifference && IsMoon ? ea.LevelMinMoon : ea.LevelMin;
+                Lv_max.Value = ea.SunMoonDifference && IsMoon ? ea.LevelMaxMoon : ea.LevelMax;
+            }
+
+            LoadSpecies();
+        }
+
+        private void SlotSpecies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SlotSpecies.SelectedIndex > 0 && (Filter_Lv.Value > Lv_max.Value || Filter_Lv.Value < Lv_min.Value))
+                Filter_Lv.Value = 0;
+            LoadSlotSpeciesInfo();
+        }
+
+        private void Special_th_ValueChanged(object sender, EventArgs e)
+        {
+            L_Rate.Visible = Special_th.Visible = Special_th.Value > 0;
+        }
+
+        private void DayNight_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ea.DayNightDifference)
+                LoadSpecies();
+        }
         #endregion
 
         #region DataEntry
 
-        private void SetPersonalInfo(int Species, int Form)
+        private void SetPersonalInfo(int Species, int Form, bool skip = false)
         {
             SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
             if (Species == 0)
@@ -235,7 +330,7 @@ namespace pkm3dsRNG
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
 
             // Load from Pokemonlist
-            if (iPM == null || IsEvent)
+            if (iPM == null || IsEvent || skip)
                 return;
             Filter_Lv.Value = iPM.Level;
             AlwaysSynced.Checked = iPM.AlwaysSync;
@@ -250,24 +345,34 @@ namespace pkm3dsRNG
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)
                 SyncNature.SelectedIndex = iPM.Nature + 1;
-            Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
-            NPC.Value = (iPM as PKM7)?.NPC ?? 1;
-            if (iPM is PKMW7)
+            if (Gen7 && method == 0)
             {
-                // load location and slots
+                Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
+                NPC.Value = (iPM as PKM7)?.NPC ?? 0;
+                return;
             }
         }
 
-        private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
+        private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
             Reset_Click(null, null);
-            int specform = (int)(Sta_Poke.SelectedValue);
+            int specform = (int)(Poke.SelectedValue);
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
             RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
+            if (method == 2)
+            {
+                RefreshLocation();
+                if (Gen7)
+                {
+                    var tmp = iPM as PKMW7;
+                    Special_th.Value = tmp?.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
+                }
+                return;
+            }
             AlwaysSynced.Enabled = iPM.Conceptual && specform == 0;
             ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual && (specform == 0 || specform == 151);
         }
@@ -285,6 +390,7 @@ namespace pkm3dsRNG
             {
                 case 0: RNGPool.sta_rng = getStaSettings(); break;
                 case 1: RNGPool.event_rng = getEventSetting(); break;
+                case 2: RNGPool.wild_rng = getWildSetting(); break;
             }
 
             int buffersize = 150;
@@ -295,9 +401,13 @@ namespace pkm3dsRNG
                 RNGPool.IsLunala = method == 0 && iPM.Species == 792;
                 RNGPool.SolLunaReset = (RNGPool.IsSolgaleo || RNGPool.IsLunala) && RNGPool.modelnumber == 7;
                 RNGPool.delaytime = (int)Timedelay.Value / 2;
+                RNGPool.route17 = ModelStatus.route17 = method == 2 && ea.Location == 120;
+                RNGPool.PreHoneyCorrection = (int)Correction.Value;
 
+                if (method == 2)
+                    buffersize += RNGPool.modelnumber * 100;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
-                    buffersize += RNGPool.modelnumber * (method < 2 ? RNGPool.delaytime : 100);
+                    buffersize += RNGPool.modelnumber * RNGPool.delaytime;
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -314,8 +424,11 @@ namespace pkm3dsRNG
             Stats = ByStats.Checked ? Stats : null,
             ShinyOnly = ShinyOnly.Checked,
             Skip = DisableFilters.Checked,
-            Lv = (byte)Filter_Lv.Value,
+            Level = (byte)Filter_Lv.Value,
             PerfectIVs = (byte)PerfectIVs.Value,
+
+            Slot = Slot.CheckBoxItems.Select(e => e.Checked).ToArray(),
+            SpecialOnly = SpecialOnly.Checked,
 
             BlinkFOnly = BlinkFOnly.Checked,
             SafeFOnly = SafeFOnly.Checked,
@@ -345,6 +458,42 @@ namespace pkm3dsRNG
 
             return setting;
         }
+
+        private WildRNG getWildSetting()
+        {
+            WildRNG setting = Gen6 ? null : new Wild7();
+            setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            setting.TSV = (int)TSV.Value;
+            setting.ShinyCharm = ShinyCharm.Checked;
+
+            int slottype = 0;
+            if (Gen7)
+            {
+                var setting7 = setting as Wild7;
+                if (ea.Locationidx == 1190) slottype = 1;
+                setting7.Levelmin = (byte)Lv_min.Value;
+                setting7.Levelmax = (byte)Lv_max.Value;
+                setting7.SpecialEnctr = (byte)Special_th.Value;
+                setting7.UB = CB_Category.SelectedIndex == 1;
+                setting7.SpecForm = new int[11];
+                for (int i = 1; i < 11; i++)
+                    setting7.SpecForm[i] = slotspecies[EncounterArea7.SlotType[slotspecies[0]][i - 1]];
+                if (setting7.SpecialEnctr > 0)
+                {
+                    setting7.SpecForm[0] = iPM.SpecForm;
+                    setting7.SpecialLevel = iPM.Level;
+                }
+            }
+            else if (Gen6)
+            {
+                slottype = 2;
+            }
+            setting.Markslots();
+            setting.SlotSplitter = WildRNG.SlotDistribution[slottype];
+
+            return setting;
+        }
+
         #endregion
 
         #region Start Calculation
@@ -382,6 +531,7 @@ namespace pkm3dsRNG
             string BlinkFlag = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
+            string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString() ?? "";
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
             string randstr = (result as Result6)?.RandNum.ToString("X8") ?? "";
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
@@ -394,6 +544,7 @@ namespace pkm3dsRNG
                 i, BlinkFlag, delay,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
+                slots, Lv,
                 randstr, rand64str, PID, EC
                 );
 

@@ -20,9 +20,9 @@ L_TSV = TSV
 L_GameVersion = 游戏版本
 ShinyCharm = 闪耀护符
 Advanced = 高级模式
-StationaryRNG = 定点乱数
-EventRNG = 配信乱数
-WildRNG = 野生乱数
+TP_StationaryRNG = 定点乱数
+TP_EventRNG = 配信乱数
+TP_WildRNG = 野生乱数
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = 定点设置
@@ -35,7 +35,7 @@ Fix3v = 固定3V
 L_Category = 分类
 L_GenderRatio = 性别比
 L_SyncNature = 同步性格
-L_Encounter_th = 出现率
+L_Rate = 出现率
 L_Lv = 等级范围
 ---
 Filters = 个体筛选
@@ -57,7 +57,7 @@ L_Ability = 特性
 L_Lv_S = Lv
 L_Slot = 种类
 DisableFilters = 取消筛选
-EncounteredOnly = 只显示遇敌
+SpecialOnly = 只显示特殊
 ShinyOnly = 仅异色帧
 SafeFOnly = 仅准确帧
 BlinkFOnly = 仅眨眼帧
@@ -70,10 +70,7 @@ L_NPC = NPC数
 AroundTarget = 目标帧 ±100帧
 RB_FrameRange = 帧数范围
 L_StartingPoint = <-- 时间线起点
-ShowResultsAfterDelay = 显示延时后结果
 CreateTimeline = 生成时间线/秒
-Refinement = 考虑历史修正
-EnterBagTime = 进背包时间 (+0.2s)
 ---
 TimeBox = 时间计算
 L_time = 计时范围
@@ -135,6 +132,6 @@ L_Forme = 形态
 ---------------------TabPage3----------------------------------
 Wild_Setting = 野生草丛遇敌设置
 L_Location = 地点
-L_Slots = 槽
+L_Slots = 类别
 Day = 白天
 Night = 夜晚

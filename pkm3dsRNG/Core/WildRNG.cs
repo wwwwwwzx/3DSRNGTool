@@ -5,21 +5,23 @@
         public int TSV;
         public bool ShinyCharm;
         public byte Synchro_Stat;
-        public byte slot;
+
         public byte[] SlotSplitter;
         public int[] SpecForm;
         
         // Store personal info in memory
-        public byte[] Gender;
-        public bool[] RandomGender;
-        public bool[] IV3;
+        internal byte[] Gender;
+        internal bool[] RandomGender;
+        internal bool[] IV3;
+        internal byte slot;
 
-        public virtual int PerfectIVCount { get; }
-        public virtual int PIDroll_count { get; }
+        internal virtual int PerfectIVCount { get; }
+        internal virtual int PIDroll_count { get; }
 
         public abstract RNGResult Generate();
+        public abstract void Markslots();
 
-        public byte getslot(int rand)
+        internal byte getslot(int rand)
         {
             for (byte i = 1; i < SlotSplitter.Length; i++)
             {
@@ -29,5 +31,12 @@
             }
             return slot = (byte)SlotSplitter.Length;
         }
+
+        public readonly static byte[][] SlotDistribution = new byte[][]
+        {
+            new byte[] { 20,20,10,10,10,10,10,5,4,1 }, //SuMo Normal
+            new byte[] { 10,10,20,20,10,10,10,5,4,1 }, //SuMo Poni Plains
+            new byte[] { 10,10,10,10,10,10,10,10,10,5,4,1 }, // Gen6
+        };
     }
 }

@@ -39,11 +39,13 @@ namespace pkm3dsRNG
             StringItem.hpstr = getStringList("Types", curlanguage);
             StringItem.species = getStringList("Species", curlanguage);
             StringItem.genderratio = getStringList("Genderratio", curlanguage);
+            StringItem.smlocation = getStringList("Location_sm", curlanguage);
 
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
 
             LoadCategory();
+            RefreshLocation();
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];

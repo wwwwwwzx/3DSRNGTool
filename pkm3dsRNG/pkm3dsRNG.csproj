@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
     <Compile Include="Core\IGenerator.cs" />
+    <Compile Include="Core\WildResult.cs" />
     <Compile Include="Core\WildRNG.cs" />
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
@@ -114,7 +115,7 @@
     <Compile Include="MainForm_Trans.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Core\Pokemon.cs" />
+    <Compile Include="Pokemon\Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
     <Compile Include="Core\EventRNG.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />

@@ -20,9 +20,9 @@ L_TSV = TSV
 L_GameVersion = GameVersion
 ShinyCharm = Shiny Charm
 Advanced = Advanced
-StationaryRNG = Stationary RNG
-EventRNG = Event RNG
-WildRNG = Wild RNG
+TP_StationaryRNG = Stationary RNG
+TP_EventRNG = Event RNG
+TP_WildRNG = Wild RNG
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting
@@ -37,8 +37,8 @@ L_Category = Category
 L_GenderRatio = Gender Ratio
 L_SyncNature = Sync Nature
 Fix3v = 3IVs
-L_Encounter_th = Enctr Rate
-L_Lv = Lv Range
+L_Rate = Rate
+L_Lv = Level Range
 ---
 Filters = Filters
 L_H = HP
@@ -59,7 +59,7 @@ L_Ability = Ability
 L_Lv_S = Lv
 L_Slot = Encounter Slot
 DisableFilters = Disable Filters
-EncounteredOnly = Encounter Only
+SpecialOnly = UB/QR Only
 ShinyOnly = Shiny Only
 SafeFOnly = Safe F Only
 BlinkFOnly = Blink F Only
@@ -71,11 +71,7 @@ CalcList = Search
 L_NPC = # of NPCs
 AroundTarget = Target ±100 Frame
 RB_FrameRange = Frame Range
-L_StartingPoint = <-- Starting Frame
-ShowResultsAfterDelay = Show Results after Delay
 CreateTimeline = Create Timeline/s
-Refinement = "?" Frame Refinement
-EnterBagTime = EnterBagTime (+0.2s)
 ---
 TimeBox = Time Calculator
 ConsiderDelay = Consider Delay

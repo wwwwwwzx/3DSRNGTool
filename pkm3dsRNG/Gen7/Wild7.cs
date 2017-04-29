@@ -12,6 +12,7 @@ namespace pkm3dsRNG
 
         public byte SpecialEnctr; // !=0 means there is ub/qr present
         public byte Levelmin, Levelmax;
+        public byte SpecialLevel;
         // public bool CompoundEye;
         public bool UB;
 
@@ -21,12 +22,13 @@ namespace pkm3dsRNG
         private bool IsShinyLocked => IsUB;
         private bool NormalSlot => !IsSpecial;
 
-        public override int PerfectIVCount => IV3[slot] ? 3 : 1;
-        public override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
+        internal override int PerfectIVCount => IV3[slot] ? 3 : 0;
+        internal override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
         public override RNGResult Generate()
         {
             ResultW7 rt = new ResultW7();
+            rt.Level = SpecialLevel;
 
             if (SpecialEnctr > 0)
                 IsSpecial = rt.IsSpecial = (byte)(getrand % 100) < SpecialEnctr;
@@ -46,6 +48,9 @@ namespace pkm3dsRNG
                 rt.Synchronize = (int)(getrand % 100) >= 50;
                 time_elapse(3);
             }
+            rt.Synchronize &= Synchro_Stat < 25;
+
+            Advance(60);
 
             //Encryption Constant
             rt.EC = (uint)(getrand & 0xFFFFFFFF);
@@ -70,7 +75,7 @@ namespace pkm3dsRNG
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability
-            rt.Ability = (byte)((getrand & 1) + 1);
+            rt.Ability = (byte)(IsUB ? 1 : (getrand & 1) + 1);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
@@ -84,13 +89,14 @@ namespace pkm3dsRNG
             return rt;
         }
 
-        public void markslots(int special = 0)
+        public override void Markslots()
         {
-            SpecForm[0] = special;
+            IV3 = new bool[SpecForm.Length];
             RandomGender = new bool[SpecForm.Length];
             Gender = new byte[SpecForm.Length];
             for (int i = 0; i < SpecForm.Length; i++)
             {
+                if (SpecForm[i] == 0) continue;
                 PersonalInfo info = PersonalTable.SM.getFormeEntry(SpecForm[i] & 0x7FF, SpecForm[i] >> 11);
                 byte genderratio = (byte)info.Gender;
                 IV3[i] = info.EggGroups[0] == 0xF;

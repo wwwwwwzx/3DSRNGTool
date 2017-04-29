@@ -157,6 +157,180 @@ namespace pkm3dsRNG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///
+        ///神秘的地方
+        ///
+        ///遥远的地方
+        ///
+        ///１号道路
+        ///好奥乐市郊
+        ///１号道路
+        ///
+        ///３号道路
+        ///
+        ///２号道路
+        ///
+        ///卡拉蔚湾
+        ///
+        ///美乐美乐海
+        ///
+        ///好奥乐市
+        ///海滩区
+        ///好奥乐市
+        ///商业区
+        ///好奥乐市
+        ///港口区
+        ///利利小镇
+        ///
+        ///马哈罗山路
+        ///
+        ///马哈罗山路
+        ///吊桥
+        ///战争遗迹
+        ///
+        ///战争遗迹
+        ///[~ 33]
+        ///十克拉山丘
+        ///
+        ///十克拉山丘
+        ///最深处的空洞
+        ///好奥乐墓园
+        ///
+        ///美乐美乐花园
+        ///
+        ///通海洞穴
+        ///
+        ///树果园
+        ///
+        ///葱郁洞窟
+        ///考验之地
+        ///葱郁洞窟
+        ///霸主居处
+        ///４号道路
+        ///
+        ///５号道路
+        ///
+        ///６号道路
+        ///
+        ///７号道路
+        ///
+        ///８号道路
+        ///
+        ///９号道路
+        ///
+        ///豪诺豪诺度假地
+        ///
+        ///豪诺豪诺海滩
+        ///
+        ///阿卡拉花园
+        ///
+        ///欧哈纳镇
+        ///
+        ///慷待市
+        ///
+        ///可霓可市
+        ///
+        ///皇家大道
+        ///
+        ///回忆之丘
+        ///
+        ///欧哈纳牧场
+        ///
+        ///[~ 80]
+        ///
+        ///维拉火山公园
+        ///
+        ///维拉火山公园
+        ///霸主居处
+        ///潺潺之丘
+        ///
+        ///潺潺之丘
+        ///霸主居处
+        ///树荫丛林
+        ///
+        ///生命遗迹
+        ///
+        ///阿卡拉岛郊外
+        ///
+        ///[~ 96]
+        ///[~ 97]
+        ///[~ 98]
+        ///[~ 99]
+        ///地鼠隧道
+        ///
+        ///豪诺豪诺度假地
+        ///
+        ///皇家巨蛋 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_sm_cn {
+            get {
+                return ResourceManager.GetString("text_Location_sm_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ——————
+        ///
+        ///Mystery Zone
+        ///
+        ///Faraway Place
+        ///
+        ///Route 1
+        ///Hau’oli Outskirts
+        ///Route 1
+        ///
+        ///Route 3
+        ///
+        ///Route 2
+        ///
+        ///Kala’e Bay
+        ///
+        ///Melemele Sea
+        ///
+        ///Hau’oli City
+        ///Beachfront
+        ///Hau’oli City
+        ///Shopping District
+        ///Hau’oli City
+        ///Marina
+        ///Iki Town
+        ///
+        ///Mahalo Trail
+        ///
+        ///Mahalo Trail
+        ///Plank Bridge
+        ///Ruins of Conflict
+        ///
+        ///Ruins of Conflict
+        ///[~ 33]
+        ///Ten Carat Hill
+        ///
+        ///Ten Carat Hill
+        ///Farthest Hollow
+        ///Hau’oli Cemetery
+        ///
+        ///Melemele Meadow
+        ///
+        ///Seaward Cave
+        ///
+        ///Berry Fields
+        ///
+        ///Verdant Cavern
+        ///Trial Site
+        ///Verdant Cavern
+        ///Totem’s Den
+        ///Route 4
+        ///
+        ///Rou [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_sm_en {
+            get {
+                return ResourceManager.GetString("text_Location_sm_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 勤奋
         ///怕寂寞
         ///勇敢

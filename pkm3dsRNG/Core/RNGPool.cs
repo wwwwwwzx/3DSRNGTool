@@ -44,6 +44,7 @@ namespace pkm3dsRNG.Core
         public static byte RNGmethod;
         public static StationaryRNG sta_rng;
         public static EventRNG event_rng;
+        public static WildRNG wild_rng;
 
         public static RNGResult Generate6()
         {
@@ -80,6 +81,7 @@ namespace pkm3dsRNG.Core
             {
                 case 00: return (sta_rng as Stationary7).Generate();
                 case 01: return (event_rng as Event7).Generate();
+                case 02: return (wild_rng as Wild7).Generate();
             }
             return null;
         }

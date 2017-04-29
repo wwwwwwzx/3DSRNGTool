@@ -12,8 +12,11 @@ namespace pkm3dsRNG.Core
         public int[] IVup, IVlow, Stats;
         public byte PerfectIVs;
         public bool Skip;
-        public byte Lv;
         public int[] BS;
+
+        public byte Level;
+        public bool[] Slot;
+        public bool SpecialOnly;
 
         public bool BlinkFOnly, SafeFOnly;
 
@@ -26,7 +29,7 @@ namespace pkm3dsRNG.Core
                 return false;
             return true;
         }
-        
+
         public bool CheckStats(RNGResult result)
         {
             result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
@@ -59,6 +62,12 @@ namespace pkm3dsRNG.Core
             return true;
         }
 
+        private bool CheckSlot(int slot)
+        {
+            if (Slot.All(n => !n)) return true;
+            return Slot[slot];
+        }
+
         public bool CheckResult(RNGResult result)
         {
             if (Skip)
@@ -81,6 +90,17 @@ namespace pkm3dsRNG.Core
                 return false;
             if (Ability != 0 && Ability != result.Ability)
                 return false;
+
+            WildResult wildresult = result as WildResult;
+            if (wildresult != null)
+            {
+                if (Level != 0 && Level != result.Level)
+                    return false;
+                if (SpecialOnly && !wildresult.IsSpecial)
+                    return false;
+                if (!CheckSlot(wildresult.Slot))
+                    return false;
+            }
 
             return true;
         }

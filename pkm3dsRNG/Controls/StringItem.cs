@@ -13,7 +13,10 @@ namespace pkm3dsRNG
         public static string[] abilitystr = { "-", "1", "2", "H" };
         public static string[] eventabilitystr = { "1/2", "1/2/H" };
 
+        public static string[] gen7wildtypestr = { "-", "UB", "QR" };
+
         public static string[] species;
+        public static string[] smlocation;
 
         public static ComboItem[] NatureList
             => naturestr.Select((str, i) => new ComboItem(str, i)).ToArray();
@@ -26,6 +29,9 @@ namespace pkm3dsRNG
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();
 
+        public static string getSMlocationstr(int locationidx)
+            => smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+
         private static string[][] Translation =
         {
             new [] { "Legendary", "定点传说" },
@@ -37,6 +43,8 @@ namespace pkm3dsRNG
             new [] { "Johto Legendary", "城都传说" },
             new [] { "Sinnoh Legendary", "神奥传说" },
             new [] { "Unova Legendary", "合众传说" },
+            new [] { "Island Scan", "岛屿搜索" },
+            new [] { "Normal Wild", "普通野外" },
         };
 
         public static string Translate(string input,int language)
