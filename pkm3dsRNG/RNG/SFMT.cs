@@ -256,7 +256,7 @@ namespace pkm3dsRNG.RNG
 
         public ulong Nextulong()
         {
-            return ((ulong)Nextuint() << 32) | Nextuint();
+            return Nextuint() | ((ulong)Nextuint() << 32);
         }
 
         public void Next()

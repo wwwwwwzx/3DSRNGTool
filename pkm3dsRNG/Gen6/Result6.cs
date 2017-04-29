@@ -2,7 +2,8 @@
 
 namespace pkm3dsRNG
 {
-    class Result6 : RNGResult
+    public class Result6 : RNGResult
     {
+        public uint RandNum;
     }
 }

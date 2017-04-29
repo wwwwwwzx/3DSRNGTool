@@ -3,7 +3,6 @@
     public class PKM7 : Pokemon
     {
         public new GameVersion Version = GameVersion.Gen7;
-        public new int gen = 7;
         public byte NPC;
         public short Delay;
 
@@ -60,9 +59,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, }, // Rowlet
-                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, }, // Litten
-                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, }, // Popplio
+                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 5, Delay = 40, }, // Rowlet
+                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 5, Delay = 40, }, // Litten
+                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 5, Delay = 40, }, // Popplio
                 }
             },
             new PokemonList

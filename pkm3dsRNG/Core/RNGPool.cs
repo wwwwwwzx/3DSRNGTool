@@ -16,16 +16,15 @@ namespace pkm3dsRNG.Core
 
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
+            if (rng is IRNG64)
+            {
+                RandList64.Clear();
+                for (int i = 0; i < buffersize; i++)
+                    RandList64.Add((rng as IRNG64).Nextulong());
+            }
             RandList.Clear();
             for (int i = 0; i < buffersize; i++)
                 RandList.Add(rng.Nextuint());
-        }
-
-        public static void CreateBuffer(int buffersize, IRNG64 rng)
-        {
-            RandList64.Clear();
-            for (int i = 0; i < buffersize; i++)
-                RandList64.Add(rng.Nextulong());
         }
 
         public static void Next(uint rand)
@@ -41,44 +40,70 @@ namespace pkm3dsRNG.Core
         }
 
         public static Pokemon PM;
-        public static byte RNGMethod;
+        public static byte RNGmethod;
         public static StationaryRNG sta_rng;
         public static EventRNG event_rng;
 
-        public static RNGResult Generate()
+        public static RNGResult Generate6()
         {
             index = 0;
-            var result = getresult();
-            result.RandNum = RandList[0];
+            var result = getresult6();
+            (result as Result6).RandNum = RandList[0];
             return result;
         }
 
-        public static RNGResult getresult()
+        public static RNGResult getresult6()
         {
-            switch (RNGMethod)
+            switch (RNGmethod)
             {
                 case 00: return (sta_rng as Stationary6).Generate();
                 case 01: return (event_rng as Event6).Generate();
-                case 16: return (sta_rng as Stationary7).Generate();
-                case 17: return (event_rng as Event7).Generate();
             }
             return null;
         }
 
+        public static RNGResult Generate7()
+        {
+            index = 0;
+            int frameshift = getframeshift();
+            var result = getresult7();
+            (result as Result7).RandNum = RandList64[0];
+            (result as Result7).frameshift = frameshift;
+            if (SolLunaReset) modelnumber = 7;
+            return result;
+        }
+
+        public static RNGResult getresult7()
+        {
+            switch (RNGmethod)
+            {
+                case 00: return (sta_rng as Stationary7).Generate();
+                case 01: return (event_rng as Event7).Generate();
+            }
+            return null;
+        }
 
         #region Gen7 Time keeping
 
-        public static int PreHoneyCorrection;
-        public static int delaytime = 93; //For honey 186F =3.1s
+        public static bool Considerdelay;
+        public static bool IsSolgaleo, IsLunala, SolLunaReset;
+        public static int delaytime;
         public static byte modelnumber;
         public static int[] remain_frame;
 
-        //public static bool route17, phase;
+        public static bool route17, phase;
+        public static int PreHoneyCorrection;
 
-        private static void ResetModelStatus()
+        public static void ResetModelStatus()
         {
             remain_frame = new int[modelnumber];
-            //phase = false;
+            phase = false;
+        }
+
+        public static void CopyStatus(ModelStatus st)
+        {
+            remain_frame = (int[])st.remain_frame.Clone();
+            phase = st.phase;
         }
 
         public static void time_elapse(int n)
@@ -101,11 +126,53 @@ namespace pkm3dsRNG.Core
                     if ((int)(getrand & 0x7F) == 0)                //Not Blinking
                         remain_frame[i] = -5;
                 }
-                //if (route17 && (phase = !phase))
-                //    Advance(2);
+                if (route17 && (phase = !phase))
+                    Advance(2);
             }
         }
-            
+
+        //model # changes when screen turns black
+        private static void SolLunaRearrange()
+        {
+            modelnumber = 5;//2 guys offline...
+            int[] order = new[] { 0, 1, 2, 5, 6 };
+            for (int i = 0; i < 5; i++)
+                remain_frame[i] = remain_frame[order[i]];
+        }
+
+        private static void time_delay()
+        {
+            time_elapse(2); // Buttom press delay
+            //if (IsSolgaleo || IsLunala)
+            //{
+            //    int crydelay = IsSolgaleo ? 79 : 76;
+            //    time_elapse(delaytime - crydelay - 19);
+            //    if (modelnumber == 7) SolLunaRearrange();
+            //    time_elapse(19);
+            //    Advance(1);     //Cry Inside Time Delay
+            //    time_elapse(crydelay);
+            //    return;
+            //}
+            time_elapse(delaytime);
+        }
+
+        public static int getframeshift()
+        {
+            if (Considerdelay)
+                time_delay();
+            else
+                ResetModelStatus();
+
+            if (RNGmethod == 2) //Wild
+            {
+                ResetModelStatus();
+                if (route17) Advance(2);
+                time_elapse(1);              //Blink process also occurs when loading map
+                index += PreHoneyCorrection - modelnumber;  //Pre-HoneyCorrection
+                time_elapse(93);
+            }
+            return index;
+        }
         #endregion
     }
 }

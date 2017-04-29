@@ -7,10 +7,8 @@
         void Reseed(uint seed);
     }
 
-    internal interface IRNG64
+    internal interface IRNG64 : IRNG
     {
-        void Next();
         ulong Nextulong();
-        void Reseed(uint seed);
     }
 }

@@ -2,11 +2,13 @@
 
 namespace pkm3dsRNG
 {
-    class Result7 : RNGResult
+    public class Result7 : RNGResult
     {
-        public byte blink;
-        public new ulong RandNum;
+        public byte Blink;
+        public ulong RandNum;
         public byte Clock;
         public int frameshift;
+
+        public int realtime;
     }
 }

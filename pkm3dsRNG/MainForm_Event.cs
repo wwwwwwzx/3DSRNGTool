@@ -75,7 +75,7 @@ namespace pkm3dsRNG
         }
 
         //Converter
-        private EventRNG geteventsetting()
+        private EventRNG getEventSetting()
         {
             int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
             for (int i = 0; i < 6; i++)
@@ -154,7 +154,6 @@ namespace pkm3dsRNG
         {
             Event_Gender.Enabled = GenderLocked.Checked;
             if (!GenderLocked.Checked) Event_Gender.SelectedIndex = 0;
-            if (iPM.IsEvent) GenderRatio.Enabled = !GenderLocked.Checked;
         }
 
         private void AbilityLocked_CheckedChanged(object sender, EventArgs e)
@@ -197,6 +196,12 @@ namespace pkm3dsRNG
                 Event_Forme.Items.AddRange(new bool[formcount].Select((t, i) => i.ToString()).ToArray());
                 Event_Forme.SelectedIndex = 0;
             }
+        }
+
+        private void Event_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Gen7)
+                Timedelay.Value = YourID.Checked && !IsEgg.Checked ? 62 : 0;
         }
         #endregion
     }

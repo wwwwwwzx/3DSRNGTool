@@ -72,15 +72,14 @@ AroundTarget = 目标帧 ±100F
 RB_FrameRange = 帧数范围
 L_StartingPoint = <-- 时间线起点
 ShowResultsAfterDelay = 显示延时后结果
-CreateTimeline = 生成时间线
+CreateTimeline = 生成时间线/秒
 Refinement = 考虑历史修正
 EnterBagTime = 进背包时间 (+0.2s)
-L_TimeSpan = 时间长度/秒
 ---
 TimeBox = 时间计算
 L_time = 计时范围
 CalcTime = 计算
-ConsiderDelay = 考虑时间延迟
+ConsiderDelay = 考虑延迟
 L_Correction = 甜甜蜜修正
 ---
 SetStartFrame = 设为时间线起点
@@ -110,6 +109,7 @@ dgv_ability = 特性
 dgv_item = 道具
 dgv_encounter = 遇敌
 dgv_rand = 乱数值
+dgv_rand64 = 乱数值
 dgv_PID = PID
 dgv_EC = 加密常数
 dgv_time = 时间

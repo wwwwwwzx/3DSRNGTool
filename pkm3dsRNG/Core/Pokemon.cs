@@ -14,7 +14,6 @@ namespace pkm3dsRNG
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
         public bool AlwaysSync => Gift || Nature < 25;
-        public bool IsEvent => Species == 151 && Conceptual;
 
         public override string ToString()
         {

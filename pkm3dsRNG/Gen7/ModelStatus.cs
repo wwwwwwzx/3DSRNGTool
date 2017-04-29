@@ -12,11 +12,6 @@ namespace pkm3dsRNG
 
         public bool route17, phase;
 
-        public ModelStatus()
-        {
-            remain_frame = new int[Modelnumber];
-        }
-
         public ModelStatus(byte n, SFMT st)
         {
             sfmt = (SFMT)st.DeepCopy();
@@ -55,6 +50,12 @@ namespace pkm3dsRNG
         {
             for (int i = 0; i < n; i++)
                 sfmt.Next();
+        }
+
+        public void CopyTo(ModelStatus st)
+        {
+            st.remain_frame = (int[])remain_frame.Clone();
+            st.phase = phase;
         }
     }
 }

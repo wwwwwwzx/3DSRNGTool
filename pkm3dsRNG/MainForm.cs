@@ -16,8 +16,11 @@ namespace pkm3dsRNG
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
         private Pokemon iPM => RNGPool.PM;
+        private byte method => (byte)RNGMethod.SelectedIndex;
+        private bool IsEvent => method == 1;
         private bool Gen6 => ver < 4;
         private bool Gen7 => ver > 3;
+        private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         #endregion
 
@@ -29,7 +32,8 @@ namespace pkm3dsRNG
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DGV.Columns["dgv_Rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_PID"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
             Type dgvtype = typeof(DataGridView);
@@ -121,7 +125,7 @@ namespace pkm3dsRNG
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            dgv_research.Visible = Advanced.Checked;
+            Timedelay.Enabled = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -137,6 +141,9 @@ namespace pkm3dsRNG
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
             Properties.Settings.Default.Save();
             LoadCategory();
+            Frame_min.Value = Gen7 ? 418 : 0;
+            dgv_rand.Visible = Gen6;
+            dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,8 +184,14 @@ namespace pkm3dsRNG
 
         private void RNGMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RNGMethod.TabPages[RNGMethod.SelectedIndex].Controls.Add(this.Filters);
-            RNGMethod.TabPages[RNGMethod.SelectedIndex].Controls.Add(this.RNGInfo);
+            RNGMethod.TabPages[method].Controls.Add(this.Filters);
+            RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            switch (method)
+            {
+                case 0: Poke_SelectedIndexChanged(null, null); return;
+                case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
+            }
+
         }
         #endregion
 
@@ -212,7 +225,10 @@ namespace pkm3dsRNG
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)
                 SyncNature.SelectedIndex = iPM.Nature + 1;
+            Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
+            NPC.Value = (iPM as PKM7)?.NPC ?? 1;
         }
+
         private void SetPersonalInfo(int SpecForm) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11);
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,11 +251,26 @@ namespace pkm3dsRNG
             DGV.Rows.Clear();
 
             filter = FilterSettings;
-            RNGPool.CreateBuffer(200, rng);
-            RNGPool.RNGMethod = (byte)RNGMethod.SelectedIndex;
-            if (Gen7) RNGPool.RNGMethod += 16;
-            RNGPool.sta_rng = getStaSettings();
-            RNGPool.event_rng = geteventsetting();
+            RNGPool.RNGmethod = method;
+            switch (RNGPool.RNGmethod)
+            {
+                case 0: RNGPool.sta_rng = getStaSettings(); break;
+                case 1: RNGPool.event_rng = getEventSetting(); break;
+            }
+
+            int buffersize = 150;
+            if (Gen7)
+            {
+                RNGPool.modelnumber = modelnum;
+                RNGPool.IsSolgaleo = method == 0 && iPM.Species == 791;
+                RNGPool.IsLunala = method == 0 && iPM.Species == 792;
+                RNGPool.SolLunaReset = (RNGPool.IsSolgaleo || RNGPool.IsLunala) && RNGPool.modelnumber == 7;
+                RNGPool.delaytime = (int)Timedelay.Value / 2;
+
+                if (RNGPool.Considerdelay = ConsiderDelay.Checked)
+                    buffersize += RNGPool.modelnumber * (method < 2 ? RNGPool.delaytime : 100);
+            }
+            RNGPool.CreateBuffer(buffersize, rng);
         }
 
         private RNGFilters FilterSettings => new RNGFilters
@@ -260,7 +291,7 @@ namespace pkm3dsRNG
 
         private StationaryRNG getStaSettings()
         {
-            StationaryRNG setting = Gen6 ? new Stationary6() : null;
+            StationaryRNG setting = Gen6 ? (StationaryRNG)new Stationary6() : (StationaryRNG)new Stationary7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -301,32 +332,37 @@ namespace pkm3dsRNG
                 Error(SETTINGERROR_STR[lindex] + L_S.Text);
             else if (Frame_min.Value > Frame_max.Value)
                 Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
+            else if (Gen6)
+                Search6();
             else
-                Search();
+                Search7();
         }
 
+        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
         private DataGridViewRow getRow(int i, RNGResult result)
         {
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV);
 
             string true_nature = StringItem.naturestr[result.Nature];
+            byte blink = (result as Result7)?.Blink ?? 0;
+            string delay = (result as Result7)?.frameshift.ToString("+#;0") ?? "";
+            string BlinkFlag = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
-            string randstr = result.RandNum.ToString("X8");
+            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? "";
+            string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
 
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
-            string research = (result.RandNum % 6).ToString() + " " + (result.RandNum & 0x1F).ToString("D2") + " " + (result.RandNum % 100).ToString("D2") + " " + (result.RandNum % 252).ToString("D3");
-
             row.SetValues(
-                i,
+                i, BlinkFlag, delay,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
-                randstr, PID, EC, research
+                randstr, rand64str, PID, EC
                 );
 
             if (result.Shiny)
@@ -337,22 +373,21 @@ namespace pkm3dsRNG
             {
                 if (result.IVs[k] < 1)
                 {
-                    row.Cells[1 + k].Style.Font = BoldFont;
-                    row.Cells[1 + k].Style.ForeColor = Color.OrangeRed;
+                    row.Cells[3 + k].Style.Font = BoldFont;
+                    row.Cells[3 + k].Style.ForeColor = Color.OrangeRed;
                 }
                 else if (result.IVs[k] > 29)
                 {
-                    row.Cells[1 + k].Style.Font = BoldFont;
-                    row.Cells[1 + k].Style.ForeColor = Color.MediumSeaGreen;
+                    row.Cells[3 + k].Style.Font = BoldFont;
+                    row.Cells[3 + k].Style.ForeColor = Color.MediumSeaGreen;
                 }
             }
             return row;
         }
 
-        private void Search()
+        private void Search6()
         {
             var rng = new TinyMT((uint)Seed.Value);
-            //var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;
@@ -364,10 +399,107 @@ namespace pkm3dsRNG
             // Start
             for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()))
             {
-                RNGResult result = RNGPool.Generate();
+                RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getRow(i, result));
+                if (dgvrowlist.Count > 100000)
+                    break;
+            }
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+        }
+
+        private void Search7()
+        {
+            if (RB_FrameRange.Checked)
+                Search7_Normal();
+            if (CreateTimeline.Checked)
+                Search7_Timeline();
+        }
+
+        private void Search7_Normal()
+        {
+            // Blinkflag
+            SFMT sfmt = new SFMT((uint)Seed.Value);
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+
+            FuncUtil.getblinkflaglist(min, max, sfmt, modelnum);
+            // Advance
+            for (int i = 0; i < min; i++)
+                sfmt.Next();
+            // Prepare
+            getsetting(sfmt);
+            ModelStatus status = new ModelStatus(modelnum, sfmt);
+            ModelStatus statustmp = new ModelStatus(modelnum, sfmt);
+            int frameadvance;
+            int realtime = 0;
+            // Start
+            for (int i = min; i <= max;)
+            {
+                status.CopyTo(statustmp);
+                frameadvance = status.NextState();
+
+                while (frameadvance > 0)
+                {
+                    RNGPool.CopyStatus(statustmp);
+                    var result = RNGPool.Generate7();
+
+                    RNGPool.Next(sfmt.Nextulong());
+
+                    frameadvance--;
+                    i++;
+                    if (i <= min || i > max)
+                        continue;
+
+                    FuncUtil.MarkResults((result as Result7), i - min - 1, realtime);
+
+                    if (!filter.CheckResult(result))
+                        continue;
+                    dgvrowlist.Add(getRow(i - 1, result));
+                }
+                realtime++;
+                if (dgvrowlist.Count > 100000) break;
+            }
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+        }
+
+        private void Search7_Timeline()
+        {
+            SFMT sfmt = new SFMT((uint)Seed.Value);
+            int start_frame = (int)Frame_min.Value;
+            FuncUtil.getblinkflaglist(start_frame, start_frame, sfmt, modelnum);
+            // Advance
+            for (int i = 0; i < start_frame; i++)
+                sfmt.Next();
+            // Prepare
+            getsetting(sfmt);
+            ModelStatus status = new ModelStatus(modelnum, sfmt);
+            int totaltime = (int)TimeSpan.Value * 30;
+            int frame = (int)Frame_min.Value;
+            int frameadvance, Currentframe;
+            // Start
+            for (int i = 0; i <= totaltime; i++)
+            {
+                Currentframe = frame;
+
+                RNGPool.CopyStatus(status);
+
+                var result = RNGPool.Generate7();
+                FuncUtil.MarkResults((result as Result7), i, i);
+
+                frameadvance = status.NextState();
+                frame += frameadvance;
+                for (int j = 0; j < frameadvance; j++)
+                    RNGPool.Next(sfmt.Nextulong());
+
+                if (!filter.CheckResult(result))
+                    continue;
+
+                dgvrowlist.Add(getRow(Currentframe, result));
+
                 if (dgvrowlist.Count > 100000)
                     break;
             }
