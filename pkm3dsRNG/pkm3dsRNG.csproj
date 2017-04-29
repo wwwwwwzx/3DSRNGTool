@@ -87,7 +87,9 @@
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\SMEncounter\EncounterArea.cs" />
     <Compile Include="Gen7\Event7.cs" />
+    <Compile Include="Gen7\SMEncounter\LocationTable.cs" />
     <Compile Include="Gen7\ModelStatus.cs" />
     <Compile Include="Gen7\PKM7.cs" />
     <Compile Include="Gen7\Result7.cs" />
@@ -166,6 +168,8 @@
     <None Include="Resources\text_Species_en.txt" />
     <None Include="Resources\text_Types_cn.txt" />
     <None Include="Resources\text_Types_en.txt" />
+    <None Include="Resources\text_Location_sm_cn.txt" />
+    <None Include="Resources\text_Location_sm_en.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,7 +25,7 @@ EventRNG = 配信乱数
 WildRNG = 野生乱数
 ---------------------TabPage1----------------------------------
 ---
-Condition = 条件设置
+Sta_Setting = 定点设置
 L_Poke = 宝可梦
 ShinyLocked = 固定不闪
 Wild = 野生
@@ -112,12 +112,6 @@ dgv_rand64 = 乱数值
 dgv_PID = PID
 dgv_EC = 加密常数
 dgv_time = 时间
----
-WildEncounterSetting = 野生草丛遇敌设置
-L_Location = 地点
-L_Species = 种类
-Day = 白天
-Night = 夜晚
 ---------------------TabPage2----------------------------------
 EventSetting = 配信设置
 Event_IV_Fix0 = HP
@@ -138,3 +132,9 @@ B_Open = 导入
 OtherInfo = 其他信息
 L_Species = 种类
 L_Forme = 形态
+---------------------TabPage3----------------------------------
+Wild_Setting = 野生草丛遇敌设置
+L_Location = 地点
+L_Slots = 槽
+Day = 白天
+Night = 夜晚

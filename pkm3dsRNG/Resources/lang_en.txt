@@ -25,7 +25,7 @@ EventRNG = Event RNG
 WildRNG = Wild RNG
 ---------------------TabPage1----------------------------------
 ---
-Condition = Conditions
+Sta_Setting = Stationary Setting
 L_Poke = Pokemon
 ShinyLocked = Shiny Locked
 Fishing = Fishing
@@ -114,15 +114,6 @@ dgv_rand64 = Random Number
 dgv_PID = PID
 dgv_EC = EC
 dgv_time = Real Time
----
-SOSSetting = SOS Chaining Setting
-L_ChainLength = Chain Length
----
-WildEncounterSetting = Wild Encounter Setting
-L_Location = Location
-L_Species = Species
-Day = Day
-Night = Night
 ---------------------TabPage2----------------------------------
 EventSetting = Event Setting
 Event_IV_Fix0 = HP
@@ -143,3 +134,9 @@ B_Open = Import...
 OtherInfo = Other Information
 L_Species = Species
 L_Forme = Form
+---------------------TabPage3----------------------------------
+Wild_Setting = Wild Encounter Setting
+L_Location = Location
+L_Slots = Slots
+Day = Day
+Night = Night

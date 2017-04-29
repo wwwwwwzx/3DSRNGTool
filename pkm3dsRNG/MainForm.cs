@@ -140,12 +140,16 @@ namespace pkm3dsRNG
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
             Properties.Settings.Default.Save();
+
             LoadCategory();
             Frame_min.Value = Gen7 ? 418 : 0;
+
             dgv_rand.Visible = Gen6;
+
             BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
             Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7;
+
             if (Gen6 && CreateTimeline.Checked)
                 RB_FrameRange.Checked = true;
         }
@@ -192,8 +196,9 @@ namespace pkm3dsRNG
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
             switch (method)
             {
-                case 0: Poke_SelectedIndexChanged(null, null); return;
+                case 0: Poke_SelectedIndexChanged(null, null); Sta_Setting.Controls.Add(EnctrPanel); return;
                 case 1: Event_CheckedChanged(null, null); NPC.Value = 4; return;
+                case 2: Poke_SelectedIndexChanged(null, null); Wild_Setting.Controls.Add(EnctrPanel); return;
             }
         }
 
