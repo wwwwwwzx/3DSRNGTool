@@ -52,5 +52,11 @@ namespace pkm3dsRNG.Controls
                 base.UserEdit = false;
             }
         }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            base.OnClick(e);
+            Select(0, Text.Length);
+        }
     }
 }

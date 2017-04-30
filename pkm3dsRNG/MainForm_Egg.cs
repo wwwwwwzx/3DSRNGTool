@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static PKHeX.Util;
+using pkm3dsRNG.RNG;
 
 namespace pkm3dsRNG
 {
@@ -136,5 +137,54 @@ namespace pkm3dsRNG
         {
             return string.Join(",", list.Select(i => i.ToString()).ToArray());
         }
+
+        #region DGV menu
+        private void SetAsCurrent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var seed = (string)DGV.CurrentRow.Cells["dgv_status"].Value;
+                Status = SeedStr2Array(seed) ?? Status;
+            }
+            catch (NullReferenceException)
+            {
+                Error(NOSELECTION_STR[lindex]);
+            }
+        }
+
+        private uint[] SeedStr2Array(string seed)
+        {
+            try
+            {
+                string[] Data = seed.Split(',');
+                uint[] St = new uint[4];
+                St[3] = Convert.ToUInt32(Data[0], 16);
+                St[2] = Convert.ToUInt32(Data[1], 16);
+                St[1] = Convert.ToUInt32(Data[2], 16);
+                St[0] = Convert.ToUInt32(Data[3], 16);
+                return St;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private void SetAsAfter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var seed = (string)DGV.CurrentRow.Cells["dgv_status"].Value;
+                var adv = Convert.ToInt32((string)DGV.CurrentRow.Cells["dgv_adv"].Value);
+                uint[] St = SeedStr2Array(seed);
+                TinyMT tmt = new TinyMT(St);
+                for (int i = adv; i > 0; i--)
+                    tmt.Next();
+                Status = tmt.status;
+            }
+            catch
+            { }
+        }
+        #endregion
     }
 }

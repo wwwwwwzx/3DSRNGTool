@@ -142,7 +142,7 @@ Night = Night
 CompoundEyes = Compound Eyes
 ---------------------TabPage4----------------------------------
 ---
-TinyMT_Status = Status
+TinyMT_Status = Current Status
 B_Load = Load...
 B_Backup = Backup
 ---
@@ -171,6 +171,9 @@ dgv_adv = Advance
 dgv_status = Status
 dgv_ball = Ball
 dgv_eggnum = Egg Number
+SetAsCurrent = Set as Current Status
+SetAsTarget = Set as Target Frame
+SetAsAfter = Set the Status after receiving this Egg as Current
 ---------------------TabPage5----------------------------------
 dgv_G7TID = G7TID
 dgv_ID_Rand = Rand#

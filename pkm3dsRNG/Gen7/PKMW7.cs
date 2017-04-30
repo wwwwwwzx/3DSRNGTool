@@ -20,6 +20,8 @@
                 Text = "UB",
                 List = new[]
                 {
+                    new PKMW7 { Species = 000, Level = 55, Conceptual = true, Rate = new byte[] { 30 } },
+
                     new PKMW7 { Species = 793, Level = 55, Location = new []{100,082}, Rate = new byte[]{80,30},},    // Nihilego
                     new PKMW7 { Species = 794, Level = 65, Location = new []{040}, Rate = new byte[]{30}, Version = GameVersion.SN,},    // Buzzwole
                     new PKMW7 { Species = 795, Level = 60, Location = new []{046}, Rate = new byte[]{50}, Version = GameVersion.MN,},   // Pheromosa
@@ -35,6 +37,9 @@
                 Text = "Island Scan",
                 List = new[]
                 {
+                    new PKMW7 { Species = 000, Level = 12, Conceptual = true },
+
+                    // Melemele Island
                     new PKMW7 { Species = 155, Level = 12, Location = new[]{ 266, 522 }, }, // Cyndaquil @ Route 3
                     new PKMW7 { Species = 158, Level = 12, Location = new[]{ 298 }, }, // Totodile @ Seaward Cave
                     new PKMW7 { Species = 633, Level = 13, Location = new[]{ 290 }, }, // Deino @ Ten Carat Hill

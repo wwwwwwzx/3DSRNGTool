@@ -637,8 +637,18 @@ namespace pkm3dsRNG
 
         public readonly static int[] SMLocationList = Table.Select(t => t.Locationidx).ToArray();
 
-        //  public readonly static int[] UBLocationList = PKMW7.Species_SM[1].List.SelectMany(pk => (pk as PKMW7).Location).ToArray();
+        public readonly static int[] UBLocationList = PKMW7.Species_SM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
 
-        //  public readonly static int[] QRLocationList = PKMW7.Species_SM[2].List.SelectMany(pk => (pk as PKMW7).Location).ToArray();
+        public readonly static int[] QRLocationList = PKMW7.Species_SM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
+
+        public static int[] getSMLocation(int category = 0)
+        {
+            switch (category)
+            {
+                case 1: return UBLocationList;
+                case 2: return QRLocationList;
+                default: return SMLocationList;
+            }
+        }
     }
 }

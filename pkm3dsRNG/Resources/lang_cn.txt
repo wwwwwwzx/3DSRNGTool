@@ -169,6 +169,9 @@ dgv_adv = 消耗
 dgv_status = Seed
 dgv_ball = 球
 dgv_eggnum = 蛋数
+SetAsCurrent = 将该帧设为当前状态
+SetAsTarget = 将该帧设为目标
+SetAsAfter = 将领取该蛋后的状态设为当前状态
 -----------------------
 dgv_G7TID = 7代ID
 dgv_ID_Rand = 乱数值

@@ -270,8 +270,8 @@
             this.DGV = new System.Windows.Forms.DataGridView();
             this.dgv_eggnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_adv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_H = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_A = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -297,6 +297,7 @@
             this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DGVMS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SetAsTarget = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetAsCurrent = new System.Windows.Forms.ToolStripMenuItem();
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
@@ -309,6 +310,7 @@
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seed = new pkm3dsRNG.Controls.HexNumericUpdown();
+            this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -3385,8 +3387,8 @@
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_eggnum,
             this.dgv_Frame,
-            this.dgv_mark,
             this.dgv_shift,
+            this.dgv_mark,
             this.dgv_adv,
             this.dgv_H,
             this.dgv_A,
@@ -3449,17 +3451,17 @@
             this.dgv_Frame.Name = "dgv_Frame";
             this.dgv_Frame.Width = 60;
             // 
+            // dgv_shift
+            // 
+            this.dgv_shift.HeaderText = "偏差";
+            this.dgv_shift.Name = "dgv_shift";
+            this.dgv_shift.Width = 60;
+            // 
             // dgv_mark
             // 
             this.dgv_mark.HeaderText = "眨眼";
             this.dgv_mark.Name = "dgv_mark";
             this.dgv_mark.Width = 40;
-            // 
-            // dgv_shift
-            // 
-            this.dgv_shift.HeaderText = "偏差";
-            this.dgv_shift.Name = "dgv_shift";
-            this.dgv_shift.Width = 40;
             // 
             // dgv_adv
             // 
@@ -3609,16 +3611,25 @@
             // DGVMS
             // 
             this.DGVMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SetAsTarget});
+            this.SetAsTarget,
+            this.SetAsCurrent,
+            this.SetAsAfter});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(178, 26);
+            this.DGVMS.Size = new System.Drawing.Size(263, 92);
             // 
             // SetAsTarget
             // 
             this.SetAsTarget.Name = "SetAsTarget";
-            this.SetAsTarget.Size = new System.Drawing.Size(177, 22);
+            this.SetAsTarget.Size = new System.Drawing.Size(262, 22);
             this.SetAsTarget.Text = "Set as Target Frame";
             this.SetAsTarget.Click += new System.EventHandler(this.SetAsTarget_Click);
+            // 
+            // SetAsCurrent
+            // 
+            this.SetAsCurrent.Name = "SetAsCurrent";
+            this.SetAsCurrent.Size = new System.Drawing.Size(262, 22);
+            this.SetAsCurrent.Text = "Set as Current Status";
+            this.SetAsCurrent.Click += new System.EventHandler(this.SetAsCurrent_Click);
             // 
             // Gameversion
             // 
@@ -3731,6 +3742,13 @@
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // SetAsAfter
+            // 
+            this.SetAsAfter.Name = "SetAsAfter";
+            this.SetAsAfter.Size = new System.Drawing.Size(262, 22);
+            this.SetAsAfter.Text = "Set as Status after receiving this Egg";
+            this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
             // 
             // MainForm
             // 
@@ -4112,10 +4130,11 @@
         private System.Windows.Forms.RadioButton MT;
         private System.Windows.Forms.ContextMenuStrip DGVMS;
         private System.Windows.Forms.ToolStripMenuItem SetAsTarget;
+        private System.Windows.Forms.CheckBox BlinkWhenSync;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_shift;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_adv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_H;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_A;
@@ -4139,7 +4158,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
-        private System.Windows.Forms.CheckBox BlinkWhenSync;
+        private System.Windows.Forms.ToolStripMenuItem SetAsCurrent;
+        private System.Windows.Forms.ToolStripMenuItem SetAsAfter;
     }
 }
 

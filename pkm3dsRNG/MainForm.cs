@@ -139,7 +139,7 @@ namespace pkm3dsRNG
                 Locationlist.Clear(); // not impled
             else if (Gen7)
             {
-                var locationlist = iPM.Conceptual ? LocationTable7.SMLocationList : (iPM as PKMW7)?.Location ?? null;
+                var locationlist = iPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (iPM as PKMW7)?.Location ?? null;
                 if (locationlist == null) return;
                 Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
             }
@@ -746,7 +746,7 @@ namespace pkm3dsRNG
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
             row.SetValues(
-                eggnum, i, Mark, shift, advance,
+                eggnum, i, shift, Mark, advance,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, delay, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
                 slots, Lv, ball, item,
@@ -1090,5 +1090,6 @@ namespace pkm3dsRNG
                 Error(NOSELECTION_STR[lindex]);
             }
         }
+
     }
 }
