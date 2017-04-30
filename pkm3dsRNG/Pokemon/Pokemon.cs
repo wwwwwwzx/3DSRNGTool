@@ -14,6 +14,9 @@ namespace pkm3dsRNG
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
         public bool AlwaysSync => Gift || Nature < 25;
+        public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
+        public bool IsRandomGender => FuncUtil.IsRandomGender(GenderRatio);
+        public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
 
         public override string ToString()
         {

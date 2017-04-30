@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties1 = new pkm3dsRNG.Controls.CheckBoxProperties();
             pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties2 = new pkm3dsRNG.Controls.CheckBoxProperties();
             pkm3dsRNG.Controls.CheckBoxProperties checkBoxProperties3 = new pkm3dsRNG.Controls.CheckBoxProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.L_Ball = new System.Windows.Forms.Label();
             this.Ball = new System.Windows.Forms.ComboBox();
+            this.Slot = new pkm3dsRNG.Controls.CheckBoxComboBox();
             this.L_Slot = new System.Windows.Forms.Label();
             this.SpecialOnly = new System.Windows.Forms.CheckBox();
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.BlinkFOnly = new System.Windows.Forms.CheckBox();
+            this.HiddenPower = new pkm3dsRNG.Controls.CheckBoxComboBox();
+            this.Nature = new pkm3dsRNG.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -133,7 +136,9 @@
             this.EventSetting = new System.Windows.Forms.GroupBox();
             this.B_Open = new System.Windows.Forms.Button();
             this.Event_Forme = new System.Windows.Forms.ComboBox();
+            this.Event_PID = new pkm3dsRNG.Controls.HexNumericUpdown();
             this.L_Forme = new System.Windows.Forms.Label();
+            this.Event_EC = new pkm3dsRNG.Controls.HexNumericUpdown();
             this.Event_Species = new System.Windows.Forms.ComboBox();
             this.Event_SID = new System.Windows.Forms.NumericUpDown();
             this.L_Event_PID = new System.Windows.Forms.Label();
@@ -184,16 +189,29 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
+            this.MainRNGEgg = new System.Windows.Forms.CheckBox();
+            this.TinyMT_Status = new System.Windows.Forms.GroupBox();
+            this.St3 = new pkm3dsRNG.Controls.HexNumericUpdown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.B_Load = new System.Windows.Forms.Button();
+            this.St2 = new pkm3dsRNG.Controls.HexNumericUpdown();
+            this.B_Backup = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.St1 = new pkm3dsRNG.Controls.HexNumericUpdown();
+            this.St0 = new pkm3dsRNG.Controls.HexNumericUpdown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.L_Egg_S = new System.Windows.Forms.Label();
             this.L_Egg_C = new System.Windows.Forms.Label();
             this.L_Egg_B = new System.Windows.Forms.Label();
             this.L_Egg_H = new System.Windows.Forms.Label();
+            this.MM = new System.Windows.Forms.CheckBox();
             this.L_Egg_A = new System.Windows.Forms.Label();
+            this.Heterogeneity = new System.Windows.Forms.CheckBox();
             this.L_Egg_D = new System.Windows.Forms.Label();
             this.L_Ditto = new System.Windows.Forms.Label();
             this.M_IV0 = new System.Windows.Forms.NumericUpDown();
             this.M_IV1 = new System.Windows.Forms.NumericUpDown();
-            this.L_Items = new System.Windows.Forms.Label();
             this.F_IV4 = new System.Windows.Forms.NumericUpDown();
             this.F_IV3 = new System.Windows.Forms.NumericUpDown();
             this.F_IV2 = new System.Windows.Forms.NumericUpDown();
@@ -212,19 +230,8 @@
             this.L_EggAbility = new System.Windows.Forms.Label();
             this.M_ditto = new System.Windows.Forms.CheckBox();
             this.L_Egg_GR = new System.Windows.Forms.Label();
-            this.L_Female = new System.Windows.Forms.Label();
-            this.L_Male = new System.Windows.Forms.Label();
             this.F_Items = new System.Windows.Forms.ComboBox();
             this.M_Items = new System.Windows.Forms.ComboBox();
-            this.TinyMT_Status = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.B_Load = new System.Windows.Forms.Button();
-            this.B_Backup = new System.Windows.Forms.Button();
-            this.MM = new System.Windows.Forms.CheckBox();
-            this.Heterogeneity = new System.Windows.Forms.CheckBox();
             this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
@@ -232,9 +239,13 @@
             this.L_Seed = new System.Windows.Forms.Label();
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.Gameversion = new System.Windows.Forms.ComboBox();
+            this.L_GameVersion = new System.Windows.Forms.Label();
+            this.Seed = new pkm3dsRNG.Controls.HexNumericUpdown();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_blink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_adv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_H = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_A = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_B = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -249,23 +260,12 @@
             this.dgv_ability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_ball = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_EC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gameversion = new System.Windows.Forms.ComboBox();
-            this.L_GameVersion = new System.Windows.Forms.Label();
-            this.Seed = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.Slot = new pkm3dsRNG.Controls.CheckBoxComboBox();
-            this.HiddenPower = new pkm3dsRNG.Controls.CheckBoxComboBox();
-            this.Nature = new pkm3dsRNG.Controls.CheckBoxComboBox();
-            this.Event_PID = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.Event_EC = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.hexNumericUpdown4 = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.hexNumericUpdown3 = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.hexNumericUpdown2 = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.hexNumericUpdown1 = new pkm3dsRNG.Controls.HexNumericUpdown();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -309,6 +309,8 @@
             this.EnctrPanel.SuspendLayout();
             this.TP_EventRNG.SuspendLayout();
             this.EventSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).BeginInit();
@@ -325,6 +327,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).BeginInit();
             this.TP_EggRNG.SuspendLayout();
             this.Parents_Info.SuspendLayout();
+            this.TinyMT_Status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.St3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).BeginInit();
@@ -337,16 +344,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
-            this.TinyMT_Status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown1)).BeginInit();
             this.SuspendLayout();
             // 
             // Filters
@@ -407,6 +407,31 @@
             this.Ball.Size = new System.Drawing.Size(74, 21);
             this.Ball.TabIndex = 93;
             // 
+            // Slot
+            // 
+            this.Slot.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Slot.CheckBoxProperties = checkBoxProperties1;
+            this.Slot.DisplayMemberSingleItem = "";
+            this.Slot.DropDownHeight = 260;
+            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Slot.FormattingEnabled = true;
+            this.Slot.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.Slot.Location = new System.Drawing.Point(200, 58);
+            this.Slot.Name = "Slot";
+            this.Slot.Size = new System.Drawing.Size(74, 21);
+            this.Slot.TabIndex = 92;
+            // 
             // L_Slot
             // 
             this.L_Slot.AutoSize = true;
@@ -446,6 +471,34 @@
             this.BlinkFOnly.TabIndex = 79;
             this.BlinkFOnly.Text = "仅眨眼帧";
             this.BlinkFOnly.UseVisualStyleBackColor = true;
+            // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties2;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties3;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(295, 164);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -1620,6 +1673,17 @@
             this.Event_Forme.TabIndex = 96;
             this.Event_Forme.Visible = false;
             // 
+            // Event_PID
+            // 
+            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_PID.Hexadecimal = true;
+            this.Event_PID.Location = new System.Drawing.Point(327, 203);
+            this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(78, 22);
+            this.Event_PID.TabIndex = 92;
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Visible = false;
+            // 
             // L_Forme
             // 
             this.L_Forme.AutoSize = true;
@@ -1629,6 +1693,17 @@
             this.L_Forme.TabIndex = 95;
             this.L_Forme.Text = "形态";
             this.L_Forme.Visible = false;
+            // 
+            // Event_EC
+            // 
+            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_EC.Hexadecimal = true;
+            this.Event_EC.Location = new System.Drawing.Point(327, 241);
+            this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(78, 22);
+            this.Event_EC.TabIndex = 93;
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Visible = false;
             // 
             // Event_Species
             // 
@@ -2196,9 +2271,6 @@
             // TP_EggRNG
             // 
             this.TP_EggRNG.Controls.Add(this.Parents_Info);
-            this.TP_EggRNG.Controls.Add(this.TinyMT_Status);
-            this.TP_EggRNG.Controls.Add(this.MM);
-            this.TP_EggRNG.Controls.Add(this.Heterogeneity);
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
@@ -2209,16 +2281,19 @@
             // 
             // Parents_Info
             // 
+            this.Parents_Info.Controls.Add(this.MainRNGEgg);
+            this.Parents_Info.Controls.Add(this.TinyMT_Status);
             this.Parents_Info.Controls.Add(this.L_Egg_S);
             this.Parents_Info.Controls.Add(this.L_Egg_C);
             this.Parents_Info.Controls.Add(this.L_Egg_B);
             this.Parents_Info.Controls.Add(this.L_Egg_H);
+            this.Parents_Info.Controls.Add(this.MM);
             this.Parents_Info.Controls.Add(this.L_Egg_A);
+            this.Parents_Info.Controls.Add(this.Heterogeneity);
             this.Parents_Info.Controls.Add(this.L_Egg_D);
             this.Parents_Info.Controls.Add(this.L_Ditto);
             this.Parents_Info.Controls.Add(this.M_IV0);
             this.Parents_Info.Controls.Add(this.M_IV1);
-            this.Parents_Info.Controls.Add(this.L_Items);
             this.Parents_Info.Controls.Add(this.F_IV4);
             this.Parents_Info.Controls.Add(this.F_IV3);
             this.Parents_Info.Controls.Add(this.F_IV2);
@@ -2237,21 +2312,153 @@
             this.Parents_Info.Controls.Add(this.L_EggAbility);
             this.Parents_Info.Controls.Add(this.M_ditto);
             this.Parents_Info.Controls.Add(this.L_Egg_GR);
-            this.Parents_Info.Controls.Add(this.L_Female);
-            this.Parents_Info.Controls.Add(this.L_Male);
             this.Parents_Info.Controls.Add(this.F_Items);
             this.Parents_Info.Controls.Add(this.M_Items);
-            this.Parents_Info.Location = new System.Drawing.Point(129, 6);
+            this.Parents_Info.Location = new System.Drawing.Point(6, 6);
             this.Parents_Info.Name = "Parents_Info";
-            this.Parents_Info.Size = new System.Drawing.Size(281, 275);
+            this.Parents_Info.Size = new System.Drawing.Size(404, 275);
             this.Parents_Info.TabIndex = 7;
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
             // 
+            // MainRNGEgg
+            // 
+            this.MainRNGEgg.AutoSize = true;
+            this.MainRNGEgg.Location = new System.Drawing.Point(283, 195);
+            this.MainRNGEgg.Name = "MainRNGEgg";
+            this.MainRNGEgg.Size = new System.Drawing.Size(92, 17);
+            this.MainRNGEgg.TabIndex = 102;
+            this.MainRNGEgg.Text = "主乱数蛋PID";
+            this.MainRNGEgg.UseVisualStyleBackColor = true;
+            this.MainRNGEgg.Visible = false;
+            this.MainRNGEgg.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
+            this.MainRNGEgg.VisibleChanged += new System.EventHandler(this.MainRNGEgg_VisibleChanged);
+            // 
+            // TinyMT_Status
+            // 
+            this.TinyMT_Status.Controls.Add(this.St3);
+            this.TinyMT_Status.Controls.Add(this.label13);
+            this.TinyMT_Status.Controls.Add(this.B_Load);
+            this.TinyMT_Status.Controls.Add(this.St2);
+            this.TinyMT_Status.Controls.Add(this.B_Backup);
+            this.TinyMT_Status.Controls.Add(this.label11);
+            this.TinyMT_Status.Controls.Add(this.St1);
+            this.TinyMT_Status.Controls.Add(this.St0);
+            this.TinyMT_Status.Controls.Add(this.label8);
+            this.TinyMT_Status.Controls.Add(this.label16);
+            this.TinyMT_Status.Location = new System.Drawing.Point(274, 0);
+            this.TinyMT_Status.Name = "TinyMT_Status";
+            this.TinyMT_Status.Size = new System.Drawing.Size(130, 178);
+            this.TinyMT_Status.TabIndex = 101;
+            this.TinyMT_Status.TabStop = false;
+            this.TinyMT_Status.Text = "Status";
+            // 
+            // St3
+            // 
+            this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St3.Hexadecimal = true;
+            this.St3.Location = new System.Drawing.Point(34, 26);
+            this.St3.Name = "St3";
+            this.St3.Size = new System.Drawing.Size(78, 22);
+            this.St3.TabIndex = 92;
+            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St3.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label13.Location = new System.Drawing.Point(6, 114);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(28, 14);
+            this.label13.TabIndex = 99;
+            this.label13.Text = "[0]";
+            // 
+            // B_Load
+            // 
+            this.B_Load.Location = new System.Drawing.Point(5, 145);
+            this.B_Load.Name = "B_Load";
+            this.B_Load.Size = new System.Drawing.Size(53, 25);
+            this.B_Load.TabIndex = 5;
+            this.B_Load.Text = "导入";
+            this.B_Load.UseVisualStyleBackColor = true;
+            // 
+            // St2
+            // 
+            this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St2.Hexadecimal = true;
+            this.St2.Location = new System.Drawing.Point(34, 54);
+            this.St2.Name = "St2";
+            this.St2.Size = new System.Drawing.Size(78, 22);
+            this.St2.TabIndex = 93;
+            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St2.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // B_Backup
+            // 
+            this.B_Backup.Location = new System.Drawing.Point(70, 145);
+            this.B_Backup.Name = "B_Backup";
+            this.B_Backup.Size = new System.Drawing.Size(53, 25);
+            this.B_Backup.TabIndex = 6;
+            this.B_Backup.Text = "保存";
+            this.B_Backup.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label11.Location = new System.Drawing.Point(6, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 14);
+            this.label11.TabIndex = 98;
+            this.label11.Text = "[1]";
+            // 
+            // St1
+            // 
+            this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St1.Hexadecimal = true;
+            this.St1.Location = new System.Drawing.Point(34, 82);
+            this.St1.Name = "St1";
+            this.St1.Size = new System.Drawing.Size(78, 22);
+            this.St1.TabIndex = 94;
+            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St1.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St0
+            // 
+            this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St0.Hexadecimal = true;
+            this.St0.Location = new System.Drawing.Point(34, 111);
+            this.St0.Name = "St0";
+            this.St0.Size = new System.Drawing.Size(78, 22);
+            this.St0.TabIndex = 95;
+            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St0.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label8.Location = new System.Drawing.Point(6, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(28, 14);
+            this.label8.TabIndex = 97;
+            this.label8.Text = "[2]";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label16.Location = new System.Drawing.Point(6, 28);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(28, 14);
+            this.label16.TabIndex = 96;
+            this.label16.Text = "[3]";
+            // 
             // L_Egg_S
             // 
             this.L_Egg_S.AutoSize = true;
-            this.L_Egg_S.Location = new System.Drawing.Point(93, 217);
+            this.L_Egg_S.Location = new System.Drawing.Point(21, 211);
             this.L_Egg_S.Name = "L_Egg_S";
             this.L_Egg_S.Size = new System.Drawing.Size(31, 13);
             this.L_Egg_S.TabIndex = 37;
@@ -2260,7 +2467,7 @@
             // L_Egg_C
             // 
             this.L_Egg_C.AutoSize = true;
-            this.L_Egg_C.Location = new System.Drawing.Point(93, 163);
+            this.L_Egg_C.Location = new System.Drawing.Point(21, 159);
             this.L_Egg_C.Name = "L_Egg_C";
             this.L_Egg_C.Size = new System.Drawing.Size(31, 13);
             this.L_Egg_C.TabIndex = 35;
@@ -2269,7 +2476,7 @@
             // L_Egg_B
             // 
             this.L_Egg_B.AutoSize = true;
-            this.L_Egg_B.Location = new System.Drawing.Point(93, 136);
+            this.L_Egg_B.Location = new System.Drawing.Point(21, 133);
             this.L_Egg_B.Name = "L_Egg_B";
             this.L_Egg_B.Size = new System.Drawing.Size(31, 13);
             this.L_Egg_B.TabIndex = 34;
@@ -2278,25 +2485,46 @@
             // L_Egg_H
             // 
             this.L_Egg_H.AutoSize = true;
-            this.L_Egg_H.Location = new System.Drawing.Point(93, 82);
+            this.L_Egg_H.Location = new System.Drawing.Point(21, 81);
             this.L_Egg_H.Name = "L_Egg_H";
             this.L_Egg_H.Size = new System.Drawing.Size(22, 13);
             this.L_Egg_H.TabIndex = 32;
             this.L_Egg_H.Text = "HP";
             // 
+            // MM
+            // 
+            this.MM.AutoSize = true;
+            this.MM.Location = new System.Drawing.Point(283, 221);
+            this.MM.Name = "MM";
+            this.MM.Size = new System.Drawing.Size(86, 17);
+            this.MM.TabIndex = 5;
+            this.MM.Text = "父母异语言";
+            this.MM.UseVisualStyleBackColor = true;
+            this.MM.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
+            // 
             // L_Egg_A
             // 
             this.L_Egg_A.AutoSize = true;
-            this.L_Egg_A.Location = new System.Drawing.Point(93, 109);
+            this.L_Egg_A.Location = new System.Drawing.Point(21, 107);
             this.L_Egg_A.Name = "L_Egg_A";
             this.L_Egg_A.Size = new System.Drawing.Size(31, 13);
             this.L_Egg_A.TabIndex = 33;
             this.L_Egg_A.Text = "攻击";
             // 
+            // Heterogeneity
+            // 
+            this.Heterogeneity.AutoSize = true;
+            this.Heterogeneity.Location = new System.Drawing.Point(283, 246);
+            this.Heterogeneity.Name = "Heterogeneity";
+            this.Heterogeneity.Size = new System.Drawing.Size(86, 17);
+            this.Heterogeneity.TabIndex = 0;
+            this.Heterogeneity.Text = "父母不同种";
+            this.Heterogeneity.UseVisualStyleBackColor = true;
+            // 
             // L_Egg_D
             // 
             this.L_Egg_D.AutoSize = true;
-            this.L_Egg_D.Location = new System.Drawing.Point(93, 190);
+            this.L_Egg_D.Location = new System.Drawing.Point(21, 185);
             this.L_Egg_D.Name = "L_Egg_D";
             this.L_Egg_D.Size = new System.Drawing.Size(31, 13);
             this.L_Egg_D.TabIndex = 36;
@@ -2305,7 +2533,7 @@
             // L_Ditto
             // 
             this.L_Ditto.AutoSize = true;
-            this.L_Ditto.Location = new System.Drawing.Point(94, 28);
+            this.L_Ditto.Location = new System.Drawing.Point(22, 26);
             this.L_Ditto.Name = "L_Ditto";
             this.L_Ditto.Size = new System.Drawing.Size(43, 13);
             this.L_Ditto.TabIndex = 31;
@@ -2315,7 +2543,7 @@
             // 
             this.M_IV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV0.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV0.Location = new System.Drawing.Point(43, 73);
+            this.M_IV0.Location = new System.Drawing.Point(65, 72);
             this.M_IV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2334,7 +2562,7 @@
             // 
             this.M_IV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV1.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV1.Location = new System.Drawing.Point(43, 101);
+            this.M_IV1.Location = new System.Drawing.Point(65, 100);
             this.M_IV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2349,20 +2577,11 @@
             0,
             0});
             // 
-            // L_Items
-            // 
-            this.L_Items.AutoSize = true;
-            this.L_Items.Location = new System.Drawing.Point(103, 244);
-            this.L_Items.Name = "L_Items";
-            this.L_Items.Size = new System.Drawing.Size(43, 13);
-            this.L_Items.TabIndex = 12;
-            this.L_Items.Text = "持有物";
-            // 
             // F_IV4
             // 
             this.F_IV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV4.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV4.Location = new System.Drawing.Point(141, 185);
+            this.F_IV4.Location = new System.Drawing.Point(124, 184);
             this.F_IV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2381,7 +2600,7 @@
             // 
             this.F_IV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV3.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV3.Location = new System.Drawing.Point(141, 157);
+            this.F_IV3.Location = new System.Drawing.Point(124, 156);
             this.F_IV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2400,7 +2619,7 @@
             // 
             this.F_IV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV2.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV2.Location = new System.Drawing.Point(141, 129);
+            this.F_IV2.Location = new System.Drawing.Point(124, 128);
             this.F_IV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2419,7 +2638,7 @@
             // 
             this.F_IV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV1.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV1.Location = new System.Drawing.Point(141, 101);
+            this.F_IV1.Location = new System.Drawing.Point(124, 100);
             this.F_IV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2438,7 +2657,7 @@
             // 
             this.M_IV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV2.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV2.Location = new System.Drawing.Point(43, 129);
+            this.M_IV2.Location = new System.Drawing.Point(65, 128);
             this.M_IV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2457,7 +2676,7 @@
             // 
             this.F_IV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV5.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV5.Location = new System.Drawing.Point(141, 213);
+            this.F_IV5.Location = new System.Drawing.Point(124, 212);
             this.F_IV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2480,7 +2699,7 @@
             "1",
             "2",
             "H"});
-            this.F_ability.Location = new System.Drawing.Point(141, 46);
+            this.F_ability.Location = new System.Drawing.Point(124, 45);
             this.F_ability.Name = "F_ability";
             this.F_ability.Size = new System.Drawing.Size(45, 21);
             this.F_ability.TabIndex = 4;
@@ -2489,7 +2708,7 @@
             // 
             this.F_IV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV0.ForeColor = System.Drawing.Color.DeepPink;
-            this.F_IV0.Location = new System.Drawing.Point(141, 73);
+            this.F_IV0.Location = new System.Drawing.Point(124, 72);
             this.F_IV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2512,7 +2731,7 @@
             "1",
             "2",
             "H"});
-            this.M_ability.Location = new System.Drawing.Point(43, 46);
+            this.M_ability.Location = new System.Drawing.Point(65, 45);
             this.M_ability.Name = "M_ability";
             this.M_ability.Size = new System.Drawing.Size(45, 21);
             this.M_ability.TabIndex = 6;
@@ -2521,7 +2740,7 @@
             // 
             this.M_IV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV5.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV5.Location = new System.Drawing.Point(43, 213);
+            this.M_IV5.Location = new System.Drawing.Point(65, 212);
             this.M_IV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2540,7 +2759,7 @@
             // 
             this.M_IV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV3.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV3.Location = new System.Drawing.Point(43, 157);
+            this.M_IV3.Location = new System.Drawing.Point(65, 156);
             this.M_IV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2559,7 +2778,7 @@
             // 
             this.M_IV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV4.ForeColor = System.Drawing.Color.Blue;
-            this.M_IV4.Location = new System.Drawing.Point(43, 185);
+            this.M_IV4.Location = new System.Drawing.Point(65, 184);
             this.M_IV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2576,7 +2795,7 @@
             // 
             // B_EggReset
             // 
-            this.B_EggReset.Location = new System.Drawing.Point(197, 210);
+            this.B_EggReset.Location = new System.Drawing.Point(189, 20);
             this.B_EggReset.Name = "B_EggReset";
             this.B_EggReset.Size = new System.Drawing.Size(70, 25);
             this.B_EggReset.TabIndex = 30;
@@ -2587,11 +2806,12 @@
             // F_ditto
             // 
             this.F_ditto.AutoSize = true;
-            this.F_ditto.Location = new System.Drawing.Point(141, 27);
+            this.F_ditto.ForeColor = System.Drawing.Color.DeepPink;
+            this.F_ditto.Location = new System.Drawing.Point(124, 26);
             this.F_ditto.Name = "F_ditto";
-            this.F_ditto.Size = new System.Drawing.Size(59, 17);
+            this.F_ditto.Size = new System.Drawing.Size(50, 17);
             this.F_ditto.TabIndex = 2;
-            this.F_ditto.Text = "           ";
+            this.F_ditto.Text = "母方";
             this.F_ditto.UseVisualStyleBackColor = true;
             this.F_ditto.CheckedChanged += new System.EventHandler(this.Ditto_CheckedChanged);
             // 
@@ -2607,7 +2827,7 @@
             "♂1：♀3",
             "只有♂",
             "只有♀"});
-            this.Egg_GenderRatio.Location = new System.Drawing.Point(197, 131);
+            this.Egg_GenderRatio.Location = new System.Drawing.Point(189, 183);
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
             this.Egg_GenderRatio.Size = new System.Drawing.Size(78, 21);
             this.Egg_GenderRatio.TabIndex = 7;
@@ -2615,7 +2835,7 @@
             // L_EggAbility
             // 
             this.L_EggAbility.AutoSize = true;
-            this.L_EggAbility.Location = new System.Drawing.Point(93, 55);
+            this.L_EggAbility.Location = new System.Drawing.Point(21, 55);
             this.L_EggAbility.Name = "L_EggAbility";
             this.L_EggAbility.Size = new System.Drawing.Size(31, 13);
             this.L_EggAbility.TabIndex = 5;
@@ -2624,42 +2844,24 @@
             // M_ditto
             // 
             this.M_ditto.AutoSize = true;
-            this.M_ditto.Location = new System.Drawing.Point(73, 27);
+            this.M_ditto.BackColor = System.Drawing.Color.Transparent;
+            this.M_ditto.ForeColor = System.Drawing.Color.Blue;
+            this.M_ditto.Location = new System.Drawing.Point(71, 26);
             this.M_ditto.Name = "M_ditto";
-            this.M_ditto.Size = new System.Drawing.Size(59, 17);
+            this.M_ditto.Size = new System.Drawing.Size(50, 17);
             this.M_ditto.TabIndex = 1;
-            this.M_ditto.Text = "           ";
-            this.M_ditto.UseVisualStyleBackColor = true;
+            this.M_ditto.Text = "父方";
+            this.M_ditto.UseVisualStyleBackColor = false;
             this.M_ditto.CheckedChanged += new System.EventHandler(this.Ditto_CheckedChanged);
             // 
             // L_Egg_GR
             // 
             this.L_Egg_GR.AutoSize = true;
-            this.L_Egg_GR.Location = new System.Drawing.Point(194, 109);
+            this.L_Egg_GR.Location = new System.Drawing.Point(186, 159);
             this.L_Egg_GR.Name = "L_Egg_GR";
             this.L_Egg_GR.Size = new System.Drawing.Size(43, 13);
             this.L_Egg_GR.TabIndex = 8;
             this.L_Egg_GR.Text = "性别比";
-            // 
-            // L_Female
-            // 
-            this.L_Female.AutoSize = true;
-            this.L_Female.ForeColor = System.Drawing.Color.DeepPink;
-            this.L_Female.Location = new System.Drawing.Point(196, 49);
-            this.L_Female.Name = "L_Female";
-            this.L_Female.Size = new System.Drawing.Size(41, 13);
-            this.L_Female.TabIndex = 28;
-            this.L_Female.Text = "Female";
-            // 
-            // L_Male
-            // 
-            this.L_Male.AutoSize = true;
-            this.L_Male.ForeColor = System.Drawing.Color.Blue;
-            this.L_Male.Location = new System.Drawing.Point(7, 49);
-            this.L_Male.Name = "L_Male";
-            this.L_Male.Size = new System.Drawing.Size(30, 13);
-            this.L_Male.TabIndex = 27;
-            this.L_Male.Text = "Male";
             // 
             // F_Items
             // 
@@ -2675,7 +2877,7 @@
             "C-力量镜",
             "D-力量束带",
             "S-力量护踝"});
-            this.F_Items.Location = new System.Drawing.Point(152, 241);
+            this.F_Items.Location = new System.Drawing.Point(111, 244);
             this.F_Items.Name = "F_Items";
             this.F_Items.Size = new System.Drawing.Size(85, 21);
             this.F_Items.TabIndex = 10;
@@ -2694,107 +2896,10 @@
             "C-力量镜",
             "D-力量束带",
             "S-力量护踝"});
-            this.M_Items.Location = new System.Drawing.Point(15, 241);
+            this.M_Items.Location = new System.Drawing.Point(12, 244);
             this.M_Items.Name = "M_Items";
             this.M_Items.Size = new System.Drawing.Size(82, 21);
             this.M_Items.TabIndex = 13;
-            // 
-            // TinyMT_Status
-            // 
-            this.TinyMT_Status.Controls.Add(this.label13);
-            this.TinyMT_Status.Controls.Add(this.label11);
-            this.TinyMT_Status.Controls.Add(this.label8);
-            this.TinyMT_Status.Controls.Add(this.label16);
-            this.TinyMT_Status.Controls.Add(this.hexNumericUpdown4);
-            this.TinyMT_Status.Controls.Add(this.hexNumericUpdown3);
-            this.TinyMT_Status.Controls.Add(this.hexNumericUpdown2);
-            this.TinyMT_Status.Controls.Add(this.hexNumericUpdown1);
-            this.TinyMT_Status.Controls.Add(this.B_Load);
-            this.TinyMT_Status.Controls.Add(this.B_Backup);
-            this.TinyMT_Status.Location = new System.Drawing.Point(6, 5);
-            this.TinyMT_Status.Name = "TinyMT_Status";
-            this.TinyMT_Status.Size = new System.Drawing.Size(117, 209);
-            this.TinyMT_Status.TabIndex = 6;
-            this.TinyMT_Status.TabStop = false;
-            this.TinyMT_Status.Text = "状态";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label13.Location = new System.Drawing.Point(5, 114);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 14);
-            this.label13.TabIndex = 99;
-            this.label13.Text = "[0]";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label11.Location = new System.Drawing.Point(5, 85);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 14);
-            this.label11.TabIndex = 98;
-            this.label11.Text = "[1]";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label8.Location = new System.Drawing.Point(5, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 14);
-            this.label8.TabIndex = 97;
-            this.label8.Text = "[2]";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label16.Location = new System.Drawing.Point(5, 28);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(28, 14);
-            this.label16.TabIndex = 96;
-            this.label16.Text = "[3]";
-            // 
-            // B_Load
-            // 
-            this.B_Load.Location = new System.Drawing.Point(23, 141);
-            this.B_Load.Name = "B_Load";
-            this.B_Load.Size = new System.Drawing.Size(70, 25);
-            this.B_Load.TabIndex = 5;
-            this.B_Load.Text = "导入";
-            this.B_Load.UseVisualStyleBackColor = true;
-            // 
-            // B_Backup
-            // 
-            this.B_Backup.Location = new System.Drawing.Point(23, 172);
-            this.B_Backup.Name = "B_Backup";
-            this.B_Backup.Size = new System.Drawing.Size(70, 25);
-            this.B_Backup.TabIndex = 6;
-            this.B_Backup.Text = "保存";
-            this.B_Backup.UseVisualStyleBackColor = true;
-            // 
-            // MM
-            // 
-            this.MM.AutoSize = true;
-            this.MM.Location = new System.Drawing.Point(14, 220);
-            this.MM.Name = "MM";
-            this.MM.Size = new System.Drawing.Size(86, 17);
-            this.MM.TabIndex = 5;
-            this.MM.Text = "父母异语言";
-            this.MM.UseVisualStyleBackColor = true;
-            // 
-            // Heterogeneity
-            // 
-            this.Heterogeneity.AutoSize = true;
-            this.Heterogeneity.Location = new System.Drawing.Point(14, 244);
-            this.Heterogeneity.Name = "Heterogeneity";
-            this.Heterogeneity.Size = new System.Drawing.Size(86, 17);
-            this.Heterogeneity.TabIndex = 0;
-            this.Heterogeneity.Text = "父母不同种";
-            this.Heterogeneity.UseVisualStyleBackColor = true;
             // 
             // Lang
             // 
@@ -2889,6 +2994,7 @@
             this.dgv_Frame,
             this.dgv_blink,
             this.dgv_delay,
+            this.dgv_adv,
             this.dgv_H,
             this.dgv_A,
             this.dgv_B,
@@ -2903,6 +3009,7 @@
             this.dgv_ability,
             this.dgv_slot,
             this.dgv_Lv,
+            this.dgv_ball,
             this.dgv_rand,
             this.dgv_rand64,
             this.dgv_pid,
@@ -2933,6 +3040,45 @@
             this.DGV.Size = new System.Drawing.Size(1069, 312);
             this.DGV.TabIndex = 89;
             // 
+            // Gameversion
+            // 
+            this.Gameversion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Gameversion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Gameversion.Items.AddRange(new object[] {
+            "X",
+            "Y",
+            "OR",
+            "AS",
+            "Sun",
+            "Moon"});
+            this.Gameversion.Location = new System.Drawing.Point(603, 11);
+            this.Gameversion.Name = "Gameversion";
+            this.Gameversion.Size = new System.Drawing.Size(51, 21);
+            this.Gameversion.TabIndex = 91;
+            this.Gameversion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
+            // 
+            // L_GameVersion
+            // 
+            this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_GameVersion.AutoSize = true;
+            this.L_GameVersion.Location = new System.Drawing.Point(532, 15);
+            this.L_GameVersion.Name = "L_GameVersion";
+            this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
+            this.L_GameVersion.TabIndex = 90;
+            this.L_GameVersion.Text = "游戏版本";
+            // 
+            // Seed
+            // 
+            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Hexadecimal = true;
+            this.Seed.Location = new System.Drawing.Point(707, 11);
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(78, 22);
+            this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
             // dgv_Frame
             // 
             this.dgv_Frame.HeaderText = "帧数";
@@ -2950,6 +3096,13 @@
             this.dgv_delay.HeaderText = "延时";
             this.dgv_delay.Name = "dgv_delay";
             this.dgv_delay.Width = 40;
+            // 
+            // dgv_adv
+            // 
+            this.dgv_adv.HeaderText = "取蛋消耗";
+            this.dgv_adv.Name = "dgv_adv";
+            this.dgv_adv.Visible = false;
+            this.dgv_adv.Width = 60;
             // 
             // dgv_H
             // 
@@ -3037,6 +3190,13 @@
             this.dgv_Lv.Visible = false;
             this.dgv_Lv.Width = 40;
             // 
+            // dgv_ball
+            // 
+            this.dgv_ball.HeaderText = "球";
+            this.dgv_ball.Name = "dgv_ball";
+            this.dgv_ball.Visible = false;
+            this.dgv_ball.Width = 50;
+            // 
             // dgv_rand
             // 
             this.dgv_rand.HeaderText = "乱数值";
@@ -3066,161 +3226,8 @@
             // 
             this.dgv_status.HeaderText = "状态";
             this.dgv_status.Name = "dgv_status";
-            this.dgv_status.Width = 200;
-            // 
-            // Gameversion
-            // 
-            this.Gameversion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Gameversion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Gameversion.Items.AddRange(new object[] {
-            "X",
-            "Y",
-            "OR",
-            "AS",
-            "Sun",
-            "Moon"});
-            this.Gameversion.Location = new System.Drawing.Point(603, 11);
-            this.Gameversion.Name = "Gameversion";
-            this.Gameversion.Size = new System.Drawing.Size(51, 21);
-            this.Gameversion.TabIndex = 91;
-            this.Gameversion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
-            // 
-            // L_GameVersion
-            // 
-            this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(532, 15);
-            this.L_GameVersion.Name = "L_GameVersion";
-            this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
-            this.L_GameVersion.TabIndex = 90;
-            this.L_GameVersion.Text = "游戏版本";
-            // 
-            // Seed
-            // 
-            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(707, 11);
-            this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(78, 22);
-            this.Seed.TabIndex = 88;
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // Slot
-            // 
-            this.Slot.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Slot.CheckBoxProperties = checkBoxProperties1;
-            this.Slot.DisplayMemberSingleItem = "";
-            this.Slot.DropDownHeight = 260;
-            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Slot.FormattingEnabled = true;
-            this.Slot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Slot.Location = new System.Drawing.Point(200, 58);
-            this.Slot.Name = "Slot";
-            this.Slot.Size = new System.Drawing.Size(74, 21);
-            this.Slot.TabIndex = 92;
-            // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties2;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 113);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties3;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 164);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
-            // 
-            // Event_PID
-            // 
-            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_PID.Hexadecimal = true;
-            this.Event_PID.Location = new System.Drawing.Point(327, 203);
-            this.Event_PID.Name = "Event_PID";
-            this.Event_PID.Size = new System.Drawing.Size(78, 22);
-            this.Event_PID.TabIndex = 92;
-            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_PID.Visible = false;
-            // 
-            // Event_EC
-            // 
-            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_EC.Hexadecimal = true;
-            this.Event_EC.Location = new System.Drawing.Point(327, 241);
-            this.Event_EC.Name = "Event_EC";
-            this.Event_EC.Size = new System.Drawing.Size(78, 22);
-            this.Event_EC.TabIndex = 93;
-            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_EC.Visible = false;
-            // 
-            // hexNumericUpdown4
-            // 
-            this.hexNumericUpdown4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hexNumericUpdown4.Hexadecimal = true;
-            this.hexNumericUpdown4.Location = new System.Drawing.Point(33, 111);
-            this.hexNumericUpdown4.Name = "hexNumericUpdown4";
-            this.hexNumericUpdown4.Size = new System.Drawing.Size(78, 22);
-            this.hexNumericUpdown4.TabIndex = 95;
-            this.hexNumericUpdown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // hexNumericUpdown3
-            // 
-            this.hexNumericUpdown3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hexNumericUpdown3.Hexadecimal = true;
-            this.hexNumericUpdown3.Location = new System.Drawing.Point(33, 82);
-            this.hexNumericUpdown3.Name = "hexNumericUpdown3";
-            this.hexNumericUpdown3.Size = new System.Drawing.Size(78, 22);
-            this.hexNumericUpdown3.TabIndex = 94;
-            this.hexNumericUpdown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // hexNumericUpdown2
-            // 
-            this.hexNumericUpdown2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hexNumericUpdown2.Hexadecimal = true;
-            this.hexNumericUpdown2.Location = new System.Drawing.Point(33, 54);
-            this.hexNumericUpdown2.Name = "hexNumericUpdown2";
-            this.hexNumericUpdown2.Size = new System.Drawing.Size(78, 22);
-            this.hexNumericUpdown2.TabIndex = 93;
-            this.hexNumericUpdown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // hexNumericUpdown1
-            // 
-            this.hexNumericUpdown1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hexNumericUpdown1.Hexadecimal = true;
-            this.hexNumericUpdown1.Location = new System.Drawing.Point(33, 26);
-            this.hexNumericUpdown1.Name = "hexNumericUpdown1";
-            this.hexNumericUpdown1.Size = new System.Drawing.Size(78, 22);
-            this.hexNumericUpdown1.TabIndex = 92;
-            this.hexNumericUpdown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.dgv_status.Visible = false;
+            this.dgv_status.Width = 260;
             // 
             // MainForm
             // 
@@ -3294,6 +3301,8 @@
             this.TP_EventRNG.ResumeLayout(false);
             this.EventSetting.ResumeLayout(false);
             this.EventSetting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).EndInit();
@@ -3310,9 +3319,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).EndInit();
             this.TP_EggRNG.ResumeLayout(false);
-            this.TP_EggRNG.PerformLayout();
             this.Parents_Info.ResumeLayout(false);
             this.Parents_Info.PerformLayout();
+            this.TinyMT_Status.ResumeLayout(false);
+            this.TinyMT_Status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.St3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).EndInit();
@@ -3325,17 +3339,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).EndInit();
-            this.TinyMT_Status.ResumeLayout(false);
-            this.TinyMT_Status.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hexNumericUpdown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3507,15 +3513,14 @@
         private System.Windows.Forms.Label L_Ball;
         private System.Windows.Forms.ComboBox Ball;
         private System.Windows.Forms.TabPage TP_EggRNG;
-        private System.Windows.Forms.GroupBox TinyMT_Status;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
-        private Controls.HexNumericUpdown hexNumericUpdown4;
-        private Controls.HexNumericUpdown hexNumericUpdown3;
-        private Controls.HexNumericUpdown hexNumericUpdown2;
-        private Controls.HexNumericUpdown hexNumericUpdown1;
+        private Controls.HexNumericUpdown St0;
+        private Controls.HexNumericUpdown St1;
+        private Controls.HexNumericUpdown St2;
+        private Controls.HexNumericUpdown St3;
         private System.Windows.Forms.Button B_Load;
         private System.Windows.Forms.Button B_Backup;
         private System.Windows.Forms.GroupBox Parents_Info;
@@ -3530,7 +3535,6 @@
         private System.Windows.Forms.CheckBox MM;
         private System.Windows.Forms.Label L_Egg_GR;
         private System.Windows.Forms.ComboBox F_Items;
-        private System.Windows.Forms.Label L_Items;
         private System.Windows.Forms.ComboBox M_Items;
         private System.Windows.Forms.NumericUpDown M_IV5;
         private System.Windows.Forms.NumericUpDown M_IV4;
@@ -3544,8 +3548,6 @@
         private System.Windows.Forms.NumericUpDown F_IV2;
         private System.Windows.Forms.NumericUpDown F_IV1;
         private System.Windows.Forms.NumericUpDown F_IV0;
-        private System.Windows.Forms.Label L_Male;
-        private System.Windows.Forms.Label L_Female;
         private System.Windows.Forms.Label L_Ditto;
         private System.Windows.Forms.Label L_Egg_S;
         private System.Windows.Forms.Label L_Egg_C;
@@ -3553,9 +3555,12 @@
         private System.Windows.Forms.Label L_Egg_H;
         private System.Windows.Forms.Label L_Egg_A;
         private System.Windows.Forms.Label L_Egg_D;
+        private System.Windows.Forms.GroupBox TinyMT_Status;
+        private System.Windows.Forms.CheckBox MainRNGEgg;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_delay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_adv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_H;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_A;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_B;
@@ -3570,6 +3575,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ability;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Lv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ball;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;

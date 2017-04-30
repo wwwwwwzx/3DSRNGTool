@@ -12,8 +12,13 @@ namespace pkm3dsRNG
         private static readonly string[] FILEERRORSTR = { "Invalid file!", "文件格式不正确" };
         private static readonly string[,] PIDTYPE_STR =
         {
-            { "Random", "Nonshiny", "Shiny","Specified"},
-            { "随机", "必不闪", "必闪","特定"}
+            { "Random", "Nonshiny", "Shiny", "Specified"},
+            { "随机", "必不闪", "必闪", "特定"},
+        };
+        private static readonly string[,] PARENTS_STR =
+        {
+            { "-", "Male", "Female"},
+            { "-", "父方", "母方"},
         };
 
         private string curlanguage;
@@ -45,6 +50,9 @@ namespace pkm3dsRNG
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
 
+            for (int i = 0; i < 3; i++)
+                Ball.Items[i] = PARENTS_STR[lindex, i];
+
             LoadCategory();
             RefreshLocation();
 
@@ -66,10 +74,14 @@ namespace pkm3dsRNG
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
             HiddenPower.Items.AddRange(StringItem.HiddenPowerList);
-            
+
+            GenderRatio.ValueMember = "Value";
+            GenderRatio.DisplayMember = "Text";
             GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
             GenderRatio.SelectedIndex = 0;
 
+            Egg_GenderRatio.ValueMember = "Value";
+            Egg_GenderRatio.DisplayMember = "Text";
             Egg_GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
             Egg_GenderRatio.SelectedIndex = 1;
 

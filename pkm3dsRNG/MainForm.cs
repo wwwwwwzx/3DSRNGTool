@@ -41,6 +41,7 @@ namespace pkm3dsRNG
             DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_PID"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_status"].DefaultCellStyle.Font = new Font("Consolas", 9);
             Type dgvtype = typeof(DataGridView);
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
@@ -52,6 +53,7 @@ namespace pkm3dsRNG
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             Advanced.Checked = Properties.Settings.Default.Advance;
+            Status = new uint[] { Properties.Settings.Default.ST0, Properties.Settings.Default.ST1, Properties.Settings.Default.ST2, Properties.Settings.Default.ST3 };
 
             for (int i = 0; i < 6; i++)
                 EventIV[i].Enabled = false;
@@ -73,8 +75,8 @@ namespace pkm3dsRNG
             ChangeLanguage(null, null);
 
 
-            Gender.SelectedIndex = 
-            Ball.SelectedIndex = 
+            Gender.SelectedIndex =
+            Ball.SelectedIndex =
             Ability.SelectedIndex =
             SyncNature.SelectedIndex =
             Event_Species.SelectedIndex = Event_PIDType.SelectedIndex =
@@ -181,6 +183,7 @@ namespace pkm3dsRNG
 
         private void ShinyCharm_CheckedChanged(object sender, EventArgs e)
         {
+            MM_CheckedChanged(null, null);
             Properties.Settings.Default.ShinyCharm = ShinyCharm.Checked;
             Properties.Settings.Default.Save();
         }
@@ -201,8 +204,6 @@ namespace pkm3dsRNG
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
-
-            Frame_min.Value = Gen7 ? 418 : 0;
 
             var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
             Slot.Items.Clear();
@@ -247,8 +248,10 @@ namespace pkm3dsRNG
 
             Nature.ClearSelection();
             HiddenPower.ClearSelection();
-            Gender.SelectedIndex = Ability.SelectedIndex = 0;
+            Slot.ClearSelection();
+            Ball.SelectedIndex = Gender.SelectedIndex = Ability.SelectedIndex = 0;
 
+            BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked =
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
 
@@ -256,6 +259,8 @@ namespace pkm3dsRNG
         {
             Properties.Settings.Default.Method = method;
             Properties.Settings.Default.Save();
+
+            Reset_Click(null, null);
 
             RNGMethod.TabPages[method].Controls.Add(this.Filters);
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
@@ -265,28 +270,36 @@ namespace pkm3dsRNG
                 Poke_SelectedIndexChanged(null, null);
             }
 
-            dgv_rand.Visible = Gen6;
+            Frame_min.Value = Gen7 && method < 3 ? 418 : 0;
+            dgv_rand.Visible = Gen6 || Gen7 && method == 3;
+            L_Ball.Visible = Ball.Visible =
+            dgv_status.Visible = dgv_ball.Visible = Gen7 && method == 3;
 
+            L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
+            dgv_Lv.Visible = dgv_slot.Visible =
+            L_Slot.Visible = Slot.Visible = method == 2;
+
+            ByIVs.Enabled = ByStats.Enabled =
             BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
             Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7 && method < 3;
+
+            dgv_synced.Visible = method < 3;
+            dgv_adv.Visible = method == 3;
+
+            MM_CheckedChanged(null, null);
 
             if (Gen6)
             {
                 if (CreateTimeline.Checked)
                     RB_FrameRange.Checked = true;
-                BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked = false;
             }
-
-            L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
-            L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
-            dgv_Lv.Visible = dgv_slot.Visible =
-            L_Slot.Visible = Slot.Visible = method == 2;
             switch (method)
             {
                 case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
+                case 3: ByIVs.Checked = true; break;
             }
         }
 
@@ -418,6 +431,7 @@ namespace pkm3dsRNG
                 case 0: RNGPool.sta_rng = getStaSettings(); break;
                 case 1: RNGPool.event_rng = getEventSetting(); break;
                 case 2: RNGPool.wild_rng = getWildSetting(); break;
+                case 3: RNGPool.egg_rng = getEggRNG(); break;
             }
 
             int buffersize = 150;
@@ -459,6 +473,8 @@ namespace pkm3dsRNG
 
             BlinkFOnly = BlinkFOnly.Checked,
             SafeFOnly = SafeFOnly.Checked,
+
+            Ball = (byte)Ball.SelectedIndex,
         };
 
         private StationaryRNG getStaSettings()
@@ -522,6 +538,25 @@ namespace pkm3dsRNG
             return setting;
         }
 
+        private EggRNG getEggRNG()
+        {
+            var setting = Gen6 ? null : new Egg7();
+            setting.FemaleIVs = IV_Female;
+            setting.MaleIVs = IV_Male;
+            setting.MaleItem = (byte)M_Items.SelectedIndex;
+            setting.FemaleItem = (byte)F_Items.SelectedIndex;
+            setting.ShinyCharm = ShinyCharm.Checked;
+            setting.TSV = (short)TSV.Value;
+            setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
+            setting.RandomGender = FuncUtil.IsRandomGender((int)Egg_GenderRatio.SelectedValue);
+            (setting as Egg7).Homogeneous = !Heterogeneity.Checked;
+            setting.InheritAbilty = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
+            setting.MMethod = MM.Checked;
+
+            setting.MarkItem();
+            return setting;
+        }
+
         #endregion
 
         #region Start Calculation
@@ -554,43 +589,61 @@ namespace pkm3dsRNG
             row.CreateCells(DGV);
 
             string true_nature = StringItem.naturestr[result.Nature];
+            if (((result as EggResult)?.BE_InheritParents ?? null) != null)
+                true_nature = ((result as EggResult)?.BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
             byte blink = (result as Result7)?.Blink ?? 0;
+            string advanve = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
             string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
             string BlinkFlag = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
             string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString() ?? "";
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
-            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? "";
+            string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? 0];
+            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8") ?? "";
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
+            var seedstatus = (result as EggResult)?.Status ?? new uint[1];
+            string seed = string.Join(",", seedstatus.Select(v => v.ToString("X8")).Reverse());
 
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
             row.SetValues(
-                i, BlinkFlag, delay,
+                i, BlinkFlag, delay, advanve,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
-                slots, Lv,
-                randstr, rand64str, PID, EC
+                slots, Lv, ball,
+                randstr, rand64str, PID, EC, seed
                 );
 
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
 
+            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? null;
+            const int ivstart = 4;
+            if (ivsflag != null)
+            {
+                for (int k = 0; k < 6; k++)
+                {
+                    if (ivsflag[k] == null)
+                        continue;
+                    row.Cells[ivstart + k].Style.ForeColor = (ivsflag[k] == true) ? Color.Blue : Color.DeepPink;
+                }
+                return row;
+            }
             Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
             for (int k = 0; k < 6; k++)
             {
                 if (result.IVs[k] < 1)
                 {
-                    row.Cells[3 + k].Style.Font = BoldFont;
-                    row.Cells[3 + k].Style.ForeColor = Color.OrangeRed;
+                    row.Cells[ivstart + k].Style.Font = BoldFont;
+                    row.Cells[ivstart + k].Style.ForeColor = Color.OrangeRed;
                 }
                 else if (result.IVs[k] > 29)
                 {
-                    row.Cells[3 + k].Style.Font = BoldFont;
-                    row.Cells[3 + k].Style.ForeColor = Color.MediumSeaGreen;
+                    row.Cells[ivstart + k].Style.Font = BoldFont;
+                    row.Cells[ivstart + k].Style.ForeColor = Color.MediumSeaGreen;
                 }
             }
             return row;
@@ -599,7 +652,7 @@ namespace pkm3dsRNG
 
         private void Search6()
         {
-            var rng = new TinyMT((uint)Seed.Value);
+            var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;
@@ -629,10 +682,17 @@ namespace pkm3dsRNG
         #region Gen7 Search
         private void Search7()
         {
+            if (method == 3)
+            {
+                Search7_Egg();
+                return;
+            }
             if (CreateTimeline.Checked)
-                Search7_Timeline();
-            else
-                Search7_Normal();
+            {
+                Search7_Timeline(); // method 0-2
+                return;
+            }
+            Search7_Normal();
         }
 
         private void Search7_Normal()
@@ -727,6 +787,32 @@ namespace pkm3dsRNG
             DGV.Rows.AddRange(dgvrowlist.ToArray());
             DGV.CurrentCell = null;
         }
+
+        private void Search7_Egg()
+        {
+            var rng = new TinyMT(Status);
+            int max, min;
+            min = (int)Frame_min.Value;
+            max = (int)Frame_max.Value;
+            // Advance
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            // Prepare
+            getsetting(rng);
+            // Start
+            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()))
+            {
+                RNGResult result = RNGPool.GenerateEgg7();
+                if (!filter.CheckResult(result))
+                    continue;
+                (result as EggResult).Status = (uint[])rng.status.Clone();
+                dgvrowlist.Add(getRow(i, result));
+                if (dgvrowlist.Count > 100000)
+                    break;
+            }
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+        }
         #endregion
 
         #region Egg RNG UI
@@ -739,7 +825,6 @@ namespace pkm3dsRNG
             M_ditto.Checked = F_ditto.Checked = false;
             M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
         }
-        #endregion
 
         private void Ditto_CheckedChanged(object sender, EventArgs e)
         {
@@ -755,5 +840,26 @@ namespace pkm3dsRNG
                 Heterogeneity.Enabled = true;
             }
         }
+
+        private void Status_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ST0 = (uint)St0.Value;
+            Properties.Settings.Default.ST1 = (uint)St1.Value;
+            Properties.Settings.Default.ST2 = (uint)St2.Value;
+            Properties.Settings.Default.ST3 = (uint)St3.Value;
+            Properties.Settings.Default.Save();
+        }
+
+        private void MM_CheckedChanged(object sender, EventArgs e)
+        {
+            MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+        }
+
+        private void MainRNGEgg_VisibleChanged(object sender, EventArgs e)
+        {
+            MainRNGEgg.Checked = false;
+        }
+        #endregion
     }
 }

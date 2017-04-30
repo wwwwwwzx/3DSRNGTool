@@ -45,6 +45,7 @@ namespace pkm3dsRNG.Core
         public static StationaryRNG sta_rng;
         public static EventRNG event_rng;
         public static WildRNG wild_rng;
+        public static EggRNG egg_rng;
 
         public static RNGResult Generate6()
         {
@@ -72,6 +73,15 @@ namespace pkm3dsRNG.Core
             (result as Result7).RandNum = RandList64[0];
             (result as Result7).frameshift = frameshift;
             if (SolLunaReset) modelnumber = 7;
+            return result;
+        }
+
+        public static RNGResult GenerateEgg7()
+        {
+            index = 0;
+            var result = (egg_rng as Egg7).Generate();
+            (result as EggResult).RandNum = RandList[0];
+            (result as EggResult).FramesUsed = index;
             return result;
         }
 

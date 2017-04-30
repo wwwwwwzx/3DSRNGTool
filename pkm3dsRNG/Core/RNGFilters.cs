@@ -18,6 +18,8 @@ namespace pkm3dsRNG.Core
         public bool[] Slot;
         public bool SpecialOnly;
 
+        public byte Ball;
+
         public bool BlinkFOnly, SafeFOnly;
 
         public bool CheckIVs(RNGResult result)
@@ -76,6 +78,8 @@ namespace pkm3dsRNG.Core
                 if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
                 return true;
             }
+            if (result is EggResult && Ball != 0 && Ball != (result as EggResult)?.Ball)
+                return false;
             if (result is Result7 && !CheckBlink((result as Result7).Blink))
                 return false;
             if (ShinyOnly && !result.Shiny)

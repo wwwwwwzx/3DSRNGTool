@@ -65,6 +65,16 @@ namespace pkm3dsRNG
                 F_IV3.Value = value[3]; F_IV4.Value = value[4]; F_IV5.Value = value[5];
             }
         }
+        private uint[] Status
+        {
+            get { return new[] { (uint)St0.Value, (uint)St1.Value, (uint)St2.Value, (uint)St3.Value }; }
+            set
+            {
+                if (value.Length < 4) return;
+                St0.Value = value[0]; St1.Value = value[1];
+                St2.Value = value[2]; St3.Value = value[3];
+            }
+        }
         private NumericUpDown[] EventIV { get { return new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, }; } }
         private CheckBox[] EventIVLocked { get { return new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, }; } }
         private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();

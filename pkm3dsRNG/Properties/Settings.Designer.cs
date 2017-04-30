@@ -118,5 +118,53 @@ namespace pkm3dsRNG.Properties {
                 this["Method"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint ST3 {
+            get {
+                return ((uint)(this["ST3"]));
+            }
+            set {
+                this["ST3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint ST2 {
+            get {
+                return ((uint)(this["ST2"]));
+            }
+            set {
+                this["ST2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint ST1 {
+            get {
+                return ((uint)(this["ST1"]));
+            }
+            set {
+                this["ST1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint ST0 {
+            get {
+                return ((uint)(this["ST0"]));
+            }
+            set {
+                this["ST0"] = value;
+            }
+        }
     }
 }
