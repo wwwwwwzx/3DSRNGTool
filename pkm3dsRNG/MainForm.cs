@@ -281,23 +281,18 @@ namespace pkm3dsRNG
             }
 
             Frame_min.Value = Gen7 && method < 3 ? 418 : 0;
-            dgv_rand.Visible = Gen6 || Gen7 && method == 3;
-            L_Ball.Visible = Ball.Visible =
-            dgv_status.Visible = dgv_ball.Visible = Gen7 && method == 3;
+            L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
 
             L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
-            dgv_Lv.Visible = dgv_slot.Visible =
             L_Slot.Visible = Slot.Visible = method == 2;
 
+            Gen7timepanel.Visible =
             ByIVs.Enabled = ByStats.Enabled =
             BlinkFOnly.Visible = SafeFOnly.Visible =
-            CreateTimeline.Visible = TimeSpan.Visible =
-            Gen7timepanel.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
             AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
-            dgv_synced.Visible = method < 3;
-            EggPanel.Visible = EggNumber.Visible =
-            dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
+            EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
 
             MM_CheckedChanged(null, null);
 
@@ -571,6 +566,18 @@ namespace pkm3dsRNG
         #endregion
 
         #region Start Calculation
+        private void AdjustDGVColumns()
+        {
+            dgv_synced.Visible = method < 3;
+            dgv_Lv.Visible = dgv_slot.Visible = method == 2;
+            dgv_rand.Visible = Gen6 || Gen7 && method == 3;
+            dgv_status.Visible = dgv_ball.Visible = Gen7 && method == 3;
+            dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
+            dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            dgv_eggnum.Visible = EggNumber.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+        }
+
         private void CalcList_Click(object sender, EventArgs e)
         {
             if (ivmin0.Value > ivmax0.Value)
@@ -594,6 +601,7 @@ namespace pkm3dsRNG
                         Search6();
                     else
                         Search7();
+                    AdjustDGVColumns();
                 }
                 catch
                 {

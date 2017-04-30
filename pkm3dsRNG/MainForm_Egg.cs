@@ -56,7 +56,6 @@ namespace pkm3dsRNG
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
             MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
@@ -107,11 +106,6 @@ namespace pkm3dsRNG
             {
                 Error(FILEERRORSTR[lindex]);
             }
-        }
-
-        private void EggNumber_CheckedChanged(object sender, EventArgs e)
-        {
-            dgv_eggnum.Visible = EggNumber.Checked;
         }
 
         private void B_TSVList_Click(object sender, EventArgs e)

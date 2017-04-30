@@ -121,7 +121,7 @@ namespace pkm3dsRNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("426368620")]
         public uint ST3 {
             get {
                 return ((uint)(this["ST3"]));
@@ -133,7 +133,7 @@ namespace pkm3dsRNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("225383913")]
         public uint ST2 {
             get {
                 return ((uint)(this["ST2"]));
@@ -145,7 +145,7 @@ namespace pkm3dsRNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1611825046")]
         public uint ST1 {
             get {
                 return ((uint)(this["ST1"]));
@@ -157,7 +157,7 @@ namespace pkm3dsRNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2024052142")]
         public uint ST0 {
             get {
                 return ((uint)(this["ST0"]));
@@ -169,7 +169,7 @@ namespace pkm3dsRNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string TSVList {
             get {
                 return ((string)(this["TSVList"]));

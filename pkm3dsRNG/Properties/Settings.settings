@@ -27,19 +27,19 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ST3" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">426368620</Value>
     </Setting>
     <Setting Name="ST2" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">225383913</Value>
     </Setting>
     <Setting Name="ST1" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1611825046</Value>
     </Setting>
     <Setting Name="ST0" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">2024052142</Value>
     </Setting>
     <Setting Name="TSVList" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
