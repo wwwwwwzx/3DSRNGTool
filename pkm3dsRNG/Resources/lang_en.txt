@@ -160,6 +160,7 @@ MainRNGEgg = Main RNG Egg (PID)
 Heterogeneity = Different Dex #
 L_Egg_GR = Gender Ratio
 B_EggReset = Reset
+B_Fast = Fast Mode
 dgv_adv = Advance
 dgv_status = Status
 dgv_ball = Ball

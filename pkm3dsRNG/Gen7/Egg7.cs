@@ -9,6 +9,7 @@ namespace pkm3dsRNG
         private static void Advance(int n) => RNGPool.Advance(n);
 
         public bool Homogeneous;
+        public bool FemaleIsDitto;
 
         public override void MarkItem()
         {
@@ -39,7 +40,7 @@ namespace pkm3dsRNG
             // Nature
             egg.Nature = (byte)(getrand % 25);
 
-            // Both_Everstone
+            // Everstone
             // Chooses which parent if necessary;
             if (Both_Everstone)
                 egg.BE_InheritParents = (getrand & 1) == 0;
@@ -66,14 +67,14 @@ namespace pkm3dsRNG
                     egg.InheritMaleIV[F_Power] = false;
             };
 
-            // IVs
+            // Inherit IV
             int tmp;
-            for (int i = Both_Power ? 1 : 0; i < InheritIVs_Cnt; i++)
+            for (int i = Power ? 1 : 0; i < InheritIVs_Cnt; i++)
             {
                 do
                 {
                     tmp = (byte)(getrand % 6);
-                    egg.InheritMaleIV[tmp] = false;
+                    egg.InheritMaleIV[tmp] = egg.InheritMaleIV[tmp] ?? false;
                 }
                 while (egg.InheritMaleIV.Count(iv => iv != null) <= i);
 
@@ -83,11 +84,10 @@ namespace pkm3dsRNG
             // IVs
             egg.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
             for (int j = 0; j < 6; j++)
-                egg.IVs[j] = (int)(getrand & 0x1F);
-            for (int j = 0; j < 6; j++)
             {
+                egg.IVs[j] = (int)(getrand & 0x1F);
                 if (egg.InheritMaleIV[j] == null) continue;
-                egg.IVs[j] = (egg.InheritMaleIV[j] ?? false) ? MaleIVs[j] : FemaleIVs[j];
+                egg.IVs[j] = (egg.InheritMaleIV[j] == true) ? MaleIVs[j] : FemaleIVs[j];
             }
 
             // Encryption Constant
@@ -104,9 +104,8 @@ namespace pkm3dsRNG
                 }
             }
 
-            // Ball Inheritance
-            if (Homogeneous)
-                egg.Ball = (byte)(getrand % 100 >= 50 ? 1 : 2);
+            // Ball
+            egg.Ball = (byte)(Homogeneous && getrand % 100 >= 50 || FemaleIsDitto ? 1 : 2);
 
             Advance(2);
 

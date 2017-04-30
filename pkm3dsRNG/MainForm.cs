@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
@@ -175,6 +176,13 @@ namespace pkm3dsRNG
         #endregion
 
         #region Basic UI
+
+        private void VisibleTrigger(object sender, EventArgs e)
+        {
+            if ((sender as Control).Visible == false)
+                (sender as CheckBox).Checked = false;
+        }
+
         private void TSV_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.TSV = (short)TSV.Value;
@@ -282,7 +290,7 @@ namespace pkm3dsRNG
             ByIVs.Enabled = ByStats.Enabled =
             BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
-            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7 && method < 3;
+            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
             dgv_synced.Visible = method < 3;
             dgv_adv.Visible = method == 3;
@@ -316,7 +324,7 @@ namespace pkm3dsRNG
             var ControlON = NPC.Value == 0 ? BlinkFOnly : SafeFOnly;
             var ControlOFF = NPC.Value == 0 ? SafeFOnly : BlinkFOnly;
             ControlON.Visible = true;
-            ControlOFF.Visible = ControlOFF.Checked = false;
+            ControlOFF.Visible = false;
         }
 
         // Wild RNG
@@ -550,6 +558,7 @@ namespace pkm3dsRNG
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
             setting.RandomGender = FuncUtil.IsRandomGender((int)Egg_GenderRatio.SelectedValue);
             (setting as Egg7).Homogeneous = !Heterogeneity.Checked;
+            (setting as Egg7).FemaleIsDitto = F_ditto.Checked;
             setting.InheritAbilty = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
 
@@ -824,6 +833,16 @@ namespace pkm3dsRNG
             M_Items.SelectedIndex = F_Items.SelectedIndex = 0;
             M_ditto.Checked = F_ditto.Checked = false;
             M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
+            Heterogeneity.Checked = false;
+            MM.Checked = false;
+        }
+
+        private void B_Fast_Click(object sender, EventArgs e)
+        {
+            B_EggReset_Click(null, null);
+            IV_Female = new[] { 0, 0, 0, 0, 0, 0 };
+            M_Items.SelectedIndex = 2;
+            MM.Checked = true;
         }
 
         private void Ditto_CheckedChanged(object sender, EventArgs e)
@@ -854,11 +873,56 @@ namespace pkm3dsRNG
         {
             MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+            if (MainRNGEgg.Checked)
+            {
+                NPC.Value = 4;
+                Timedelay.Value = 38;
+            }
         }
 
-        private void MainRNGEgg_VisibleChanged(object sender, EventArgs e)
+        private void B_Backup_Click(object sender, EventArgs e)
         {
-            MainRNGEgg.Checked = false;
+            string[] lines =
+            {
+                St3.Text,
+                St2.Text,
+                St1.Text,
+                St0.Text,
+            };
+            File.WriteAllLines("Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt", lines);
+        }
+
+        private void B_Load_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog OFD = new OpenFileDialog();
+                DialogResult result = OFD.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string file = OFD.FileName;
+                    if (File.Exists(file))
+                    {
+                        string[] list = File.ReadAllLines(file);
+
+                        string st3 = list[0];
+                        string st2 = list[1];
+                        string st1 = list[2];
+                        string st0 = list[3];
+                        uint s3, s2, s1, s0;
+
+                        uint.TryParse(st0, System.Globalization.NumberStyles.HexNumber, null, out s0);
+                        uint.TryParse(st1, System.Globalization.NumberStyles.HexNumber, null, out s1);
+                        uint.TryParse(st2, System.Globalization.NumberStyles.HexNumber, null, out s2);
+                        uint.TryParse(st3, System.Globalization.NumberStyles.HexNumber, null, out s3);
+                        Status = new uint[] { s0, s1, s2, s3 };
+                    }
+                }
+            }
+            catch
+            {
+                Error(FILEERRORSTR[lindex]);
+            }
         }
         #endregion
     }
