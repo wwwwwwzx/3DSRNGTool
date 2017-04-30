@@ -4,6 +4,7 @@
     {
         public byte NPC;
         public short Delay;
+        public bool NoBlink;
 
         public readonly static PokemonList Default = new PokemonList
         {
@@ -50,7 +51,7 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM7 { Species = 739, Level = 18, NPC = 1, Delay = 04, },    // Crabrawler
+                    new PKM7 { Species = 739, Level = 18, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     // new PKM7 { Species = 103, Level = 40, Form = 1, Delay = 88, },    // Exeggutor
                 }
             },

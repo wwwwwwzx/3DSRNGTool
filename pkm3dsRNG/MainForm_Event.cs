@@ -74,46 +74,6 @@ namespace pkm3dsRNG
             return true;
         }
 
-        //Converter
-        private EventRNG getEventSetting()
-        {
-            int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
-            for (int i = 0; i < 6; i++)
-                if (EventIVLocked[i].Checked)
-                    IVs[i] = (int)EventIV[i].Value;
-            if (IVsCount.Value > 0 && IVs.Count(iv => iv >= 0) + IVsCount.Value > 5)
-            {
-                Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
-                IVs = new[] { -1, -1, -1, -1, -1, -1 };
-            }
-            EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
-            e.Species = (short)Event_Species.SelectedIndex;
-            e.Form = (byte)Event_Forme.SelectedIndex;
-            e.IVs = (int[])IVs.Clone();
-            e.IVsCount = (byte)IVsCount.Value;
-            e.YourID = YourID.Checked;
-            e.PIDType = (byte)Event_PIDType.SelectedIndex;
-            e.AbilityLocked = AbilityLocked.Checked;
-            e.NatureLocked = NatureLocked.Checked;
-            e.GenderLocked = GenderLocked.Checked;
-            e.OtherInfo = OtherInfo.Checked;
-            e.EC = (uint)Event_EC.Value;
-            e.Ability = (byte)Event_Ability.SelectedIndex;
-            e.Nature = (byte)Event_Nature.SelectedIndex;
-            e.Gender = (byte)Event_Gender.SelectedIndex;
-            e.IsEgg = IsEgg.Checked;
-            if (e.YourID)
-                e.TSV = (uint)TSV.Value;
-            else
-            {
-                e.TID = (int)Event_TID.Value;
-                e.SID = (int)Event_SID.Value;
-                e.TSV = (uint)(e.TID ^ e.SID) >> 4;
-                e.PID = (uint)Event_PID.Value;
-            }
-            return e;
-        }
-
         #region Event_UI
         private void B_Open_Click(object sender, EventArgs e)
         {

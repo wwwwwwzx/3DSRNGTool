@@ -39,6 +39,7 @@ L_Category = Category
 L_GenderRatio = Gender Ratio
 L_SyncNature = Sync Nature
 Fix3v = 3IVs
+BlinkWhenSync = Blink When Sync
 L_Rate = Rate
 L_Lv = Level Range
 ---
@@ -88,6 +89,7 @@ SHControlPanel = Show/Hide Control Panel
 HighLightFrameAfter = Highlight Frame After Delay
 dgv_Frame = Frame
 dgv_mark = Mark
+dgv_shift = Shift
 dgv_H = HP
 dgv_A = Atk
 dgv_B = Def
@@ -170,5 +172,6 @@ dgv_status = Status
 dgv_ball = Ball
 dgv_eggnum = Egg Number
 ---------------------TabPage5----------------------------------
-B_ID_Search = Search
-L_ID_FrameRange = FrameRange
+dgv_G7TID = G7TID
+dgv_ID_Rand = Rand#
+dgv_ID_Rand64 = Randon Number

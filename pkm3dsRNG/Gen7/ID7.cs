@@ -11,6 +11,8 @@ namespace pkm3dsRNG
         public ushort TSV { get; set; }
         public uint G7TID { get; set; }
 
+        public byte Clock { get; set; }
+
         public ID7(ulong rand)
         {
             RandNum = rand;
@@ -19,6 +21,7 @@ namespace pkm3dsRNG
             SID = (ushort)(tmp >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
             G7TID = tmp % 1000000;
+            Clock = (byte)(tmp % 17);
         }
     }
 }

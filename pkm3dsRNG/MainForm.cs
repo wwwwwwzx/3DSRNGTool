@@ -12,7 +12,7 @@ namespace pkm3dsRNG
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.30";
+        private string version = "0.3.5";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -27,6 +27,7 @@ namespace pkm3dsRNG
         private int[] slotspecies => Gen7 ? ea.getSpecies(IsMoon, IsNight) : null;
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
+        private int Standard;
         List<int> OtherTSVList = new List<int>();
         #endregion
 
@@ -38,6 +39,7 @@ namespace pkm3dsRNG
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DGV_ID.Columns["dgv_ID_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV_ID.Columns["dgv_ID_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
@@ -286,16 +288,15 @@ namespace pkm3dsRNG
             Reset_Click(null, null);
             RB_FrameRange.Checked = true;
             if (method < 4)
-            {
                 RNGMethod.TabPages[method].Controls.Add(this.Filters);
-                RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
-            }
+
+            RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+
             if (0 == method || method == 2)
             {
                 LoadCategory();
                 Poke_SelectedIndexChanged(null, null);
             }
-            DGV_ID.Visible = method == 4;
 
             Frame_min.Value = getminframe();
             L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
@@ -311,6 +312,10 @@ namespace pkm3dsRNG
             AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
 
+            RNGPanel.Visible = Gen6;
+            BlinkWhenSync.Visible =
+            G7TID.Visible = Gen7;
+
             MM_CheckedChanged(null, null);
 
             switch (method)
@@ -319,6 +324,7 @@ namespace pkm3dsRNG
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
                 case 3: ByIVs.Checked = true; break;
+                case 4: (Gen7 ? G7TID : Filter_TID).Checked = true; break;
             }
         }
 
@@ -383,7 +389,6 @@ namespace pkm3dsRNG
         #endregion
 
         #region DataEntry
-
         private void SetPersonalInfo(int Species, int Form, bool skip = false)
         {
             SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
@@ -416,6 +421,7 @@ namespace pkm3dsRNG
             {
                 Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
                 NPC.Value = (iPM as PKM7)?.NPC ?? 0;
+                BlinkWhenSync.Checked = !(iPM.AlwaysSync || ((iPM as PKM7)?.NoBlink ?? false));
                 return;
             }
         }
@@ -440,13 +446,13 @@ namespace pkm3dsRNG
                 }
                 return;
             }
-            AlwaysSynced.Enabled = iPM.Conceptual && specform == 0;
-            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual && (specform == 0 || specform == 151);
+
+            BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
+            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual && specform == 0;
         }
         #endregion
 
         #region UI communication
-
         private void getsetting(IRNG rng)
         {
             dgvrowlist.Clear();
@@ -485,6 +491,9 @@ namespace pkm3dsRNG
                     buffersize += RNGPool.modelnumber * 100;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.delaytime;
+
+                if (method < 3)
+                    Standard = (int)TargetFrame.Value;
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -513,12 +522,26 @@ namespace pkm3dsRNG
             Ball = (byte)Ball.SelectedIndex,
         };
 
+        private IDFilters getIDFilter()
+        {
+            IDFilters f = new IDFilters();
+            if (Filter_SID.Checked) f.IDType = 1;
+            else if (G7TID.Checked) f.IDType = 2;
+            f.Skip = ID_Disable.Checked;
+            f.RE = ID_RE.Checked;
+            f.IDList = ID_List.Lines;
+            f.TSVList = TSV_List.Lines;
+            f.RandList = RandList.Lines;
+            return f;
+        }
+
         private StationaryRNG getStaSettings()
         {
             StationaryRNG setting = Gen6 ? (StationaryRNG)new Stationary6() : (StationaryRNG)new Stationary7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
+
             // Load from template
             if (!iPM.Conceptual)
             {
@@ -535,7 +558,49 @@ namespace pkm3dsRNG
             setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
 
+            if (Gen7)
+                (setting as Stationary7).blinkwhensync = BlinkWhenSync.Checked;
+
             return setting;
+        }
+
+        private EventRNG getEventSetting()
+        {
+            int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            for (int i = 0; i < 6; i++)
+                if (EventIVLocked[i].Checked)
+                    IVs[i] = (int)EventIV[i].Value;
+            if (IVsCount.Value > 0 && IVs.Count(iv => iv >= 0) + IVsCount.Value > 5)
+            {
+                Error(SETTINGERROR_STR[lindex] + L_IVsCount.Text);
+                IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            }
+            EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
+            e.Species = (short)Event_Species.SelectedIndex;
+            e.Form = (byte)Event_Forme.SelectedIndex;
+            e.IVs = (int[])IVs.Clone();
+            e.IVsCount = (byte)IVsCount.Value;
+            e.YourID = YourID.Checked;
+            e.PIDType = (byte)Event_PIDType.SelectedIndex;
+            e.AbilityLocked = AbilityLocked.Checked;
+            e.NatureLocked = NatureLocked.Checked;
+            e.GenderLocked = GenderLocked.Checked;
+            e.OtherInfo = OtherInfo.Checked;
+            e.EC = (uint)Event_EC.Value;
+            e.Ability = (byte)Event_Ability.SelectedIndex;
+            e.Nature = (byte)Event_Nature.SelectedIndex;
+            e.Gender = (byte)Event_Gender.SelectedIndex;
+            e.IsEgg = IsEgg.Checked;
+            if (e.YourID)
+                e.TSV = (uint)TSV.Value;
+            else
+            {
+                e.TID = (int)Event_TID.Value;
+                e.SID = (int)Event_SID.Value;
+                e.TSV = (uint)(e.TID ^ e.SID) >> 4;
+                e.PID = (uint)Event_PID.Value;
+            }
+            return e;
         }
 
         private WildRNG getWildSetting()
@@ -597,7 +662,6 @@ namespace pkm3dsRNG
             setting.MarkItem();
             return setting;
         }
-
         #endregion
 
         #region Start Calculation
@@ -609,9 +673,12 @@ namespace pkm3dsRNG
             dgv_status.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
             dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
-            dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            dgv_shift.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+            DGV_ID.Visible = method == 4;
+            dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
+            dgv_ID_rand.Visible = Gen6;
         }
 
         private void CalcList_Click(object sender, EventArgs e)
@@ -657,6 +724,7 @@ namespace pkm3dsRNG
             string EggNum = eggnum > 0 ? eggnum.ToString() : "";
             string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
             string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
+            string shift = (i - Standard).ToString("+#;-#;0"); // To-Do
             byte blink = (result as Result7)?.Blink ?? 0;
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
@@ -678,9 +746,9 @@ namespace pkm3dsRNG
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
             row.SetValues(
-                eggnum, i, Mark, delay, advance,
+                eggnum, i, Mark, shift, advance,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
-                true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
+                true_nature, SynchronizeFlag, delay, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
                 slots, Lv, ball, item,
                 randstr, rand64str, PID, EC, seed
                 );
@@ -717,20 +785,30 @@ namespace pkm3dsRNG
             return row;
         }
 
-
         private DataGridViewRow getIDRow(int i, IDResult rt)
         {
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV_ID);
             row.SetValues(
                 i, (rt as ID7)?.G7TID.ToString("D6") ?? "", rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.RandNum.ToString("X16") ?? ""
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.Clock.ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? ""
                 );
             return row;
         }
         #endregion
 
+        #region Gen6 Search
         private void Search6()
+        {
+            if (method == 4)
+            {
+                Search6_ID();
+                return;
+            }
+            Search6_Normal();
+        }
+
+        private void Search6_Normal()
         {
             var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
@@ -759,9 +837,43 @@ namespace pkm3dsRNG
             DGV.CurrentCell = null;
         }
 
+        private void Search6_ID()
+        {
+            IRNG rng = new MersenneTwister((uint)Seed.Value);
+            if (MTFast.Checked)
+                rng = new MersenneTwisterFast((uint)Seed.Value, 227);
+            if (MTUntempered.Checked)
+                rng = new MersenneTwisterUntempered((int)Seed.Value);
+
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+            dgvrowlist.Clear();
+            DGV_ID.Rows.Clear();
+            IDFilters filter = getIDFilter();
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            for (int i = min; i <= max; i++)
+            {
+                var result = new ID6(rng.Nextuint());
+                if (!filter.CheckResult(result))
+                    continue;
+                dgvrowlist.Add(getIDRow(i, result));
+                if (dgvrowlist.Count > 100000)
+                    break;
+            }
+            DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
+            DGV_ID.CurrentCell = null;
+        }
+        #endregion
+
         #region Gen7 Search
         private void Search7()
         {
+            if (method == 4)
+            {
+                Search7_ID();
+                return;
+            }
             if (method == 3 && !MainRNGEgg.Checked)
             {
                 if (EggNumber.Checked)
@@ -942,25 +1054,41 @@ namespace pkm3dsRNG
             if (!gotresult)
                 Egg_Instruction.Text = getEggListString(-1, -1);
         }
-        #endregion
 
-        private void B_ID_Search_Click(object sender, EventArgs e)
+        private void Search7_ID()
         {
             SFMT rng = new SFMT((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             dgvrowlist.Clear();
+            DGV_ID.Rows.Clear();
+            IDFilters filter = getIDFilter();
             for (int i = 0; i < min; i++)
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
                 var result = new ID7(rng.Nextulong());
+                if (!filter.CheckResult(result))
+                    continue;
                 dgvrowlist.Add(getIDRow(i, result));
                 if (dgvrowlist.Count > 100000)
                     break;
             }
             DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
             DGV_ID.CurrentCell = null;
+        }
+        #endregion
+
+        private void SetAsTarget_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TargetFrame.Value = Convert.ToDecimal(DGV.CurrentRow.Cells["dgv_Frame"].Value);
+            }
+            catch (NullReferenceException)
+            {
+                Error(NOSELECTION_STR[lindex]);
+            }
         }
     }
 }

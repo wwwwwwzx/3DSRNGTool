@@ -1,6 +1,6 @@
 ﻿namespace pkm3dsRNG.Core
 {
-    internal interface IDResult
+    public interface IDResult
     {
         ushort TID { get; set; }
         ushort SID { get; set; }

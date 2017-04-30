@@ -22,7 +22,7 @@
 
         public abstract RNGResult Generate();
 
-        public void UseTemplate(Pokemon PM)
+        public virtual void UseTemplate(Pokemon PM)
         {
             AlwaysSync = PM.AlwaysSync;
             IV3 = PM.IV3;

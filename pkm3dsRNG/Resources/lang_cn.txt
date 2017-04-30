@@ -39,6 +39,7 @@ L_GenderRatio = 性别比
 L_SyncNature = 同步性格
 L_Rate = 出现率
 L_Lv = 等级范围
+BlinkWhenSync = 同步时眨眼
 ---
 Filters = 个体筛选
 L_H = HP
@@ -87,6 +88,7 @@ SHControlPanel = 显示/隐藏控制面板
 HighLightFrameAfter = 高亮延时后击中帧
 dgv_Frame = 帧
 dgv_mark = 标记
+dgv_shift = 偏差
 dgv_H = HP
 dgv_A = Atk
 dgv_B = Def
@@ -167,3 +169,7 @@ dgv_adv = 消耗
 dgv_status = Seed
 dgv_ball = 球
 dgv_eggnum = 蛋数
+-----------------------
+dgv_G7TID = 7代ID
+dgv_ID_Rand = 乱数值
+dgv_ID_Rand64 = 乱数值

@@ -10,11 +10,13 @@ namespace pkm3dsRNG
 
         public override int PerfectIVCount => IV3 ? 3 : 0;
         public override int PIDroll_count => ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
+        public bool blinkwhensync;
 
         private bool blink_process()
         {
             bool sync = (int)(getrand % 100) >= 50;
-            time_elapse(3);
+            if (blinkwhensync)
+                time_elapse(3);
             return sync;
         }
 
@@ -54,7 +56,7 @@ namespace pkm3dsRNG
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability
-            rt.Ability = (byte)(AlwaysSync ? (getrand & 1) + 1 : 1);
+            rt.Ability = (byte)(blinkwhensync ? 1 : (getrand & 1) + 1);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
@@ -71,6 +73,12 @@ namespace pkm3dsRNG
             rt.PID = (uint)(getrand & 0xFFFFFFFF);
             rt.Shiny = rt.PSV == TSV;
             return rt;
+        }
+
+        public override void UseTemplate(Pokemon PM)
+        {
+            base.UseTemplate(PM);
+            blinkwhensync = !AlwaysSync && !(PM as PKM7).NoBlink;
         }
     }
 }
