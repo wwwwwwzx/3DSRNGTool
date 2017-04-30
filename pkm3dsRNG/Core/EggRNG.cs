@@ -11,6 +11,9 @@
 
         public bool ShinyCharm, MMethod;
 
+        public bool ConsiderOtherTSV;
+        public int[] OtherTSVs;
+
         internal bool DestinyKnot { get; set; }
         internal bool EverStone { get; set; }
         internal bool Both_Everstone { get; set; }

@@ -91,5 +91,31 @@ namespace pkm3dsRNG
             HiddenPower.CheckBoxItems[0].Checked = true;
             HiddenPower.CheckBoxItems[0].Checked = false;
         }
+        
+        private string getEggListString(int eggnum, int rejectnum)
+        {
+            string tmp = "";
+            if (eggnum < 0)
+            {
+                switch (lindex)
+                {
+                    case 0: return "Egg number is too small";
+                    case 1: return "蛋数范围太小";
+                }
+            }
+            switch (lindex)
+            {
+                case 0: tmp += $"Accepted {eggnum} eggs"; break;
+                case 1: tmp += $"接受 {eggnum} 个蛋"; break;
+            }
+            if (rejectnum == 0)
+                return tmp;
+            switch (lindex)
+            {
+                case 0: tmp += $",\nand then reject {rejectnum} times"; break;
+                case 1: tmp += $",\n然后拒绝 {rejectnum} 次"; break;
+            }
+            return tmp;
+        }
     }
 }

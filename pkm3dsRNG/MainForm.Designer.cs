@@ -100,8 +100,14 @@
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.EggPanel = new System.Windows.Forms.Panel();
+            this.Egg_Instruction = new System.Windows.Forms.Label();
+            this.L_TargetFrame = new System.Windows.Forms.Label();
+            this.TargetFrame = new System.Windows.Forms.NumericUpDown();
+            this.Egg_max = new System.Windows.Forms.NumericUpDown();
+            this.Egg_min = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
             this.CreateTimeline = new System.Windows.Forms.RadioButton();
-            this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Gen7timepanel = new System.Windows.Forms.Panel();
             this.L_Correction = new System.Windows.Forms.Label();
             this.Correction = new System.Windows.Forms.NumericUpDown();
@@ -111,11 +117,13 @@
             this.L_NPC = new System.Windows.Forms.Label();
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.TimeSpan = new System.Windows.Forms.NumericUpDown();
+            this.EggNumber = new System.Windows.Forms.RadioButton();
             this.RB_FrameRange = new System.Windows.Forms.RadioButton();
             this.CalcList = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
+            this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
             this.EnctrPanel = new System.Windows.Forms.Panel();
             this.L_Category = new System.Windows.Forms.Label();
@@ -184,6 +192,8 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
+            this.ConsiderOtherTSV = new System.Windows.Forms.CheckBox();
+            this.B_TSVList = new System.Windows.Forms.Button();
             this.B_Fast = new System.Windows.Forms.Button();
             this.MainRNGEgg = new System.Windows.Forms.CheckBox();
             this.TinyMT_Status = new System.Windows.Forms.GroupBox();
@@ -221,7 +231,6 @@
             this.Egg_GenderRatio = new System.Windows.Forms.ComboBox();
             this.L_EggAbility = new System.Windows.Forms.Label();
             this.M_ditto = new System.Windows.Forms.CheckBox();
-            this.L_Egg_GR = new System.Windows.Forms.Label();
             this.F_Items = new System.Windows.Forms.ComboBox();
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.Lang = new System.Windows.Forms.ComboBox();
@@ -231,8 +240,9 @@
             this.L_Seed = new System.Windows.Forms.Label();
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.dgv_eggnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_blink = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_adv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_H = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -299,6 +309,10 @@
             this.RNGMethod.SuspendLayout();
             this.TP_StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
+            this.EggPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Egg_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Egg_min)).BeginInit();
             this.Gen7timepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).BeginInit();
@@ -1184,21 +1198,125 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.EggPanel);
             this.RNGInfo.Controls.Add(this.CreateTimeline);
-            this.RNGInfo.Controls.Add(this.AroundTarget);
             this.RNGInfo.Controls.Add(this.Gen7timepanel);
             this.RNGInfo.Controls.Add(this.TimeSpan);
+            this.RNGInfo.Controls.Add(this.EggNumber);
             this.RNGInfo.Controls.Add(this.RB_FrameRange);
             this.RNGInfo.Controls.Add(this.CalcList);
             this.RNGInfo.Controls.Add(this.label7);
             this.RNGInfo.Controls.Add(this.Frame_max);
             this.RNGInfo.Controls.Add(this.Frame_min);
+            this.RNGInfo.Controls.Add(this.AroundTarget);
             this.RNGInfo.Location = new System.Drawing.Point(830, 3);
             this.RNGInfo.Name = "RNGInfo";
             this.RNGInfo.Size = new System.Drawing.Size(227, 278);
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
+            // 
+            // EggPanel
+            // 
+            this.EggPanel.Controls.Add(this.Egg_Instruction);
+            this.EggPanel.Controls.Add(this.L_TargetFrame);
+            this.EggPanel.Controls.Add(this.TargetFrame);
+            this.EggPanel.Controls.Add(this.Egg_max);
+            this.EggPanel.Controls.Add(this.Egg_min);
+            this.EggPanel.Controls.Add(this.label12);
+            this.EggPanel.Location = new System.Drawing.Point(6, 115);
+            this.EggPanel.Name = "EggPanel";
+            this.EggPanel.Size = new System.Drawing.Size(215, 116);
+            this.EggPanel.TabIndex = 97;
+            // 
+            // Egg_Instruction
+            // 
+            this.Egg_Instruction.AutoSize = true;
+            this.Egg_Instruction.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Egg_Instruction.Location = new System.Drawing.Point(11, 76);
+            this.Egg_Instruction.Name = "Egg_Instruction";
+            this.Egg_Instruction.Size = new System.Drawing.Size(0, 18);
+            this.Egg_Instruction.TabIndex = 98;
+            // 
+            // L_TargetFrame
+            // 
+            this.L_TargetFrame.AutoSize = true;
+            this.L_TargetFrame.Location = new System.Drawing.Point(22, 44);
+            this.L_TargetFrame.Name = "L_TargetFrame";
+            this.L_TargetFrame.Size = new System.Drawing.Size(43, 13);
+            this.L_TargetFrame.TabIndex = 75;
+            this.L_TargetFrame.Text = "目标帧";
+            // 
+            // TargetFrame
+            // 
+            this.TargetFrame.AccessibleName = "";
+            this.TargetFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TargetFrame.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.TargetFrame.Location = new System.Drawing.Point(98, 42);
+            this.TargetFrame.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.TargetFrame.Name = "TargetFrame";
+            this.TargetFrame.Size = new System.Drawing.Size(60, 22);
+            this.TargetFrame.TabIndex = 97;
+            this.TargetFrame.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Egg_max
+            // 
+            this.Egg_max.AccessibleName = "";
+            this.Egg_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Egg_max.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Egg_max.Location = new System.Drawing.Point(98, 9);
+            this.Egg_max.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Egg_max.Name = "Egg_max";
+            this.Egg_max.Size = new System.Drawing.Size(60, 22);
+            this.Egg_max.TabIndex = 94;
+            this.Egg_max.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Egg_min
+            // 
+            this.Egg_min.AccessibleName = "";
+            this.Egg_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Egg_min.Location = new System.Drawing.Point(14, 9);
+            this.Egg_min.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Egg_min.Name = "Egg_min";
+            this.Egg_min.Size = new System.Drawing.Size(60, 22);
+            this.Egg_min.TabIndex = 93;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(76, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(16, 13);
+            this.label12.TabIndex = 95;
+            this.label12.Text = "->";
             // 
             // CreateTimeline
             // 
@@ -1210,16 +1328,6 @@
             this.CreateTimeline.Text = "生成时间线";
             this.CreateTimeline.UseVisualStyleBackColor = true;
             this.CreateTimeline.CheckedChanged += new System.EventHandler(this.CreateTimeline_CheckedChanged);
-            // 
-            // AroundTarget
-            // 
-            this.AroundTarget.AutoSize = true;
-            this.AroundTarget.Location = new System.Drawing.Point(19, 92);
-            this.AroundTarget.Name = "AroundTarget";
-            this.AroundTarget.Size = new System.Drawing.Size(100, 17);
-            this.AroundTarget.TabIndex = 97;
-            this.AroundTarget.Text = "目标帧 ±100帧";
-            this.AroundTarget.UseVisualStyleBackColor = true;
             // 
             // Gen7timepanel
             // 
@@ -1345,6 +1453,17 @@
             0,
             0});
             // 
+            // EggNumber
+            // 
+            this.EggNumber.AutoSize = true;
+            this.EggNumber.Location = new System.Drawing.Point(19, 92);
+            this.EggNumber.Name = "EggNumber";
+            this.EggNumber.Size = new System.Drawing.Size(49, 17);
+            this.EggNumber.TabIndex = 96;
+            this.EggNumber.Text = "蛋数";
+            this.EggNumber.UseVisualStyleBackColor = true;
+            this.EggNumber.CheckedChanged += new System.EventHandler(this.EggNumber_CheckedChanged);
+            // 
             // RB_FrameRange
             // 
             this.RB_FrameRange.AutoSize = true;
@@ -1413,6 +1532,16 @@
             this.Frame_min.Name = "Frame_min";
             this.Frame_min.Size = new System.Drawing.Size(75, 22);
             this.Frame_min.TabIndex = 40;
+            // 
+            // AroundTarget
+            // 
+            this.AroundTarget.AutoSize = true;
+            this.AroundTarget.Location = new System.Drawing.Point(19, 92);
+            this.AroundTarget.Name = "AroundTarget";
+            this.AroundTarget.Size = new System.Drawing.Size(100, 17);
+            this.AroundTarget.TabIndex = 97;
+            this.AroundTarget.Text = "目标帧 ±100帧";
+            this.AroundTarget.UseVisualStyleBackColor = true;
             // 
             // Sta_Setting
             // 
@@ -2210,6 +2339,8 @@
             // 
             // Parents_Info
             // 
+            this.Parents_Info.Controls.Add(this.ConsiderOtherTSV);
+            this.Parents_Info.Controls.Add(this.B_TSVList);
             this.Parents_Info.Controls.Add(this.B_Fast);
             this.Parents_Info.Controls.Add(this.MainRNGEgg);
             this.Parents_Info.Controls.Add(this.TinyMT_Status);
@@ -2241,7 +2372,6 @@
             this.Parents_Info.Controls.Add(this.Egg_GenderRatio);
             this.Parents_Info.Controls.Add(this.L_EggAbility);
             this.Parents_Info.Controls.Add(this.M_ditto);
-            this.Parents_Info.Controls.Add(this.L_Egg_GR);
             this.Parents_Info.Controls.Add(this.F_Items);
             this.Parents_Info.Controls.Add(this.M_Items);
             this.Parents_Info.Location = new System.Drawing.Point(6, 6);
@@ -2251,11 +2381,31 @@
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
             // 
+            // ConsiderOtherTSV
+            // 
+            this.ConsiderOtherTSV.AutoSize = true;
+            this.ConsiderOtherTSV.Location = new System.Drawing.Point(284, 195);
+            this.ConsiderOtherTSV.Name = "ConsiderOtherTSV";
+            this.ConsiderOtherTSV.Size = new System.Drawing.Size(95, 17);
+            this.ConsiderOtherTSV.TabIndex = 104;
+            this.ConsiderOtherTSV.Text = "考虑其他TSV";
+            this.ConsiderOtherTSV.UseVisualStyleBackColor = true;
+            // 
+            // B_TSVList
+            // 
+            this.B_TSVList.Location = new System.Drawing.Point(185, 187);
+            this.B_TSVList.Name = "B_TSVList";
+            this.B_TSVList.Size = new System.Drawing.Size(78, 25);
+            this.B_TSVList.TabIndex = 103;
+            this.B_TSVList.Text = "TSV列表";
+            this.B_TSVList.UseVisualStyleBackColor = true;
+            this.B_TSVList.Click += new System.EventHandler(this.B_TSVList_Click);
+            // 
             // B_Fast
             // 
-            this.B_Fast.Location = new System.Drawing.Point(189, 56);
+            this.B_Fast.Location = new System.Drawing.Point(185, 65);
             this.B_Fast.Name = "B_Fast";
-            this.B_Fast.Size = new System.Drawing.Size(70, 25);
+            this.B_Fast.Size = new System.Drawing.Size(78, 25);
             this.B_Fast.TabIndex = 100;
             this.B_Fast.Text = "快速模式";
             this.B_Fast.UseVisualStyleBackColor = true;
@@ -2264,7 +2414,7 @@
             // MainRNGEgg
             // 
             this.MainRNGEgg.AutoSize = true;
-            this.MainRNGEgg.Location = new System.Drawing.Point(283, 195);
+            this.MainRNGEgg.Location = new System.Drawing.Point(185, 221);
             this.MainRNGEgg.Name = "MainRNGEgg";
             this.MainRNGEgg.Size = new System.Drawing.Size(92, 17);
             this.MainRNGEgg.TabIndex = 102;
@@ -2392,7 +2542,7 @@
             // MM
             // 
             this.MM.AutoSize = true;
-            this.MM.Location = new System.Drawing.Point(283, 221);
+            this.MM.Location = new System.Drawing.Point(284, 221);
             this.MM.Name = "MM";
             this.MM.Size = new System.Drawing.Size(86, 17);
             this.MM.TabIndex = 5;
@@ -2412,7 +2562,7 @@
             // Heterogeneity
             // 
             this.Heterogeneity.AutoSize = true;
-            this.Heterogeneity.Location = new System.Drawing.Point(283, 246);
+            this.Heterogeneity.Location = new System.Drawing.Point(284, 246);
             this.Heterogeneity.Name = "Heterogeneity";
             this.Heterogeneity.Size = new System.Drawing.Size(86, 17);
             this.Heterogeneity.TabIndex = 0;
@@ -2693,9 +2843,9 @@
             // 
             // B_EggReset
             // 
-            this.B_EggReset.Location = new System.Drawing.Point(189, 20);
+            this.B_EggReset.Location = new System.Drawing.Point(185, 29);
             this.B_EggReset.Name = "B_EggReset";
-            this.B_EggReset.Size = new System.Drawing.Size(70, 25);
+            this.B_EggReset.Size = new System.Drawing.Size(78, 25);
             this.B_EggReset.TabIndex = 30;
             this.B_EggReset.Text = "恢复默认";
             this.B_EggReset.UseVisualStyleBackColor = true;
@@ -2725,7 +2875,7 @@
             "♂1：♀3",
             "只有♂",
             "只有♀"});
-            this.Egg_GenderRatio.Location = new System.Drawing.Point(189, 183);
+            this.Egg_GenderRatio.Location = new System.Drawing.Point(185, 157);
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
             this.Egg_GenderRatio.Size = new System.Drawing.Size(78, 21);
             this.Egg_GenderRatio.TabIndex = 7;
@@ -2733,7 +2883,7 @@
             // L_EggAbility
             // 
             this.L_EggAbility.AutoSize = true;
-            this.L_EggAbility.Location = new System.Drawing.Point(21, 55);
+            this.L_EggAbility.Location = new System.Drawing.Point(22, 53);
             this.L_EggAbility.Name = "L_EggAbility";
             this.L_EggAbility.Size = new System.Drawing.Size(31, 13);
             this.L_EggAbility.TabIndex = 5;
@@ -2751,15 +2901,6 @@
             this.M_ditto.Text = "父方";
             this.M_ditto.UseVisualStyleBackColor = false;
             this.M_ditto.CheckedChanged += new System.EventHandler(this.Ditto_CheckedChanged);
-            // 
-            // L_Egg_GR
-            // 
-            this.L_Egg_GR.AutoSize = true;
-            this.L_Egg_GR.Location = new System.Drawing.Point(186, 159);
-            this.L_Egg_GR.Name = "L_Egg_GR";
-            this.L_Egg_GR.Size = new System.Drawing.Size(43, 13);
-            this.L_Egg_GR.TabIndex = 8;
-            this.L_Egg_GR.Text = "性别比";
             // 
             // F_Items
             // 
@@ -2889,8 +3030,9 @@
             this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_eggnum,
             this.dgv_Frame,
-            this.dgv_blink,
+            this.dgv_mark,
             this.dgv_delay,
             this.dgv_adv,
             this.dgv_H,
@@ -2938,17 +3080,24 @@
             this.DGV.Size = new System.Drawing.Size(1069, 312);
             this.DGV.TabIndex = 89;
             // 
+            // dgv_eggnum
+            // 
+            this.dgv_eggnum.HeaderText = "蛋数";
+            this.dgv_eggnum.Name = "dgv_eggnum";
+            this.dgv_eggnum.Visible = false;
+            this.dgv_eggnum.Width = 40;
+            // 
             // dgv_Frame
             // 
             this.dgv_Frame.HeaderText = "帧数";
             this.dgv_Frame.Name = "dgv_Frame";
             this.dgv_Frame.Width = 60;
             // 
-            // dgv_blink
+            // dgv_mark
             // 
-            this.dgv_blink.HeaderText = "眨眼";
-            this.dgv_blink.Name = "dgv_blink";
-            this.dgv_blink.Width = 40;
+            this.dgv_mark.HeaderText = "眨眼";
+            this.dgv_mark.Name = "dgv_mark";
+            this.dgv_mark.Width = 40;
             // 
             // dgv_delay
             // 
@@ -3303,6 +3452,11 @@
             this.TP_StationaryRNG.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
+            this.EggPanel.ResumeLayout(false);
+            this.EggPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Egg_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Egg_min)).EndInit();
             this.Gen7timepanel.ResumeLayout(false);
             this.Gen7timepanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).EndInit();
@@ -3550,7 +3704,6 @@
         private System.Windows.Forms.ComboBox Egg_GenderRatio;
         private System.Windows.Forms.ComboBox M_ability;
         private System.Windows.Forms.CheckBox MM;
-        private System.Windows.Forms.Label L_Egg_GR;
         private System.Windows.Forms.ComboBox F_Items;
         private System.Windows.Forms.ComboBox M_Items;
         private System.Windows.Forms.NumericUpDown M_IV5;
@@ -3574,8 +3727,18 @@
         private System.Windows.Forms.Label L_Egg_D;
         private System.Windows.Forms.GroupBox TinyMT_Status;
         private System.Windows.Forms.CheckBox MainRNGEgg;
+        private System.Windows.Forms.Button B_Fast;
+        private System.Windows.Forms.Panel EggPanel;
+        private System.Windows.Forms.NumericUpDown Egg_max;
+        private System.Windows.Forms.RadioButton EggNumber;
+        private System.Windows.Forms.NumericUpDown Egg_min;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown TargetFrame;
+        private System.Windows.Forms.Label Egg_Instruction;
+        private System.Windows.Forms.Label L_TargetFrame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_delay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_adv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_H;
@@ -3598,7 +3761,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
-        private System.Windows.Forms.Button B_Fast;
+        private System.Windows.Forms.Button B_TSVList;
+        private System.Windows.Forms.CheckBox ConsiderOtherTSV;
     }
 }
 

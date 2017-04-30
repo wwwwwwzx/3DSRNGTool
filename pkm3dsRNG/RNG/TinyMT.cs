@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace pkm3dsRNG.RNG
 {
+    [Serializable()]
     public class TinyMT : IRNG
     {
         public uint[] status { get; set; }

@@ -166,5 +166,17 @@ namespace pkm3dsRNG.Properties {
                 this["ST0"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string TSVList {
+            get {
+                return ((string)(this["TSVList"]));
+            }
+            set {
+                this["TSVList"] = value;
+            }
+        }
     }
 }

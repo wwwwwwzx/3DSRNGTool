@@ -104,6 +104,11 @@ namespace pkm3dsRNG
                 }
             }
 
+            // Other TSVs
+            tmp = (int)egg.PSV;
+            if (ConsiderOtherTSV && OtherTSVs.Contains(tmp))
+                egg.Shiny = true;
+
             // Ball
             egg.Ball = (byte)(Homogeneous && getrand % 100 >= 50 || FemaleIsDitto ? 1 : 2);
 

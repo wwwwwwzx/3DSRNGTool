@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,7 @@ namespace pkm3dsRNG
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.20";
+        private string version = "0.30";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -28,6 +27,7 @@ namespace pkm3dsRNG
         private int[] slotspecies => Gen7 ? ea.getSpecies(IsMoon, IsNight) : null;
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
+        List<int> OtherTSVList = new List<int>();
         #endregion
 
         public MainForm()
@@ -53,6 +53,7 @@ namespace pkm3dsRNG
             var LastMethod = Properties.Settings.Default.Method;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
+            loadlist(Properties.Settings.Default.TSVList);
             Advanced.Checked = Properties.Settings.Default.Advance;
             Status = new uint[] { Properties.Settings.Default.ST0, Properties.Settings.Default.ST1, Properties.Settings.Default.ST2, Properties.Settings.Default.ST3 };
 
@@ -269,6 +270,7 @@ namespace pkm3dsRNG
             Properties.Settings.Default.Save();
 
             Reset_Click(null, null);
+            RB_FrameRange.Checked = true;
 
             RNGMethod.TabPages[method].Controls.Add(this.Filters);
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
@@ -290,18 +292,15 @@ namespace pkm3dsRNG
             ByIVs.Enabled = ByStats.Enabled =
             BlinkFOnly.Visible = SafeFOnly.Visible =
             CreateTimeline.Visible = TimeSpan.Visible =
-            Gen7timepanel.Visible = dgv_delay.Visible = dgv_blink.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            Gen7timepanel.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
+            AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
             dgv_synced.Visible = method < 3;
-            dgv_adv.Visible = method == 3;
+            EggPanel.Visible = EggNumber.Visible =
+            dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
 
             MM_CheckedChanged(null, null);
 
-            if (Gen6)
-            {
-                if (CreateTimeline.Checked)
-                    RB_FrameRange.Checked = true;
-            }
             switch (method)
             {
                 case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
@@ -562,6 +561,9 @@ namespace pkm3dsRNG
             setting.InheritAbilty = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
 
+            setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked;
+            setting.OtherTSVs = OtherTSVList.ToArray();
+
             setting.MarkItem();
             return setting;
         }
@@ -585,14 +587,22 @@ namespace pkm3dsRNG
                 Error(SETTINGERROR_STR[lindex] + L_S.Text);
             else if (Frame_min.Value > Frame_max.Value)
                 Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
-            else if (Gen6)
-                Search6();
             else
-                Search7();
+                try
+                {
+                    if (Gen6)
+                        Search6();
+                    else
+                        Search7();
+                }
+                catch
+                {
+                    Error("Not Impled");
+                }
         }
 
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
-        private DataGridViewRow getRow(int i, RNGResult result)
+        private DataGridViewRow getRow(int i, RNGResult result, int eggnum = -1)
         {
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV);
@@ -600,10 +610,11 @@ namespace pkm3dsRNG
             string true_nature = StringItem.naturestr[result.Nature];
             if (((result as EggResult)?.BE_InheritParents ?? null) != null)
                 true_nature = ((result as EggResult)?.BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
-            byte blink = (result as Result7)?.Blink ?? 0;
-            string advanve = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
+            string EggNum = eggnum > 0 ? eggnum.ToString() : "";
+            string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
             string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
-            string BlinkFlag = blink < 4 ? blinkmarks[blink] : blink.ToString();
+            byte blink = (result as Result7)?.Blink ?? 0;
+            string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
             string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString() ?? "";
@@ -619,7 +630,7 @@ namespace pkm3dsRNG
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
             row.SetValues(
-                i, BlinkFlag, delay, advanve,
+                eggnum, i, Mark, delay, advance,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
                 slots, Lv, ball,
@@ -630,7 +641,7 @@ namespace pkm3dsRNG
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
 
             bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? null;
-            const int ivstart = 4;
+            const int ivstart = 5;
             if (ivsflag != null)
             {
                 for (int k = 0; k < 6; k++)
@@ -693,7 +704,10 @@ namespace pkm3dsRNG
         {
             if (method == 3)
             {
-                Search7_Egg();
+                if (EggNumber.Checked)
+                    Search7_EggList();
+                else
+                    Search7_Egg();
                 return;
             }
             if (CreateTimeline.Checked)
@@ -734,7 +748,7 @@ namespace pkm3dsRNG
                 while (frameadvance > 0)
                 {
                     RNGPool.CopyStatus(stmp);
-                    var result = RNGPool.Generate7();
+                    var result = RNGPool.Generate7() as Result7;
 
                     RNGPool.Next(sfmt.Nextulong());
 
@@ -743,7 +757,7 @@ namespace pkm3dsRNG
                     if (i <= min || i > max)
                         continue;
 
-                    FuncUtil.MarkResults((result as Result7), i - min - 1, realtime);
+                    FuncUtil.MarkResults(result, i - min - 1, realtime);
 
                     if (!filter.CheckResult(result))
                         continue;
@@ -777,8 +791,8 @@ namespace pkm3dsRNG
 
                 RNGPool.CopyStatus(status);
 
-                var result = RNGPool.Generate7();
-                FuncUtil.MarkResults((result as Result7), i, i);
+                var result = RNGPool.Generate7() as Result7;
+                FuncUtil.MarkResults(result, i, i);
 
                 frameadvance = status.NextState();
                 frame += frameadvance;
@@ -807,14 +821,15 @@ namespace pkm3dsRNG
             for (int i = 0; i < min; i++)
                 rng.Next();
             // Prepare
+            TinyMT Seedrng = (TinyMT)rng.DeepCopy();
             getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()))
+            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()), Seedrng.Next())
             {
-                RNGResult result = RNGPool.GenerateEgg7();
+                var result = RNGPool.GenerateEgg7() as EggResult;
                 if (!filter.CheckResult(result))
                     continue;
-                (result as EggResult).Status = (uint[])rng.status.Clone();
+                result.Status = (uint[])Seedrng.status.Clone();
                 dgvrowlist.Add(getRow(i, result));
                 if (dgvrowlist.Count > 100000)
                     break;
@@ -822,107 +837,50 @@ namespace pkm3dsRNG
             DGV.Rows.AddRange(dgvrowlist.ToArray());
             DGV.CurrentCell = null;
         }
-        #endregion
 
-        #region Egg RNG UI
-        private void B_EggReset_Click(object sender, EventArgs e)
+        private void Search7_EggList()
         {
-            IV_Male = new[] { 31, 31, 31, 31, 31, 31 };
-            IV_Female = new[] { 31, 31, 31, 31, 31, 31 };
-            Egg_GenderRatio.SelectedIndex = 1;
-            M_Items.SelectedIndex = F_Items.SelectedIndex = 0;
-            M_ditto.Checked = F_ditto.Checked = false;
-            M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
-            Heterogeneity.Checked = false;
-            MM.Checked = false;
-        }
-
-        private void B_Fast_Click(object sender, EventArgs e)
-        {
-            B_EggReset_Click(null, null);
-            IV_Female = new[] { 0, 0, 0, 0, 0, 0 };
-            M_Items.SelectedIndex = 2;
-            MM.Checked = true;
-        }
-
-        private void Ditto_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((sender as CheckBox)?.Checked ?? false)
+            var rng = new TinyMT(Status);
+            int max, min;
+            min = (int)Egg_min.Value;
+            max = (int)Egg_max.Value;
+            int target = (int)TargetFrame.Value;
+            bool gotresult = false;
+            // Advance
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            TinyMT Seedrng = (TinyMT)rng.DeepCopy();
+            // Prepare
+            getsetting(rng);
+            // Start
+            int frame = 0;
+            int advance = 0;
+            for (int i = 0; i <= max; i++)
             {
-                (sender == F_ditto ? M_ditto : F_ditto).Checked = false;
-                Heterogeneity.Enabled = false;
-                Heterogeneity.Checked = true;
-            }
-            else
-            {
-                Heterogeneity.Checked = false;
-                Heterogeneity.Enabled = true;
-            }
-        }
-
-        private void Status_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ST0 = (uint)St0.Value;
-            Properties.Settings.Default.ST1 = (uint)St1.Value;
-            Properties.Settings.Default.ST2 = (uint)St2.Value;
-            Properties.Settings.Default.ST3 = (uint)St3.Value;
-            Properties.Settings.Default.Save();
-        }
-
-        private void MM_CheckedChanged(object sender, EventArgs e)
-        {
-            MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
-            if (MainRNGEgg.Checked)
-            {
-                NPC.Value = 4;
-                Timedelay.Value = 38;
-            }
-        }
-
-        private void B_Backup_Click(object sender, EventArgs e)
-        {
-            string[] lines =
-            {
-                St3.Text,
-                St2.Text,
-                St1.Text,
-                St0.Text,
-            };
-            File.WriteAllLines("Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt", lines);
-        }
-
-        private void B_Load_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog OFD = new OpenFileDialog();
-                DialogResult result = OFD.ShowDialog();
-                if (result == DialogResult.OK)
+                var result = RNGPool.GenerateEgg7() as EggResult;
+                result.Status = (uint[])Seedrng.status.Clone();
+                advance = result.FramesUsed;
+                if (!gotresult && frame <= target && target < frame + advance)
                 {
-                    string file = OFD.FileName;
-                    if (File.Exists(file))
-                    {
-                        string[] list = File.ReadAllLines(file);
-
-                        string st3 = list[0];
-                        string st2 = list[1];
-                        string st1 = list[2];
-                        string st0 = list[3];
-                        uint s3, s2, s1, s0;
-
-                        uint.TryParse(st0, System.Globalization.NumberStyles.HexNumber, null, out s0);
-                        uint.TryParse(st1, System.Globalization.NumberStyles.HexNumber, null, out s1);
-                        uint.TryParse(st2, System.Globalization.NumberStyles.HexNumber, null, out s2);
-                        uint.TryParse(st3, System.Globalization.NumberStyles.HexNumber, null, out s3);
-                        Status = new uint[] { s0, s1, s2, s3 };
-                    }
+                    Egg_Instruction.Text = getEggListString(i, target - frame);
+                    gotresult = true;
+                };
+                frame += advance;
+                for (int j = advance; j > 0; j--)
+                {
+                    Seedrng.Next();
+                    RNGPool.Next(rng.Nextuint());
                 }
+                if (i < min || !filter.CheckResult(result))
+                    continue;
+                dgvrowlist.Add(getRow(frame - advance, result, eggnum: i + 1));
+                if (dgvrowlist.Count > 100000)
+                    break;
             }
-            catch
-            {
-                Error(FILEERRORSTR[lindex]);
-            }
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+            if (!gotresult)
+                Egg_Instruction.Text = getEggListString(-1, -1);
         }
         #endregion
     }
