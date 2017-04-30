@@ -135,6 +135,7 @@ L_Location = 地点
 L_Slots = 类别
 Day = 白天
 Night = 夜晚
+CompoundEyes = 复眼
 ---------------------TabPage4----------------------------------
 TinyMT_Status = 状态
 B_Load = 导入...

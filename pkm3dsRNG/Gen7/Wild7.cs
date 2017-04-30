@@ -13,7 +13,7 @@ namespace pkm3dsRNG
         public byte SpecialEnctr; // !=0 means there is ub/qr present
         public byte Levelmin, Levelmax;
         public byte SpecialLevel;
-        // public bool CompoundEye;
+        public bool CompoundEye;
         public bool UB;
 
         private bool IsSpecial;
@@ -85,6 +85,7 @@ namespace pkm3dsRNG
 
             //Item
             rt.Item = (byte)(NormalSlot ? getrand % 100 : 100);
+            rt.ItemStr = getitemstr(rt.Item);
 
             return rt;
         }
@@ -103,6 +104,15 @@ namespace pkm3dsRNG
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
             }
+        }
+
+        public string getitemstr(int rand)
+        {
+            if (rand < (CompoundEye ? 60 : 50))
+                return "50%";
+            if (rand < (CompoundEye ? 80 : 55))
+                return "5%";
+            return "-";
         }
     }
 }

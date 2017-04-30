@@ -136,6 +136,7 @@ L_Location = Location
 L_Slots = Slots
 Day = Day
 Night = Night
+CompoundEyes = Compound Eyes
 ---------------------TabPage4----------------------------------
 ---
 TinyMT_Status = Status

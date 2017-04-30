@@ -183,6 +183,7 @@
             this.Event_Nature = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.CompoundEyes = new System.Windows.Forms.CheckBox();
             this.L_Rate = new System.Windows.Forms.Label();
             this.Special_th = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -269,6 +270,7 @@
             this.dgv_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Lv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ball = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -2253,6 +2255,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.CompoundEyes);
             this.Wild_Setting.Controls.Add(this.L_Rate);
             this.Wild_Setting.Controls.Add(this.Special_th);
             this.Wild_Setting.Controls.Add(this.label9);
@@ -2271,6 +2274,16 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // CompoundEyes
+            // 
+            this.CompoundEyes.AutoSize = true;
+            this.CompoundEyes.Location = new System.Drawing.Point(17, 196);
+            this.CompoundEyes.Name = "CompoundEyes";
+            this.CompoundEyes.Size = new System.Drawing.Size(50, 17);
+            this.CompoundEyes.TabIndex = 92;
+            this.CompoundEyes.Text = "复眼";
+            this.CompoundEyes.UseVisualStyleBackColor = true;
             // 
             // L_Rate
             // 
@@ -2458,7 +2471,7 @@
             // ConsiderOtherTSV
             // 
             this.ConsiderOtherTSV.AutoSize = true;
-            this.ConsiderOtherTSV.Location = new System.Drawing.Point(284, 195);
+            this.ConsiderOtherTSV.Location = new System.Drawing.Point(281, 195);
             this.ConsiderOtherTSV.Name = "ConsiderOtherTSV";
             this.ConsiderOtherTSV.Size = new System.Drawing.Size(95, 17);
             this.ConsiderOtherTSV.TabIndex = 104;
@@ -2488,7 +2501,7 @@
             // MainRNGEgg
             // 
             this.MainRNGEgg.AutoSize = true;
-            this.MainRNGEgg.Location = new System.Drawing.Point(284, 246);
+            this.MainRNGEgg.Location = new System.Drawing.Point(281, 246);
             this.MainRNGEgg.Name = "MainRNGEgg";
             this.MainRNGEgg.Size = new System.Drawing.Size(92, 17);
             this.MainRNGEgg.TabIndex = 102;
@@ -2660,7 +2673,7 @@
             // MM
             // 
             this.MM.AutoSize = true;
-            this.MM.Location = new System.Drawing.Point(284, 221);
+            this.MM.Location = new System.Drawing.Point(281, 221);
             this.MM.Name = "MM";
             this.MM.Size = new System.Drawing.Size(86, 17);
             this.MM.TabIndex = 5;
@@ -3168,6 +3181,7 @@
             this.dgv_slot,
             this.dgv_Lv,
             this.dgv_ball,
+            this.dgv_item,
             this.dgv_rand,
             this.dgv_rand64,
             this.dgv_pid,
@@ -3322,6 +3336,13 @@
             this.dgv_ball.Name = "dgv_ball";
             this.dgv_ball.Visible = false;
             this.dgv_ball.Width = 50;
+            // 
+            // dgv_item
+            // 
+            this.dgv_item.HeaderText = "道具";
+            this.dgv_item.Name = "dgv_item";
+            this.dgv_item.Visible = false;
+            this.dgv_item.Width = 40;
             // 
             // dgv_rand
             // 
@@ -3735,6 +3756,9 @@
         private System.Windows.Forms.NumericUpDown TargetFrame;
         private System.Windows.Forms.Label Egg_Instruction;
         private System.Windows.Forms.Label L_TargetFrame;
+        private System.Windows.Forms.Button B_TSVList;
+        private System.Windows.Forms.CheckBox ConsiderOtherTSV;
+        private System.Windows.Forms.CheckBox CompoundEyes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;
@@ -3755,13 +3779,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Lv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ball;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
-        private System.Windows.Forms.Button B_TSVList;
-        private System.Windows.Forms.CheckBox ConsiderOtherTSV;
     }
 }
 

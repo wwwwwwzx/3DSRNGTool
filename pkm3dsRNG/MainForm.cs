@@ -240,12 +240,16 @@ namespace pkm3dsRNG
 
         private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AlwaysSynced.Checked)
+            if (SyncNature.SelectedIndex > 0)
             {
-                Nature.ClearSelection();
-                if (SyncNature.SelectedIndex > 0)
+                CompoundEyes.Checked = false;
+                if (AlwaysSynced.Checked)
+                {
+                    Nature.ClearSelection();
                     Nature.CheckBoxItems[SyncNature.SelectedIndex].Checked = true;
+                }
             }
+            CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
         }
 
         private void Reset_Click(object sender, EventArgs e)
@@ -521,6 +525,7 @@ namespace pkm3dsRNG
                 setting7.SpecialEnctr = (byte)Special_th.Value;
                 setting7.UB = CB_Category.SelectedIndex == 1;
                 setting7.SpecForm = new int[11];
+                setting7.CompoundEye = CompoundEyes.Checked;
                 for (int i = 1; i < 11; i++)
                     setting7.SpecForm[i] = slotspecies[EncounterArea7.SlotType[slotspecies[0]][i - 1]];
                 if (setting7.SpecialEnctr > 0)
@@ -569,7 +574,7 @@ namespace pkm3dsRNG
         private void AdjustDGVColumns()
         {
             dgv_synced.Visible = method < 3;
-            dgv_Lv.Visible = dgv_slot.Visible = method == 2;
+            dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && method == 3;
             dgv_status.Visible = dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
@@ -625,13 +630,17 @@ namespace pkm3dsRNG
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
+
             string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString() ?? "";
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
+            string item = (result as WildResult)?.ItemStr ?? "";
+
             string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? 0];
             string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8") ?? "";
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
+
             var seedstatus = (result as EggResult)?.Status ?? new uint[1];
             string seed = string.Join(",", seedstatus.Select(v => v.ToString("X8")).Reverse());
 
@@ -641,7 +650,7 @@ namespace pkm3dsRNG
                 eggnum, i, Mark, delay, advance,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
-                slots, Lv, ball,
+                slots, Lv, ball, item,
                 randstr, rand64str, PID, EC, seed
                 );
 
@@ -891,5 +900,6 @@ namespace pkm3dsRNG
                 Egg_Instruction.Text = getEggListString(-1, -1);
         }
         #endregion
+        
     }
 }

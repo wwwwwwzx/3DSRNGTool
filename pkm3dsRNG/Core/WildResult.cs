@@ -4,6 +4,7 @@
     {
         byte Slot { get; set; }
         byte Item { get; set; }
+        string ItemStr { get; set; }
         bool IsSpecial { get; set; }
     }
 }
