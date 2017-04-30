@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IDResult.cs" />
+    <Compile Include="Gen7\ID7.cs" />
+    <Compile Include="Gen7\MainRNGEgg.cs" />
     <Compile Include="MainForm_Egg.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿namespace pkm3dsRNG.Core
 {
-    class EggResult : RNGResult
+    public class EggResult : RNGResult
     {
         public int FramesUsed;
         public uint RandNum;

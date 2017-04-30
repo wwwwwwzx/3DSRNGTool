@@ -64,5 +64,13 @@ namespace pkm3dsRNG
 
             return rt;
         }
+
+        public RNGResult GenerateMainRNGPID(EggResult egg)
+        {
+            MainRNGEgg rt = new MainRNGEgg(egg);
+            rt.PID = (uint)(getrand & 0xFFFFFFFF);
+            rt.Shiny = rt.PSV == TSV;
+            return rt;
+        }
     }
 }

@@ -44,15 +44,6 @@ namespace pkm3dsRNG
             }
         }
 
-        private void Status_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ST0 = (uint)St0.Value;
-            Properties.Settings.Default.ST1 = (uint)St1.Value;
-            Properties.Settings.Default.ST2 = (uint)St2.Value;
-            Properties.Settings.Default.ST3 = (uint)St3.Value;
-            Properties.Settings.Default.Save();
-        }
-
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
             MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;

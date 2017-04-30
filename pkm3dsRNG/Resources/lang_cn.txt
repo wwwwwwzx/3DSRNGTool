@@ -24,6 +24,7 @@ TP_StationaryRNG = 定点乱数
 TP_EventRNG = 配信乱数
 TP_WildRNG = 野生乱数
 TP_EggRNG = 孵化乱数
+TP_IDRNG = ID乱数
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = 定点设置
@@ -158,7 +159,7 @@ B_Fast = 快速模式
 ConsiderOtherTSV = 考虑其他TSV
 B_TSVList = 编辑TSV列表
 MainRNGEgg = 主乱数蛋 (PID)
-Heterogeneity = 父母图鉴号不同
+Heterogeneity = 图鉴号不同
 EggNumber = 连续孵化蛋数范围
 L_TargetFrame = 目标帧
 B_EggReset = 重设

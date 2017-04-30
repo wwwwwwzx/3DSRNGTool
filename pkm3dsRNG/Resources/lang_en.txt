@@ -24,6 +24,7 @@ TP_StationaryRNG = Stationary RNG
 TP_EventRNG = Event RNG
 TP_WildRNG = Wild RNG
 TP_EggRNG = Egg RNG
+TP_IDRNG = ID RNG
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting
@@ -168,3 +169,6 @@ dgv_adv = Advance
 dgv_status = Status
 dgv_ball = Ball
 dgv_eggnum = Egg Number
+---------------------TabPage5----------------------------------
+B_ID_Search = Search
+L_ID_FrameRange = FrameRange

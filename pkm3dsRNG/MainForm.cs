@@ -38,6 +38,7 @@ namespace pkm3dsRNG
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DGV_ID.Columns["dgv_ID_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_PID"].DefaultCellStyle.Font = new Font("Consolas", 9);
@@ -184,6 +185,15 @@ namespace pkm3dsRNG
                 (sender as CheckBox).Checked = false;
         }
 
+        private void Status_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ST0 = (uint)St0.Value;
+            Properties.Settings.Default.ST1 = (uint)St1.Value;
+            Properties.Settings.Default.ST2 = (uint)St2.Value;
+            Properties.Settings.Default.ST3 = (uint)St3.Value;
+            Properties.Settings.Default.Save();
+        }
+
         private void TSV_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.TSV = (short)TSV.Value;
@@ -228,7 +238,7 @@ namespace pkm3dsRNG
         {
             LoadPKM();
             Poke_SelectedIndexChanged(null, null);
-            SpecialOnly.Visible = Gen7 && CB_Category.SelectedIndex > 0;
+            SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -275,16 +285,19 @@ namespace pkm3dsRNG
 
             Reset_Click(null, null);
             RB_FrameRange.Checked = true;
-
-            RNGMethod.TabPages[method].Controls.Add(this.Filters);
-            RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            if (method < 4)
+            {
+                RNGMethod.TabPages[method].Controls.Add(this.Filters);
+                RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            }
             if (0 == method || method == 2)
             {
                 LoadCategory();
                 Poke_SelectedIndexChanged(null, null);
             }
+            DGV_ID.Visible = method == 4;
 
-            Frame_min.Value = Gen7 && method < 3 ? 418 : 0;
+            Frame_min.Value = getminframe();
             L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
 
             L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
@@ -307,6 +320,15 @@ namespace pkm3dsRNG
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
                 case 3: ByIVs.Checked = true; break;
             }
+        }
+
+        public int getminframe()
+        {
+            if (Gen7 && method < 3 || MainRNGEgg.Checked)
+                return 418;
+            if (Gen7 && method == 4)
+                return 1012;
+            return 0;
         }
 
         private void CreateTimeline_CheckedChanged(object sender, EventArgs e)
@@ -438,6 +460,14 @@ namespace pkm3dsRNG
                 case 1: RNGPool.event_rng = getEventSetting(); break;
                 case 2: RNGPool.wild_rng = getWildSetting(); break;
                 case 3: RNGPool.egg_rng = getEggRNG(); break;
+            }
+
+            if (MainRNGEgg.Checked)
+            {
+                RNGPool.sta_rng = getStaSettings();
+                TinyMT tmt = new TinyMT(Status);
+                RNGPool.CreateBuffer(50, tmt);
+                RNGPool.firstegg = RNGPool.GenerateEgg7() as EggResult;
             }
 
             int buffersize = 150;
@@ -575,8 +605,9 @@ namespace pkm3dsRNG
         {
             dgv_synced.Visible = method < 3;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = method == 2;
-            dgv_rand.Visible = Gen6 || Gen7 && method == 3;
-            dgv_status.Visible = dgv_ball.Visible = Gen7 && method == 3;
+            dgv_rand.Visible = Gen6 || Gen7 && method == 3 && !MainRNGEgg.Checked;
+            dgv_status.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
+            dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
@@ -635,7 +666,7 @@ namespace pkm3dsRNG
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
             string item = (result as WildResult)?.ItemStr ?? "";
 
-            string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? 0];
+            string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? (result as MainRNGEgg)?.Ball ?? 0];
             string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8") ?? "";
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
@@ -657,7 +688,7 @@ namespace pkm3dsRNG
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
 
-            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? null;
+            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as MainRNGEgg)?.InheritMaleIV ?? null;
             const int ivstart = 5;
             if (ivsflag != null)
             {
@@ -683,6 +714,18 @@ namespace pkm3dsRNG
                     row.Cells[ivstart + k].Style.ForeColor = Color.MediumSeaGreen;
                 }
             }
+            return row;
+        }
+
+
+        private DataGridViewRow getIDRow(int i, IDResult rt)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(DGV_ID);
+            row.SetValues(
+                i, (rt as ID7)?.G7TID.ToString("D6") ?? "", rt.TSV.ToString("D4"),
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.RandNum.ToString("X16") ?? ""
+                );
             return row;
         }
         #endregion
@@ -719,7 +762,7 @@ namespace pkm3dsRNG
         #region Gen7 Search
         private void Search7()
         {
-            if (method == 3)
+            if (method == 3 && !MainRNGEgg.Checked)
             {
                 if (EggNumber.Checked)
                     Search7_EggList();
@@ -742,7 +785,7 @@ namespace pkm3dsRNG
             int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
             {
-                min = (int)Frame_max.Value - 100; max = (int)Frame_max.Value + 100;
+                min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
             }
             // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, modelnum);
@@ -900,6 +943,24 @@ namespace pkm3dsRNG
                 Egg_Instruction.Text = getEggListString(-1, -1);
         }
         #endregion
-        
+
+        private void B_ID_Search_Click(object sender, EventArgs e)
+        {
+            SFMT rng = new SFMT((uint)Seed.Value);
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+            dgvrowlist.Clear();
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            for (int i = min; i <= max; i++)
+            {
+                var result = new ID7(rng.Nextulong());
+                dgvrowlist.Add(getIDRow(i, result));
+                if (dgvrowlist.Count > 100000)
+                    break;
+            }
+            DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
+            DGV_ID.CurrentCell = null;
+        }
     }
 }

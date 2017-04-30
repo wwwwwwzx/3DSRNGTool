@@ -92,6 +92,7 @@ namespace pkm3dsRNG.Core
                 case 00: return (sta_rng as Stationary7).Generate();
                 case 01: return (event_rng as Event7).Generate();
                 case 02: return (wild_rng as Wild7).Generate();
+                case 03: return (sta_rng as Stationary7).GenerateMainRNGPID(firstegg);
             }
             return null;
         }
@@ -186,6 +187,9 @@ namespace pkm3dsRNG.Core
             }
             return index;
         }
+
+        // MainRNGEgg
+        public static EggResult firstegg = new EggResult();
         #endregion
     }
 }
