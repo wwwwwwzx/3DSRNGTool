@@ -4,14 +4,14 @@ namespace Pk3DSRNGTool
 {
     public class ID7 : IDResult
     {
-        public ulong RandNum;
-        
-        public ushort TID { get; set; }
-        public ushort SID { get; set; }
-        public ushort TSV { get; set; }
-        public uint G7TID { get; set; }
+        public ulong RandNum { get; }
 
-        public byte Clock { get; set; }
+        public ushort TID { get; }
+        public ushort SID { get; }
+        public ushort TSV { get; }
+        public uint G7TID { get; }
+
+        public byte Clock { get; }
 
         public ID7(ulong rand)
         {

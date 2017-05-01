@@ -69,7 +69,7 @@ namespace Pk3DSRNGTool
             
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
 
-            LoadCategory();
+            RefreshCategory();
             RefreshLocation();
 
             Nature.Items.Clear();

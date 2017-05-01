@@ -118,7 +118,7 @@ namespace Pk3DSRNGTool
             CB_Category.SelectedIndex = 0;
         }
 
-        private void LoadPKM()
+        private void RefreshPKM()
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
             var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
@@ -128,14 +128,14 @@ namespace Pk3DSRNGTool
             Poke.SelectedIndex = 0;
         }
 
-        private void LoadCategory()
+        private void RefreshCategory()
         {
             ver = Math.Max(ver, 0);
             CB_Category.Items.Clear();
             var Category = Pokemon.getCategoryList(ver, method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
             CB_Category.Items.AddRange(Category);
             CB_Category.SelectedIndex = 0;
-            LoadPKM();
+            RefreshPKM();
         }
 
         private void RefreshLocation()
@@ -153,10 +153,10 @@ namespace Pk3DSRNGTool
             MetLocation.ValueMember = "Value";
             MetLocation.DataSource = new BindingSource(Locationlist, null);
 
-            LoadSpecies();
+            RefreshWildSpecies();
         }
 
-        private void LoadSpecies()
+        private void RefreshWildSpecies()
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies ?? new int[1];
@@ -243,7 +243,7 @@ namespace Pk3DSRNGTool
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadPKM();
+            RefreshPKM();
             Poke_SelectedIndexChanged(null, null);
             SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
         }
@@ -318,7 +318,7 @@ namespace Pk3DSRNGTool
                 int currmethod = method + (Gen6 ? 1 : 0);
                 if (lastmethod != currmethod)
                 {
-                    LoadCategory();
+                    RefreshCategory();
                     Poke_SelectedIndexChanged(null, null);
                     lastmethod = method;
                 }
@@ -333,14 +333,13 @@ namespace Pk3DSRNGTool
 
             Gen7timepanel.Visible =
             BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
-
-
+            
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
 
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
             BlinkWhenSync.Visible =
-            G7TID.Visible = Gen7;
+            Filter_G7TID.Visible = Gen7;
 
             MM_CheckedChanged(null, null);
 
@@ -350,7 +349,7 @@ namespace Pk3DSRNGTool
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
                 case 3: ByIVs.Checked = true; break;
-                case 4: (Gen7 ? G7TID : Filter_TID).Checked = true; break;
+                case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
         }
 
@@ -373,10 +372,8 @@ namespace Pk3DSRNGTool
         {
             if (!Gen7)
                 return;
-            var ControlON = NPC.Value == 0 ? BlinkFOnly : SafeFOnly;
-            var ControlOFF = NPC.Value == 0 ? SafeFOnly : BlinkFOnly;
-            ControlON.Visible = true;
-            ControlOFF.Visible = false;
+            (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
+            (NPC.Value == 0 ? SafeFOnly : BlinkFOnly).Visible = false;
         }
 
         // Wild RNG
@@ -392,7 +389,7 @@ namespace Pk3DSRNGTool
                 Lv_max.Value = ea.SunMoonDifference && IsMoon ? ea.LevelMaxMoon : ea.LevelMax;
             }
 
-            LoadSpecies();
+            RefreshWildSpecies();
         }
 
         private void SlotSpecies_SelectedIndexChanged(object sender, EventArgs e)
@@ -410,7 +407,7 @@ namespace Pk3DSRNGTool
         private void DayNight_CheckedChanged(object sender, EventArgs e)
         {
             if (ea.DayNightDifference)
-                LoadSpecies();
+                RefreshWildSpecies();
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -433,6 +430,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region DataEntry
+
         private void SetPersonalInfo(int Species, int Form, bool skip = false)
         {
             SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
@@ -477,13 +475,13 @@ namespace Pk3DSRNGTool
             int specform = (int)(Poke.SelectedValue);
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
-            Reset_Click(null, null);
+            // Reset_Click(null, null);
             RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
             SetPersonalInfo(specform);
             if (method == 2)
             {
                 RefreshLocation();
-                if (Gen7)
+                if (Gen7) // For UB
                 {
                     var tmp = iPM as PKMW7;
                     Special_th.Value = tmp?.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
@@ -492,7 +490,7 @@ namespace Pk3DSRNGTool
             }
 
             BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
-            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual && specform == 0;
+            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual;
         }
         #endregion
 
@@ -512,7 +510,7 @@ namespace Pk3DSRNGTool
                 case 3: RNGPool.egg_rng = getEggRNG(); break;
             }
 
-            if (MainRNGEgg.Checked)
+            if (MainRNGEgg.Checked) // Get first egg
             {
                 RNGPool.sta_rng = getStaSettings();
                 TinyMT tmt = new TinyMT(Status);
@@ -536,7 +534,7 @@ namespace Pk3DSRNGTool
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.delaytime;
 
-                if (method < 3)
+                if (method < 3 || MainRNGEgg.Checked)
                     Standard = (int)TargetFrame.Value;
             }
             RNGPool.CreateBuffer(buffersize, rng);
@@ -570,7 +568,7 @@ namespace Pk3DSRNGTool
         {
             IDFilters f = new IDFilters();
             if (Filter_SID.Checked) f.IDType = 1;
-            else if (G7TID.Checked) f.IDType = 2;
+            else if (Filter_G7TID.Checked) f.IDType = 2;
             f.Skip = ID_Disable.Checked;
             f.RE = ID_RE.Checked;
             f.IDList = ID_List.Lines;
@@ -644,6 +642,7 @@ namespace Pk3DSRNGTool
                 e.TSV = (uint)(e.TID ^ e.SID) >> 4;
                 e.PID = (uint)Event_PID.Value;
             }
+            e.GetGenderSetting();
             return e;
         }
 
@@ -658,7 +657,7 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 var setting7 = setting as Wild7;
-                if (ea.Locationidx == 1190) slottype = 1;
+                if (ea.Locationidx == 1190) slottype = 1; // Poni Plains -4
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
                 setting7.SpecialEnctr = (byte)Special_th.Value;

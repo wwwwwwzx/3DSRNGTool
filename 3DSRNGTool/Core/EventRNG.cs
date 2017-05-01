@@ -15,11 +15,15 @@
         public int SID { get; set; } = -1;
         public uint EC { get; set; }
         public uint PID { get; set; }
-
-        public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
-        public bool IsRandomGender => FuncUtil.IsRandomGender(GenderRatio);
-        public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
+        
+        internal bool IsRandomGender;
+        internal byte SettingGender;
 
         public abstract RNGResult Generate();
+        public virtual void GetGenderSetting()
+        {
+            IsRandomGender = FuncUtil.IsRandomGender(info.Gender);
+            SettingGender = FuncUtil.getGenderRatio(info.Gender);
+        }
     }
 }

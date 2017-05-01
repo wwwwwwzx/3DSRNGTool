@@ -4,11 +4,11 @@ namespace Pk3DSRNGTool
 {
     public class ID6 : IDResult
     {
-        public uint RandNum;
+        public uint RandNum { get; }
 
-        public ushort TID { get; set; }
-        public ushort SID { get; set; }
-        public ushort TSV { get; set; }
+        public ushort TID { get; }
+        public ushort SID { get; }
+        public ushort TSV { get; }
 
         public ID6(uint rand)
         {

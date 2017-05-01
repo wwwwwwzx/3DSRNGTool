@@ -155,7 +155,7 @@ namespace Pk3DSRNGTool
             int[] total_frame = new int[2];
             int n_count = 0;
             int timer = 0;
-            ModelStatus status = new ModelStatus((byte)(NPC.Value + 1), sfmt);
+            ModelStatus status = new ModelStatus(modelnum, sfmt);
 
             while (min + n_count <= max)
             {
@@ -194,7 +194,7 @@ namespace Pk3DSRNGTool
             }
             int[] tmptimer = new int[2];
             int delaytime = (int)Timedelay.Value / 2;
-            for (int tmp = max - (byte)(NPC.Value + 1) * delaytime; tmp <= max; tmp++)
+            for (int tmp = max - modelnum * delaytime; tmp <= max; tmp++)
             {
                 tmptimer = CalcFrame(tmp, max);
                 if (tmptimer[0] + tmptimer[1] > delaytime && tmptimer[0] <= delaytime)

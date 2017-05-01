@@ -2,8 +2,8 @@
 {
     public interface IDResult
     {
-        ushort TID { get; set; }
-        ushort SID { get; set; }
-        ushort TSV { get; set; }
+        ushort TID { get; }
+        ushort SID { get; }
+        ushort TSV { get; }
     }
 }

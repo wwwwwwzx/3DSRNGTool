@@ -254,7 +254,7 @@
             this.MTFast = new System.Windows.Forms.RadioButton();
             this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
-            this.G7TID = new System.Windows.Forms.RadioButton();
+            this.Filter_G7TID = new System.Windows.Forms.RadioButton();
             this.ID_Disable = new System.Windows.Forms.CheckBox();
             this.Filter_SID = new System.Windows.Forms.RadioButton();
             this.RandList = new System.Windows.Forms.TextBox();
@@ -3249,7 +3249,7 @@
             // Filter_ID
             // 
             this.Filter_ID.Controls.Add(this.Filter_TID);
-            this.Filter_ID.Controls.Add(this.G7TID);
+            this.Filter_ID.Controls.Add(this.Filter_G7TID);
             this.Filter_ID.Controls.Add(this.ID_Disable);
             this.Filter_ID.Controls.Add(this.Filter_SID);
             this.Filter_ID.Controls.Add(this.RandList);
@@ -3274,17 +3274,17 @@
             this.Filter_TID.Text = "TID";
             this.Filter_TID.UseVisualStyleBackColor = true;
             // 
-            // G7TID
+            // Filter_G7TID
             // 
-            this.G7TID.AutoSize = true;
-            this.G7TID.Checked = true;
-            this.G7TID.Location = new System.Drawing.Point(23, 90);
-            this.G7TID.Name = "G7TID";
-            this.G7TID.Size = new System.Drawing.Size(57, 17);
-            this.G7TID.TabIndex = 2;
-            this.G7TID.TabStop = true;
-            this.G7TID.Text = "G7TID";
-            this.G7TID.UseVisualStyleBackColor = true;
+            this.Filter_G7TID.AutoSize = true;
+            this.Filter_G7TID.Checked = true;
+            this.Filter_G7TID.Location = new System.Drawing.Point(23, 90);
+            this.Filter_G7TID.Name = "Filter_G7TID";
+            this.Filter_G7TID.Size = new System.Drawing.Size(57, 17);
+            this.Filter_G7TID.TabIndex = 2;
+            this.Filter_G7TID.TabStop = true;
+            this.Filter_G7TID.Text = "Filter_G7TID";
+            this.Filter_G7TID.UseVisualStyleBackColor = true;
             // 
             // ID_Disable
             // 
@@ -4707,7 +4707,7 @@
         private System.Windows.Forms.TabPage TP_IDRNG;
         private System.Windows.Forms.DataGridView DGV_ID;
         private System.Windows.Forms.Label Filter_TSV;
-        private System.Windows.Forms.RadioButton G7TID;
+        private System.Windows.Forms.RadioButton Filter_G7TID;
         private System.Windows.Forms.RadioButton Filter_SID;
         private System.Windows.Forms.RadioButton Filter_TID;
         private System.Windows.Forms.TextBox RandList;
