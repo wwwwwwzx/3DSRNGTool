@@ -194,3 +194,4 @@ L_QRList = Needle List
 QRSearch = Search
 L_QRresult = Results
 L_StartingFrame = Starting Frame
+B_EggSeed127 = Go!

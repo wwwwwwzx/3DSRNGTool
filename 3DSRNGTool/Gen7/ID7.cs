@@ -21,7 +21,7 @@ namespace Pk3DSRNGTool
             SID = (ushort)(tmp >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
             G7TID = tmp % 1000000;
-            Clock = (byte)(tmp % 17);
+            Clock = (byte)(rand % 17);
         }
     }
 }

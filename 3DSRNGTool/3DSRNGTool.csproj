@@ -157,6 +157,7 @@
     <Compile Include="Subforms\IVRange.Designer.cs">
       <DependentUpon>IVRange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\MagikarpCalc.cs" />
     <Compile Include="Subforms\SFMTSeedAPI.cs" />
     <Compile Include="Subforms\TSVListForm.cs">
       <SubType>Form</SubType>

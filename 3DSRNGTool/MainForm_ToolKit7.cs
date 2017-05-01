@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using Pk3DSRNGTool.RNG;
 using static PKHeX.Util;
 
@@ -201,8 +202,32 @@ namespace Pk3DSRNGTool
                 if (tmptimer[0] == delaytime && tmptimer[1] == 0)
                     CalcTime_Output(min, tmp - (int)Correction.Value);
             }
+            if (TimeResult.Items.Count == 0)
+                TimeResult.Items.Add(NORESULT_STR[lindex]);
         }
         #endregion
+        
+        private void B_EggSeed127_Click(object sender, EventArgs e)
+        {
+            string inlist = RTB_EggSeed.Text;
+            inlist = Regex.Replace(inlist, @"\s", "");
 
+            if (inlist == "" || !Regex.IsMatch(inlist, @"^[01]+$"))
+            {
+                Alert("Do not input characters other than '0''1'");
+                return;
+            }
+            if (inlist.Length != 127)
+            {
+                Alert($"Please input 127 '0','1'(already have {inlist.Length})");
+                return;
+            }
+            var seed = MagikarpCalc.calc(inlist);
+            if (Prompt(MessageBoxButtons.YesNo, $"Your Current Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
+            {
+                Status = SeedStr2Array(seed);
+                B_Backup_Click(null, null);
+            }
+        }
     }
 }

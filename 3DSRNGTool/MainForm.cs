@@ -1134,8 +1134,7 @@ namespace Pk3DSRNGTool
             DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
             DGV_ID.CurrentCell = null;
         }
+
         #endregion
-
-
     }
 }
