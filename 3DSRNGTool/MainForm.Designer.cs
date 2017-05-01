@@ -467,7 +467,6 @@
             this.Filters.Controls.Add(this.Slot);
             this.Filters.Controls.Add(this.L_Slot);
             this.Filters.Controls.Add(this.SpecialOnly);
-            this.Filters.Controls.Add(this.SafeFOnly);
             this.Filters.Controls.Add(this.BlinkFOnly);
             this.Filters.Controls.Add(this.HiddenPower);
             this.Filters.Controls.Add(this.Nature);
@@ -493,6 +492,7 @@
             this.Filters.Controls.Add(this.L_D);
             this.Filters.Controls.Add(this.IVPanel);
             this.Filters.Controls.Add(this.StatPanel);
+            this.Filters.Controls.Add(this.SafeFOnly);
             this.Filters.Location = new System.Drawing.Point(417, 6);
             this.Filters.Name = "Filters";
             this.Filters.Size = new System.Drawing.Size(407, 273);
@@ -3280,7 +3280,7 @@
             this.Filter_G7TID.Checked = true;
             this.Filter_G7TID.Location = new System.Drawing.Point(23, 90);
             this.Filter_G7TID.Name = "Filter_G7TID";
-            this.Filter_G7TID.Size = new System.Drawing.Size(57, 17);
+            this.Filter_G7TID.Size = new System.Drawing.Size(85, 17);
             this.Filter_G7TID.TabIndex = 2;
             this.Filter_G7TID.TabStop = true;
             this.Filter_G7TID.Text = "Filter_G7TID";

@@ -216,7 +216,7 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            Special_th.Enabled = Timedelay.Enabled = Advanced.Checked;
+            Special_th.Enabled = Timedelay.Enabled = Correction.Enabled = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -315,22 +315,21 @@ namespace Pk3DSRNGTool
 
             if (0 == method || method == 2)
             {
-                int currmethod = method + (Gen6 ? 1 : 0);
+                int currmethod = method << 8 | ver;
                 if (lastmethod != currmethod)
                 {
                     RefreshCategory();
                     Poke_SelectedIndexChanged(null, null);
-                    lastmethod = method;
+                    lastmethod = (byte)currmethod;
                 }
             }
 
             Frame_min.Value = getminframe();
-            L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
 
+            L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
             L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
             L_Slot.Visible = Slot.Visible = method == 2;
             ByIVs.Enabled = ByStats.Enabled = method < 3;
-
             Gen7timepanel.Visible =
             BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             

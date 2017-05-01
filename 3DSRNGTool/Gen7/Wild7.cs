@@ -67,11 +67,11 @@ namespace Pk3DSRNGTool
             rt.Shiny = rt.PSV == TSV;
 
             //IV
-            rt.IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            rt.IVs = new int[6];
             while (rt.IVs.Count(iv => iv == 31) < PerfectIVCount)
                 rt.IVs[(int)(getrand % 6)] = 31;
             for (int i = 0; i < 6; i++)
-                if (rt.IVs[i] < 0)
+                if (rt.IVs[i] == 0)
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability

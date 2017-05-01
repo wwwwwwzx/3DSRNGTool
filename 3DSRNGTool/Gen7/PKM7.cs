@@ -2,6 +2,7 @@
 {
     public class PKM7 : Pokemon
     {
+        public override GameVersion Version { get; set; } = GameVersion.Gen7;
         public byte NPC;
         public short Delay;
         public bool NoBlink;

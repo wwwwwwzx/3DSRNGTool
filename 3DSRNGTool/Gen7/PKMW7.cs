@@ -2,6 +2,7 @@
 {
     public class PKMW7 : Pokemon
     {
+        public override GameVersion Version { get; set; } = GameVersion.Gen7;
         public byte[] Rate;
         public int[] Location;
 
