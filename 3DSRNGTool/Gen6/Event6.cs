@@ -5,7 +5,9 @@ namespace Pk3DSRNGTool
     class Event6 : EventRNG
     {
         public override GameVersion Version { get; set; } = GameVersion.Gen6;
-        public static uint getrand => RNGPool.getrand;
+
+        private static uint getrand => RNGPool.getrand;
+        private static uint rand(int n) => (uint)((getrand * (ulong)n) >> 32);
 
         public override RNGResult Generate()
         {
@@ -51,16 +53,16 @@ namespace Pk3DSRNGTool
             }
             for (int i = 0; i < 6; i++)
                 if (rt.IVs[i] < 0)
-                    rt.IVs[i] = (int)(getrand & 0x1F);
+                    rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = AbilityLocked ? Ability : (byte)(Ability == 0 ? (getrand & 1) + 1 : getrand % 3 + 1);
+            rt.Ability = AbilityLocked ? Ability : (byte)(rand(Ability + 2) + 1);
 
             //Nature
-            rt.Nature = NatureLocked ? Nature : (byte)(getrand % 25);
+            rt.Nature = NatureLocked ? Nature : (byte)rand(25);
 
             //Gender
-            rt.Gender = GenderLocked || !IsRandomGender ? Gender : (byte)(getrand % 252 >= SettingGender ? 1 : 2);
+            rt.Gender = GenderLocked || !IsRandomGender ? Gender : (byte)(rand(252) >= SettingGender ? 1 : 2);
             return rt;
         }
     }

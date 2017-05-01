@@ -84,9 +84,6 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < StringItem.items.Length; i++)
                 M_Items.Items[i + 1] = F_Items.Items[i + 1] = StringItem.items[i];
 
-            for (int i = 1; i < StringItem.species.Length; i++)
-                Event_Species.Items[i] = StringItem.species[i];
-
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
             HiddenPower.Items.AddRange(StringItem.HiddenPowerList);

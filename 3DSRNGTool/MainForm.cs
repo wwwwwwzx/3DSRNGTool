@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
         private bool IsEvent => method == 1;
         private bool Gen6 => ver < 4;
         private bool Gen7 => 4 <= ver && ver < 6;
+        private byte lastgen;
         private EncounterArea7 ea = new EncounterArea7();
         private bool IsMoon => ver == 5;
         private bool IsNight => Night.Checked;
@@ -72,8 +73,6 @@ namespace Pk3DSRNGTool
             Ball.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
-            for (int i = 0; i <= 802; i++)
-                Event_Species.Items.Add("-");
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -227,20 +226,6 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Save();
         }
 
-        private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
-
-            var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
-            Slot.Items.Clear();
-            Slot.BlankText = "-";
-            Slot.Items.AddRange(slotnum);
-            Slot.CheckBoxItems[0].Checked = true;
-            Slot.CheckBoxItems[0].Checked = false;
-
-            RNGMethod_Changed(null, null);
-        }
-
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshPKM();
@@ -285,6 +270,31 @@ namespace Pk3DSRNGTool
 
             BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked =
             ShinyOnly.Checked = DisableFilters.Checked = false;
+        }
+
+
+        private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
+
+            byte currentgen = (byte)(Gen6 ? 6 : 7);
+            if (currentgen != lastgen)
+            {
+                var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
+                Slot.Items.Clear();
+                Slot.BlankText = "-";
+                Slot.Items.AddRange(slotnum);
+                Slot.CheckBoxItems[0].Checked = true;
+                Slot.CheckBoxItems[0].Checked = false;
+
+                Event_Species.Items.Clear();
+                Event_Species.Items.Add(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802));
+                Event_Species.SelectedIndex = 0;
+
+                lastgen = currentgen;
+            }
+
+            RNGMethod_Changed(null, null);
         }
 
         private void RNGMethod_Changed(object sender, EventArgs e)
@@ -787,7 +797,7 @@ namespace Pk3DSRNGTool
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
-            string realtime = time > -1 ? (time / 30.0).ToString("F") + "s" : "";
+            string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
             row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var seedstatus = (result as EggResult)?.Status ?? new uint[1];
@@ -899,7 +909,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_ID()
         {
-            var rng = getRNGSource();
+            var rng = new MersenneTwister((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             dgvrowlist.Clear();
