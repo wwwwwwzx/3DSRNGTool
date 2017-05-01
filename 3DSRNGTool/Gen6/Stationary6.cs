@@ -45,6 +45,9 @@ namespace Pk3DSRNGTool
                 if (rt.IVs[i] < 0)
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
+            //Ability
+            rt.Ability = (byte)((getrand & 1) + 1);
+
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
 
