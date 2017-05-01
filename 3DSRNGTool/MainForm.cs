@@ -28,7 +28,8 @@ namespace Pk3DSRNGTool
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         private int Standard;
-        private int lastpkm, lastmethod;
+        private int lastpkm;
+        private byte lastmethod;
         List<int> OtherTSVList = new List<int>();
         #endregion
 
@@ -314,8 +315,13 @@ namespace Pk3DSRNGTool
 
             if (0 == method || method == 2)
             {
-                LoadCategory();
-                Poke_SelectedIndexChanged(null, null);
+                int currmethod = method + (Gen6 ? 1 : 0);
+                if (lastmethod != currmethod)
+                {
+                    LoadCategory();
+                    Poke_SelectedIndexChanged(null, null);
+                    lastmethod = method;
+                }
             }
 
             Frame_min.Value = getminframe();
@@ -783,7 +789,7 @@ namespace Pk3DSRNGTool
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
-            string realtime = time > -1 ? (time /30.0).ToString("F") + "s" : "";
+            string realtime = time > -1 ? (time / 30.0).ToString("F") + "s" : "";
             row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var seedstatus = (result as EggResult)?.Status ?? new uint[1];
