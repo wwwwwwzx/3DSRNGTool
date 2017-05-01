@@ -5,7 +5,8 @@ namespace pkm3dsRNG
 {
     public partial class MainForm : Form
     {
-        private int[] IVup
+        private IVRange IVInputer;
+        public int[] IVup
         {
             get { return new[] { (int)ivmax0.Value, (int)ivmax1.Value, (int)ivmax2.Value, (int)ivmax3.Value, (int)ivmax4.Value, (int)ivmax5.Value, }; }
             set
@@ -15,7 +16,7 @@ namespace pkm3dsRNG
                 ivmax3.Value = value[3]; ivmax4.Value = value[4]; ivmax5.Value = value[5];
             }
         }
-        private int[] IVlow
+        public int[] IVlow
         {
             get { return new[] { (int)ivmin0.Value, (int)ivmin1.Value, (int)ivmin2.Value, (int)ivmin3.Value, (int)ivmin4.Value, (int)ivmin5.Value, }; }
             set

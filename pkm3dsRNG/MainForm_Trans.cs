@@ -21,6 +21,17 @@ namespace pkm3dsRNG
             { "-", "Male", "Female"},
             { "-", "父方", "母方"},
         };
+        private static readonly string[][] STATS_STR =
+        {
+            new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
+            new string[] { "HP", "攻击", "防御", "特攻", "特防", "速度" },
+        };
+
+        private static readonly string[][] IVJUDGE_STR =
+        {
+            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
+            new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
+        };
 
         private string curlanguage;
 
@@ -53,6 +64,8 @@ namespace pkm3dsRNG
 
             for (int i = 0; i < 3; i++)
                 Ball.Items[i] = PARENTS_STR[lindex, i];
+            
+            IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
 
             LoadCategory();
             RefreshLocation();

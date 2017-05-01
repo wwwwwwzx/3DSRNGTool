@@ -49,6 +49,9 @@ namespace pkm3dsRNG
             Type dgvtype = typeof(DataGridView);
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
+            dgvPropertyInfo.SetValue(DGV_ID, true, null);
+
+            IVInputer = new IVRange(this);
 
             Seed.Value = Properties.Settings.Default.Seed;
             var LastGameversion = Properties.Settings.Default.GameVersion;
@@ -276,6 +279,8 @@ namespace pkm3dsRNG
             Slot.ClearSelection();
             Ball.SelectedIndex = Gender.SelectedIndex = Ability.SelectedIndex = 0;
 
+            IVInputer.Reset();
+
             BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked =
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
@@ -312,7 +317,10 @@ namespace pkm3dsRNG
             AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
 
+            SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
+
             RNGPanel.Visible = Gen6;
+            B_IVInput.Visible = 
             BlinkWhenSync.Visible =
             G7TID.Visible = Gen7;
 
@@ -386,6 +394,24 @@ namespace pkm3dsRNG
             if (ea.DayNightDifference)
                 LoadSpecies();
         }
+        
+        private void SetAsTarget_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TargetFrame.Value = Convert.ToDecimal(DGV.CurrentRow.Cells["dgv_Frame"].Value);
+            }
+            catch (NullReferenceException)
+            {
+                Error(NOSELECTION_STR[lindex]);
+            }
+        }
+
+        private void B_IVInput_Click(object sender, EventArgs e)
+        {
+            IVInputer.ShowDialog();
+        }
+
         #endregion
 
         #region DataEntry
@@ -1078,18 +1104,5 @@ namespace pkm3dsRNG
             DGV_ID.CurrentCell = null;
         }
         #endregion
-
-        private void SetAsTarget_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                TargetFrame.Value = Convert.ToDecimal(DGV.CurrentRow.Cells["dgv_Frame"].Value);
-            }
-            catch (NullReferenceException)
-            {
-                Error(NOSELECTION_STR[lindex]);
-            }
-        }
-
     }
 }

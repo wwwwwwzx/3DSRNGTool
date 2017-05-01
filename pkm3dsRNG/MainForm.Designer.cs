@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.B_IVInput = new System.Windows.Forms.Button();
             this.L_Ball = new System.Windows.Forms.Label();
             this.Ball = new System.Windows.Forms.ComboBox();
             this.Slot = new pkm3dsRNG.Controls.CheckBoxComboBox();
@@ -298,6 +299,7 @@
             this.DGVMS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SetAsTarget = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsCurrent = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
@@ -310,7 +312,6 @@
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seed = new pkm3dsRNG.Controls.HexNumericUpdown();
-            this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -406,6 +407,7 @@
             // Filters
             // 
             this.Filters.BackColor = System.Drawing.Color.White;
+            this.Filters.Controls.Add(this.B_IVInput);
             this.Filters.Controls.Add(this.L_Ball);
             this.Filters.Controls.Add(this.Ball);
             this.Filters.Controls.Add(this.Slot);
@@ -443,6 +445,16 @@
             this.Filters.TabIndex = 4;
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
+            // 
+            // B_IVInput
+            // 
+            this.B_IVInput.Location = new System.Drawing.Point(12, 62);
+            this.B_IVInput.Name = "B_IVInput";
+            this.B_IVInput.Size = new System.Drawing.Size(24, 22);
+            this.B_IVInput.TabIndex = 98;
+            this.B_IVInput.Text = "★";
+            this.B_IVInput.UseVisualStyleBackColor = true;
+            this.B_IVInput.Click += new System.EventHandler(this.B_IVInput_Click);
             // 
             // L_Ball
             // 
@@ -3615,7 +3627,7 @@
             this.SetAsCurrent,
             this.SetAsAfter});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(263, 92);
+            this.DGVMS.Size = new System.Drawing.Size(263, 70);
             // 
             // SetAsTarget
             // 
@@ -3630,6 +3642,13 @@
             this.SetAsCurrent.Size = new System.Drawing.Size(262, 22);
             this.SetAsCurrent.Text = "Set as Current Status";
             this.SetAsCurrent.Click += new System.EventHandler(this.SetAsCurrent_Click);
+            // 
+            // SetAsAfter
+            // 
+            this.SetAsAfter.Name = "SetAsAfter";
+            this.SetAsAfter.Size = new System.Drawing.Size(262, 22);
+            this.SetAsAfter.Text = "Set as Status after receiving this Egg";
+            this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
             // 
             // Gameversion
             // 
@@ -3743,13 +3762,6 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // SetAsAfter
-            // 
-            this.SetAsAfter.Name = "SetAsAfter";
-            this.SetAsAfter.Size = new System.Drawing.Size(262, 22);
-            this.SetAsAfter.Text = "Set as Status after receiving this Egg";
-            this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3767,7 +3779,6 @@
             this.Controls.Add(this.RNGMethod);
             this.Controls.Add(this.DGV_ID);
             this.Controls.Add(this.DGV);
-            this.MaximumSize = new System.Drawing.Size(1110, 1000);
             this.MinimumSize = new System.Drawing.Size(1110, 600);
             this.Name = "MainForm";
             this.Text = "pkm3dsRNG";
@@ -4160,6 +4171,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.ToolStripMenuItem SetAsCurrent;
         private System.Windows.Forms.ToolStripMenuItem SetAsAfter;
+        private System.Windows.Forms.Button B_IVInput;
     }
 }
 
