@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Pk3DSRNGTool.Core;
 using static PKHeX.Util;
 
 namespace Pk3DSRNGTool

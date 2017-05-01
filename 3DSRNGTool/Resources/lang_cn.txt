@@ -25,6 +25,7 @@ TP_EventRNG = 配信乱数
 TP_WildRNG = 野生乱数
 TP_EggRNG = 孵化乱数
 TP_IDRNG = ID乱数
+TP_Gen7ToolKit = 7代工具箱
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = 定点设置
@@ -172,7 +173,22 @@ dgv_eggnum = 蛋数
 SetAsCurrent = 将该帧设为当前状态
 SetAsTarget = 将该帧设为目标
 SetAsAfter = 将领取该蛋后的状态设为当前状态
------------------------
+---------------------TabPage5----------------------------------
 dgv_G7TID = 7代ID
 dgv_ID_Rand = 乱数值
 dgv_ID_Rand64 = 乱数值
+---------------------TabPage6----------------------------------
+InputBox = 输入
+Back = 后退
+Clear = 清空
+StartClockInput = 开始位置
+EndClockInput = 结束位置
+QRInput = 通过QR指针定位当前位置
+BySaveScreen = 通过读档界面指针检索Seed
+L_StartingFrame = 计时起点帧
+L_clocklist = 指针列表
+Search = 检索
+L_SeedResult = 检索结果
+L_QRList = 指针列表
+QRSearch = 检索
+L_QRresult = 检索结果

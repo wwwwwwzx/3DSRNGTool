@@ -28,6 +28,7 @@ namespace Pk3DSRNGTool
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         private int Standard;
+        private int lastpkm, lastmethod;
         List<int> OtherTSVList = new List<int>();
         #endregion
 
@@ -55,7 +56,7 @@ namespace Pk3DSRNGTool
 
             Seed.Value = Properties.Settings.Default.Seed;
             var LastGameversion = Properties.Settings.Default.GameVersion;
-            var Lastpkm = Properties.Settings.Default.PKM;
+            lastpkm = Properties.Settings.Default.PKM;
             var LastMethod = Properties.Settings.Default.Method;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
@@ -98,7 +99,7 @@ namespace Pk3DSRNGTool
             RNGMethod.SelectedIndex = LastMethod;
             RNGMethod_Changed(null, null);
 
-            FindSetting(Lastpkm);
+            FindSetting(lastpkm);
 
             ByIVs.Checked = true;
         }
@@ -297,6 +298,20 @@ namespace Pk3DSRNGTool
 
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
 
+            DGV.Visible = method < 4;
+            DGV_ID.Visible = method == 4;
+
+            // Contorls in RNGInfo
+            AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
+            EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
+            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+
+            if (method > 4)
+            {
+                Gen7timepanel.Visible = method == 5;
+                return;
+            }
+
             if (0 == method || method == 2)
             {
                 LoadCategory();
@@ -311,11 +326,8 @@ namespace Pk3DSRNGTool
             ByIVs.Enabled = ByStats.Enabled = method < 3;
 
             Gen7timepanel.Visible =
-            BlinkFOnly.Visible = SafeFOnly.Visible =
-            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
-            AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
-            EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
 
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
 
@@ -699,16 +711,21 @@ namespace Pk3DSRNGTool
             dgv_status.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
             dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
+            dgv_time.Visible =
             dgv_shift.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
-            DGV_ID.Visible = method == 4;
             dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
             dgv_ID_rand.Visible = Gen6;
         }
 
-        private void CalcList_Click(object sender, EventArgs e)
+        private void Search_Click(object sender, EventArgs e)
         {
+            if (method == 5)
+            {
+                CalcTime(null, null);
+                return;
+            }
             if (ivmin0.Value > ivmax0.Value)
                 Error(SETTINGERROR_STR[lindex] + L_H.Text);
             else if (ivmin1.Value > ivmax1.Value)
@@ -765,6 +782,9 @@ namespace Pk3DSRNGTool
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
+            int time = (result as Result7)?.realtime ?? -1;
+            string realtime = time > -1 ? (time /30.0).ToString("F") + "s" : "";
+            row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var seedstatus = (result as EggResult)?.Status ?? new uint[1];
             string seed = string.Join(",", seedstatus.Select(v => v.ToString("X8")).Reverse());
@@ -776,7 +796,7 @@ namespace Pk3DSRNGTool
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, delay, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
                 slots, Lv, ball, item,
-                randstr, rand64str, PID, EC, seed
+                randstr, rand64str, PID, EC, realtime, seed
                 );
 
             if (result.Shiny)
@@ -833,7 +853,7 @@ namespace Pk3DSRNGTool
             }
             Search6_Normal();
         }
-        
+
         private IRNG getRNGSource()
         {
             if (MTFast.Checked)
@@ -1109,5 +1129,7 @@ namespace Pk3DSRNGTool
             DGV_ID.CurrentCell = null;
         }
         #endregion
+
+
     }
 }

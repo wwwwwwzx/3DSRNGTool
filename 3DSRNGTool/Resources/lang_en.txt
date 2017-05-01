@@ -25,6 +25,7 @@ TP_EventRNG = Event RNG
 TP_WildRNG = Wild RNG
 TP_EggRNG = Egg RNG
 TP_IDRNG = ID RNG
+TP_Gen7ToolKit = Gen7 Toolkit
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting
@@ -71,7 +72,7 @@ ShowStats = Show Stats
 Reset = Reset
 ---
 RNGInfo = RNG Info
-CalcList = Search
+CalcList = Calculate
 L_NPC = # of NPCs
 AroundTarget = ±100 Frame
 RB_FrameRange = Frame Range
@@ -178,3 +179,18 @@ SetAsAfter = Set the Status after receiving this Egg as Current
 dgv_G7TID = G7TID
 dgv_ID_Rand = Rand#
 dgv_ID_Rand64 = Randon Number
+---------------------TabPage6----------------------------------
+InputBox = InputBox
+Back = Back
+Clear = Clear
+StartClockInput = Start Position
+EndClockInput = End Position
+QRInput = Locate Current Frame via QR
+BySaveScreen = Find Initial Seed via Continue Screen
+L_clocklist = Needle List
+Search = Search
+L_SeedResult = Results
+L_QRList = Needle List
+QRSearch = Search
+L_QRresult = Results
+L_StartingFrame = Starting Frame
