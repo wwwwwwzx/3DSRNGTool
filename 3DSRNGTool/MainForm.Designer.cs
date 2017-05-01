@@ -248,25 +248,25 @@
             this.F_Items = new System.Windows.Forms.ComboBox();
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_IDRNG = new System.Windows.Forms.TabPage();
-            this.RNGPanel = new System.Windows.Forms.Panel();
+            this.RNGPanel = new System.Windows.Forms.GroupBox();
+            this.MT = new System.Windows.Forms.RadioButton();
             this.MTUntempered = new System.Windows.Forms.RadioButton();
             this.MTFast = new System.Windows.Forms.RadioButton();
-            this.MT = new System.Windows.Forms.RadioButton();
-            this.ID_Disable = new System.Windows.Forms.CheckBox();
-            this.ID_RE = new System.Windows.Forms.CheckBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.Filter_TSV = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.G7TID = new System.Windows.Forms.RadioButton();
-            this.Filter_SID = new System.Windows.Forms.RadioButton();
+            this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
+            this.G7TID = new System.Windows.Forms.RadioButton();
+            this.ID_Disable = new System.Windows.Forms.CheckBox();
+            this.Filter_SID = new System.Windows.Forms.RadioButton();
             this.RandList = new System.Windows.Forms.TextBox();
-            this.TSV_List = new System.Windows.Forms.TextBox();
+            this.ID_RE = new System.Windows.Forms.CheckBox();
             this.ID_List = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.TSV_List = new System.Windows.Forms.TextBox();
+            this.Filter_TSV = new System.Windows.Forms.Label();
             this.TP_Gen7ToolKit = new System.Windows.Forms.TabPage();
-            this.label18 = new System.Windows.Forms.Label();
-            this.B_EggSeed127 = new System.Windows.Forms.Button();
+            this.Magikarp = new System.Windows.Forms.GroupBox();
             this.RTB_EggSeed = new System.Windows.Forms.RichTextBox();
+            this.B_EggSeed127 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.L_TimeCalculator = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -444,8 +444,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_IDRNG.SuspendLayout();
             this.RNGPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.Filter_ID.SuspendLayout();
             this.TP_Gen7ToolKit.SuspendLayout();
+            this.Magikarp.SuspendLayout();
             this.InputBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
             this.QRBox.SuspendLayout();
@@ -1327,6 +1328,9 @@
             // RNGMethod
             // 
             this.RNGMethod.AllowDrop = true;
+            this.RNGMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RNGMethod.Controls.Add(this.TP_StationaryRNG);
             this.RNGMethod.Controls.Add(this.TP_EventRNG);
             this.RNGMethod.Controls.Add(this.TP_WildRNG);
@@ -3190,14 +3194,7 @@
             // TP_IDRNG
             // 
             this.TP_IDRNG.Controls.Add(this.RNGPanel);
-            this.TP_IDRNG.Controls.Add(this.ID_Disable);
-            this.TP_IDRNG.Controls.Add(this.ID_RE);
-            this.TP_IDRNG.Controls.Add(this.label14);
-            this.TP_IDRNG.Controls.Add(this.Filter_TSV);
-            this.TP_IDRNG.Controls.Add(this.panel1);
-            this.TP_IDRNG.Controls.Add(this.RandList);
-            this.TP_IDRNG.Controls.Add(this.TSV_List);
-            this.TP_IDRNG.Controls.Add(this.ID_List);
+            this.TP_IDRNG.Controls.Add(this.Filter_ID);
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
@@ -3208,18 +3205,31 @@
             // 
             // RNGPanel
             // 
+            this.RNGPanel.Controls.Add(this.MT);
             this.RNGPanel.Controls.Add(this.MTUntempered);
             this.RNGPanel.Controls.Add(this.MTFast);
-            this.RNGPanel.Controls.Add(this.MT);
-            this.RNGPanel.Location = new System.Drawing.Point(21, 21);
+            this.RNGPanel.Location = new System.Drawing.Point(3, 6);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Size = new System.Drawing.Size(109, 109);
-            this.RNGPanel.TabIndex = 111;
+            this.RNGPanel.Size = new System.Drawing.Size(183, 275);
+            this.RNGPanel.TabIndex = 115;
+            this.RNGPanel.TabStop = false;
+            // 
+            // MT
+            // 
+            this.MT.AutoSize = true;
+            this.MT.Checked = true;
+            this.MT.Location = new System.Drawing.Point(18, 22);
+            this.MT.Name = "MT";
+            this.MT.Size = new System.Drawing.Size(41, 17);
+            this.MT.TabIndex = 0;
+            this.MT.TabStop = true;
+            this.MT.Text = "MT";
+            this.MT.UseVisualStyleBackColor = true;
             // 
             // MTUntempered
             // 
             this.MTUntempered.AutoSize = true;
-            this.MTUntempered.Location = new System.Drawing.Point(3, 80);
+            this.MTUntempered.Location = new System.Drawing.Point(18, 90);
             this.MTUntempered.Name = "MTUntempered";
             this.MTUntempered.Size = new System.Drawing.Size(99, 17);
             this.MTUntempered.TabIndex = 2;
@@ -3229,78 +3239,46 @@
             // MTFast
             // 
             this.MTFast.AutoSize = true;
-            this.MTFast.Location = new System.Drawing.Point(3, 46);
+            this.MTFast.Location = new System.Drawing.Point(18, 56);
             this.MTFast.Name = "MTFast";
             this.MTFast.Size = new System.Drawing.Size(61, 17);
             this.MTFast.TabIndex = 1;
             this.MTFast.Text = "MTFast";
             this.MTFast.UseVisualStyleBackColor = true;
             // 
-            // MT
+            // Filter_ID
             // 
-            this.MT.AutoSize = true;
-            this.MT.Checked = true;
-            this.MT.Location = new System.Drawing.Point(3, 12);
-            this.MT.Name = "MT";
-            this.MT.Size = new System.Drawing.Size(41, 17);
-            this.MT.TabIndex = 0;
-            this.MT.TabStop = true;
-            this.MT.Text = "MT";
-            this.MT.UseVisualStyleBackColor = true;
+            this.Filter_ID.Controls.Add(this.Filter_TID);
+            this.Filter_ID.Controls.Add(this.G7TID);
+            this.Filter_ID.Controls.Add(this.ID_Disable);
+            this.Filter_ID.Controls.Add(this.Filter_SID);
+            this.Filter_ID.Controls.Add(this.RandList);
+            this.Filter_ID.Controls.Add(this.ID_RE);
+            this.Filter_ID.Controls.Add(this.ID_List);
+            this.Filter_ID.Controls.Add(this.label14);
+            this.Filter_ID.Controls.Add(this.TSV_List);
+            this.Filter_ID.Controls.Add(this.Filter_TSV);
+            this.Filter_ID.Location = new System.Drawing.Point(192, 3);
+            this.Filter_ID.Name = "Filter_ID";
+            this.Filter_ID.Size = new System.Drawing.Size(630, 278);
+            this.Filter_ID.TabIndex = 114;
+            this.Filter_ID.TabStop = false;
             // 
-            // ID_Disable
+            // Filter_TID
             // 
-            this.ID_Disable.AutoSize = true;
-            this.ID_Disable.Location = new System.Drawing.Point(653, 245);
-            this.ID_Disable.Name = "ID_Disable";
-            this.ID_Disable.Size = new System.Drawing.Size(91, 17);
-            this.ID_Disable.TabIndex = 113;
-            this.ID_Disable.Text = "Disable Filters";
-            this.ID_Disable.UseVisualStyleBackColor = true;
-            // 
-            // ID_RE
-            // 
-            this.ID_RE.AutoSize = true;
-            this.ID_RE.Location = new System.Drawing.Point(278, 245);
-            this.ID_RE.Name = "ID_RE";
-            this.ID_RE.Size = new System.Drawing.Size(117, 17);
-            this.ID_RE.TabIndex = 93;
-            this.ID_RE.Text = "Regular Expression";
-            this.ID_RE.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(577, 29);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 13);
-            this.label14.TabIndex = 112;
-            this.label14.Text = "Current Rand";
-            // 
-            // Filter_TSV
-            // 
-            this.Filter_TSV.AutoSize = true;
-            this.Filter_TSV.Location = new System.Drawing.Point(413, 29);
-            this.Filter_TSV.Name = "Filter_TSV";
-            this.Filter_TSV.Size = new System.Drawing.Size(28, 13);
-            this.Filter_TSV.TabIndex = 111;
-            this.Filter_TSV.Text = "TSV";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.G7TID);
-            this.panel1.Controls.Add(this.Filter_SID);
-            this.panel1.Controls.Add(this.Filter_TID);
-            this.panel1.Location = new System.Drawing.Point(211, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(65, 109);
-            this.panel1.TabIndex = 110;
+            this.Filter_TID.AutoSize = true;
+            this.Filter_TID.Location = new System.Drawing.Point(23, 22);
+            this.Filter_TID.Name = "Filter_TID";
+            this.Filter_TID.Size = new System.Drawing.Size(43, 17);
+            this.Filter_TID.TabIndex = 0;
+            this.Filter_TID.Text = "TID";
+            this.Filter_TID.UseVisualStyleBackColor = true;
             // 
             // G7TID
             // 
             this.G7TID.AutoSize = true;
             this.G7TID.Checked = true;
-            this.G7TID.Location = new System.Drawing.Point(3, 80);
+            this.G7TID.Location = new System.Drawing.Point(23, 90);
             this.G7TID.Name = "G7TID";
             this.G7TID.Size = new System.Drawing.Size(57, 17);
             this.G7TID.TabIndex = 2;
@@ -3308,30 +3286,30 @@
             this.G7TID.Text = "G7TID";
             this.G7TID.UseVisualStyleBackColor = true;
             // 
+            // ID_Disable
+            // 
+            this.ID_Disable.AutoSize = true;
+            this.ID_Disable.Location = new System.Drawing.Point(459, 243);
+            this.ID_Disable.Name = "ID_Disable";
+            this.ID_Disable.Size = new System.Drawing.Size(91, 17);
+            this.ID_Disable.TabIndex = 113;
+            this.ID_Disable.Text = "Disable Filters";
+            this.ID_Disable.UseVisualStyleBackColor = true;
+            // 
             // Filter_SID
             // 
             this.Filter_SID.AutoSize = true;
-            this.Filter_SID.Location = new System.Drawing.Point(3, 46);
+            this.Filter_SID.Location = new System.Drawing.Point(23, 56);
             this.Filter_SID.Name = "Filter_SID";
             this.Filter_SID.Size = new System.Drawing.Size(43, 17);
             this.Filter_SID.TabIndex = 1;
             this.Filter_SID.Text = "SID";
             this.Filter_SID.UseVisualStyleBackColor = true;
             // 
-            // Filter_TID
-            // 
-            this.Filter_TID.AutoSize = true;
-            this.Filter_TID.Location = new System.Drawing.Point(3, 12);
-            this.Filter_TID.Name = "Filter_TID";
-            this.Filter_TID.Size = new System.Drawing.Size(43, 17);
-            this.Filter_TID.TabIndex = 0;
-            this.Filter_TID.Text = "TID";
-            this.Filter_TID.UseVisualStyleBackColor = true;
-            // 
             // RandList
             // 
             this.RandList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RandList.Location = new System.Drawing.Point(653, 21);
+            this.RandList.Location = new System.Drawing.Point(459, 19);
             this.RandList.Multiline = true;
             this.RandList.Name = "RandList";
             this.RandList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3339,21 +3317,20 @@
             this.RandList.TabIndex = 109;
             this.RandList.WordWrap = false;
             // 
-            // TSV_List
+            // ID_RE
             // 
-            this.TSV_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV_List.Location = new System.Drawing.Point(457, 21);
-            this.TSV_List.Multiline = true;
-            this.TSV_List.Name = "TSV_List";
-            this.TSV_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TSV_List.Size = new System.Drawing.Size(114, 218);
-            this.TSV_List.TabIndex = 108;
-            this.TSV_List.WordWrap = false;
+            this.ID_RE.AutoSize = true;
+            this.ID_RE.Location = new System.Drawing.Point(84, 244);
+            this.ID_RE.Name = "ID_RE";
+            this.ID_RE.Size = new System.Drawing.Size(117, 17);
+            this.ID_RE.TabIndex = 93;
+            this.ID_RE.Text = "Regular Expression";
+            this.ID_RE.UseVisualStyleBackColor = true;
             // 
             // ID_List
             // 
             this.ID_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_List.Location = new System.Drawing.Point(282, 21);
+            this.ID_List.Location = new System.Drawing.Point(88, 20);
             this.ID_List.Multiline = true;
             this.ID_List.Name = "ID_List";
             this.ID_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3361,11 +3338,38 @@
             this.ID_List.TabIndex = 107;
             this.ID_List.WordWrap = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(383, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(70, 13);
+            this.label14.TabIndex = 112;
+            this.label14.Text = "Current Rand";
+            // 
+            // TSV_List
+            // 
+            this.TSV_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TSV_List.Location = new System.Drawing.Point(263, 20);
+            this.TSV_List.Multiline = true;
+            this.TSV_List.Name = "TSV_List";
+            this.TSV_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TSV_List.Size = new System.Drawing.Size(114, 218);
+            this.TSV_List.TabIndex = 108;
+            this.TSV_List.WordWrap = false;
+            // 
+            // Filter_TSV
+            // 
+            this.Filter_TSV.AutoSize = true;
+            this.Filter_TSV.Location = new System.Drawing.Point(219, 25);
+            this.Filter_TSV.Name = "Filter_TSV";
+            this.Filter_TSV.Size = new System.Drawing.Size(28, 13);
+            this.Filter_TSV.TabIndex = 111;
+            this.Filter_TSV.Text = "TSV";
+            // 
             // TP_Gen7ToolKit
             // 
-            this.TP_Gen7ToolKit.Controls.Add(this.label18);
-            this.TP_Gen7ToolKit.Controls.Add(this.B_EggSeed127);
-            this.TP_Gen7ToolKit.Controls.Add(this.RTB_EggSeed);
+            this.TP_Gen7ToolKit.Controls.Add(this.Magikarp);
             this.TP_Gen7ToolKit.Controls.Add(this.label17);
             this.TP_Gen7ToolKit.Controls.Add(this.L_TimeCalculator);
             this.TP_Gen7ToolKit.Controls.Add(this.label15);
@@ -3383,34 +3387,35 @@
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
             this.TP_Gen7ToolKit.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // Magikarp
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(10, 436);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(463, 16);
-            this.label18.TabIndex = 104;
-            this.label18.Text = "127 Magikarp Calculator (M = 0, F = 1, spaces and line breaks will be ignored)";
-            // 
-            // B_EggSeed127
-            // 
-            this.B_EggSeed127.Location = new System.Drawing.Point(684, 614);
-            this.B_EggSeed127.Name = "B_EggSeed127";
-            this.B_EggSeed127.Size = new System.Drawing.Size(72, 27);
-            this.B_EggSeed127.TabIndex = 29;
-            this.B_EggSeed127.Text = "检索";
-            this.B_EggSeed127.UseVisualStyleBackColor = true;
-            this.B_EggSeed127.Click += new System.EventHandler(this.B_EggSeed127_Click);
+            this.Magikarp.Controls.Add(this.RTB_EggSeed);
+            this.Magikarp.Controls.Add(this.B_EggSeed127);
+            this.Magikarp.Location = new System.Drawing.Point(6, 422);
+            this.Magikarp.Name = "Magikarp";
+            this.Magikarp.Size = new System.Drawing.Size(806, 236);
+            this.Magikarp.TabIndex = 104;
+            this.Magikarp.TabStop = false;
+            this.Magikarp.Text = "127 Magikarp Calculator (M = 0, F = 1) (Spaces and line breaks will be ignored)";
             // 
             // RTB_EggSeed
             // 
             this.RTB_EggSeed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RTB_EggSeed.Location = new System.Drawing.Point(7, 459);
+            this.RTB_EggSeed.Location = new System.Drawing.Point(20, 31);
             this.RTB_EggSeed.Name = "RTB_EggSeed";
             this.RTB_EggSeed.Size = new System.Drawing.Size(657, 182);
             this.RTB_EggSeed.TabIndex = 103;
             this.RTB_EggSeed.Text = "";
+            // 
+            // B_EggSeed127
+            // 
+            this.B_EggSeed127.Location = new System.Drawing.Point(705, 186);
+            this.B_EggSeed127.Name = "B_EggSeed127";
+            this.B_EggSeed127.Size = new System.Drawing.Size(72, 27);
+            this.B_EggSeed127.TabIndex = 29;
+            this.B_EggSeed127.Text = "Go!";
+            this.B_EggSeed127.UseVisualStyleBackColor = true;
+            this.B_EggSeed127.Click += new System.EventHandler(this.B_EggSeed127_Click);
             // 
             // label17
             // 
@@ -3433,11 +3438,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(805, 100);
+            this.label15.Location = new System.Drawing.Point(800, 100);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.Size = new System.Drawing.Size(43, 13);
             this.label15.TabIndex = 100;
-            this.label15.Text = "-------->";
+            this.label15.Text = "=====>";
             // 
             // TimeResult
             // 
@@ -4460,13 +4465,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).EndInit();
             this.TP_IDRNG.ResumeLayout(false);
-            this.TP_IDRNG.PerformLayout();
             this.RNGPanel.ResumeLayout(false);
             this.RNGPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Filter_ID.ResumeLayout(false);
+            this.Filter_ID.PerformLayout();
             this.TP_Gen7ToolKit.ResumeLayout(false);
             this.TP_Gen7ToolKit.PerformLayout();
+            this.Magikarp.ResumeLayout(false);
             this.InputBox.ResumeLayout(false);
             this.InputBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).EndInit();
@@ -4702,7 +4707,6 @@
         private System.Windows.Forms.TabPage TP_IDRNG;
         private System.Windows.Forms.DataGridView DGV_ID;
         private System.Windows.Forms.Label Filter_TSV;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton G7TID;
         private System.Windows.Forms.RadioButton Filter_SID;
         private System.Windows.Forms.RadioButton Filter_TID;
@@ -4720,7 +4724,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
-        private System.Windows.Forms.Panel RNGPanel;
         private System.Windows.Forms.RadioButton MTUntempered;
         private System.Windows.Forms.RadioButton MTFast;
         private System.Windows.Forms.RadioButton MT;
@@ -4809,7 +4812,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.Button B_EggSeed127;
         private System.Windows.Forms.RichTextBox RTB_EggSeed;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox Filter_ID;
+        private System.Windows.Forms.GroupBox RNGPanel;
+        private System.Windows.Forms.GroupBox Magikarp;
     }
 }
 

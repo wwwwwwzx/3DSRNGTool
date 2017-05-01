@@ -219,7 +219,7 @@ namespace Pk3DSRNGTool
             }
             if (inlist.Length != 127)
             {
-                Alert($"Please input 127 '0','1'(already have {inlist.Length})");
+                Alert($"Please input 127 '0','1'(now you have {inlist.Length})");
                 return;
             }
             var seed = MagikarpCalc.calc(inlist);
