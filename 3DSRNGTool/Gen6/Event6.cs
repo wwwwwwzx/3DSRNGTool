@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
             Result6 rt = new Result6();
             rt.Level = Level;
 
-            Advance(637);
+            Advance(624);
 
             //Encryption Constant
             rt.EC = EC > 0 ? EC : getrand;

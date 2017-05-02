@@ -161,6 +161,8 @@ namespace Pk3DSRNGTool
         {
             if (Gen7)
                 Timedelay.Value = YourID.Checked && !IsEgg.Checked ? 62 : 0;
+            if (Gen6)
+                Timedelay.Value = 13;
         }
         #endregion
     }
