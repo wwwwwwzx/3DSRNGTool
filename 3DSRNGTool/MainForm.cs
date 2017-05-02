@@ -42,6 +42,7 @@ namespace Pk3DSRNGTool
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DGV_ID.Columns["dgv_ID_state"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV_ID.Columns["dgv_ID_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV_ID.Columns["dgv_ID_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
@@ -728,6 +729,7 @@ namespace Pk3DSRNGTool
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
             dgv_ID_rand.Visible = Gen6;
+            dgv_ID_state.Visible = MT.Checked;
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -847,7 +849,8 @@ namespace Pk3DSRNGTool
             row.CreateCells(DGV_ID);
             row.SetValues(
                 i, (rt as ID7)?.G7TID.ToString("D6") ?? "", rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.Clock.ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? ""
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.Clock.ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? "",
+                (rt as ID6)?.Status ?? ""
                 );
             return row;
         }
@@ -915,8 +918,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
-                rng.Next();
-                var result = new ID6((rng as MersenneTwister)._y);
+                var result = new ID6(str : (rng as RNGState)?.CurrentState() ?? null, rand: rng.Nextuint());
                 if (!filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getIDRow(i, result));
