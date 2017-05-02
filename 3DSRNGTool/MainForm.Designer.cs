@@ -103,7 +103,7 @@
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
-            this.Gen7timepanel = new System.Windows.Forms.Panel();
+            this.timedelaypanel = new System.Windows.Forms.Panel();
             this.L_Correction = new System.Windows.Forms.Label();
             this.Correction = new System.Windows.Forms.NumericUpDown();
             this.Timedelay = new System.Windows.Forms.NumericUpDown();
@@ -392,7 +392,7 @@
             this.RNGMethod.SuspendLayout();
             this.TP_StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
-            this.Gen7timepanel.SuspendLayout();
+            this.timedelaypanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
@@ -1308,7 +1308,7 @@
             // 
             // RNGInfo
             // 
-            this.RNGInfo.Controls.Add(this.Gen7timepanel);
+            this.RNGInfo.Controls.Add(this.timedelaypanel);
             this.RNGInfo.Controls.Add(this.EggPanel);
             this.RNGInfo.Controls.Add(this.L_TargetFrame);
             this.RNGInfo.Controls.Add(this.CreateTimeline);
@@ -1328,19 +1328,19 @@
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
             // 
-            // Gen7timepanel
+            // timedelaypanel
             // 
-            this.Gen7timepanel.Controls.Add(this.L_Correction);
-            this.Gen7timepanel.Controls.Add(this.Correction);
-            this.Gen7timepanel.Controls.Add(this.Timedelay);
-            this.Gen7timepanel.Controls.Add(this.label10);
-            this.Gen7timepanel.Controls.Add(this.ConsiderDelay);
-            this.Gen7timepanel.Controls.Add(this.L_NPC);
-            this.Gen7timepanel.Controls.Add(this.NPC);
-            this.Gen7timepanel.Location = new System.Drawing.Point(1, 128);
-            this.Gen7timepanel.Name = "Gen7timepanel";
-            this.Gen7timepanel.Size = new System.Drawing.Size(284, 72);
-            this.Gen7timepanel.TabIndex = 96;
+            this.timedelaypanel.Controls.Add(this.L_Correction);
+            this.timedelaypanel.Controls.Add(this.Correction);
+            this.timedelaypanel.Controls.Add(this.Timedelay);
+            this.timedelaypanel.Controls.Add(this.label10);
+            this.timedelaypanel.Controls.Add(this.ConsiderDelay);
+            this.timedelaypanel.Controls.Add(this.L_NPC);
+            this.timedelaypanel.Controls.Add(this.NPC);
+            this.timedelaypanel.Location = new System.Drawing.Point(1, 128);
+            this.timedelaypanel.Name = "timedelaypanel";
+            this.timedelaypanel.Size = new System.Drawing.Size(284, 72);
+            this.timedelaypanel.TabIndex = 96;
             // 
             // L_Correction
             // 
@@ -1380,7 +1380,6 @@
             // Timedelay
             // 
             this.Timedelay.AccessibleName = "";
-            this.Timedelay.Enabled = false;
             this.Timedelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Timedelay.Location = new System.Drawing.Point(133, 2);
             this.Timedelay.Maximum = new decimal(new int[] {
@@ -4406,8 +4405,8 @@
             this.TP_StationaryRNG.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
-            this.Gen7timepanel.ResumeLayout(false);
-            this.Gen7timepanel.PerformLayout();
+            this.timedelaypanel.ResumeLayout(false);
+            this.timedelaypanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
@@ -4628,7 +4627,7 @@
         private System.Windows.Forms.Label L_NPC;
         private System.Windows.Forms.RadioButton CreateTimeline;
         private System.Windows.Forms.NumericUpDown TimeSpan;
-        private System.Windows.Forms.Panel Gen7timepanel;
+        private System.Windows.Forms.Panel timedelaypanel;
         private System.Windows.Forms.RadioButton AroundTarget;
         private System.Windows.Forms.TabPage TP_WildRNG;
         private System.Windows.Forms.CheckBox SafeFOnly;

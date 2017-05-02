@@ -215,7 +215,7 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            Special_th.Enabled = Timedelay.Enabled = Correction.Enabled = Advanced.Checked;
+            Special_th.Enabled = Correction.Enabled = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -313,16 +313,16 @@ namespace Pk3DSRNGTool
 
             // Contorls in RNGInfo
             AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
-            L_Correction.Visible = Correction.Visible = method == 2;
-            ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Correction.Enabled = method < 4;
+            timedelaypanel.Visible = method < 3 || MainRNGEgg.Checked || method == 5;
+            L_Correction.Visible = Correction.Visible = Gen7 && method == 2; // Honey
+            ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = method < 4; // not show in toolkit
+            label10.Text = Gen7 ? "+4F" : "F";
+            L_NPC.Visible = NPC.Visible = Gen7 || method == 5; // not show in gen6
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
             if (method > 4)
-            {
-                Gen7timepanel.Visible = method == 5;
                 return;
-            }
 
             if (0 == method || method == 2)
             {
@@ -338,7 +338,6 @@ namespace Pk3DSRNGTool
             L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
             L_Slot.Visible = Slot.Visible = method == 2;
             ByIVs.Enabled = ByStats.Enabled = method < 3;
-            Gen7timepanel.Visible =
             BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
@@ -352,7 +351,7 @@ namespace Pk3DSRNGTool
 
             switch (method)
             {
-                case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
+                case 0: Sta_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 0; return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
                 case 3: ByIVs.Checked = true; break;
@@ -457,9 +456,11 @@ namespace Pk3DSRNGTool
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)
                 SyncNature.SelectedIndex = iPM.Nature + 1;
+
+            Timedelay.Value = iPM.Delay;
+                
             if (Gen7 && method == 0)
             {
-                Timedelay.Value = (iPM as PKM7)?.Delay ?? 0;
                 NPC.Value = (iPM as PKM7)?.NPC ?? 0;
                 BlinkWhenSync.Checked = !(iPM.AlwaysSync || ((iPM as PKM7)?.NoBlink ?? false));
                 return;
@@ -523,20 +524,24 @@ namespace Pk3DSRNGTool
                 RNGPool.IsSolgaleo = method == 0 && iPM.Species == 791;
                 RNGPool.IsLunala = method == 0 && iPM.Species == 792;
                 RNGPool.SolLunaReset = (RNGPool.IsSolgaleo || RNGPool.IsLunala) && RNGPool.modelnumber == 7;
-                RNGPool.delaytime = (int)Timedelay.Value / 2;
+                RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.route17 = ModelStatus.route17 = method == 2 && ea.Location == 120;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
 
                 if (method == 2)
                     buffersize += RNGPool.modelnumber * 100;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
-                    buffersize += RNGPool.modelnumber * RNGPool.delaytime;
+                    buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
 
                 if (method < 3 || MainRNGEgg.Checked)
                     Standard = (int)TargetFrame.Value;
             }
             if (Gen6)
-                buffersize += 640;
+            {
+                RNGPool.Considerdelay = ConsiderDelay.Checked;
+                RNGPool.DelayTime = (int)Timedelay.Value;
+                buffersize += 624 + RNGPool.DelayTime;
+            }
             RNGPool.CreateBuffer(buffersize, rng);
         }
 

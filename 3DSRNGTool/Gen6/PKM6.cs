@@ -3,6 +3,7 @@
     public class PKM6 : Pokemon
     {
         public override GameVersion Version { get; set; } = GameVersion.Gen6;
+        public override short Delay { get; set; } = 16;
 
         public readonly static PokemonList Default = new PokemonList
         {
@@ -77,9 +78,9 @@
                     new PKM6 { Species = 639, Level = 50, }, // Terrakion
                     new PKM6 { Species = 640, Level = 50, }, // Virizion
 
-                    new PKM6 { Species = 641, Level = 50, Version = GameVersion.OR, }, // Tornadus
-                    new PKM6 { Species = 642, Level = 50, Version = GameVersion.AS, }, // Thundurus
-                    new PKM6 { Species = 645, Level = 50, }, // Landorus
+                    new PKM6 { Species = 641, Level = 50, Version = GameVersion.OR, Delay = 90, }, // Tornadus
+                    new PKM6 { Species = 642, Level = 50, Version = GameVersion.AS, Delay = 90, }, // Thundurus
+                    new PKM6 { Species = 645, Level = 50, Delay = 90, }, // Landorus
             
                     new PKM6 { Species = 643, Level = 50, Version = GameVersion.OR, }, // Reshiram
                     new PKM6 { Species = 644, Level = 50, Version = GameVersion.AS, }, // Zekrom

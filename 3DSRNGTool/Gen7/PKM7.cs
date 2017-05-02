@@ -3,8 +3,8 @@
     public class PKM7 : Pokemon
     {
         public override GameVersion Version { get; set; } = GameVersion.Gen7;
+        public override short Delay { get; set; }
         public byte NPC;
-        public short Delay;
         public bool NoBlink;
 
         public readonly static PokemonList Default = new PokemonList

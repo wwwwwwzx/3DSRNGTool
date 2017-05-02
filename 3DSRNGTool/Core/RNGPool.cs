@@ -16,6 +16,9 @@ namespace Pk3DSRNGTool.Core
 
         private static List<string> RNGStateStr = new List<string>();
 
+        public static bool Considerdelay;
+        public static int DelayTime;
+
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
             if (rng is IRNG64)
@@ -57,7 +60,7 @@ namespace Pk3DSRNGTool.Core
 
         public static RNGResult Generate6()
         {
-            index = 0;
+            index = Considerdelay ? DelayTime : 0;
             var result = getresult6();
             (result as Result6).RandNum = RandList[0];
             (result as Result6).Status = RNGStateStr[0];
@@ -109,9 +112,7 @@ namespace Pk3DSRNGTool.Core
 
         #region Gen7 Time keeping
 
-        public static bool Considerdelay;
         public static bool IsSolgaleo, IsLunala, SolLunaReset;
-        public static int delaytime;
         public static byte modelnumber;
         public static int[] remain_frame;
 
@@ -170,14 +171,14 @@ namespace Pk3DSRNGTool.Core
             if (IsSolgaleo || IsLunala)
             {
                 int crydelay = IsSolgaleo ? 79 : 76;
-                time_elapse(delaytime - crydelay - 19);
+                time_elapse(DelayTime - crydelay - 19);
                 if (modelnumber == 7) SolLunaRearrange();
                 time_elapse(19);
                 Advance(1);     //Cry Inside Time Delay
                 time_elapse(crydelay);
                 return;
             }
-            time_elapse(delaytime);
+            time_elapse(DelayTime);
         }
 
         public static int getframeshift()

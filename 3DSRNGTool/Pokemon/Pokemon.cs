@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
         public bool ShinyLocked;
         public bool Syncable = true;
         public bool Conceptual;
+        public virtual short Delay { get; set; }
 
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
