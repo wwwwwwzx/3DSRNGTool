@@ -540,7 +540,7 @@ namespace Pk3DSRNGTool
             {
                 RNGPool.Considerdelay = ConsiderDelay.Checked;
                 RNGPool.DelayTime = (int)Timedelay.Value;
-                buffersize += 624 + RNGPool.DelayTime;
+                buffersize += RNGPool.DelayTime;
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
