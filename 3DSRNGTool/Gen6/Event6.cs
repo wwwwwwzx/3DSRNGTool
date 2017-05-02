@@ -44,7 +44,7 @@ namespace Pk3DSRNGTool
             int cnt = IVsCount;
             while (cnt > 0)
             {
-                int ran = (int)(getrand % 6);
+                uint ran = rand(6);
                 if (rt.IVs[ran] < 0)
                 {
                     rt.IVs[ran] = 31;

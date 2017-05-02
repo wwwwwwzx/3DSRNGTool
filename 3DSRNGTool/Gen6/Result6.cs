@@ -6,5 +6,6 @@ namespace Pk3DSRNGTool
     {
         public override GameVersion Version { get; set; } = GameVersion.Gen6;
         public uint RandNum;
+        public string Status;
     }
 }

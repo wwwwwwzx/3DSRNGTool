@@ -43,7 +43,6 @@
             this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.L_Slot = new System.Windows.Forms.Label();
             this.SpecialOnly = new System.Windows.Forms.CheckBox();
-            this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.BlinkFOnly = new System.Windows.Forms.CheckBox();
             this.HiddenPower = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.Nature = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
@@ -103,6 +102,7 @@
             this.Stat5 = new System.Windows.Forms.NumericUpDown();
             this.BS_1 = new System.Windows.Forms.NumericUpDown();
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
+            this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
@@ -572,17 +572,6 @@
             this.SpecialOnly.UseVisualStyleBackColor = true;
             this.SpecialOnly.Visible = false;
             this.SpecialOnly.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
-            // 
-            // SafeFOnly
-            // 
-            this.SafeFOnly.AutoSize = true;
-            this.SafeFOnly.Location = new System.Drawing.Point(302, 194);
-            this.SafeFOnly.Name = "SafeFOnly";
-            this.SafeFOnly.Size = new System.Drawing.Size(74, 17);
-            this.SafeFOnly.TabIndex = 80;
-            this.SafeFOnly.Text = "仅准确帧";
-            this.SafeFOnly.UseVisualStyleBackColor = true;
-            this.SafeFOnly.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // BlinkFOnly
             // 
@@ -1324,6 +1313,17 @@
             this.BS_0.Name = "BS_0";
             this.BS_0.Size = new System.Drawing.Size(55, 22);
             this.BS_0.TabIndex = 0;
+            // 
+            // SafeFOnly
+            // 
+            this.SafeFOnly.AutoSize = true;
+            this.SafeFOnly.Location = new System.Drawing.Point(302, 194);
+            this.SafeFOnly.Name = "SafeFOnly";
+            this.SafeFOnly.Size = new System.Drawing.Size(74, 17);
+            this.SafeFOnly.TabIndex = 80;
+            this.SafeFOnly.Text = "仅准确帧";
+            this.SafeFOnly.UseVisualStyleBackColor = true;
+            this.SafeFOnly.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // RNGMethod
             // 
@@ -3280,10 +3280,10 @@
             this.Filter_G7TID.Checked = true;
             this.Filter_G7TID.Location = new System.Drawing.Point(23, 90);
             this.Filter_G7TID.Name = "Filter_G7TID";
-            this.Filter_G7TID.Size = new System.Drawing.Size(85, 17);
+            this.Filter_G7TID.Size = new System.Drawing.Size(57, 17);
             this.Filter_G7TID.TabIndex = 2;
             this.Filter_G7TID.TabStop = true;
-            this.Filter_G7TID.Text = "Filter_G7TID";
+            this.Filter_G7TID.Text = "G7TID";
             this.Filter_G7TID.UseVisualStyleBackColor = true;
             // 
             // ID_Disable

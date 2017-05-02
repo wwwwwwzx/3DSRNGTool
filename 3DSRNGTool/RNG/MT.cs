@@ -88,7 +88,7 @@ namespace Pk3DSRNGTool.RNG
     ///     for details
     ///     on the algorithm.
     /// </remarks>
-    public class MersenneTwister : IRNG
+    public class MersenneTwister : IRNG, RNGState
     {
         /* Period parameters */
         private const Int32 N = 624;
@@ -142,25 +142,12 @@ namespace Pk3DSRNGTool.RNG
         // Interface call
         public void Next()
         {
-            Generateuint();
-        }
-
-        #endregion
-
-        /// <summary>
-        ///     Generates a new pseudo-random <see cref="uint" />.
-        /// </summary>
-        /// <returns>
-        ///     A pseudo-random <see cref="uint" />.
-        /// </returns>
-        protected uint Generateuint()
-        {
             uint y;
 
             /* _mag01[x] = x * MatrixA  for x=0,1 */
             if (_mti >= N) /* generate N words at one time */
             {
-                Int16 kk = 0;
+                short kk = 0;
 
                 for (; kk < N - M; ++kk)
                 {
@@ -180,7 +167,26 @@ namespace Pk3DSRNGTool.RNG
                 _mti = 0;
             }
 
-            y = _mt[_mti++];
+            _y = _mt[_mti++];
+        }
+
+        public uint _y;
+
+        public string CurrentState() => _y.ToString("X8");
+
+        #endregion
+
+        /// <summary>
+        ///     Generates a new pseudo-random <see cref="uint" />.
+        /// </summary>
+        /// <returns>
+        ///     A pseudo-random <see cref="uint" />.
+        /// </returns>
+        protected uint Generateuint()
+        {
+            Next();
+            uint y = _y;
+            
             y ^= temperingShiftU(y);
             y ^= temperingShiftS(y) & TemperingMaskB;
             y ^= temperingShiftT(y) & TemperingMaskC;

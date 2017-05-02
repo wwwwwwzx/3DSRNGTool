@@ -342,7 +342,7 @@ namespace Pk3DSRNGTool
             ByIVs.Enabled = ByStats.Enabled = method < 3;
             Gen7timepanel.Visible =
             BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
-            
+
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
 
             RNGPanel.Visible = Gen6;
@@ -722,7 +722,8 @@ namespace Pk3DSRNGTool
             dgv_synced.Visible = method < 3;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && method == 3 && !MainRNGEgg.Checked;
-            dgv_status.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
+            dgv_status.Visible = Gen6 && method < 2 || Gen7 && method == 3 && !MainRNGEgg.Checked;
+            dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
             dgv_time.Visible =
@@ -763,7 +764,7 @@ namespace Pk3DSRNGTool
                         Search7();
                     AdjustDGVColumns();
                 }
-                catch
+                catch (NullReferenceException)
                 {
                     Error("Not Impled");
                 }
@@ -800,8 +801,7 @@ namespace Pk3DSRNGTool
             string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
             row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            var seedstatus = (result as EggResult)?.Status ?? new uint[1];
-            string seed = string.Join(",", seedstatus.Select(v => v.ToString("X8")).Reverse());
+            string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status ?? "";
 
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
@@ -880,7 +880,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Normal()
         {
-            var rng = getRNGSource();
+            var rng = new MersenneTwister((uint)Seed.Value);
             int max, min;
             min = (int)Frame_min.Value;
             max = (int)Frame_max.Value;
@@ -894,7 +894,7 @@ namespace Pk3DSRNGTool
             // Prepare
             getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()))
+            for (int i = min; i <= max; i++, RNGPool.Next(rng))
             {
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
@@ -909,7 +909,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_ID()
         {
-            var rng = new MersenneTwister((uint)Seed.Value);
+            var rng = getRNGSource();
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             dgvrowlist.Clear();
@@ -919,6 +919,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
+                rng.Next();
                 var result = new ID6(rng.Nextuint());
                 if (!filter.CheckResult(result))
                     continue;
@@ -987,7 +988,7 @@ namespace Pk3DSRNGTool
                     RNGPool.CopyStatus(stmp);
                     var result = RNGPool.Generate7() as Result7;
 
-                    RNGPool.Next(sfmt.Nextulong());
+                    RNGPool.Next(sfmt);
 
                     frameadvance--;
                     i++;
@@ -1034,7 +1035,7 @@ namespace Pk3DSRNGTool
                 frameadvance = status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
-                    RNGPool.Next(sfmt.Nextulong());
+                    RNGPool.Next(sfmt);
 
                 if (!filter.CheckResult(result))
                     continue;
@@ -1058,15 +1059,13 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < min; i++)
                 rng.Next();
             // Prepare
-            TinyMT Seedrng = (TinyMT)rng.DeepCopy();
             getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng.Nextuint()), Seedrng.Next())
+            for (int i = min; i <= max; i++, RNGPool.Next(rng))
             {
                 var result = RNGPool.GenerateEgg7() as EggResult;
                 if (!filter.CheckResult(result))
                     continue;
-                result.Status = (uint[])Seedrng.status.Clone();
                 dgvrowlist.Add(getRow(i, result));
                 if (dgvrowlist.Count > 100000)
                     break;
@@ -1095,7 +1094,6 @@ namespace Pk3DSRNGTool
             for (int i = 0; i <= max; i++)
             {
                 var result = RNGPool.GenerateEgg7() as EggResult;
-                result.Status = (uint[])Seedrng.status.Clone();
                 advance = result.FramesUsed;
                 if (!gotresult && frame <= target && target < frame + advance)
                 {
@@ -1104,10 +1102,7 @@ namespace Pk3DSRNGTool
                 };
                 frame += advance;
                 for (int j = advance; j > 0; j--)
-                {
-                    Seedrng.Next();
-                    RNGPool.Next(rng.Nextuint());
-                }
+                    RNGPool.Next(rng);
                 if (i < min || !filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getRow(frame - advance, result, eggnum: i + 1));

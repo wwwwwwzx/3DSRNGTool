@@ -7,6 +7,7 @@ namespace Pk3DSRNGTool
     {
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(((ulong)getrand * n) >> 32);
+        private static void Advance(int n) => RNGPool.Advance(n);
 
         public override int PerfectIVCount => IV3 ? 3 : 0;
         public override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
@@ -21,6 +22,9 @@ namespace Pk3DSRNGTool
                 rt.Synchronize = true;
             else
                 rt.Synchronize = rand(100) >= 50;
+            
+            if (!AlwaysSync)
+                Advance(60);
 
             rt.Synchronize &= Synchro_Stat < 25;
             

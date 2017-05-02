@@ -14,6 +14,8 @@ namespace Pk3DSRNGTool.Core
         public static uint getrand => RandList[index++];
         public static ulong getrand64 => RandList64[index++];
 
+        private static List<string> RNGStateStr = new List<string>();
+
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
             if (rng is IRNG64)
@@ -24,20 +26,26 @@ namespace Pk3DSRNGTool.Core
                 return;
             }
             RandList.Clear();
+            RNGStateStr.Clear();
             for (int i = 0; i < buffersize; i++)
+            {
                 RandList.Add(rng.Nextuint());
+                RNGStateStr.Add((rng as RNGState)?.CurrentState() ?? "");
+            }
         }
 
-        public static void Next(uint rand)
+        public static void Next(IRNG rng)
         {
+            if (rng is IRNG64)
+            {
+                RandList64.RemoveAt(0);
+                RandList64.Add((rng as IRNG64).Nextulong());
+                return;
+            }
             RandList.RemoveAt(0);
-            RandList.Add(rand);
-        }
-
-        public static void Next(ulong rand)
-        {
-            RandList64.RemoveAt(0);
-            RandList64.Add(rand);
+            RandList.Add(rng.Nextuint());
+            RNGStateStr.RemoveAt(0);
+            RNGStateStr.Add((rng as RNGState)?.CurrentState() ?? "");
         }
 
         public static Pokemon PM;
@@ -52,6 +60,7 @@ namespace Pk3DSRNGTool.Core
             index = 0;
             var result = getresult6();
             (result as Result6).RandNum = RandList[0];
+            (result as Result6).Status = RNGStateStr[0];
             return result;
         }
 
@@ -81,6 +90,7 @@ namespace Pk3DSRNGTool.Core
             index = 0;
             var result = (egg_rng as Egg7).Generate();
             (result as EggResult).RandNum = RandList[0];
+            (result as EggResult).Status = RNGStateStr[0];
             (result as EggResult).FramesUsed = index;
             return result;
         }
