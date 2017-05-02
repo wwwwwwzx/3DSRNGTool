@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
                     text = string.Join(" ", results.Select(r => r.seed));
                     if (results.Count() == 1)
                     {
-                        Time_min.Value = 418 + Clock_List.Text.Count(c => c == ',');
+                        Frame_min.Value = Time_min.Value = 418 + Clock_List.Text.Count(c => c == ',');
                         uint s0;
                         if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out s0))
                             Seed.Value = s0;
