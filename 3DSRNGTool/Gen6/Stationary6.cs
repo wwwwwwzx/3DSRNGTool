@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
     class Stationary6 : StationaryRNG
     {
         private static uint getrand => RNGPool.getrand;
-        private static uint rand(uint n) => (uint)(((ulong)getrand * n) >> 32);
+        private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
         public override int PerfectIVCount => IV3 ? 3 : 0;

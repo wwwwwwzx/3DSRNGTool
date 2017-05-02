@@ -1470,7 +1470,7 @@
             // L_NPC
             // 
             this.L_NPC.AutoSize = true;
-            this.L_NPC.Location = new System.Drawing.Point(9, 44);
+            this.L_NPC.Location = new System.Drawing.Point(20, 44);
             this.L_NPC.Name = "L_NPC";
             this.L_NPC.Size = new System.Drawing.Size(41, 13);
             this.L_NPC.TabIndex = 47;
@@ -1480,7 +1480,7 @@
             // 
             this.NPC.AccessibleName = "";
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NPC.Location = new System.Drawing.Point(67, 39);
+            this.NPC.Location = new System.Drawing.Point(78, 39);
             this.NPC.Name = "NPC";
             this.NPC.Size = new System.Drawing.Size(32, 22);
             this.NPC.TabIndex = 40;

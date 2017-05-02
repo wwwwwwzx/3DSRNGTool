@@ -7,7 +7,7 @@ namespace Pk3DSRNGTool
         public override GameVersion Version { get; set; } = GameVersion.Gen6;
 
         private static uint getrand => RNGPool.getrand;
-        private static uint rand(int n) => (uint)((getrand * (ulong)n) >> 32);
+        private static uint rand(int n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
         public override RNGResult Generate()

@@ -313,6 +313,8 @@ namespace Pk3DSRNGTool
 
             // Contorls in RNGInfo
             AroundTarget.Visible = method < 3 || MainRNGEgg.Checked;
+            L_Correction.Visible = Correction.Visible = method == 2;
+            ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Correction.Enabled = method < 4;
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
 
@@ -333,10 +335,7 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            Frame_min.Value = getminframe();
-
             L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
-            L_Correction.Visible = Correction.Visible = Gen7 && method == 2;
             L_Slot.Visible = Slot.Visible = method == 2;
             ByIVs.Enabled = ByStats.Enabled = method < 3;
             Gen7timepanel.Visible =
@@ -359,15 +358,6 @@ namespace Pk3DSRNGTool
                 case 3: ByIVs.Checked = true; break;
                 case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
-        }
-
-        public int getminframe()
-        {
-            if (Gen7 && method < 3 || MainRNGEgg.Checked)
-                return 418;
-            if (Gen7 && method == 4)
-                return 1012;
-            return 0;
         }
 
         private void CreateTimeline_CheckedChanged(object sender, EventArgs e)

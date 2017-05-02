@@ -167,8 +167,6 @@ namespace Pk3DSRNGTool
             return total_frame;
         }
 
-        bool ShowDelay => !ConsiderDelay.Checked;
-
         private void CalcTime_Output(int min, int max)
         {
             int[] totaltime = CalcFrame(min, max);
@@ -176,8 +174,8 @@ namespace Pk3DSRNGTool
             string str = $" {totaltime[0] * 2}F ({realtime.ToString("F")}s) <{totaltime[1] * 2}F>. ";
             switch (lindex)
             {
-                case 0: str = "Set Eontimer for" + str + (ShowDelay ? $" Hit frame {max}" : ""); break;
-                case 1: str = "计时器设置为" + str + (ShowDelay ? $" 在 {max} 帧按A" : ""); break;
+                case 0: str = "Set Eontimer for" + str; break;
+                case 1: str = "计时器设置为" + str; break;
             }
             TimeResult.Items.Add(str);
         }
@@ -187,23 +185,7 @@ namespace Pk3DSRNGTool
             TimeResult.Items.Clear();
             int min = (int)Time_min.Value;
             int max = (int)TargetFrame.Value;
-            if (!ShowDelay)
-            {
-                CalcTime_Output(min, max);
-                return;
-            }
-            int[] tmptimer = new int[2];
-            int delaytime = (int)Timedelay.Value / 2;
-            for (int tmp = max - modelnum * delaytime; tmp <= max; tmp++)
-            {
-                tmptimer = CalcFrame(tmp, max);
-                if (tmptimer[0] + tmptimer[1] > delaytime && tmptimer[0] <= delaytime)
-                    CalcTime_Output(min, tmp - (int)Correction.Value);
-                if (tmptimer[0] == delaytime && tmptimer[1] == 0)
-                    CalcTime_Output(min, tmp - (int)Correction.Value);
-            }
-            if (TimeResult.Items.Count == 0)
-                TimeResult.Items.Add(NORESULT_STR[lindex]);
+            CalcTime_Output(min, max);
         }
         #endregion
         
