@@ -288,7 +288,7 @@ namespace Pk3DSRNGTool
                 Slot.CheckBoxItems[0].Checked = false;
 
                 Event_Species.Items.Clear();
-                Event_Species.Items.Add(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802));
+                Event_Species.Items.AddRange(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802).ToArray());
                 Event_Species.SelectedIndex = 0;
 
                 lastgen = currentgen;
@@ -325,7 +325,7 @@ namespace Pk3DSRNGTool
 
             if (0 == method || method == 2)
             {
-                int currmethod = method << 8 | ver;
+                int currmethod = (method << 3) | ver;
                 if (lastmethod != currmethod)
                 {
                     RefreshCategory();

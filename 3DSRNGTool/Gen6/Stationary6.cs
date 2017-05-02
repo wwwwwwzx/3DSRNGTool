@@ -51,7 +51,7 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = (byte)(rand(2) + 1);
+            rt.Ability = (byte)((getrand >> 31) + 1);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : rand(25));
