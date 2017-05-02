@@ -271,8 +271,7 @@ namespace Pk3DSRNGTool
             BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked =
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
-
-
+        
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
@@ -546,6 +545,8 @@ namespace Pk3DSRNGTool
                 if (method < 3 || MainRNGEgg.Checked)
                     Standard = (int)TargetFrame.Value;
             }
+            if (Gen6)
+                buffersize += 640;
             RNGPool.CreateBuffer(buffersize, rng);
         }
 
@@ -920,7 +921,7 @@ namespace Pk3DSRNGTool
             for (int i = min; i <= max; i++)
             {
                 rng.Next();
-                var result = new ID6(rng.Nextuint());
+                var result = new ID6((rng as MersenneTwister)._y);
                 if (!filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getIDRow(i, result));

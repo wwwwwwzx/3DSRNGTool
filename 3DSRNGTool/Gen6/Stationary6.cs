@@ -16,6 +16,8 @@ namespace Pk3DSRNGTool
         {
             Result6 rt = new Result6();
             rt.Level = Level;
+            
+            Advance(16);
 
             //Sync
             if (AlwaysSync)
@@ -23,6 +25,8 @@ namespace Pk3DSRNGTool
             else
                 rt.Synchronize = rand(100) >= 50;
             
+            Advance(624);
+
             if (!AlwaysSync)
                 Advance(60);
 
