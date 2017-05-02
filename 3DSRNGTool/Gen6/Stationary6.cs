@@ -19,8 +19,6 @@ namespace Pk3DSRNGTool
                 rt.Synchronize = true;
             else
                 rt.Synchronize = rand(100) >= 50;
-            
-            Advance(624);
 
             if (!AlwaysSync)
                 Advance(60);

@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.3.5";
+        private string version = "0.3.7";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;

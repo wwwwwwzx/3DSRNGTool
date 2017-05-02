@@ -32,8 +32,8 @@ namespace Pk3DSRNGTool.Core
             RNGStateStr.Clear();
             for (int i = 0; i < buffersize; i++)
             {
-                RandList.Add(rng.Nextuint());
                 RNGStateStr.Add((rng as RNGState)?.CurrentState() ?? "");
+                RandList.Add(rng.Nextuint());
             }
         }
 
@@ -45,10 +45,10 @@ namespace Pk3DSRNGTool.Core
                 RandList64.Add((rng as IRNG64).Nextulong());
                 return;
             }
-            RandList.RemoveAt(0);
-            RandList.Add(rng.Nextuint());
             RNGStateStr.RemoveAt(0);
             RNGStateStr.Add((rng as RNGState)?.CurrentState() ?? "");
+            RandList.RemoveAt(0);
+            RandList.Add(rng.Nextuint());
         }
 
         public static Pokemon PM;

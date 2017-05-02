@@ -142,35 +142,10 @@ namespace Pk3DSRNGTool.RNG
         // Interface call
         public void Next()
         {
-            uint y;
-
-            /* _mag01[x] = x * MatrixA  for x=0,1 */
-            if (_mti >= N) /* generate N words at one time */
-            {
-                short kk = 0;
-
-                for (; kk < N - M; ++kk)
-                {
-                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
-                    _mt[kk] = _mt[kk + M] ^ (y >> 1) ^ _mag01[y & 0x1];
-                }
-
-                for (; kk < N - 1; ++kk)
-                {
-                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
-                    _mt[kk] = _mt[kk + (M - N)] ^ (y >> 1) ^ _mag01[y & 0x1];
-                }
-
-                y = (_mt[N - 1] & UpperMask) | (_mt[0] & LowerMask);
-                _mt[N - 1] = _mt[M - 1] ^ (y >> 1) ^ _mag01[y & 0x1];
-
-                _mti = 0;
-            }
-
-            _y = _mt[_mti++];
+            Generateuint();
         }
 
-        public uint _y;
+        public uint _y => _mt[_mti];
 
         public string CurrentState() => _y.ToString("X8");
 
@@ -184,13 +159,18 @@ namespace Pk3DSRNGTool.RNG
         /// </returns>
         protected uint Generateuint()
         {
-            Next();
-            uint y = _y;
-            
+            short kk = (short)(_mti < N - 1 ? _mti + 1 : 0);
+            short jj = (short)(_mti < N - M ? _mti + M : _mti + (M - N));
+            uint y = (_mt[_mti] & UpperMask) | (_mt[kk] & LowerMask);
+            _mt[_mti] = _mt[jj] ^ (y >> 1) ^ _mag01[y & 0x1];
+
+            y = _mt[_mti];
             y ^= temperingShiftU(y);
             y ^= temperingShiftS(y) & TemperingMaskB;
             y ^= temperingShiftT(y) & TemperingMaskC;
             y ^= temperingShiftL(y);
+
+            _mti = kk;
 
             return y;
         }
@@ -252,6 +232,8 @@ namespace Pk3DSRNGTool.RNG
                 _mt[_mti] &= 0xffffffffU;
                 // for >32 bit machines
             }
+
+            _mti = 0;
         }
     }
 
