@@ -50,6 +50,9 @@
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
     <Compile Include="Gen6\ID6.cs" />
+    <Compile Include="Gen6\PKMW6.cs" />
+    <Compile Include="Gen6\ResultW6.cs" />
+    <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\MainRNGEgg.cs" />
     <Compile Include="MainForm_Egg.cs">

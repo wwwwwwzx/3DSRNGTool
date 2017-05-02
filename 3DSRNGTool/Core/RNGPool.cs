@@ -73,6 +73,7 @@ namespace Pk3DSRNGTool.Core
             {
                 case 00: return (sta_rng as Stationary6).Generate();
                 case 01: return (event_rng as Event6).Generate();
+                case 02: return (wild_rng as Wild6).Generate();
             }
             return null;
         }

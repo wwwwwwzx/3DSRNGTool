@@ -8,9 +8,7 @@ namespace Pk3DSRNGTool
         private static ulong getrand => RNGPool.getrand64;
         private static void time_elapse(int n) => RNGPool.time_elapse(n);
         private static void Advance(int n) => RNGPool.Advance(n);
-
-        public override int PerfectIVCount => IV3 ? 3 : 0;
-        public override int PIDroll_count => ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
+        
         public bool blinkwhensync;
 
         private bool blink_process()

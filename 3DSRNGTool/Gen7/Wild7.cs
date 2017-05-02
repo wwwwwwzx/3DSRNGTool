@@ -22,7 +22,6 @@ namespace Pk3DSRNGTool
         private bool IsShinyLocked => IsUB;
         private bool NormalSlot => !IsSpecial;
 
-        internal override int PerfectIVCount => IV3[slot] ? 3 : 0;
         internal override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
         public override RNGResult Generate()

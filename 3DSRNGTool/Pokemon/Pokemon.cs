@@ -68,10 +68,10 @@ namespace Pk3DSRNGTool
             {
                 case 0:
                 case 1:
-                    return method == 0 ? PKM6.Species_XY : NotImpled; //Wild not impled
+                    return method == 0 ? PKM6.Species_XY : PKMW6.Species_XY;
                 case 2:
                 case 3:
-                    return method == 0 ? PKM6.Species_ORAS : NotImpled; //Wild not impled
+                    return method == 0 ? PKM6.Species_ORAS : PKMW6.Species_ORAS;
                 case 4:
                 case 5:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;

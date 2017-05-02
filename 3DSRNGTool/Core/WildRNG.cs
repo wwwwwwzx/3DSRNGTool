@@ -15,7 +15,7 @@
         internal bool[] IV3;
         internal byte slot;
 
-        internal virtual int PerfectIVCount { get; }
+        internal virtual int PerfectIVCount => IV3[slot] ? 3 : 0;
         internal virtual int PIDroll_count { get; }
 
         public abstract RNGResult Generate();
