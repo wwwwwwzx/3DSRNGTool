@@ -272,7 +272,7 @@ namespace Pk3DSRNGTool
             BlinkFOnly.Checked = SafeFOnly.Checked = SpecialOnly.Checked =
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
-        
+
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
@@ -459,7 +459,7 @@ namespace Pk3DSRNGTool
                 SyncNature.SelectedIndex = iPM.Nature + 1;
 
             Timedelay.Value = iPM.Delay;
-                
+
             if (Gen7 && method == 0)
             {
                 NPC.Value = (iPM as PKM7)?.NPC ?? 0;
@@ -535,13 +535,15 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
 
                 if (method < 3 || MainRNGEgg.Checked)
-                    Standard = (int)TargetFrame.Value;
+                    Standard = CalcFrame((int)Frame_min.Value, (int)TargetFrame.Value)[0];
             }
             if (Gen6)
             {
                 RNGPool.Considerdelay = ConsiderDelay.Checked;
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 buffersize += RNGPool.DelayTime;
+                if (method < 3)
+                    Standard = (int)TargetFrame.Value;
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -585,7 +587,7 @@ namespace Pk3DSRNGTool
 
         private StationaryRNG getStaSettings()
         {
-            StationaryRNG setting = Gen6 ? (StationaryRNG)new Stationary6() : (StationaryRNG)new Stationary7();
+            StationaryRNG setting = Gen6 ? new Stationary6() : (StationaryRNG)new Stationary7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -723,8 +725,8 @@ namespace Pk3DSRNGTool
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
-            dgv_time.Visible =
-            dgv_shift.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            dgv_shift.Visible = method < 3 || MainRNGEgg.Checked;
+            dgv_time.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
@@ -734,7 +736,7 @@ namespace Pk3DSRNGTool
 
         private void Search_Click(object sender, EventArgs e)
         {
-            if (method == 5)
+            if (method == 5) // Gen7 ToolKit
             {
                 CalcTime(null, null);
                 return;
@@ -780,7 +782,6 @@ namespace Pk3DSRNGTool
             string EggNum = eggnum > 0 ? eggnum.ToString() : "";
             string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
             string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
-            string shift = (i - Standard).ToString("+#;-#;0"); // To-Do
             byte blink = (result as Result7)?.Blink ?? 0;
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
@@ -796,8 +797,10 @@ namespace Pk3DSRNGTool
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
+            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") + "F" : (i - Standard).ToString("+#;-#;0") + "F";
             string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
-            row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
+            row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
 
             string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status ?? "";
 
@@ -918,7 +921,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
-                var result = new ID6(str : (rng as RNGState)?.CurrentState() ?? null, rand: rng.Nextuint());
+                var result = new ID6(str: (rng as RNGState)?.CurrentState() ?? null, rand: rng.Nextuint());
                 if (!filter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getIDRow(i, result));
@@ -963,6 +966,7 @@ namespace Pk3DSRNGTool
             {
                 min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
             }
+            min = Math.Max(min, 418);
             // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, modelnum);
             // Advance
