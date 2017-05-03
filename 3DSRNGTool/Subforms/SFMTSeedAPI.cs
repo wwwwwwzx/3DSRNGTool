@@ -8,12 +8,11 @@ namespace Pk3DSRNGTool
 {
     static public class SFMTSeedAPI
     {
-
-        static public List<Result> request(string needle)
+        static public List<Result> request(string needle, bool IsID)
         {
             Root root;
-            var url = $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}";
-
+            var url = IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 
+                           : $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}";
             string jsonStr;
             using (var webClient = new WebClient())
             {
@@ -36,6 +35,7 @@ namespace Pk3DSRNGTool
 
         public class Result
         {
+            public string add { get; set; }
             public string seed { get; set; }
             public string encoded_needle { get; set; }
             public int step { get; set; }

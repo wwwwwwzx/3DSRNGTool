@@ -60,7 +60,7 @@ namespace Pk3DSRNGTool
             try
             {
                 SeedResults.Text = WAIT_STR[lindex];
-                var results = SFMTSeedAPI.request(Clock_List.Text);
+                var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked);
                 if (results == null || results.Count() == 0)
                     text = NORESULT_STR[lindex];
                 else
@@ -68,7 +68,13 @@ namespace Pk3DSRNGTool
                     text = string.Join(" ", results.Select(r => r.seed));
                     if (results.Count() == 1)
                     {
-                        Frame_min.Value = Time_min.Value = 418 + Clock_List.Text.Count(c => c == ',');
+                        if (RB_Main.Checked)
+                            Frame_min.Value = Time_min.Value = 418 + Clock_List.Text.Count(c => c == ',');
+                        else
+                        {
+                            Frame_min.Value = 1012; //keep full range to check the value
+                            Clk_Correction.Value = Convert.ToInt32(results.FirstOrDefault().add);
+                        }
                         uint s0;
                         if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out s0))
                             Seed.Value = s0;
@@ -140,6 +146,12 @@ namespace Pk3DSRNGTool
                 Error(SETTINGERROR_STR[lindex] + L_QRList.Text);
             }
         }
+
+        private void RB_Gen7_CheckedChanged(object sender, EventArgs e)
+        {
+            StartClockInput.Enabled = EndClockInput.Enabled = !(sender as RadioButton).Checked;
+            ((sender as RadioButton).Checked ? StartClockInput : EndClockInput).Checked = true;
+        }
         #endregion
 
         #region TimerCalculateFunction
@@ -188,7 +200,7 @@ namespace Pk3DSRNGTool
             CalcTime_Output(min, max);
         }
         #endregion
-        
+
         private void B_EggSeed127_Click(object sender, EventArgs e)
         {
             string inlist = RTB_EggSeed.Text;

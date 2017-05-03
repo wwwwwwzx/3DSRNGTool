@@ -84,7 +84,6 @@ namespace Pk3DSRNGTool
             lindex = lang;
             ChangeLanguage(null, null);
 
-
             Gender.SelectedIndex =
             Ball.SelectedIndex =
             Ability.SelectedIndex =
@@ -103,6 +102,8 @@ namespace Pk3DSRNGTool
             FindSetting(lastpkm);
 
             ByIVs.Checked = true;
+            if (Gen7)
+                Frame_min.Value = method == 4 ? 1012 : method < 3 ? 418 : 0;
         }
 
         private void FindSetting(int Lastpkm)
@@ -345,6 +346,7 @@ namespace Pk3DSRNGTool
 
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
+            GB_RNGGEN7ID.Visible =
             BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
 
@@ -731,7 +733,7 @@ namespace Pk3DSRNGTool
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
             dgv_ID_rand.Visible = Gen6;
-            dgv_ID_state.Visible = MT.Checked;
+            dgv_ID_state.Visible = MT.Checked && Gen6;
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -852,7 +854,7 @@ namespace Pk3DSRNGTool
             row.CreateCells(DGV_ID);
             row.SetValues(
                 i, (rt as ID7)?.G7TID.ToString("D6") ?? "", rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (rt as ID7)?.Clock.ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? "",
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? "",
                 (rt as ID6)?.Status ?? ""
                 );
             return row;

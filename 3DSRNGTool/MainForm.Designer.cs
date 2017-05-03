@@ -248,6 +248,9 @@
             this.F_Items = new System.Windows.Forms.ComboBox();
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_IDRNG = new System.Windows.Forms.TabPage();
+            this.GB_RNGGEN7ID = new System.Windows.Forms.GroupBox();
+            this.L_ClkCorrection = new System.Windows.Forms.Label();
+            this.Clk_Correction = new System.Windows.Forms.NumericUpDown();
             this.RNGPanel = new System.Windows.Forms.GroupBox();
             this.MT = new System.Windows.Forms.RadioButton();
             this.MTUntempered = new System.Windows.Forms.RadioButton();
@@ -304,6 +307,8 @@
             this.L_QRresult = new System.Windows.Forms.Label();
             this.QRList = new System.Windows.Forms.TextBox();
             this.SearchSeedBox = new System.Windows.Forms.GroupBox();
+            this.RB_ID = new System.Windows.Forms.RadioButton();
+            this.RB_Main = new System.Windows.Forms.RadioButton();
             this.L_clocklist = new System.Windows.Forms.Label();
             this.Search = new System.Windows.Forms.Button();
             this.L_SeedResult = new System.Windows.Forms.Label();
@@ -351,7 +356,6 @@
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
-            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.dgv_IDframe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gen7ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -361,6 +365,7 @@
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -444,6 +449,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_IDRNG.SuspendLayout();
+            this.GB_RNGGEN7ID.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).BeginInit();
             this.RNGPanel.SuspendLayout();
             this.Filter_ID.SuspendLayout();
             this.TP_Gen7ToolKit.SuspendLayout();
@@ -3193,6 +3200,7 @@
             // 
             // TP_IDRNG
             // 
+            this.TP_IDRNG.Controls.Add(this.GB_RNGGEN7ID);
             this.TP_IDRNG.Controls.Add(this.RNGPanel);
             this.TP_IDRNG.Controls.Add(this.Filter_ID);
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
@@ -3203,6 +3211,39 @@
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
             // 
+            // GB_RNGGEN7ID
+            // 
+            this.GB_RNGGEN7ID.Controls.Add(this.L_ClkCorrection);
+            this.GB_RNGGEN7ID.Controls.Add(this.Clk_Correction);
+            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 155);
+            this.GB_RNGGEN7ID.Name = "GB_RNGGEN7ID";
+            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 126);
+            this.GB_RNGGEN7ID.TabIndex = 116;
+            this.GB_RNGGEN7ID.TabStop = false;
+            this.GB_RNGGEN7ID.Text = "Gen7";
+            // 
+            // L_ClkCorrection
+            // 
+            this.L_ClkCorrection.AutoSize = true;
+            this.L_ClkCorrection.Location = new System.Drawing.Point(12, 51);
+            this.L_ClkCorrection.Name = "L_ClkCorrection";
+            this.L_ClkCorrection.Size = new System.Drawing.Size(55, 13);
+            this.L_ClkCorrection.TabIndex = 87;
+            this.L_ClkCorrection.Text = "指针修正";
+            // 
+            // Clk_Correction
+            // 
+            this.Clk_Correction.Font = new System.Drawing.Font("Consolas", 9F);
+            this.Clk_Correction.Location = new System.Drawing.Point(104, 49);
+            this.Clk_Correction.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.Clk_Correction.Name = "Clk_Correction";
+            this.Clk_Correction.Size = new System.Drawing.Size(44, 22);
+            this.Clk_Correction.TabIndex = 86;
+            // 
             // RNGPanel
             // 
             this.RNGPanel.Controls.Add(this.MT);
@@ -3210,9 +3251,10 @@
             this.RNGPanel.Controls.Add(this.MTFast);
             this.RNGPanel.Location = new System.Drawing.Point(3, 6);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Size = new System.Drawing.Size(183, 275);
+            this.RNGPanel.Size = new System.Drawing.Size(183, 143);
             this.RNGPanel.TabIndex = 115;
             this.RNGPanel.TabStop = false;
+            this.RNGPanel.Text = "Gen6";
             // 
             // MT
             // 
@@ -3475,6 +3517,7 @@
             this.QRInput.TabIndex = 35;
             this.QRInput.Text = "QR指针序列检索位置";
             this.QRInput.UseVisualStyleBackColor = false;
+            this.QRInput.CheckedChanged += new System.EventHandler(this.RB_Gen7_CheckedChanged);
             // 
             // InputBox
             // 
@@ -3830,6 +3873,8 @@
             // 
             // SearchSeedBox
             // 
+            this.SearchSeedBox.Controls.Add(this.RB_ID);
+            this.SearchSeedBox.Controls.Add(this.RB_Main);
             this.SearchSeedBox.Controls.Add(this.L_clocklist);
             this.SearchSeedBox.Controls.Add(this.Search);
             this.SearchSeedBox.Controls.Add(this.L_SeedResult);
@@ -3841,10 +3886,33 @@
             this.SearchSeedBox.TabIndex = 31;
             this.SearchSeedBox.TabStop = false;
             // 
+            // RB_ID
+            // 
+            this.RB_ID.AutoSize = true;
+            this.RB_ID.Location = new System.Drawing.Point(184, 24);
+            this.RB_ID.Name = "RB_ID";
+            this.RB_ID.Size = new System.Drawing.Size(60, 17);
+            this.RB_ID.TabIndex = 24;
+            this.RB_ID.Text = "ID乱数";
+            this.RB_ID.UseVisualStyleBackColor = true;
+            this.RB_ID.CheckedChanged += new System.EventHandler(this.RB_Gen7_CheckedChanged);
+            // 
+            // RB_Main
+            // 
+            this.RB_Main.AutoSize = true;
+            this.RB_Main.Checked = true;
+            this.RB_Main.Location = new System.Drawing.Point(62, 23);
+            this.RB_Main.Name = "RB_Main";
+            this.RB_Main.Size = new System.Drawing.Size(61, 17);
+            this.RB_Main.TabIndex = 23;
+            this.RB_Main.TabStop = true;
+            this.RB_Main.Text = "主乱数";
+            this.RB_Main.UseVisualStyleBackColor = true;
+            // 
             // L_clocklist
             // 
             this.L_clocklist.AutoSize = true;
-            this.L_clocklist.Location = new System.Drawing.Point(31, 44);
+            this.L_clocklist.Location = new System.Drawing.Point(21, 67);
             this.L_clocklist.Name = "L_clocklist";
             this.L_clocklist.Size = new System.Drawing.Size(55, 13);
             this.L_clocklist.TabIndex = 22;
@@ -3852,7 +3920,7 @@
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(264, 81);
+            this.Search.Location = new System.Drawing.Point(254, 104);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(72, 27);
             this.Search.TabIndex = 21;
@@ -3863,7 +3931,7 @@
             // L_SeedResult
             // 
             this.L_SeedResult.AutoSize = true;
-            this.L_SeedResult.Location = new System.Drawing.Point(33, 128);
+            this.L_SeedResult.Location = new System.Drawing.Point(23, 151);
             this.L_SeedResult.Name = "L_SeedResult";
             this.L_SeedResult.Size = new System.Drawing.Size(55, 13);
             this.L_SeedResult.TabIndex = 6;
@@ -3872,7 +3940,7 @@
             // SeedResults
             // 
             this.SeedResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SeedResults.Location = new System.Drawing.Point(94, 128);
+            this.SeedResults.Location = new System.Drawing.Point(84, 151);
             this.SeedResults.Name = "SeedResults";
             this.SeedResults.Size = new System.Drawing.Size(242, 22);
             this.SeedResults.TabIndex = 20;
@@ -3880,7 +3948,7 @@
             // Clock_List
             // 
             this.Clock_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clock_List.Location = new System.Drawing.Point(92, 39);
+            this.Clock_List.Location = new System.Drawing.Point(82, 62);
             this.Clock_List.Name = "Clock_List";
             this.Clock_List.Size = new System.Drawing.Size(244, 22);
             this.Clock_List.TabIndex = 19;
@@ -4290,18 +4358,6 @@
             this.DGV_ID.TabIndex = 92;
             this.DGV_ID.Visible = false;
             // 
-            // Seed
-            // 
-            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(727, 11);
-            this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(78, 22);
-            this.Seed.TabIndex = 88;
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
             // dgv_IDframe
             // 
             this.dgv_IDframe.HeaderText = "Frame";
@@ -4355,6 +4411,18 @@
             this.dgv_ID_state.HeaderText = "Status";
             this.dgv_ID_state.Name = "dgv_ID_state";
             this.dgv_ID_state.Width = 75;
+            // 
+            // Seed
+            // 
+            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Hexadecimal = true;
+            this.Seed.Location = new System.Drawing.Point(727, 11);
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(78, 22);
+            this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
             // MainForm
             // 
@@ -4472,6 +4540,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).EndInit();
             this.TP_IDRNG.ResumeLayout(false);
+            this.GB_RNGGEN7ID.ResumeLayout(false);
+            this.GB_RNGGEN7ID.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).EndInit();
             this.RNGPanel.ResumeLayout(false);
             this.RNGPanel.PerformLayout();
             this.Filter_ID.ResumeLayout(false);
@@ -4823,6 +4894,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
+        private System.Windows.Forms.RadioButton RB_ID;
+        private System.Windows.Forms.RadioButton RB_Main;
+        private System.Windows.Forms.GroupBox GB_RNGGEN7ID;
+        private System.Windows.Forms.Label L_ClkCorrection;
+        private System.Windows.Forms.NumericUpDown Clk_Correction;
     }
 }
 
