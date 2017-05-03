@@ -738,8 +738,8 @@ namespace Pk3DSRNGTool
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && method == 3;
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
-            dgv_shift.Visible = method < 3 || MainRNGEgg.Checked;
-            dgv_time.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            dgv_shift.Visible = dgv_time.Visible = method < 3 || MainRNGEgg.Checked;
+            dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
         }
@@ -810,9 +810,9 @@ namespace Pk3DSRNGTool
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
             string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") : (i - Standard).ToString("+#;-#;0");
-            string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
+            string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : (i / 60.0).ToString("F3");
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
-            row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
+            row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
 
             string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status ?? "";
 
@@ -823,7 +823,7 @@ namespace Pk3DSRNGTool
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability], delay,
                 slots, Lv, ball, item,
-                randstr, rand64str, PID, EC, realtime, seed
+                randstr, rand64str, PID, EC, seed, realtime
                 );
 
             if (result.Shiny)
