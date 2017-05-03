@@ -144,10 +144,8 @@ namespace Pk3DSRNGTool.RNG
         {
             Generateuint();
         }
-
-        public uint _y => _mt[_mti];
-
-        public string CurrentState() => _y.ToString("X8");
+        
+        public string CurrentState() => _mt[_mti].ToString("X8");
 
         #endregion
 
@@ -160,7 +158,7 @@ namespace Pk3DSRNGTool.RNG
         protected uint Generateuint()
         {
             short kk = (short)(_mti < N - 1 ? _mti + 1 : 0);
-            short jj = (short)(_mti < N - M ? _mti + M : _mti + (M - N));
+            short jj = (short)(_mti < N - M ? _mti + M : _mti + M - N);
             uint y = (_mt[_mti] & UpperMask) | (_mt[kk] & LowerMask);
             _mt[_mti] = _mt[jj] ^ (y >> 1) ^ _mag01[y & 0x1];
 
