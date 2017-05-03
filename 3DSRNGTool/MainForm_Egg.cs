@@ -38,15 +38,14 @@ namespace Pk3DSRNGTool
                 Homogeneity.Enabled = Homogeneity.Checked = false;
             }
             else
-                Homogeneity.Enabled = true;
+                Homogeneity.Enabled = !NidoType.Checked;
         }
-
 
         private void NidoType_CheckedChanged(object sender, EventArgs e)
         {
-            M_ditto.Enabled = F_ditto.Enabled = Homogeneity.Enabled = !NidoType.Checked;
+            Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked ||　F_ditto.Checked);
             if (NidoType.Checked)
-                Homogeneity.Enabled = Homogeneity.Checked = M_ditto.Checked = F_ditto.Checked = false;
+                Homogeneity.Checked = false;
         }
 
         private void MM_CheckedChanged(object sender, EventArgs e)
