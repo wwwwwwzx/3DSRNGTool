@@ -366,7 +366,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            
+
             if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
         }
 
@@ -806,7 +806,7 @@ namespace Pk3DSRNGTool
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
-            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0"): (i - Standard).ToString("+#;-#;0");
+            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") : (i - Standard).ToString("+#;-#;0");
             string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
             row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
@@ -818,7 +818,7 @@ namespace Pk3DSRNGTool
             row.SetValues(
                 eggnum, i, shift, Mark, advance,
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
-                true_nature, SynchronizeFlag, delay, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability],
+                true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability], delay,
                 slots, Lv, ball, item,
                 randstr, rand64str, PID, EC, realtime, seed
                 );
