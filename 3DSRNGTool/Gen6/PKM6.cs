@@ -140,17 +140,17 @@
                 Text = "Fossils",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 138, Level = 20, Delay = 81, }, // Omanyte
-                    new PKM6 { Gift = true, Species = 140, Level = 20, Delay = 81, }, // Kabuto
-                    new PKM6 { Gift = true, Species = 142, Level = 20, Delay = 81, }, // Aerodactyl
-                    new PKM6 { Gift = true, Species = 345, Level = 20, Delay = 81, }, // Lileep
-                    new PKM6 { Gift = true, Species = 347, Level = 20, Delay = 81, }, // Anorith
-                    new PKM6 { Gift = true, Species = 408, Level = 20, Delay = 81, }, // Cranidos
-                    new PKM6 { Gift = true, Species = 410, Level = 20, Delay = 81, }, // Shieldon
-                    new PKM6 { Gift = true, Species = 564, Level = 20, Delay = 81, }, // Tirtouga
-                    new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 81, }, // Archen
-                    new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 81, }, // Tyrunt
-                    new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 81, }, // Amaura
+                    new PKM6 { Gift = true, Species = 138, Level = 20, Delay = 81, Syncable = false, }, // Omanyte
+                    new PKM6 { Gift = true, Species = 140, Level = 20, Delay = 81, Syncable = false, }, // Kabuto
+                    new PKM6 { Gift = true, Species = 142, Level = 20, Delay = 81, Syncable = false, }, // Aerodactyl
+                    new PKM6 { Gift = true, Species = 345, Level = 20, Delay = 81, Syncable = false, }, // Lileep
+                    new PKM6 { Gift = true, Species = 347, Level = 20, Delay = 81, Syncable = false, }, // Anorith
+                    new PKM6 { Gift = true, Species = 408, Level = 20, Delay = 81, Syncable = false, }, // Cranidos
+                    new PKM6 { Gift = true, Species = 410, Level = 20, Delay = 81, Syncable = false, }, // Shieldon
+                    new PKM6 { Gift = true, Species = 564, Level = 20, Delay = 81, Syncable = false, }, // Tirtouga
+                    new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 81, Syncable = false, }, // Archen
+                    new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 81, Syncable = false, }, // Tyrunt
+                    new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 81, Syncable = false, }, // Amaura
                 }
             },
         };

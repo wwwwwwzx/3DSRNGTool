@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FollowmeTogetic.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -218,6 +221,9 @@
     <None Include="Resources\text_Location_sm_en.txt" />
     <None Include="Resources\text_Items_cn.txt" />
     <None Include="Resources\text_Items_en.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FollowmeTogetic.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

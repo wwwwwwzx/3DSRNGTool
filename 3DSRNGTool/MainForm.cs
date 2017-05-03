@@ -457,6 +457,7 @@ namespace Pk3DSRNGTool
                 IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
                 IVup = iPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
             }
+            AlwaysSynced.Text = SYNC_STR[lindex][iPM.Syncable ? 0 : 1];
             if (!iPM.Syncable)
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)
@@ -780,6 +781,8 @@ namespace Pk3DSRNGTool
         }
 
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
+        private static Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+
         private DataGridViewRow getRow(int i, RNGResult result, int eggnum = -1)
         {
             DataGridViewRow row = new DataGridViewRow();
@@ -832,13 +835,13 @@ namespace Pk3DSRNGTool
             {
                 for (int k = 0; k < 6; k++)
                 {
-                    if (ivsflag[k] == null)
-                        continue;
-                    row.Cells[ivstart + k].Style.ForeColor = (ivsflag[k] == true) ? Color.Blue : Color.DeepPink;
+                    if (ivsflag[k] != null)
+                    { row.Cells[ivstart + k].Style.ForeColor = (ivsflag[k] == true) ? Color.Blue : Color.DeepPink; continue; }
+                    if (result.IVs[k] > 29)
+                    { row.Cells[ivstart + k].Style.ForeColor = Color.MediumSeaGreen; row.Cells[ivstart + k].Style.Font = BoldFont; }
                 }
                 return row;
             }
-            Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
             for (int k = 0; k < 6; k++)
             {
                 if (result.IVs[k] < 1)

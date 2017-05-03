@@ -36,6 +36,12 @@ namespace Pk3DSRNGTool
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
         };
 
+        private static readonly string[][] SYNC_STR =
+        {
+            new string[] { "Always Synced", "Can not be Synced" },
+            new string[] { "必定同步", "不能同步" },
+        };
+
         private string curlanguage;
 
         private int lindex { get { return Lang.SelectedIndex; } set { Lang.SelectedIndex = value; } }
@@ -107,6 +113,8 @@ namespace Pk3DSRNGTool
             Nature.CheckBoxItems[0].Checked = false;
             HiddenPower.CheckBoxItems[0].Checked = true;
             HiddenPower.CheckBoxItems[0].Checked = false;
+
+            AlwaysSynced.Text = SYNC_STR[lindex][0];
         }
         
         private string getEggListString(int eggnum, int rejectnum)
