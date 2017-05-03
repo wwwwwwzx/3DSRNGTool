@@ -991,13 +991,17 @@ namespace Pk3DSRNGTool
             getsetting(sfmt);
             int frameadvance;
             int realtime = 0;
+            int frametime = 0;
             // Start
             for (int i = StartFrame; i <= max;)
             {
-                status.CopyTo(stmp);
-                frameadvance = status.NextState();
-
-                while (frameadvance > 0)
+                do
+                {
+                    frameadvance = status.NextState();
+                    realtime++;
+                }
+                while (frameadvance == 0); // Keep the starting status of a longlife frame(for npc=0 case)
+                do
                 {
                     RNGPool.CopyStatus(stmp);
                     var result = RNGPool.Generate7() as Result7;
@@ -1009,14 +1013,18 @@ namespace Pk3DSRNGTool
                     if (i <= min || i > max)
                         continue;
 
-                    FuncUtil.MarkResults(result, i - min - 1, realtime);
+                    FuncUtil.MarkResults(result, i - min - 1, frametime);
 
                     if (!filter.CheckResult(result))
                         continue;
                     dgvrowlist.Add(getRow(i - 1, result));
                 }
-                realtime++;
+                while (frameadvance > 0);
                 if (dgvrowlist.Count > 100000) break;
+
+                // Backup status of frame
+                status.CopyTo(stmp);
+                frametime = realtime;
             }
             DGV.Rows.AddRange(dgvrowlist.ToArray());
             DGV.CurrentCell = null;
