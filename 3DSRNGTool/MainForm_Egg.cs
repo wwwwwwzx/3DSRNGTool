@@ -18,7 +18,7 @@ namespace Pk3DSRNGTool
             M_Items.SelectedIndex = F_Items.SelectedIndex = 0;
             M_ditto.Checked = F_ditto.Checked = false;
             M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
-            Heterogeneity.Checked = false;
+            Homogeneity.Checked = false;
             MM.Checked = false;
         }
 
@@ -35,14 +35,18 @@ namespace Pk3DSRNGTool
             if ((sender as CheckBox)?.Checked ?? false)
             {
                 (sender == F_ditto ? M_ditto : F_ditto).Checked = false;
-                Heterogeneity.Enabled = false;
-                Heterogeneity.Checked = true;
+                Homogeneity.Enabled = Homogeneity.Checked = false;
             }
             else
-            {
-                Heterogeneity.Checked = false;
-                Heterogeneity.Enabled = true;
-            }
+                Homogeneity.Enabled = true;
+        }
+
+
+        private void NidoType_CheckedChanged(object sender, EventArgs e)
+        {
+            M_ditto.Enabled = F_ditto.Enabled = Homogeneity.Enabled = !NidoType.Checked;
+            if (NidoType.Checked)
+                Homogeneity.Enabled = Homogeneity.Checked = M_ditto.Checked = F_ditto.Checked = false;
         }
 
         private void MM_CheckedChanged(object sender, EventArgs e)
@@ -64,7 +68,9 @@ namespace Pk3DSRNGTool
                 St1.Text,
                 St0.Text,
             };
-            File.WriteAllLines("Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt", lines);
+            string backupfile = "Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
+            File.WriteAllLines(backupfile, lines);
+            Alert(backupfile + " saved");
         }
 
         private void B_Load_Click(object sender, EventArgs e)

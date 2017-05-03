@@ -704,10 +704,11 @@ namespace Pk3DSRNGTool
             setting.TSV = (short)TSV.Value;
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
             setting.RandomGender = FuncUtil.IsRandomGender((int)Egg_GenderRatio.SelectedValue);
-            (setting as Egg7).Homogeneous = !Heterogeneity.Checked;
+            (setting as Egg7).Homogeneous = Homogeneity.Checked;
             (setting as Egg7).FemaleIsDitto = F_ditto.Checked;
             setting.InheritAbilty = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
+            setting.NidoType = NidoType.Checked;
 
             setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked;
             setting.OtherTSVs = OtherTSVList.ToArray();

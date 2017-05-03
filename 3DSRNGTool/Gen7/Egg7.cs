@@ -35,7 +35,10 @@ namespace Pk3DSRNGTool
             EggResult egg = new EggResult();
 
             // Gender
-            egg.Gender = (byte)(RandomGender ? ((int)(getrand % 252) >= Gender ? 1 : 2) : Gender);
+            if (NidoType)
+                egg.Gender = (byte)((getrand & 1) + 1);
+            else
+                egg.Gender = (byte)(RandomGender ? ((int)(getrand % 252) >= Gender ? 1 : 2) : Gender);
 
             // Nature
             egg.Nature = (byte)(getrand % 25);

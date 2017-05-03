@@ -9,7 +9,7 @@
         public byte FemaleItem { get; set; }
         public byte InheritAbilty { get; set; }
 
-        public bool ShinyCharm, MMethod;
+        public bool ShinyCharm, MMethod, NidoType;
 
         public bool ConsiderOtherTSV;
         public int[] OtherTSVs;
