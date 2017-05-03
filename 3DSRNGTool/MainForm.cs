@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.3.7";
+        private string version = "0.3.8";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -810,7 +810,7 @@ namespace Pk3DSRNGTool
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
             string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") : (i - Standard).ToString("+#;-#;0");
-            string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : (i / 60.0).ToString("F3");
+            string realtime = FuncUtil.Convert2timestr(time > -1 ? time / 30.0 : i / 60.0);
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
             row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
 
@@ -985,8 +985,7 @@ namespace Pk3DSRNGTool
             // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, modelnum);
             // Advance
-            int StartFrame = (int)Frame_min.Value;
-            for (int i = 0; i < StartFrame; i++)
+            for (int i = 0; i < min; i++)
                 sfmt.Next();
             // Prepare
             ModelStatus status = new ModelStatus(modelnum, sfmt);
@@ -996,7 +995,7 @@ namespace Pk3DSRNGTool
             int realtime = 0;
             int frametime = 0;
             // Start
-            for (int i = StartFrame; i <= max;)
+            for (int i = min; i <= max;)
             {
                 do
                 {

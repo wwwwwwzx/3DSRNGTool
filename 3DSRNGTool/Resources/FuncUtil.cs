@@ -109,6 +109,18 @@ namespace Pk3DSRNGTool
             if (0 <= blinkidx && blinkidx < blinkflaglist.Length)
                 result.Blink = blinkflaglist[blinkidx];
         }
+
+        public static string Convert2timestr(double num)
+        {
+            int hour = (int)Math.Floor(num) / 3600;
+            num -= hour * 3600;
+            int min = (int)Math.Floor(num) / 60;
+            num -= min * 60;
+            string output = hour > 0 ? hour.ToString() + ":" : "";
+            output += (output == "" && min == 0 ? "" : min.ToString() + ":");
+            output += output == "" ? num.ToString("F3") : num.ToString("00.000");
+            return output;
+        }
         #endregion
     }
 }
