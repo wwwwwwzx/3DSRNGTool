@@ -8,11 +8,14 @@ namespace Pk3DSRNGTool
 
         private static uint getrand => RNGPool.getrand;
         private static uint rand(int n) => (uint)(getrand * (ulong)n >> 32);
+        private static void Advance(int n) => RNGPool.Advance(n);
 
         public override RNGResult Generate()
         {
             Result6 rt = new Result6();
             rt.Level = Level;
+            
+            Advance(10);
 
             //Encryption Constant
             rt.EC = EC > 0 ? EC : getrand;

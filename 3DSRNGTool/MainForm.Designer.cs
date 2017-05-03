@@ -2007,7 +2007,7 @@
             this.AbilityLocked.AutoSize = true;
             this.AbilityLocked.Checked = true;
             this.AbilityLocked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AbilityLocked.Location = new System.Drawing.Point(127, 169);
+            this.AbilityLocked.Location = new System.Drawing.Point(126, 169);
             this.AbilityLocked.Name = "AbilityLocked";
             this.AbilityLocked.Size = new System.Drawing.Size(74, 17);
             this.AbilityLocked.TabIndex = 47;
@@ -2102,7 +2102,7 @@
             // YourID
             // 
             this.YourID.AutoSize = true;
-            this.YourID.Location = new System.Drawing.Point(127, 99);
+            this.YourID.Location = new System.Drawing.Point(126, 99);
             this.YourID.Name = "YourID";
             this.YourID.Size = new System.Drawing.Size(49, 17);
             this.YourID.TabIndex = 48;
@@ -2128,7 +2128,7 @@
             // GenderLocked
             // 
             this.GenderLocked.AutoSize = true;
-            this.GenderLocked.Location = new System.Drawing.Point(127, 245);
+            this.GenderLocked.Location = new System.Drawing.Point(126, 245);
             this.GenderLocked.Name = "GenderLocked";
             this.GenderLocked.Size = new System.Drawing.Size(74, 17);
             this.GenderLocked.TabIndex = 44;
@@ -2174,7 +2174,7 @@
             // NatureLocked
             // 
             this.NatureLocked.AutoSize = true;
-            this.NatureLocked.Location = new System.Drawing.Point(127, 207);
+            this.NatureLocked.Location = new System.Drawing.Point(126, 207);
             this.NatureLocked.Name = "NatureLocked";
             this.NatureLocked.Size = new System.Drawing.Size(74, 17);
             this.NatureLocked.TabIndex = 43;

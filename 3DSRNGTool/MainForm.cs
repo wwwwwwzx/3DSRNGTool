@@ -289,7 +289,7 @@ namespace Pk3DSRNGTool
                 Slot.CheckBoxItems[0].Checked = false;
 
                 Event_Species.Items.Clear();
-                Event_Species.Items.AddRange(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802).ToArray());
+                Event_Species.Items.AddRange(new string[] { "-" }.Concat(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
                 Event_Species.SelectedIndex = 0;
 
                 lastgen = currentgen;
@@ -720,6 +720,13 @@ namespace Pk3DSRNGTool
         #region Start Calculation
         private void AdjustDGVColumns()
         {
+            if (method == 4)
+            {
+                dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
+                dgv_ID_rand.Visible = Gen6;
+                dgv_ID_state.Visible = MT.Checked && Gen6;
+                return;
+            }
             dgv_synced.Visible = method < 3;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && method == 3 && !MainRNGEgg.Checked;
@@ -731,9 +738,6 @@ namespace Pk3DSRNGTool
             dgv_time.Visible = dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
-            dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
-            dgv_ID_rand.Visible = Gen6;
-            dgv_ID_state.Visible = MT.Checked && Gen6;
         }
 
         private void Search_Click(object sender, EventArgs e)

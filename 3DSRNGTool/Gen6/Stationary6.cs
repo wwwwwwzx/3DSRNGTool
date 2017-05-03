@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
                 Advance(60);
 
             rt.Synchronize &= Synchro_Stat < 25;
-            
+
             //Encryption Constant
             rt.EC = getrand;
 

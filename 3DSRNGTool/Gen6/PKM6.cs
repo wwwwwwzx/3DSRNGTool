@@ -140,17 +140,17 @@
                 Text = "Fossils",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 138, Level = 20, }, // Omanyte
-                    new PKM6 { Gift = true, Species = 140, Level = 20, }, // Kabuto
-                    new PKM6 { Gift = true, Species = 142, Level = 20, }, // Aerodactyl
-                    new PKM6 { Gift = true, Species = 345, Level = 20, }, // Lileep
-                    new PKM6 { Gift = true, Species = 347, Level = 20, }, // Anorith
-                    new PKM6 { Gift = true, Species = 408, Level = 20, }, // Cranidos
-                    new PKM6 { Gift = true, Species = 410, Level = 20, }, // Shieldon
-                    new PKM6 { Gift = true, Species = 564, Level = 20, }, // Tirtouga
-                    new PKM6 { Gift = true, Species = 566, Level = 20, }, // Archen
-                    new PKM6 { Gift = true, Species = 696, Level = 20, }, // Tyrunt
-                    new PKM6 { Gift = true, Species = 698, Level = 20, }, // Amaura
+                    new PKM6 { Gift = true, Species = 138, Level = 20, Delay = 81, }, // Omanyte
+                    new PKM6 { Gift = true, Species = 140, Level = 20, Delay = 81, }, // Kabuto
+                    new PKM6 { Gift = true, Species = 142, Level = 20, Delay = 81, }, // Aerodactyl
+                    new PKM6 { Gift = true, Species = 345, Level = 20, Delay = 81, }, // Lileep
+                    new PKM6 { Gift = true, Species = 347, Level = 20, Delay = 81, }, // Anorith
+                    new PKM6 { Gift = true, Species = 408, Level = 20, Delay = 81, }, // Cranidos
+                    new PKM6 { Gift = true, Species = 410, Level = 20, Delay = 81, }, // Shieldon
+                    new PKM6 { Gift = true, Species = 564, Level = 20, Delay = 81, }, // Tirtouga
+                    new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 81, }, // Archen
+                    new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 81, }, // Tyrunt
+                    new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 81, }, // Amaura
                 }
             },
         };

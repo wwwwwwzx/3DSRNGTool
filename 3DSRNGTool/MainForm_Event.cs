@@ -11,6 +11,8 @@ namespace Pk3DSRNGTool
         // Reader
         private bool ReadWc(string filename)
         {
+            if (Path.GetExtension(filename) != (Gen6 ? ".wc6" : ".wc7"))
+                return false;
             BinaryReader br = new BinaryReader(File.Open(filename, FileMode.Open));
             try
             {
@@ -162,7 +164,7 @@ namespace Pk3DSRNGTool
             if (Gen7)
                 Timedelay.Value = YourID.Checked && !IsEgg.Checked ? 62 : 0;
             if (Gen6)
-                Timedelay.Value = 13;
+                Timedelay.Value = 1;
         }
         #endregion
     }

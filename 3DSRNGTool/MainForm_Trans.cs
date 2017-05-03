@@ -100,7 +100,7 @@ namespace Pk3DSRNGTool
             Egg_GenderRatio.SelectedIndex = 1;
 
             Event_Species.Items.Clear();
-            Event_Species.Items.AddRange(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802).ToArray());
+            Event_Species.Items.AddRange(new string[] { "-" }.Concat(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
             Event_Species.SelectedIndex = 0;
 
             // display something upon loading
