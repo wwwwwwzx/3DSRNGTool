@@ -364,7 +364,9 @@ namespace Pk3DSRNGTool
 
         private void CreateTimeline_CheckedChanged(object sender, EventArgs e)
         {
-            ConsiderDelay.Enabled = !CreateTimeline.Checked;
+            Frame_max.Visible = label7.Visible =
+            ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
+            
             if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
         }
 

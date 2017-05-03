@@ -106,6 +106,7 @@
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.L_StartingPoint = new System.Windows.Forms.Label();
             this.timedelaypanel = new System.Windows.Forms.Panel();
             this.L_Correction = new System.Windows.Forms.Label();
             this.Correction = new System.Windows.Forms.NumericUpDown();
@@ -1370,6 +1371,7 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.L_StartingPoint);
             this.RNGInfo.Controls.Add(this.timedelaypanel);
             this.RNGInfo.Controls.Add(this.EggPanel);
             this.RNGInfo.Controls.Add(this.L_TargetFrame);
@@ -1389,6 +1391,16 @@
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
+            // 
+            // L_StartingPoint
+            // 
+            this.L_StartingPoint.AutoSize = true;
+            this.L_StartingPoint.Location = new System.Drawing.Point(104, 56);
+            this.L_StartingPoint.Name = "L_StartingPoint";
+            this.L_StartingPoint.Size = new System.Drawing.Size(82, 13);
+            this.L_StartingPoint.TabIndex = 94;
+            this.L_StartingPoint.Text = "<-- 时间线起点";
+            this.L_StartingPoint.Visible = false;
             // 
             // timedelaypanel
             // 
@@ -4913,6 +4925,7 @@
         private System.Windows.Forms.Label L_ClkCorrection;
         private System.Windows.Forms.NumericUpDown Clk_Correction;
         private System.Windows.Forms.CheckBox NidoType;
+        private System.Windows.Forms.Label L_StartingPoint;
     }
 }
 
