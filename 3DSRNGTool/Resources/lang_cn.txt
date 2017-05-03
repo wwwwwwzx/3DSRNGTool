@@ -77,19 +77,13 @@ RB_FrameRange = 帧数范围
 L_StartingPoint = <-- 时间线起点
 CreateTimeline = 生成时间线/秒
 ---
-TimeBox = 时间计算
-L_time = 计时范围
-CalcTime = 计算
 ConsiderDelay = 考虑延迟
 L_Correction = 甜甜蜜修正
 ---
-SetStartFrame = 设为时间线起点
 SetTargetFrame = 设为目标帧
-SHControlPanel = 显示/隐藏控制面板
-HighLightFrameAfter = 高亮延时后击中帧
 dgv_Frame = 帧
 dgv_mark = 标记
-dgv_shift = 偏差
+dgv_shift = 偏差/F
 dgv_H = HP
 dgv_A = Atk
 dgv_B = Def

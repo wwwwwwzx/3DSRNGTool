@@ -354,7 +354,7 @@ namespace Pk3DSRNGTool
 
             switch (method)
             {
-                case 0: Sta_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 0; return;
+                case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
                 case 3: ByIVs.Checked = true; break;
@@ -803,7 +803,7 @@ namespace Pk3DSRNGTool
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
             int time = (result as Result7)?.realtime ?? -1;
-            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") + "F" : (i - Standard).ToString("+#;-#;0") + "F";
+            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0"): (i - Standard).ToString("+#;-#;0");
             string realtime = time > -1 ? (time / 30.0).ToString("F3") + "s" : "";
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
             row.Cells[26].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
@@ -917,6 +917,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_ID()
         {
+            bool tweak = true; // tmp tweak
             var rng = getRNGSource();
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
@@ -930,6 +931,8 @@ namespace Pk3DSRNGTool
                 var result = new ID6(str: (rng as RNGState)?.CurrentState() ?? null, rand: rng.Nextuint());
                 if (!filter.CheckResult(result))
                     continue;
+                if (tweak)
+                { Frame_min.Value = i; tweak = false; };
                 dgvrowlist.Add(getIDRow(i, result));
                 if (dgvrowlist.Count > 100000)
                     break;

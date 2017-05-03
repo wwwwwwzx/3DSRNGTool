@@ -25,8 +25,8 @@
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Ability = 1, Gift = true, }, // Latias
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Ability = 1, Gift = true, }, // Latios
 
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, Delay = 0, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, Delay = 0, }, // Latias
 
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, }, // Groudon
