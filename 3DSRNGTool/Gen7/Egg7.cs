@@ -51,7 +51,7 @@ namespace Pk3DSRNGTool
                 egg.BE_InheritParents = MaleItem == 1;
 
             // Ability
-            egg.Ability = (byte)getRandomAbility(InheritAbilty, getrand % 100);
+            egg.Ability = (byte)getRandomAbility(InheritAbility, getrand % 100);
 
             // PowerItem
             // Chooses which parent if necessary

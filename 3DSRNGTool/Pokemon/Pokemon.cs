@@ -4,7 +4,7 @@ namespace Pk3DSRNGTool
 {
     public class Pokemon : IPKM
     {
-        public new byte Nature = 0xFF;
+        public override byte Nature { get; set; } = 0xFF;
         public bool Gift;
         public bool Egg;
         public bool ShinyLocked;
@@ -68,10 +68,10 @@ namespace Pk3DSRNGTool
             {
                 case 0:
                 case 1:
-                    return method == 0 ? PKM6.Species_XY : PKMW6.Species_XY;
+                    return method == 0 ? PKM6.Species_XY : NotImpled;
                 case 2:
                 case 3:
-                    return method == 0 ? PKM6.Species_ORAS : PKMW6.Species_ORAS;
+                    return method == 0 ? PKM6.Species_ORAS : NotImpled;
                 case 4:
                 case 5:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;

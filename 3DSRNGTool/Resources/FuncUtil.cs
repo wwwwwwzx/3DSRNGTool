@@ -100,11 +100,8 @@ namespace Pk3DSRNGTool
             return 0;
         }
 
-        public static void MarkResults(Result7 result, int blinkidx = -1, int realtime = -1)
+        public static void MarkResults(Result7 result, int blinkidx = -1)
         {
-            // Mark realtime
-            if (realtime > -1)
-                result.realtime = realtime;
             // Mark Blink
             if (0 <= blinkidx && blinkidx < blinkflaglist.Length)
                 result.Blink = blinkflaglist[blinkidx];
@@ -117,7 +114,7 @@ namespace Pk3DSRNGTool
             int min = (int)Math.Floor(num) / 60;
             num -= min * 60;
             string output = hour > 0 ? hour.ToString() + ":" : "";
-            output += (output == "" && min == 0 ? "" : min.ToString() + ":");
+            output += (output == "" && min == 0 ? "" : min.ToString("D2") + ":");
             output += output == "" ? num.ToString("F3") : num.ToString("00.000");
             return output;
         }

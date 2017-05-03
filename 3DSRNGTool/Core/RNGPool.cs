@@ -84,7 +84,7 @@ namespace Pk3DSRNGTool.Core
             int frameshift = getframeshift();
             var result = getresult7();
             (result as Result7).RandNum = RandList64[0];
-            (result as Result7).frameshift = frameshift;
+            (result as Result7).FrameDelayUsed = frameshift;
             if (SolLunaReset) modelnumber = 7;
             return result;
         }

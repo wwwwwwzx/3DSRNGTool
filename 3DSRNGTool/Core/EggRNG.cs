@@ -2,12 +2,12 @@
 {
     public abstract class EggRNG : IPKM, IGenerator
     {
-        public short TSV { get; set; }
+        public ushort TSV { get; set; }
         public int[] MaleIVs { get; set; }
         public int[] FemaleIVs { get; set; }
         public byte MaleItem { get; set; }
         public byte FemaleItem { get; set; }
-        public byte InheritAbilty { get; set; }
+        public byte InheritAbility { get; set; }
 
         public bool ShinyCharm, MMethod, NidoType;
 

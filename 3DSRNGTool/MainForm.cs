@@ -647,12 +647,12 @@ namespace Pk3DSRNGTool
             e.Gender = (byte)Event_Gender.SelectedIndex;
             e.IsEgg = IsEgg.Checked;
             if (e.YourID)
-                e.TSV = (uint)TSV.Value;
+                e.TSV = (ushort)TSV.Value;
             else
             {
-                e.TID = (int)Event_TID.Value;
-                e.SID = (int)Event_SID.Value;
-                e.TSV = (uint)(e.TID ^ e.SID) >> 4;
+                e.TID = (ushort)Event_TID.Value;
+                e.SID = (ushort)Event_SID.Value;
+                e.TSV = (ushort)((e.TID ^ e.SID) >> 4);
                 e.PID = (uint)Event_PID.Value;
             }
             e.GetGenderSetting();
@@ -704,12 +704,12 @@ namespace Pk3DSRNGTool
             setting.MaleItem = (byte)M_Items.SelectedIndex;
             setting.FemaleItem = (byte)F_Items.SelectedIndex;
             setting.ShinyCharm = ShinyCharm.Checked;
-            setting.TSV = (short)TSV.Value;
+            setting.TSV = (ushort)TSV.Value;
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
             setting.RandomGender = FuncUtil.IsRandomGender((int)Egg_GenderRatio.SelectedValue);
             (setting as Egg7).Homogeneous = Homogeneity.Checked;
             (setting as Egg7).FemaleIsDitto = F_ditto.Checked;
-            setting.InheritAbilty = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
+            setting.InheritAbility = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
             setting.NidoType = NidoType.Checked;
 
@@ -783,7 +783,7 @@ namespace Pk3DSRNGTool
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
         private static Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
 
-        private DataGridViewRow getRow(int i, RNGResult result, int eggnum = -1)
+        private DataGridViewRow getRow(int i, RNGResult result, int eggnum = -1, int time = -1)
         {
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV);
@@ -793,7 +793,7 @@ namespace Pk3DSRNGTool
                 true_nature = ((result as EggResult)?.BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
             string EggNum = eggnum > 0 ? eggnum.ToString() : "";
             string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
-            string delay = (result as Result7)?.frameshift.ToString("+#;-#;0") ?? "";
+            string delay = (result as Result7)?.FrameDelayUsed.ToString("+#;-#;0") ?? "";
             byte blink = (result as Result7)?.Blink ?? 0;
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
@@ -808,7 +808,6 @@ namespace Pk3DSRNGTool
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
-            int time = (result as Result7)?.realtime ?? -1;
             string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") : (i - Standard).ToString("+#;-#;0");
             string realtime = FuncUtil.Convert2timestr(time > -1 ? time / 30.0 : i / 60.0);
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
@@ -1015,11 +1014,11 @@ namespace Pk3DSRNGTool
                     if (i <= min || i > max)
                         continue;
 
-                    FuncUtil.MarkResults(result, i - min - 1, frametime);
+                    FuncUtil.MarkResults(result, i - min - 1);
 
                     if (!filter.CheckResult(result))
                         continue;
-                    dgvrowlist.Add(getRow(i - 1, result));
+                    dgvrowlist.Add(getRow(i - 1, result, time: frametime));
                 }
                 while (frameadvance > 0);
                 if (dgvrowlist.Count > 100000) break;
@@ -1054,7 +1053,7 @@ namespace Pk3DSRNGTool
                 RNGPool.CopyStatus(status);
 
                 var result = RNGPool.Generate7() as Result7;
-                FuncUtil.MarkResults(result, i, i);
+                FuncUtil.MarkResults(result, i);
 
                 frameadvance = status.NextState();
                 frame += frameadvance;
@@ -1064,7 +1063,7 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
 
-                dgvrowlist.Add(getRow(Currentframe, result));
+                dgvrowlist.Add(getRow(Currentframe, result, time: i));
 
                 if (dgvrowlist.Count > 100000)
                     break;

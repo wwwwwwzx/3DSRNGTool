@@ -8,8 +8,6 @@ namespace Pk3DSRNGTool
         public byte Blink;
         public ulong RandNum;
         public byte Clock;
-        public int frameshift;
-
-        public int realtime;
+        public int FrameDelayUsed;
     }
 }

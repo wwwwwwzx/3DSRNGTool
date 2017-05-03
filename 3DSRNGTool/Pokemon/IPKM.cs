@@ -6,9 +6,9 @@
         public short Species { get; set; }
         public byte Form { get; set; }
 
-        public byte Ability { get; set; }
-        public byte Nature { get; set; }
-        public byte Gender { get; set; }
+        public virtual byte Ability { get; set; }
+        public virtual byte Nature { get; set; }
+        public virtual byte Gender { get; set; }
 
         public int[] IVs { get; set; }
         public byte Level { get; set; }
