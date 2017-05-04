@@ -118,9 +118,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 252, Level = 5, Syncable = false,}, // Treeko
-                    new PKM6 { Gift = true, Species = 255, Level = 5, Syncable = false,}, // Torchic
-                    new PKM6 { Gift = true, Species = 258, Level = 5, Syncable = false,}, // Mudkip
+                    new PKM6 { Gift = true, Species = 252, Level = 5, Delay = 187, Syncable = false,}, // Treeko
+                    new PKM6 { Gift = true, Species = 255, Level = 5, Delay = 139, Syncable = false,}, // Torchic
+                    new PKM6 { Gift = true, Species = 258, Level = 5, Delay = 139, Syncable = false,}, // Mudkip
             
                     new PKM6 { Gift = true, Species = 152, Level = 5, }, // Chikorita
                     new PKM6 { Gift = true, Species = 155, Level = 5, }, // Cyndaquil
