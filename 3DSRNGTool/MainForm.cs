@@ -567,7 +567,7 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
 
                 if (method < 3 || MainRNGEgg.Checked)
-                    Standard = CalcFrame((int)Frame_min.Value, (int)TargetFrame.Value)[0] * 2;
+                    Standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
             }
             if (Gen6)
             {
@@ -1037,7 +1037,7 @@ namespace Pk3DSRNGTool
 
                     frameadvance--;
                     i++;
-                    if (i <= min || i > max)
+                    if (i <= min || i > max + 1)
                         continue;
 
                     FuncUtil.MarkResults(result, i - min - 1);
