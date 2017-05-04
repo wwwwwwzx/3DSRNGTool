@@ -106,7 +106,7 @@ dgv_rand = Rand#
 dgv_rand64 = Random Number
 dgv_PID = PID
 dgv_EC = EC
-dgv_time = Real Time/s
+dgv_time = Real Time
 ---------------------TabPage2----------------------------------
 EventSetting = Event Setting
 Event_IV_Fix0 = HP

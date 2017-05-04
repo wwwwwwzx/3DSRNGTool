@@ -106,7 +106,7 @@ dgv_rand = 乱数值
 dgv_rand64 = 乱数值
 dgv_PID = PID
 dgv_EC = 加密常数
-dgv_time = 时间/s
+dgv_time = 时间
 ---------------------TabPage2----------------------------------
 EventSetting = 配信设置
 Event_IV_Fix0 = HP

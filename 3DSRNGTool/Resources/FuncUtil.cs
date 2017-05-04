@@ -91,7 +91,7 @@ namespace Pk3DSRNGTool
                 }
             }
         }
-        
+
         private static byte Checkafter(List<ulong> Randlist)
         {
             if (Randlist.Skip(1).Take(Randlist.Count - 2).Any(r => (r & 0x7F) == 0))
@@ -107,16 +107,17 @@ namespace Pk3DSRNGTool
                 result.Blink = blinkflaglist[blinkidx];
         }
 
-        public static string Convert2timestr(double num)
+        public static string Convert2timestr(double sec)
         {
-            int hour = (int)Math.Floor(num) / 3600;
-            num -= hour * 3600;
-            int min = (int)Math.Floor(num) / 60;
-            num -= min * 60;
-            string output = hour > 0 ? hour.ToString() + ":" : "";
-            output += (output == "" && min == 0 ? "" : min.ToString("D2") + ":");
-            output += output == "" ? num.ToString("F3") : num.ToString("00.000");
-            return output;
+            if (sec < 60)
+                return sec.ToString("F3") + "s";
+            int min = (int)Math.Floor(sec) / 60;
+            sec -= 60 * min;
+            if (min < 60)
+                return min.ToString() + "m " + sec.ToString("00.000s");
+            int hour = min / 60;
+            min -= 60 * hour;
+            return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
         #endregion
     }
