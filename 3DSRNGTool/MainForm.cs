@@ -661,6 +661,7 @@ namespace Pk3DSRNGTool
             EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
             e.Species = (short)Event_Species.SelectedIndex;
             e.Form = (byte)Event_Forme.SelectedIndex;
+            e.Level = (byte)Filter_Lv.Value;
             e.IVs = (int[])IVs.Clone();
             e.IVsCount = (byte)IVsCount.Value;
             e.YourID = YourID.Checked;

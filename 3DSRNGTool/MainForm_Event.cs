@@ -36,22 +36,17 @@ namespace Pk3DSRNGTool
 
         private bool Event_RawData(byte[] Data)
         {
-            byte CardType = Data[0x51];
-            if (CardType != 0) return false;
+            if (Data[0x51] != 0) return false; // CardType
             byte[] PIDType_Order = new byte[] { 3, 0, 2, 1 };
-            byte[] Stats_index = new byte[] { 0xAF, 0xB0, 0xB1, 0xB3, 0xB4, 0xB2 };
-            ushort spec = BitConverter.ToUInt16(Data, 0x82);
-            Event_Species.SelectedIndex = spec;
-            RNGMethod.SelectedIndex = 1; // Switch to Event
-            byte form = Data[0x84];
+            Event_Species.SelectedIndex = BitConverter.ToUInt16(Data, 0x82);
+            Event_Forme.SelectedIndex = Data[0x84];
             AbilityLocked.Checked = Data[0xA2] < 3;
             Event_Ability.SelectedIndex = AbilityLocked.Checked ? Data[0xA2] + 1 : Data[0xA2] - 3;
             NatureLocked.Checked = Data[0xA0] != 0xFF;
             Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] + 1 : 0;
             GenderLocked.Checked = Data[0xA1] != 3;
             Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
-            if (Data[0xA1] == 2) GenderRatio.SelectedIndex = 0;
-            switch (Data[Stats_index[0]])
+            switch (Data[0xAF])
             {
                 case 0xFE: IVsCount.Value = 3; break;
                 case 0xFD: IVsCount.Value = 2; break;
@@ -60,9 +55,9 @@ namespace Pk3DSRNGTool
             }
             for (int i = 0; i < 6; i++)
             {
-                if (Data[Stats_index[i]] < 0xFD)
+                if (Data[0xAF + Pokemon.Reorder2[i]] < 0xFD)
                 {
-                    EventIV[i].Value = Data[Stats_index[i]];
+                    EventIV[i].Value = Data[0xAF + Pokemon.Reorder2[i]];
                     EventIVLocked[i].Checked = true;
                 }
                 else
@@ -105,7 +100,7 @@ namespace Pk3DSRNGTool
         private void DragDropWC(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files.Length == 1 && !ReadWc(files[0]))
+            if (files.Length > 0 && !ReadWc(files[0]))
                 Error(FILEERRORSTR[lindex]);
         }
 
@@ -159,6 +154,7 @@ namespace Pk3DSRNGTool
             int species = Event_Species.SelectedIndex;
             if (species > 0)
             {
+                RNGMethod.SelectedIndex = 1;
                 SetPersonalInfo(species);
                 int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(species, 0).FormeCount;
                 if (Pokemon.BattleForms.Contains(species))
