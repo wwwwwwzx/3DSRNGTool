@@ -11,67 +11,77 @@ namespace Pk3DSRNGTool
         // Reader
         private bool ReadWc(string filename)
         {
-            if (Path.GetExtension(filename) != (Gen6 ? ".wc6" : ".wc7"))
-                return false;
             BinaryReader br = new BinaryReader(File.Open(filename, FileMode.Open));
             try
             {
-                byte[] Data = br.ReadBytes(0x108);
-                byte CardType = Data[0x51];
-                if (CardType != 0) return false;
-                byte[] PIDType_Order = new byte[] { 3, 0, 2, 1 };
-                byte[] Stats_index = new byte[] { 0xAF, 0xB0, 0xB1, 0xB3, 0xB4, 0xB2 };
-                ushort sp = BitConverter.ToUInt16(Data, 0x82);
-                Event_Species.SelectedIndex = sp;
-                RNGMethod.SelectedIndex = 1; // Switch to Event
-                byte form = Data[0x84];
-                SetPersonalInfo(sp, form); // Set pkm personal rule before wc6 rule
-                AbilityLocked.Checked = Data[0xA2] < 3;
-                Event_Ability.SelectedIndex = AbilityLocked.Checked ? Data[0xA2] + 1 : Data[0xA2] - 3;
-                NatureLocked.Checked = Data[0xA0] != 0xFF;
-                Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] + 1 : 0;
-                GenderLocked.Checked = Data[0xA1] != 3;
-                Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
-                if (Data[0xA1] == 2) GenderRatio.SelectedIndex = 0;
-                Fix3v.Checked = Data[Stats_index[0]] == 0xFE;
-                switch (Data[Stats_index[0]])
+                bool valid;
+                if (filename.IndexOf("full") > 0) // Trim full wc file
                 {
-                    case 0xFE: IVsCount.Value = 3; break;
-                    case 0xFD: IVsCount.Value = 2; break;
-                    // Maybe more rules here
-                    default: IVsCount.Value = 0; break;
+                    br.ReadBytes(0x208);
+                    filename = filename.Remove(filename.IndexOf("full"), 4);
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    if (Data[Stats_index[i]] < 0xFD)
-                    {
-                        EventIV[i].Value = Data[Stats_index[i]];
-                        EventIVLocked[i].Checked = true;
-                    }
-                    else
-                    {
-                        EventIV[i].Value = 0;
-                        EventIVLocked[i].Checked = false;
-                    }
-                }
-                Event_TID.Value = BitConverter.ToUInt16(Data, 0x68);
-                Event_SID.Value = BitConverter.ToUInt16(Data, 0x6A);
-                Event_PIDType.SelectedIndex = PIDType_Order[Data[0xA3]];
-                if (Event_PIDType.SelectedIndex == 3)
-                    Event_PID.Value = BitConverter.ToUInt32(Data, 0xD4);
-                Event_EC.Value = BitConverter.ToUInt32(Data, 0x70);
-                if (Event_EC.Value > 0) Event_EC.Visible = L_EC.Visible = true;
-                IsEgg.Checked = Data[0xD1] == 1;
-                YourID.Checked = Data[0xB5] == 3;
-                OtherInfo.Checked = true;
-                Filter_Lv.Value = Data[0xD0];
+                if (Path.GetExtension(filename) != (Gen6 ? ".wc6" : ".wc7"))
+                    valid = false;
+                else
+                    valid = Event_RawData(br.ReadBytes(0x108));
                 br.Close();
+                return valid;
             }
             catch
             {
                 br.Close();
                 return false;
             }
+        }
+
+        private bool Event_RawData(byte[] Data)
+        {
+            byte CardType = Data[0x51];
+            if (CardType != 0) return false;
+            byte[] PIDType_Order = new byte[] { 3, 0, 2, 1 };
+            byte[] Stats_index = new byte[] { 0xAF, 0xB0, 0xB1, 0xB3, 0xB4, 0xB2 };
+            ushort spec = BitConverter.ToUInt16(Data, 0x82);
+            Event_Species.SelectedIndex = spec;
+            RNGMethod.SelectedIndex = 1; // Switch to Event
+            byte form = Data[0x84];
+            AbilityLocked.Checked = Data[0xA2] < 3;
+            Event_Ability.SelectedIndex = AbilityLocked.Checked ? Data[0xA2] + 1 : Data[0xA2] - 3;
+            NatureLocked.Checked = Data[0xA0] != 0xFF;
+            Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] + 1 : 0;
+            GenderLocked.Checked = Data[0xA1] != 3;
+            Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
+            if (Data[0xA1] == 2) GenderRatio.SelectedIndex = 0;
+            switch (Data[Stats_index[0]])
+            {
+                case 0xFE: IVsCount.Value = 3; break;
+                case 0xFD: IVsCount.Value = 2; break;
+                // Maybe more rules here
+                default: IVsCount.Value = 0; break;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                if (Data[Stats_index[i]] < 0xFD)
+                {
+                    EventIV[i].Value = Data[Stats_index[i]];
+                    EventIVLocked[i].Checked = true;
+                }
+                else
+                {
+                    EventIV[i].Value = 0;
+                    EventIVLocked[i].Checked = false;
+                }
+            }
+            Event_TID.Value = BitConverter.ToUInt16(Data, 0x68);
+            Event_SID.Value = BitConverter.ToUInt16(Data, 0x6A);
+            Event_PIDType.SelectedIndex = PIDType_Order[Data[0xA3]];
+            if (Event_PIDType.SelectedIndex == 3)
+                Event_PID.Value = BitConverter.ToUInt32(Data, 0xD4);
+            Event_EC.Value = BitConverter.ToUInt32(Data, 0x70);
+            if (Event_EC.Value > 0) Event_EC.Visible = L_EC.Visible = true;
+            IsEgg.Checked = Data[0xD1] == 1;
+            YourID.Checked = Data[0xB5] == 3;
+            OtherInfo.Checked = true;
+            Filter_Lv.Value = Data[0xD0];
             return true;
         }
 
@@ -79,7 +89,8 @@ namespace Pk3DSRNGTool
         private void B_Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Gen6/7 Wonder Card Files|*.wc6,*.wc7";
+            openFileDialog1.Filter = Gen6 ? "6th Gen Wonder Card File|*.wc6|Full Wonder Card File|*.wc6full"
+                                          : "7th Gen Wonder Card File|*.wc7|Full Wonder Card File|*.wc7full";
             openFileDialog1.Title = "Select a Wonder Card File";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 if (!ReadWc(openFileDialog1.FileName))
@@ -139,7 +150,7 @@ namespace Pk3DSRNGTool
         private void Event_PIDType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!OtherInfo.Checked)
-                Event_EC.Value = (Event_PIDType.SelectedIndex == 3) ? 0x12 : 0;
+                Event_EC.Value = Event_PIDType.SelectedIndex == 3 ? 0x12 : 0;
             L_EC.Visible = Event_EC.Visible = L_PID.Visible = Event_PID.Visible = Event_PIDType.SelectedIndex == 3;
         }
 
