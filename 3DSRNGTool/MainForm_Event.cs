@@ -23,7 +23,7 @@ namespace Pk3DSRNGTool
                 byte[] Stats_index = new byte[] { 0xAF, 0xB0, 0xB1, 0xB3, 0xB4, 0xB2 };
                 ushort sp = BitConverter.ToUInt16(Data, 0x82);
                 Event_Species.SelectedIndex = sp;
-                FindSetting(151); // Switch to Event, set to Mew
+                RNGMethod.SelectedIndex = 1; // Switch to Event
                 byte form = Data[0x84];
                 SetPersonalInfo(sp, form); // Set pkm personal rule before wc6 rule
                 AbilityLocked.Checked = Data[0xA2] < 3;
@@ -149,7 +149,9 @@ namespace Pk3DSRNGTool
             if (species > 0)
             {
                 SetPersonalInfo(species);
-                int formcount = PersonalTable.ORAS.getFormeEntry(species, 0).FormeCount;
+                int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(species, 0).FormeCount;
+                if (new[] { Pokemon.BattleForms, Pokemon.BattleMegas, Pokemon.BattlePrimals }.Any(arr => arr.Contains(species)))
+                    formcount = 1;
                 L_Forme.Visible = Event_Forme.Visible = formcount > 1;
                 if (formcount == Event_Forme.Items.Count)
                     return;

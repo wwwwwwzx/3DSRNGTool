@@ -4054,6 +4054,7 @@
             // 
             // DGV
             // 
+            this.DGV.AllowDrop = true;
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToResizeColumns = false;
             this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -4122,6 +4123,8 @@
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(1098, 381);
             this.DGV.TabIndex = 89;
+            this.DGV.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
+            this.DGV.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
             // dgv_eggnum
             // 
@@ -4358,6 +4361,7 @@
             // 
             // DGV_ID
             // 
+            this.DGV_ID.AllowDrop = true;
             this.DGV_ID.AllowUserToAddRows = false;
             this.DGV_ID.AllowUserToResizeColumns = false;
             this.DGV_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -4381,7 +4385,8 @@
             this.DGV_ID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_ID.Size = new System.Drawing.Size(1098, 381);
             this.DGV_ID.TabIndex = 92;
-            this.DGV_ID.Visible = false;
+            this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
+            this.DGV_ID.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
             // dgv_IDframe
             // 

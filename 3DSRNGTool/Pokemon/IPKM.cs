@@ -13,7 +13,7 @@
         public int[] IVs { get; set; }
         public byte Level { get; set; }
 
-        public PKHeX.Core.PersonalInfo info => GameVersion.Gen6.Contains(Version) ? PersonalTable.ORAS.getFormeEntry(Species, Form) : PersonalTable.SM.getFormeEntry(Species, Form);
+        public PKHeX.Core.PersonalInfo info => (GameVersion.Gen6.Contains(Version) ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(Species, Form);
         public bool IV3 => info.EggGroups[0] == 0xF;
     }
 }
