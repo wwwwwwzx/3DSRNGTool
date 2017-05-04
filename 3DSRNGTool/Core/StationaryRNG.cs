@@ -27,7 +27,7 @@
             AlwaysSync = PM.AlwaysSync;
             IV3 = PM.IV3;
             IsShinyLocked = PM.ShinyLocked;
-            Ability = PM.Ability;
+            Ability = (byte)((PM.Ability >> 1) + 1);
             IVs = PM.IVs;
             Level = PM.Level;
             Gender = PM.SettingGender;

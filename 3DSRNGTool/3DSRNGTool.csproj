@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>FollowmeTogetic.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\FollowmeTogetic.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -223,7 +223,7 @@
     <None Include="Resources\text_Items_en.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FollowmeTogetic.ico" />
+    <Content Include="Resources\FollowmeTogetic.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

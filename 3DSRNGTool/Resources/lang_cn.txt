@@ -76,6 +76,7 @@ L_NPC = NPC数
 AroundTarget = ±100帧
 RB_FrameRange = 帧数范围
 L_StartingPoint = <-- 时间线起点
+B_ResetFrame = 默认
 CreateTimeline = 生成时间线/秒
 ---
 ConsiderDelay = 考虑延迟
@@ -155,7 +156,7 @@ F_Ditto = 母方
 MM = 父母语言不同
 B_Fast = 快速模式
 ConsiderOtherTSV = 考虑其他TSV
-B_TSVList = 编辑TSV列表
+B_TSVList = TSV列表
 MainRNGEgg = 主乱数蛋 (PID)
 Homogeneity = 父母同图鉴
 NidoType = 尼多型

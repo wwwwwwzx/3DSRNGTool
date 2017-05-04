@@ -103,6 +103,7 @@ namespace Pk3DSRNGTool
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
             }
+            if (UB) IV3[0] = true; // For UB Template
         }
 
         public string getitemstr(int rand)

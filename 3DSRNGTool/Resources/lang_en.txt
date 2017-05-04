@@ -75,6 +75,7 @@ CalcList = Calculate
 L_NPC = # of NPCs
 AroundTarget = ±100 Frame
 RB_FrameRange = Frame Range
+B_ResetFrame = Default
 L_StartingPoint = <-- StartingFrame
 CreateTimeline = Create Timeline/s
 ---

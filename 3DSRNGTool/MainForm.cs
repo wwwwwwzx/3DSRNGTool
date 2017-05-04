@@ -256,8 +256,14 @@ namespace Pk3DSRNGTool
             CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
         }
 
+        private void Fix3v_CheckedChanged(object sender, EventArgs e)
+        {
+            PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
+        }
+
         private void Reset_Click(object sender, EventArgs e)
         {
+            PerfectIVs.Value = method == 0 && Fix3v.Checked ? 3 : 0;
             IVlow = new int[6];
             IVup = new[] { 31, 31, 31, 31, 31, 31 };
             Stats = new int[6];
@@ -337,6 +343,7 @@ namespace Pk3DSRNGTool
                 }
             }
 
+            SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
             L_Ball.Visible = Ball.Visible = Gen7 && method == 3;
             L_Slot.Visible = Slot.Visible = method == 2;
             ByIVs.Enabled = ByStats.Enabled = method < 3;
@@ -369,6 +376,17 @@ namespace Pk3DSRNGTool
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
 
             if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
+        }
+
+        private void B_ResetFrame_Click(object sender, EventArgs e)
+        {
+            if (Gen7)
+                Frame_min.Value = method < 3 || MainRNGEgg.Checked ? 418 : method == 4 ? 1012 : 0;
+            else
+                Frame_min.Value = 0;
+            TargetFrame.Value = Frame_max.Value = 5000;
+            if (0 == method || method == 2)
+                Poke_SelectedIndexChanged(null, null);
         }
 
         private void NPC_ValueChanged(object sender, EventArgs e)
@@ -626,7 +644,7 @@ namespace Pk3DSRNGTool
                 (setting as Stationary7).blinkwhensync = BlinkWhenSync.Checked;
             else
                 (setting as Stationary6).Ability = (byte)(AbilityLocked.Checked ? Ability.SelectedIndex + 1 : 0);
-            
+
             return setting;
         }
 
@@ -800,31 +818,29 @@ namespace Pk3DSRNGTool
             row.CreateCells(DGV);
 
             string true_nature = StringItem.naturestr[result.Nature];
-            if (((result as EggResult)?.BE_InheritParents ?? null) != null)
-                true_nature = ((result as EggResult)?.BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
-            string EggNum = eggnum > 0 ? eggnum.ToString() : "";
-            string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0") ?? "";
-            string delay = (result as Result7)?.FrameDelayUsed.ToString("+#;-#;0") ?? "";
+            if (null != ((result as EggResult)?.BE_InheritParents))
+                true_nature = ((result as EggResult).BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
+            string EggNum = eggnum > 0 ? eggnum.ToString() : null;
+            string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0");
+            string delay = (result as Result7)?.FrameDelayUsed.ToString("+#;-#;0");
             byte blink = (result as Result7)?.Blink ?? 0;
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
             string SynchronizeFlag = result.Synchronize ? "O" : "X";
             string PSV = result.PSV.ToString("D4");
 
-            string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString() ?? "";
+            string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString();
             string Lv = result.Level == 0 ? "-" : result.Level.ToString();
-            string item = (result as WildResult)?.ItemStr ?? "";
+            string item = (result as WildResult)?.ItemStr;
 
             string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? (result as MainRNGEgg)?.Ball ?? 0];
-            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8") ?? "";
-            string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
-            string PID = result.PID.ToString("X8");
-            string EC = result.EC.ToString("X8");
-            string shift = time > -1 ? (time - Standard).ToString("+#;-#;0") : "";
-            string realtime = time > -1 ? FuncUtil.Convert2timestr(time / 60.0) : "";
-            row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
-            row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
+            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8");
+            string rand64str = (result as Result7)?.RandNum.ToString("X16");
+            string shift = time > -1 ? (time - Standard).ToString("+#;-#;0") : null;
+            string realtime = time > -1 ? FuncUtil.Convert2timestr(time / 60.0) : null;
+            row.Cells[02].Style.Alignment =                                           // Shift
+            row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight; // Realtime
 
-            string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status ?? "";
+            string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status;
 
             int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
 
@@ -833,13 +849,13 @@ namespace Pk3DSRNGTool
                 Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability], delay,
                 slots, Lv, ball, item,
-                randstr, rand64str, PID, EC, seed, realtime
+                randstr, rand64str, result.PID.ToString("X8"), result.EC.ToString("X8"), seed, realtime
                 );
 
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
 
-            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as MainRNGEgg)?.InheritMaleIV ?? null;
+            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as MainRNGEgg)?.InheritMaleIV;
             const int ivstart = 5;
             if (ivsflag != null)
             {
@@ -974,12 +990,11 @@ namespace Pk3DSRNGTool
                     Search7_Egg();
                 return;
             }
+            // method 0-2 & MainRNGEgg
             if (CreateTimeline.Checked)
-            {
-                Search7_Timeline(); // method 0-2
-                return;
-            }
-            Search7_Normal();
+                Search7_Timeline();
+            else
+                Search7_Normal();
         }
 
         private void Search7_Normal()

@@ -106,6 +106,7 @@
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.B_ResetFrame = new System.Windows.Forms.Button();
             this.L_StartingPoint = new System.Windows.Forms.Label();
             this.timedelaypanel = new System.Windows.Forms.Panel();
             this.L_Correction = new System.Windows.Forms.Label();
@@ -1373,6 +1374,7 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.B_ResetFrame);
             this.RNGInfo.Controls.Add(this.L_StartingPoint);
             this.RNGInfo.Controls.Add(this.timedelaypanel);
             this.RNGInfo.Controls.Add(this.EggPanel);
@@ -1393,6 +1395,16 @@
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
+            // 
+            // B_ResetFrame
+            // 
+            this.B_ResetFrame.Location = new System.Drawing.Point(156, 22);
+            this.B_ResetFrame.Name = "B_ResetFrame";
+            this.B_ResetFrame.Size = new System.Drawing.Size(53, 25);
+            this.B_ResetFrame.TabIndex = 100;
+            this.B_ResetFrame.Text = "重置";
+            this.B_ResetFrame.UseVisualStyleBackColor = true;
+            this.B_ResetFrame.Click += new System.EventHandler(this.B_ResetFrame_Click);
             // 
             // L_StartingPoint
             // 
@@ -1896,6 +1908,7 @@
             this.Fix3v.TabIndex = 1;
             this.Fix3v.Text = "固定3V";
             this.Fix3v.UseVisualStyleBackColor = true;
+            this.Fix3v.CheckedChanged += new System.EventHandler(this.Fix3v_CheckedChanged);
             // 
             // TP_EventRNG
             // 
@@ -4963,6 +4976,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.CheckBox Sta_AbilityLocked;
         private System.Windows.Forms.ComboBox Sta_Ability;
+        private System.Windows.Forms.Button B_ResetFrame;
     }
 }
 

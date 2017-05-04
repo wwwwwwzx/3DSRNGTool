@@ -9,8 +9,6 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
-        public byte Ability;
-
         public override RNGResult Generate()
         {
             Result6 rt = new Result6();
