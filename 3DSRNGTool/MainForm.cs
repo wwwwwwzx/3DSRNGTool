@@ -145,7 +145,7 @@ namespace Pk3DSRNGTool
                 Locationlist.Clear(); // not impled
             else if (Gen7)
             {
-                var locationlist = iPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (iPM as PKMW7)?.Location ?? null;
+                var locationlist = iPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (iPM as PKMW7)?.Location;
                 if (locationlist == null) return;
                 Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
             }
@@ -565,15 +565,14 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * 100;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
-
                 if (method < 3 || MainRNGEgg.Checked)
                     Standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
             }
             if (Gen6)
             {
-                RNGPool.Considerdelay = ConsiderDelay.Checked;
                 RNGPool.DelayTime = (int)Timedelay.Value;
-                buffersize += RNGPool.DelayTime;
+                if (RNGPool.Considerdelay = ConsiderDelay.Checked)
+                    buffersize += RNGPool.DelayTime;
                 if (method < 3)
                     Standard = (int)TargetFrame.Value - (int)Frame_min.Value;
             }
@@ -889,9 +888,10 @@ namespace Pk3DSRNGTool
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(DGV_ID);
             row.SetValues(
-                i, (rt as ID7)?.G7TID.ToString("D6") ?? "", rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString() ?? "", (rt as ID6)?.RandNum.ToString("X8") ?? "", (rt as ID7)?.RandNum.ToString("X16") ?? "",
-                (rt as ID6)?.Status ?? ""
+                i, (rt as ID7)?.G7TID.ToString("D6"), rt.TSV.ToString("D4"),
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString(), 
+                (rt as ID6)?.RandNum.ToString("X8"), (rt as ID7)?.RandNum.ToString("X16"),
+                (rt as ID6)?.Status
                 );
             return row;
         }
@@ -960,7 +960,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
-                var result = new ID6(str: (rng as RNGState)?.CurrentState() ?? null, rand: rng.Nextuint());
+                var result = new ID6(str: (rng as RNGState)?.CurrentState(), rand: rng.Nextuint());
                 if (!filter.CheckResult(result))
                     continue;
                 if (tweak)

@@ -150,7 +150,7 @@ namespace Pk3DSRNGTool
             {
                 SetPersonalInfo(species);
                 int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(species, 0).FormeCount;
-                if (new[] { Pokemon.BattleForms, Pokemon.BattleMegas, Pokemon.BattlePrimals }.Any(arr => arr.Contains(species)))
+                if (Pokemon.BattleForms.Contains(species))
                     formcount = 1;
                 L_Forme.Visible = Event_Forme.Visible = formcount > 1;
                 if (formcount == Event_Forme.Items.Count)

@@ -117,28 +117,34 @@ namespace Pk3DSRNGTool
             555, // Darmanitan
             648, // Meloetta
             681, // Aegislash
-            719, // Xerneas
+            716, // Xerneas
             746, // Wishiwashi
             778, // Mimikyu
-        };
-        public static readonly int[] BattleMegas =
-        {
-            // XY
+
+            // XY Mega
             3,6,9,65,80,
             115,127,130,142,150,181,
             212,214,229,248,282,
             303,306,308,310,354,359,380,381,
             445,448,460,
 
-            // AO
+            // AO Mega
             15,18,94,
             208,254,257,260,
             302,319,323,334,362,373,376,384,
             428,475,
             531,
-            719
+            719,
+
+            // Primal
+            382, 383,
+
+            // Others
+            492, // Shaymin
+            647, // Keldeo
+            676, // Furfrou
+            720, // Hoopa
         };
-        public static readonly int[] BattlePrimals = { 382, 383 };
         #endregion
     }
 }

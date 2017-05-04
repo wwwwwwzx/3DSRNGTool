@@ -85,7 +85,7 @@ namespace Pk3DSRNGTool
             }
 
             // IVs
-            egg.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
+            egg.IVs = new[] { -1, -1, -1, -1, -1, -1 };
             for (int j = 0; j < 6; j++)
             {
                 egg.IVs[j] = (int)(getrand & 0x1F);
