@@ -157,6 +157,9 @@ namespace Pk3DSRNGTool
         #region TimerCalculateFunction
         private int[] CalcFrame(int min, int max)
         {
+            if (min > max)
+                return CalcFrame(max, min).Select(t => -t).ToArray();
+               
             uint InitialSeed = (uint)Seed.Value;
             SFMT sfmt = new SFMT(InitialSeed);
 

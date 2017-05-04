@@ -39,6 +39,7 @@ L_GenderRatio = Gender Ratio
 L_SyncNature = Sync Nature
 Fix3v = 3IVs
 BlinkWhenSync = Blink When Sync
+Sta_AbilityLocked = Ability Locked
 L_Rate = Rate
 L_Lv = Level Range
 ---

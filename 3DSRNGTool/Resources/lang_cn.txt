@@ -41,6 +41,7 @@ L_SyncNature = 同步性格
 L_Rate = 出现率
 L_Lv = 等级范围
 BlinkWhenSync = 同步时眨眼
+Sta_AbilityLocked = 固定特性
 ---
 Filters = 个体筛选
 L_H = HP

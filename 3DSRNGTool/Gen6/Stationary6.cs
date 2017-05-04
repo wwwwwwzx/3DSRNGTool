@@ -9,19 +9,20 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
+        public byte Ability;
+
         public override RNGResult Generate()
         {
             Result6 rt = new Result6();
             rt.Level = Level;
 
+            Advance(1);
+
             //Sync
             if (AlwaysSync)
                 rt.Synchronize = true;
             else
-                rt.Synchronize = rand(100) >= 50;
-
-            if (!AlwaysSync)
-                Advance(60);
+                Advance(60); // Synchro where are you...
 
             rt.Synchronize &= Synchro_Stat < 25;
 
@@ -48,7 +49,7 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = (byte)((getrand >> 31) + 1);
+            rt.Ability = (byte)(Ability == 0 ? (getrand >> 31) + 1 : Ability);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : rand(25));

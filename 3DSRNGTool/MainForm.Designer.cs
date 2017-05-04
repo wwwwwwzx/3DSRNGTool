@@ -132,6 +132,8 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.Sta_AbilityLocked = new System.Windows.Forms.CheckBox();
+            this.Sta_Ability = new System.Windows.Forms.ComboBox();
             this.BlinkWhenSync = new System.Windows.Forms.CheckBox();
             this.EnctrPanel = new System.Windows.Forms.Panel();
             this.L_Category = new System.Windows.Forms.Label();
@@ -1727,6 +1729,8 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.Sta_AbilityLocked);
+            this.Sta_Setting.Controls.Add(this.Sta_Ability);
             this.Sta_Setting.Controls.Add(this.BlinkWhenSync);
             this.Sta_Setting.Controls.Add(this.EnctrPanel);
             this.Sta_Setting.Controls.Add(this.ShinyLocked);
@@ -1738,6 +1742,31 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // Sta_AbilityLocked
+            // 
+            this.Sta_AbilityLocked.AutoSize = true;
+            this.Sta_AbilityLocked.Location = new System.Drawing.Point(11, 147);
+            this.Sta_AbilityLocked.Name = "Sta_AbilityLocked";
+            this.Sta_AbilityLocked.Size = new System.Drawing.Size(74, 17);
+            this.Sta_AbilityLocked.TabIndex = 95;
+            this.Sta_AbilityLocked.Text = "固定特性";
+            this.Sta_AbilityLocked.UseVisualStyleBackColor = true;
+            this.Sta_AbilityLocked.CheckedChanged += new System.EventHandler(this.Sta_AbilityLocked_CheckedChanged);
+            this.Sta_AbilityLocked.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
+            // 
+            // Sta_Ability
+            // 
+            this.Sta_Ability.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Sta_Ability.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "H"});
+            this.Sta_Ability.Location = new System.Drawing.Point(120, 143);
+            this.Sta_Ability.Name = "Sta_Ability";
+            this.Sta_Ability.Size = new System.Drawing.Size(62, 21);
+            this.Sta_Ability.TabIndex = 94;
+            this.Sta_Ability.Visible = false;
             // 
             // BlinkWhenSync
             // 
@@ -4932,6 +4961,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
+        private System.Windows.Forms.CheckBox Sta_AbilityLocked;
+        private System.Windows.Forms.ComboBox Sta_Ability;
     }
 }
 

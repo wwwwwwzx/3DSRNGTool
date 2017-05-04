@@ -344,6 +344,7 @@ namespace Pk3DSRNGTool
 
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && method == 3 && !MainRNGEgg.Checked;
 
+            Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
             GB_RNGGEN7ID.Visible =
@@ -429,6 +430,10 @@ namespace Pk3DSRNGTool
             IVInputer.ShowDialog();
         }
 
+        private void Sta_AbilityLocked_CheckedChanged(object sender, EventArgs e)
+        {
+            Sta_Ability.Visible = Sta_AbilityLocked.Checked;
+        }
         #endregion
 
         #region DataEntry
@@ -471,6 +476,9 @@ namespace Pk3DSRNGTool
                 BlinkWhenSync.Checked = !(iPM.AlwaysSync || ((iPM as PKM7)?.NoBlink ?? false));
                 return;
             }
+            if (Gen6 && method == 0)
+                if (Sta_AbilityLocked.Checked = (iPM as PKM6)?.Ability > 0)
+                    Sta_Ability.SelectedIndex = (iPM as PKM6).Ability >> 1; // 1/2/4 -> 0/1/2
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
@@ -494,6 +502,7 @@ namespace Pk3DSRNGTool
                 return;
             }
 
+            Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =
             BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
             ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual;
         }
@@ -540,7 +549,7 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
 
                 if (method < 3 || MainRNGEgg.Checked)
-                    Standard = CalcFrame((int)Frame_min.Value, (int)TargetFrame.Value)[0];
+                    Standard = CalcFrame((int)Frame_min.Value, (int)TargetFrame.Value)[0] * 2;
             }
             if (Gen6)
             {
@@ -548,7 +557,7 @@ namespace Pk3DSRNGTool
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 buffersize += RNGPool.DelayTime;
                 if (method < 3)
-                    Standard = (int)TargetFrame.Value;
+                    Standard = (int)TargetFrame.Value - (int)Frame_min.Value;
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -615,7 +624,9 @@ namespace Pk3DSRNGTool
 
             if (Gen7)
                 (setting as Stationary7).blinkwhensync = BlinkWhenSync.Checked;
-
+            else
+                (setting as Stationary6).Ability = (byte)(AbilityLocked.Checked ? Ability.SelectedIndex + 1 : 0);
+            
             return setting;
         }
 
@@ -808,8 +819,8 @@ namespace Pk3DSRNGTool
             string rand64str = (result as Result7)?.RandNum.ToString("X16") ?? "";
             string PID = result.PID.ToString("X8");
             string EC = result.EC.ToString("X8");
-            string shift = time > -1 ? ((time - Standard) * 2).ToString("+#;-#;0") : (i - Standard).ToString("+#;-#;0");
-            string realtime = FuncUtil.Convert2timestr(time > -1 ? time / 30.0 : i / 60.0);
+            string shift = time > -1 ? (time - Standard).ToString("+#;-#;0") : "";
+            string realtime = time > -1 ? FuncUtil.Convert2timestr(time / 60.0) : "";
             row.Cells[02].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Shift
             row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight;// Realtime
 
@@ -912,7 +923,7 @@ namespace Pk3DSRNGTool
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;
-                dgvrowlist.Add(getRow(i, result));
+                dgvrowlist.Add(getRow(i, result, time: i - min));
                 if (dgvrowlist.Count > 100000)
                     break;
             }
@@ -1018,7 +1029,7 @@ namespace Pk3DSRNGTool
 
                     if (!filter.CheckResult(result))
                         continue;
-                    dgvrowlist.Add(getRow(i - 1, result, time: frametime));
+                    dgvrowlist.Add(getRow(i - 1, result, time: frametime * 2));
                 }
                 while (frameadvance > 0);
                 if (dgvrowlist.Count > 100000) break;
@@ -1063,7 +1074,7 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
 
-                dgvrowlist.Add(getRow(Currentframe, result, time: i));
+                dgvrowlist.Add(getRow(Currentframe, result, time: i * 2));
 
                 if (dgvrowlist.Count > 100000)
                     break;

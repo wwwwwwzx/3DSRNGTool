@@ -60,12 +60,12 @@
                     new PKM6 { Species = 481, Level = 50, }, // Mesprit
                     new PKM6 { Species = 482, Level = 50, }, // Azelf
             
-                    new PKM6 { Species = 483, Level = 50, Version = GameVersion.AS, }, // Dialga
-                    new PKM6 { Species = 484, Level = 50, Version = GameVersion.OR, }, // Palkia
+                    new PKM6 { Species = 483, Level = 50, Delay = 90, Version = GameVersion.AS, }, // Dialga
+                    new PKM6 { Species = 484, Level = 50, Delay = 90, Version = GameVersion.OR, }, // Palkia
                     
                     new PKM6 { Species = 485, Level = 50, }, // Heatran
                     new PKM6 { Species = 486, Level = 50, }, // Regigigas
-                    new PKM6 { Species = 487, Level = 50, }, // Giratina
+                    new PKM6 { Species = 487, Level = 50, Delay = 90, }, // Giratina
                     new PKM6 { Species = 488, Level = 50, }, // Cresselia
                 }
             },
@@ -118,9 +118,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 252, Level = 5, Delay = 187, Syncable = false,}, // Treeko
-                    new PKM6 { Gift = true, Species = 255, Level = 5, Delay = 139, Syncable = false,}, // Torchic
-                    new PKM6 { Gift = true, Species = 258, Level = 5, Delay = 139, Syncable = false,}, // Mudkip
+                    new PKM6 { Gift = true, Species = 252, Level = 5, Delay = 186, Syncable = false,}, // Treeko
+                    new PKM6 { Gift = true, Species = 255, Level = 5, Delay = 138, Syncable = false,}, // Torchic
+                    new PKM6 { Gift = true, Species = 258, Level = 5, Delay = 138, Syncable = false,}, // Mudkip
             
                     new PKM6 { Gift = true, Species = 152, Level = 5, }, // Chikorita
                     new PKM6 { Gift = true, Species = 155, Level = 5, }, // Cyndaquil
@@ -140,17 +140,17 @@
                 Text = "Fossils",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 138, Level = 20, Delay = 81, Syncable = false, }, // Omanyte
-                    new PKM6 { Gift = true, Species = 140, Level = 20, Delay = 81, Syncable = false, }, // Kabuto
-                    new PKM6 { Gift = true, Species = 142, Level = 20, Delay = 81, Syncable = false, }, // Aerodactyl
-                    new PKM6 { Gift = true, Species = 345, Level = 20, Delay = 81, Syncable = false, }, // Lileep
-                    new PKM6 { Gift = true, Species = 347, Level = 20, Delay = 81, Syncable = false, }, // Anorith
-                    new PKM6 { Gift = true, Species = 408, Level = 20, Delay = 81, Syncable = false, }, // Cranidos
-                    new PKM6 { Gift = true, Species = 410, Level = 20, Delay = 81, Syncable = false, }, // Shieldon
-                    new PKM6 { Gift = true, Species = 564, Level = 20, Delay = 81, Syncable = false, }, // Tirtouga
-                    new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 81, Syncable = false, }, // Archen
-                    new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 81, Syncable = false, }, // Tyrunt
-                    new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 81, Syncable = false, }, // Amaura
+                    new PKM6 { Gift = true, Species = 138, Level = 20, Delay = 80, Syncable = false, }, // Omanyte
+                    new PKM6 { Gift = true, Species = 140, Level = 20, Delay = 80, Syncable = false, }, // Kabuto
+                    new PKM6 { Gift = true, Species = 142, Level = 20, Delay = 80, Syncable = false, }, // Aerodactyl
+                    new PKM6 { Gift = true, Species = 345, Level = 20, Delay = 80, Syncable = false, }, // Lileep
+                    new PKM6 { Gift = true, Species = 347, Level = 20, Delay = 80, Syncable = false, }, // Anorith
+                    new PKM6 { Gift = true, Species = 408, Level = 20, Delay = 80, Syncable = false, }, // Cranidos
+                    new PKM6 { Gift = true, Species = 410, Level = 20, Delay = 80, Syncable = false, }, // Shieldon
+                    new PKM6 { Gift = true, Species = 564, Level = 20, Delay = 80, Syncable = false, }, // Tirtouga
+                    new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 80, Syncable = false, }, // Archen
+                    new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 80, Syncable = false, }, // Tyrunt
+                    new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 80, Syncable = false, }, // Amaura
                 }
             },
         };
@@ -179,7 +179,7 @@
                 Text = "Gift",
                 List = new[]
                 {
-                    new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario
+                    // new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario
                     new PKM6 { Species = 131, Level = 30, Nature = 6, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
                 }
             },
