@@ -3,7 +3,7 @@ using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
-    class Stationary7 : StationaryRNG
+    public class Stationary7 : StationaryRNG
     {
         private static ulong getrand => RNGPool.getrand64;
         private static void time_elapse(int n) => RNGPool.time_elapse(n);

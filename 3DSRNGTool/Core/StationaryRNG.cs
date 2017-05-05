@@ -17,8 +17,8 @@
         public int[] IVs;
 
         // Generated Attributes
-        internal virtual int PerfectIVCount => IV3 ? 3 : 0;
-        internal virtual int PIDroll_count => ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
+        protected virtual int PerfectIVCount => IV3 ? 3 : 0;
+        protected virtual int PIDroll_count => ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
 
         public abstract RNGResult Generate();
 

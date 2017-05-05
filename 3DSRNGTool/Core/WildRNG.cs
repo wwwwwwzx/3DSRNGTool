@@ -10,18 +10,18 @@
         public int[] SpecForm;
         
         // Store personal info in memory
-        internal byte[] Gender;
-        internal bool[] RandomGender;
-        internal bool[] IV3;
-        internal byte slot;
+        protected byte[] Gender;
+        protected bool[] RandomGender;
+        protected bool[] IV3;
+        protected byte slot;
 
-        internal virtual int PerfectIVCount => IV3[slot] ? 3 : 0;
-        internal virtual int PIDroll_count { get; }
+        protected virtual int PerfectIVCount => IV3[slot] ? 3 : 0;
+        protected virtual int PIDroll_count { get; }
 
         public abstract RNGResult Generate();
         public abstract void Markslots();
 
-        internal byte getslot(int rand)
+        protected byte getslot(int rand)
         {
             for (byte i = 1; i < SlotSplitter.Length; i++)
             {

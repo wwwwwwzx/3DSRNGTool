@@ -2,7 +2,7 @@
 
 namespace Pk3DSRNGTool
 {
-    class Event6 : EventRNG
+    public class Event6 : EventRNG
     {
         public override GameVersion Version { get; set; } = GameVersion.Gen6;
 

@@ -3,7 +3,7 @@ using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
-    class Stationary6 : StationaryRNG
+    public class Stationary6 : StationaryRNG
     {
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);

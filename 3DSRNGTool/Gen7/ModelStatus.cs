@@ -2,7 +2,7 @@
 
 namespace Pk3DSRNGTool
 {
-    class ModelStatus
+    internal class ModelStatus
     {
         private SFMT sfmt;
         private int cnt;

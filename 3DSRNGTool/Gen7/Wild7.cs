@@ -22,7 +22,7 @@ namespace Pk3DSRNGTool
         private bool IsShinyLocked => IsUB;
         private bool NormalSlot => !IsSpecial;
 
-        internal override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
+        protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
         public override RNGResult Generate()
         {
@@ -106,7 +106,7 @@ namespace Pk3DSRNGTool
             if (UB) IV3[0] = true; // For UB Template
         }
 
-        public string getitemstr(int rand)
+        private string getitemstr(int rand)
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return "50%";

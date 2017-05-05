@@ -78,7 +78,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public string getitemstr(int rand) // to-do
+        private string getitemstr(int rand) // to-do
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return "50%";

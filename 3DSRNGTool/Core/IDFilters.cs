@@ -2,7 +2,7 @@
 
 namespace Pk3DSRNGTool.Core
 {
-    public class IDFilters
+    internal class IDFilters
     {
         public byte IDType;
         public bool Skip, RE;

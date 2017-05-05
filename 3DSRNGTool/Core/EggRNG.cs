@@ -14,16 +14,16 @@
         public bool ConsiderOtherTSV;
         public int[] OtherTSVs;
 
-        internal bool DestinyKnot { get; set; }
-        internal bool EverStone { get; set; }
-        internal bool Both_Everstone { get; set; }
-        internal bool Power { get; set; }
-        internal bool Both_Power { get; set; }
-        internal byte M_Power { get; set; }
-        internal byte F_Power { get; set; }
+        protected bool DestinyKnot { get; set; }
+        protected bool EverStone { get; set; }
+        protected bool Both_Everstone { get; set; }
+        protected bool Power { get; set; }
+        protected bool Both_Power { get; set; }
+        protected byte M_Power { get; set; }
+        protected byte F_Power { get; set; }
 
-        internal byte PID_Rerollcount { get; set; }
-        internal byte InheritIVs_Cnt { get; set; }
+        protected byte PID_Rerollcount { get; set; }
+        protected byte InheritIVs_Cnt { get; set; }
         internal bool RandomGender { get; set; }
 
         public abstract RNGResult Generate();

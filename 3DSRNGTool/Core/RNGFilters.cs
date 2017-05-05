@@ -22,7 +22,7 @@ namespace Pk3DSRNGTool.Core
 
         public bool BlinkFOnly, SafeFOnly;
 
-        public bool CheckIVs(RNGResult result)
+        private bool CheckIVs(RNGResult result)
         {
             for (int i = 0; i < 6; i++)
                 if (IVlow[i] > result.IVs[i] || result.IVs[i] > IVup[i])
@@ -32,7 +32,7 @@ namespace Pk3DSRNGTool.Core
             return true;
         }
 
-        public bool CheckStats(RNGResult result)
+        private bool CheckStats(RNGResult result)
         {
             result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
             for (int i = 0; i < 6; i++)
@@ -41,13 +41,13 @@ namespace Pk3DSRNGTool.Core
             return true;
         }
 
-        public bool CheckNature(int resultnature)
+        private bool CheckNature(int resultnature)
         {
             if (Nature.All(n => !n)) return true;
             return Nature[resultnature];
         }
 
-        public bool CheckHiddenPower(RNGResult result)
+        private bool CheckHiddenPower(RNGResult result)
         {
             var val = Pokemon.getHiddenPowerValue(result.IVs);
             result.hiddenpower = (byte)val;

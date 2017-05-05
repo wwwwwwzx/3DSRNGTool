@@ -16,8 +16,8 @@
         public uint EC { get; set; }
         public uint PID { get; set; }
         
-        internal bool IsRandomGender;
-        internal byte SettingGender;
+        protected bool IsRandomGender;
+        protected byte SettingGender;
 
         public abstract RNGResult Generate();
         public virtual void GetGenderSetting()

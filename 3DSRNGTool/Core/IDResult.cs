@@ -1,6 +1,6 @@
 ﻿namespace Pk3DSRNGTool.Core
 {
-    public interface IDResult
+    internal interface IDResult
     {
         ushort TID { get; }
         ushort SID { get; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Pk3DSRNGTool.Core
 {
-    class RNGPool
+    internal static class RNGPool
     {
         private static int index;
         public static void ResetIndex() => index = 0;
@@ -182,7 +182,7 @@ namespace Pk3DSRNGTool.Core
             time_elapse(DelayTime);
         }
 
-        public static int getframeshift()
+        private static int getframeshift()
         {
             if (Considerdelay)
                 time_delay();

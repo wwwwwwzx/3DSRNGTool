@@ -2,7 +2,7 @@
 
 namespace Pk3DSRNGTool
 {
-    class LocationTable7
+    public static class LocationTable7
     {
         public readonly static EncounterArea7[] Table =
         {
