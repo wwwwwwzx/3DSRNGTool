@@ -24,7 +24,7 @@
 
         protected byte PID_Rerollcount { get; set; }
         protected byte InheritIVs_Cnt { get; set; }
-        internal bool RandomGender { get; set; }
+        protected bool RandomGender { get; set; }
 
         public abstract RNGResult Generate();
         public abstract void MarkItem();

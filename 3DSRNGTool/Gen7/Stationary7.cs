@@ -25,12 +25,14 @@ namespace Pk3DSRNGTool
             rt.Level = Level;
 
             //Synchronize
-            rt.Synchronize = AlwaysSync || blink_process();
-
-            rt.Synchronize &= Synchro_Stat < 25;
-
-            if (!AlwaysSync)
+            if (AlwaysSync)
+                rt.Synchronize = true;
+            else
+            {
+                rt.Synchronize = blink_process();
                 Advance(60);
+            }
+            rt.Synchronize &= Synchro_Stat < 25;
 
             //Encryption Constant
             rt.EC = (uint)(getrand & 0xFFFFFFFF);

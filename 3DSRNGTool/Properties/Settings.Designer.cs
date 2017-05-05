@@ -85,7 +85,7 @@ namespace Pk3DSRNGTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("785")]
         public int PKM {
             get {
                 return ((int)(this["PKM"]));
@@ -97,7 +97,7 @@ namespace Pk3DSRNGTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
         public byte GameVersion {
             get {
                 return ((byte)(this["GameVersion"]));

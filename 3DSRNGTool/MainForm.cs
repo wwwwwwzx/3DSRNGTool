@@ -734,7 +734,6 @@ namespace Pk3DSRNGTool
             setting.ShinyCharm = ShinyCharm.Checked;
             setting.TSV = (ushort)TSV.Value;
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
-            setting.RandomGender = FuncUtil.IsRandomGender((int)Egg_GenderRatio.SelectedValue);
             (setting as Egg7).Homogeneous = Homogeneity.Checked;
             (setting as Egg7).FemaleIsDitto = F_ditto.Checked;
             setting.InheritAbility = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);

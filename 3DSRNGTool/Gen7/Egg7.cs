@@ -28,6 +28,7 @@ namespace Pk3DSRNGTool
                 PID_Rerollcount += 6;
 
             InheritIVs_Cnt = (byte)(DestinyKnot ? 5 : 3);
+            RandomGender = Gender > 0x0F;
         }
 
         public override RNGResult Generate()
