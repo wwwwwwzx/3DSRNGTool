@@ -144,8 +144,8 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
-    <Compile Include="Resources\FormUtil.cs" />
-    <Compile Include="Resources\FuncUtil.cs" />
+    <Compile Include="Util\FormUtil.cs" />
+    <Compile Include="Util\FuncUtil.cs" />
     <Compile Include="Core\RNGFilters.cs" />
     <Compile Include="Core\RNGPool.cs" />
     <Compile Include="Core\RNGResult.cs" />
@@ -163,8 +163,8 @@
     <Compile Include="Subforms\IVRange.Designer.cs">
       <DependentUpon>IVRange.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\MagikarpCalc.cs" />
-    <Compile Include="Subforms\SFMTSeedAPI.cs" />
+    <Compile Include="Util\MagikarpCalc.cs" />
+    <Compile Include="Util\SFMTSeedAPI.cs" />
     <Compile Include="Subforms\TSVListForm.cs">
       <SubType>Form</SubType>
     </Compile>
