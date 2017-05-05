@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
         {
             TextBox tmp = QRInput.Checked ? QRList : Clock_List;
             string str = ((Button)sender).Name;
-            string n = str.Remove(0, str.IndexOf("button") + 6);
+            string n = str.Remove(0,6);
 
             if (tmp.Text != "") tmp.Text += ",";
             tmp.Text += !EndClockInput.Checked || QRInput.Checked ? n : ((Convert.ToInt32(n) + 13) % 17).ToString();
@@ -44,9 +44,9 @@ namespace Pk3DSRNGTool
                 if (QRList.Text.Count(c => c == ',') < 3)
                     return;
                 QRSearch_Click(null, null);
+                return;
             }
-            else
-                SearchforSeed(null, null);
+            SearchforSeed(null, null);
         }
 
         private void SearchforSeed(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Pk3DSRNGTool
                         else
                         {
                             Frame_min.Value = 1012; //keep full range to check the value
-                            Clk_Correction.Value = Convert.ToInt32(results.FirstOrDefault().add);
+                            Clk_Correction.Value = results.FirstOrDefault().add;
                         }
                         uint s0;
                         if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out s0))
@@ -106,14 +106,12 @@ namespace Pk3DSRNGTool
 
                 SFMT sfmt = new SFMT(InitialSeed);
                 SFMT seed = (SFMT)sfmt.DeepCopy();
-                bool flag = false;
 
                 QRResult.Items.Clear();
 
                 for (int i = 0; i < min; i++)
                     sfmt.Next();
-
-                int cnt = 0;
+                
                 int tmp = 0;
                 for (int i = min; i <= max; i++, sfmt.Next())
                 {
@@ -123,22 +121,17 @@ namespace Pk3DSRNGTool
                         temp_List[j] = (int)(seed.Nextulong() % 17);
 
                     if (temp_List.SequenceEqual(Clock_List))
-                        flag = true;
-
-                    if (flag)
                     {
-                        flag = false;
                         switch (lindex)
                         {
                             case 0: QRResult.Items.Add($"The last clock is at {i + Clock_List.Length - 1}F, you're at {i + Clock_List.Length + 1}F after quiting QR"); break;
                             case 1: QRResult.Items.Add($"最后的指针在 {i + Clock_List.Length - 1} 帧，退出QR后在 {i + Clock_List.Length + 1} 帧"); break;
                         }
-                        cnt++;
                         tmp = i + Clock_List.Length + 1;
                     }
                 }
 
-                if (cnt == 1)
+                if (QRResult.Items.Count == 1)
                     Time_min.Value = tmp;
             }
             catch

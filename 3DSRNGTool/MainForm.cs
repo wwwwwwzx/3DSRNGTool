@@ -102,8 +102,7 @@ namespace Pk3DSRNGTool
             FindSetting(lastpkm);
 
             ByIVs.Checked = true;
-            if (Gen7)
-                Frame_min.Value = method == 4 ? 1012 : method < 3 ? 418 : 0;
+            B_ResetFrame_Click(null, null);
         }
 
         private void FindSetting(int Lastpkm)
@@ -217,7 +216,6 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            Special_th.Enabled = Correction.Enabled = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
             Properties.Settings.Default.Save();
         }
@@ -516,6 +514,7 @@ namespace Pk3DSRNGTool
                 {
                     var tmp = iPM as PKMW7;
                     Special_th.Value = tmp?.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
+                    Correction.Enabled = Special_th.Enabled = iPM.Conceptual;
                 }
                 return;
             }
@@ -574,7 +573,7 @@ namespace Pk3DSRNGTool
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
                 if (method < 3)
-                    Standard = (int)TargetFrame.Value - (int)Frame_min.Value;
+                    Standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -927,7 +926,7 @@ namespace Pk3DSRNGTool
             max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
             {
-                min = (int)Frame_max.Value - 100; max = (int)Frame_max.Value + 100;
+                min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
             }
             // Advance
             for (int i = 0; i < min; i++)

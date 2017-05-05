@@ -24,8 +24,7 @@ namespace Pk3DSRNGTool
                 var serializer = new DataContractJsonSerializer(typeof(Root));
                 root = (Root)serializer.ReadObject(ms);
             }
-            if (root == null) return null;
-            return root.results;
+            return root?.results;
         }
 
         public class Root
@@ -35,7 +34,7 @@ namespace Pk3DSRNGTool
 
         public class Result
         {
-            public string add { get; set; }
+            public byte add { get; set; }
             public string seed { get; set; }
             public string encoded_needle { get; set; }
             public int step { get; set; }
