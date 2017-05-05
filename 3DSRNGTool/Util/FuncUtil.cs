@@ -5,7 +5,7 @@ using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
-    public class FuncUtil
+    public static class FuncUtil
     {
         #region Genderratio
         // Translate genderratio in personal table to RNGSetting format

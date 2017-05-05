@@ -184,12 +184,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Subforms\IVRange.resx">
-      <DependentUpon>IVRange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\TSVListForm.resx">
-      <DependentUpon>TSVListForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

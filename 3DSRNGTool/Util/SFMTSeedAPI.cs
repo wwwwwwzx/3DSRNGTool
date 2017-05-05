@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Pk3DSRNGTool
 {
-    static public class SFMTSeedAPI
+    public static class SFMTSeedAPI
     {
-        static public List<Result> request(string needle, bool IsID)
+        public static List<Result> request(string needle, bool IsID)
         {
             Root root;
             var url = IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 

@@ -2,7 +2,7 @@
 
 namespace Pk3DSRNGTool
 {
-    public class MagikarpCalc
+    public static class MagikarpCalc
     {
         public static string calc(string inlist)
         {
