@@ -28,14 +28,14 @@
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, Delay = 0, }, // Latios
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, Delay = 0, }, // Latias
 
-                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, }, // Kyogre
-                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, }, // Groudon
+                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Unstable = true, }, // Kyogre
+                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Unstable = true, }, // Groudon
                     new PKM6 { Species = 384, Level = 70, ShinyLocked = true, }, // Rayquaza
                     new PKM6 { Species = 386, Level = 80, ShinyLocked = true, }, // Deoxys
 
-                    new PKM6 { Species = 377, Level = 40, }, // Regirock
-                    new PKM6 { Species = 378, Level = 40, }, // Regice
-                    new PKM6 { Species = 379, Level = 40, }, // Registeel
+                    new PKM6 { Species = 377, Level = 40, Delay = 140, Unstable = true, }, // Regirock
+                    new PKM6 { Species = 378, Level = 40, Delay = 140, Unstable = true, }, // Regice
+                    new PKM6 { Species = 379, Level = 40, Delay = 140, Unstable = true, }, // Registeel
                 }
             },
             new PokemonList
@@ -179,7 +179,7 @@
                 Text = "Gift",
                 List = new[]
                 {
-                    // new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario
+                    new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario
                     new PKM6 { Species = 131, Level = 30, Nature = 6, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true }, // Lapras
                 }
             },

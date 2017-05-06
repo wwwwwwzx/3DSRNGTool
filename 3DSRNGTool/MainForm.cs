@@ -555,7 +555,7 @@ namespace Pk3DSRNGTool
                 RNGPool.modelnumber = modelnum;
                 RNGPool.IsSolgaleo = method == 0 && iPM.Species == 791;
                 RNGPool.IsLunala = method == 0 && iPM.Species == 792;
-                RNGPool.SolLunaReset = (RNGPool.IsSolgaleo || RNGPool.IsLunala) && RNGPool.modelnumber == 7;
+                RNGPool.IsExeggutor = method == 0 && iPM.Species == 103;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.route17 = ModelStatus.route17 = method == 2 && ea.Location == 120;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;

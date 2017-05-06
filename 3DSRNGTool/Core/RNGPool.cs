@@ -85,7 +85,6 @@ namespace Pk3DSRNGTool.Core
             var result = getresult7();
             (result as Result7).RandNum = RandList64[0];
             (result as Result7).FrameDelayUsed = frameshift;
-            if (SolLunaReset) modelnumber = 7;
             return result;
         }
 
@@ -113,7 +112,7 @@ namespace Pk3DSRNGTool.Core
 
         #region Gen7 Time keeping
 
-        public static bool IsSolgaleo, IsLunala, SolLunaReset;
+        public static bool IsSolgaleo, IsLunala, IsExeggutor;
         public static byte modelnumber;
         public static int[] remain_frame;
 
@@ -128,6 +127,7 @@ namespace Pk3DSRNGTool.Core
 
         public static void CopyStatus(ModelStatus st)
         {
+            modelnumber = st.Modelnumber;
             remain_frame = (int[])st.remain_frame.Clone();
             phase = st.phase;
         }
@@ -166,6 +166,15 @@ namespace Pk3DSRNGTool.Core
                 remain_frame[i] = remain_frame[order[i]];
         }
 
+        //Another type of change (Lillie)
+        private static void ExeggutorRearrange()
+        {
+            modelnumber = 2;
+            int tmp = remain_frame[0];
+            remain_frame = new int[2];
+            remain_frame[0] = tmp;
+        }
+
         private static void time_delay()
         {
             time_elapse(2); // Buttom press delay
@@ -177,6 +186,15 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(19);
                 Advance(1);     //Cry Inside Time Delay
                 time_elapse(crydelay);
+                return;
+            }
+            if (IsExeggutor)
+            {
+                time_elapse(1);
+                if (modelnumber == 1) ExeggutorRearrange();
+                time_elapse(42);
+                Advance(1);    //Cry Inside Time Delay
+                time_elapse(DelayTime - 43);
                 return;
             }
             time_elapse(DelayTime);

@@ -6,9 +6,9 @@ namespace Pk3DSRNGTool
     {
         private SFMT sfmt;
         private int cnt;
-        private byte Modelnumber;
         private ulong getrand { get { cnt++; return sfmt.Nextulong(); } }
-        
+
+        public byte Modelnumber;
         public int[] remain_frame;
         public bool phase;
 

@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
         public bool ShinyLocked;
         public bool Syncable = true;
         public bool Conceptual;
+        public bool Unstable;
         public virtual short Delay { get; set; }
 
         #region Generated Attribute
@@ -23,6 +24,7 @@ namespace Pk3DSRNGTool
         {
             if (Conceptual) return "-";
             if (Egg) return StringItem.species[Species] + " (" + StringItem.species[0] + ")";
+            if (Unstable) return  StringItem.species[Species] + "(?)";
             switch (Species)
             {
                 case 718: return StringItem.species[718] + (Form == 1 ? "-10%" : "-50%");
