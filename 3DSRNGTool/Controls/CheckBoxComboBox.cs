@@ -295,6 +295,11 @@ namespace Pk3DSRNGTool.Controls
             base.OnResize(e);
         }
 
+        protected override void OnClick(EventArgs e)
+        {
+            Focus();
+        }
+
         #endregion
 
         #region PUBLIC OPERATIONS
