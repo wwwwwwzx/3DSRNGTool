@@ -478,7 +478,7 @@ namespace Pk3DSRNGTool
                 IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
                 IVup = iPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
             }
-            AlwaysSynced.Text = SYNC_STR[lindex][iPM.Syncable ? 0 : 1];
+            AlwaysSynced.Text = SYNC_STR[lindex,iPM.Syncable ? 0 : 1];
             if (!iPM.Syncable)
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)

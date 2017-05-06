@@ -183,7 +183,7 @@ Clear = Clear
 StartClockInput = Start Position
 EndClockInput = End Position
 QRInput = Locate Current Frame via QR
-BySaveScreen = Find Initial Seed via Continue Screen / Name Inputting Screen
+BySaveScreen = Find Initial Seed via clock hands
 L_clocklist = Needle List
 Search = Search
 L_SeedResult = Results
@@ -194,3 +194,4 @@ L_StartingFrame = Starting Frame
 B_EggSeed127 = Go!
 RB_Main = Main
 RB_ID = ID
+Magikarp = 127 Magikarp Calculator (M=0, F=1) (Spaces and line breaks will be ignored)

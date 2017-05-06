@@ -24,6 +24,16 @@ namespace Pk3DSRNGTool
             { "-", "Male", "Female"},
             { "-", "父方", "母方"},
         };
+        private static readonly string[,] GAMEVERSION_STR =
+        {
+            { "X", "Y", "OR", "AS", "Sun", "Moon" },
+            { "X", "Y", "红宝石", "蓝宝石", "太阳", "月亮" },
+        };
+        private static readonly string[,] SYNC_STR =
+        {
+            { "Always Synced", "Can not be Synced" },
+            { "必定同步", "不能同步" },
+        };
         private static readonly string[][] STATS_STR =
         {
             new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
@@ -34,12 +44,6 @@ namespace Pk3DSRNGTool
         {
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
-        };
-
-        private static readonly string[][] SYNC_STR =
-        {
-            new string[] { "Always Synced", "Can not be Synced" },
-            new string[] { "必定同步", "不能同步" },
         };
 
         private string curlanguage;
@@ -73,7 +77,10 @@ namespace Pk3DSRNGTool
 
             for (int i = 0; i < 3; i++)
                 Ball.Items[i] = PARENTS_STR[lindex, i];
-            
+
+            for (int i = 0; i < 6; i++)
+                Gameversion.Items[i] = GAMEVERSION_STR[lindex, i];
+
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
 
             RefreshCategory();
@@ -86,7 +93,7 @@ namespace Pk3DSRNGTool
             SyncNature.Items[0] = NONE_STR[lindex];
             for (int i = 0; i < StringItem.naturestr.Length; i++)
                 Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
-            
+
             for (int i = 0; i < StringItem.items.Length; i++)
                 M_Items.Items[i] = F_Items.Items[i] = StringItem.items[i];
 
@@ -114,9 +121,9 @@ namespace Pk3DSRNGTool
             HiddenPower.CheckBoxItems[0].Checked = true;
             HiddenPower.CheckBoxItems[0].Checked = false;
 
-            AlwaysSynced.Text = SYNC_STR[lindex][0];
+            AlwaysSynced.Text = SYNC_STR[lindex, 0];
         }
-        
+
         private string getEggListString(int eggnum, int rejectnum)
         {
             string tmp = "";

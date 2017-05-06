@@ -47,8 +47,8 @@
                     new PKM6 { Species = 244, Level = 50, }, // Entei
                     new PKM6 { Species = 245, Level = 50, }, // Suicune
 
-                    new PKM6 { Species = 249, Level = 50, Version = GameVersion.AS, }, // Lugia
-                    new PKM6 { Species = 250, Level = 50, Version = GameVersion.OR, }, // Ho-oh
+                    new PKM6 { Species = 249, Level = 50, Version = GameVersion.AS, Delay = 20, }, // Lugia
+                    new PKM6 { Species = 250, Level = 50, Version = GameVersion.OR, Delay = 20, }, // Ho-oh
                 }
             },
             new PokemonList
@@ -65,7 +65,7 @@
                     
                     new PKM6 { Species = 485, Level = 50, }, // Heatran
                     new PKM6 { Species = 486, Level = 50, }, // Regigigas
-                    new PKM6 { Species = 487, Level = 50, Delay = 90, }, // Giratina
+                    new PKM6 { Species = 487, Level = 50, Delay = 88, }, // Giratina
                     new PKM6 { Species = 488, Level = 50, }, // Cresselia
                 }
             },
