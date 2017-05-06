@@ -505,7 +505,7 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.PKM = specform;
             Properties.Settings.Default.Save();
             // Reset_Click(null, null);
-            RNGPool.PM = Pokemonlist.FirstOrDefault(p => p.SpecForm == specform);
+            RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
             if (method == 2)
             {
