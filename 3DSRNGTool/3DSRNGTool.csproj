@@ -68,18 +68,6 @@
       <DependentUpon>CheckBoxComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ComboItem.cs" />
-    <Compile Include="Controls\GlassButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\GlassButton.Designer.cs">
-      <DependentUpon>GlassButton.Designer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\GlassComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\GlassComboBox.Designer.cs">
-      <DependentUpon>GlassComboBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\GripBounds.cs" />
     <Compile Include="Controls\HexNumericUpdown.cs">
       <SubType>Component</SubType>
