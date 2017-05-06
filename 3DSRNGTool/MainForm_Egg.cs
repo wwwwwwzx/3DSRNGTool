@@ -28,6 +28,7 @@ namespace Pk3DSRNGTool
             IV_Female = new[] { 0, 0, 0, 0, 0, 0 };
             M_Items.SelectedIndex = 2;
             MM.Checked = true;
+            Homogeneity.Checked = true;
         }
 
         private void Ditto_CheckedChanged(object sender, EventArgs e)

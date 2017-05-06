@@ -265,7 +265,8 @@ namespace Pk3DSRNGTool
             IVlow = new int[6];
             IVup = new[] { 31, 31, 31, 31, 31, 31 };
             Stats = new int[6];
-            Filter_Lv.Value = 0;
+            if (method == 2)
+                Filter_Lv.Value = 0;
 
             Nature.ClearSelection();
             HiddenPower.ClearSelection();
@@ -307,7 +308,6 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Method = method;
             Properties.Settings.Default.Save();
 
-            Reset_Click(null, null);
             RB_FrameRange.Checked = true;
             if (method < 4)
                 RNGMethod.TabPages[method].Controls.Add(this.Filters);
@@ -590,9 +590,9 @@ namespace Pk3DSRNGTool
             Stats = ByStats.Checked ? Stats : null,
             ShinyOnly = ShinyOnly.Checked,
             Skip = DisableFilters.Checked,
-            Level = (byte)Filter_Lv.Value,
             PerfectIVs = (byte)PerfectIVs.Value,
 
+            Level = (byte)Filter_Lv.Value,
             Slot = Slot.CheckBoxItems.Select(e => e.Checked).ToArray(),
             SpecialOnly = SpecialOnly.Checked,
 

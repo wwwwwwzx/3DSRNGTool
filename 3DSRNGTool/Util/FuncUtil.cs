@@ -47,7 +47,7 @@ namespace Pk3DSRNGTool
             int blink_flag = 0;
             ulong rand;
             for (int i = 0; i < min - 2; i++)
-                st.Nextulong();
+                st.Next();
             if ((int)(st.Nextulong() & 0x7F) == 0)
                 blinkflaglist[0] = (byte)((int)(st.Nextulong() % 3) == 0 ? 36 : 30);
             else if ((int)(st.Nextulong() & 0x7F) == 0)
@@ -59,7 +59,7 @@ namespace Pk3DSRNGTool
                 {
                     blinkflaglist[i - min] = 5;
                     blinkflaglist[++i - min] = (byte)((int)(rand % 3) == 0 ? 36 : 30);
-                    blink_flag = 0; st.Nextulong(); // Reset and advance
+                    blink_flag = 0; st.Next(); // Reset and advance
                 }
                 if ((int)(rand & 0x7F) == 0)
                     blink_flag = blinkflaglist[i - min] = 1;
@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
             List<ulong> Randlist = new List<ulong>();
             int Min = Math.Max(min - Unsaferange[1], 418);
             for (int i = 0; i < Min; i++)
-                st.Nextulong();
+                st.Next();
             for (int i = 0; i <= (Model_n - 1) * 5 + 1; i++) // Create Buffer for checkafter
                 Randlist.Add(st.Nextulong());
             for (int i = Min; i <= max; i++, Randlist.RemoveAt(0), Randlist.Add(st.Nextulong()))
