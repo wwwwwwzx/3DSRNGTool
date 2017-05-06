@@ -34,7 +34,7 @@
                     new PKM6 { Species = 386, Level = 80, ShinyLocked = true, }, // Deoxys
 
                     new PKM6 { Species = 377, Level = 40, Delay = 158, }, // Regirock
-                    new PKM6 { Species = 378, Level = 40, Delay = 154, }, // Regice
+                    new PKM6 { Species = 378, Level = 40, Delay = 154, Unstable = true,  }, // Regice
                     new PKM6 { Species = 379, Level = 40, Delay = 164, }, // Registeel
                 }
             },
@@ -99,7 +99,7 @@
                     new PKM6 { Species = 351, Level = 30, Nature = 09, Ability = 1, IVs = new[] {-1, -1, -1, 31, -1, -1}, Gift = true }, // Castform
                     new PKM6 { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = 03, Gift = true }, // Sharpedo
                     new PKM6 { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = 17, Gift = true }, // Camerupt
-                    new PKM6 { Species = 025, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
+                    new PKM6 { Species = 025, Level = 20, Delay = 0, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
                 }
             },
             new PokemonList
@@ -111,8 +111,8 @@
                     new PKM6 { Species = 352, Level = 40, Delay = 0, Gender = 2,}, // Kecleon @ Lavaridge
                     new PKM6 { Species = 352, Level = 45, Delay = 0, Ability = 4,}, // Kecleon @ Mossdeeps
                     new PKM6 { Species = 101, Level = 40, Delay = 122, }, // Electrode @ Magma Hideout, Aqua Hideout
-                    new PKM6 { Species = 100, Level = 20, }, // Voltorb @ Route 119
-                    new PKM6 { Species = 442, Level = 50, }, // Spiritomb @ Route 120
+                    new PKM6 { Species = 100, Level = 20, Delay = 120, }, // Voltorb @ Route 119
+                    new PKM6 { Species = 442, Level = 50, Delay = 0, }, // Spiritomb @ Route 120
                 }
             },
             new PokemonList
