@@ -47,7 +47,6 @@ namespace Pk3DSRNGTool
                 rt.Synchronize = (int)(getrand % 100) >= 50;
                 time_elapse(3);
             }
-            rt.Synchronize &= Synchro_Stat < 25;
 
             Advance(60);
 
@@ -77,7 +76,7 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)(IsUB ? 1 : (getrand & 1) + 1);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
+            rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : getrand % 25);
 
             //Gender
             rt.Gender = (byte)(RandomGender[slot] ? ((int)(getrand % 252) >= Gender[slot] ? 1 : 2) : Gender[slot]);

@@ -8,7 +8,7 @@ namespace Pk3DSRNGTool
         private static ulong getrand => RNGPool.getrand64;
         private static void time_elapse(int n) => RNGPool.time_elapse(n);
         private static void Advance(int n) => RNGPool.Advance(n);
-        
+
         public bool blinkwhensync;
 
         private bool blink_process()
@@ -32,7 +32,6 @@ namespace Pk3DSRNGTool
                 rt.Synchronize = blink_process();
                 Advance(60);
             }
-            rt.Synchronize &= Synchro_Stat < 25;
 
             //Encryption Constant
             rt.EC = (uint)(getrand & 0xFFFFFFFF);
@@ -60,7 +59,7 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)(blinkwhensync ? 1 : (getrand & 1) + 1);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : getrand % 25);
+            rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : getrand % 25);
 
             //Gender
             rt.Gender = (byte)(RandomGender ? ((int)(getrand % 252) >= Gender ? 1 : 2) : Gender);

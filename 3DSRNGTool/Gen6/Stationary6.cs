@@ -22,8 +22,6 @@ namespace Pk3DSRNGTool
             else
                 Advance(60); // Synchro where are you...
 
-            rt.Synchronize &= Synchro_Stat < 25;
-
             //Encryption Constant
             rt.EC = getrand;
 
@@ -50,7 +48,7 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)(Ability == 0 ? (getrand >> 31) + 1 : Ability);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : rand(25));
+            rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : rand(25));
 
             //Gender
             rt.Gender = (byte)(RandomGender ? (rand(252) >= Gender ? 1 : 2) : Gender);
