@@ -15,27 +15,25 @@ namespace Pk3DSRNGTool
             IV_Male = new[] { 31, 31, 31, 31, 31, 31 };
             IV_Female = new[] { 31, 31, 31, 31, 31, 31 };
             Egg_GenderRatio.SelectedIndex = 1;
-            M_Items.SelectedIndex = F_Items.SelectedIndex = 0;
+            Homogeneity.Checked = NidoType.Checked = MM.Checked =
             M_ditto.Checked = F_ditto.Checked = false;
+            M_Items.SelectedIndex = F_Items.SelectedIndex =
             M_ability.SelectedIndex = F_ability.SelectedIndex = 0;
-            Homogeneity.Checked = false;
-            MM.Checked = false;
         }
 
         private void B_Fast_Click(object sender, EventArgs e)
         {
             B_EggReset_Click(null, null);
-            IV_Female = new[] { 0, 0, 0, 0, 0, 0 };
+            IV_Female = new int[6];
             M_Items.SelectedIndex = 2;
-            MM.Checked = true;
-            Homogeneity.Checked = true;
+            MM.Checked = Homogeneity.Checked = true;
         }
 
         private void Ditto_CheckedChanged(object sender, EventArgs e)
         {
             if ((sender as CheckBox)?.Checked ?? false)
             {
-                (sender == F_ditto ? M_ditto : F_ditto).Checked = false;
+                (sender == F_ditto ? M_ditto : F_ditto).Checked =
                 Homogeneity.Enabled = Homogeneity.Checked = false;
             }
             else
@@ -44,7 +42,7 @@ namespace Pk3DSRNGTool
 
         private void NidoType_CheckedChanged(object sender, EventArgs e)
         {
-            Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked ||　F_ditto.Checked);
+            Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked);
             if (NidoType.Checked)
                 Homogeneity.Checked = false;
         }
@@ -61,15 +59,8 @@ namespace Pk3DSRNGTool
 
         private void B_Backup_Click(object sender, EventArgs e)
         {
-            string[] lines =
-            {
-                St3.Text,
-                St2.Text,
-                St1.Text,
-                St0.Text,
-            };
             string backupfile = "Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
-            File.WriteAllLines(backupfile, lines);
+            File.WriteAllLines(backupfile, new[] { St3.Text, St2.Text, St1.Text, St0.Text, });
             Alert(backupfile + " saved");
         }
 
@@ -86,17 +77,13 @@ namespace Pk3DSRNGTool
                     {
                         string[] list = File.ReadAllLines(file);
 
-                        string st3 = list[0];
-                        string st2 = list[1];
-                        string st1 = list[2];
-                        string st0 = list[3];
                         uint s3, s2, s1, s0;
 
-                        uint.TryParse(st0, System.Globalization.NumberStyles.HexNumber, null, out s0);
-                        uint.TryParse(st1, System.Globalization.NumberStyles.HexNumber, null, out s1);
-                        uint.TryParse(st2, System.Globalization.NumberStyles.HexNumber, null, out s2);
-                        uint.TryParse(st3, System.Globalization.NumberStyles.HexNumber, null, out s3);
-                        Status = new uint[] { s0, s1, s2, s3 };
+                        uint.TryParse(list[3], System.Globalization.NumberStyles.HexNumber, null, out s0);
+                        uint.TryParse(list[2], System.Globalization.NumberStyles.HexNumber, null, out s1);
+                        uint.TryParse(list[1], System.Globalization.NumberStyles.HexNumber, null, out s2);
+                        uint.TryParse(list[0], System.Globalization.NumberStyles.HexNumber, null, out s3);
+                        Status = new[] { s0, s1, s2, s3 };
                     }
                 }
             }
