@@ -8,10 +8,10 @@ namespace Pk3DSRNGTool
         public bool Gift { get; protected set; }
         public bool Egg { get; protected set; }
         public bool ShinyLocked { get; protected set; }
-        public bool Syncable { get; protected set; } = true;
         public bool Conceptual { get; protected set; }
         public bool Unstable { get; protected set; }
         public virtual short Delay { get; protected set; }
+        public virtual bool Syncable { get; protected set; } = true;
 
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
