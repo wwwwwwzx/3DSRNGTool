@@ -61,8 +61,8 @@
                     new PKM6 { Species = 481, Level = 50, }, // Mesprit
                     new PKM6 { Species = 482, Level = 50, }, // Azelf
             
-                    new PKM6 { Species = 483, Level = 50, Delay = 90, Version = GameVersion.AS, }, // Dialga
-                    new PKM6 { Species = 484, Level = 50, Delay = 90, Version = GameVersion.OR, }, // Palkia
+                    new PKM6 { Species = 483, Level = 50, Delay = 88, Version = GameVersion.AS, }, // Dialga
+                    new PKM6 { Species = 484, Level = 50, Delay = 88, Version = GameVersion.OR, }, // Palkia
                     
                     new PKM6 { Species = 485, Level = 50, }, // Heatran
                     new PKM6 { Species = 486, Level = 50, }, // Regigigas
@@ -79,9 +79,9 @@
                     new PKM6 { Species = 639, Level = 50, }, // Terrakion
                     new PKM6 { Species = 640, Level = 50, }, // Virizion
 
-                    new PKM6 { Species = 641, Level = 50, Delay = 90, Version = GameVersion.OR, }, // Tornadus
-                    new PKM6 { Species = 642, Level = 50, Delay = 90, Version = GameVersion.AS, }, // Thundurus
-                    new PKM6 { Species = 645, Level = 50, Delay = 90, }, // Landorus
+                    new PKM6 { Species = 641, Level = 50, Delay = 88, Version = GameVersion.OR, }, // Tornadus
+                    new PKM6 { Species = 642, Level = 50, Delay = 88, Version = GameVersion.AS, }, // Thundurus
+                    new PKM6 { Species = 645, Level = 50, Delay = 88, }, // Landorus
             
                     new PKM6 { Species = 643, Level = 50, Version = GameVersion.OR, }, // Reshiram
                     new PKM6 { Species = 644, Level = 50, Version = GameVersion.AS, }, // Zekrom
