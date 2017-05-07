@@ -2,8 +2,8 @@
 {
     public class PKM6 : Pokemon
     {
-        public override GameVersion Version { get; set; } = GameVersion.Gen6;
-        public override short Delay { get; set; } = 16;
+        public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
+        public override short Delay { get; protected set; } = 16;
 
         public readonly static PokemonList Default = new PokemonList
         {

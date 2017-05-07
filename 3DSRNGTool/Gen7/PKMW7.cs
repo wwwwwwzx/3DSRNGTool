@@ -2,8 +2,8 @@
 {
     public class PKMW7 : Pokemon
     {
-        public override GameVersion Version { get; set; } = GameVersion.Gen7;
-        public override short Delay { get; set; } = 8;
+        public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
+        public override short Delay { get; protected set; } = 8;
         public byte[] Rate;
         public int[] Location;
 

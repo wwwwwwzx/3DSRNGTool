@@ -4,7 +4,7 @@ namespace Pk3DSRNGTool
 {
     public class Event7 : EventRNG
     {
-        public override GameVersion Version { get; set; } = GameVersion.Gen7;
+        public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
 
         private static ulong getrand => RNGPool.getrand64;
 

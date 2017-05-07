@@ -5,13 +5,13 @@ namespace Pk3DSRNGTool
     public class Pokemon : IPKM
     {
         public override byte Nature { get; set; } = 0xFF;
-        public bool Gift;
-        public bool Egg;
-        public bool ShinyLocked;
-        public bool Syncable = true;
-        public bool Conceptual;
-        public bool Unstable;
-        public virtual short Delay { get; set; }
+        public bool Gift { get; protected set; }
+        public bool Egg { get; protected set; }
+        public bool ShinyLocked { get; protected set; }
+        public bool Syncable { get; protected set; } = true;
+        public bool Conceptual { get; protected set; }
+        public bool Unstable { get; protected set; }
+        public virtual short Delay { get; protected set; }
 
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);

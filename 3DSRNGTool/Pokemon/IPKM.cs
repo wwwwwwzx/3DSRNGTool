@@ -2,7 +2,7 @@
 {
     public abstract class IPKM
     {
-        public virtual GameVersion Version { get; set; } = GameVersion.Any;
+        public virtual GameVersion Version { get; protected set; } = GameVersion.Any;
         public short Species { get; set; }
         public byte Form { get; set; }
 

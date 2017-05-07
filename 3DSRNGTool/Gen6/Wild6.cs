@@ -18,7 +18,7 @@ namespace Pk3DSRNGTool
             ResultW6 rt = new ResultW6();
 
             rt.Synchronize = rand(100) >= 50;
-            rt.Slot = getslot((int)rand(100)); //to-do
+            rt.Slot = getslot((int)(getrand >> 16) / 656);
             rt.Level = SlotLevel[rt.Slot];
             Advance(1);
 
