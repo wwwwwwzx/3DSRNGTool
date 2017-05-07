@@ -1,23 +1,13 @@
 ﻿using System;
+using Pk3DSRNGTool.Core;
 using System.Linq;
 
 namespace Pk3DSRNGTool
 {
-    public class EncounterArea7
+    public class EncounterArea7 : EncounterArea
     {
-        public byte Location, idx;
-        public int Locationidx => Location + (idx << 8);
+        public override int[] Species { get; set; } = new int[1];
         public byte NPC, Correction = 1;
-        private string _mark;
-        public string mark
-        {
-            get
-            {
-                string tmp = _mark ?? (idx > 0 ? idx.ToString() : "");
-                return tmp == "" ? "" : $" ({tmp})";
-            }
-            set { _mark = value; }
-        }
 
         public byte LevelMin;
         private byte _LevelMax;
@@ -26,7 +16,6 @@ namespace Pk3DSRNGTool
         public byte LevelMinMoon => (byte)(LevelMin + lvldiff);
         public byte LevelMaxMoon => (byte)(LevelMax + lvldiff);
 
-        public int[] Species = new int[1];
         public bool Reverse; // true if moon/night have more species
 
         private readonly static int[] DayList = { 734, 735, 165, 166, 046, 751, 752, 425, 745, 174, /* Reversed from here */  173, };
@@ -35,8 +24,8 @@ namespace Pk3DSRNGTool
         private readonly static int[] MoonList = { 548, 765, 324, 027, /* Reversed from here */ 359, };
         private readonly static int[] AlolanForms = { 019, 020, 027, 037, 050, 051, 052, 074, 075, 088, 103,};
 
-        public bool DayNightDifference => Species.Any(i => DayList.Contains(i));
-        public bool SunMoonDifference => Species.Any(i => SunList.Contains(i));
+        public override bool VersionDifference => Species.Any(i => SunList.Contains(i));
+        public override bool DayNightDifference => Species.Any(i => DayList.Contains(i));
 
         public int[] getSpecies(bool IsMoon, bool IsNight)
         {
@@ -50,7 +39,7 @@ namespace Pk3DSRNGTool
                     if (idx > -1)
                         table[i] = NightList[idx];
                 }
-            if (IsMoon && SunMoonDifference)  // Replace Sun/Moonspecies
+            if (IsMoon && VersionDifference)  // Replace Sun/Moon species
                 for (int i = 1; i < table.Length; i++)
                 {
                     int idx = Array.IndexOf(SunList, table[i]);

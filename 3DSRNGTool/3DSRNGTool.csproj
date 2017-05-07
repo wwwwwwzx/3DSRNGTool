@@ -50,9 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\EncounterArea.cs" />
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
     <Compile Include="Gen6\ID6.cs" />
+    <Compile Include="Gen6\ORASEncounter\EncounterArea6.cs" />
+    <Compile Include="Gen6\ORASEncounter\LocationTable6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
     <Compile Include="Gen6\ResultW6.cs" />
     <Compile Include="Gen6\Wild6.cs" />
@@ -203,10 +206,11 @@
     <None Include="Resources\text_Location_sm_en.txt" />
     <None Include="Resources\text_Items_cn.txt" />
     <None Include="Resources\text_Items_en.txt" />
+    <None Include="Resources\FollowmeTogetic.ico" />
+    <None Include="Resources\text_Location_xy_en.txt" />
+    <None Include="Resources\text_Location_xy_cn.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\FollowmeTogetic.ico" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

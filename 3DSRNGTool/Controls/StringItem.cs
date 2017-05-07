@@ -16,7 +16,7 @@ namespace Pk3DSRNGTool
         public static string[] gen7wildtypestr = { "-", "UB", "QR" };
 
         public static string[] species;
-        public static string[] smlocation;
+        public static string[] smlocation, gen6location;
         public static string[] items;
 
         public static ComboItem[] NatureList
@@ -30,8 +30,20 @@ namespace Pk3DSRNGTool
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();
 
-        public static string getSMlocationstr(int locationidx)
-            => smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+        public static string getlocationstr(int locationidx, int ver)
+        {
+            switch (ver)
+            {
+                case 2:
+                case 3:
+                    return gen6location[locationidx & 0x1FF] + LocationTable6.Table_ORAS.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+                case 4:
+                case 5:
+                    return smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+                default:
+                    return "";
+            }
+        }
 
         private static string[][] Translation =
         {
@@ -48,7 +60,7 @@ namespace Pk3DSRNGTool
             new [] { "Normal Wild", "普通野外" },
         };
 
-        public static string Translate(string input,int language)
+        public static string Translate(string input, int language)
         {
             if (0 >= language || language >= 2)
                 return input;

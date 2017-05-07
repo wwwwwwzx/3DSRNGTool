@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using Pk3DSRNGTool.Controls;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.3.8";
+        private string version = "0.4.0";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -22,10 +23,9 @@ namespace Pk3DSRNGTool
         private bool Gen6 => ver < 4;
         private bool Gen7 => 4 <= ver && ver < 6;
         private byte lastgen;
-        private EncounterArea7 ea = new EncounterArea7();
-        private bool IsMoon => ver == 5;
+        private EncounterArea ea = null;
         private bool IsNight => Night.Checked;
-        private int[] slotspecies => Gen7 ? ea.getSpecies(IsMoon, IsNight) : null;
+        private int[] slotspecies => ea?.getSpecies(ver, IsNight) ?? new int[0];
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         private int Standard;
@@ -121,7 +121,7 @@ namespace Pk3DSRNGTool
         private void RefreshPKM()
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
-            var List = Pokemonlist.Select(s => new Controls.ComboItem(s.ToString(), s.SpecForm));
+            var List = Pokemonlist.Select(s => new ComboItem(s.ToString(), s.SpecForm));
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
@@ -140,14 +140,15 @@ namespace Pk3DSRNGTool
 
         private void RefreshLocation()
         {
+            int[] locationlist = null;
             if (Gen6)
-                Locationlist.Clear(); // not impled
+                locationlist = iPM.Conceptual ? LocationTable6.Table_ORAS.Select(loc => loc.Locationidx).ToArray() : null;
             else if (Gen7)
-            {
-                var locationlist = iPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (iPM as PKMW7)?.Location;
-                if (locationlist == null) return;
-                Locationlist = locationlist.Select(loc => new Controls.ComboItem(StringItem.getSMlocationstr(loc), loc)).ToList();
-            }
+                locationlist = iPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (iPM as PKMW7)?.Location;
+
+            if (locationlist == null)
+                return;
+            Locationlist = locationlist.Select(loc => new ComboItem(StringItem.getlocationstr(loc, ver), loc)).ToList();
 
             MetLocation.DisplayMember = "Text";
             MetLocation.ValueMember = "Value";
@@ -159,9 +160,10 @@ namespace Pk3DSRNGTool
         private void RefreshWildSpecies()
         {
             int tmp = SlotSpecies.SelectedIndex;
-            var species = slotspecies ?? new int[1];
-            var List = species.Skip(1).Distinct().Select(SpecForm => new Controls.ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
-            List = new[] { new Controls.ComboItem("-", 0) }.Concat(List);
+            var species = slotspecies;
+            var List = Gen7 ? species.Skip(1).Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm))
+                : species.Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
+            List = new[] { new ComboItem("-", 0) }.Concat(List);
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
             SlotSpecies.DataSource = new BindingSource(List, null);
@@ -172,13 +174,20 @@ namespace Pk3DSRNGTool
         private void LoadSlotSpeciesInfo()
         {
             int SpecForm = (int)SlotSpecies.SelectedValue;
-            if (Gen6) return; // not impled
-            byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
             List<int> Slotidx = new List<int>();
             for (int i = Array.IndexOf(slotspecies, SpecForm); i > -1; i = Array.IndexOf(slotspecies, SpecForm, i + 1))
                 Slotidx.Add(i);
-            for (int i = 0; i < 10; i++)
-                Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(Slottype[i]);
+            if (Gen6)
+            {
+                for (int i = 0; i < 12; i++)
+                    Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(i);
+            }
+            else
+            {
+                byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
+                for (int i = 0; i < 10; i++)
+                    Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(Slottype[i]);
+            }
 
             SetPersonalInfo(SpecForm > 0 ? SpecForm : iPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0);
         }
@@ -402,12 +411,15 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 ea = LocationTable7.Table.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
-                NPC.Value = ea.NPC;
-                Correction.Value = ea.Correction;
+                var tmp = ea as EncounterArea7;
+                NPC.Value = tmp.NPC;
+                Correction.Value = tmp.Correction;
 
-                Lv_min.Value = ea.SunMoonDifference && IsMoon ? ea.LevelMinMoon : ea.LevelMin;
-                Lv_max.Value = ea.SunMoonDifference && IsMoon ? ea.LevelMaxMoon : ea.LevelMax;
+                Lv_min.Value = ea.VersionDifference && ver == 5 ? tmp.LevelMinMoon : tmp.LevelMin;
+                Lv_max.Value = ea.VersionDifference && ver == 5 ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
+            else
+                ea = (ver > 1 ? LocationTable6.Table_ORAS : null)?.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
 
             RefreshWildSpecies();
         }

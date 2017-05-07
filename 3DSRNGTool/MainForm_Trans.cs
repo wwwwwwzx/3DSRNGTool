@@ -71,6 +71,7 @@ namespace Pk3DSRNGTool
             StringItem.items = getStringList("Items", curlanguage);
             StringItem.genderratio = getStringList("Genderratio", curlanguage);
             StringItem.smlocation = getStringList("Location_sm", curlanguage);
+            StringItem.gen6location = getStringList("Location_xy", curlanguage);
 
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
@@ -84,7 +85,8 @@ namespace Pk3DSRNGTool
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
 
             RefreshCategory();
-            RefreshLocation();
+            if (method == 2)
+                RefreshLocation();
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];

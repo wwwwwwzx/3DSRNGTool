@@ -98,7 +98,7 @@ namespace Pk3DSRNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = Pk3DSR [rest of string was truncated]&quot;;.
+        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
             get {
@@ -157,14 +157,15 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 不变之石
+        ///   Looks up a localized string similar to 无道具
+        ///不变之石
         ///红线
-        ///力量负重
-        ///力量护腕
-        ///力量腰带
-        ///力量镜
-        ///力量束带
-        ///力量护踝.
+        ///力量负重-H
+        ///力量护腕-A
+        ///力量腰带-B
+        ///力量镜-C
+        ///力量束带-D
+        ///力量护踝-S.
         /// </summary>
         internal static string text_Items_cn {
             get {
@@ -173,7 +174,8 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Everstone
+        ///   Looks up a localized string similar to No Item
+        ///Everstone
         ///Destiny Knot
         ///Power Weight
         ///Power Bracer
@@ -359,6 +361,177 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Location_sm_en {
             get {
                 return ResourceManager.GetString("text_Location_sm_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ----------
+        ///
+        ///神秘的地方
+        ///
+        ///遥远的地方
+        ///
+        ///朝香镇
+        ///
+        ///1号道路
+        ///卡洛斯
+        ///美川镇
+        ///
+        ///2号道路
+        ///前进通道
+        ///白檀森林
+        ///
+        ///3号道路
+        ///开展通道
+        ///白檀市
+        ///
+        ///4号道路
+        ///花坛街道
+        ///密阿雷市
+        ///
+        ///密阿雷道馆
+        ///
+        ///弗拉达利实验室
+        ///
+        ///5号道路
+        ///斜坡通道
+        ///古木镇
+        ///
+        ///休波努城堡
+        ///
+        ///6号道路
+        ///宫殿林荫道
+        ///香水宫殿
+        ///
+        ///7号道路
+        ///河川直路
+        ///遥香市
+        ///
+        ///8号道路
+        ///城墙海岸
+        ///古香镇
+        ///
+        ///9号道路
+        ///刺刺山道
+        ///对战古堡
+        ///
+        ///10号道路
+        ///石柱之路
+        ///石林镇
+        ///
+        ///11号道路
+        ///明镜通道
+        ///映身洞窟
+        ///
+        ///娑罗市
+        ///
+        ///精通塔
+        ///
+        ///12号道路
+        ///牧草通道
+        ///海翼市
+        ///
+        ///13号道路
+        ///密阿雷荒野
+        ///14号道路
+        ///香薰林道
+        ///香薰市
+        ///
+        ///宝贝球工厂
+        ///
+        ///15号道路
+        ///褐棕通道
+        ///雪风镇
+        ///
+        ///16号道路
+        ///忧郁通道
+        ///[~ 80]
+        ///[~ 81]
+        ///冰霜洞穴
+        ///
+        ///17号道路
+        ///象牙猪路
+        ///百刻市
+        ///
+        ///18号道路
+        ///狭谷通道
+        ///水涟镇
+        ///
+        ///19号道路
+        ///巨谷通道
+        ///映雪市
+        ///
+        ///20号道路
+        ///迷幻森林
+        ///神奇宝贝村庄
+        ///
+        ///21号道路
+        ///最后通道 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_xy_cn {
+            get {
+                return ResourceManager.GetString("text_Location_xy_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ——————
+        ///
+        ///Mystery Zone
+        ///
+        ///Faraway Place
+        ///
+        ///Vaniville Town
+        ///
+        ///Route 1
+        ///Vaniville Pathway
+        ///Aquacorde Town
+        ///
+        ///Route 2
+        ///Avance Trail
+        ///Santalune Forest
+        ///
+        ///Route 3
+        ///Ouvert Way
+        ///Santalune City
+        ///
+        ///Route 4
+        ///Parterre Way
+        ///Lumiose City
+        ///
+        ///Prism Tower
+        ///
+        ///Lysandre Labs
+        ///
+        ///Route 5
+        ///Versant Road
+        ///Camphrier Town
+        ///
+        ///Shabboneau Castle
+        ///
+        ///Route 6
+        ///Palais Lane
+        ///Parfum Palace
+        ///
+        ///Route 7
+        ///Rivière Walk
+        ///Cyllage City
+        ///
+        ///Route 8
+        ///Muraille Coast
+        ///Ambrette Town
+        ///
+        ///Route 9
+        ///Spikes Passage
+        ///Battle Chateau
+        ///
+        ///Route 10
+        ///Menhir Trail
+        ///Geo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_xy_en {
+            get {
+                return ResourceManager.GetString("text_Location_xy_en", resourceCulture);
             }
         }
         
