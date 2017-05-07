@@ -121,7 +121,7 @@
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.CreateTimeline = new System.Windows.Forms.RadioButton();
             this.EggNumber = new System.Windows.Forms.RadioButton();
-            this.CalcList = new System.Windows.Forms.Button();
+            this.B_Search = new System.Windows.Forms.Button();
             this.TimeSpan = new System.Windows.Forms.NumericUpDown();
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.RB_FrameRange = new System.Windows.Forms.RadioButton();
@@ -1328,7 +1328,7 @@
             this.RNGInfo.Controls.Add(this.L_TargetFrame);
             this.RNGInfo.Controls.Add(this.CreateTimeline);
             this.RNGInfo.Controls.Add(this.EggNumber);
-            this.RNGInfo.Controls.Add(this.CalcList);
+            this.RNGInfo.Controls.Add(this.B_Search);
             this.RNGInfo.Controls.Add(this.TimeSpan);
             this.RNGInfo.Controls.Add(this.TargetFrame);
             this.RNGInfo.Controls.Add(this.RB_FrameRange);
@@ -1565,15 +1565,15 @@
             this.EggNumber.Text = "蛋数";
             this.EggNumber.UseVisualStyleBackColor = true;
             // 
-            // CalcList
+            // B_Search
             // 
-            this.CalcList.Location = new System.Drawing.Point(117, 237);
-            this.CalcList.Name = "CalcList";
-            this.CalcList.Size = new System.Drawing.Size(92, 28);
-            this.CalcList.TabIndex = 90;
-            this.CalcList.Text = "检索";
-            this.CalcList.UseVisualStyleBackColor = true;
-            this.CalcList.Click += new System.EventHandler(this.Search_Click);
+            this.B_Search.Location = new System.Drawing.Point(117, 237);
+            this.B_Search.Name = "B_Search";
+            this.B_Search.Size = new System.Drawing.Size(92, 28);
+            this.B_Search.TabIndex = 90;
+            this.B_Search.Text = "检索";
+            this.B_Search.UseVisualStyleBackColor = true;
+            this.B_Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // TimeSpan
             // 
@@ -4720,7 +4720,7 @@
         private System.Windows.Forms.ComboBox Poke;
         private System.Windows.Forms.CheckBox AlwaysSynced;
         private System.Windows.Forms.DataGridView DGV;
-        private System.Windows.Forms.Button CalcList;
+        private System.Windows.Forms.Button B_Search;
         private System.Windows.Forms.GroupBox RNGInfo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown Frame_max;

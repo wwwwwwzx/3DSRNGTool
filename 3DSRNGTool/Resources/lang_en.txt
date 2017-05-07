@@ -71,7 +71,7 @@ ShowStats = Show Stats
 Reset = Reset
 ---
 RNGInfo = RNG Info
-CalcList = Calculate
+B_Search = Calculate
 L_NPC = # of NPCs
 AroundTarget = ±100 Frame
 RB_FrameRange = Frame Range

@@ -326,6 +326,7 @@ namespace Pk3DSRNGTool
             L_NPC.Visible = NPC.Visible = Gen7 || method == 5; // not show in gen6
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
+            B_Search.Enabled = Gen7 || method < 2 || 3 < method;
 
             if (method > 4)
                 return;
@@ -478,7 +479,7 @@ namespace Pk3DSRNGTool
                 IVlow = iPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
                 IVup = iPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
             }
-            AlwaysSynced.Text = SYNC_STR[lindex,iPM.Syncable && iPM.Nature > 25 ? 0 : 1];
+            AlwaysSynced.Text = SYNC_STR[lindex, iPM.Syncable && iPM.Nature > 25 ? 0 : 1];
             if (!iPM.Syncable)
                 SyncNature.SelectedIndex = 0;
             if (iPM.Nature < 25)
@@ -888,7 +889,7 @@ namespace Pk3DSRNGTool
             row.CreateCells(DGV_ID);
             row.SetValues(
                 i, (rt as ID7)?.G7TID.ToString("D6"), rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString(), 
+                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString(),
                 (rt as ID6)?.RandNum.ToString("X8"), (rt as ID7)?.RandNum.ToString("X16"),
                 (rt as ID6)?.Status
                 );

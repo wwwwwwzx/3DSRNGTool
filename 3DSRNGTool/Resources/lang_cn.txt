@@ -71,7 +71,7 @@ ShowStats = 显示能力值
 Reset = 重置
 ---
 RNGInfo = 乱数信息
-CalcList = 检索
+B_Search = 检索
 L_NPC = NPC数
 AroundTarget = ±100帧
 RB_FrameRange = 帧数范围
