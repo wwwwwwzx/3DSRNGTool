@@ -25,7 +25,7 @@
         public virtual void UseTemplate(Pokemon PM)
         {
             AlwaysSync = PM.AlwaysSync;
-            IV3 = PM.IV3;
+            IV3 = PM.IV3 && !PM.Egg;
             IsShinyLocked = PM.ShinyLocked;
             Ability = (byte)(PM.Ability > 3 ? 3 : PM.Ability); // Ability 0/1/2/4 => 0/1/2/3
             IVs = PM.IVs;

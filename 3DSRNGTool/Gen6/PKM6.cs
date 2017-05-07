@@ -92,13 +92,13 @@
                 Text = "Gift",
                 List = new[]
                 {
-                    new PKM6 { Species = 360, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Wynaut
-                    new PKM6 { Species = 175, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Togepi
-                    new PKM6 { Species = 374, Level = 1, Ability = 1, IVs = new[] {-1, -1, 31, -1, 31, -1}, Gift = true }, // Beldum
+                    new PKM6 { Species = 360, Level = 1, Delay = 0, Ability = 1, Gift = true, Syncable = false, Egg = true,}, // Wynaut
+                    new PKM6 { Species = 175, Level = 1, Delay = 0, Ability = 1, Gift = true, Syncable = false, Egg = true,}, // Togepi
+                    new PKM6 { Species = 374, Level = 1, Delay = 0, Ability = 1, Gift = true, Syncable = false, IVs = new[] {-1, -1, 31, -1, 31, -1}, }, // Beldum
 
-                    new PKM6 { Species = 351, Level = 30, Nature = 09, Ability = 1, IVs = new[] {-1, -1, -1, 31, -1, -1}, Gift = true }, // Castform
-                    new PKM6 { Species = 319, Level = 40, Gender = 1, Ability = 1, Nature = 03, Gift = true }, // Sharpedo
-                    new PKM6 { Species = 323, Level = 40, Gender = 1, Ability = 1, Nature = 17, Gift = true }, // Camerupt
+                    new PKM6 { Species = 351, Level = 30, Delay = 0, Nature = 09, Ability = 1, Gift = true, IVs = new[] {-1, -1, -1, 31, -1, -1} }, // Castform
+                    new PKM6 { Species = 319, Level = 40, Delay = 0, Nature = 03, Ability = 1, Gift = true, Gender = 2, }, // Sharpedo
+                    new PKM6 { Species = 323, Level = 40, Delay = 0, Nature = 17, Ability = 1, Gift = true, Gender = 2, }, // Camerupt
                     new PKM6 { Species = 025, Level = 20, Delay = 0, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
                 }
             },
