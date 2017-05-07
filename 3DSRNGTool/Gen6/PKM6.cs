@@ -28,8 +28,8 @@
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, Delay = 0, }, // Latios
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, Delay = 0, }, // Latias
 
-                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Unstable = true, }, // Kyogre
-                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Unstable = true, }, // Groudon
+                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 2700, Unstable = true, }, // Kyogre
+                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 2700, Unstable = true, }, // Groudon
                     new PKM6 { Species = 384, Level = 70, ShinyLocked = true, }, // Rayquaza
                     new PKM6 { Species = 386, Level = 80, ShinyLocked = true, }, // Deoxys
 

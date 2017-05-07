@@ -1418,19 +1418,20 @@
             this.Timedelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Timedelay.Location = new System.Drawing.Point(133, 2);
             this.Timedelay.Maximum = new decimal(new int[] {
-            1000,
+            4000,
             0,
             0,
             0});
             this.Timedelay.Name = "Timedelay";
-            this.Timedelay.Size = new System.Drawing.Size(44, 22);
+            this.Timedelay.Size = new System.Drawing.Size(52, 22);
             this.Timedelay.TabIndex = 64;
+            this.Timedelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(181, 5);
+            this.label10.Location = new System.Drawing.Point(187, 5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 15);
             this.label10.TabIndex = 65;
@@ -3386,7 +3387,6 @@
             this.Magikarp.Size = new System.Drawing.Size(806, 236);
             this.Magikarp.TabIndex = 104;
             this.Magikarp.TabStop = false;
-            this.Magikarp.Text = "";
             // 
             // RTB_EggSeed
             // 
