@@ -31,7 +31,7 @@
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 2700, Unstable = true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 2700, Unstable = true, }, // Groudon
                     new PKM6 { Species = 384, Level = 70, ShinyLocked = true, }, // Rayquaza
-                    new PKM6 { Species = 386, Level = 80, ShinyLocked = true, }, // Deoxys
+                    new PKM6 { Species = 386, Level = 80, ShinyLocked = true, Delay = 300, }, // Deoxys
 
                     new PKM6 { Species = 377, Level = 40, Delay = 158, }, // Regirock
                     new PKM6 { Species = 378, Level = 40, Delay = 154, Unstable = true,  }, // Regice

@@ -373,7 +373,7 @@ namespace Pk3DSRNGTool
             {
                 case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
-                case 2: Wild_Setting.Controls.Add(EnctrPanel); Timedelay.Value = 8; return;
+                case 2: Wild_Setting.Controls.Add(EnctrPanel); return;
                 case 3: ByIVs.Checked = true; break;
                 case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
@@ -471,8 +471,6 @@ namespace Pk3DSRNGTool
         private void SetPersonalInfo(int Species, int Form, bool skip = false)
         {
             SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
-            if (Species == 0)
-                return;
 
             // Load from personal table
             var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Form) : PersonalTable.SM.getFormeEntry(Species, Form);

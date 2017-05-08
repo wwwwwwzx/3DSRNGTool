@@ -3,7 +3,6 @@
     public class PKMW6 : Pokemon
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
-        public override short Delay { get; protected set; } // to-do
 
         public readonly static PokemonList[] Species_XY =
         {
