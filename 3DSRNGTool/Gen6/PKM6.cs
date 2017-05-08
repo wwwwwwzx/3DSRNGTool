@@ -3,7 +3,6 @@
     public class PKM6 : Pokemon
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
-        public override short Delay { get; protected set; } = 16;
         public override bool Syncable => !Gift || IV3 && !Egg; // Stationary encounter or undiscovered egg group non-egg gift
 
         public readonly static PokemonList Default = new PokemonList
@@ -23,11 +22,11 @@
                 Text = "Hoenn Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Delay = 0, Ability = 1, Gift = true, }, // Latias
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Delay = 0, Ability = 1, Gift = true, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Ability = 1, Gift = true, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Ability = 1, Gift = true, }, // Latios
 
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, Delay = 0, }, // Latios
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, Delay = 0, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
 
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 2700, Unstable = true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 2700, Unstable = true, }, // Groudon
@@ -44,9 +43,9 @@
                 Text = "Johto Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 243, Level = 50, }, // Raikou
-                    new PKM6 { Species = 244, Level = 50, }, // Entei
-                    new PKM6 { Species = 245, Level = 50, }, // Suicune
+                    new PKM6 { Species = 243, Level = 50, Delay = 16, }, // Raikou
+                    new PKM6 { Species = 244, Level = 50, Delay = 16, }, // Entei
+                    new PKM6 { Species = 245, Level = 50, Delay = 16, }, // Suicune
 
                     new PKM6 { Species = 249, Level = 50, Version = GameVersion.AS, Delay = 20, }, // Lugia
                     new PKM6 { Species = 250, Level = 50, Version = GameVersion.OR, Delay = 20, }, // Ho-oh
@@ -57,17 +56,17 @@
                 Text = "Sinnoh Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 480, Level = 50, }, // Uxie
-                    new PKM6 { Species = 481, Level = 50, }, // Mesprit
-                    new PKM6 { Species = 482, Level = 50, }, // Azelf
+                    new PKM6 { Species = 480, Level = 50, Delay = 16, }, // Uxie
+                    new PKM6 { Species = 481, Level = 50, Delay = 16, }, // Mesprit
+                    new PKM6 { Species = 482, Level = 50, Delay = 16, }, // Azelf
             
                     new PKM6 { Species = 483, Level = 50, Delay = 88, Version = GameVersion.AS, }, // Dialga
                     new PKM6 { Species = 484, Level = 50, Delay = 88, Version = GameVersion.OR, }, // Palkia
                     
-                    new PKM6 { Species = 485, Level = 50, }, // Heatran
+                    new PKM6 { Species = 485, Level = 50, Delay = 16, }, // Heatran
                     new PKM6 { Species = 486, Level = 50, }, // Regigigas
                     new PKM6 { Species = 487, Level = 50, Delay = 88, }, // Giratina
-                    new PKM6 { Species = 488, Level = 50, }, // Cresselia
+                    new PKM6 { Species = 488, Level = 50, Delay = 16, }, // Cresselia
                 }
             },
             new PokemonList
@@ -75,17 +74,17 @@
                 Text = "Unova Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 638, Level = 50, }, // Cobalion
-                    new PKM6 { Species = 639, Level = 50, }, // Terrakion
-                    new PKM6 { Species = 640, Level = 50, }, // Virizion
+                    new PKM6 { Species = 638, Level = 50, Delay = 16, }, // Cobalion
+                    new PKM6 { Species = 639, Level = 50, Delay = 16, }, // Terrakion
+                    new PKM6 { Species = 640, Level = 50, Delay = 16, }, // Virizion
 
                     new PKM6 { Species = 641, Level = 50, Delay = 88, Version = GameVersion.OR, }, // Tornadus
                     new PKM6 { Species = 642, Level = 50, Delay = 88, Version = GameVersion.AS, }, // Thundurus
                     new PKM6 { Species = 645, Level = 50, Delay = 88, }, // Landorus
             
-                    new PKM6 { Species = 643, Level = 50, Version = GameVersion.OR, }, // Reshiram
-                    new PKM6 { Species = 644, Level = 50, Version = GameVersion.AS, }, // Zekrom
-                    new PKM6 { Species = 646, Level = 50, }, // Kyurem
+                    new PKM6 { Species = 643, Level = 50, Delay = 16, Version = GameVersion.OR, }, // Reshiram
+                    new PKM6 { Species = 644, Level = 50, Delay = 16, Version = GameVersion.AS, }, // Zekrom
+                    new PKM6 { Species = 646, Level = 50, Delay = 16, }, // Kyurem
                 }
             },
             new PokemonList
@@ -93,14 +92,14 @@
                 Text = "Gift",
                 List = new[]
                 {
-                    new PKM6 { Species = 360, Level = 1, Delay = 0, Ability = 1, Gift = true, Egg = true,}, // Wynaut
-                    new PKM6 { Species = 175, Level = 1, Delay = 0, Ability = 1, Gift = true, Egg = true,}, // Togepi
-                    new PKM6 { Species = 374, Level = 1, Delay = 0, Ability = 1, Gift = true, IVs = new[] {-1, -1, 31, -1, 31, -1}, }, // Beldum
+                    new PKM6 { Species = 360, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Wynaut
+                    new PKM6 { Species = 175, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Togepi
+                    new PKM6 { Species = 374, Level = 1, Ability = 1, Gift = true, IVs = new[] {-1, -1, 31, -1, 31, -1}, }, // Beldum
 
-                    new PKM6 { Species = 351, Level = 30, Delay = 0, Nature = 09, Ability = 1, Gift = true, IVs = new[] {-1, -1, -1, 31, -1, -1} }, // Castform
-                    new PKM6 { Species = 319, Level = 40, Delay = 0, Nature = 03, Ability = 1, Gift = true, Gender = 2, }, // Sharpedo
-                    new PKM6 { Species = 323, Level = 40, Delay = 0, Nature = 17, Ability = 1, Gift = true, Gender = 2, }, // Camerupt
-                    new PKM6 { Species = 025, Level = 20, Delay = 0, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
+                    new PKM6 { Species = 351, Level = 30, Nature = 09, Ability = 1, Gift = true, IVs = new[] {-1, -1, -1, 31, -1, -1} }, // Castform
+                    new PKM6 { Species = 319, Level = 40, Nature = 03, Ability = 1, Gift = true, Gender = 2, }, // Sharpedo
+                    new PKM6 { Species = 323, Level = 40, Nature = 17, Ability = 1, Gift = true, Gender = 2, }, // Camerupt
+                    new PKM6 { Species = 025, Level = 20, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
                 }
             },
             new PokemonList
@@ -108,12 +107,12 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM6 { Species = 352, Level = 30, Delay = 0,}, // Kecleon @ Route 120
-                    new PKM6 { Species = 352, Level = 40, Delay = 0, Gender = 2,}, // Kecleon @ Lavaridge
-                    new PKM6 { Species = 352, Level = 45, Delay = 0, Ability = 4,}, // Kecleon @ Mossdeeps
+                    new PKM6 { Species = 352, Level = 30, }, // Kecleon @ Route 120
+                    new PKM6 { Species = 352, Level = 40, Gender = 2,}, // Kecleon @ Lavaridge
+                    new PKM6 { Species = 352, Level = 45, Ability = 4,}, // Kecleon @ Mossdeeps
                     new PKM6 { Species = 101, Level = 40, Delay = 122, }, // Electrode @ Magma Hideout, Aqua Hideout
                     new PKM6 { Species = 100, Level = 20, Delay = 120, }, // Voltorb @ Route 119
-                    new PKM6 { Species = 442, Level = 50, Delay = 0, }, // Spiritomb @ Route 120
+                    new PKM6 { Species = 442, Level = 50, }, // Spiritomb @ Route 120
                 }
             },
             new PokemonList
