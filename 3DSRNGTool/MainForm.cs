@@ -335,7 +335,7 @@ namespace Pk3DSRNGTool
             L_NPC.Visible = NPC.Visible = Gen7 || method == 5; // not show in gen6
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
-            B_Search.Enabled = Gen7 || method < 2 || 3 < method;
+            B_Search.Enabled = Gen7 || method < 2 || 3 < method || method == 2 && ver > 1;
 
             if (method > 4)
                 return;
@@ -362,6 +362,7 @@ namespace Pk3DSRNGTool
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
+            Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible = 
             GB_RNGGEN7ID.Visible =
             BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
@@ -702,7 +703,7 @@ namespace Pk3DSRNGTool
 
         private WildRNG getWildSetting()
         {
-            WildRNG setting = Gen6 ? null : new Wild7();
+            WildRNG setting = Gen6 ? new Wild6() : (WildRNG)new Wild7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -728,6 +729,15 @@ namespace Pk3DSRNGTool
             }
             else if (Gen6)
             {
+                var setting6 = setting as Wild6;
+                var area = ea as EncounterArea6;
+                setting6.SpecForm = new int[13];
+                setting6.SlotLevel = new byte[13];
+                for (int i = 1; i < 13; i++)
+                {
+                    setting6.SpecForm[i] = slotspecies[i - 1];
+                    setting6.SlotLevel[i] = area.Level[i - 1];
+                }
                 slottype = 2;
             }
 
@@ -806,18 +816,13 @@ namespace Pk3DSRNGTool
             else if (Frame_min.Value > Frame_max.Value)
                 Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
             else
-                try
-                {
-                    if (Gen6)
-                        Search6();
-                    else
-                        Search7();
-                    AdjustDGVColumns();
-                }
-                catch (NullReferenceException)
-                {
-                    Error("Not Impled");
-                }
+            {
+                if (Gen6)
+                    Search6();
+                else
+                    Search7();
+                AdjustDGVColumns();
+            }
         }
 
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };

@@ -10,6 +10,8 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
+        protected override int PIDroll_count => ShinyCharm ? 3 : 1;
+
         public byte[] SlotLevel;
         public bool CompoundEye;
 
@@ -17,12 +19,10 @@ namespace Pk3DSRNGTool
         {
             ResultW6 rt = new ResultW6();
 
-            rt.Synchronize = rand(100) >= 50;
-            rt.Slot = getslot((int)(getrand >> 16) / 656);
-            rt.Level = SlotLevel[rt.Slot];
             Advance(1);
 
-            rt.Synchronize &= Synchro_Stat < 25;
+            rt.Slot = getslot((int)(getrand >> 16) / 656);
+            rt.Level = SlotLevel[rt.Slot];
 
             Advance(60);
 
@@ -50,7 +50,7 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)((getrand >> 31) + 1);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize ? Synchro_Stat : rand(25));
+            rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
 
             //Gender
             rt.Gender = (byte)(RandomGender[slot] ? (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
