@@ -30,7 +30,6 @@ namespace Pk3DSRNGTool
         private byte modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
         private int Standard;
-        private int lastpkm;
         private byte lastmethod;
         List<int> OtherTSVList = new List<int>();
         #endregion
@@ -60,7 +59,8 @@ namespace Pk3DSRNGTool
 
             Seed.Value = Properties.Settings.Default.Seed;
             var LastGameversion = Properties.Settings.Default.GameVersion;
-            lastpkm = Properties.Settings.Default.PKM;
+            var LastPkm = Properties.Settings.Default.Poke;
+            var LastCategory = Properties.Settings.Default.Category;
             var LastMethod = Properties.Settings.Default.Method;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
@@ -100,23 +100,11 @@ namespace Pk3DSRNGTool
             RNGMethod.SelectedIndex = LastMethod;
             RNGMethod_Changed(null, null);
 
-            FindSetting(lastpkm);
+            CB_Category.SelectedIndex = LastCategory;
+            Poke.SelectedIndex = LastPkm < Poke.Items.Count ? LastPkm : 0;
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
-        }
-
-        private void FindSetting(int Lastpkm)
-        {
-            var Category = Pokemon.getCategoryList(ver, method);
-            for (int i = 0; i < Category.Length; i++)
-                if (Category[i].List.Any(t => t.SpecForm == Lastpkm))
-                {
-                    CB_Category.SelectedIndex = i;
-                    Poke.SelectedValue = Lastpkm;
-                    return;
-                }
-            CB_Category.SelectedIndex = 0;
         }
 
         private void RefreshPKM()
@@ -238,9 +226,17 @@ namespace Pk3DSRNGTool
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
+            Properties.Settings.Default.Save();
             RefreshPKM();
             Poke_SelectedIndexChanged(null, null);
             SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
+        }
+
+        private void Poke_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Poke = (byte)Poke.SelectedIndex;
+            Properties.Settings.Default.Save();
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -516,8 +512,6 @@ namespace Pk3DSRNGTool
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
             int specform = (int)(Poke.SelectedValue);
-            Properties.Settings.Default.PKM = specform;
-            Properties.Settings.Default.Save();
             // Reset_Click(null, null);
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);

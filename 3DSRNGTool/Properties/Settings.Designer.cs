@@ -85,13 +85,13 @@ namespace Pk3DSRNGTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("785")]
-        public int PKM {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte Poke {
             get {
-                return ((int)(this["PKM"]));
+                return ((byte)(this["Poke"]));
             }
             set {
-                this["PKM"] = value;
+                this["Poke"] = value;
             }
         }
         
@@ -176,6 +176,18 @@ namespace Pk3DSRNGTool.Properties {
             }
             set {
                 this["TSVList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte Category {
+            get {
+                return ((byte)(this["Category"]));
+            }
+            set {
+                this["Category"] = value;
             }
         }
     }
