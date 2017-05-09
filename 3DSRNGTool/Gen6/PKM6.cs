@@ -3,7 +3,12 @@
     public class PKM6 : Pokemon
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
-        public override bool Syncable => !Gift || IV3 && !Egg; // Stationary encounter or undiscovered egg group non-egg gift
+        public override bool Syncable => !PokemonLink && (!Gift || IV3 && !Egg); // Stationary encounter or undiscovered egg group non-egg gift
+        public override bool ShinyLocked { get { return PokemonLink || _ShinyLocked; } protected set { _ShinyLocked = value; } }
+        public override bool AlwaysSync => base.AlwaysSync || PokemonLink;
+
+        public bool PokemonLink;
+        private bool _ShinyLocked;
 
         public readonly static PokemonList Default = new PokemonList
         {
@@ -117,6 +122,15 @@
             },
             new PokemonList
             {
+                Text = "Pokemon Link",
+                List = new[]
+                {
+                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans 
+                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
+                }
+            },
+            new PokemonList
+            {
                 Text = "Starters",
                 List = new[]
                 {
@@ -174,6 +188,16 @@
                     new PKM6 { Species = 144, Level = 70, ShinyLocked = true }, // Articuno
                     new PKM6 { Species = 145, Level = 70, ShinyLocked = true }, // Zapdos
                     new PKM6 { Species = 146, Level = 70, ShinyLocked = true }, // Moltres
+                }
+            },
+            new PokemonList
+            {
+                Text = "Pokemon Link",
+                List = new[]
+                {
+                    new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, },
+                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans
+                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
                 }
             },
             new PokemonList

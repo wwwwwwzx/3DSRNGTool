@@ -16,6 +16,8 @@ namespace Pk3DSRNGTool
 
             Advance(1);
 
+            int tmp =  RNGPool.index;
+
             //Sync
             if (AlwaysSync)
                 rt.Synchronize = true;
@@ -52,6 +54,9 @@ namespace Pk3DSRNGTool
 
             //Gender
             rt.Gender = (byte)(RandomGender ? (rand(252) >= Gender ? 1 : 2) : Gender);
+            
+            //For Pokemon Link
+            rt.FrameUsed = (byte)(RNGPool.index - tmp);
 
             return rt;
         }

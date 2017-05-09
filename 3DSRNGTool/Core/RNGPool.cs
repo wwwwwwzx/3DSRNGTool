@@ -5,7 +5,7 @@ namespace Pk3DSRNGTool.Core
 {
     internal static class RNGPool
     {
-        private static int index;
+        public static int index { get; private set; }
         public static void ResetIndex() => index = 0;
         public static void Advance(int d) => index += d;
 

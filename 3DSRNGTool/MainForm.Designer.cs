@@ -1778,7 +1778,7 @@
             this.CB_Category.FormattingEnabled = true;
             this.CB_Category.Location = new System.Drawing.Point(60, 11);
             this.CB_Category.Name = "CB_Category";
-            this.CB_Category.Size = new System.Drawing.Size(106, 21);
+            this.CB_Category.Size = new System.Drawing.Size(119, 21);
             this.CB_Category.TabIndex = 73;
             this.CB_Category.SelectedIndexChanged += new System.EventHandler(this.Category_SelectedIndexChanged);
             // 
@@ -1788,7 +1788,7 @@
             this.Poke.FormattingEnabled = true;
             this.Poke.Location = new System.Drawing.Point(242, 11);
             this.Poke.Name = "Poke";
-            this.Poke.Size = new System.Drawing.Size(102, 21);
+            this.Poke.Size = new System.Drawing.Size(112, 21);
             this.Poke.TabIndex = 36;
             this.Poke.SelectedIndexChanged += new System.EventHandler(this.Poke_SelectedIndexChanged);
             // 

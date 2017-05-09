@@ -20,6 +20,7 @@ namespace Pk3DSRNGTool
         private Pokemon iPM => RNGPool.PM;
         private byte method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => method == 1;
+        private bool IsPokemonLink => (iPM as PKM6)?.PokemonLink ?? false;
         private bool Gen6 => ver < 4;
         private bool Gen7 => 4 <= ver && ver < 6;
         private byte lastgen;
@@ -785,8 +786,8 @@ namespace Pk3DSRNGTool
             dgv_status.Visible = Gen6 && method < 2 || Gen7 && method == 3 && !MainRNGEgg.Checked;
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && method == 3;
-            dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked;
-            dgv_shift.Visible = dgv_time.Visible = method < 3 || MainRNGEgg.Checked;
+            dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
+            dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
@@ -835,7 +836,7 @@ namespace Pk3DSRNGTool
             if (null != ((result as EggResult)?.BE_InheritParents))
                 true_nature = ((result as EggResult).BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
             string EggNum = eggnum > 0 ? eggnum.ToString() : null;
-            string advance = (result as EggResult)?.FramesUsed.ToString("+#;-#;0");
+            string advance = (result as EggResult)?.FramesUsed.ToString("+#") ?? (result as Result6)?.FrameUsed.ToString("+00");
             string delay = (result as Result7)?.FrameDelayUsed.ToString("+#;-#;0");
             byte blink = (result as Result7)?.Blink ?? 0;
             string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();

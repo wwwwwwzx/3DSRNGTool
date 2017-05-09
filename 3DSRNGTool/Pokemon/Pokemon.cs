@@ -7,22 +7,27 @@ namespace Pk3DSRNGTool
         public override byte Nature { get; set; } = 0xFF;
         public bool Gift { get; protected set; }
         public bool Egg { get; protected set; }
-        public bool ShinyLocked { get; protected set; }
         public bool Conceptual { get; protected set; }
         public bool Unstable { get; protected set; }
+        public virtual bool ShinyLocked { get; protected set; }
         public virtual short Delay { get; protected set; }
         public virtual bool Syncable { get; protected set; } = true;
 
         #region Generated Attribute
         public int SpecForm => Species + (Form << 11);
-        public bool AlwaysSync => Gift || Nature < 25;
         public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
         public bool IsRandomGender => FuncUtil.IsRandomGender(GenderRatio);
         public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
+        public virtual bool AlwaysSync => Gift || Nature < 25;
 
         public override string ToString()
         {
             if (Conceptual) return "-";
+            if ((this as PKM6)?.PokemonLink ?? false)
+            {
+                if (Species == 154) return "Johto Starters";
+                if (Species == 377) return "Legendary Titans";
+            }
             if (Egg) return StringItem.species[Species] + " (" + StringItem.species[0] + ")";
             if (Unstable) return  StringItem.species[Species] + "(?)";
             switch (Species)
