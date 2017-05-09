@@ -69,6 +69,8 @@ SafeFOnly = 仅准确帧
 BlinkFOnly = 仅眨眼帧
 ShowStats = 显示能力值
 Reset = 重置
+B_LoadFilter = 导入
+B_SaveFilter = 保存
 ---
 RNGInfo = 乱数信息
 B_Search = 检索

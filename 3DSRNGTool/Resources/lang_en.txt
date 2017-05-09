@@ -69,6 +69,8 @@ SafeFOnly = Safe F Only
 BlinkFOnly = Blink F Only
 ShowStats = Show Stats
 Reset = Reset
+B_LoadFilter = Load
+B_SaveFilter = Save
 ---
 RNGInfo = RNG Info
 B_Search = Calculate

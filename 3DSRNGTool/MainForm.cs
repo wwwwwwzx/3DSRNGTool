@@ -285,6 +285,88 @@ namespace Pk3DSRNGTool
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
 
+        private void B_SaveFilter_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string backupfile = saveFileDialog1.FileName;
+                if (backupfile != null)
+                    System.IO.File.WriteAllLines(backupfile, FilterSettings.SettingString());
+            }
+        }
+        
+        private void B_LoadFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog OFD = new OpenFileDialog();
+                DialogResult result = OFD.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string file = OFD.FileName;
+                    if (System.IO.File.Exists(file))
+                    {
+                        string[] list = System.IO.File.ReadAllLines(file);
+                        int tmp;
+                        Reset_Click(null, null);
+                        foreach (string str in list)
+                        {
+                            string[] SplitString = str.Split(new[] { " = " }, StringSplitOptions.None);
+                            if (SplitString.Length < 2)
+                                continue;
+                            string name = SplitString[0];
+                            string value = SplitString[1];
+                            switch (name)
+                            {
+                                case "Nature":
+                                    var naturelist = value.Split(',').ToArray();
+                                    for (int i = StringItem.naturestr.Length - 1; i >= 0; i--)
+                                        if (naturelist.Contains(StringItem.naturestr[i]))
+                                            Nature.CheckBoxItems[i + 1].Checked = true;
+                                    break;
+                                case "HiddenPower":
+                                    var hplist = value.Split(',').ToArray();
+                                    for (int i = StringItem.hpstr.Length - 2; i > 0; i--)
+                                        if (hplist.Contains(StringItem.hpstr[i]))
+                                            HiddenPower.CheckBoxItems[i].Checked = true;
+                                    break;
+                                case "ShinyOnly":
+                                    ShinyOnly.Checked = value == "T" || value == "True";
+                                    break;
+                                case "Ability":
+                                    tmp = Convert.ToInt32(value);
+                                    Sta_Ability.SelectedIndex = 0 < tmp && tmp < 4 ? tmp : 0;
+                                    break;
+                                case "Gender":
+                                    tmp = Convert.ToInt32(value);
+                                    Gender.SelectedIndex = 0 < tmp && tmp < 3 ? tmp : 0;
+                                    break;
+                                case "IVup":
+                                    IVup = value.Split(',').ToArray().Select(s => Convert.ToInt32(s)).ToArray();
+                                    break;
+                                case "IVlow":
+                                    IVlow = value.Split(',').ToArray().Select(s => Convert.ToInt32(s)).ToArray();
+                                    break;
+                                case "Number of Perfect IVs":
+                                    tmp = Convert.ToInt32(value);
+                                    PerfectIVs.Value = 0 < tmp && tmp < 7 ? tmp : 0;
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                Error(FILEERRORSTR[lindex]);
+            }
+        }
+
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
@@ -1202,7 +1284,6 @@ namespace Pk3DSRNGTool
             DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
             DGV_ID.CurrentCell = null;
         }
-
         #endregion
     }
 }

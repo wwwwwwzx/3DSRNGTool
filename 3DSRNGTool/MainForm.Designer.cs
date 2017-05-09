@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Pk3DSRNGTool.Controls.CheckBoxProperties IcheckBoxProperties = new Pk3DSRNGTool.Controls.CheckBoxProperties();
+            Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.B_LoadFilter = new System.Windows.Forms.Button();
+            this.B_SaveFilter = new System.Windows.Forms.Button();
             this.B_IVInput = new System.Windows.Forms.Button();
             this.L_Ball = new System.Windows.Forms.Label();
             this.Ball = new System.Windows.Forms.ComboBox();
@@ -472,6 +474,8 @@
             // Filters
             // 
             this.Filters.BackColor = System.Drawing.Color.White;
+            this.Filters.Controls.Add(this.B_LoadFilter);
+            this.Filters.Controls.Add(this.B_SaveFilter);
             this.Filters.Controls.Add(this.B_IVInput);
             this.Filters.Controls.Add(this.L_Ball);
             this.Filters.Controls.Add(this.Ball);
@@ -511,6 +515,26 @@
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
             // 
+            // B_LoadFilter
+            // 
+            this.B_LoadFilter.Location = new System.Drawing.Point(272, 17);
+            this.B_LoadFilter.Name = "B_LoadFilter";
+            this.B_LoadFilter.Size = new System.Drawing.Size(54, 25);
+            this.B_LoadFilter.TabIndex = 99;
+            this.B_LoadFilter.Text = "Load";
+            this.B_LoadFilter.UseVisualStyleBackColor = true;
+            this.B_LoadFilter.Click += new System.EventHandler(this.B_LoadFilter_Click);
+            // 
+            // B_SaveFilter
+            // 
+            this.B_SaveFilter.Location = new System.Drawing.Point(203, 17);
+            this.B_SaveFilter.Name = "B_SaveFilter";
+            this.B_SaveFilter.Size = new System.Drawing.Size(54, 25);
+            this.B_SaveFilter.TabIndex = 96;
+            this.B_SaveFilter.Text = "Save";
+            this.B_SaveFilter.UseVisualStyleBackColor = true;
+            this.B_SaveFilter.Click += new System.EventHandler(this.B_SaveFilter_Click);
+            // 
             // B_IVInput
             // 
             this.B_IVInput.Location = new System.Drawing.Point(12, 57);
@@ -524,7 +548,7 @@
             // L_Ball
             // 
             this.L_Ball.AutoSize = true;
-            this.L_Ball.Location = new System.Drawing.Point(200, 30);
+            this.L_Ball.Location = new System.Drawing.Point(200, 55);
             this.L_Ball.Name = "L_Ball";
             this.L_Ball.Size = new System.Drawing.Size(31, 13);
             this.L_Ball.TabIndex = 94;
@@ -533,7 +557,7 @@
             // Ball
             // 
             this.Ball.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Ball.Location = new System.Drawing.Point(200, 53);
+            this.Ball.Location = new System.Drawing.Point(200, 78);
             this.Ball.Name = "Ball";
             this.Ball.Size = new System.Drawing.Size(74, 21);
             this.Ball.TabIndex = 93;
@@ -541,8 +565,8 @@
             // Slot
             // 
             this.Slot.BlankText = null;
-            IcheckBoxProperties.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Slot.CheckBoxProperties = IcheckBoxProperties;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Slot.CheckBoxProperties = checkBoxProperties1;
             this.Slot.DisplayMemberSingleItem = "";
             this.Slot.DropDownHeight = 260;
             this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -558,7 +582,7 @@
             "8",
             "9",
             "10"});
-            this.Slot.Location = new System.Drawing.Point(200, 53);
+            this.Slot.Location = new System.Drawing.Point(200, 78);
             this.Slot.Name = "Slot";
             this.Slot.Size = new System.Drawing.Size(74, 21);
             this.Slot.TabIndex = 92;
@@ -566,7 +590,7 @@
             // L_Slot
             // 
             this.L_Slot.AutoSize = true;
-            this.L_Slot.Location = new System.Drawing.Point(200, 30);
+            this.L_Slot.Location = new System.Drawing.Point(200, 55);
             this.L_Slot.Name = "L_Slot";
             this.L_Slot.Size = new System.Drawing.Size(31, 13);
             this.L_Slot.TabIndex = 82;
@@ -598,12 +622,12 @@
             // HiddenPower
             // 
             this.HiddenPower.BlankText = null;
-            this.HiddenPower.CheckBoxProperties = IcheckBoxProperties;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
             this.HiddenPower.DisplayMemberSingleItem = "";
             this.HiddenPower.DropDownHeight = 400;
             this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 108);
+            this.HiddenPower.Location = new System.Drawing.Point(295, 112);
             this.HiddenPower.Name = "HiddenPower";
             this.HiddenPower.Size = new System.Drawing.Size(91, 21);
             this.HiddenPower.TabIndex = 78;
@@ -611,12 +635,12 @@
             // Nature
             // 
             this.Nature.BlankText = "Any";
-            this.Nature.CheckBoxProperties = IcheckBoxProperties;
+            this.Nature.CheckBoxProperties = checkBoxProperties1;
             this.Nature.DisplayMemberSingleItem = "";
             this.Nature.DropDownHeight = 400;
             this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 159);
+            this.Nature.Location = new System.Drawing.Point(295, 163);
             this.Nature.Name = "Nature";
             this.Nature.Size = new System.Drawing.Size(91, 21);
             this.Nature.TabIndex = 77;
@@ -633,18 +657,18 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(302, 16);
+            this.Reset.Location = new System.Drawing.Point(341, 17);
             this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(75, 23);
+            this.Reset.Size = new System.Drawing.Size(54, 25);
             this.Reset.TabIndex = 73;
-            this.Reset.Text = "重置";
+            this.Reset.Text = "Reset";
             this.Reset.UseVisualStyleBackColor = true;
             this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // ByIVs
             // 
             this.ByIVs.AutoSize = true;
-            this.ByIVs.Location = new System.Drawing.Point(18, 26);
+            this.ByIVs.Location = new System.Drawing.Point(18, 31);
             this.ByIVs.Name = "ByIVs";
             this.ByIVs.Size = new System.Drawing.Size(85, 17);
             this.ByIVs.TabIndex = 72;
@@ -656,7 +680,7 @@
             // ByStats
             // 
             this.ByStats.AutoSize = true;
-            this.ByStats.Location = new System.Drawing.Point(104, 26);
+            this.ByStats.Location = new System.Drawing.Point(104, 31);
             this.ByStats.Name = "ByStats";
             this.ByStats.Size = new System.Drawing.Size(85, 17);
             this.ByStats.TabIndex = 71;
@@ -668,7 +692,7 @@
             // L_Lv_S
             // 
             this.L_Lv_S.AutoSize = true;
-            this.L_Lv_S.Location = new System.Drawing.Point(299, 58);
+            this.L_Lv_S.Location = new System.Drawing.Point(299, 65);
             this.L_Lv_S.Name = "L_Lv_S";
             this.L_Lv_S.Size = new System.Drawing.Size(19, 13);
             this.L_Lv_S.TabIndex = 66;
@@ -677,7 +701,7 @@
             // L_Ability
             // 
             this.L_Ability.AutoSize = true;
-            this.L_Ability.Location = new System.Drawing.Point(200, 137);
+            this.L_Ability.Location = new System.Drawing.Point(200, 158);
             this.L_Ability.Name = "L_Ability";
             this.L_Ability.Size = new System.Drawing.Size(31, 13);
             this.L_Ability.TabIndex = 64;
@@ -687,7 +711,7 @@
             // 
             this.Filter_Lv.AccessibleName = "";
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Filter_Lv.Location = new System.Drawing.Point(318, 52);
+            this.Filter_Lv.Location = new System.Drawing.Point(318, 59);
             this.Filter_Lv.Name = "Filter_Lv";
             this.Filter_Lv.Size = new System.Drawing.Size(44, 22);
             this.Filter_Lv.TabIndex = 67;
@@ -700,7 +724,7 @@
             "1",
             "2",
             "H"});
-            this.Ability.Location = new System.Drawing.Point(200, 158);
+            this.Ability.Location = new System.Drawing.Point(200, 179);
             this.Ability.Name = "Ability";
             this.Ability.Size = new System.Drawing.Size(74, 21);
             this.Ability.TabIndex = 63;
@@ -728,7 +752,7 @@
             // L_gender
             // 
             this.L_gender.AutoSize = true;
-            this.L_gender.Location = new System.Drawing.Point(200, 87);
+            this.L_gender.Location = new System.Drawing.Point(200, 108);
             this.L_gender.Name = "L_gender";
             this.L_gender.Size = new System.Drawing.Size(31, 13);
             this.L_gender.TabIndex = 39;
@@ -737,7 +761,7 @@
             // Gender
             // 
             this.Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Gender.Location = new System.Drawing.Point(200, 108);
+            this.Gender.Location = new System.Drawing.Point(200, 129);
             this.Gender.Name = "Gender";
             this.Gender.Size = new System.Drawing.Size(74, 21);
             this.Gender.TabIndex = 38;
@@ -745,7 +769,7 @@
             // L_nature
             // 
             this.L_nature.AutoSize = true;
-            this.L_nature.Location = new System.Drawing.Point(295, 137);
+            this.L_nature.Location = new System.Drawing.Point(295, 141);
             this.L_nature.Name = "L_nature";
             this.L_nature.Size = new System.Drawing.Size(31, 13);
             this.L_nature.TabIndex = 35;
@@ -754,7 +778,7 @@
             // L_HP
             // 
             this.L_HP.AutoSize = true;
-            this.L_HP.Location = new System.Drawing.Point(295, 87);
+            this.L_HP.Location = new System.Drawing.Point(295, 91);
             this.L_HP.Name = "L_HP";
             this.L_HP.Size = new System.Drawing.Size(31, 13);
             this.L_HP.TabIndex = 34;
@@ -1913,7 +1937,7 @@
             this.TP_EventRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EventRNG.Name = "TP_EventRNG";
             this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EventRNG.Size = new System.Drawing.Size(1090, 664);
+            this.TP_EventRNG.Size = new System.Drawing.Size(1093, 664);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
             this.TP_EventRNG.UseVisualStyleBackColor = true;
@@ -2427,7 +2451,7 @@
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_WildRNG.Name = "TP_WildRNG";
             this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_WildRNG.Size = new System.Drawing.Size(1090, 664);
+            this.TP_WildRNG.Size = new System.Drawing.Size(1093, 664);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
             this.TP_WildRNG.UseVisualStyleBackColor = true;
@@ -2598,7 +2622,7 @@
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EggRNG.Size = new System.Drawing.Size(1090, 664);
+            this.TP_EggRNG.Size = new System.Drawing.Size(1093, 664);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
             this.TP_EggRNG.UseVisualStyleBackColor = true;
@@ -3270,7 +3294,7 @@
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_IDRNG.Size = new System.Drawing.Size(1090, 664);
+            this.TP_IDRNG.Size = new System.Drawing.Size(1093, 664);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
@@ -3488,7 +3512,7 @@
             this.TP_Gen7ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
             this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1090, 664);
+            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1093, 664);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
             this.TP_Gen7ToolKit.UseVisualStyleBackColor = true;
@@ -4973,6 +4997,8 @@
         private System.Windows.Forms.CheckBox Sta_AbilityLocked;
         private System.Windows.Forms.ComboBox Sta_Ability;
         private System.Windows.Forms.Button B_ResetFrame;
+        private System.Windows.Forms.Button B_SaveFilter;
+        private System.Windows.Forms.Button B_LoadFilter;
     }
 }
 

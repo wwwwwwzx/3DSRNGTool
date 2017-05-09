@@ -108,5 +108,20 @@ namespace Pk3DSRNGTool.Core
 
             return true;
         }
+
+        public string[] SettingString()
+        {
+            return new[]
+            {
+                "Nature = " + string.Join(",", StringItem.naturestr.Where((str,i) => Nature[i])),
+                "HiddenPower = " + string.Join(",", StringItem.hpstr.Where((str,i) => i > 0 && i < 17 && HPType[i - 1])),
+                "ShinyOnly = " + (ShinyOnly ? "T": "F"),
+                "Ability = " +  Ability.ToString(),
+                "Gender = " +  Gender.ToString(),
+                "IVup = " + string.Join(",", IVup),
+                "IVlow = " + string.Join(",", IVlow),
+                "Number of Perfect IVs = " +  PerfectIVs.ToString(),
+            };
+        }
     }
 }
