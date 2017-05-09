@@ -780,7 +780,7 @@ namespace Pk3DSRNGTool
                 dgv_ID_state.Visible = MT.Checked && Gen6;
                 return;
             }
-            dgv_synced.Visible = method < 3;
+            dgv_synced.Visible = method < 3 && iPM.Syncable;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && method == 3 && !MainRNGEgg.Checked;
             dgv_status.Visible = Gen6 && method < 2 || Gen7 && method == 3 && !MainRNGEgg.Checked;
