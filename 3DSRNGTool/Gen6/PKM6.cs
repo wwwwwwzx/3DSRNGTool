@@ -138,17 +138,17 @@
                     new PKM6 { Gift = true, Species = 255, Level = 5, Delay = 138, }, // Torchic
                     new PKM6 { Gift = true, Species = 258, Level = 5, Delay = 138, }, // Mudkip
             
-                    new PKM6 { Gift = true, Species = 152, Level = 5, Delay = 186, }, // Chikorita
-                    new PKM6 { Gift = true, Species = 155, Level = 5, Delay = 138, }, // Cyndaquil
-                    new PKM6 { Gift = true, Species = 158, Level = 5, Delay = 138, }, // Totodile
+                    new PKM6 { Gift = true, Species = 152, Level = 5, }, // Chikorita
+                    new PKM6 { Gift = true, Species = 155, Level = 5, }, // Cyndaquil
+                    new PKM6 { Gift = true, Species = 158, Level = 5, }, // Totodile
 
-                    new PKM6 { Gift = true, Species = 387, Level = 5, Delay = 186, }, // Turtwig
-                    new PKM6 { Gift = true, Species = 390, Level = 5, Delay = 138, }, // Chimchar
-                    new PKM6 { Gift = true, Species = 393, Level = 5, Delay = 138, }, // Piplup
+                    new PKM6 { Gift = true, Species = 495, Level = 5, }, // Snivy
+                    new PKM6 { Gift = true, Species = 498, Level = 5, }, // Tepig
+                    new PKM6 { Gift = true, Species = 501, Level = 5, }, // Oshawott
 
-                    new PKM6 { Gift = true, Species = 495, Level = 5, Delay = 186, }, // Snivy
-                    new PKM6 { Gift = true, Species = 498, Level = 5, Delay = 138, }, // Tepig
-                    new PKM6 { Gift = true, Species = 501, Level = 5, Delay = 138, }, // Oshawott
+                    new PKM6 { Gift = true, Species = 387, Level = 5, }, // Turtwig
+                    new PKM6 { Gift = true, Species = 390, Level = 5, }, // Chimchar
+                    new PKM6 { Gift = true, Species = 393, Level = 5, }, // Piplup
                 }
             },
             new PokemonList

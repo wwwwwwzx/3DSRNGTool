@@ -122,7 +122,7 @@ namespace Pk3DSRNGTool
         private void RefreshPKM()
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
-            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(),lindex), s.SpecForm));
+            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(), lindex), s.SpecForm));
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
@@ -363,7 +363,8 @@ namespace Pk3DSRNGTool
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
-            Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible = 
+            TinyMT_Status.Visible =
+            Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible =
             GB_RNGGEN7ID.Visible =
             BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
@@ -844,7 +845,7 @@ namespace Pk3DSRNGTool
             string PSV = result.PSV.ToString("D4");
 
             string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString();
-            string Lv = result.Level == 0 ? "-" : result.Level.ToString();
+            string Lv = result.Level.ToString();
             string item = (result as WildResult)?.ItemStr;
 
             string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? (result as MainRNGEgg)?.Ball ?? 0];
@@ -853,6 +854,7 @@ namespace Pk3DSRNGTool
             string shift = time > -1 ? (time - Standard).ToString("+#;-#;0") : null;
             string realtime = time > -1 ? FuncUtil.Convert2timestr(time / 60.0) : null;
             row.Cells[02].Style.Alignment =                                           // Shift
+            row.Cells[04].Style.Alignment =                                           // Advance
             row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight; // Realtime
 
             string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status;
