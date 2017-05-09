@@ -51,7 +51,8 @@ namespace Pk3DSRNGTool
             DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_status"].DefaultCellStyle.Font = new Font("Consolas", 9);
             Type dgvtype = typeof(DataGridView);
-            System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
+                 | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
             dgvPropertyInfo.SetValue(DGV_ID, true, null);
 
@@ -517,6 +518,7 @@ namespace Pk3DSRNGTool
             // Reset_Click(null, null);
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
+            GenderRatio.Enabled = iPM.Conceptual;
             if (method == 2)
             {
                 RefreshLocation();
@@ -531,7 +533,7 @@ namespace Pk3DSRNGTool
 
             Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =
             BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
-            ShinyLocked.Enabled = Fix3v.Enabled = GenderRatio.Enabled = iPM.Conceptual;
+            ShinyLocked.Enabled = Fix3v.Enabled = iPM.Conceptual;
         }
         #endregion
 

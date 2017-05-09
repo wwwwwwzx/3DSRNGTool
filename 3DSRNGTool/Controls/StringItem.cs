@@ -41,7 +41,7 @@ namespace Pk3DSRNGTool
                 case 5:
                     return smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
                 default:
-                    return "";
+                    return "-";
             }
         }
 
