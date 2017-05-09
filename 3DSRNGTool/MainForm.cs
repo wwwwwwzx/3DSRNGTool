@@ -229,7 +229,6 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             Properties.Settings.Default.Save();
             RefreshPKM();
-            Poke_SelectedIndexChanged(null, null);
             SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
         }
 
@@ -342,9 +341,12 @@ namespace Pk3DSRNGTool
                 int currmethod = (method << 3) | ver;
                 if (lastmethod != currmethod)
                 {
+                    var poke = Poke.SelectedIndex;
+                    var category = CB_Category.SelectedIndex;
                     RefreshCategory();
-                    Poke_SelectedIndexChanged(null, null);
                     lastmethod = (byte)currmethod;
+                    CB_Category.SelectedIndex = category < CB_Category.Items.Count ? category : 0;
+                    Poke.SelectedIndex = poke < Poke.Items.Count ? poke : 0;
                 }
             }
 

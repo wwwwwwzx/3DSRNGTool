@@ -54,8 +54,8 @@
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
     <Compile Include="Gen6\ID6.cs" />
-    <Compile Include="Gen6\ORASEncounter\EncounterArea6.cs" />
-    <Compile Include="Gen6\ORASEncounter\LocationTable6.cs" />
+    <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
+    <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
     <Compile Include="Gen6\ResultW6.cs" />
     <Compile Include="Gen6\Wild6.cs" />
