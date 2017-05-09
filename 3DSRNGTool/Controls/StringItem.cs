@@ -49,7 +49,8 @@ namespace Pk3DSRNGTool
         {
             new [] { "Legendary", "定点传说" },
             new [] { "Starters", "御三家" },
-            new [] { "Gift", "礼物" },
+            new [] { "In-Game Gift", "礼物" },
+            new [] { "Pokemon Link", "宝可梦连接" },
             new [] { "Normal Stationary","普通定点" },
             new [] { "Fossils", "化石" },
             new [] { "Hoenn Legendary", "丰缘传说" },
@@ -58,6 +59,9 @@ namespace Pk3DSRNGTool
             new [] { "Unova Legendary", "合众传说" },
             new [] { "Island Scan", "岛屿搜索" },
             new [] { "Normal Wild", "普通野外" },
+            new [] { "Johto Starters", "城都御三家" },
+            new [] { "Legendary Titans", "三神柱" },
+            new [] { "Not Impled", "功能未开放" },
         };
 
         public static string Translate(string input, int language)

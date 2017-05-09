@@ -39,7 +39,7 @@
             },
             new PokemonList
             {
-                Text = "Gift",
+                Text = "In-Game Gift",
                 List = new[]
                 {
                     new PKM7 { Species = 142, Level = 40, NPC = 3, Delay = 34, Gift = true,},    // Aerodactyl

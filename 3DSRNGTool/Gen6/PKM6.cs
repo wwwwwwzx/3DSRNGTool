@@ -94,7 +94,16 @@
             },
             new PokemonList
             {
-                Text = "Gift",
+                Text = "Pokemon Link",
+                List = new[]
+                {
+                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans 
+                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
+                }
+            },
+            new PokemonList
+            {
+                Text = "In-Game Gift",
                 List = new[]
                 {
                     new PKM6 { Species = 360, Level = 1, Ability = 1, Gift = true, Egg = true,}, // Wynaut
@@ -118,15 +127,6 @@
                     new PKM6 { Species = 101, Level = 40, Delay = 122, }, // Electrode @ Magma Hideout, Aqua Hideout
                     new PKM6 { Species = 100, Level = 20, Delay = 120, }, // Voltorb @ Route 119
                     new PKM6 { Species = 442, Level = 50, }, // Spiritomb @ Route 120
-                }
-            },
-            new PokemonList
-            {
-                Text = "Pokemon Link",
-                List = new[]
-                {
-                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans 
-                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
                 }
             },
             new PokemonList
@@ -202,7 +202,7 @@
             },
             new PokemonList
             {
-                Text = "Gift",
+                Text = "In-Game Gift",
                 List = new[]
                 {
                     new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, Gender = 1, IVs = new[] {6, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true }, // Lucario

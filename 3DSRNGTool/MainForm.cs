@@ -122,7 +122,7 @@ namespace Pk3DSRNGTool
         private void RefreshPKM()
         {
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
-            var List = Pokemonlist.Select(s => new ComboItem(s.ToString(), s.SpecForm));
+            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(),lindex), s.SpecForm));
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
