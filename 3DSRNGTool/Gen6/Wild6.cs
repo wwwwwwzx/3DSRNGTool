@@ -30,13 +30,11 @@ namespace Pk3DSRNGTool
             rt.EC = getrand;
 
             //PID
-            for (int i = 0; i < PIDroll_count; i++)
+            for (int i = PIDroll_count; i > 0; i--)
             {
                 rt.PID = getrand;
-                if (rt.PSV == TSV)
-                    break;
+                if (rt.PSV == TSV) { rt.Shiny = true; break; }
             }
-            rt.Shiny = rt.PSV == TSV;
 
             //IV
             rt.IVs = new int[6];

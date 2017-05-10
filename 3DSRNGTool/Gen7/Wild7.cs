@@ -54,15 +54,16 @@ namespace Pk3DSRNGTool
             rt.EC = (uint)(getrand & 0xFFFFFFFF);
 
             //PID
-            for (int i = 0; i < PIDroll_count; i++)
+            for (int i = PIDroll_count; i > 0; i--)
             {
                 rt.PID = (uint)(getrand & 0xFFFFFFFF);
-                if (rt.PSV == TSV)
-                    break;
+                if (rt.PSV == TSV) { rt.Shiny = true; break; }
             }
-            if (IsShinyLocked && rt.PSV == TSV)
+            if (IsShinyLocked && rt.Shiny)
+            {
                 rt.PID ^= 0x10000000;
-            rt.Shiny = rt.PSV == TSV;
+                rt.Shiny = false;
+            }
 
             //IV
             rt.IVs = new int[6];
