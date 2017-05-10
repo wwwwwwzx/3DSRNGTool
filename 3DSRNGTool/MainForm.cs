@@ -716,6 +716,9 @@ namespace Pk3DSRNGTool
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
+            if (MainRNGEgg.Checked)
+                return setting;
+
             // Load from template
             if (!iPM.Conceptual)
             {
