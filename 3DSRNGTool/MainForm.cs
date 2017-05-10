@@ -399,6 +399,8 @@ namespace Pk3DSRNGTool
             RB_FrameRange.Checked = true;
             if (method < 4)
                 RNGMethod.TabPages[method].Controls.Add(this.Filters);
+            if (method != 3)
+                MainRNGEgg.Checked = false;
 
             RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
 
