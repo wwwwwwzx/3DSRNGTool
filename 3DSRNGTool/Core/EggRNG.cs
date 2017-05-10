@@ -28,5 +28,21 @@
 
         public abstract RNGResult Generate();
         public abstract void MarkItem();
+
+        protected static int getRandomAbility(int ability, uint value)
+        {
+            switch (ability)
+            {
+                case 0:
+                    return value < 0x50 ? 1 : 2;
+                case 1:
+                    return value < 0x14 ? 1 : 2;
+                case 2:
+                    if (value < 0x14) return 1;
+                    if (value < 0x28) return 2;
+                    return 3;
+            }
+            return 0;
+        }
     }
 }

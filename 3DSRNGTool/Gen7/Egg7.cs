@@ -21,7 +21,6 @@ namespace Pk3DSRNGTool
             M_Power = (byte)(MaleItem - 3);
             F_Power = (byte)(FemaleItem - 3);
 
-            PID_Rerollcount = 0;
             if (ShinyCharm)
                 PID_Rerollcount += 2;
             if (MMethod)
@@ -115,22 +114,6 @@ namespace Pk3DSRNGTool
             Advance(2);
 
             return egg;
-        }
-
-        private static int getRandomAbility(int ability, uint value)
-        {
-            switch (ability)
-            {
-                case 0:
-                    return value < 80 ? 1 : 2;
-                case 1:
-                    return value < 20 ? 1 : 2;
-                case 2:
-                    if (value < 20) return 1;
-                    if (value < 40) return 2;
-                    return 3;
-            }
-            return 0;
         }
     }
 }
