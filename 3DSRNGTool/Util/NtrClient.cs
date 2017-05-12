@@ -51,6 +51,11 @@ namespace Pk3DSRNGTool
             sendReadMemPacket(addr, size, (uint)pid);
         }
 
+        public void Write(uint addr, byte[] buf, int pid = -1)
+        {
+            sendWriteMemPacket(addr, (uint)pid, buf);
+        }
+
         public void setServer(string serverHost, int serverPort)
         {
             host = serverHost;

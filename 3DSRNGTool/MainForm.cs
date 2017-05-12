@@ -1330,9 +1330,13 @@ namespace Pk3DSRNGTool
             int timeout = 10;
             do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0);
             if (timeout == 0) return;
+            byte[] Data = new byte[4];
+            uint gen6seed = ntrclient.Seed;
+            BitConverter.GetBytes(gen6seed).CopyTo(Data, 0);
+            ntrclient.Write(0x8800000, Data, (int)Port.Value);
             ntrclient.resume();
             ntrclient.NewResult = false;
-            Seed.Value = (uint)ntrclient.Seed;
+            Seed.Value = gen6seed;
             B_Disconnect_Click(null, null);
         }
 
