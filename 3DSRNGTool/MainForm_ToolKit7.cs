@@ -144,6 +144,7 @@ namespace Pk3DSRNGTool
         {
             StartClockInput.Enabled = EndClockInput.Enabled = !(sender as RadioButton).Checked;
             ((sender as RadioButton).Checked ? StartClockInput : EndClockInput).Checked = true;
+            if((sender as RadioButton).Checked) BySaveScreen.Checked = true;
         }
         #endregion
 

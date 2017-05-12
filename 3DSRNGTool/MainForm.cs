@@ -398,7 +398,7 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.Method = method;
 
-            if (method < 5)
+            if (method < 6)
                 RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
             if (method < 4)
                 RNGMethod.TabPages[method].Controls.Add(this.Filters);
