@@ -319,6 +319,14 @@
             this.L_SeedResult = new System.Windows.Forms.Label();
             this.SeedResults = new System.Windows.Forms.TextBox();
             this.Clock_List = new System.Windows.Forms.TextBox();
+            this.TP_Gen6ToolKit = new System.Windows.Forms.TabPage();
+            this.GB_NTR = new System.Windows.Forms.GroupBox();
+            this.B_Connect = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.Port = new System.Windows.Forms.NumericUpDown();
+            this.IP = new System.Windows.Forms.TextBox();
             this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
@@ -464,6 +472,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
             this.QRBox.SuspendLayout();
             this.SearchSeedBox.SuspendLayout();
+            this.TP_Gen6ToolKit.SuspendLayout();
+            this.GB_NTR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Port)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -1370,6 +1381,7 @@
             this.RNGMethod.Controls.Add(this.TP_EggRNG);
             this.RNGMethod.Controls.Add(this.TP_IDRNG);
             this.RNGMethod.Controls.Add(this.TP_Gen7ToolKit);
+            this.RNGMethod.Controls.Add(this.TP_Gen6ToolKit);
             this.RNGMethod.Location = new System.Drawing.Point(12, 32);
             this.RNGMethod.Name = "RNGMethod";
             this.RNGMethod.SelectedIndex = 0;
@@ -4040,6 +4052,92 @@
             this.Clock_List.Size = new System.Drawing.Size(244, 22);
             this.Clock_List.TabIndex = 19;
             // 
+            // TP_Gen6ToolKit
+            // 
+            this.TP_Gen6ToolKit.Controls.Add(this.GB_NTR);
+            this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 22);
+            this.TP_Gen6ToolKit.Name = "TP_Gen6ToolKit";
+            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1093, 664);
+            this.TP_Gen6ToolKit.TabIndex = 6;
+            this.TP_Gen6ToolKit.Text = "Gen6 Tool Kit";
+            this.TP_Gen6ToolKit.UseVisualStyleBackColor = true;
+            // 
+            // GB_NTR
+            // 
+            this.GB_NTR.Controls.Add(this.B_Connect);
+            this.GB_NTR.Controls.Add(this.button18);
+            this.GB_NTR.Controls.Add(this.label19);
+            this.GB_NTR.Controls.Add(this.label18);
+            this.GB_NTR.Controls.Add(this.Port);
+            this.GB_NTR.Controls.Add(this.IP);
+            this.GB_NTR.Location = new System.Drawing.Point(3, 3);
+            this.GB_NTR.Name = "GB_NTR";
+            this.GB_NTR.Size = new System.Drawing.Size(234, 103);
+            this.GB_NTR.TabIndex = 0;
+            this.GB_NTR.TabStop = false;
+            this.GB_NTR.Text = "NTR";
+            // 
+            // B_Connect
+            // 
+            this.B_Connect.Location = new System.Drawing.Point(18, 61);
+            this.B_Connect.Name = "B_Connect";
+            this.B_Connect.Size = new System.Drawing.Size(69, 25);
+            this.B_Connect.TabIndex = 105;
+            this.B_Connect.Text = "Connect";
+            this.B_Connect.UseVisualStyleBackColor = true;
+            this.B_Connect.Click += new System.EventHandler(this.B_Connect_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(119, 61);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(102, 25);
+            this.button18.TabIndex = 106;
+            this.button18.Text = "Get Initial Seed";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(146, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(26, 13);
+            this.label19.TabIndex = 104;
+            this.label19.Text = "Port";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(15, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(17, 13);
+            this.label18.TabIndex = 103;
+            this.label18.Text = "IP";
+            // 
+            // Port
+            // 
+            this.Port.Font = new System.Drawing.Font("Consolas", 9F);
+            this.Port.Hexadecimal = true;
+            this.Port.Location = new System.Drawing.Point(183, 19);
+            this.Port.Name = "Port";
+            this.Port.Size = new System.Drawing.Size(38, 22);
+            this.Port.TabIndex = 87;
+            this.Port.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Port.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // IP
+            // 
+            this.IP.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IP.Location = new System.Drawing.Point(38, 19);
+            this.IP.Name = "IP";
+            this.IP.Size = new System.Drawing.Size(102, 22);
+            this.IP.TabIndex = 25;
+            this.IP.Text = "192.168.0.1";
+            // 
             // Lang
             // 
             this.Lang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4650,6 +4748,10 @@
             this.QRBox.PerformLayout();
             this.SearchSeedBox.ResumeLayout(false);
             this.SearchSeedBox.PerformLayout();
+            this.TP_Gen6ToolKit.ResumeLayout(false);
+            this.GB_NTR.ResumeLayout(false);
+            this.GB_NTR.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Port)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.DGVMS.ResumeLayout(false);
@@ -4999,6 +5101,14 @@
         private System.Windows.Forms.Button B_ResetFrame;
         private System.Windows.Forms.Button B_SaveFilter;
         private System.Windows.Forms.Button B_LoadFilter;
+        private System.Windows.Forms.TabPage TP_Gen6ToolKit;
+        private System.Windows.Forms.GroupBox GB_NTR;
+        private System.Windows.Forms.Button B_Connect;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown Port;
+        private System.Windows.Forms.TextBox IP;
     }
 }
 

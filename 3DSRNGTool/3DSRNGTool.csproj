@@ -155,6 +155,7 @@
       <DependentUpon>IVRange.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\MagikarpCalc.cs" />
+    <Compile Include="Util\NtrClient.cs" />
     <Compile Include="Util\SFMTSeedAPI.cs" />
     <Compile Include="Subforms\TSVListForm.cs">
       <SubType>Form</SubType>

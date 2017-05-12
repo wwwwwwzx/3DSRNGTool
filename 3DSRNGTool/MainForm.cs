@@ -32,6 +32,7 @@ namespace Pk3DSRNGTool
         private int Standard;
         private byte lastmethod;
         List<int> OtherTSVList = new List<int>();
+        private static NtrClient ntrclient = new NtrClient();
         #endregion
 
         public MainForm()
@@ -396,13 +397,13 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Method = method;
             Properties.Settings.Default.Save();
 
-            RB_FrameRange.Checked = true;
+            if (method < 5)
+                RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
             if (method < 4)
                 RNGMethod.TabPages[method].Controls.Add(this.Filters);
             if (method != 3)
                 MainRNGEgg.Checked = false;
-
-            RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
+            RB_FrameRange.Checked = true;
 
             DGV.Visible = method < 4;
             DGV_ID.Visible = method == 4;
@@ -1290,5 +1291,10 @@ namespace Pk3DSRNGTool
             DGV_ID.CurrentCell = null;
         }
         #endregion
+
+        private void B_Connect_Click(object sender, EventArgs e)
+        {
+            ntrclient.setServer(IP.Text, (int)Port.Value);
+        }
     }
 }
