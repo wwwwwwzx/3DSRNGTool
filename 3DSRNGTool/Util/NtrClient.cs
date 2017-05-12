@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Pk3DSRNGTool
 {
-    public class NtrClient
+    public partial class NtrClient
     {
         public string host;
         public int port;
@@ -30,15 +30,7 @@ namespace Pk3DSRNGTool
         {
             Connected?.Invoke(this, e);
         }
-
-        #region Interface
-        public byte gameversion;
-        public int pid;
-        public uint Seed { get; private set; }
-        public bool NewResult;
-
-        public bool ToSetBP;
-
+        
         public void bpadd(uint addr, string type = "code.once")
         {
             switch (type)
@@ -56,17 +48,7 @@ namespace Pk3DSRNGTool
         {
             sendEmptyPacket(11, 0, 0, 4);
         }
-
-        public void SetBreakPoint()
-        {
-            setServer(host, 5000 + pid);
-            connectToServer();
-            bpadd(0x1e790c, "code"); // Add break point
-            resume();
-            Thread.Sleep(6000);
-            resume();
-        }
-
+        
         public void Read(uint addr, uint size = 4, int pid = -1)
         {
             if (size > 1024) size = 1024;
@@ -129,7 +111,6 @@ namespace Pk3DSRNGTool
         {
             sendEmptyPacket(5);
         }
-        #endregion
 
         private int readNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
@@ -203,16 +184,10 @@ namespace Pk3DSRNGTool
                     {
                         if (dataLen != 0)
                         {
-                            byte[] tmp;
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
-                            if (null != (tmp = FuncUtil.getGame(logMsg)))
-                            {
-                                gameversion = tmp[0];
-                                pid = tmp[1];
-                                ToSetBP = gameversion < 4;
-                            }
+                            getGame(logMsg);
                             log(logMsg);
                         }
                         lock (syncLock)
@@ -247,12 +222,6 @@ namespace Pk3DSRNGTool
                 r += datBuf[i].ToString("X2") + " ";
             }
             return r;
-        }
-
-        private void byteToSeed(byte[] datBuf)
-        {
-            Seed = BitConverter.ToUInt32(datBuf, 0);
-            NewResult = true;
         }
 
         private void handleReadMem(uint seq, byte[] dataBuf)

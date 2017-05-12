@@ -1332,24 +1332,14 @@ namespace Pk3DSRNGTool
             int timeout = 10;
             do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0); // Try thread later
             if (timeout == 0) { Error("Unable to get the seed"); return; }
-            byte[] Data = new byte[4];
-            uint gen6seed = ntrclient.Seed;
-            BitConverter.GetBytes(gen6seed).CopyTo(Data, 0);
-            ntrclient.Write(0x8800000, Data, ntrclient.pid);
-            ntrclient.resume();
+            Seed.Value = ntrclient.Seed;
             ntrclient.NewResult = false;
-            Seed.Value = gen6seed;
             B_Disconnect_Click(null, null);
         }
 
         private void B_Resume_Click(object sender, EventArgs e)
         {
             ntrclient.resume();
-        }
-        
-        private void B_Breakpoint_Click(object sender, EventArgs e)
-        {
-            ntrclient.SetBreakPoint();
         }
 
         private void connectCheck(object sender, EventArgs e)
@@ -1368,6 +1358,7 @@ namespace Pk3DSRNGTool
             {
                 if (ntrclient.ToSetBP)
                 {
+                    Gameversion.SelectedIndex = ntrclient.gameversion;
                     ntrclient.SetBreakPoint();
                     ntrclient.ToSetBP = false;
                 }

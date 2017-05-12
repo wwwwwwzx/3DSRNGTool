@@ -121,23 +121,5 @@ namespace Pk3DSRNGTool
             return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
         #endregion
-
-        private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "niji_loc" };
-        public static byte[] getGame(string log)
-        {
-            string pname;
-            byte[] argout = new byte[2]; // 0 gameversion 1 pid
-            if (null != (pname = pnamestr.FirstOrDefault(str => log.Contains(str))))
-            {
-                argout[0] = (byte)Array.IndexOf(pnamestr, pname);
-                pname = ", pname: " + pname;
-            }
-            else // not a process list or game not found - ignore packet
-                return null;
-
-            string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
-            argout[1] = Convert.ToByte("0x" + splitlog.Substring(0, 8), 16);
-            return argout;
-        }
     }
 }
