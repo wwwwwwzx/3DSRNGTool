@@ -26,6 +26,7 @@ TP_WildRNG = Wild RNG
 TP_EggRNG = Egg RNG
 TP_IDRNG = ID RNG
 TP_Gen7ToolKit = Gen7 Toolkit
+TP_Gen6ToolKit = Gen6 Toolkit
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting

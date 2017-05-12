@@ -26,6 +26,7 @@ TP_WildRNG = 野生乱数
 TP_EggRNG = 孵化乱数
 TP_IDRNG = ID乱数
 TP_Gen7ToolKit = 7代工具箱
+TP_Gen6ToolKit = 6代工具箱
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = 定点设置

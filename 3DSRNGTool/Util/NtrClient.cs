@@ -25,6 +25,8 @@ namespace Pk3DSRNGTool
         public volatile int progress = -1;
 
         #region Interface
+        public uint Seed { get; private set; }
+        public bool NewResult;
         public void bpadd(uint addr, string type = "code.once")
         {
             switch (type)
@@ -122,7 +124,7 @@ namespace Pk3DSRNGTool
             return length;
         }
 
-        public void packetRecvThreadStart()
+        private void packetRecvThreadStart()
         {
             byte[] buf = new byte[84];
             uint[] args = new uint[16];
@@ -207,6 +209,12 @@ namespace Pk3DSRNGTool
             return r;
         }
 
+        private void byteToSeed(byte[] datBuf)
+        {
+            Seed = BitConverter.ToUInt32(datBuf, 0);
+            NewResult = true;
+        }
+
         private void handleReadMem(uint seq, byte[] dataBuf)
         {
             if (seq != lastReadMemSeq)
@@ -224,15 +232,15 @@ namespace Pk3DSRNGTool
                 log("dump saved into " + fileName + " successfully");
                 return;
             }
+            if (dataBuf.Length == 4)
+                byteToSeed(dataBuf);
             log(byteToHex(dataBuf, 0));
         }
 
         private void handlePacket(uint cmd, uint seq, byte[] dataBuf)
         {
             if (cmd == 9)
-            {
                 handleReadMem(seq, dataBuf);
-            }
         }
 
         private void sendPacket(uint type, uint cmd, uint[] args, uint dataLen)

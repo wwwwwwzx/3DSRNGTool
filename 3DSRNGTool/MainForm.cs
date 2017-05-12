@@ -2,10 +2,11 @@
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using System.Threading;
 using Pk3DSRNGTool.Controls;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
-using System.Windows.Forms;
 using static PKHeX.Util;
 
 namespace Pk3DSRNGTool
@@ -66,6 +67,7 @@ namespace Pk3DSRNGTool
             var LastMethod = Properties.Settings.Default.Method;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
+            IP.Text = Properties.Settings.Default.IP;
             loadlist(Properties.Settings.Default.TSVList);
             Advanced.Checked = Properties.Settings.Default.Advance;
             Status = new uint[] { Properties.Settings.Default.ST0, Properties.Settings.Default.ST1, Properties.Settings.Default.ST2, Properties.Settings.Default.ST3 };
@@ -109,8 +111,15 @@ namespace Pk3DSRNGTool
             B_ResetFrame_Click(null, null);
         }
 
+        private void MainForm_Close(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+            ntrclient.disconnect();
+        }
+
         private void RefreshPKM()
         {
+            if (method != 0 && method != 2) return;
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
             var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(), lindex), s.SpecForm));
             Poke.DisplayMember = "Text";
@@ -198,38 +207,32 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.ST1 = (uint)St1.Value;
             Properties.Settings.Default.ST2 = (uint)St2.Value;
             Properties.Settings.Default.ST3 = (uint)St3.Value;
-            Properties.Settings.Default.Save();
         }
 
         private void TSV_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.TSV = (short)TSV.Value;
-            Properties.Settings.Default.Save();
         }
 
         private void ShinyCharm_CheckedChanged(object sender, EventArgs e)
         {
             MM_CheckedChanged(null, null);
             Properties.Settings.Default.ShinyCharm = ShinyCharm.Checked;
-            Properties.Settings.Default.Save();
         }
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Advance = Advanced.Checked;
-            Properties.Settings.Default.Save();
         }
 
         private void Seed_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Seed = Seed.Value;
-            Properties.Settings.Default.Save();
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
-            Properties.Settings.Default.Save();
             RefreshPKM();
             SpecialOnly.Visible = method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
         }
@@ -237,7 +240,6 @@ namespace Pk3DSRNGTool
         private void Poke_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Poke = (byte)Poke.SelectedIndex;
-            Properties.Settings.Default.Save();
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -300,7 +302,7 @@ namespace Pk3DSRNGTool
                     System.IO.File.WriteAllLines(backupfile, FilterSettings.SettingString());
             }
         }
-        
+
         private void B_LoadFilter_Click(object sender, EventArgs e)
         {
             try
@@ -395,7 +397,6 @@ namespace Pk3DSRNGTool
         private void RNGMethod_Changed(object sender, EventArgs e)
         {
             Properties.Settings.Default.Method = method;
-            Properties.Settings.Default.Save();
 
             if (method < 5)
                 RNGMethod.TabPages[method].Controls.Add(this.RNGInfo);
@@ -1292,9 +1293,54 @@ namespace Pk3DSRNGTool
         }
         #endregion
 
+        #region NTR Client
         private void B_Connect_Click(object sender, EventArgs e)
         {
-            ntrclient.setServer(IP.Text, (int)Port.Value);
+            L_NTRLog.Text = "Connecting...";
+            ntrclient.setServer(IP.Text, 5000 + (int)Port.Value);
+            try
+            {
+                ntrclient.connectToServer();
+                L_NTRLog.Text = "Connected";
+                Properties.Settings.Default.IP = IP.Text;
+                B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
+                ntrclient.bpadd(0x1e790c, "code"); // Add break point
+                ntrclient.resume();
+                Thread.Sleep(6000);
+                ntrclient.resume();
+            }
+            catch
+            {
+                B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+                Error("Unable to connect the console");
+                L_NTRLog.Text = "Fail to Connect";
+            }
         }
+
+        private void B_Disconnect_Click(object sender, EventArgs e)
+        {
+            ntrclient.disconnect();
+            L_NTRLog.Text = "Disconnected";
+            B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+        }
+
+        private void B_GetGen6Seed_Click(object sender, EventArgs e)
+        {
+            ntrclient.Read(0x8c59e48, 0x4, (int)Port.Value); // MT[0]
+            int timeout = 10;
+            do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0);
+            if (timeout == 0) return;
+            ntrclient.resume();
+            ntrclient.NewResult = false;
+            Seed.Value = (uint)ntrclient.Seed;
+            B_Disconnect_Click(null, null);
+        }
+
+        private void B_Resume_Click(object sender, EventArgs e)
+        {
+            ntrclient.resume();
+        }
+        #endregion
+
     }
 }
