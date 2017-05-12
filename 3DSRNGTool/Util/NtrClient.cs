@@ -61,7 +61,7 @@ namespace Pk3DSRNGTool
             connectToServer();
             bpadd(0x1e790c, "code"); // Add break point
             resume();
-            Thread.Sleep(6000);
+            Thread.Sleep(5000);
             resume();
         }
 
@@ -349,15 +349,6 @@ namespace Pk3DSRNGTool
             sendPacket(0, cmd, args, 0);
         }
 
-        private void sendSaveFilePacket(string fileName, byte[] fileData)
-        {
-            byte[] fileNameBuf = new byte[0x200];
-            Encoding.UTF8.GetBytes(fileName).CopyTo(fileNameBuf, 0);
-            sendPacket(1, 1, null, (uint)(fileNameBuf.Length + fileData.Length));
-            netStream.Write(fileNameBuf, 0, fileNameBuf.Length);
-            netStream.Write(fileData, 0, fileData.Length);
-        }
-
         private void log(string msg)
         {
             if (onLogArrival != null)
@@ -372,16 +363,6 @@ namespace Pk3DSRNGTool
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-    }
-
-    public class InfoReadyEventArgs : EventArgs
-    {
-        public string info;
-
-        public InfoReadyEventArgs(string info_)
-        {
-            this.info = info_;
         }
     }
 }
