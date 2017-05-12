@@ -1345,6 +1345,5 @@ namespace Pk3DSRNGTool
             ntrclient.resume();
         }
         #endregion
-
     }
 }
