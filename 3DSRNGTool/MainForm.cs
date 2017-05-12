@@ -14,7 +14,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.4.0";
+        private string version = "0.5.0";
 
         private int ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
         private Pokemon[] Pokemonlist;
@@ -109,6 +109,7 @@ namespace Pk3DSRNGTool
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
+            ntrclient.InfoReady += getGame;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -1301,7 +1302,8 @@ namespace Pk3DSRNGTool
             try
             {
                 ntrclient.connectToServer();
-                L_NTRLog.Text = "Connected";
+                ntrclient.listprocess();
+                L_NTRLog.Text = "Console Connected";
                 Properties.Settings.Default.IP = IP.Text;
                 B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
                 ntrclient.bpadd(0x1e790c, "code"); // Add break point
@@ -1328,8 +1330,8 @@ namespace Pk3DSRNGTool
         {
             ntrclient.Read(0x8c59e48, 0x4, (int)Port.Value); // MT[0]
             int timeout = 10;
-            do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0);
-            if (timeout == 0) return;
+            do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0); // Try thread later
+            if (timeout == 0) { Error("Unable to get the seed"); return; }
             byte[] Data = new byte[4];
             uint gen6seed = ntrclient.Seed;
             BitConverter.GetBytes(gen6seed).CopyTo(Data, 0);
@@ -1343,6 +1345,42 @@ namespace Pk3DSRNGTool
         private void B_Resume_Click(object sender, EventArgs e)
         {
             ntrclient.resume();
+        }
+
+        public void getGame(object sender, EventArgs e)
+        {
+            InfoReadyEventArgs args = (InfoReadyEventArgs)e;
+            string pname;
+            if (args.info.Contains("kujira-1")) // X
+            {
+                Gameversion.SelectedIndex = 0;
+                pname = ", pname: kujira-1";
+            }
+            else if (args.info.Contains("kujira-2")) // Y
+            {
+                Gameversion.SelectedIndex = 1;
+                pname = ", pname: kujira-2";
+            }
+            else if (args.info.Contains("sango-1")) // Omega Ruby
+            {
+                Gameversion.SelectedIndex = 2;
+                pname = ", pname: sango-1";
+            }
+            else if (args.info.Contains("sango-2")) // Alpha Sapphire
+            {
+                Gameversion.SelectedIndex = 3;
+                pname = ", pname: sango-2";
+            }
+            else if (args.info.Contains("niji_loc")) // Sun/Moon
+            {
+                return;
+            }
+            else // not a process list or game not found - ignore packet
+                return;
+
+            string log = args.info;
+            string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
+            Port.Value = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
         }
         #endregion
     }

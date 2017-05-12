@@ -24,6 +24,13 @@ namespace Pk3DSRNGTool
         string lastReadMemFileName = null;
         public volatile int progress = -1;
 
+        public event EventHandler<InfoReadyEventArgs> InfoReady;
+
+        protected virtual void OnInfoReady(InfoReadyEventArgs e)
+        {
+            InfoReady?.Invoke(this, e);
+        }
+
         #region Interface
         public uint Seed { get; private set; }
         public bool NewResult;
@@ -100,6 +107,11 @@ namespace Pk3DSRNGTool
                 log(ex.Message);
             }
             tcp = null;
+        }
+
+        public void listprocess()
+        {
+            sendEmptyPacket(5);
         }
         #endregion
 
@@ -178,6 +190,7 @@ namespace Pk3DSRNGTool
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
+                            OnInfoReady(new InfoReadyEventArgs(logMsg));
                             log(logMsg);
                         }
                         lock (syncLock)
@@ -340,6 +353,16 @@ namespace Pk3DSRNGTool
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+    }
+
+    public class InfoReadyEventArgs : EventArgs
+    {
+        public string info;
+
+        public InfoReadyEventArgs(string info_)
+        {
+            this.info = info_;
         }
     }
 }
