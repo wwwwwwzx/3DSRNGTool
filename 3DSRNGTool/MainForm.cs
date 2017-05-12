@@ -110,6 +110,7 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             ntrclient.InfoReady += getGame;
+            ntrclient.Connected += connectCheck;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -1298,14 +1299,10 @@ namespace Pk3DSRNGTool
         private void B_Connect_Click(object sender, EventArgs e)
         {
             L_NTRLog.Text = "Connecting...";
-            ntrclient.setServer(IP.Text, 5000 + (int)Port.Value);
+            ntrclient.setServer(IP.Text, 5000 + (int)ntr_pid.Value);
             try
             {
                 ntrclient.connectToServer();
-                ntrclient.listprocess();
-                L_NTRLog.Text = "Console Connected";
-                Properties.Settings.Default.IP = IP.Text;
-                B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
                 ntrclient.bpadd(0x1e790c, "code"); // Add break point
                 ntrclient.resume();
                 Thread.Sleep(6000);
@@ -1315,7 +1312,7 @@ namespace Pk3DSRNGTool
             {
                 B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
                 Error("Unable to connect the console");
-                L_NTRLog.Text = "Fail to Connect";
+                L_NTRLog.Text = "No Connection";
             }
         }
 
@@ -1323,19 +1320,20 @@ namespace Pk3DSRNGTool
         {
             ntrclient.disconnect();
             L_NTRLog.Text = "Disconnected";
+            B_Connect.Enabled = true;
             B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
-            ntrclient.Read(0x8c59e48, 0x4, (int)Port.Value); // MT[0]
+            ntrclient.Read(0x8c59e48, 0x4, (int)ntr_pid.Value); // MT[0]
             int timeout = 10;
             do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0); // Try thread later
             if (timeout == 0) { Error("Unable to get the seed"); return; }
             byte[] Data = new byte[4];
             uint gen6seed = ntrclient.Seed;
             BitConverter.GetBytes(gen6seed).CopyTo(Data, 0);
-            ntrclient.Write(0x8800000, Data, (int)Port.Value);
+            ntrclient.Write(0x8800000, Data, (int)ntr_pid.Value);
             ntrclient.resume();
             ntrclient.NewResult = false;
             Seed.Value = gen6seed;
@@ -1347,7 +1345,16 @@ namespace Pk3DSRNGTool
             ntrclient.resume();
         }
 
-        public void getGame(object sender, EventArgs e)
+        private void connectCheck(object sender, EventArgs e)
+        {
+            ntrclient.listprocess();
+            L_NTRLog.Text = "Console Connected";
+            B_Connect.Enabled = false;
+            B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
+            Properties.Settings.Default.IP = IP.Text;
+        }
+
+        private void getGame(object sender, EventArgs e)
         {
             InfoReadyEventArgs args = (InfoReadyEventArgs)e;
             string pname;
@@ -1380,7 +1387,7 @@ namespace Pk3DSRNGTool
 
             string log = args.info;
             string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
-            Port.Value = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+            ntr_pid.Value = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
         }
         #endregion
     }

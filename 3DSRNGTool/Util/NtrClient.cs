@@ -31,6 +31,13 @@ namespace Pk3DSRNGTool
             InfoReady?.Invoke(this, e);
         }
 
+        public event EventHandler Connected;
+
+        protected virtual void OnConnected(EventArgs e)
+        {
+            Connected?.Invoke(this, e);
+        }
+
         #region Interface
         public uint Seed { get; private set; }
         public bool NewResult;
@@ -84,6 +91,7 @@ namespace Pk3DSRNGTool
             packetRecvThread = new Thread(new ThreadStart(packetRecvThreadStart));
             packetRecvThread.Start();
             log("Server connected.");
+            OnConnected(null);
         }
 
         public void disconnect(bool waitPacketThread = true)

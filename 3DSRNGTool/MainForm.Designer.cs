@@ -328,7 +328,7 @@
             this.B_GetGen6Seed = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.Port = new System.Windows.Forms.NumericUpDown();
+            this.ntr_pid = new System.Windows.Forms.NumericUpDown();
             this.IP = new System.Windows.Forms.TextBox();
             this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
@@ -477,7 +477,7 @@
             this.SearchSeedBox.SuspendLayout();
             this.TP_Gen6ToolKit.SuspendLayout();
             this.GB_NTR.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Port)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ntr_pid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -523,9 +523,9 @@
             this.Filters.Controls.Add(this.StatPanel);
             this.Filters.Controls.Add(this.SafeFOnly);
             this.Filters.Location = new System.Drawing.Point(556, 7);
-            this.Filters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filters.Margin = new System.Windows.Forms.Padding(4);
             this.Filters.Name = "Filters";
-            this.Filters.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filters.Padding = new System.Windows.Forms.Padding(4);
             this.Filters.Size = new System.Drawing.Size(543, 336);
             this.Filters.TabIndex = 4;
             this.Filters.TabStop = false;
@@ -534,7 +534,7 @@
             // B_LoadFilter
             // 
             this.B_LoadFilter.Location = new System.Drawing.Point(363, 21);
-            this.B_LoadFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_LoadFilter.Margin = new System.Windows.Forms.Padding(4);
             this.B_LoadFilter.Name = "B_LoadFilter";
             this.B_LoadFilter.Size = new System.Drawing.Size(72, 31);
             this.B_LoadFilter.TabIndex = 99;
@@ -545,7 +545,7 @@
             // B_SaveFilter
             // 
             this.B_SaveFilter.Location = new System.Drawing.Point(271, 21);
-            this.B_SaveFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_SaveFilter.Margin = new System.Windows.Forms.Padding(4);
             this.B_SaveFilter.Name = "B_SaveFilter";
             this.B_SaveFilter.Size = new System.Drawing.Size(72, 31);
             this.B_SaveFilter.TabIndex = 96;
@@ -556,7 +556,7 @@
             // B_IVInput
             // 
             this.B_IVInput.Location = new System.Drawing.Point(16, 70);
-            this.B_IVInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_IVInput.Margin = new System.Windows.Forms.Padding(4);
             this.B_IVInput.Name = "B_IVInput";
             this.B_IVInput.Size = new System.Drawing.Size(32, 27);
             this.B_IVInput.TabIndex = 98;
@@ -578,7 +578,7 @@
             // 
             this.Ball.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Ball.Location = new System.Drawing.Point(267, 96);
-            this.Ball.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ball.Margin = new System.Windows.Forms.Padding(4);
             this.Ball.Name = "Ball";
             this.Ball.Size = new System.Drawing.Size(97, 24);
             this.Ball.TabIndex = 93;
@@ -604,7 +604,7 @@
             "9",
             "10"});
             this.Slot.Location = new System.Drawing.Point(267, 96);
-            this.Slot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Slot.Margin = new System.Windows.Forms.Padding(4);
             this.Slot.Name = "Slot";
             this.Slot.Size = new System.Drawing.Size(97, 24);
             this.Slot.TabIndex = 92;
@@ -623,7 +623,7 @@
             // 
             this.SpecialOnly.AutoSize = true;
             this.SpecialOnly.Location = new System.Drawing.Point(267, 271);
-            this.SpecialOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SpecialOnly.Margin = new System.Windows.Forms.Padding(4);
             this.SpecialOnly.Name = "SpecialOnly";
             this.SpecialOnly.Size = new System.Drawing.Size(100, 21);
             this.SpecialOnly.TabIndex = 81;
@@ -636,7 +636,7 @@
             // 
             this.BlinkFOnly.AutoSize = true;
             this.BlinkFOnly.Location = new System.Drawing.Point(403, 239);
-            this.BlinkFOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BlinkFOnly.Margin = new System.Windows.Forms.Padding(4);
             this.BlinkFOnly.Name = "BlinkFOnly";
             this.BlinkFOnly.Size = new System.Drawing.Size(86, 21);
             this.BlinkFOnly.TabIndex = 79;
@@ -653,7 +653,7 @@
             this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HiddenPower.FormattingEnabled = true;
             this.HiddenPower.Location = new System.Drawing.Point(393, 138);
-            this.HiddenPower.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HiddenPower.Margin = new System.Windows.Forms.Padding(4);
             this.HiddenPower.Name = "HiddenPower";
             this.HiddenPower.Size = new System.Drawing.Size(120, 24);
             this.HiddenPower.TabIndex = 78;
@@ -667,7 +667,7 @@
             this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Nature.FormattingEnabled = true;
             this.Nature.Location = new System.Drawing.Point(393, 201);
-            this.Nature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Nature.Margin = new System.Windows.Forms.Padding(4);
             this.Nature.Name = "Nature";
             this.Nature.Size = new System.Drawing.Size(120, 24);
             this.Nature.TabIndex = 77;
@@ -676,7 +676,7 @@
             // 
             this.ShowStats.AutoSize = true;
             this.ShowStats.Location = new System.Drawing.Point(268, 305);
-            this.ShowStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowStats.Margin = new System.Windows.Forms.Padding(4);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(100, 21);
             this.ShowStats.TabIndex = 75;
@@ -686,7 +686,7 @@
             // Reset
             // 
             this.Reset.Location = new System.Drawing.Point(455, 21);
-            this.Reset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Reset.Margin = new System.Windows.Forms.Padding(4);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(72, 31);
             this.Reset.TabIndex = 73;
@@ -698,7 +698,7 @@
             // 
             this.ByIVs.AutoSize = true;
             this.ByIVs.Location = new System.Drawing.Point(24, 38);
-            this.ByIVs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ByIVs.Margin = new System.Windows.Forms.Padding(4);
             this.ByIVs.Name = "ByIVs";
             this.ByIVs.Size = new System.Drawing.Size(99, 21);
             this.ByIVs.TabIndex = 72;
@@ -711,7 +711,7 @@
             // 
             this.ByStats.AutoSize = true;
             this.ByStats.Location = new System.Drawing.Point(139, 38);
-            this.ByStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ByStats.Margin = new System.Windows.Forms.Padding(4);
             this.ByStats.Name = "ByStats";
             this.ByStats.Size = new System.Drawing.Size(99, 21);
             this.ByStats.TabIndex = 71;
@@ -745,7 +745,7 @@
             this.Filter_Lv.AccessibleName = "";
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Filter_Lv.Location = new System.Drawing.Point(424, 73);
-            this.Filter_Lv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_Lv.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_Lv.Name = "Filter_Lv";
             this.Filter_Lv.Size = new System.Drawing.Size(59, 25);
             this.Filter_Lv.TabIndex = 67;
@@ -759,7 +759,7 @@
             "2",
             "H"});
             this.Ability.Location = new System.Drawing.Point(267, 220);
-            this.Ability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ability.Margin = new System.Windows.Forms.Padding(4);
             this.Ability.Name = "Ability";
             this.Ability.Size = new System.Drawing.Size(97, 24);
             this.Ability.TabIndex = 63;
@@ -768,7 +768,7 @@
             // 
             this.DisableFilters.AutoSize = true;
             this.DisableFilters.Location = new System.Drawing.Point(403, 305);
-            this.DisableFilters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DisableFilters.Margin = new System.Windows.Forms.Padding(4);
             this.DisableFilters.Name = "DisableFilters";
             this.DisableFilters.Size = new System.Drawing.Size(86, 21);
             this.DisableFilters.TabIndex = 51;
@@ -779,7 +779,7 @@
             // 
             this.ShinyOnly.AutoSize = true;
             this.ShinyOnly.Location = new System.Drawing.Point(403, 272);
-            this.ShinyOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShinyOnly.Margin = new System.Windows.Forms.Padding(4);
             this.ShinyOnly.Name = "ShinyOnly";
             this.ShinyOnly.Size = new System.Drawing.Size(86, 21);
             this.ShinyOnly.TabIndex = 8;
@@ -800,7 +800,7 @@
             // 
             this.Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Gender.Location = new System.Drawing.Point(267, 159);
-            this.Gender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gender.Margin = new System.Windows.Forms.Padding(4);
             this.Gender.Name = "Gender";
             this.Gender.Size = new System.Drawing.Size(97, 24);
             this.Gender.TabIndex = 38;
@@ -908,7 +908,7 @@
             this.IVPanel.Controls.Add(this.ivmax4);
             this.IVPanel.Controls.Add(this.ivmax3);
             this.IVPanel.Location = new System.Drawing.Point(53, 68);
-            this.IVPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IVPanel.Margin = new System.Windows.Forms.Padding(4);
             this.IVPanel.Name = "IVPanel";
             this.IVPanel.Size = new System.Drawing.Size(196, 257);
             this.IVPanel.TabIndex = 24;
@@ -918,7 +918,7 @@
             this.PerfectIVs.AccessibleName = "";
             this.PerfectIVs.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerfectIVs.Location = new System.Drawing.Point(115, 4);
-            this.PerfectIVs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PerfectIVs.Margin = new System.Windows.Forms.Padding(4);
             this.PerfectIVs.Maximum = new decimal(new int[] {
             6,
             0,
@@ -943,7 +943,7 @@
             this.ivmin0.AccessibleName = "";
             this.ivmin0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin0.Location = new System.Drawing.Point(15, 39);
-            this.ivmin0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin0.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -958,7 +958,7 @@
             this.ivmax0.AccessibleName = "";
             this.ivmax0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax0.Location = new System.Drawing.Point(115, 39);
-            this.ivmax0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax0.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -978,7 +978,7 @@
             this.ivmin1.AccessibleName = "";
             this.ivmin1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin1.Location = new System.Drawing.Point(15, 76);
-            this.ivmin1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin1.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1003,7 +1003,7 @@
             this.ivmin2.AccessibleName = "";
             this.ivmin2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin2.Location = new System.Drawing.Point(15, 113);
-            this.ivmin2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin2.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1028,7 +1028,7 @@
             this.ivmin3.AccessibleName = "";
             this.ivmin3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin3.Location = new System.Drawing.Point(15, 150);
-            this.ivmin3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin3.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1053,7 +1053,7 @@
             this.ivmin4.AccessibleName = "";
             this.ivmin4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin4.Location = new System.Drawing.Point(15, 187);
-            this.ivmin4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin4.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1078,7 +1078,7 @@
             this.ivmin5.AccessibleName = "";
             this.ivmin5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin5.Location = new System.Drawing.Point(15, 224);
-            this.ivmin5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmin5.Margin = new System.Windows.Forms.Padding(4);
             this.ivmin5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1113,7 +1113,7 @@
             this.ivmax1.AccessibleName = "";
             this.ivmax1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax1.Location = new System.Drawing.Point(115, 76);
-            this.ivmax1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax1.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1133,7 +1133,7 @@
             this.ivmax5.AccessibleName = "";
             this.ivmax5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax5.Location = new System.Drawing.Point(115, 224);
-            this.ivmax5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax5.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1153,7 +1153,7 @@
             this.ivmax2.AccessibleName = "";
             this.ivmax2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax2.Location = new System.Drawing.Point(115, 113);
-            this.ivmax2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax2.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1173,7 +1173,7 @@
             this.ivmax4.AccessibleName = "";
             this.ivmax4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax4.Location = new System.Drawing.Point(115, 187);
-            this.ivmax4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax4.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1193,7 +1193,7 @@
             this.ivmax3.AccessibleName = "";
             this.ivmax3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax3.Location = new System.Drawing.Point(115, 150);
-            this.ivmax3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ivmax3.Margin = new System.Windows.Forms.Padding(4);
             this.ivmax3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1225,7 +1225,7 @@
             this.StatPanel.Controls.Add(this.BS_1);
             this.StatPanel.Controls.Add(this.BS_0);
             this.StatPanel.Location = new System.Drawing.Point(53, 68);
-            this.StatPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StatPanel.Margin = new System.Windows.Forms.Padding(4);
             this.StatPanel.Name = "StatPanel";
             this.StatPanel.Size = new System.Drawing.Size(196, 257);
             this.StatPanel.TabIndex = 42;
@@ -1255,7 +1255,7 @@
             this.Stat0.AccessibleName = "";
             this.Stat0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat0.Location = new System.Drawing.Point(107, 39);
-            this.Stat0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat0.Margin = new System.Windows.Forms.Padding(4);
             this.Stat0.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1270,7 +1270,7 @@
             this.Stat1.AccessibleName = "";
             this.Stat1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat1.Location = new System.Drawing.Point(107, 76);
-            this.Stat1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat1.Margin = new System.Windows.Forms.Padding(4);
             this.Stat1.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1285,7 +1285,7 @@
             this.BS_5.AccessibleName = "";
             this.BS_5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_5.Location = new System.Drawing.Point(15, 224);
-            this.BS_5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_5.Margin = new System.Windows.Forms.Padding(4);
             this.BS_5.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1300,7 +1300,7 @@
             this.Stat2.AccessibleName = "";
             this.Stat2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat2.Location = new System.Drawing.Point(107, 113);
-            this.Stat2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat2.Margin = new System.Windows.Forms.Padding(4);
             this.Stat2.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1315,7 +1315,7 @@
             this.BS_4.AccessibleName = "";
             this.BS_4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_4.Location = new System.Drawing.Point(15, 187);
-            this.BS_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_4.Margin = new System.Windows.Forms.Padding(4);
             this.BS_4.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1330,7 +1330,7 @@
             this.Stat3.AccessibleName = "";
             this.Stat3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat3.Location = new System.Drawing.Point(107, 150);
-            this.Stat3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat3.Margin = new System.Windows.Forms.Padding(4);
             this.Stat3.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1345,7 +1345,7 @@
             this.BS_3.AccessibleName = "";
             this.BS_3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_3.Location = new System.Drawing.Point(15, 150);
-            this.BS_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_3.Margin = new System.Windows.Forms.Padding(4);
             this.BS_3.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1360,7 +1360,7 @@
             this.Stat4.AccessibleName = "";
             this.Stat4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat4.Location = new System.Drawing.Point(107, 187);
-            this.Stat4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat4.Margin = new System.Windows.Forms.Padding(4);
             this.Stat4.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1375,7 +1375,7 @@
             this.BS_2.AccessibleName = "";
             this.BS_2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_2.Location = new System.Drawing.Point(15, 113);
-            this.BS_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_2.Margin = new System.Windows.Forms.Padding(4);
             this.BS_2.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1390,7 +1390,7 @@
             this.Stat5.AccessibleName = "";
             this.Stat5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat5.Location = new System.Drawing.Point(107, 224);
-            this.Stat5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Stat5.Margin = new System.Windows.Forms.Padding(4);
             this.Stat5.Maximum = new decimal(new int[] {
             900,
             0,
@@ -1405,7 +1405,7 @@
             this.BS_1.AccessibleName = "";
             this.BS_1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_1.Location = new System.Drawing.Point(15, 76);
-            this.BS_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_1.Margin = new System.Windows.Forms.Padding(4);
             this.BS_1.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1420,7 +1420,7 @@
             this.BS_0.AccessibleName = "";
             this.BS_0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_0.Location = new System.Drawing.Point(15, 39);
-            this.BS_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BS_0.Margin = new System.Windows.Forms.Padding(4);
             this.BS_0.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1434,7 +1434,7 @@
             // 
             this.SafeFOnly.AutoSize = true;
             this.SafeFOnly.Location = new System.Drawing.Point(403, 239);
-            this.SafeFOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SafeFOnly.Margin = new System.Windows.Forms.Padding(4);
             this.SafeFOnly.Name = "SafeFOnly";
             this.SafeFOnly.Size = new System.Drawing.Size(86, 21);
             this.SafeFOnly.TabIndex = 80;
@@ -1456,7 +1456,7 @@
             this.RNGMethod.Controls.Add(this.TP_Gen7ToolKit);
             this.RNGMethod.Controls.Add(this.TP_Gen6ToolKit);
             this.RNGMethod.Location = new System.Drawing.Point(16, 39);
-            this.RNGMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RNGMethod.Margin = new System.Windows.Forms.Padding(4);
             this.RNGMethod.Name = "RNGMethod";
             this.RNGMethod.SelectedIndex = 0;
             this.RNGMethod.Size = new System.Drawing.Size(1468, 849);
@@ -1471,9 +1471,9 @@
             this.TP_StationaryRNG.Controls.Add(this.Sta_Setting);
             this.TP_StationaryRNG.Controls.Add(this.Filters);
             this.TP_StationaryRNG.Location = new System.Drawing.Point(4, 25);
-            this.TP_StationaryRNG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_StationaryRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_StationaryRNG.Name = "TP_StationaryRNG";
-            this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(4);
             this.TP_StationaryRNG.Size = new System.Drawing.Size(1460, 820);
             this.TP_StationaryRNG.TabIndex = 0;
             this.TP_StationaryRNG.Text = "定点乱数";
@@ -1497,9 +1497,9 @@
             this.RNGInfo.Controls.Add(this.Frame_min);
             this.RNGInfo.Controls.Add(this.AroundTarget);
             this.RNGInfo.Location = new System.Drawing.Point(1107, 7);
-            this.RNGInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RNGInfo.Margin = new System.Windows.Forms.Padding(4);
             this.RNGInfo.Name = "RNGInfo";
-            this.RNGInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RNGInfo.Padding = new System.Windows.Forms.Padding(4);
             this.RNGInfo.Size = new System.Drawing.Size(336, 336);
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
@@ -1508,7 +1508,7 @@
             // B_ResetFrame
             // 
             this.B_ResetFrame.Location = new System.Drawing.Point(208, 27);
-            this.B_ResetFrame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_ResetFrame.Margin = new System.Windows.Forms.Padding(4);
             this.B_ResetFrame.Name = "B_ResetFrame";
             this.B_ResetFrame.Size = new System.Drawing.Size(71, 31);
             this.B_ResetFrame.TabIndex = 100;
@@ -1537,7 +1537,7 @@
             this.timedelaypanel.Controls.Add(this.L_NPC);
             this.timedelaypanel.Controls.Add(this.NPC);
             this.timedelaypanel.Location = new System.Drawing.Point(1, 158);
-            this.timedelaypanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timedelaypanel.Margin = new System.Windows.Forms.Padding(4);
             this.timedelaypanel.Name = "timedelaypanel";
             this.timedelaypanel.Size = new System.Drawing.Size(379, 89);
             this.timedelaypanel.TabIndex = 96;
@@ -1558,7 +1558,7 @@
             this.Correction.AccessibleName = "";
             this.Correction.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Correction.Location = new System.Drawing.Point(253, 48);
-            this.Correction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Correction.Margin = new System.Windows.Forms.Padding(4);
             this.Correction.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1584,7 +1584,7 @@
             this.Timedelay.AccessibleName = "";
             this.Timedelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Timedelay.Location = new System.Drawing.Point(177, 2);
-            this.Timedelay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Timedelay.Margin = new System.Windows.Forms.Padding(4);
             this.Timedelay.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -1612,7 +1612,7 @@
             this.ConsiderDelay.Checked = true;
             this.ConsiderDelay.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ConsiderDelay.Location = new System.Drawing.Point(17, 6);
-            this.ConsiderDelay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConsiderDelay.Margin = new System.Windows.Forms.Padding(4);
             this.ConsiderDelay.Name = "ConsiderDelay";
             this.ConsiderDelay.Size = new System.Drawing.Size(114, 21);
             this.ConsiderDelay.TabIndex = 63;
@@ -1634,7 +1634,7 @@
             this.NPC.AccessibleName = "";
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NPC.Location = new System.Drawing.Point(104, 48);
-            this.NPC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NPC.Margin = new System.Windows.Forms.Padding(4);
             this.NPC.Name = "NPC";
             this.NPC.Size = new System.Drawing.Size(43, 25);
             this.NPC.TabIndex = 40;
@@ -1647,7 +1647,7 @@
             this.EggPanel.Controls.Add(this.Egg_min);
             this.EggPanel.Controls.Add(this.label12);
             this.EggPanel.Location = new System.Drawing.Point(4, 178);
-            this.EggPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EggPanel.Margin = new System.Windows.Forms.Padding(4);
             this.EggPanel.Name = "EggPanel";
             this.EggPanel.Size = new System.Drawing.Size(365, 106);
             this.EggPanel.TabIndex = 99;
@@ -1672,7 +1672,7 @@
             0,
             0});
             this.Egg_max.Location = new System.Drawing.Point(131, 11);
-            this.Egg_max.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Egg_max.Margin = new System.Windows.Forms.Padding(4);
             this.Egg_max.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -1692,7 +1692,7 @@
             this.Egg_min.AccessibleName = "";
             this.Egg_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Egg_min.Location = new System.Drawing.Point(19, 11);
-            this.Egg_min.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Egg_min.Margin = new System.Windows.Forms.Padding(4);
             this.Egg_min.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -1726,7 +1726,7 @@
             // 
             this.CreateTimeline.AutoSize = true;
             this.CreateTimeline.Location = new System.Drawing.Point(21, 257);
-            this.CreateTimeline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CreateTimeline.Margin = new System.Windows.Forms.Padding(4);
             this.CreateTimeline.Name = "CreateTimeline";
             this.CreateTimeline.Size = new System.Drawing.Size(99, 21);
             this.CreateTimeline.TabIndex = 95;
@@ -1738,7 +1738,7 @@
             // 
             this.EggNumber.AutoSize = true;
             this.EggNumber.Location = new System.Drawing.Point(23, 150);
-            this.EggNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EggNumber.Margin = new System.Windows.Forms.Padding(4);
             this.EggNumber.Name = "EggNumber";
             this.EggNumber.Size = new System.Drawing.Size(57, 21);
             this.EggNumber.TabIndex = 96;
@@ -1748,7 +1748,7 @@
             // B_Search
             // 
             this.B_Search.Location = new System.Drawing.Point(156, 292);
-            this.B_Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Search.Margin = new System.Windows.Forms.Padding(4);
             this.B_Search.Name = "B_Search";
             this.B_Search.Size = new System.Drawing.Size(123, 34);
             this.B_Search.TabIndex = 90;
@@ -1761,7 +1761,7 @@
             this.TimeSpan.AccessibleName = "";
             this.TimeSpan.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeSpan.Location = new System.Drawing.Point(177, 256);
-            this.TimeSpan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TimeSpan.Margin = new System.Windows.Forms.Padding(4);
             this.TimeSpan.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1786,7 +1786,7 @@
             0,
             0});
             this.TargetFrame.Location = new System.Drawing.Point(123, 112);
-            this.TargetFrame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TargetFrame.Margin = new System.Windows.Forms.Padding(4);
             this.TargetFrame.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1806,7 +1806,7 @@
             this.RB_FrameRange.AutoSize = true;
             this.RB_FrameRange.Checked = true;
             this.RB_FrameRange.Location = new System.Drawing.Point(21, 31);
-            this.RB_FrameRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RB_FrameRange.Margin = new System.Windows.Forms.Padding(4);
             this.RB_FrameRange.Name = "RB_FrameRange";
             this.RB_FrameRange.Size = new System.Drawing.Size(85, 21);
             this.RB_FrameRange.TabIndex = 92;
@@ -1834,7 +1834,7 @@
             0,
             0});
             this.Frame_max.Location = new System.Drawing.Point(176, 64);
-            this.Frame_max.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Frame_max.Margin = new System.Windows.Forms.Padding(4);
             this.Frame_max.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -1854,7 +1854,7 @@
             this.Frame_min.AccessibleName = "";
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(21, 64);
-            this.Frame_min.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Frame_min.Margin = new System.Windows.Forms.Padding(4);
             this.Frame_min.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -1868,7 +1868,7 @@
             // 
             this.AroundTarget.AutoSize = true;
             this.AroundTarget.Location = new System.Drawing.Point(215, 114);
-            this.AroundTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AroundTarget.Margin = new System.Windows.Forms.Padding(4);
             this.AroundTarget.Name = "AroundTarget";
             this.AroundTarget.Size = new System.Drawing.Size(75, 21);
             this.AroundTarget.TabIndex = 97;
@@ -1885,9 +1885,9 @@
             this.Sta_Setting.Controls.Add(this.AlwaysSynced);
             this.Sta_Setting.Controls.Add(this.Fix3v);
             this.Sta_Setting.Location = new System.Drawing.Point(8, 7);
-            this.Sta_Setting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Sta_Setting.Margin = new System.Windows.Forms.Padding(4);
             this.Sta_Setting.Name = "Sta_Setting";
-            this.Sta_Setting.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Sta_Setting.Padding = new System.Windows.Forms.Padding(4);
             this.Sta_Setting.Size = new System.Drawing.Size(540, 336);
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
@@ -1897,7 +1897,7 @@
             // 
             this.Sta_AbilityLocked.AutoSize = true;
             this.Sta_AbilityLocked.Location = new System.Drawing.Point(15, 181);
-            this.Sta_AbilityLocked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Sta_AbilityLocked.Margin = new System.Windows.Forms.Padding(4);
             this.Sta_AbilityLocked.Name = "Sta_AbilityLocked";
             this.Sta_AbilityLocked.Size = new System.Drawing.Size(86, 21);
             this.Sta_AbilityLocked.TabIndex = 95;
@@ -1914,7 +1914,7 @@
             "2",
             "H"});
             this.Sta_Ability.Location = new System.Drawing.Point(160, 176);
-            this.Sta_Ability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Sta_Ability.Margin = new System.Windows.Forms.Padding(4);
             this.Sta_Ability.Name = "Sta_Ability";
             this.Sta_Ability.Size = new System.Drawing.Size(81, 24);
             this.Sta_Ability.TabIndex = 94;
@@ -1924,7 +1924,7 @@
             // 
             this.BlinkWhenSync.AutoSize = true;
             this.BlinkWhenSync.Location = new System.Drawing.Point(15, 181);
-            this.BlinkWhenSync.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BlinkWhenSync.Margin = new System.Windows.Forms.Padding(4);
             this.BlinkWhenSync.Name = "BlinkWhenSync";
             this.BlinkWhenSync.Size = new System.Drawing.Size(100, 21);
             this.BlinkWhenSync.TabIndex = 93;
@@ -1943,7 +1943,7 @@
             this.EnctrPanel.Controls.Add(this.L_Poke);
             this.EnctrPanel.Controls.Add(this.SyncNature);
             this.EnctrPanel.Location = new System.Drawing.Point(1, 23);
-            this.EnctrPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EnctrPanel.Margin = new System.Windows.Forms.Padding(4);
             this.EnctrPanel.Name = "EnctrPanel";
             this.EnctrPanel.Size = new System.Drawing.Size(516, 103);
             this.EnctrPanel.TabIndex = 92;
@@ -1973,7 +1973,7 @@
             this.CB_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Category.FormattingEnabled = true;
             this.CB_Category.Location = new System.Drawing.Point(80, 14);
-            this.CB_Category.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CB_Category.Margin = new System.Windows.Forms.Padding(4);
             this.CB_Category.Name = "CB_Category";
             this.CB_Category.Size = new System.Drawing.Size(157, 24);
             this.CB_Category.TabIndex = 73;
@@ -1984,7 +1984,7 @@
             this.Poke.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Poke.FormattingEnabled = true;
             this.Poke.Location = new System.Drawing.Point(323, 14);
-            this.Poke.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Poke.Margin = new System.Windows.Forms.Padding(4);
             this.Poke.Name = "Poke";
             this.Poke.Size = new System.Drawing.Size(148, 24);
             this.Poke.TabIndex = 36;
@@ -1994,7 +1994,7 @@
             // 
             this.GenderRatio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderRatio.Location = new System.Drawing.Point(345, 62);
-            this.GenderRatio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GenderRatio.Margin = new System.Windows.Forms.Padding(4);
             this.GenderRatio.Name = "GenderRatio";
             this.GenderRatio.Size = new System.Drawing.Size(100, 24);
             this.GenderRatio.TabIndex = 8;
@@ -2023,7 +2023,7 @@
             // 
             this.SyncNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SyncNature.Location = new System.Drawing.Point(105, 62);
-            this.SyncNature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SyncNature.Margin = new System.Windows.Forms.Padding(4);
             this.SyncNature.Name = "SyncNature";
             this.SyncNature.Size = new System.Drawing.Size(100, 24);
             this.SyncNature.TabIndex = 3;
@@ -2033,7 +2033,7 @@
             // 
             this.ShinyLocked.AutoSize = true;
             this.ShinyLocked.Location = new System.Drawing.Point(375, 140);
-            this.ShinyLocked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShinyLocked.Margin = new System.Windows.Forms.Padding(4);
             this.ShinyLocked.Name = "ShinyLocked";
             this.ShinyLocked.Size = new System.Drawing.Size(86, 21);
             this.ShinyLocked.TabIndex = 71;
@@ -2044,7 +2044,7 @@
             // 
             this.AlwaysSynced.AutoSize = true;
             this.AlwaysSynced.Location = new System.Drawing.Point(15, 140);
-            this.AlwaysSynced.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AlwaysSynced.Margin = new System.Windows.Forms.Padding(4);
             this.AlwaysSynced.Name = "AlwaysSynced";
             this.AlwaysSynced.Size = new System.Drawing.Size(86, 21);
             this.AlwaysSynced.TabIndex = 9;
@@ -2055,7 +2055,7 @@
             // 
             this.Fix3v.AutoSize = true;
             this.Fix3v.Location = new System.Drawing.Point(213, 140);
-            this.Fix3v.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Fix3v.Margin = new System.Windows.Forms.Padding(4);
             this.Fix3v.Name = "Fix3v";
             this.Fix3v.Size = new System.Drawing.Size(75, 21);
             this.Fix3v.TabIndex = 1;
@@ -2067,9 +2067,9 @@
             // 
             this.TP_EventRNG.Controls.Add(this.EventSetting);
             this.TP_EventRNG.Location = new System.Drawing.Point(4, 25);
-            this.TP_EventRNG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_EventRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_EventRNG.Name = "TP_EventRNG";
-            this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(4);
             this.TP_EventRNG.Size = new System.Drawing.Size(1460, 820);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
@@ -2117,9 +2117,9 @@
             this.EventSetting.Controls.Add(this.Event_IV_Fix1);
             this.EventSetting.Controls.Add(this.Event_Nature);
             this.EventSetting.Location = new System.Drawing.Point(4, 7);
-            this.EventSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventSetting.Margin = new System.Windows.Forms.Padding(4);
             this.EventSetting.Name = "EventSetting";
-            this.EventSetting.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventSetting.Padding = new System.Windows.Forms.Padding(4);
             this.EventSetting.Size = new System.Drawing.Size(545, 342);
             this.EventSetting.TabIndex = 97;
             this.EventSetting.TabStop = false;
@@ -2128,7 +2128,7 @@
             // B_Open
             // 
             this.B_Open.Location = new System.Drawing.Point(413, 30);
-            this.B_Open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Open.Margin = new System.Windows.Forms.Padding(4);
             this.B_Open.Name = "B_Open";
             this.B_Open.Size = new System.Drawing.Size(109, 28);
             this.B_Open.TabIndex = 29;
@@ -2141,7 +2141,7 @@
             this.Event_Forme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Forme.FormattingEnabled = true;
             this.Event_Forme.Location = new System.Drawing.Point(273, 30);
-            this.Event_Forme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_Forme.Margin = new System.Windows.Forms.Padding(4);
             this.Event_Forme.Name = "Event_Forme";
             this.Event_Forme.Size = new System.Drawing.Size(80, 24);
             this.Event_Forme.TabIndex = 96;
@@ -2152,7 +2152,7 @@
             this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_PID.Hexadecimal = true;
             this.Event_PID.Location = new System.Drawing.Point(436, 250);
-            this.Event_PID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_PID.Margin = new System.Windows.Forms.Padding(4);
             this.Event_PID.Name = "Event_PID";
             this.Event_PID.Size = new System.Drawing.Size(104, 25);
             this.Event_PID.TabIndex = 92;
@@ -2175,7 +2175,7 @@
             this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_EC.Hexadecimal = true;
             this.Event_EC.Location = new System.Drawing.Point(436, 297);
-            this.Event_EC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_EC.Margin = new System.Windows.Forms.Padding(4);
             this.Event_EC.Name = "Event_EC";
             this.Event_EC.Size = new System.Drawing.Size(104, 25);
             this.Event_EC.TabIndex = 93;
@@ -2187,7 +2187,7 @@
             this.Event_Species.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Species.FormattingEnabled = true;
             this.Event_Species.Location = new System.Drawing.Point(105, 30);
-            this.Event_Species.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_Species.Margin = new System.Windows.Forms.Padding(4);
             this.Event_Species.Name = "Event_Species";
             this.Event_Species.Size = new System.Drawing.Size(109, 24);
             this.Event_Species.TabIndex = 94;
@@ -2199,7 +2199,7 @@
             this.Event_SID.Enabled = false;
             this.Event_SID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_SID.Location = new System.Drawing.Point(432, 165);
-            this.Event_SID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_SID.Margin = new System.Windows.Forms.Padding(4);
             this.Event_SID.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -2227,7 +2227,7 @@
             this.AbilityLocked.Checked = true;
             this.AbilityLocked.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AbilityLocked.Location = new System.Drawing.Point(168, 208);
-            this.AbilityLocked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AbilityLocked.Margin = new System.Windows.Forms.Padding(4);
             this.AbilityLocked.Name = "AbilityLocked";
             this.AbilityLocked.Size = new System.Drawing.Size(86, 21);
             this.AbilityLocked.TabIndex = 47;
@@ -2240,7 +2240,7 @@
             this.EventIV0.AccessibleName = "";
             this.EventIV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV0.Location = new System.Drawing.Point(88, 73);
-            this.EventIV0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV0.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2287,7 +2287,7 @@
             this.EventIV1.AccessibleName = "";
             this.EventIV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV1.Location = new System.Drawing.Point(88, 118);
-            this.EventIV1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV1.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2303,7 +2303,7 @@
             this.IVsCount.AccessibleName = "";
             this.IVsCount.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IVsCount.Location = new System.Drawing.Point(304, 75);
-            this.IVsCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IVsCount.Margin = new System.Windows.Forms.Padding(4);
             this.IVsCount.Maximum = new decimal(new int[] {
             5,
             0,
@@ -2318,7 +2318,7 @@
             // 
             this.IsEgg.AutoSize = true;
             this.IsEgg.Location = new System.Drawing.Point(288, 122);
-            this.IsEgg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IsEgg.Margin = new System.Windows.Forms.Padding(4);
             this.IsEgg.Name = "IsEgg";
             this.IsEgg.Size = new System.Drawing.Size(44, 21);
             this.IsEgg.TabIndex = 70;
@@ -2330,7 +2330,7 @@
             // 
             this.YourID.AutoSize = true;
             this.YourID.Location = new System.Drawing.Point(168, 122);
-            this.YourID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.YourID.Margin = new System.Windows.Forms.Padding(4);
             this.YourID.Name = "YourID";
             this.YourID.Size = new System.Drawing.Size(57, 21);
             this.YourID.TabIndex = 48;
@@ -2343,7 +2343,7 @@
             this.EventIV2.AccessibleName = "";
             this.EventIV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV2.Location = new System.Drawing.Point(88, 164);
-            this.EventIV2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV2.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2358,7 +2358,7 @@
             // 
             this.GenderLocked.AutoSize = true;
             this.GenderLocked.Location = new System.Drawing.Point(168, 302);
-            this.GenderLocked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GenderLocked.Margin = new System.Windows.Forms.Padding(4);
             this.GenderLocked.Name = "GenderLocked";
             this.GenderLocked.Size = new System.Drawing.Size(86, 21);
             this.GenderLocked.TabIndex = 44;
@@ -2370,7 +2370,7 @@
             // 
             this.OtherInfo.AutoSize = true;
             this.OtherInfo.Location = new System.Drawing.Point(397, 79);
-            this.OtherInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OtherInfo.Margin = new System.Windows.Forms.Padding(4);
             this.OtherInfo.Name = "OtherInfo";
             this.OtherInfo.Size = new System.Drawing.Size(86, 21);
             this.OtherInfo.TabIndex = 54;
@@ -2393,7 +2393,7 @@
             this.EventIV3.AccessibleName = "";
             this.EventIV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV3.Location = new System.Drawing.Point(88, 209);
-            this.EventIV3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV3.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2408,7 +2408,7 @@
             // 
             this.NatureLocked.AutoSize = true;
             this.NatureLocked.Location = new System.Drawing.Point(168, 255);
-            this.NatureLocked.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NatureLocked.Margin = new System.Windows.Forms.Padding(4);
             this.NatureLocked.Name = "NatureLocked";
             this.NatureLocked.Size = new System.Drawing.Size(86, 21);
             this.NatureLocked.TabIndex = 43;
@@ -2436,7 +2436,7 @@
             "",
             ""});
             this.Event_PIDType.Location = new System.Drawing.Point(264, 161);
-            this.Event_PIDType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_PIDType.Margin = new System.Windows.Forms.Padding(4);
             this.Event_PIDType.Name = "Event_PIDType";
             this.Event_PIDType.Size = new System.Drawing.Size(97, 24);
             this.Event_PIDType.TabIndex = 49;
@@ -2447,7 +2447,7 @@
             this.EventIV4.AccessibleName = "";
             this.EventIV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV4.Location = new System.Drawing.Point(88, 255);
-            this.EventIV4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV4.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2462,7 +2462,7 @@
             // 
             this.Event_IV_Fix5.AutoSize = true;
             this.Event_IV_Fix5.Location = new System.Drawing.Point(16, 302);
-            this.Event_IV_Fix5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix5.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix5.Name = "Event_IV_Fix5";
             this.Event_IV_Fix5.Size = new System.Drawing.Size(58, 21);
             this.Event_IV_Fix5.TabIndex = 41;
@@ -2479,7 +2479,7 @@
             "2",
             "H"});
             this.Event_Ability.Location = new System.Drawing.Point(301, 207);
-            this.Event_Ability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_Ability.Margin = new System.Windows.Forms.Padding(4);
             this.Event_Ability.Name = "Event_Ability";
             this.Event_Ability.Size = new System.Drawing.Size(81, 24);
             this.Event_Ability.TabIndex = 66;
@@ -2500,7 +2500,7 @@
             this.EventIV5.AccessibleName = "";
             this.EventIV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV5.Location = new System.Drawing.Point(88, 300);
-            this.EventIV5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventIV5.Margin = new System.Windows.Forms.Padding(4);
             this.EventIV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2515,7 +2515,7 @@
             // 
             this.Event_IV_Fix4.AutoSize = true;
             this.Event_IV_Fix4.Location = new System.Drawing.Point(16, 256);
-            this.Event_IV_Fix4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix4.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix4.Name = "Event_IV_Fix4";
             this.Event_IV_Fix4.Size = new System.Drawing.Size(58, 21);
             this.Event_IV_Fix4.TabIndex = 40;
@@ -2537,7 +2537,7 @@
             // 
             this.Event_IV_Fix3.AutoSize = true;
             this.Event_IV_Fix3.Location = new System.Drawing.Point(16, 210);
-            this.Event_IV_Fix3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix3.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix3.Name = "Event_IV_Fix3";
             this.Event_IV_Fix3.Size = new System.Drawing.Size(58, 21);
             this.Event_IV_Fix3.TabIndex = 39;
@@ -2549,7 +2549,7 @@
             // 
             this.Event_IV_Fix0.AutoSize = true;
             this.Event_IV_Fix0.Location = new System.Drawing.Point(16, 74);
-            this.Event_IV_Fix0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix0.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix0.Name = "Event_IV_Fix0";
             this.Event_IV_Fix0.Size = new System.Drawing.Size(49, 21);
             this.Event_IV_Fix0.TabIndex = 8;
@@ -2563,7 +2563,7 @@
             this.Event_TID.Enabled = false;
             this.Event_TID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_TID.Location = new System.Drawing.Point(432, 117);
-            this.Event_TID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_TID.Margin = new System.Windows.Forms.Padding(4);
             this.Event_TID.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -2580,7 +2580,7 @@
             this.Event_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Gender.Enabled = false;
             this.Event_Gender.Location = new System.Drawing.Point(301, 295);
-            this.Event_Gender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_Gender.Margin = new System.Windows.Forms.Padding(4);
             this.Event_Gender.Name = "Event_Gender";
             this.Event_Gender.Size = new System.Drawing.Size(81, 24);
             this.Event_Gender.TabIndex = 62;
@@ -2589,7 +2589,7 @@
             // 
             this.Event_IV_Fix2.AutoSize = true;
             this.Event_IV_Fix2.Location = new System.Drawing.Point(16, 165);
-            this.Event_IV_Fix2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix2.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix2.Name = "Event_IV_Fix2";
             this.Event_IV_Fix2.Size = new System.Drawing.Size(58, 21);
             this.Event_IV_Fix2.TabIndex = 38;
@@ -2601,7 +2601,7 @@
             // 
             this.Event_IV_Fix1.AutoSize = true;
             this.Event_IV_Fix1.Location = new System.Drawing.Point(16, 119);
-            this.Event_IV_Fix1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_IV_Fix1.Margin = new System.Windows.Forms.Padding(4);
             this.Event_IV_Fix1.Name = "Event_IV_Fix1";
             this.Event_IV_Fix1.Size = new System.Drawing.Size(58, 21);
             this.Event_IV_Fix1.TabIndex = 37;
@@ -2614,7 +2614,7 @@
             this.Event_Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Event_Nature.Enabled = false;
             this.Event_Nature.Location = new System.Drawing.Point(301, 251);
-            this.Event_Nature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Event_Nature.Margin = new System.Windows.Forms.Padding(4);
             this.Event_Nature.Name = "Event_Nature";
             this.Event_Nature.Size = new System.Drawing.Size(81, 24);
             this.Event_Nature.TabIndex = 61;
@@ -2623,9 +2623,9 @@
             // 
             this.TP_WildRNG.Controls.Add(this.Wild_Setting);
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 25);
-            this.TP_WildRNG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_WildRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_WildRNG.Name = "TP_WildRNG";
-            this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(4);
             this.TP_WildRNG.Size = new System.Drawing.Size(1460, 820);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
@@ -2647,9 +2647,9 @@
             this.Wild_Setting.Controls.Add(this.L_Slots);
             this.Wild_Setting.Controls.Add(this.L_Location);
             this.Wild_Setting.Location = new System.Drawing.Point(8, 7);
-            this.Wild_Setting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Wild_Setting.Margin = new System.Windows.Forms.Padding(4);
             this.Wild_Setting.Name = "Wild_Setting";
-            this.Wild_Setting.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Wild_Setting.Padding = new System.Windows.Forms.Padding(4);
             this.Wild_Setting.Size = new System.Drawing.Size(539, 295);
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
@@ -2659,7 +2659,7 @@
             // 
             this.CompoundEyes.AutoSize = true;
             this.CompoundEyes.Location = new System.Drawing.Point(23, 241);
-            this.CompoundEyes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CompoundEyes.Margin = new System.Windows.Forms.Padding(4);
             this.CompoundEyes.Name = "CompoundEyes";
             this.CompoundEyes.Size = new System.Drawing.Size(58, 21);
             this.CompoundEyes.TabIndex = 92;
@@ -2683,7 +2683,7 @@
             this.Special_th.Enabled = false;
             this.Special_th.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Special_th.Location = new System.Drawing.Point(351, 191);
-            this.Special_th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Special_th.Margin = new System.Windows.Forms.Padding(4);
             this.Special_th.Name = "Special_th";
             this.Special_th.Size = new System.Drawing.Size(59, 25);
             this.Special_th.TabIndex = 84;
@@ -2705,7 +2705,7 @@
             this.Lv_max.AccessibleName = "IV_min";
             this.Lv_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv_max.Location = new System.Drawing.Point(189, 191);
-            this.Lv_max.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Lv_max.Margin = new System.Windows.Forms.Padding(4);
             this.Lv_max.Name = "Lv_max";
             this.Lv_max.Size = new System.Drawing.Size(47, 25);
             this.Lv_max.TabIndex = 83;
@@ -2730,7 +2730,7 @@
             this.Lv_min.AccessibleName = "";
             this.Lv_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv_min.Location = new System.Drawing.Point(119, 191);
-            this.Lv_min.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Lv_min.Margin = new System.Windows.Forms.Padding(4);
             this.Lv_min.Name = "Lv_min";
             this.Lv_min.Size = new System.Drawing.Size(47, 25);
             this.Lv_min.TabIndex = 82;
@@ -2744,7 +2744,7 @@
             // 
             this.Night.AutoSize = true;
             this.Night.Location = new System.Drawing.Point(461, 154);
-            this.Night.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Night.Margin = new System.Windows.Forms.Padding(4);
             this.Night.Name = "Night";
             this.Night.Size = new System.Drawing.Size(57, 21);
             this.Night.TabIndex = 79;
@@ -2757,7 +2757,7 @@
             this.Day.AutoSize = true;
             this.Day.Checked = true;
             this.Day.Location = new System.Drawing.Point(461, 126);
-            this.Day.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Day.Margin = new System.Windows.Forms.Padding(4);
             this.Day.Name = "Day";
             this.Day.Size = new System.Drawing.Size(57, 21);
             this.Day.TabIndex = 73;
@@ -2770,7 +2770,7 @@
             // 
             this.SlotSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SlotSpecies.Location = new System.Drawing.Point(329, 138);
-            this.SlotSpecies.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SlotSpecies.Margin = new System.Windows.Forms.Padding(4);
             this.SlotSpecies.Name = "SlotSpecies";
             this.SlotSpecies.Size = new System.Drawing.Size(116, 24);
             this.SlotSpecies.TabIndex = 78;
@@ -2780,7 +2780,7 @@
             // 
             this.MetLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MetLocation.Location = new System.Drawing.Point(76, 138);
-            this.MetLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MetLocation.Margin = new System.Windows.Forms.Padding(4);
             this.MetLocation.Name = "MetLocation";
             this.MetLocation.Size = new System.Drawing.Size(185, 24);
             this.MetLocation.TabIndex = 77;
@@ -2810,9 +2810,9 @@
             // 
             this.TP_EggRNG.Controls.Add(this.Parents_Info);
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 25);
-            this.TP_EggRNG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_EggRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_EggRNG.Name = "TP_EggRNG";
-            this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(4);
             this.TP_EggRNG.Size = new System.Drawing.Size(1460, 820);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
@@ -2857,9 +2857,9 @@
             this.Parents_Info.Controls.Add(this.F_Items);
             this.Parents_Info.Controls.Add(this.M_Items);
             this.Parents_Info.Location = new System.Drawing.Point(8, 7);
-            this.Parents_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parents_Info.Margin = new System.Windows.Forms.Padding(4);
             this.Parents_Info.Name = "Parents_Info";
-            this.Parents_Info.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Parents_Info.Padding = new System.Windows.Forms.Padding(4);
             this.Parents_Info.Size = new System.Drawing.Size(539, 338);
             this.Parents_Info.TabIndex = 7;
             this.Parents_Info.TabStop = false;
@@ -2869,7 +2869,7 @@
             // 
             this.NidoType.AutoSize = true;
             this.NidoType.Location = new System.Drawing.Point(269, 303);
-            this.NidoType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NidoType.Margin = new System.Windows.Forms.Padding(4);
             this.NidoType.Name = "NidoType";
             this.NidoType.Size = new System.Drawing.Size(72, 21);
             this.NidoType.TabIndex = 105;
@@ -2881,7 +2881,7 @@
             // 
             this.ConsiderOtherTSV.AutoSize = true;
             this.ConsiderOtherTSV.Location = new System.Drawing.Point(375, 240);
-            this.ConsiderOtherTSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConsiderOtherTSV.Margin = new System.Windows.Forms.Padding(4);
             this.ConsiderOtherTSV.Name = "ConsiderOtherTSV";
             this.ConsiderOtherTSV.Size = new System.Drawing.Size(113, 21);
             this.ConsiderOtherTSV.TabIndex = 104;
@@ -2891,7 +2891,7 @@
             // B_TSVList
             // 
             this.B_TSVList.Location = new System.Drawing.Point(247, 230);
-            this.B_TSVList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_TSVList.Margin = new System.Windows.Forms.Padding(4);
             this.B_TSVList.Name = "B_TSVList";
             this.B_TSVList.Size = new System.Drawing.Size(104, 31);
             this.B_TSVList.TabIndex = 103;
@@ -2902,7 +2902,7 @@
             // B_Fast
             // 
             this.B_Fast.Location = new System.Drawing.Point(247, 80);
-            this.B_Fast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Fast.Margin = new System.Windows.Forms.Padding(4);
             this.B_Fast.Name = "B_Fast";
             this.B_Fast.Size = new System.Drawing.Size(104, 31);
             this.B_Fast.TabIndex = 100;
@@ -2914,7 +2914,7 @@
             // 
             this.MainRNGEgg.AutoSize = true;
             this.MainRNGEgg.Location = new System.Drawing.Point(375, 303);
-            this.MainRNGEgg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MainRNGEgg.Margin = new System.Windows.Forms.Padding(4);
             this.MainRNGEgg.Name = "MainRNGEgg";
             this.MainRNGEgg.Size = new System.Drawing.Size(108, 21);
             this.MainRNGEgg.TabIndex = 102;
@@ -2937,9 +2937,9 @@
             this.TinyMT_Status.Controls.Add(this.label8);
             this.TinyMT_Status.Controls.Add(this.label16);
             this.TinyMT_Status.Location = new System.Drawing.Point(365, 0);
-            this.TinyMT_Status.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TinyMT_Status.Margin = new System.Windows.Forms.Padding(4);
             this.TinyMT_Status.Name = "TinyMT_Status";
-            this.TinyMT_Status.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TinyMT_Status.Padding = new System.Windows.Forms.Padding(4);
             this.TinyMT_Status.Size = new System.Drawing.Size(173, 219);
             this.TinyMT_Status.TabIndex = 101;
             this.TinyMT_Status.TabStop = false;
@@ -2950,7 +2950,7 @@
             this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.St3.Hexadecimal = true;
             this.St3.Location = new System.Drawing.Point(45, 32);
-            this.St3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.St3.Margin = new System.Windows.Forms.Padding(4);
             this.St3.Name = "St3";
             this.St3.Size = new System.Drawing.Size(104, 25);
             this.St3.TabIndex = 92;
@@ -2971,7 +2971,7 @@
             // B_Load
             // 
             this.B_Load.Location = new System.Drawing.Point(7, 178);
-            this.B_Load.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Load.Margin = new System.Windows.Forms.Padding(4);
             this.B_Load.Name = "B_Load";
             this.B_Load.Size = new System.Drawing.Size(71, 31);
             this.B_Load.TabIndex = 5;
@@ -2984,7 +2984,7 @@
             this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.St2.Hexadecimal = true;
             this.St2.Location = new System.Drawing.Point(45, 66);
-            this.St2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.St2.Margin = new System.Windows.Forms.Padding(4);
             this.St2.Name = "St2";
             this.St2.Size = new System.Drawing.Size(104, 25);
             this.St2.TabIndex = 93;
@@ -2994,7 +2994,7 @@
             // B_Backup
             // 
             this.B_Backup.Location = new System.Drawing.Point(93, 178);
-            this.B_Backup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Backup.Margin = new System.Windows.Forms.Padding(4);
             this.B_Backup.Name = "B_Backup";
             this.B_Backup.Size = new System.Drawing.Size(71, 31);
             this.B_Backup.TabIndex = 6;
@@ -3018,7 +3018,7 @@
             this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.St1.Hexadecimal = true;
             this.St1.Location = new System.Drawing.Point(45, 101);
-            this.St1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.St1.Margin = new System.Windows.Forms.Padding(4);
             this.St1.Name = "St1";
             this.St1.Size = new System.Drawing.Size(104, 25);
             this.St1.TabIndex = 94;
@@ -3030,7 +3030,7 @@
             this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.St0.Hexadecimal = true;
             this.St0.Location = new System.Drawing.Point(45, 137);
-            this.St0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.St0.Margin = new System.Windows.Forms.Padding(4);
             this.St0.Name = "St0";
             this.St0.Size = new System.Drawing.Size(104, 25);
             this.St0.TabIndex = 95;
@@ -3103,7 +3103,7 @@
             // 
             this.MM.AutoSize = true;
             this.MM.Location = new System.Drawing.Point(375, 272);
-            this.MM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MM.Margin = new System.Windows.Forms.Padding(4);
             this.MM.Name = "MM";
             this.MM.Size = new System.Drawing.Size(100, 21);
             this.MM.TabIndex = 5;
@@ -3125,7 +3125,7 @@
             // 
             this.Homogeneity.AutoSize = true;
             this.Homogeneity.Location = new System.Drawing.Point(243, 272);
-            this.Homogeneity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Homogeneity.Margin = new System.Windows.Forms.Padding(4);
             this.Homogeneity.Name = "Homogeneity";
             this.Homogeneity.Size = new System.Drawing.Size(86, 21);
             this.Homogeneity.TabIndex = 0;
@@ -3157,7 +3157,7 @@
             this.M_IV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV0.ForeColor = System.Drawing.Color.Blue;
             this.M_IV0.Location = new System.Drawing.Point(87, 89);
-            this.M_IV0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV0.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3177,7 +3177,7 @@
             this.M_IV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV1.ForeColor = System.Drawing.Color.Blue;
             this.M_IV1.Location = new System.Drawing.Point(87, 123);
-            this.M_IV1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV1.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3197,7 +3197,7 @@
             this.F_IV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV4.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV4.Location = new System.Drawing.Point(165, 226);
-            this.F_IV4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV4.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3217,7 +3217,7 @@
             this.F_IV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV3.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV3.Location = new System.Drawing.Point(165, 192);
-            this.F_IV3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV3.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3237,7 +3237,7 @@
             this.F_IV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV2.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV2.Location = new System.Drawing.Point(165, 158);
-            this.F_IV2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV2.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3257,7 +3257,7 @@
             this.F_IV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV1.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV1.Location = new System.Drawing.Point(165, 123);
-            this.F_IV1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV1.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV1.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3277,7 +3277,7 @@
             this.M_IV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV2.ForeColor = System.Drawing.Color.Blue;
             this.M_IV2.Location = new System.Drawing.Point(87, 158);
-            this.M_IV2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV2.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3297,7 +3297,7 @@
             this.F_IV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV5.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV5.Location = new System.Drawing.Point(165, 261);
-            this.F_IV5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV5.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3321,7 +3321,7 @@
             "2",
             "H"});
             this.F_ability.Location = new System.Drawing.Point(165, 55);
-            this.F_ability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_ability.Margin = new System.Windows.Forms.Padding(4);
             this.F_ability.Name = "F_ability";
             this.F_ability.Size = new System.Drawing.Size(59, 24);
             this.F_ability.TabIndex = 4;
@@ -3331,7 +3331,7 @@
             this.F_IV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.F_IV0.ForeColor = System.Drawing.Color.DeepPink;
             this.F_IV0.Location = new System.Drawing.Point(165, 89);
-            this.F_IV0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_IV0.Margin = new System.Windows.Forms.Padding(4);
             this.F_IV0.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3355,7 +3355,7 @@
             "2",
             "H"});
             this.M_ability.Location = new System.Drawing.Point(87, 55);
-            this.M_ability.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_ability.Margin = new System.Windows.Forms.Padding(4);
             this.M_ability.Name = "M_ability";
             this.M_ability.Size = new System.Drawing.Size(59, 24);
             this.M_ability.TabIndex = 6;
@@ -3365,7 +3365,7 @@
             this.M_IV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV5.ForeColor = System.Drawing.Color.Blue;
             this.M_IV5.Location = new System.Drawing.Point(87, 261);
-            this.M_IV5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV5.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3385,7 +3385,7 @@
             this.M_IV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV3.ForeColor = System.Drawing.Color.Blue;
             this.M_IV3.Location = new System.Drawing.Point(87, 192);
-            this.M_IV3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV3.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV3.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3405,7 +3405,7 @@
             this.M_IV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.M_IV4.ForeColor = System.Drawing.Color.Blue;
             this.M_IV4.Location = new System.Drawing.Point(87, 226);
-            this.M_IV4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_IV4.Margin = new System.Windows.Forms.Padding(4);
             this.M_IV4.Maximum = new decimal(new int[] {
             31,
             0,
@@ -3423,7 +3423,7 @@
             // B_EggReset
             // 
             this.B_EggReset.Location = new System.Drawing.Point(247, 36);
-            this.B_EggReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_EggReset.Margin = new System.Windows.Forms.Padding(4);
             this.B_EggReset.Name = "B_EggReset";
             this.B_EggReset.Size = new System.Drawing.Size(104, 31);
             this.B_EggReset.TabIndex = 30;
@@ -3436,7 +3436,7 @@
             this.F_ditto.AutoSize = true;
             this.F_ditto.ForeColor = System.Drawing.Color.DeepPink;
             this.F_ditto.Location = new System.Drawing.Point(165, 32);
-            this.F_ditto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_ditto.Margin = new System.Windows.Forms.Padding(4);
             this.F_ditto.Name = "F_ditto";
             this.F_ditto.Size = new System.Drawing.Size(58, 21);
             this.F_ditto.TabIndex = 2;
@@ -3457,7 +3457,7 @@
             "只有♂",
             "只有♀"});
             this.Egg_GenderRatio.Location = new System.Drawing.Point(247, 193);
-            this.Egg_GenderRatio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Egg_GenderRatio.Margin = new System.Windows.Forms.Padding(4);
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
             this.Egg_GenderRatio.Size = new System.Drawing.Size(103, 24);
             this.Egg_GenderRatio.TabIndex = 7;
@@ -3478,7 +3478,7 @@
             this.M_ditto.BackColor = System.Drawing.Color.Transparent;
             this.M_ditto.ForeColor = System.Drawing.Color.Blue;
             this.M_ditto.Location = new System.Drawing.Point(95, 32);
-            this.M_ditto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_ditto.Margin = new System.Windows.Forms.Padding(4);
             this.M_ditto.Name = "M_ditto";
             this.M_ditto.Size = new System.Drawing.Size(58, 21);
             this.M_ditto.TabIndex = 1;
@@ -3501,7 +3501,7 @@
             "D-力量束带",
             "S-力量护踝"});
             this.F_Items.Location = new System.Drawing.Point(140, 300);
-            this.F_Items.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.F_Items.Margin = new System.Windows.Forms.Padding(4);
             this.F_Items.Name = "F_Items";
             this.F_Items.Size = new System.Drawing.Size(123, 24);
             this.F_Items.TabIndex = 10;
@@ -3521,7 +3521,7 @@
             "D-力量束带",
             "S-力量护踝"});
             this.M_Items.Location = new System.Drawing.Point(8, 300);
-            this.M_Items.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.M_Items.Margin = new System.Windows.Forms.Padding(4);
             this.M_Items.Name = "M_Items";
             this.M_Items.Size = new System.Drawing.Size(123, 24);
             this.M_Items.TabIndex = 13;
@@ -3532,9 +3532,9 @@
             this.TP_IDRNG.Controls.Add(this.RNGPanel);
             this.TP_IDRNG.Controls.Add(this.Filter_ID);
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 25);
-            this.TP_IDRNG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_IDRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_IDRNG.Name = "TP_IDRNG";
-            this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(4);
             this.TP_IDRNG.Size = new System.Drawing.Size(1460, 820);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
@@ -3545,9 +3545,9 @@
             this.GB_RNGGEN7ID.Controls.Add(this.L_ClkCorrection);
             this.GB_RNGGEN7ID.Controls.Add(this.Clk_Correction);
             this.GB_RNGGEN7ID.Location = new System.Drawing.Point(4, 191);
-            this.GB_RNGGEN7ID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_RNGGEN7ID.Margin = new System.Windows.Forms.Padding(4);
             this.GB_RNGGEN7ID.Name = "GB_RNGGEN7ID";
-            this.GB_RNGGEN7ID.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_RNGGEN7ID.Padding = new System.Windows.Forms.Padding(4);
             this.GB_RNGGEN7ID.Size = new System.Drawing.Size(244, 155);
             this.GB_RNGGEN7ID.TabIndex = 116;
             this.GB_RNGGEN7ID.TabStop = false;
@@ -3567,7 +3567,7 @@
             // 
             this.Clk_Correction.Font = new System.Drawing.Font("Consolas", 9F);
             this.Clk_Correction.Location = new System.Drawing.Point(139, 60);
-            this.Clk_Correction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Clk_Correction.Margin = new System.Windows.Forms.Padding(4);
             this.Clk_Correction.Maximum = new decimal(new int[] {
             16,
             0,
@@ -3583,9 +3583,9 @@
             this.RNGPanel.Controls.Add(this.MTUntempered);
             this.RNGPanel.Controls.Add(this.MTFast);
             this.RNGPanel.Location = new System.Drawing.Point(4, 7);
-            this.RNGPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RNGPanel.Margin = new System.Windows.Forms.Padding(4);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RNGPanel.Padding = new System.Windows.Forms.Padding(4);
             this.RNGPanel.Size = new System.Drawing.Size(244, 176);
             this.RNGPanel.TabIndex = 115;
             this.RNGPanel.TabStop = false;
@@ -3596,7 +3596,7 @@
             this.MT.AutoSize = true;
             this.MT.Checked = true;
             this.MT.Location = new System.Drawing.Point(24, 27);
-            this.MT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MT.Margin = new System.Windows.Forms.Padding(4);
             this.MT.Name = "MT";
             this.MT.Size = new System.Drawing.Size(49, 21);
             this.MT.TabIndex = 0;
@@ -3608,7 +3608,7 @@
             // 
             this.MTUntempered.AutoSize = true;
             this.MTUntempered.Location = new System.Drawing.Point(24, 111);
-            this.MTUntempered.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MTUntempered.Margin = new System.Windows.Forms.Padding(4);
             this.MTUntempered.Name = "MTUntempered";
             this.MTUntempered.Size = new System.Drawing.Size(127, 21);
             this.MTUntempered.TabIndex = 2;
@@ -3619,7 +3619,7 @@
             // 
             this.MTFast.AutoSize = true;
             this.MTFast.Location = new System.Drawing.Point(24, 69);
-            this.MTFast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MTFast.Margin = new System.Windows.Forms.Padding(4);
             this.MTFast.Name = "MTFast";
             this.MTFast.Size = new System.Drawing.Size(76, 21);
             this.MTFast.TabIndex = 1;
@@ -3639,9 +3639,9 @@
             this.Filter_ID.Controls.Add(this.TSV_List);
             this.Filter_ID.Controls.Add(this.Filter_TSV);
             this.Filter_ID.Location = new System.Drawing.Point(256, 4);
-            this.Filter_ID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_ID.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_ID.Name = "Filter_ID";
-            this.Filter_ID.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_ID.Padding = new System.Windows.Forms.Padding(4);
             this.Filter_ID.Size = new System.Drawing.Size(840, 342);
             this.Filter_ID.TabIndex = 114;
             this.Filter_ID.TabStop = false;
@@ -3650,7 +3650,7 @@
             // 
             this.Filter_TID.AutoSize = true;
             this.Filter_TID.Location = new System.Drawing.Point(31, 27);
-            this.Filter_TID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_TID.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_TID.Name = "Filter_TID";
             this.Filter_TID.Size = new System.Drawing.Size(51, 21);
             this.Filter_TID.TabIndex = 0;
@@ -3662,7 +3662,7 @@
             this.Filter_G7TID.AutoSize = true;
             this.Filter_G7TID.Checked = true;
             this.Filter_G7TID.Location = new System.Drawing.Point(31, 111);
-            this.Filter_G7TID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_G7TID.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_G7TID.Name = "Filter_G7TID";
             this.Filter_G7TID.Size = new System.Drawing.Size(70, 21);
             this.Filter_G7TID.TabIndex = 2;
@@ -3674,7 +3674,7 @@
             // 
             this.ID_Disable.AutoSize = true;
             this.ID_Disable.Location = new System.Drawing.Point(612, 299);
-            this.ID_Disable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ID_Disable.Margin = new System.Windows.Forms.Padding(4);
             this.ID_Disable.Name = "ID_Disable";
             this.ID_Disable.Size = new System.Drawing.Size(119, 21);
             this.ID_Disable.TabIndex = 113;
@@ -3685,7 +3685,7 @@
             // 
             this.Filter_SID.AutoSize = true;
             this.Filter_SID.Location = new System.Drawing.Point(31, 69);
-            this.Filter_SID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_SID.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_SID.Name = "Filter_SID";
             this.Filter_SID.Size = new System.Drawing.Size(51, 21);
             this.Filter_SID.TabIndex = 1;
@@ -3696,7 +3696,7 @@
             // 
             this.RandList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandList.Location = new System.Drawing.Point(612, 23);
-            this.RandList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RandList.Margin = new System.Windows.Forms.Padding(4);
             this.RandList.Multiline = true;
             this.RandList.Name = "RandList";
             this.RandList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3708,7 +3708,7 @@
             // 
             this.ID_RE.AutoSize = true;
             this.ID_RE.Location = new System.Drawing.Point(112, 300);
-            this.ID_RE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ID_RE.Margin = new System.Windows.Forms.Padding(4);
             this.ID_RE.Name = "ID_RE";
             this.ID_RE.Size = new System.Drawing.Size(153, 21);
             this.ID_RE.TabIndex = 93;
@@ -3719,7 +3719,7 @@
             // 
             this.ID_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_List.Location = new System.Drawing.Point(117, 25);
-            this.ID_List.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ID_List.Margin = new System.Windows.Forms.Padding(4);
             this.ID_List.Multiline = true;
             this.ID_List.Name = "ID_List";
             this.ID_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3741,7 +3741,7 @@
             // 
             this.TSV_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TSV_List.Location = new System.Drawing.Point(351, 25);
-            this.TSV_List.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TSV_List.Margin = new System.Windows.Forms.Padding(4);
             this.TSV_List.Multiline = true;
             this.TSV_List.Name = "TSV_List";
             this.TSV_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3772,9 +3772,9 @@
             this.TP_Gen7ToolKit.Controls.Add(this.QRBox);
             this.TP_Gen7ToolKit.Controls.Add(this.SearchSeedBox);
             this.TP_Gen7ToolKit.Location = new System.Drawing.Point(4, 25);
-            this.TP_Gen7ToolKit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_Gen7ToolKit.Margin = new System.Windows.Forms.Padding(4);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
-            this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(4);
             this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1460, 820);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
@@ -3785,9 +3785,9 @@
             this.Magikarp.Controls.Add(this.RTB_EggSeed);
             this.Magikarp.Controls.Add(this.B_EggSeed127);
             this.Magikarp.Location = new System.Drawing.Point(8, 519);
-            this.Magikarp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Magikarp.Margin = new System.Windows.Forms.Padding(4);
             this.Magikarp.Name = "Magikarp";
-            this.Magikarp.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Magikarp.Padding = new System.Windows.Forms.Padding(4);
             this.Magikarp.Size = new System.Drawing.Size(1075, 290);
             this.Magikarp.TabIndex = 104;
             this.Magikarp.TabStop = false;
@@ -3796,7 +3796,7 @@
             // 
             this.RTB_EggSeed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTB_EggSeed.Location = new System.Drawing.Point(27, 38);
-            this.RTB_EggSeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RTB_EggSeed.Margin = new System.Windows.Forms.Padding(4);
             this.RTB_EggSeed.Name = "RTB_EggSeed";
             this.RTB_EggSeed.Size = new System.Drawing.Size(875, 223);
             this.RTB_EggSeed.TabIndex = 103;
@@ -3805,7 +3805,7 @@
             // B_EggSeed127
             // 
             this.B_EggSeed127.Location = new System.Drawing.Point(940, 229);
-            this.B_EggSeed127.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_EggSeed127.Margin = new System.Windows.Forms.Padding(4);
             this.B_EggSeed127.Name = "B_EggSeed127";
             this.B_EggSeed127.Size = new System.Drawing.Size(96, 33);
             this.B_EggSeed127.TabIndex = 29;
@@ -3848,7 +3848,7 @@
             this.TimeResult.FormattingEnabled = true;
             this.TimeResult.ItemHeight = 16;
             this.TimeResult.Location = new System.Drawing.Point(1065, 370);
-            this.TimeResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TimeResult.Margin = new System.Windows.Forms.Padding(4);
             this.TimeResult.Name = "TimeResult";
             this.TimeResult.Size = new System.Drawing.Size(379, 132);
             this.TimeResult.TabIndex = 54;
@@ -3859,7 +3859,7 @@
             this.BySaveScreen.BackColor = System.Drawing.Color.White;
             this.BySaveScreen.Checked = true;
             this.BySaveScreen.Location = new System.Drawing.Point(32, 196);
-            this.BySaveScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BySaveScreen.Margin = new System.Windows.Forms.Padding(4);
             this.BySaveScreen.Name = "BySaveScreen";
             this.BySaveScreen.Size = new System.Drawing.Size(174, 21);
             this.BySaveScreen.TabIndex = 33;
@@ -3872,7 +3872,7 @@
             this.QRInput.AutoSize = true;
             this.QRInput.BackColor = System.Drawing.Color.White;
             this.QRInput.Location = new System.Drawing.Point(536, 196);
-            this.QRInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRInput.Margin = new System.Windows.Forms.Padding(4);
             this.QRInput.Name = "QRInput";
             this.QRInput.Size = new System.Drawing.Size(162, 21);
             this.QRInput.TabIndex = 35;
@@ -3906,9 +3906,9 @@
             this.InputBox.Controls.Add(this.button3);
             this.InputBox.Controls.Add(this.button15);
             this.InputBox.Location = new System.Drawing.Point(8, 7);
-            this.InputBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InputBox.Margin = new System.Windows.Forms.Padding(4);
             this.InputBox.Name = "InputBox";
-            this.InputBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InputBox.Padding = new System.Windows.Forms.Padding(4);
             this.InputBox.Size = new System.Drawing.Size(1088, 169);
             this.InputBox.TabIndex = 34;
             this.InputBox.TabStop = false;
@@ -3934,7 +3934,7 @@
             0,
             0});
             this.Time_min.Location = new System.Drawing.Point(977, 113);
-            this.Time_min.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Time_min.Margin = new System.Windows.Forms.Padding(4);
             this.Time_min.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -3954,7 +3954,7 @@
             this.button16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button16.BackgroundImage")));
             this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button16.Location = new System.Drawing.Point(1008, 38);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button16.Margin = new System.Windows.Forms.Padding(4);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(53, 49);
             this.button16.TabIndex = 15;
@@ -3966,7 +3966,7 @@
             this.EndClockInput.AutoSize = true;
             this.EndClockInput.Checked = true;
             this.EndClockInput.Location = new System.Drawing.Point(24, 134);
-            this.EndClockInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EndClockInput.Margin = new System.Windows.Forms.Padding(4);
             this.EndClockInput.Name = "EndClockInput";
             this.EndClockInput.Size = new System.Drawing.Size(85, 21);
             this.EndClockInput.TabIndex = 18;
@@ -3980,7 +3980,7 @@
             this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button9.Location = new System.Drawing.Point(579, 38);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(53, 49);
             this.button9.TabIndex = 8;
@@ -3992,7 +3992,7 @@
             this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button8.Location = new System.Drawing.Point(517, 38);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(53, 49);
             this.button8.TabIndex = 7;
@@ -4002,7 +4002,7 @@
             // Clear
             // 
             this.Clear.Location = new System.Drawing.Point(339, 118);
-            this.Clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Clear.Margin = new System.Windows.Forms.Padding(4);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(96, 33);
             this.Clear.TabIndex = 17;
@@ -4014,7 +4014,7 @@
             // 
             this.StartClockInput.AutoSize = true;
             this.StartClockInput.Location = new System.Drawing.Point(24, 106);
-            this.StartClockInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StartClockInput.Margin = new System.Windows.Forms.Padding(4);
             this.StartClockInput.Name = "StartClockInput";
             this.StartClockInput.Size = new System.Drawing.Size(85, 21);
             this.StartClockInput.TabIndex = 7;
@@ -4026,7 +4026,7 @@
             this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button10.Location = new System.Drawing.Point(640, 38);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(53, 49);
             this.button10.TabIndex = 9;
@@ -4036,7 +4036,7 @@
             // Back
             // 
             this.Back.Location = new System.Drawing.Point(192, 118);
-            this.Back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Back.Margin = new System.Windows.Forms.Padding(4);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(96, 33);
             this.Back.TabIndex = 7;
@@ -4049,7 +4049,7 @@
             this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button7.Location = new System.Drawing.Point(456, 38);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(53, 49);
             this.button7.TabIndex = 6;
@@ -4061,7 +4061,7 @@
             this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button11.Location = new System.Drawing.Point(701, 38);
-            this.button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(53, 49);
             this.button11.TabIndex = 10;
@@ -4073,7 +4073,7 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button6.Location = new System.Drawing.Point(395, 38);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(53, 49);
             this.button6.TabIndex = 5;
@@ -4085,7 +4085,7 @@
             this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button12.Location = new System.Drawing.Point(763, 38);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button12.Margin = new System.Windows.Forms.Padding(4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(53, 49);
             this.button12.TabIndex = 11;
@@ -4097,7 +4097,7 @@
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.Location = new System.Drawing.Point(333, 38);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(53, 49);
             this.button5.TabIndex = 4;
@@ -4109,7 +4109,7 @@
             this.button0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button0.BackgroundImage")));
             this.button0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button0.Location = new System.Drawing.Point(27, 38);
-            this.button0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button0.Margin = new System.Windows.Forms.Padding(4);
             this.button0.Name = "button0";
             this.button0.Size = new System.Drawing.Size(53, 49);
             this.button0.TabIndex = 16;
@@ -4121,7 +4121,7 @@
             this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button13.Location = new System.Drawing.Point(824, 38);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button13.Margin = new System.Windows.Forms.Padding(4);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(53, 49);
             this.button13.TabIndex = 12;
@@ -4133,7 +4133,7 @@
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Location = new System.Drawing.Point(88, 38);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(53, 49);
             this.button1.TabIndex = 0;
@@ -4145,7 +4145,7 @@
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.Location = new System.Drawing.Point(272, 38);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(53, 49);
             this.button4.TabIndex = 3;
@@ -4157,7 +4157,7 @@
             this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button14.Location = new System.Drawing.Point(885, 38);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button14.Margin = new System.Windows.Forms.Padding(4);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(53, 49);
             this.button14.TabIndex = 13;
@@ -4169,7 +4169,7 @@
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.Location = new System.Drawing.Point(149, 38);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(53, 49);
             this.button2.TabIndex = 1;
@@ -4181,7 +4181,7 @@
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.Location = new System.Drawing.Point(211, 38);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(53, 49);
             this.button3.TabIndex = 2;
@@ -4193,7 +4193,7 @@
             this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button15.Location = new System.Drawing.Point(947, 38);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button15.Margin = new System.Windows.Forms.Padding(4);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(53, 49);
             this.button15.TabIndex = 14;
@@ -4208,9 +4208,9 @@
             this.QRBox.Controls.Add(this.L_QRresult);
             this.QRBox.Controls.Add(this.QRList);
             this.QRBox.Location = new System.Drawing.Point(511, 213);
-            this.QRBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRBox.Margin = new System.Windows.Forms.Padding(4);
             this.QRBox.Name = "QRBox";
-            this.QRBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRBox.Padding = new System.Windows.Forms.Padding(4);
             this.QRBox.Size = new System.Drawing.Size(547, 299);
             this.QRBox.TabIndex = 32;
             this.QRBox.TabStop = false;
@@ -4220,7 +4220,7 @@
             this.QRResult.FormattingEnabled = true;
             this.QRResult.ItemHeight = 16;
             this.QRResult.Location = new System.Drawing.Point(123, 158);
-            this.QRResult.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRResult.Margin = new System.Windows.Forms.Padding(4);
             this.QRResult.Name = "QRResult";
             this.QRResult.Size = new System.Drawing.Size(399, 116);
             this.QRResult.TabIndex = 28;
@@ -4238,7 +4238,7 @@
             // QRSearch
             // 
             this.QRSearch.Location = new System.Drawing.Point(427, 100);
-            this.QRSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRSearch.Margin = new System.Windows.Forms.Padding(4);
             this.QRSearch.Name = "QRSearch";
             this.QRSearch.Size = new System.Drawing.Size(96, 33);
             this.QRSearch.TabIndex = 26;
@@ -4260,7 +4260,7 @@
             // 
             this.QRList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QRList.Location = new System.Drawing.Point(123, 48);
-            this.QRList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QRList.Margin = new System.Windows.Forms.Padding(4);
             this.QRList.Name = "QRList";
             this.QRList.Size = new System.Drawing.Size(399, 25);
             this.QRList.TabIndex = 24;
@@ -4275,9 +4275,9 @@
             this.SearchSeedBox.Controls.Add(this.SeedResults);
             this.SearchSeedBox.Controls.Add(this.Clock_List);
             this.SearchSeedBox.Location = new System.Drawing.Point(8, 213);
-            this.SearchSeedBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SearchSeedBox.Margin = new System.Windows.Forms.Padding(4);
             this.SearchSeedBox.Name = "SearchSeedBox";
-            this.SearchSeedBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SearchSeedBox.Padding = new System.Windows.Forms.Padding(4);
             this.SearchSeedBox.Size = new System.Drawing.Size(495, 299);
             this.SearchSeedBox.TabIndex = 31;
             this.SearchSeedBox.TabStop = false;
@@ -4286,7 +4286,7 @@
             // 
             this.RB_ID.AutoSize = true;
             this.RB_ID.Location = new System.Drawing.Point(245, 30);
-            this.RB_ID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RB_ID.Margin = new System.Windows.Forms.Padding(4);
             this.RB_ID.Name = "RB_ID";
             this.RB_ID.Size = new System.Drawing.Size(70, 21);
             this.RB_ID.TabIndex = 24;
@@ -4300,7 +4300,7 @@
             this.RB_Main.AutoSize = true;
             this.RB_Main.Checked = true;
             this.RB_Main.Location = new System.Drawing.Point(83, 28);
-            this.RB_Main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RB_Main.Margin = new System.Windows.Forms.Padding(4);
             this.RB_Main.Name = "RB_Main";
             this.RB_Main.Size = new System.Drawing.Size(71, 21);
             this.RB_Main.TabIndex = 23;
@@ -4322,7 +4322,7 @@
             // Search
             // 
             this.Search.Location = new System.Drawing.Point(339, 128);
-            this.Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Search.Margin = new System.Windows.Forms.Padding(4);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(96, 33);
             this.Search.TabIndex = 21;
@@ -4344,7 +4344,7 @@
             // 
             this.SeedResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SeedResults.Location = new System.Drawing.Point(112, 186);
-            this.SeedResults.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SeedResults.Margin = new System.Windows.Forms.Padding(4);
             this.SeedResults.Name = "SeedResults";
             this.SeedResults.Size = new System.Drawing.Size(321, 25);
             this.SeedResults.TabIndex = 20;
@@ -4353,7 +4353,7 @@
             // 
             this.Clock_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clock_List.Location = new System.Drawing.Point(109, 76);
-            this.Clock_List.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Clock_List.Margin = new System.Windows.Forms.Padding(4);
             this.Clock_List.Name = "Clock_List";
             this.Clock_List.Size = new System.Drawing.Size(324, 25);
             this.Clock_List.TabIndex = 19;
@@ -4362,7 +4362,7 @@
             // 
             this.TP_Gen6ToolKit.Controls.Add(this.GB_NTR);
             this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 25);
-            this.TP_Gen6ToolKit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TP_Gen6ToolKit.Margin = new System.Windows.Forms.Padding(4);
             this.TP_Gen6ToolKit.Name = "TP_Gen6ToolKit";
             this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1460, 820);
             this.TP_Gen6ToolKit.TabIndex = 6;
@@ -4378,12 +4378,12 @@
             this.GB_NTR.Controls.Add(this.B_GetGen6Seed);
             this.GB_NTR.Controls.Add(this.label19);
             this.GB_NTR.Controls.Add(this.label18);
-            this.GB_NTR.Controls.Add(this.Port);
+            this.GB_NTR.Controls.Add(this.ntr_pid);
             this.GB_NTR.Controls.Add(this.IP);
             this.GB_NTR.Location = new System.Drawing.Point(13, 12);
-            this.GB_NTR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_NTR.Margin = new System.Windows.Forms.Padding(4);
             this.GB_NTR.Name = "GB_NTR";
-            this.GB_NTR.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_NTR.Padding = new System.Windows.Forms.Padding(4);
             this.GB_NTR.Size = new System.Drawing.Size(436, 175);
             this.GB_NTR.TabIndex = 0;
             this.GB_NTR.TabStop = false;
@@ -4393,7 +4393,7 @@
             // 
             this.B_Resume.Enabled = false;
             this.B_Resume.Location = new System.Drawing.Point(23, 71);
-            this.B_Resume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Resume.Margin = new System.Windows.Forms.Padding(4);
             this.B_Resume.Name = "B_Resume";
             this.B_Resume.Size = new System.Drawing.Size(92, 31);
             this.B_Resume.TabIndex = 109;
@@ -4405,7 +4405,7 @@
             // 
             this.B_Disconnect.Enabled = false;
             this.B_Disconnect.Location = new System.Drawing.Point(321, 71);
-            this.B_Disconnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Disconnect.Margin = new System.Windows.Forms.Padding(4);
             this.B_Disconnect.Name = "B_Disconnect";
             this.B_Disconnect.Size = new System.Drawing.Size(92, 31);
             this.B_Disconnect.TabIndex = 108;
@@ -4426,7 +4426,7 @@
             // B_Connect
             // 
             this.B_Connect.Location = new System.Drawing.Point(321, 21);
-            this.B_Connect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_Connect.Margin = new System.Windows.Forms.Padding(4);
             this.B_Connect.Name = "B_Connect";
             this.B_Connect.Size = new System.Drawing.Size(92, 31);
             this.B_Connect.TabIndex = 105;
@@ -4438,7 +4438,7 @@
             // 
             this.B_GetGen6Seed.Enabled = false;
             this.B_GetGen6Seed.Location = new System.Drawing.Point(159, 71);
-            this.B_GetGen6Seed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.B_GetGen6Seed.Margin = new System.Windows.Forms.Padding(4);
             this.B_GetGen6Seed.Name = "B_GetGen6Seed";
             this.B_GetGen6Seed.Size = new System.Drawing.Size(136, 31);
             this.B_GetGen6Seed.TabIndex = 106;
@@ -4449,12 +4449,12 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(195, 30);
+            this.label19.Location = new System.Drawing.Point(209, 30);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(34, 17);
+            this.label19.Size = new System.Drawing.Size(27, 17);
             this.label19.TabIndex = 104;
-            this.label19.Text = "Port";
+            this.label19.Text = "pid";
             // 
             // label18
             // 
@@ -4466,17 +4466,17 @@
             this.label18.TabIndex = 103;
             this.label18.Text = "IP";
             // 
-            // Port
+            // ntr_pid
             // 
-            this.Port.Font = new System.Drawing.Font("Consolas", 9F);
-            this.Port.Hexadecimal = true;
-            this.Port.Location = new System.Drawing.Point(244, 25);
-            this.Port.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Port.Name = "Port";
-            this.Port.Size = new System.Drawing.Size(51, 25);
-            this.Port.TabIndex = 87;
-            this.Port.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Port.Value = new decimal(new int[] {
+            this.ntr_pid.Font = new System.Drawing.Font("Consolas", 9F);
+            this.ntr_pid.Hexadecimal = true;
+            this.ntr_pid.Location = new System.Drawing.Point(244, 25);
+            this.ntr_pid.Margin = new System.Windows.Forms.Padding(4);
+            this.ntr_pid.Name = "ntr_pid";
+            this.ntr_pid.Size = new System.Drawing.Size(51, 25);
+            this.ntr_pid.TabIndex = 87;
+            this.ntr_pid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ntr_pid.Value = new decimal(new int[] {
             40,
             0,
             0,
@@ -4486,7 +4486,7 @@
             // 
             this.IP.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IP.Location = new System.Drawing.Point(51, 25);
-            this.IP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IP.Margin = new System.Windows.Forms.Padding(4);
             this.IP.Name = "IP";
             this.IP.Size = new System.Drawing.Size(135, 25);
             this.IP.TabIndex = 25;
@@ -4501,7 +4501,7 @@
             "English",
             "简体中文"});
             this.Lang.Location = new System.Drawing.Point(657, 17);
-            this.Lang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Lang.Margin = new System.Windows.Forms.Padding(4);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(100, 24);
             this.Lang.TabIndex = 87;
@@ -4512,7 +4512,7 @@
             this.Advanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Advanced.AutoSize = true;
             this.Advanced.Location = new System.Drawing.Point(1368, 20);
-            this.Advanced.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Advanced.Margin = new System.Windows.Forms.Padding(4);
             this.Advanced.Name = "Advanced";
             this.Advanced.Size = new System.Drawing.Size(86, 21);
             this.Advanced.TabIndex = 86;
@@ -4525,7 +4525,7 @@
             this.ShinyCharm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShinyCharm.AutoSize = true;
             this.ShinyCharm.Location = new System.Drawing.Point(1261, 20);
-            this.ShinyCharm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShinyCharm.Margin = new System.Windows.Forms.Padding(4);
             this.ShinyCharm.Name = "ShinyCharm";
             this.ShinyCharm.Size = new System.Drawing.Size(86, 21);
             this.ShinyCharm.TabIndex = 85;
@@ -4560,7 +4560,7 @@
             this.TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TSV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TSV.Location = new System.Drawing.Point(1152, 16);
-            this.TSV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TSV.Margin = new System.Windows.Forms.Padding(4);
             this.TSV.Maximum = new decimal(new int[] {
             4095,
             0,
@@ -4628,7 +4628,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGV.Location = new System.Drawing.Point(16, 420);
-            this.DGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGV.Margin = new System.Windows.Forms.Padding(4);
             this.DGV.Name = "DGV";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -4866,7 +4866,7 @@
             "Sun",
             "Moon"});
             this.Gameversion.Location = new System.Drawing.Point(859, 17);
-            this.Gameversion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gameversion.Margin = new System.Windows.Forms.Padding(4);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(84, 24);
             this.Gameversion.TabIndex = 91;
@@ -4903,7 +4903,7 @@
             this.dgv_ID_rand64,
             this.dgv_ID_state});
             this.DGV_ID.Location = new System.Drawing.Point(16, 420);
-            this.DGV_ID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGV_ID.Margin = new System.Windows.Forms.Padding(4);
             this.DGV_ID.Name = "DGV_ID";
             this.DGV_ID.RowHeadersWidth = 18;
             this.DGV_ID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -4973,7 +4973,7 @@
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
             this.Seed.Location = new System.Drawing.Point(993, 16);
-            this.Seed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Seed.Margin = new System.Windows.Forms.Padding(4);
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(104, 25);
             this.Seed.TabIndex = 88;
@@ -4998,7 +4998,7 @@
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1474, 726);
             this.Name = "MainForm";
             this.Text = "3DS RNG Tool";
@@ -5119,7 +5119,7 @@
             this.TP_Gen6ToolKit.ResumeLayout(false);
             this.GB_NTR.ResumeLayout(false);
             this.GB_NTR.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Port)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ntr_pid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.DGVMS.ResumeLayout(false);
@@ -5475,7 +5475,7 @@
         private System.Windows.Forms.Button B_GetGen6Seed;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown Port;
+        private System.Windows.Forms.NumericUpDown ntr_pid;
         private System.Windows.Forms.TextBox IP;
         private System.Windows.Forms.Label L_NTRLog;
         private System.Windows.Forms.Button B_Disconnect;
