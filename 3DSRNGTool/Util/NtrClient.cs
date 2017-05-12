@@ -24,13 +24,6 @@ namespace Pk3DSRNGTool
         string lastReadMemFileName = null;
         public volatile int progress = -1;
 
-        public event EventHandler<InfoReadyEventArgs> InfoReady;
-
-        protected virtual void OnInfoReady(InfoReadyEventArgs e)
-        {
-            InfoReady?.Invoke(this, e);
-        }
-
         public event EventHandler Connected;
 
         protected virtual void OnConnected(EventArgs e)
@@ -39,8 +32,11 @@ namespace Pk3DSRNGTool
         }
 
         #region Interface
+        public byte gameversion;
+        public int pid;
         public uint Seed { get; private set; }
         public bool NewResult;
+
         public void bpadd(uint addr, string type = "code.once")
         {
             switch (type)
@@ -57,6 +53,16 @@ namespace Pk3DSRNGTool
         public void resume()
         {
             sendEmptyPacket(11, 0, 0, 4);
+        }
+
+        public void SetBreakPoint()
+        {
+            setServer(host, 5000 + pid);
+            connectToServer();
+            bpadd(0x1e790c, "code"); // Add break point
+            resume();
+            Thread.Sleep(6000);
+            resume();
         }
 
         public void Read(uint addr, uint size = 4, int pid = -1)
@@ -195,10 +201,15 @@ namespace Pk3DSRNGTool
                     {
                         if (dataLen != 0)
                         {
+                            byte[] tmp;
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
-                            OnInfoReady(new InfoReadyEventArgs(logMsg));
+                            if (null != (tmp = FuncUtil.getGame(logMsg)))
+                            {
+                                gameversion = tmp[0];
+                                pid = tmp[1];
+                            }
                             log(logMsg);
                         }
                         lock (syncLock)
@@ -313,7 +324,7 @@ namespace Pk3DSRNGTool
             netStream.Write(buf, 0, buf.Length);
         }
 
-        private void sendHeartbeatPacket()
+        public void sendHeartbeatPacket()
         {
             if (tcp != null)
             {

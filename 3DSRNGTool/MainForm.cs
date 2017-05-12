@@ -109,7 +109,6 @@ namespace Pk3DSRNGTool
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
-            ntrclient.InfoReady += getGame;
             ntrclient.Connected += connectCheck;
         }
 
@@ -421,6 +420,8 @@ namespace Pk3DSRNGTool
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             B_Search.Enabled = Gen7 || method < 2 || 3 < method || method == 2 && ver > 1;
+
+            NTR_Timer.Enabled = method == 6;
 
             if (method > 4)
                 return;
@@ -1299,18 +1300,14 @@ namespace Pk3DSRNGTool
         private void B_Connect_Click(object sender, EventArgs e)
         {
             L_NTRLog.Text = "Connecting...";
-            ntrclient.setServer(IP.Text, 5000 + (int)ntr_pid.Value);
+            ntrclient.setServer(IP.Text, 8000);
             try
             {
                 ntrclient.connectToServer();
-                ntrclient.bpadd(0x1e790c, "code"); // Add break point
-                ntrclient.resume();
-                Thread.Sleep(6000);
-                ntrclient.resume();
             }
             catch
             {
-                B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+                OnDisconnected();
                 Error("Unable to connect the console");
                 L_NTRLog.Text = "No Connection";
             }
@@ -1320,20 +1317,26 @@ namespace Pk3DSRNGTool
         {
             ntrclient.disconnect();
             L_NTRLog.Text = "Disconnected";
+            OnDisconnected();
+        }
+        
+        private void OnDisconnected()
+        {
             B_Connect.Enabled = true;
+            B_Breakpoint.Enabled =
             B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
-            ntrclient.Read(0x8c59e48, 0x4, (int)ntr_pid.Value); // MT[0]
+            ntrclient.Read(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
             int timeout = 10;
             do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0); // Try thread later
             if (timeout == 0) { Error("Unable to get the seed"); return; }
             byte[] Data = new byte[4];
             uint gen6seed = ntrclient.Seed;
             BitConverter.GetBytes(gen6seed).CopyTo(Data, 0);
-            ntrclient.Write(0x8800000, Data, (int)ntr_pid.Value);
+            ntrclient.Write(0x8800000, Data, ntrclient.pid);
             ntrclient.resume();
             ntrclient.NewResult = false;
             Seed.Value = gen6seed;
@@ -1344,51 +1347,32 @@ namespace Pk3DSRNGTool
         {
             ntrclient.resume();
         }
+        
+        private void B_Breakpoint_Click(object sender, EventArgs e)
+        {
+            ntrclient.SetBreakPoint();
+        }
 
         private void connectCheck(object sender, EventArgs e)
         {
-            ntrclient.listprocess();
+            if (ntrclient.port == 8000)
+                ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
+            B_Breakpoint.Enabled =
             B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
             Properties.Settings.Default.IP = IP.Text;
         }
 
-        private void getGame(object sender, EventArgs e)
+        private void NTRTick(object sender, EventArgs e)
         {
-            InfoReadyEventArgs args = (InfoReadyEventArgs)e;
-            string pname;
-            if (args.info.Contains("kujira-1")) // X
+            try
             {
-                Gameversion.SelectedIndex = 0;
-                pname = ", pname: kujira-1";
+                ntrclient.sendHeartbeatPacket();
             }
-            else if (args.info.Contains("kujira-2")) // Y
-            {
-                Gameversion.SelectedIndex = 1;
-                pname = ", pname: kujira-2";
-            }
-            else if (args.info.Contains("sango-1")) // Omega Ruby
-            {
-                Gameversion.SelectedIndex = 2;
-                pname = ", pname: sango-1";
-            }
-            else if (args.info.Contains("sango-2")) // Alpha Sapphire
-            {
-                Gameversion.SelectedIndex = 3;
-                pname = ", pname: sango-2";
-            }
-            else if (args.info.Contains("niji_loc")) // Sun/Moon
-            {
-                return;
-            }
-            else // not a process list or game not found - ignore packet
-                return;
-
-            string log = args.info;
-            string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
-            ntr_pid.Value = Convert.ToInt32("0x" + splitlog.Substring(0, 8), 16);
+            catch { }
         }
         #endregion
+
     }
 }
