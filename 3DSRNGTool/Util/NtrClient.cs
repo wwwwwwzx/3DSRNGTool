@@ -37,6 +37,8 @@ namespace Pk3DSRNGTool
         public uint Seed { get; private set; }
         public bool NewResult;
 
+        public bool ToSetBP;
+
         public void bpadd(uint addr, string type = "code.once")
         {
             switch (type)
@@ -61,7 +63,7 @@ namespace Pk3DSRNGTool
             connectToServer();
             bpadd(0x1e790c, "code"); // Add break point
             resume();
-            Thread.Sleep(5000);
+            Thread.Sleep(6000);
             resume();
         }
 
@@ -209,6 +211,7 @@ namespace Pk3DSRNGTool
                             {
                                 gameversion = tmp[0];
                                 pid = tmp[1];
+                                ToSetBP = gameversion < 4;
                             }
                             log(logMsg);
                         }

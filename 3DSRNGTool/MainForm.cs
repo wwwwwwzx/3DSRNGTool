@@ -1323,7 +1323,6 @@ namespace Pk3DSRNGTool
         private void OnDisconnected()
         {
             B_Connect.Enabled = true;
-            B_Breakpoint.Enabled =
             B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
@@ -1359,7 +1358,6 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_Breakpoint.Enabled =
             B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
             Properties.Settings.Default.IP = IP.Text;
         }
@@ -1368,6 +1366,11 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                if (ntrclient.ToSetBP)
+                {
+                    ntrclient.SetBreakPoint();
+                    ntrclient.ToSetBP = false;
+                }
                 ntrclient.sendHeartbeatPacket();
             }
             catch { }
