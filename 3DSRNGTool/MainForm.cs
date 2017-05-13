@@ -110,6 +110,7 @@ namespace Pk3DSRNGTool
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
+            Advanced_CheckedChanged(null, null);
             ntrclient.Connected += connectCheck;
         }
 
@@ -224,6 +225,7 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
+            B_BreakPoint.Visible = B_Resume.Visible = B_GetGen6Seed.Visible = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
         }
 
@@ -1323,6 +1325,7 @@ namespace Pk3DSRNGTool
 
         private void OnDisconnected()
         {
+            NTR_Timer.Interval = 1000;
             ntrclient.Auto = ntrclient.ToSetBP = ntrclient.ToSkipBP = false;
             B_Connect.Enabled = true;
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
@@ -1368,20 +1371,21 @@ namespace Pk3DSRNGTool
             {
                 if (ntrclient.Auto)
                 {
+                    if (ntrclient.ToSkipBP)
+                    {
+                        NTR_Timer.Interval = 500;
+                        ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
+                        if (lasttableindex != tableindex)
+                            lasttableindex = tableindex;
+                        else
+                            B_GetGen6Seed_Click(null, null);
+                    }
                     if (ntrclient.ToSetBP)
                     {
                         Gameversion.SelectedIndex = ntrclient.gameversion;
                         ntrclient.SetBreakPoint();
                         ntrclient.ToSetBP = false;
                         ntrclient.ToSkipBP = true;
-                    }
-                    if (ntrclient.ToSkipBP)
-                    {
-                        ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
-                        if (lasttableindex != tableindex)
-                            lasttableindex = tableindex;
-                        else
-                            B_GetGen6Seed_Click(null, null);
                     }
                 }
                 ntrclient.sendHeartbeatPacket();
@@ -1391,7 +1395,16 @@ namespace Pk3DSRNGTool
 
         private void B_BreakPoint_Click(object sender, EventArgs e)
         {
-            ntrclient.SetBreakPoint();
+            try
+            {
+                ntrclient.SetBreakPoint();
+            }
+            catch
+            {
+                OnDisconnected();
+                Error("Unable to connect the console.");
+                L_NTRLog.Text = "No Connection";
+            }
         }
         #endregion
 

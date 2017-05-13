@@ -11,18 +11,15 @@ namespace Pk3DSRNGTool
         public byte[] Data { get; private set; }
 
         private bool DataReady;
-        private bool ResumeSet;
         public bool ToSetBP;
         public bool ToSkipBP;
         public bool Auto;
-
-
-        private void parseLogMsg(string log)
+        
+        private bool parseLogMsg(string log)
         {
             if (getGame(log))
-                return;
-            if (IsResumeSet(log))
-                return;
+                return true;
+            return false;
         }
 
         private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "niji_loc" };
@@ -38,13 +35,6 @@ namespace Pk3DSRNGTool
             string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
             pid = Convert.ToByte("0x" + splitlog.Substring(0, 8), 16);
             return true;
-        }
-        
-        private bool IsResumeSet(string log)
-        {
-            if (log.Contains("set resume flag"))
-                ResumeSet = true;
-            return ResumeSet;
         }
 
         public void SetBreakPoint()
@@ -69,9 +59,7 @@ namespace Pk3DSRNGTool
         public void SingleThreadResume()
         {
             resume();
-            int timeout = 7;
-            do { Thread.Sleep(1000); timeout--; } while (!ResumeSet && timeout > 0); // Try thread later
-            ResumeSet = false;
+            Thread.Sleep(7000);
         }
 
         private void GetData(byte[] datBuf)

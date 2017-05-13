@@ -170,8 +170,8 @@ namespace Pk3DSRNGTool
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
-                            parseLogMsg(logMsg);
-                            log(logMsg);
+                            if (!parseLogMsg(logMsg))
+                                log(logMsg);
                         }
                         lock (syncLock)
                         {
@@ -197,14 +197,6 @@ namespace Pk3DSRNGTool
             disconnect(false);
         }
 
-        private string byteToHex(byte[] datBuf, int type)
-        {
-            string r = "";
-            for (int i = 0; i < datBuf.Length; i++)
-                r += datBuf[i].ToString("X2") + " ";
-            return r;
-        }
-
         private void handleReadMem(uint seq, byte[] dataBuf)
         {
             if (seq != lastReadMemSeq)
@@ -214,7 +206,6 @@ namespace Pk3DSRNGTool
             }
             lastReadMemSeq = 0;
             GetData(dataBuf);
-            log(byteToHex(dataBuf, 0));
         }
 
         private void handlePacket(uint cmd, uint seq, byte[] dataBuf)
