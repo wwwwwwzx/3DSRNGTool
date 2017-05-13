@@ -187,32 +187,50 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\personal_ao" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lang_cn.txt" />
-    <None Include="Resources\lang_en.txt" />
-    <None Include="Resources\personal_sm" />
-    <None Include="Resources\text_Genderratio_en.txt" />
-    <None Include="Resources\text_Genderratio_cn.txt" />
-    <None Include="Resources\text_Natures_cn.txt" />
-    <None Include="Resources\text_Natures_en.txt" />
-    <None Include="Resources\text_Species_cn.txt" />
-    <None Include="Resources\text_Species_en.txt" />
-    <None Include="Resources\text_Types_cn.txt" />
-    <None Include="Resources\text_Types_en.txt" />
-    <None Include="Resources\text_Location_sm_cn.txt" />
-    <None Include="Resources\text_Location_sm_en.txt" />
-    <None Include="Resources\text_Items_cn.txt" />
-    <None Include="Resources\text_Items_en.txt" />
+    <None Include="Resources\text\lang_cn.txt" />
+    <None Include="Resources\text\lang_en.txt" />
+    <None Include="Resources\bytes\personal_ao" />
+    <None Include="Resources\bytes\personal_sm" />
+    <None Include="Resources\text\text_Genderratio_en.txt" />
+    <None Include="Resources\text\text_Genderratio_cn.txt" />
+    <None Include="Resources\text\text_Natures_cn.txt" />
+    <None Include="Resources\text\text_Natures_en.txt" />
+    <None Include="Resources\text\text_Species_cn.txt" />
+    <None Include="Resources\text\text_Species_en.txt" />
+    <None Include="Resources\text\text_Types_cn.txt" />
+    <None Include="Resources\text\text_Types_en.txt" />
+    <None Include="Resources\text\text_Location_sm_cn.txt" />
+    <None Include="Resources\text\text_Location_sm_en.txt" />
+    <None Include="Resources\text\text_Items_cn.txt" />
+    <None Include="Resources\text\text_Items_en.txt" />
     <None Include="Resources\FollowmeTogetic.ico" />
-    <None Include="Resources\text_Location_xy_en.txt" />
-    <None Include="Resources\text_Location_xy_cn.txt" />
+    <None Include="Resources\text\text_Location_xy_en.txt" />
+    <None Include="Resources\text\text_Location_xy_cn.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\pic\pic_Clock_0.png" />
+    <Content Include="Resources\pic\pic_Clock_1.png" />
+    <Content Include="Resources\pic\pic_Clock_10.png" />
+    <Content Include="Resources\pic\pic_Clock_11.png" />
+    <Content Include="Resources\pic\pic_Clock_12.png" />
+    <Content Include="Resources\pic\pic_Clock_13.png" />
+    <Content Include="Resources\pic\pic_Clock_14.png" />
+    <Content Include="Resources\pic\pic_Clock_15.png" />
+    <Content Include="Resources\pic\pic_Clock_16.png" />
+    <Content Include="Resources\pic\pic_Clock_2.png" />
+    <Content Include="Resources\pic\pic_Clock_3.png" />
+    <Content Include="Resources\pic\pic_Clock_4.png" />
+    <Content Include="Resources\pic\pic_Clock_5.png" />
+    <Content Include="Resources\pic\pic_Clock_6.png" />
+    <Content Include="Resources\pic\pic_Clock_7.png" />
+    <Content Include="Resources\pic\pic_Clock_8.png" />
+    <Content Include="Resources\pic\pic_Clock_9.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
