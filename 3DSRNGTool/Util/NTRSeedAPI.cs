@@ -6,11 +6,11 @@ namespace Pk3DSRNGTool
 {
     public partial class NtrClient
     {
-        public byte gameversion;
-        public byte pid;
-        public uint Seed { get; private set; }
+        public byte gameversion { get; private set; }
+        public byte pid { get; private set; }
+        public byte[] Data { get; private set; }
 
-        public bool NewResult;
+        public bool DataReady;
         public bool ToSetBP;
 
         private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "niji_loc" };
@@ -37,12 +37,20 @@ namespace Pk3DSRNGTool
             resume();
         }
 
-        private void byteToSeed(byte[] datBuf)
+        public byte[] SingleThreadRead(uint addr, uint size = 4, int pid = -1)
         {
-            Write(0x8800000, datBuf, pid);
-            Seed = BitConverter.ToUInt32(datBuf, 0);
-            resume();
-            NewResult = true;
+            Read(addr, size, pid);
+            int timeout = 10;
+            do { Thread.Sleep(100); timeout--; } while (!DataReady && timeout > 0); // Try thread later
+            if (timeout == 0) return null;
+            DataReady = false;
+            return Data;
+        }
+
+        private void GetData(byte[] datBuf)
+        {
+            Data = (byte[])datBuf.Clone();
+            DataReady = true;
         }
     }
 }

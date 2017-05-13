@@ -1328,12 +1328,12 @@ namespace Pk3DSRNGTool
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
-            ntrclient.Read(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
-            int timeout = 10;
-            do { Thread.Sleep(100); timeout--; } while (!ntrclient.NewResult && timeout > 0); // Try thread later
-            if (timeout == 0) { Error("Unable to get the seed"); return; }
-            Seed.Value = ntrclient.Seed;
-            ntrclient.NewResult = false;
+            byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
+            ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
+            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4, ntrclient.pid); // mti
+            ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
+            Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
+            ntrclient.resume();
             B_Disconnect_Click(null, null);
         }
 

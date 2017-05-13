@@ -21,7 +21,6 @@ namespace Pk3DSRNGTool
         public event logHandler onLogArrival;
         uint currentSeq;
         uint lastReadMemSeq;
-        string lastReadMemFileName = null;
         public volatile int progress = -1;
 
         public event EventHandler Connected;
@@ -30,7 +29,7 @@ namespace Pk3DSRNGTool
         {
             Connected?.Invoke(this, e);
         }
-        
+
         public void bpadd(uint addr, string type = "code.once")
         {
             switch (type)
@@ -48,7 +47,7 @@ namespace Pk3DSRNGTool
         {
             sendEmptyPacket(11, 0, 0, 4);
         }
-        
+
         public void Read(uint addr, uint size = 4, int pid = -1)
         {
             if (size > 1024) size = 1024;
@@ -69,9 +68,7 @@ namespace Pk3DSRNGTool
         public void connectToServer()
         {
             if (tcp != null)
-            {
                 disconnect();
-            }
             tcp = new TcpClient();
             tcp.NoDelay = true;
             tcp.Connect(host, port);
@@ -89,9 +86,7 @@ namespace Pk3DSRNGTool
             try
             {
                 if (tcp != null)
-                {
                     tcp.Close();
-                }
                 if (waitPacketThread)
                 {
                     if (packetRecvThread != null)
@@ -115,25 +110,17 @@ namespace Pk3DSRNGTool
         private int readNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
             int index = 0;
-            bool useProgress = false;
-
-            if (length > 100000)
-            {
-                useProgress = true;
-            }
+            bool useProgress = length > 100000;
             do
             {
                 if (useProgress)
-                {
                     progress = (int)(((double)(index) / length) * 100);
-                }
                 int len = stream.Read(buf, index, length - index);
                 if (len == 0)
-                {
                     return 0;
-                }
                 index += len;
-            } while (index < length);
+            }
+            while (index < length);
             progress = -1;
             return length;
         }
@@ -151,9 +138,7 @@ namespace Pk3DSRNGTool
                 {
                     ret = readNetworkStream(stream, buf, buf.Length);
                     if (ret == 0)
-                    {
                         break;
-                    }
                     int t = 0;
                     uint magic = BitConverter.ToUInt32(buf, t);
                     t += 4;
@@ -170,9 +155,7 @@ namespace Pk3DSRNGTool
                     t += 4;
                     uint dataLen = BitConverter.ToUInt32(buf, t);
                     if (cmd != 0)
-                    {
                         log(string.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
-                    }
 
                     if (magic != 0x12345678)
                     {
@@ -218,9 +201,7 @@ namespace Pk3DSRNGTool
         {
             string r = "";
             for (int i = 0; i < datBuf.Length; i++)
-            {
                 r += datBuf[i].ToString("X2") + " ";
-            }
             return r;
         }
 
@@ -232,17 +213,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             lastReadMemSeq = 0;
-            string fileName = lastReadMemFileName;
-            if (fileName != null)
-            {
-                FileStream fs = new FileStream(fileName, FileMode.Create);
-                fs.Write(dataBuf, 0, dataBuf.Length);
-                fs.Close();
-                log("dump saved into " + fileName + " successfully");
-                return;
-            }
-            if (dataBuf.Length == 4)
-                byteToSeed(dataBuf);
+            GetData(dataBuf);
             log(byteToHex(dataBuf, 0));
         }
 
@@ -269,9 +240,7 @@ namespace Pk3DSRNGTool
                 t += 4;
                 uint arg = 0;
                 if (args != null)
-                {
                     arg = args[i];
-                }
                 BitConverter.GetBytes(arg).CopyTo(buf, t);
             }
             t += 4;
@@ -279,11 +248,10 @@ namespace Pk3DSRNGTool
             netStream.Write(buf, 0, buf.Length);
         }
 
-        private void sendReadMemPacket(uint addr, uint size, uint pid, string fileName = null)
+        private void sendReadMemPacket(uint addr, uint size, uint pid)
         {
             sendEmptyPacket(9, pid, addr, size);
             lastReadMemSeq = currentSeq;
-            lastReadMemFileName = fileName;
         }
 
         private void sendWriteMemPacket(uint addr, uint pid, byte[] buf)
@@ -324,9 +292,7 @@ namespace Pk3DSRNGTool
         private void log(string msg)
         {
             if (onLogArrival != null)
-            {
                 onLogArrival.Invoke(msg);
-            }
             try
             {
                 Console.WriteLine(msg);
