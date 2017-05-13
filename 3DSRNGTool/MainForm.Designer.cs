@@ -1406,7 +1406,7 @@
             this.RNGMethod.Margin = new System.Windows.Forms.Padding(4);
             this.RNGMethod.Name = "RNGMethod";
             this.RNGMethod.SelectedIndex = 0;
-            this.RNGMethod.Size = new System.Drawing.Size(1467, 922);
+            this.RNGMethod.Size = new System.Drawing.Size(1463, 845);
             this.RNGMethod.TabIndex = 5;
             this.RNGMethod.SelectedIndexChanged += new System.EventHandler(this.RNGMethod_Changed);
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
@@ -1421,7 +1421,7 @@
             this.TP_StationaryRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_StationaryRNG.Name = "TP_StationaryRNG";
             this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_StationaryRNG.Size = new System.Drawing.Size(1459, 893);
+            this.TP_StationaryRNG.Size = new System.Drawing.Size(1455, 816);
             this.TP_StationaryRNG.TabIndex = 0;
             this.TP_StationaryRNG.Text = "定点乱数";
             this.TP_StationaryRNG.UseVisualStyleBackColor = true;
@@ -1454,7 +1454,7 @@
             // 
             // B_ResetFrame
             // 
-            this.B_ResetFrame.Location = new System.Drawing.Point(208, 27);
+            this.B_ResetFrame.Location = new System.Drawing.Point(239, 27);
             this.B_ResetFrame.Margin = new System.Windows.Forms.Padding(4);
             this.B_ResetFrame.Name = "B_ResetFrame";
             this.B_ResetFrame.Size = new System.Drawing.Size(71, 31);
@@ -1483,10 +1483,10 @@
             this.timedelaypanel.Controls.Add(this.ConsiderDelay);
             this.timedelaypanel.Controls.Add(this.L_NPC);
             this.timedelaypanel.Controls.Add(this.NPC);
-            this.timedelaypanel.Location = new System.Drawing.Point(1, 158);
+            this.timedelaypanel.Location = new System.Drawing.Point(6, 160);
             this.timedelaypanel.Margin = new System.Windows.Forms.Padding(4);
             this.timedelaypanel.Name = "timedelaypanel";
-            this.timedelaypanel.Size = new System.Drawing.Size(379, 89);
+            this.timedelaypanel.Size = new System.Drawing.Size(320, 89);
             this.timedelaypanel.TabIndex = 96;
             // 
             // L_Correction
@@ -1596,7 +1596,7 @@
             this.EggPanel.Location = new System.Drawing.Point(4, 178);
             this.EggPanel.Margin = new System.Windows.Forms.Padding(4);
             this.EggPanel.Name = "EggPanel";
-            this.EggPanel.Size = new System.Drawing.Size(365, 106);
+            this.EggPanel.Size = new System.Drawing.Size(324, 106);
             this.EggPanel.TabIndex = 99;
             // 
             // Egg_Instruction
@@ -1694,7 +1694,7 @@
             // 
             // B_Search
             // 
-            this.B_Search.Location = new System.Drawing.Point(156, 292);
+            this.B_Search.Location = new System.Drawing.Point(187, 292);
             this.B_Search.Margin = new System.Windows.Forms.Padding(4);
             this.B_Search.Name = "B_Search";
             this.B_Search.Size = new System.Drawing.Size(123, 34);
@@ -2017,7 +2017,7 @@
             this.TP_EventRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_EventRNG.Name = "TP_EventRNG";
             this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_EventRNG.Size = new System.Drawing.Size(1459, 893);
+            this.TP_EventRNG.Size = new System.Drawing.Size(1455, 828);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
             this.TP_EventRNG.UseVisualStyleBackColor = true;
@@ -2549,7 +2549,7 @@
             this.TP_WildRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_WildRNG.Name = "TP_WildRNG";
             this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_WildRNG.Size = new System.Drawing.Size(1459, 893);
+            this.TP_WildRNG.Size = new System.Drawing.Size(1455, 828);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
             this.TP_WildRNG.UseVisualStyleBackColor = true;
@@ -2736,7 +2736,7 @@
             this.TP_EggRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_EggRNG.Size = new System.Drawing.Size(1459, 893);
+            this.TP_EggRNG.Size = new System.Drawing.Size(1455, 828);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
             this.TP_EggRNG.UseVisualStyleBackColor = true;
@@ -3410,7 +3410,7 @@
             this.TP_IDRNG.Margin = new System.Windows.Forms.Padding(4);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_IDRNG.Size = new System.Drawing.Size(1459, 893);
+            this.TP_IDRNG.Size = new System.Drawing.Size(1455, 828);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
@@ -3650,7 +3650,7 @@
             this.TP_Gen7ToolKit.Margin = new System.Windows.Forms.Padding(4);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
             this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(4);
-            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1459, 893);
+            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1455, 828);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
             this.TP_Gen7ToolKit.UseVisualStyleBackColor = true;
@@ -4240,7 +4240,7 @@
             this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 25);
             this.TP_Gen6ToolKit.Margin = new System.Windows.Forms.Padding(4);
             this.TP_Gen6ToolKit.Name = "TP_Gen6ToolKit";
-            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1459, 893);
+            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1455, 828);
             this.TP_Gen6ToolKit.TabIndex = 6;
             this.TP_Gen6ToolKit.Text = "Gen6 Tool Kit";
             this.TP_Gen6ToolKit.UseVisualStyleBackColor = true;
@@ -4525,7 +4525,7 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1457, 394);
+            this.DGV.Size = new System.Drawing.Size(1459, 468);
             this.DGV.TabIndex = 89;
             this.DGV.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.DGV.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
@@ -4791,7 +4791,7 @@
             this.DGV_ID.RowHeadersWidth = 18;
             this.DGV_ID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV_ID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_ID.Size = new System.Drawing.Size(1457, 394);
+            this.DGV_ID.Size = new System.Drawing.Size(1459, 468);
             this.DGV_ID.TabIndex = 92;
             this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.DGV_ID.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
@@ -4998,7 +4998,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1492, 815);
+            this.ClientSize = new System.Drawing.Size(1492, 897);
             this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.Seed);
