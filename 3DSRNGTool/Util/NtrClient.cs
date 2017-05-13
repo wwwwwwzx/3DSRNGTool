@@ -84,15 +84,9 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                if (tcp != null)
-                    tcp.Close();
+                tcp?.Close();
                 if (waitPacketThread)
-                {
-                    if (packetRecvThread != null)
-                    {
-                        packetRecvThread.Join();
-                    }
-                }
+                    packetRecvThread?.Join();
             }
             catch (Exception ex)
             {
@@ -126,8 +120,8 @@ namespace Pk3DSRNGTool
 
         private void packetRecvThreadStart()
         {
-            byte[] buf = new byte[84];
-            uint[] args = new uint[16];
+            byte[] buf = new byte[0x54];
+            uint[] args = new uint[0x10];
             int ret;
             NetworkStream stream = netStream;
 
@@ -138,21 +132,14 @@ namespace Pk3DSRNGTool
                     ret = readNetworkStream(stream, buf, buf.Length);
                     if (ret == 0)
                         break;
-                    int t = 0;
-                    uint magic = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint seq = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint type = BitConverter.ToUInt32(buf, t);
-                    t += 4;
-                    uint cmd = BitConverter.ToUInt32(buf, t);
+                    uint magic = BitConverter.ToUInt32(buf, 0x0);
+                    uint seq = BitConverter.ToUInt32(buf, 0x4);
+                    uint type = BitConverter.ToUInt32(buf, 0x8);
+                    uint cmd = BitConverter.ToUInt32(buf, 0xC);
                     for (int i = 0; i < args.Length; i++)
-                    {
-                        t += 4;
-                        args[i] = BitConverter.ToUInt32(buf, t);
-                    }
-                    t += 4;
-                    uint dataLen = BitConverter.ToUInt32(buf, t);
+                        args[i] = BitConverter.ToUInt32(buf, 0x4 * i + 0x10);
+                    uint dataLen = BitConverter.ToUInt32(buf, 0x50);
+
                     if (cmd != 0)
                         log(string.Format("packet: cmd = {0}, dataLen = {1}", cmd, dataLen));
 
@@ -215,26 +202,15 @@ namespace Pk3DSRNGTool
 
         private void sendPacket(uint type, uint cmd, uint[] args, uint dataLen)
         {
-            int t = 0;
             currentSeq += 1000;
-            byte[] buf = new byte[84];
-            BitConverter.GetBytes(0x12345678).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(currentSeq).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(type).CopyTo(buf, t);
-            t += 4;
-            BitConverter.GetBytes(cmd).CopyTo(buf, t);
+            byte[] buf = new byte[0x54];
+            BitConverter.GetBytes(0x12345678).CopyTo(buf, 0x0);
+            BitConverter.GetBytes(currentSeq).CopyTo(buf, 0x4);
+            BitConverter.GetBytes(type).CopyTo(buf, 0x8);
+            BitConverter.GetBytes(cmd).CopyTo(buf, 0xC);
             for (int i = 0; i < 16; i++)
-            {
-                t += 4;
-                uint arg = 0;
-                if (args != null)
-                    arg = args[i];
-                BitConverter.GetBytes(arg).CopyTo(buf, t);
-            }
-            t += 4;
-            BitConverter.GetBytes(dataLen).CopyTo(buf, t);
+                BitConverter.GetBytes(args?[i] ?? 0).CopyTo(buf, 0x4 * i + 0x10);
+            BitConverter.GetBytes(dataLen).CopyTo(buf, 0x50);
             netStream.Write(buf, 0, buf.Length);
         }
 
@@ -281,8 +257,7 @@ namespace Pk3DSRNGTool
 
         private void log(string msg)
         {
-            if (onLogArrival != null)
-                onLogArrival.Invoke(msg);
+            onLogArrival?.Invoke(msg);
             try
             {
                 Console.WriteLine(msg);

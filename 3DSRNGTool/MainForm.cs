@@ -1365,7 +1365,7 @@ namespace Pk3DSRNGTool
                 if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
                 {
                     L_NTRLog.Text = "Waiting..";
-                    ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
+                    ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2), 0);
                     if (lasttableindex != tableindex)
                         lasttableindex = tableindex;
                     else
@@ -1413,10 +1413,10 @@ namespace Pk3DSRNGTool
         
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
-            byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
+            byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4); // MT[0]
             if (seed_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
-            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4, ntrclient.pid); // mti
+            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4); // mti
             if (index_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
             Seed.Value = BitConverter.ToUInt32(seed_ay, 0);

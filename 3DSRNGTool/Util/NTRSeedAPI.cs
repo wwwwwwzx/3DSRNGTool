@@ -43,7 +43,7 @@ namespace Pk3DSRNGTool
             resume();
         }
 
-        public byte[] SingleThreadRead(uint addr, uint size = 4, int pid = -1)
+        public byte[] SingleThreadRead(uint addr, uint size = 4)
         {
             Read(addr, size, pid);
             int timeout = 10;
