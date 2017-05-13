@@ -29,23 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.B_LoadFilter = new System.Windows.Forms.Button();
             this.B_SaveFilter = new System.Windows.Forms.Button();
             this.B_IVInput = new System.Windows.Forms.Button();
             this.L_Ball = new System.Windows.Forms.Label();
             this.Ball = new System.Windows.Forms.ComboBox();
-            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.L_Slot = new System.Windows.Forms.Label();
             this.SpecialOnly = new System.Windows.Forms.CheckBox();
             this.BlinkFOnly = new System.Windows.Forms.CheckBox();
-            this.HiddenPower = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -152,9 +149,7 @@
             this.EventSetting = new System.Windows.Forms.GroupBox();
             this.B_Open = new System.Windows.Forms.Button();
             this.Event_Forme = new System.Windows.Forms.ComboBox();
-            this.Event_PID = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.L_Forme = new System.Windows.Forms.Label();
-            this.Event_EC = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Event_Species = new System.Windows.Forms.ComboBox();
             this.Event_SID = new System.Windows.Forms.NumericUpDown();
             this.L_Event_PID = new System.Windows.Forms.Label();
@@ -212,14 +207,10 @@
             this.B_Fast = new System.Windows.Forms.Button();
             this.MainRNGEgg = new System.Windows.Forms.CheckBox();
             this.TinyMT_Status = new System.Windows.Forms.GroupBox();
-            this.St3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.label13 = new System.Windows.Forms.Label();
             this.B_Load = new System.Windows.Forms.Button();
-            this.St2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.B_Backup = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.St1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.St0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.label8 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.L_Egg_S = new System.Windows.Forms.Label();
@@ -384,6 +375,15 @@
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.HiddenPower = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.Event_PID = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Event_EC = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -431,8 +431,6 @@
             this.EnctrPanel.SuspendLayout();
             this.TP_EventRNG.SuspendLayout();
             this.EventSetting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).BeginInit();
@@ -450,10 +448,6 @@
             this.TP_EggRNG.SuspendLayout();
             this.Parents_Info.SuspendLayout();
             this.TinyMT_Status.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.St3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).BeginInit();
@@ -484,6 +478,12 @@
             this.DGVMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St0)).BeginInit();
             this.SuspendLayout();
             // 
             // Filters
@@ -584,32 +584,6 @@
             this.Ball.Size = new System.Drawing.Size(97, 24);
             this.Ball.TabIndex = 93;
             // 
-            // Slot
-            // 
-            this.Slot.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Slot.CheckBoxProperties = checkBoxProperties1;
-            this.Slot.DisplayMemberSingleItem = "";
-            this.Slot.DropDownHeight = 260;
-            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Slot.FormattingEnabled = true;
-            this.Slot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Slot.Location = new System.Drawing.Point(267, 96);
-            this.Slot.Margin = new System.Windows.Forms.Padding(4);
-            this.Slot.Name = "Slot";
-            this.Slot.Size = new System.Drawing.Size(97, 24);
-            this.Slot.TabIndex = 92;
-            // 
             // L_Slot
             // 
             this.L_Slot.AutoSize = true;
@@ -644,34 +618,6 @@
             this.BlinkFOnly.Text = "仅眨眼帧";
             this.BlinkFOnly.UseVisualStyleBackColor = true;
             this.BlinkFOnly.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
-            // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(393, 138);
-            this.HiddenPower.Margin = new System.Windows.Forms.Padding(4);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(120, 24);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            this.Nature.CheckBoxProperties = checkBoxProperties1;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(393, 201);
-            this.Nature.Margin = new System.Windows.Forms.Padding(4);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(120, 24);
-            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -2148,18 +2094,6 @@
             this.Event_Forme.TabIndex = 96;
             this.Event_Forme.Visible = false;
             // 
-            // Event_PID
-            // 
-            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_PID.Hexadecimal = true;
-            this.Event_PID.Location = new System.Drawing.Point(436, 250);
-            this.Event_PID.Margin = new System.Windows.Forms.Padding(4);
-            this.Event_PID.Name = "Event_PID";
-            this.Event_PID.Size = new System.Drawing.Size(104, 25);
-            this.Event_PID.TabIndex = 92;
-            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_PID.Visible = false;
-            // 
             // L_Forme
             // 
             this.L_Forme.AutoSize = true;
@@ -2170,18 +2104,6 @@
             this.L_Forme.TabIndex = 95;
             this.L_Forme.Text = "形态";
             this.L_Forme.Visible = false;
-            // 
-            // Event_EC
-            // 
-            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_EC.Hexadecimal = true;
-            this.Event_EC.Location = new System.Drawing.Point(436, 297);
-            this.Event_EC.Margin = new System.Windows.Forms.Padding(4);
-            this.Event_EC.Name = "Event_EC";
-            this.Event_EC.Size = new System.Drawing.Size(104, 25);
-            this.Event_EC.TabIndex = 93;
-            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_EC.Visible = false;
             // 
             // Event_Species
             // 
@@ -2946,18 +2868,6 @@
             this.TinyMT_Status.TabStop = false;
             this.TinyMT_Status.Text = "Status";
             // 
-            // St3
-            // 
-            this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St3.Hexadecimal = true;
-            this.St3.Location = new System.Drawing.Point(45, 32);
-            this.St3.Margin = new System.Windows.Forms.Padding(4);
-            this.St3.Name = "St3";
-            this.St3.Size = new System.Drawing.Size(104, 25);
-            this.St3.TabIndex = 92;
-            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St3.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -2980,18 +2890,6 @@
             this.B_Load.UseVisualStyleBackColor = true;
             this.B_Load.Click += new System.EventHandler(this.B_Load_Click);
             // 
-            // St2
-            // 
-            this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St2.Hexadecimal = true;
-            this.St2.Location = new System.Drawing.Point(45, 66);
-            this.St2.Margin = new System.Windows.Forms.Padding(4);
-            this.St2.Name = "St2";
-            this.St2.Size = new System.Drawing.Size(104, 25);
-            this.St2.TabIndex = 93;
-            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St2.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
             // B_Backup
             // 
             this.B_Backup.Location = new System.Drawing.Point(93, 178);
@@ -3013,30 +2911,6 @@
             this.label11.Size = new System.Drawing.Size(32, 18);
             this.label11.TabIndex = 98;
             this.label11.Text = "[1]";
-            // 
-            // St1
-            // 
-            this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St1.Hexadecimal = true;
-            this.St1.Location = new System.Drawing.Point(45, 101);
-            this.St1.Margin = new System.Windows.Forms.Padding(4);
-            this.St1.Name = "St1";
-            this.St1.Size = new System.Drawing.Size(104, 25);
-            this.St1.TabIndex = 94;
-            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St1.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
-            // St0
-            // 
-            this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St0.Hexadecimal = true;
-            this.St0.Location = new System.Drawing.Point(45, 137);
-            this.St0.Margin = new System.Windows.Forms.Padding(4);
-            this.St0.Name = "St0";
-            this.St0.Size = new System.Drawing.Size(104, 25);
-            this.St0.TabIndex = 95;
-            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St0.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label8
             // 
@@ -4840,26 +4714,26 @@
             this.SetAsCurrent,
             this.SetAsAfter});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(318, 76);
+            this.DGVMS.Size = new System.Drawing.Size(324, 82);
             // 
             // SetAsTarget
             // 
             this.SetAsTarget.Name = "SetAsTarget";
-            this.SetAsTarget.Size = new System.Drawing.Size(317, 24);
+            this.SetAsTarget.Size = new System.Drawing.Size(323, 26);
             this.SetAsTarget.Text = "Set as Target Frame";
             this.SetAsTarget.Click += new System.EventHandler(this.SetAsTarget_Click);
             // 
             // SetAsCurrent
             // 
             this.SetAsCurrent.Name = "SetAsCurrent";
-            this.SetAsCurrent.Size = new System.Drawing.Size(317, 24);
+            this.SetAsCurrent.Size = new System.Drawing.Size(323, 26);
             this.SetAsCurrent.Text = "Set as Current Status";
             this.SetAsCurrent.Click += new System.EventHandler(this.SetAsCurrent_Click);
             // 
             // SetAsAfter
             // 
             this.SetAsAfter.Name = "SetAsAfter";
-            this.SetAsAfter.Size = new System.Drawing.Size(317, 24);
+            this.SetAsAfter.Size = new System.Drawing.Size(323, 26);
             this.SetAsAfter.Text = "Set as Status after receiving this Egg";
             this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
             // 
@@ -4994,6 +4868,132 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // Slot
+            // 
+            this.Slot.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Slot.CheckBoxProperties = checkBoxProperties1;
+            this.Slot.DisplayMemberSingleItem = "";
+            this.Slot.DropDownHeight = 260;
+            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Slot.FormattingEnabled = true;
+            this.Slot.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.Slot.Location = new System.Drawing.Point(267, 96);
+            this.Slot.Margin = new System.Windows.Forms.Padding(4);
+            this.Slot.Name = "Slot";
+            this.Slot.Size = new System.Drawing.Size(97, 24);
+            this.Slot.TabIndex = 92;
+            // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties1;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(393, 138);
+            this.HiddenPower.Margin = new System.Windows.Forms.Padding(4);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(120, 24);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            this.Nature.CheckBoxProperties = checkBoxProperties1;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(393, 201);
+            this.Nature.Margin = new System.Windows.Forms.Padding(4);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(120, 24);
+            this.Nature.TabIndex = 77;
+            // 
+            // Event_PID
+            // 
+            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_PID.Hexadecimal = true;
+            this.Event_PID.Location = new System.Drawing.Point(436, 250);
+            this.Event_PID.Margin = new System.Windows.Forms.Padding(4);
+            this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(104, 25);
+            this.Event_PID.TabIndex = 92;
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Visible = false;
+            // 
+            // Event_EC
+            // 
+            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_EC.Hexadecimal = true;
+            this.Event_EC.Location = new System.Drawing.Point(436, 297);
+            this.Event_EC.Margin = new System.Windows.Forms.Padding(4);
+            this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(104, 25);
+            this.Event_EC.TabIndex = 93;
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Visible = false;
+            // 
+            // St3
+            // 
+            this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St3.Hexadecimal = true;
+            this.St3.Location = new System.Drawing.Point(45, 32);
+            this.St3.Margin = new System.Windows.Forms.Padding(4);
+            this.St3.Name = "St3";
+            this.St3.Size = new System.Drawing.Size(104, 25);
+            this.St3.TabIndex = 92;
+            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St3.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St2
+            // 
+            this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St2.Hexadecimal = true;
+            this.St2.Location = new System.Drawing.Point(45, 66);
+            this.St2.Margin = new System.Windows.Forms.Padding(4);
+            this.St2.Name = "St2";
+            this.St2.Size = new System.Drawing.Size(104, 25);
+            this.St2.TabIndex = 93;
+            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St2.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St1
+            // 
+            this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St1.Hexadecimal = true;
+            this.St1.Location = new System.Drawing.Point(45, 101);
+            this.St1.Margin = new System.Windows.Forms.Padding(4);
+            this.St1.Name = "St1";
+            this.St1.Size = new System.Drawing.Size(104, 25);
+            this.St1.TabIndex = 94;
+            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St1.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St0
+            // 
+            this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St0.Hexadecimal = true;
+            this.St0.Location = new System.Drawing.Point(45, 137);
+            this.St0.Margin = new System.Windows.Forms.Padding(4);
+            this.St0.Name = "St0";
+            this.St0.Size = new System.Drawing.Size(104, 25);
+            this.St0.TabIndex = 95;
+            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St0.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -5074,8 +5074,6 @@
             this.TP_EventRNG.ResumeLayout(false);
             this.EventSetting.ResumeLayout(false);
             this.EventSetting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).EndInit();
@@ -5096,10 +5094,6 @@
             this.Parents_Info.PerformLayout();
             this.TinyMT_Status.ResumeLayout(false);
             this.TinyMT_Status.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.St3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).EndInit();
@@ -5138,6 +5132,12 @@
             this.DGVMS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.St0)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

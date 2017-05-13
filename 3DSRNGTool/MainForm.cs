@@ -1356,14 +1356,14 @@ namespace Pk3DSRNGTool
                 {
                     Gameversion.SelectedIndex = ntrclient.gameversion;
                     ntrclient.VersionDetected = false;
-                    if (ntrclient.phase == 1 && ver < 4)
+                    if (ntrclient.phase == 1 && ver < 4) // One Click mode start
                     {
                         B_BreakPoint_Click(null, null);
                         ntrclient.phase = 2;
-                        timercounter = 0;
+                        timercounter = -4;
                     }
                 }
-                if (ntrclient.phase > 1 && timercounter++ > 4) // To detect freeze
+                if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
                 {
                     L_NTRLog.Text = "Waiting..";
                     ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
@@ -1371,14 +1371,14 @@ namespace Pk3DSRNGTool
                         lasttableindex = tableindex;
                     else
                     {
-                        if (ntrclient.phase == 3)
+                        if (ntrclient.phase == 3) // the console reaches the breakpoint
                             B_GetGen6Seed_Click(null, null);
-                        if (ntrclient.phase == 2)
+                        if (ntrclient.phase == 2) // the (2nd) freeze after setting breakpoint
                         {
                             ntrclient.resume();
-                            ntrclient.phase = 3;
                             NTR_Timer.Interval = 500;
-                            timercounter = 0;
+                            ntrclient.phase = 3;
+                            timercounter = -10;
                         }
                     }
                 }
