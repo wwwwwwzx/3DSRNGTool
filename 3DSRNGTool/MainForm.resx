@@ -768,6 +768,15 @@
         RU5ErkJggg==
 </value>
   </data>
+  <data name="L_NTRGuide.Text" xml:space="preserve">
+    <value>How to use it?
+(1) Look for your 3DS' IP using FBI or Homebrew, make sure that the PC runing this tool and your console are in the same network. Input your console IP address here.
+(2) Install and start NTR-CFW before you start the game
+(3) Hold left arrow key of your console while the game is starting, the screen will flash and stay at 3DS logo, don't worry.
+(4) Click 'One Click' button here, the tool will try to connect the console and the game will proceed normally.
+(5) Press 'Select/Start' at Beautifly screen, then press "A" at title screen, the tool will help you grab the initial seed and wrap up everything. 
+(6) Enjoy!</value>
+  </data>
   <metadata name="dgv_eggnum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

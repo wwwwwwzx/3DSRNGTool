@@ -320,6 +320,7 @@
             this.SeedResults = new System.Windows.Forms.TextBox();
             this.Clock_List = new System.Windows.Forms.TextBox();
             this.TP_Gen6ToolKit = new System.Windows.Forms.TabPage();
+            this.L_NTRGuide = new System.Windows.Forms.Label();
             this.GB_NTR = new System.Windows.Forms.GroupBox();
             this.B_OneClick = new System.Windows.Forms.Button();
             this.B_BreakPoint = new System.Windows.Forms.Button();
@@ -4360,6 +4361,7 @@
             // 
             // TP_Gen6ToolKit
             // 
+            this.TP_Gen6ToolKit.Controls.Add(this.L_NTRGuide);
             this.TP_Gen6ToolKit.Controls.Add(this.GB_NTR);
             this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 25);
             this.TP_Gen6ToolKit.Margin = new System.Windows.Forms.Padding(4);
@@ -4368,6 +4370,16 @@
             this.TP_Gen6ToolKit.TabIndex = 6;
             this.TP_Gen6ToolKit.Text = "Gen6 Tool Kit";
             this.TP_Gen6ToolKit.UseVisualStyleBackColor = true;
+            // 
+            // L_NTRGuide
+            // 
+            this.L_NTRGuide.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_NTRGuide.Location = new System.Drawing.Point(460, 22);
+            this.L_NTRGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.L_NTRGuide.Name = "L_NTRGuide";
+            this.L_NTRGuide.Size = new System.Drawing.Size(883, 179);
+            this.L_NTRGuide.TabIndex = 112;
+            this.L_NTRGuide.Text = resources.GetString("L_NTRGuide.Text");
             // 
             // GB_NTR
             // 
@@ -4384,14 +4396,14 @@
             this.GB_NTR.Margin = new System.Windows.Forms.Padding(4);
             this.GB_NTR.Name = "GB_NTR";
             this.GB_NTR.Padding = new System.Windows.Forms.Padding(4);
-            this.GB_NTR.Size = new System.Drawing.Size(443, 170);
+            this.GB_NTR.Size = new System.Drawing.Size(439, 189);
             this.GB_NTR.TabIndex = 0;
             this.GB_NTR.TabStop = false;
             this.GB_NTR.Text = "NTR Helper";
             // 
             // B_OneClick
             // 
-            this.B_OneClick.Location = new System.Drawing.Point(206, 22);
+            this.B_OneClick.Location = new System.Drawing.Point(206, 34);
             this.B_OneClick.Margin = new System.Windows.Forms.Padding(4);
             this.B_OneClick.Name = "B_OneClick";
             this.B_OneClick.Size = new System.Drawing.Size(217, 31);
@@ -4403,7 +4415,7 @@
             // B_BreakPoint
             // 
             this.B_BreakPoint.Enabled = false;
-            this.B_BreakPoint.Location = new System.Drawing.Point(23, 117);
+            this.B_BreakPoint.Location = new System.Drawing.Point(23, 129);
             this.B_BreakPoint.Margin = new System.Windows.Forms.Padding(4);
             this.B_BreakPoint.Name = "B_BreakPoint";
             this.B_BreakPoint.Size = new System.Drawing.Size(120, 31);
@@ -4415,7 +4427,7 @@
             // L_NTRLog
             // 
             this.L_NTRLog.AutoSize = true;
-            this.L_NTRLog.Location = new System.Drawing.Point(265, 76);
+            this.L_NTRLog.Location = new System.Drawing.Point(265, 88);
             this.L_NTRLog.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.L_NTRLog.Name = "L_NTRLog";
             this.L_NTRLog.Size = new System.Drawing.Size(49, 17);
@@ -4425,7 +4437,7 @@
             // B_Resume
             // 
             this.B_Resume.Enabled = false;
-            this.B_Resume.Location = new System.Drawing.Point(167, 117);
+            this.B_Resume.Location = new System.Drawing.Point(167, 129);
             this.B_Resume.Margin = new System.Windows.Forms.Padding(4);
             this.B_Resume.Name = "B_Resume";
             this.B_Resume.Size = new System.Drawing.Size(92, 31);
@@ -4437,7 +4449,7 @@
             // B_Disconnect
             // 
             this.B_Disconnect.Enabled = false;
-            this.B_Disconnect.Location = new System.Drawing.Point(143, 69);
+            this.B_Disconnect.Location = new System.Drawing.Point(143, 81);
             this.B_Disconnect.Margin = new System.Windows.Forms.Padding(4);
             this.B_Disconnect.Name = "B_Disconnect";
             this.B_Disconnect.Size = new System.Drawing.Size(92, 31);
@@ -4448,7 +4460,7 @@
             // 
             // B_Connect
             // 
-            this.B_Connect.Location = new System.Drawing.Point(23, 69);
+            this.B_Connect.Location = new System.Drawing.Point(23, 81);
             this.B_Connect.Margin = new System.Windows.Forms.Padding(4);
             this.B_Connect.Name = "B_Connect";
             this.B_Connect.Size = new System.Drawing.Size(92, 31);
@@ -4460,7 +4472,7 @@
             // B_GetGen6Seed
             // 
             this.B_GetGen6Seed.Enabled = false;
-            this.B_GetGen6Seed.Location = new System.Drawing.Point(287, 117);
+            this.B_GetGen6Seed.Location = new System.Drawing.Point(287, 129);
             this.B_GetGen6Seed.Margin = new System.Windows.Forms.Padding(4);
             this.B_GetGen6Seed.Name = "B_GetGen6Seed";
             this.B_GetGen6Seed.Size = new System.Drawing.Size(136, 31);
@@ -4472,7 +4484,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(20, 30);
+            this.label18.Location = new System.Drawing.Point(20, 42);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(20, 17);
@@ -4482,7 +4494,7 @@
             // IP
             // 
             this.IP.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IP.Location = new System.Drawing.Point(51, 25);
+            this.IP.Location = new System.Drawing.Point(51, 37);
             this.IP.Margin = new System.Windows.Forms.Padding(4);
             this.IP.Name = "IP";
             this.IP.Size = new System.Drawing.Size(135, 25);
@@ -4828,26 +4840,26 @@
             this.SetAsCurrent,
             this.SetAsAfter});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(324, 82);
+            this.DGVMS.Size = new System.Drawing.Size(318, 76);
             // 
             // SetAsTarget
             // 
             this.SetAsTarget.Name = "SetAsTarget";
-            this.SetAsTarget.Size = new System.Drawing.Size(323, 26);
+            this.SetAsTarget.Size = new System.Drawing.Size(317, 24);
             this.SetAsTarget.Text = "Set as Target Frame";
             this.SetAsTarget.Click += new System.EventHandler(this.SetAsTarget_Click);
             // 
             // SetAsCurrent
             // 
             this.SetAsCurrent.Name = "SetAsCurrent";
-            this.SetAsCurrent.Size = new System.Drawing.Size(323, 26);
+            this.SetAsCurrent.Size = new System.Drawing.Size(317, 24);
             this.SetAsCurrent.Text = "Set as Current Status";
             this.SetAsCurrent.Click += new System.EventHandler(this.SetAsCurrent_Click);
             // 
             // SetAsAfter
             // 
             this.SetAsAfter.Name = "SetAsAfter";
-            this.SetAsAfter.Size = new System.Drawing.Size(323, 26);
+            this.SetAsAfter.Size = new System.Drawing.Size(317, 24);
             this.SetAsAfter.Text = "Set as Status after receiving this Egg";
             this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
             // 
@@ -5482,6 +5494,7 @@
         private System.Windows.Forms.Timer NTR_Timer;
         private System.Windows.Forms.Button B_BreakPoint;
         private System.Windows.Forms.Button B_OneClick;
+        private System.Windows.Forms.Label L_NTRGuide;
     }
 }
 

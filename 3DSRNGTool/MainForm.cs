@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Threading;
 using Pk3DSRNGTool.Controls;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
@@ -33,6 +32,7 @@ namespace Pk3DSRNGTool
         private int Standard;
         private byte lastmethod;
         private ushort lasttableindex;
+        private int timercounter;
         List<int> OtherTSVList = new List<int>();
         private static NtrClient ntrclient = new NtrClient();
         #endregion
@@ -423,8 +423,6 @@ namespace Pk3DSRNGTool
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             B_Search.Enabled = Gen7 || method < 2 || 3 < method || method == 2 && ver > 1;
-
-            NTR_Timer.Enabled = method == 6;
 
             if (method > 4)
                 return;
@@ -1325,32 +1323,17 @@ namespace Pk3DSRNGTool
 
         private void OnDisconnected()
         {
-            NTR_Timer.Interval = 1000;
-            ntrclient.Auto = ntrclient.ToSetBP = ntrclient.ToSkipBP = false;
+            timercounter = 0;
+            NTR_Timer.Enabled = false;
+            ntrclient.phase = 0;
             B_Connect.Enabled = true;
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
-        private void B_GetGen6Seed_Click(object sender, EventArgs e)
-        {
-            byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
-            if (seed_ay == null) { Error("Timeout"); return; }
-            ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
-            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4, ntrclient.pid); // mti
-            if (index_ay == null) { Error("Timeout"); return; }
-            ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
-            Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
-            ntrclient.resume();
-            B_Disconnect_Click(null, null);
-        }
-
-        private void B_Resume_Click(object sender, EventArgs e)
-        {
-            ntrclient.resume();
-        }
-
         private void connectCheck(object sender, EventArgs e)
         {
+            NTR_Timer.Enabled = true;
+            NTR_Timer.Interval = 1000;
             if (ntrclient.port == 8000)
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
@@ -1361,7 +1344,7 @@ namespace Pk3DSRNGTool
 
         private void B_OneClick_Click(object sender, EventArgs e)
         {
-            ntrclient.Auto = true;
+            ntrclient.phase = 1;
             B_Connect_Click(null, null);
         }
 
@@ -1369,23 +1352,34 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                if (ntrclient.Auto)
+                if (ntrclient.VersionDetected)
                 {
-                    if (ntrclient.ToSkipBP)
+                    Gameversion.SelectedIndex = ntrclient.gameversion;
+                    ntrclient.VersionDetected = false;
+                    if (ntrclient.phase == 1 && ver < 4)
                     {
-                        NTR_Timer.Interval = 500;
-                        ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
-                        if (lasttableindex != tableindex)
-                            lasttableindex = tableindex;
-                        else
-                            B_GetGen6Seed_Click(null, null);
+                        B_BreakPoint_Click(null, null);
+                        ntrclient.phase = 2;
+                        timercounter = 0;
                     }
-                    if (ntrclient.ToSetBP)
+                }
+                if (ntrclient.phase > 1 && timercounter++ > 4) // To detect freeze
+                {
+                    L_NTRLog.Text = "Waiting..";
+                    ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
+                    if (lasttableindex != tableindex)
+                        lasttableindex = tableindex;
+                    else
                     {
-                        Gameversion.SelectedIndex = ntrclient.gameversion;
-                        ntrclient.SetBreakPoint();
-                        ntrclient.ToSetBP = false;
-                        ntrclient.ToSkipBP = true;
+                        if (ntrclient.phase == 3)
+                            B_GetGen6Seed_Click(null, null);
+                        if (ntrclient.phase == 2)
+                        {
+                            ntrclient.resume();
+                            ntrclient.phase = 3;
+                            NTR_Timer.Interval = 500;
+                            timercounter = 0;
+                        }
                     }
                 }
                 ntrclient.sendHeartbeatPacket();
@@ -1398,6 +1392,7 @@ namespace Pk3DSRNGTool
             try
             {
                 ntrclient.SetBreakPoint();
+                L_NTRLog.Text = "BreakPoint Set";
             }
             catch
             {
@@ -1405,6 +1400,24 @@ namespace Pk3DSRNGTool
                 Error("Unable to connect the console.");
                 L_NTRLog.Text = "No Connection";
             }
+        }
+
+        private void B_Resume_Click(object sender, EventArgs e)
+        {
+            ntrclient.resume();
+        }
+        
+        private void B_GetGen6Seed_Click(object sender, EventArgs e)
+        {
+            byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
+            if (seed_ay == null) { Error("Timeout"); return; }
+            ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
+            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4, ntrclient.pid); // mti
+            if (index_ay == null) { Error("Timeout"); return; }
+            ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
+            Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
+            ntrclient.resume();
+            B_Disconnect_Click(null, null);
         }
         #endregion
 

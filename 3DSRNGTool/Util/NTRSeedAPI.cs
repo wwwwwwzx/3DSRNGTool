@@ -11,9 +11,8 @@ namespace Pk3DSRNGTool
         public byte[] Data { get; private set; }
 
         private bool DataReady;
-        public bool ToSetBP;
-        public bool ToSkipBP;
-        public bool Auto;
+        public bool VersionDetected;
+        public byte phase;
         
         private bool parseLogMsg(string log)
         {
@@ -30,10 +29,9 @@ namespace Pk3DSRNGTool
                 return false;
             gameversion = (byte)Array.IndexOf(pnamestr, pname);
             pname = ", pname: " + pname;
-
-            ToSetBP = gameversion < 4;
             string splitlog = log.Substring(log.IndexOf(pname) - 8, log.Length - log.IndexOf(pname));
             pid = Convert.ToByte("0x" + splitlog.Substring(0, 8), 16);
+            VersionDetected = true;
             return true;
         }
 
@@ -42,8 +40,7 @@ namespace Pk3DSRNGTool
             setServer(host, 5000 + pid);
             connectToServer();
             bpadd(0x1e790c, "code"); // Add break point
-            SingleThreadResume();
-            SingleThreadResume();
+            resume();
         }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4, int pid = -1)
@@ -54,12 +51,6 @@ namespace Pk3DSRNGTool
             if (timeout == 0) return null;
             DataReady = false;
             return Data;
-        }
-
-        public void SingleThreadResume()
-        {
-            resume();
-            Thread.Sleep(7000);
         }
 
         private void GetData(byte[] datBuf)
