@@ -111,7 +111,7 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
-            ntrclient.Connected += connectCheck;
+            ntrclient.Connected += OnConnected;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -1308,29 +1308,28 @@ namespace Pk3DSRNGTool
             }
             catch
             {
-                OnDisconnected();
+                OnDisconnected(false);
                 Error("Unable to connect the console");
-                L_NTRLog.Text = "No Connection";
             }
         }
 
         private void B_Disconnect_Click(object sender, EventArgs e)
         {
             ntrclient.disconnect();
-            L_NTRLog.Text = "Disconnected";
             OnDisconnected();
         }
 
-        private void OnDisconnected()
+        private void OnDisconnected(bool Success = true)
         {
             timercounter = 0;
             NTR_Timer.Enabled = false;
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
+            L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
-        private void connectCheck(object sender, EventArgs e)
+        private void OnConnected(object sender, EventArgs e)
         {
             NTR_Timer.Enabled = true;
             NTR_Timer.Interval = 1000;
@@ -1375,7 +1374,7 @@ namespace Pk3DSRNGTool
                             B_GetGen6Seed_Click(null, null);
                         if (ntrclient.phase == 2) // the (2nd) freeze after setting breakpoint
                         {
-                            ntrclient.resume();
+                            B_Resume_Click(null, null);
                             NTR_Timer.Interval = 500;
                             ntrclient.phase = 3;
                             timercounter = -10;
@@ -1392,19 +1391,24 @@ namespace Pk3DSRNGTool
             try
             {
                 ntrclient.SetBreakPoint();
-                L_NTRLog.Text = "BreakPoint Set";
+                L_NTRLog.Text = "Break Point Set";
             }
             catch
             {
-                OnDisconnected();
+                OnDisconnected(false);
                 Error("Unable to connect the console.");
-                L_NTRLog.Text = "No Connection";
             }
         }
 
         private void B_Resume_Click(object sender, EventArgs e)
         {
-            ntrclient.resume();
+            try
+            {
+                ntrclient.resume();
+            }
+            catch
+            {
+            }
         }
         
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
