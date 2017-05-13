@@ -50,7 +50,7 @@ namespace Pk3DSRNGTool
             DGV_ID.Columns["dgv_ID_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_PID"].DefaultCellStyle.Font = new Font("Consolas", 9);
+            DGV.Columns["dgv_pid"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
             DGV.Columns["dgv_status"].DefaultCellStyle.Font = new Font("Consolas", 9);
             Type dgvtype = typeof(DataGridView);
@@ -1416,9 +1416,6 @@ namespace Pk3DSRNGTool
             byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4); // MT[0]
             if (seed_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
-            byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4); // mti
-            if (index_ay == null) { Error("Timeout"); return; }
-            ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
             Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
             ntrclient.resume();
             B_Disconnect_Click(null, null);

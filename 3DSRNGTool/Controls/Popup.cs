@@ -343,6 +343,7 @@ namespace Pk3DSRNGTool.Controls
         /// </param>
         protected override void OnSizeChanged(EventArgs e)
         {
+			if (content == null) return;
             content.MinimumSize = Size;
             content.MaximumSize = Size;
             content.Size = Size;
