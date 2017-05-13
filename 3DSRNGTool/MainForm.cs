@@ -32,6 +32,7 @@ namespace Pk3DSRNGTool
         private RNGFilters filter = new RNGFilters();
         private int Standard;
         private byte lastmethod;
+        private ushort lasttableindex;
         List<int> OtherTSVList = new List<int>();
         private static NtrClient ntrclient = new NtrClient();
         #endregion
@@ -1319,18 +1320,21 @@ namespace Pk3DSRNGTool
             L_NTRLog.Text = "Disconnected";
             OnDisconnected();
         }
-        
+
         private void OnDisconnected()
         {
+            ntrclient.Auto = ntrclient.ToSetBP = ntrclient.ToSkipBP = false;
             B_Connect.Enabled = true;
-            B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
             byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4, ntrclient.pid); // MT[0]
+            if (seed_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800000, seed_ay, ntrclient.pid);
             byte[] index_ay = ntrclient.SingleThreadRead(0x8c59e44, 0x4, ntrclient.pid); // mti
+            if (index_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800004, index_ay, ntrclient.pid);
             Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
             ntrclient.resume();
@@ -1348,23 +1352,46 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
+            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
             Properties.Settings.Default.IP = IP.Text;
+        }
+
+        private void B_OneClick_Click(object sender, EventArgs e)
+        {
+            ntrclient.Auto = true;
+            B_Connect_Click(null, null);
         }
 
         private void NTRTick(object sender, EventArgs e)
         {
             try
             {
-                if (ntrclient.ToSetBP)
+                if (ntrclient.Auto)
                 {
-                    Gameversion.SelectedIndex = ntrclient.gameversion;
-                    ntrclient.SetBreakPoint();
-                    ntrclient.ToSetBP = false;
+                    if (ntrclient.ToSetBP)
+                    {
+                        Gameversion.SelectedIndex = ntrclient.gameversion;
+                        ntrclient.SetBreakPoint();
+                        ntrclient.ToSetBP = false;
+                        ntrclient.ToSkipBP = true;
+                    }
+                    if (ntrclient.ToSkipBP)
+                    {
+                        ushort tableindex = BitConverter.ToUInt16(ntrclient.SingleThreadRead(0x8c59e44, 0x2, ntrclient.pid), 0);
+                        if (lasttableindex != tableindex)
+                            lasttableindex = tableindex;
+                        else
+                            B_GetGen6Seed_Click(null, null);
+                    }
                 }
                 ntrclient.sendHeartbeatPacket();
             }
             catch { }
+        }
+
+        private void B_BreakPoint_Click(object sender, EventArgs e)
+        {
+            ntrclient.SetBreakPoint();
         }
         #endregion
 

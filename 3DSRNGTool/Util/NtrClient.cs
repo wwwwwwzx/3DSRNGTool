@@ -170,7 +170,7 @@ namespace Pk3DSRNGTool
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
-                            getGame(logMsg);
+                            parseLogMsg(logMsg);
                             log(logMsg);
                         }
                         lock (syncLock)
