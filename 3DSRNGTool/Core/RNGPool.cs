@@ -149,7 +149,7 @@ namespace Pk3DSRNGTool.Core
                             remain_frame[i] = (int)(getrand64 % 3) == 0 ? 36 : 30;
                         continue;
                     }
-                    if ((int)(getrand64 & 0x7F) == 0)                //Not Blinking
+                    if ((int)(getrand64 & 0x7F) == 0)              //Not Blinking
                         remain_frame[i] = -5;
                 }
                 if (route17 && (phase = !phase))
@@ -161,7 +161,7 @@ namespace Pk3DSRNGTool.Core
         private static void SolLunaRearrange()
         {
             modelnumber = 5;//2 guys offline...
-            int[] order = new[] { 0, 1, 2, 5, 6 };
+            int[] order = { 0, 1, 2, 5, 6 };
             for (int i = 0; i < 5; i++)
                 remain_frame[i] = remain_frame[order[i]];
         }

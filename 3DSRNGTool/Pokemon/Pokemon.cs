@@ -14,7 +14,7 @@ namespace Pk3DSRNGTool
         public virtual bool Syncable { get; protected set; } = true;
 
         #region Generated Attribute
-        public int SpecForm => Species + (Form << 11);
+        public int SpecForm => Species + (Forme << 11);
         public byte GenderRatio => (byte)(Gender > 0 ? 2 - 2 * Gender : info.Gender); // 1/2 => 0/254
         public bool IsRandomGender => FuncUtil.IsRandomGender(GenderRatio);
         public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
@@ -32,7 +32,7 @@ namespace Pk3DSRNGTool
             if (Unstable) return  StringItem.species[Species] + "(?)";
             switch (Species)
             {
-                case 718: return StringItem.species[718] + (Form == 1 ? "-10%" : "-50%");
+                case 718: return StringItem.species[718] + (Forme == 1 ? "-10%" : "-50%");
                 default: return StringItem.species[Species];
             }
         }

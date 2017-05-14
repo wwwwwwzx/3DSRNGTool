@@ -113,7 +113,7 @@
                     new PKM6 { Species = 351, Level = 30, Nature = 09, Ability = 1, Gift = true, IVs = new[] {-1, -1, -1, 31, -1, -1} }, // Castform
                     new PKM6 { Species = 319, Level = 40, Nature = 03, Ability = 1, Gift = true, Gender = 2, }, // Sharpedo
                     new PKM6 { Species = 323, Level = 40, Nature = 17, Ability = 1, Gift = true, Gender = 2, }, // Camerupt
-                    new PKM6 { Species = 025, Level = 20, Form = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
+                    new PKM6 { Species = 025, Level = 20, Forme = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
                 }
             },
             new PokemonList

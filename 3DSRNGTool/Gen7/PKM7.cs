@@ -33,8 +33,8 @@
                    new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 34, Gift = true},    // Cosmog
                    new PKM7 { Species = 772, Level = 40, NPC = 8, Delay = 34, Gift = true,},    // Type:Null
                    new PKM7 { Species = 801, Level = 50, ShinyLocked = true, NPC = 6, Delay = 34, Gift = true,},    // Magearna
-                   new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Form = 1,},    // Zygarde-10%
-                   new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Form = 0,},    // Zygarde-50%
+                   new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Forme = 1,},    // Zygarde-10%
+                   new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Forme = 0,},    // Zygarde-50%
                 }
             },
             new PokemonList
@@ -53,7 +53,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, Level = 18, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
-                    new PKM7 { Species = 103, Level = 40, Form = 1, Delay = 88, Unstable = true, },  // Exeggutor
+                    new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, },  // Exeggutor
                 }
             },
             new PokemonList

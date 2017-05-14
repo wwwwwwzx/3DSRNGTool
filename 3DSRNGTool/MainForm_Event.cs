@@ -107,8 +107,8 @@ namespace Pk3DSRNGTool
         private void IDChanged(object sender, EventArgs e)
         {
             L_Event_TSV.Text = "TSV:   ";
-            uint TSV = ((uint)Event_TID.Value ^ (uint)Event_SID.Value) >> 4;
-            L_Event_TSV.Text += TSV.ToString("D4");
+            uint EventTSV = ((uint)Event_TID.Value ^ (uint)Event_SID.Value) >> 4;
+            L_Event_TSV.Text += EventTSV.ToString("D4");
         }
 
         private void NatureLocked_CheckedChanged(object sender, EventArgs e)

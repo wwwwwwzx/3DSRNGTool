@@ -70,7 +70,7 @@ namespace Pk3DSRNGTool
         {
             int Model_n = ModelNumber;
             int blink_flag = 0;
-            int[] Unsaferange = new[] { 35 * (Model_n - 1), 41 * (Model_n - 1) };
+            int[] Unsaferange = { 35 * (Model_n - 1), 41 * (Model_n - 1) };
             List<ulong> Randlist = new List<ulong>();
             int Min = Math.Max(min - Unsaferange[1], 418);
             for (int i = 0; i < Min; i++)

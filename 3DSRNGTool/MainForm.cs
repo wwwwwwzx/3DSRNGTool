@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
         private bool Gen6 => ver < 4;
         private bool Gen7 => 4 <= ver && ver < 6;
         private byte lastgen;
-        private EncounterArea ea = null;
+        private EncounterArea ea;
         private bool IsNight => Night.Checked;
         private int[] slotspecies => ea?.getSpecies(ver, IsNight) ?? new int[0];
         private byte modelnum => (byte)(NPC.Value + 1);
@@ -559,12 +559,12 @@ namespace Pk3DSRNGTool
 
         #region DataEntry
 
-        private void SetPersonalInfo(int Species, int Form, bool skip = false)
+        private void SetPersonalInfo(int Species, int Forme, bool skip = false)
         {
             SyncNature.Enabled = !(iPM?.Nature < 25) && iPM.Syncable;
 
             // Load from personal table
-            var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Form) : PersonalTable.SM.getFormeEntry(Species, Form);
+            var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.SM.getFormeEntry(Species, Forme);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
@@ -753,7 +753,7 @@ namespace Pk3DSRNGTool
 
         private EventRNG getEventSetting()
         {
-            int[] IVs = new[] { -1, -1, -1, -1, -1, -1 };
+            int[] IVs = { -1, -1, -1, -1, -1, -1 };
             for (int i = 0; i < 6; i++)
                 if (EventIVLocked[i].Checked)
                     IVs[i] = (int)EventIV[i].Value;
@@ -764,7 +764,7 @@ namespace Pk3DSRNGTool
             }
             EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
             e.Species = (short)Event_Species.SelectedIndex;
-            e.Form = (byte)Event_Forme.SelectedIndex;
+            e.Forme = (byte)Event_Forme.SelectedIndex;
             e.Level = (byte)Filter_Lv.Value;
             e.IVs = (int[])IVs.Clone();
             e.IVsCount = (byte)IVsCount.Value;
@@ -950,11 +950,11 @@ namespace Pk3DSRNGTool
 
             string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status;
 
-            int[] Status = ShowStats.Checked ? result.Stats : result.IVs;
+            int[] status = ShowStats.Checked ? result.Stats : result.IVs;
 
             row.SetValues(
                 eggnum, i, shift, Mark, advance,
-                Status[0], Status[1], Status[2], Status[3], Status[4], Status[5],
+                status[0], status[1], status[2], status[3], status[4], status[5],
                 true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability], delay,
                 slots, Lv, ball, item,
                 randstr, rand64str, result.PID.ToString("X8"), result.EC.ToString("X8"), seed, realtime
@@ -1064,16 +1064,16 @@ namespace Pk3DSRNGTool
             int max = (int)Frame_max.Value;
             dgvrowlist.Clear();
             DGV_ID.Rows.Clear();
-            IDFilters filter = getIDFilter();
+            IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
                 var result = new ID6(str: (rng as RNGState)?.CurrentState(), rand: rng.Nextuint());
-                if (!filter.CheckResult(result))
+                if (!idfilter.CheckResult(result))
                     continue;
                 if (tweak)
-                { Frame_min.Value = i; tweak = false; };
+                { Frame_min.Value = i; tweak = false; }
                 dgvrowlist.Add(getIDRow(i, result));
                 if (dgvrowlist.Count > 100000)
                     break;
@@ -1257,7 +1257,7 @@ namespace Pk3DSRNGTool
                 {
                     Egg_Instruction.Text = getEggListString(i, target - frame);
                     gotresult = true;
-                };
+                }
                 frame += advance;
                 for (int j = advance; j > 0; j--)
                     RNGPool.Next(rng);
@@ -1280,13 +1280,13 @@ namespace Pk3DSRNGTool
             int max = (int)Frame_max.Value;
             dgvrowlist.Clear();
             DGV_ID.Rows.Clear();
-            IDFilters filter = getIDFilter();
+            IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
                 var result = new ID7(rng.Nextulong());
-                if (!filter.CheckResult(result))
+                if (!idfilter.CheckResult(result))
                     continue;
                 dgvrowlist.Add(getIDRow(i, result));
                 if (dgvrowlist.Count > 100000)

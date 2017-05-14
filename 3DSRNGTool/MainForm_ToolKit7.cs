@@ -101,8 +101,8 @@ namespace Pk3DSRNGTool
             string[] str = QRList.Text.Split(',');
             try
             {
-                int[] Clock_List = str.Select(s => int.Parse(s)).ToArray();
-                int[] temp_List = new int[Clock_List.Length];
+                int[] Clk_List = str.Select(s => int.Parse(s)).ToArray();
+                int[] temp_List = new int[Clk_List.Length];
 
                 SFMT sfmt = new SFMT(InitialSeed);
                 SFMT seed = (SFMT)sfmt.DeepCopy();
@@ -117,17 +117,17 @@ namespace Pk3DSRNGTool
                 {
                     seed = (SFMT)sfmt.DeepCopy();
 
-                    for (int j = 0; j < Clock_List.Length; j++)
+                    for (int j = 0; j < Clk_List.Length; j++)
                         temp_List[j] = (int)(seed.Nextulong() % 17);
 
-                    if (temp_List.SequenceEqual(Clock_List))
+                    if (temp_List.SequenceEqual(Clk_List))
                     {
                         switch (lindex)
                         {
-                            case 0: QRResult.Items.Add($"The last clock is at {i + Clock_List.Length - 1}F, you're at {i + Clock_List.Length + 1}F after quiting QR"); break;
-                            case 1: QRResult.Items.Add($"最后的指针在 {i + Clock_List.Length - 1} 帧，退出QR后在 {i + Clock_List.Length + 1} 帧"); break;
+                            case 0: QRResult.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
+                            case 1: QRResult.Items.Add($"最后的指针在 {i + Clk_List.Length - 1} 帧，退出QR后在 {i + Clk_List.Length + 1} 帧"); break;
                         }
-                        tmp = i + Clock_List.Length + 1;
+                        tmp = i + Clk_List.Length + 1;
                     }
                 }
 
