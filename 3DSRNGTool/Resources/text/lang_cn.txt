@@ -164,6 +164,7 @@ MainRNGEgg = 主乱数蛋 (PID)
 Homogeneity = 父母同图鉴
 NidoType = 尼多型
 EggNumber = 连续孵化蛋数范围
+RB_EggShortest = 最短路径
 L_TargetFrame = 目标帧
 B_EggReset = 重设
 dgv_adv = 消耗

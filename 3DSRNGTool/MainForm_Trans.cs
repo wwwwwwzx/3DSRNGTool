@@ -126,7 +126,7 @@ namespace Pk3DSRNGTool
             AlwaysSynced.Text = SYNC_STR[lindex, 0];
         }
 
-        private string getEggListString(int eggnum, int rejectnum)
+        private string getEggListString(int eggnum, int rejectnum, bool path = false)
         {
             string tmp = "";
             if (eggnum < 0)
@@ -146,8 +146,8 @@ namespace Pk3DSRNGTool
                 return tmp;
             switch (lindex)
             {
-                case 0: tmp += $",\nand then reject {rejectnum} times"; break;
-                case 1: tmp += $",\n然后拒绝 {rejectnum} 次"; break;
+                case 0: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
+                case 1: tmp += path ? $",\n拒绝 {rejectnum} 次" : $",\n然后拒绝 {rejectnum} 次"; break;
             }
             return tmp;
         }

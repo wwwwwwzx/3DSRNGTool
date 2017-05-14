@@ -420,6 +420,7 @@ namespace Pk3DSRNGTool
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
             L_NPC.Visible = NPC.Visible = Gen7 || method == 5; // not show in gen6
+            RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
             B_Search.Enabled = Gen7 || method < 2 || 3 < method || method == 2 && ver > 1;
@@ -881,7 +882,7 @@ namespace Pk3DSRNGTool
             dgv_adv.Visible = method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && method < 3 || MainRNGEgg.Checked;
-            dgv_eggnum.Visible = EggNumber.Checked;
+            dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
         }
 
@@ -1095,6 +1096,8 @@ namespace Pk3DSRNGTool
             {
                 if (EggNumber.Checked)
                     Search7_EggList();
+                else if (RB_EggShortest.Checked)
+                    Search7_EggShortestPath();
                 else
                     Search7_Egg();
                 return;
@@ -1273,6 +1276,40 @@ namespace Pk3DSRNGTool
                 Egg_Instruction.Text = getEggListString(-1, -1);
         }
 
+        private void Search7_EggShortestPath()
+        {
+            var rng = new TinyMT(Status);
+            // Prepare
+            getsetting(rng);
+            // Start
+            int max = (int)TargetFrame.Value;
+            List<EggResult> ResultsList = new List<EggResult>();
+            for (int i = 0; i <= max; i++, RNGPool.Next(rng))
+                ResultsList.Add(RNGPool.GenerateEgg7() as EggResult);
+            List<int> FrameNum = Gen7EggPath.Calc(ResultsList.Select(egg => egg.FramesUsed).ToArray());
+            max = FrameNum.Count;
+            int rejectcount = 0;
+            for (int i = 0; i < max; i++)
+            {
+                int index = FrameNum[i];
+                var result = ResultsList[index];
+                result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);
+                var row = getRow(index, result, eggnum: i + 1);
+                if (i == max - 1 || FrameNum[i + 1] - index > 1)
+                    row.Cells[4].Value = "Accept";
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightYellow;
+                    row.Cells[4].Value = "Reject";
+                    rejectcount++;
+                }
+                dgvrowlist.Add(row);
+            }
+            Egg_Instruction.Text = getEggListString(max - rejectcount - 1, rejectcount, true);
+            DGV.Rows.AddRange(dgvrowlist.ToArray());
+            DGV.CurrentCell = null;
+        }
+
         private void Search7_ID()
         {
             SFMT rng = new SFMT((uint)Seed.Value);
@@ -1410,7 +1447,7 @@ namespace Pk3DSRNGTool
             {
             }
         }
-        
+
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
             byte[] seed_ay = ntrclient.SingleThreadRead(0x8c59e48, 0x4); // MT[0]

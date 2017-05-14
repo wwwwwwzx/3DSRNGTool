@@ -164,6 +164,7 @@ MainRNGEgg = Main RNG Egg (PID)
 Homogeneity = Same Dex #
 NidoType = Nido Type
 EggNumber = Egg Number Range
+RB_EggShortest = Shortest Path
 L_TargetFrame = Target Frame
 B_EggReset = Reset
 B_Fast = Fast Mode

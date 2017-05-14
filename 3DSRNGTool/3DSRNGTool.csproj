@@ -154,6 +154,7 @@
     <Compile Include="Subforms\IVRange.Designer.cs">
       <DependentUpon>IVRange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\Gen7EggPath.cs" />
     <Compile Include="Util\MagikarpCalc.cs" />
     <Compile Include="Util\NtrClient.cs" />
     <Compile Include="Util\NTRSeedAPI.cs" />
