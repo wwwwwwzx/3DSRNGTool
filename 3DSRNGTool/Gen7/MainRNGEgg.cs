@@ -4,17 +4,19 @@ namespace Pk3DSRNGTool
 {
     public class MainRNGEgg : Result7
     {
-        public byte Ball;
-        public bool?[] InheritMaleIV;
+        private EggResult Egg;
+        
+        public override byte Ability => Egg.Ability;
+        public override byte Nature => Egg.Nature;
+        public override byte Gender => Egg.Gender;
+
+        public byte Ball => Egg.Ball;
+        public bool?[] InheritMaleIV => Egg.InheritMaleIV;
         public MainRNGEgg(EggResult egg)
         {
+            Egg = egg;
             EC = egg.EC;
             IVs = (int[])egg.IVs.Clone();
-            Ability = egg.Ability;
-            Nature = egg.Nature;
-            Gender = egg.Gender;
-            Ball = egg.Ball;
-            InheritMaleIV = (bool?[])egg.InheritMaleIV.Clone();
         }
     }
 }
