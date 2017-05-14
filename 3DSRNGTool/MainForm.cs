@@ -124,7 +124,7 @@ namespace Pk3DSRNGTool
         {
             if (method != 0 && method != 2) return;
             Pokemonlist = Pokemon.getSpecFormList(ver, CB_Category.SelectedIndex, method);
-            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(), lindex), s.SpecForm));
+            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(), lindex), s.SpecForm)).ToList();
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
@@ -1287,15 +1287,15 @@ namespace Pk3DSRNGTool
             // Start
             for (int i = 0; i <= max; i++, RNGPool.Next(rng))
                 ResultsList.Add(RNGPool.GenerateEgg7() as EggResult);
-            List<int> FrameNum = Gen7EggPath.Calc(ResultsList.Select(egg => egg.FramesUsed).ToArray());
-            max = FrameNum.Count;
+            var FrameIndexList = Gen7EggPath.Calc(ResultsList.Select(egg => egg.FramesUsed).ToArray());
+            max = FrameIndexList.Count;
             for (int i = 0; i < max; i++)
             {
-                int index = FrameNum[i];
+                int index = FrameIndexList[i];
                 var result = ResultsList[index];
                 result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);
                 var row = getRow(index, result, eggnum: i + 1);
-                if (i == max - 1 || FrameNum[i + 1] - index > 1)
+                if (i == max - 1 || FrameIndexList[i + 1] - index > 1)
                     row.Cells[4].Value = EGGACCEPT_STR[lindex, 0];
                 else
                 {

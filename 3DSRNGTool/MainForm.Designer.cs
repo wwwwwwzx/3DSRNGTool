@@ -489,7 +489,6 @@
             // 
             // Filters
             // 
-            this.Filters.BackColor = System.Drawing.Color.White;
             this.Filters.Controls.Add(this.B_LoadFilter);
             this.Filters.Controls.Add(this.B_SaveFilter);
             this.Filters.Controls.Add(this.B_IVInput);
