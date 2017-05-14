@@ -1437,7 +1437,7 @@
             // RB_EggShortest
             // 
             this.RB_EggShortest.AutoSize = true;
-            this.RB_EggShortest.Location = new System.Drawing.Point(18, 243);
+            this.RB_EggShortest.Location = new System.Drawing.Point(17, 243);
             this.RB_EggShortest.Name = "RB_EggShortest";
             this.RB_EggShortest.Size = new System.Drawing.Size(85, 17);
             this.RB_EggShortest.TabIndex = 101;
@@ -1723,7 +1723,7 @@
             // 
             this.RB_FrameRange.AutoSize = true;
             this.RB_FrameRange.Checked = true;
-            this.RB_FrameRange.Location = new System.Drawing.Point(16, 25);
+            this.RB_FrameRange.Location = new System.Drawing.Point(17, 25);
             this.RB_FrameRange.Name = "RB_FrameRange";
             this.RB_FrameRange.Size = new System.Drawing.Size(73, 17);
             this.RB_FrameRange.TabIndex = 92;
@@ -3577,7 +3577,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(930, 33);
+            this.label17.Location = new System.Drawing.Point(933, 33);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 13);
             this.label17.TabIndex = 102;
@@ -4004,7 +4004,7 @@
             // RB_ID
             // 
             this.RB_ID.AutoSize = true;
-            this.RB_ID.Location = new System.Drawing.Point(184, 24);
+            this.RB_ID.Location = new System.Drawing.Point(184, 23);
             this.RB_ID.Name = "RB_ID";
             this.RB_ID.Size = new System.Drawing.Size(60, 17);
             this.RB_ID.TabIndex = 24;
@@ -4586,6 +4586,7 @@
             this.DGV_ID.AllowDrop = true;
             this.DGV_ID.AllowUserToAddRows = false;
             this.DGV_ID.AllowUserToResizeColumns = false;
+            this.DGV_ID.AllowUserToResizeRows = false;
             this.DGV_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
