@@ -3611,7 +3611,6 @@
             // BySaveScreen
             // 
             this.BySaveScreen.AutoSize = true;
-            this.BySaveScreen.BackColor = System.Drawing.Color.White;
             this.BySaveScreen.Checked = true;
             this.BySaveScreen.Location = new System.Drawing.Point(24, 159);
             this.BySaveScreen.Name = "BySaveScreen";
@@ -3624,7 +3623,6 @@
             // QRInput
             // 
             this.QRInput.AutoSize = true;
-            this.QRInput.BackColor = System.Drawing.Color.White;
             this.QRInput.Location = new System.Drawing.Point(402, 159);
             this.QRInput.Name = "QRInput";
             this.QRInput.Size = new System.Drawing.Size(137, 17);
