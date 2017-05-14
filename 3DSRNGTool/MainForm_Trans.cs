@@ -34,6 +34,11 @@ namespace Pk3DSRNGTool
             { "Always Synced", "Can not be Synced" },
             { "必定同步", "不能同步" },
         };
+        private static readonly string[,] EGGACCEPT_STR =
+        {
+            { "Accecpt", "Reject" },
+            { "接受", "拒绝" },
+        };
         private static readonly string[][] STATS_STR =
         {
             new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },

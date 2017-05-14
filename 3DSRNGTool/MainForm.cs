@@ -1279,16 +1279,16 @@ namespace Pk3DSRNGTool
         private void Search7_EggShortestPath()
         {
             var rng = new TinyMT(Status);
+            int max = (int)TargetFrame.Value;
+            int rejectcount = 0;
+            List<EggResult> ResultsList = new List<EggResult>();
             // Prepare
             getsetting(rng);
             // Start
-            int max = (int)TargetFrame.Value;
-            List<EggResult> ResultsList = new List<EggResult>();
             for (int i = 0; i <= max; i++, RNGPool.Next(rng))
                 ResultsList.Add(RNGPool.GenerateEgg7() as EggResult);
             List<int> FrameNum = Gen7EggPath.Calc(ResultsList.Select(egg => egg.FramesUsed).ToArray());
             max = FrameNum.Count;
-            int rejectcount = 0;
             for (int i = 0; i < max; i++)
             {
                 int index = FrameNum[i];
@@ -1296,11 +1296,11 @@ namespace Pk3DSRNGTool
                 result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);
                 var row = getRow(index, result, eggnum: i + 1);
                 if (i == max - 1 || FrameNum[i + 1] - index > 1)
-                    row.Cells[4].Value = "Accept";
+                    row.Cells[4].Value = EGGACCEPT_STR[lindex, 0];
                 else
                 {
                     row.DefaultCellStyle.BackColor = Color.LightYellow;
-                    row.Cells[4].Value = "Reject";
+                    row.Cells[4].Value = EGGACCEPT_STR[lindex, 1];
                     rejectcount++;
                 }
                 dgvrowlist.Add(row);
