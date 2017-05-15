@@ -22,8 +22,8 @@ namespace Pk3DSRNGTool
             string str = tmp.Text;
             if (tmp.Text != "")
             {
-                if (str.LastIndexOf(",") != -1)
-                    str = str.Remove(str.LastIndexOf(","));
+                if (str.LastIndexOf(',') != -1)
+                    str = str.Remove(str.LastIndexOf(','));
                 else
                     str = "";
             }
@@ -61,7 +61,7 @@ namespace Pk3DSRNGTool
             {
                 SeedResults.Text = WAIT_STR[lindex];
                 var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked);
-                if (results == null || results.Count() == 0)
+                if (results == null || !results.Any())
                     text = NORESULT_STR[lindex];
                 else
                 {
@@ -168,7 +168,7 @@ namespace Pk3DSRNGTool
             int[] total_frame = new int[2];
             int n_count = 0;
             int timer = 0;
-            ModelStatus status = new ModelStatus(modelnum, sfmt);
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
 
             while (min + n_count <= max)
             {

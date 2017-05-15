@@ -90,7 +90,7 @@ namespace Pk3DSRNGTool
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
 
             RefreshCategory();
-            if (method == 2)
+            if (Method == 2)
                 RefreshLocation();
 
             Nature.Items.Clear();

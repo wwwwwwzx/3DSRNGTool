@@ -25,7 +25,7 @@ namespace Pk3DSRNGTool.Core
         {
             if (RE)
                 return IDList.Any(id => System.Text.RegularExpressions.Regex.IsMatch(ID, id));
-            return IDList.Any(id => id != "" && ID.IndexOf(id) >= 0);
+            return IDList.Any(id => id != "" && ID.IndexOf(id, System.StringComparison.Ordinal) >= 0);
         }
 
         private bool CheckTSV(IDResult ID)
@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool.Core
         private bool CheckRand(IDResult ID)
         {
             string Randstr = (ID as ID6)?.Status ?? (ID as ID6)?.RandNum.ToString("X8") ?? (ID as ID7)?.RandNum.ToString("X16");
-            return RandList.Any(rand => rand != "" && Randstr.IndexOf(rand.ToUpper()) >= 0);
+            return RandList.Any(rand => rand != "" && Randstr.IndexOf(rand.ToUpper(), System.StringComparison.Ordinal) >= 0);
         }
 
         public bool CheckResult(IDResult ID)

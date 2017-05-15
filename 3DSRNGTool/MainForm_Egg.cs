@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
 
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
-            MainRNGEgg.Visible = method == 3 && !ShinyCharm.Checked && !MM.Checked;
+            MainRNGEgg.Visible = Method == 3 && !ShinyCharm.Checked && !MM.Checked;
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
@@ -95,15 +95,15 @@ namespace Pk3DSRNGTool
 
         private void B_TSVList_Click(object sender, EventArgs e)
         {
-            var editor = new TSVListForm(list2str(OtherTSVList));
+            var editor = new TSVListForm(List2str(OtherTSVList));
             editor.ShowDialog();
             if (editor.other_tsv.Count > 0)
                 OtherTSVList = editor.other_tsv;
-            Properties.Settings.Default.TSVList = list2str(OtherTSVList);
+            Properties.Settings.Default.TSVList = List2str(OtherTSVList);
             Properties.Settings.Default.Save();
         }
 
-        private void loadlist(string tsvstr)
+        private void Loadlist(string tsvstr)
         {
             OtherTSVList.Clear();
             try
@@ -126,7 +126,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private string list2str(List<int> list)
+        private string List2str(List<int> list)
         {
             return string.Join(",", list.Select(i => i.ToString()).ToArray());
         }

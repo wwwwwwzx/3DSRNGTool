@@ -15,10 +15,10 @@ namespace Pk3DSRNGTool
             try
             {
                 bool valid;
-                if (filename.IndexOf("full") > 0) // Trim full wc file
+                if (filename.IndexOf("full", StringComparison.Ordinal) > 0) // Trim full wc file
                 {
                     br.ReadBytes(0x208);
-                    filename = filename.Remove(filename.IndexOf("full"), 4);
+                    filename = filename.Remove(filename.IndexOf("full", StringComparison.Ordinal), 4);
                 }
                 if (Path.GetExtension(filename) != (Gen6 ? ".wc6" : ".wc7"))
                     valid = false;
@@ -37,7 +37,7 @@ namespace Pk3DSRNGTool
         private bool Event_RawData(byte[] Data)
         {
             if (Data[0x51] != 0) return false; // CardType
-            byte[] PIDType_Order = new byte[] { 3, 0, 2, 1 };
+            byte[] PIDType_Order = { 3, 0, 2, 1 };
             Event_Species.SelectedIndex = BitConverter.ToUInt16(Data, 0x82);
             Event_Forme.SelectedIndex = Data[0x84];
             AbilityLocked.Checked = Data[0xA2] < 3;
@@ -83,10 +83,12 @@ namespace Pk3DSRNGTool
         #region Event_UI
         private void B_Open_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = Gen6 ? "6th Gen Wonder Card File|*.wc6|Full Wonder Card File|*.wc6full"
-                                          : "7th Gen Wonder Card File|*.wc7|Full Wonder Card File|*.wc7full";
-            openFileDialog1.Title = "Select a Wonder Card File";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog()
+            {
+                Filter = Gen6 ? "6th Gen Wonder Card File|*.wc6|Full Wonder Card File|*.wc6full"
+                                          : "7th Gen Wonder Card File|*.wc7|Full Wonder Card File|*.wc7full",
+                Title = "Select a Wonder Card File"
+            };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 if (!ReadWc(openFileDialog1.FileName))
                     Error(FILEERRORSTR[lindex]);
@@ -133,7 +135,7 @@ namespace Pk3DSRNGTool
         private void IVLocked_CheckedChanged(object sender, EventArgs e)
         {
             string str = ((CheckBox)sender).Name;
-            int i = int.Parse(str.Remove(0, str.IndexOf("Fix") + 3));
+            int i = int.Parse(str.Remove(0, str.IndexOf("Fix", StringComparison.Ordinal) + 3));
             EventIV[i].Enabled = ((CheckBox)sender).Checked;
         }
 

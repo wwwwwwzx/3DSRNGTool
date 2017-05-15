@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
                     egg.InheritMaleIV[M_Power] = true;
                 else
                     egg.InheritMaleIV[F_Power] = false;
-            };
+            }
 
             // Inherit IV
             int tmp;

@@ -8,7 +8,7 @@ using Pk3DSRNGTool.Properties;
 
 namespace PKHeX
 {
-    public partial class Util
+    public static class Util
     {
         #region Form Translation
         internal static void TranslateInterface(Control form, string lang)
@@ -156,11 +156,6 @@ namespace PKHeX
             System.Media.SystemSounds.Question.Play();
             string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
             return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
-        }
-
-        internal static int getIndex(ComboBox cb)
-        {
-            return (int)(cb?.SelectedValue ?? 0);
         }
         #endregion
 

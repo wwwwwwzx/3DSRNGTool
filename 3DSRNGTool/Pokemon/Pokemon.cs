@@ -60,8 +60,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public readonly static PokemonList[] NotImpled = new[]
-        {
+        public readonly static PokemonList[] NotImpled = {
             new PokemonList
             {
                 Text = "Not Impled",
