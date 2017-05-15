@@ -27,8 +27,7 @@ namespace Pk3DSRNGTool
             string[] lines = RTB_TSV.Lines;
             for (int i = 0; i < lines.Length; i++)
             {
-                int val;
-                if (!int.TryParse(lines[i], out val))
+                if (!int.TryParse(lines[i], out int val))
                     continue;
 
                 if (0 > val || val > 4095)

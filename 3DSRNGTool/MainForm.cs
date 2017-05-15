@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
         #region global variables
         private string version = "0.5.1";
 
-        private int Ver { get { return Gameversion.SelectedIndex; } set { Gameversion.SelectedIndex = value; } }
+        private int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
         private byte Method => (byte)RNGMethod.SelectedIndex;
@@ -180,7 +180,7 @@ namespace Pk3DSRNGTool
             List<int> Slotidx = new List<int>();
             for (int i = Array.IndexOf(slotspecies, SpecForm); i > -1; i = Array.IndexOf(slotspecies, SpecForm, i + 1))
                 Slotidx.Add(i);
-            int offset = FuncUtil.IsLinux ? 0 : 1;
+            int offset = IsLinux ? 0 : 1;
             if (Gen6)
             {
                 for (int i = 0; i < 12; i++)
@@ -592,15 +592,15 @@ namespace Pk3DSRNGTool
             Fix3v.Checked &= !FormPM.Egg;
             Timedelay.Value = FormPM.Delay;
 
-            if (Gen7 && Method == 0)
+            if (FormPM is PKM7 pm7)
             {
-                NPC.Value = (FormPM as PKM7)?.NPC ?? 0;
-                BlinkWhenSync.Checked = !(FormPM.AlwaysSync || ((FormPM as PKM7)?.NoBlink ?? false));
+                NPC.Value = pm7.NPC;
+                BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
                 return;
             }
-            if (Gen6 && Method == 0)
-                if (Sta_AbilityLocked.Checked = (FormPM as PKM6)?.Ability > 0)
-                    Sta_Ability.SelectedIndex = (FormPM as PKM6).Ability >> 1; // 1/2/4 -> 0/1/2
+            if (FormPM is PKM6 pm6)
+                if (Sta_AbilityLocked.Checked = pm6.Ability > 0)
+                    Sta_Ability.SelectedIndex = pm6.Ability >> 1; // 1/2/4 -> 0/1/2
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
@@ -615,11 +615,10 @@ namespace Pk3DSRNGTool
             if (Method == 2)
             {
                 RefreshLocation();
-                if (Gen7) // For UB
+                if (FormPM is PKMW7 pmw7) // For UB
                 {
-                    var tmp = FormPM as PKMW7;
-                    Special_th.Value = tmp?.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
-                    Correction.Enabled = Special_th.Enabled = FormPM.Conceptual;
+                    Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
+                    Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
                 }
                 return;
             }
@@ -698,7 +697,7 @@ namespace Pk3DSRNGTool
             PerfectIVs = (byte)PerfectIVs.Value,
 
             Level = (byte)Filter_Lv.Value,
-            Slot = new bool[FuncUtil.IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => e.Checked)).ToArray(),
+            Slot = new bool[IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => e.Checked)).ToArray(),
             SpecialOnly = SpecialOnly.Checked,
 
             BlinkFOnly = BlinkFOnly.Checked,
@@ -746,10 +745,10 @@ namespace Pk3DSRNGTool
             setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
 
-            if (Gen7)
-                (setting as Stationary7).blinkwhensync = BlinkWhenSync.Checked;
-            else
-                (setting as Stationary6).Ability = (byte)(AbilityLocked.Checked ? Ability.SelectedIndex + 1 : 0);
+            if (setting is Stationary7 setting7)
+                setting7.blinkwhensync = BlinkWhenSync.Checked;
+            if (setting is Stationary6 setting6)
+                setting6.Ability = (byte)(AbilityLocked.Checked ? Ability.SelectedIndex + 1 : 0);
 
             return setting;
         }
@@ -803,9 +802,8 @@ namespace Pk3DSRNGTool
             setting.ShinyCharm = ShinyCharm.Checked;
 
             int slottype = 0;
-            if (Gen7)
+            if (setting is Wild7 setting7)
             {
-                var setting7 = setting as Wild7;
                 if (ea.Locationidx == 1190) slottype = 1; // Poni Plains -4
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
@@ -821,9 +819,8 @@ namespace Pk3DSRNGTool
                     setting7.SpecialLevel = FormPM.Level;
                 }
             }
-            else if (Gen6)
+            if (setting is Wild6 setting6)
             {
-                var setting6 = setting as Wild6;
                 var area = ea as EncounterArea6;
                 setting6.SpecForm = new int[13];
                 setting6.SlotLevel = new byte[13];
@@ -851,8 +848,11 @@ namespace Pk3DSRNGTool
             setting.ShinyCharm = ShinyCharm.Checked;
             setting.TSV = (ushort)TSV.Value;
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
-            (setting as Egg7).Homogeneous = Homogeneity.Checked;
-            (setting as Egg7).FemaleIsDitto = F_ditto.Checked;
+            if (setting is Egg7 setting7)
+            {
+                setting7.Homogeneous = Homogeneity.Checked;
+                setting7.FemaleIsDitto = F_ditto.Checked;
+            }
             setting.InheritAbility = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
             setting.NidoType = NidoType.Checked;

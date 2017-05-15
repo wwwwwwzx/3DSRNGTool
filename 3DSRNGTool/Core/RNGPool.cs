@@ -21,11 +21,11 @@ namespace Pk3DSRNGTool.Core
 
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
-            if (rng is IRNG64)
+            if (rng is IRNG64 rng64)
             {
                 RandList64.Clear();
                 for (int i = 0; i < buffersize; i++)
-                    RandList64.Add((rng as IRNG64).Nextulong());
+                    RandList64.Add(rng64.Nextulong());
                 return;
             }
             RandList.Clear();
@@ -39,10 +39,10 @@ namespace Pk3DSRNGTool.Core
 
         public static void Next(IRNG rng)
         {
-            if (rng is IRNG64)
+            if (rng is IRNG64 rng64)
             {
                 RandList64.RemoveAt(0);
-                RandList64.Add((rng as IRNG64).Nextulong());
+                RandList64.Add(rng64.Nextulong());
                 return;
             }
             RNGStateStr.RemoveAt(0);
@@ -61,9 +61,9 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult Generate6()
         {
             index = Considerdelay ? DelayTime : 0;
-            var result = getresult6();
-            (result as Result6).RandNum = RandList[0];
-            (result as Result6).Status = RNGStateStr[0];
+            var result = getresult6() as Result6;
+            result.RandNum = RandList[0];
+            result.Status = RNGStateStr[0];
             return result;
         }
 
@@ -82,19 +82,19 @@ namespace Pk3DSRNGTool.Core
         {
             index = 0;
             int frameshift = getframeshift();
-            var result = getresult7();
-            (result as Result7).RandNum = RandList64[0];
-            (result as Result7).FrameDelayUsed = frameshift;
+            var result = getresult7() as Result7;
+            result.RandNum = RandList64[0];
+            result.FrameDelayUsed = frameshift;
             return result;
         }
 
         public static RNGResult GenerateEgg7()
         {
             index = 0;
-            var result = (egg_rng as Egg7).Generate();
-            (result as EggResult).RandNum = RandList[0];
-            (result as EggResult).Status = RNGStateStr[0];
-            (result as EggResult).FramesUsed = index;
+            var result = (egg_rng as Egg7).Generate() as EggResult;
+            result.RandNum = RandList[0];
+            result.Status = RNGStateStr[0];
+            result.FramesUsed = index;
             return result;
         }
 
@@ -219,7 +219,7 @@ namespace Pk3DSRNGTool.Core
         }
 
         // MainRNGEgg
-        public static EggResult firstegg = new EggResult();
+        public static EggResult firstegg;
         #endregion
     }
 }

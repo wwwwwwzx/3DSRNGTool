@@ -53,7 +53,7 @@ namespace Pk3DSRNGTool
 
         private string curlanguage;
 
-        private int lindex { get { return Lang.SelectedIndex; } set { Lang.SelectedIndex = value; } }
+        private int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
         private static readonly string[] langlist = { "en", "cn" };
 
         private void ChangeLanguage(object sender, EventArgs e)

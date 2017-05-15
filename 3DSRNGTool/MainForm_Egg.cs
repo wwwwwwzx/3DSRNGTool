@@ -76,13 +76,11 @@ namespace Pk3DSRNGTool
                     if (File.Exists(file))
                     {
                         string[] list = File.ReadAllLines(file);
-
-                        uint s3, s2, s1, s0;
-
-                        uint.TryParse(list[3], System.Globalization.NumberStyles.HexNumber, null, out s0);
-                        uint.TryParse(list[2], System.Globalization.NumberStyles.HexNumber, null, out s1);
-                        uint.TryParse(list[1], System.Globalization.NumberStyles.HexNumber, null, out s2);
-                        uint.TryParse(list[0], System.Globalization.NumberStyles.HexNumber, null, out s3);
+                        
+                        uint.TryParse(list[3], System.Globalization.NumberStyles.HexNumber, null, out uint s0);
+                        uint.TryParse(list[2], System.Globalization.NumberStyles.HexNumber, null, out uint s1);
+                        uint.TryParse(list[1], System.Globalization.NumberStyles.HexNumber, null, out uint s2);
+                        uint.TryParse(list[0], System.Globalization.NumberStyles.HexNumber, null, out uint s3);
                         Status = new[] { s0, s1, s2, s3 };
                     }
                 }
@@ -111,8 +109,7 @@ namespace Pk3DSRNGTool
                 string[] lines = tsvstr.Split(',');
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    int val;
-                    if (!int.TryParse(lines[i], out val))
+                    if (!int.TryParse(lines[i], out int val))
                         continue;
 
                     if (0 > val || val > 4095)

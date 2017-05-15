@@ -122,14 +122,5 @@ namespace Pk3DSRNGTool
             min -= 60 * hour;
             return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
-
-        public static bool IsLinux
-        {
-            get
-            {
-                int p = (int)Environment.OSVersion.Platform;
-                return (p == 4) || (p == 6) || (p == 128);
-            }
-        }
     }
 }

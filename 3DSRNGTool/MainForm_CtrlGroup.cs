@@ -1,14 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Pk3DSRNGTool
 {
     public partial class MainForm : Form
     {
+        private static bool IsLinux
+        {
+            get
+            {
+                int p = (int)Environment.OSVersion.Platform;
+                return (p == 4) || (p == 6) || (p == 128);
+            }
+        }
         private IVRange IVInputer;
         public int[] IVup
         {
-            get { return new[] { (int)ivmax0.Value, (int)ivmax1.Value, (int)ivmax2.Value, (int)ivmax3.Value, (int)ivmax4.Value, (int)ivmax5.Value, }; }
+            get => new[] { (int)ivmax0.Value, (int)ivmax1.Value, (int)ivmax2.Value, (int)ivmax3.Value, (int)ivmax4.Value, (int)ivmax5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -18,7 +27,7 @@ namespace Pk3DSRNGTool
         }
         public int[] IVlow
         {
-            get { return new[] { (int)ivmin0.Value, (int)ivmin1.Value, (int)ivmin2.Value, (int)ivmin3.Value, (int)ivmin4.Value, (int)ivmin5.Value, }; }
+            get => new[] { (int)ivmin0.Value, (int)ivmin1.Value, (int)ivmin2.Value, (int)ivmin3.Value, (int)ivmin4.Value, (int)ivmin5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -28,7 +37,7 @@ namespace Pk3DSRNGTool
         }
         private int[] BS
         {
-            get { return new[] { (int)BS_0.Value, (int)BS_1.Value, (int)BS_2.Value, (int)BS_3.Value, (int)BS_4.Value, (int)BS_5.Value, }; }
+            get => new[] { (int)BS_0.Value, (int)BS_1.Value, (int)BS_2.Value, (int)BS_3.Value, (int)BS_4.Value, (int)BS_5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -38,7 +47,7 @@ namespace Pk3DSRNGTool
         }
         private int[] Stats
         {
-            get { return new[] { (int)Stat0.Value, (int)Stat1.Value, (int)Stat2.Value, (int)Stat3.Value, (int)Stat4.Value, (int)Stat5.Value, }; }
+            get => new[] { (int)Stat0.Value, (int)Stat1.Value, (int)Stat2.Value, (int)Stat3.Value, (int)Stat4.Value, (int)Stat5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -48,7 +57,7 @@ namespace Pk3DSRNGTool
         }
         private int[] IV_Male
         {
-            get { return new[] { (int)M_IV0.Value, (int)M_IV1.Value, (int)M_IV2.Value, (int)M_IV3.Value, (int)M_IV4.Value, (int)M_IV5.Value, }; }
+            get => new[] { (int)M_IV0.Value, (int)M_IV1.Value, (int)M_IV2.Value, (int)M_IV3.Value, (int)M_IV4.Value, (int)M_IV5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -58,7 +67,7 @@ namespace Pk3DSRNGTool
         }
         private int[] IV_Female
         {
-            get { return new[] { (int)F_IV0.Value, (int)F_IV1.Value, (int)F_IV2.Value, (int)F_IV3.Value, (int)F_IV4.Value, (int)F_IV5.Value, }; }
+            get => new[] { (int)F_IV0.Value, (int)F_IV1.Value, (int)F_IV2.Value, (int)F_IV3.Value, (int)F_IV4.Value, (int)F_IV5.Value, };
             set
             {
                 if (value.Length < 6) return;
@@ -68,7 +77,7 @@ namespace Pk3DSRNGTool
         }
         private uint[] Status
         {
-            get { return new[] { (uint)St0.Value, (uint)St1.Value, (uint)St2.Value, (uint)St3.Value }; }
+            get => new[] { (uint)St0.Value, (uint)St1.Value, (uint)St2.Value, (uint)St3.Value };
             set
             {
                 if (value.Length < 4) return;
@@ -76,8 +85,8 @@ namespace Pk3DSRNGTool
                 St2.Value = value[2]; St3.Value = value[3];
             }
         }
-        private NumericUpDown[] EventIV { get { return new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, }; } }
-        private CheckBox[] EventIVLocked { get { return new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, }; } }
+        private NumericUpDown[] EventIV => new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, };
+        private CheckBox[] EventIVLocked => new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, };
         private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();
         private List<Controls.ComboItem> Locationlist = new List<Controls.ComboItem>();
     }

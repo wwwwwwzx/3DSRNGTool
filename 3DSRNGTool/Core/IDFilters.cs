@@ -33,8 +33,7 @@ namespace Pk3DSRNGTool.Core
             ushort TSV = ID.TSV;
             for (int i = 0; i < TSVList.Length; i++)
             {
-                int val;
-                if (!int.TryParse(TSVList[i], out val))
+                if (!int.TryParse(TSVList[i], out int val))
                     continue;
 
                 if (0 > val || val > 4095)

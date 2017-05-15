@@ -94,9 +94,8 @@ namespace Pk3DSRNGTool.Core
                 return false;
             if (Ability != 0 && Ability != result.Ability)
                 return false;
-
-            WildResult wildresult = result as WildResult;
-            if (wildresult != null)
+            
+            if (result is WildResult wildresult)
             {
                 if (Level != 0 && Level != result.Level)
                     return false;

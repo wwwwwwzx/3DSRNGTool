@@ -75,8 +75,7 @@ namespace Pk3DSRNGTool
                             Frame_min.Value = 1012; //keep full range to check the value
                             Clk_Correction.Value = results.FirstOrDefault().add;
                         }
-                        uint s0;
-                        if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out s0))
+                        if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out uint s0))
                             Seed.Value = s0;
                     }
                 }
