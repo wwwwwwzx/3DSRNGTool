@@ -37,7 +37,7 @@ namespace Pk3DSRNGTool
                 Homogeneity.Enabled = Homogeneity.Checked = false;
             }
             else
-                Homogeneity.Enabled = !NidoType.Checked;
+                Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked);
         }
 
         private void NidoType_CheckedChanged(object sender, EventArgs e)
