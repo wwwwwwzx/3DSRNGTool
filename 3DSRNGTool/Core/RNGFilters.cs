@@ -78,9 +78,9 @@ namespace Pk3DSRNGTool.Core
                 if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
                 return true;
             }
-            if (result is EggResult && Ball != 0 && Ball != (result as EggResult)?.Ball)
+            if (result is EggResult egg && Ball != 0 && Ball != egg.Ball)
                 return false;
-            if (result is Result7 && !CheckBlink((result as Result7).Blink))
+            if (result is Result7 rt7 && !CheckBlink(rt7.Blink))
                 return false;
             if (ShinyOnly && !result.Shiny)
                 return false;

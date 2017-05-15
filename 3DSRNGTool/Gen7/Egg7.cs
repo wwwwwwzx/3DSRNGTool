@@ -3,7 +3,7 @@ using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
-    class Egg7 : EggRNG
+    public class Egg7 : EggRNG
     {
         private static uint getrand => RNGPool.getrand;
         private static void Advance(int n) => RNGPool.Advance(n);
@@ -28,6 +28,7 @@ namespace Pk3DSRNGTool
 
             InheritIVs_Cnt = (byte)(DestinyKnot ? 5 : 3);
             RandomGender = Gender > 0x0F;
+            ConsiderOtherTSV &= PID_Rerollcount > 0;
         }
 
         public override RNGResult Generate()

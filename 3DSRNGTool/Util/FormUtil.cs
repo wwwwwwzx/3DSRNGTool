@@ -69,12 +69,12 @@ namespace PKHeX
 
                 string text = SplitString[1]; // Text to set Control.Text to...
 
-                if (c is Control)
-                    (c as Control).Text = text;
-                else if (c is ToolStripItem)
-                    (c as ToolStripItem).Text = text;
-                else if (c is DataGridViewColumn)
-                    (c as DataGridViewColumn).HeaderText = text;
+                if (c is Control ctr)
+                    ctr.Text = text;
+                else if (c is ToolStripItem tsi)
+                    tsi.Text = text;
+                else if (c is DataGridViewColumn dgv)
+                    dgv.HeaderText = text;
             }
             form.ResumeLayout();
         }
