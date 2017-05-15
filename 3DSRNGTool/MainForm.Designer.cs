@@ -1607,7 +1607,7 @@
             this.Egg_max.Size = new System.Drawing.Size(60, 22);
             this.Egg_max.TabIndex = 94;
             this.Egg_max.Value = new decimal(new int[] {
-            5000,
+            500,
             0,
             0,
             0});
@@ -1622,9 +1622,19 @@
             0,
             0,
             0});
+            this.Egg_min.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Egg_min.Name = "Egg_min";
             this.Egg_min.Size = new System.Drawing.Size(60, 22);
             this.Egg_min.TabIndex = 93;
+            this.Egg_min.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label12
             // 

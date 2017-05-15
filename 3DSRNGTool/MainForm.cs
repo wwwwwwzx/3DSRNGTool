@@ -1240,8 +1240,8 @@ namespace Pk3DSRNGTool
         {
             var rng = new TinyMT(Status);
             int max, min;
-            min = (int)Egg_min.Value;
-            max = (int)Egg_max.Value;
+            min = (int)Egg_min.Value - 1;
+            max = (int)Egg_max.Value - 1;
             int target = (int)TargetFrame.Value;
             bool gotresult = false;
             // Advance
