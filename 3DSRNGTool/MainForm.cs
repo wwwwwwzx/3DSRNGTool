@@ -166,7 +166,7 @@ namespace Pk3DSRNGTool
             var species = slotspecies;
             var List = Gen7 ? species.Skip(1).Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm))
                 : species.Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
-            List = new[] { new ComboItem("-", 0) }.Concat(List);
+            List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
             SlotSpecies.DataSource = new BindingSource(List, null);
