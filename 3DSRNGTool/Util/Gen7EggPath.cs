@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
             Pre = new int[Maxdist + 1];
             W = new int[Maxdist + 1];
             for (int i = 1; i <= Maxdist; i++)
-                W[i] = Maxdist * reject;
+                W[i] = 0x7FFFFFFF; // Max int32
             // Calc
             for (int i = 0; i <= Maxdist; i++)
             {
@@ -26,28 +26,19 @@ namespace Pk3DSRNGTool
                     W[i] = W[i - 1] + reject;
                 }
                 // Accept Path
-                int j = i;
-                int k = j + FrameAdvList[j];
-                while (k <= Maxdist)
+                for (int j = i, k = i + FrameAdvList[i]; k <= Maxdist; j = k, k = j + FrameAdvList[j])
                 {
                     if (W[k] > W[j] + accept)
                     {
                         Pre[k] = j;
                         W[k] = W[j] + accept;
                     }
-                    j = k;
-                    k = j + FrameAdvList[j];
                 }
             }
             // Summary
             List<int> Results = new List<int>();
-            int node = Maxdist;
-            do
-            {
+            for (int node = Maxdist; node != 0; node = Pre[node]) // Track back
                 Results.Add(node);
-                node = Pre[node];
-            }
-            while (node != 0);
             Results.Add(0);
             Results.Reverse();
             return Results;
