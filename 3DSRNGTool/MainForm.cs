@@ -453,11 +453,13 @@ namespace Pk3DSRNGTool
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
-            TinyMT_Status.Visible =
+            TinyMT_Status.Visible = Homogeneity.Visible =
             Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible =
             GB_RNGGEN7ID.Visible =
             BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
+
+            RB_EggShortest.Visible &= Gen7;
 
             MM_CheckedChanged(null, null);
 

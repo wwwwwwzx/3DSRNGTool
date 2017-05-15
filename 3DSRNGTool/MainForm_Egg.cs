@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
 
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
-            MainRNGEgg.Visible = Method == 3 && !ShinyCharm.Checked && !MM.Checked;
+            MainRNGEgg.Visible = !ShinyCharm.Checked && !MM.Checked;
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
