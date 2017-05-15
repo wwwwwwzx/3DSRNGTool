@@ -108,6 +108,8 @@ namespace Pk3DSRNGTool
                 result.Blink = blinkflaglist[blinkidx];
         }
 
+        #endregion
+
         public static string Convert2timestr(double sec)
         {
             if (sec < 60)
@@ -120,6 +122,14 @@ namespace Pk3DSRNGTool
             min -= 60 * hour;
             return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
-        #endregion
+
+        public static bool IsLinux
+        {
+            get
+            {
+                int p = (int)Environment.OSVersion.Platform;
+                return (p == 4) || (p == 6) || (p == 128);
+            }
+        }
     }
 }

@@ -180,16 +180,17 @@ namespace Pk3DSRNGTool
             List<int> Slotidx = new List<int>();
             for (int i = Array.IndexOf(slotspecies, SpecForm); i > -1; i = Array.IndexOf(slotspecies, SpecForm, i + 1))
                 Slotidx.Add(i);
+            int offset = FuncUtil.IsLinux ? 0 : 1;
             if (Gen6)
             {
                 for (int i = 0; i < 12; i++)
-                    Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(i);
+                    Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
             else
             {
                 byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
                 for (int i = 0; i < 10; i++)
-                    Slot.CheckBoxItems[i + 1].Checked = Slotidx.Contains(Slottype[i]);
+                    Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(Slottype[i]);
             }
 
             SetPersonalInfo(SpecForm > 0 ? SpecForm : iPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0);
@@ -696,7 +697,7 @@ namespace Pk3DSRNGTool
             PerfectIVs = (byte)PerfectIVs.Value,
 
             Level = (byte)Filter_Lv.Value,
-            Slot = Slot.CheckBoxItems.Select(e => e.Checked).ToArray(),
+            Slot = new bool[FuncUtil.IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => e.Checked)).ToArray(),
             SpecialOnly = SpecialOnly.Checked,
 
             BlinkFOnly = BlinkFOnly.Checked,
