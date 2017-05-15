@@ -198,3 +198,10 @@ L_EggSeed127 = Go!
 RB_Main = 主乱数
 RB_ID = ID乱数
 Magikarp = 127鲤鱼王计算器 （公记为0,母记为0）（空格及换行软件将自动忽略）
+---------------------TabPage7----------------------------------
+B_OneClick = 一键完成
+B_Connect = 连接
+B_Disconnect = 断开
+B_Breakpoint = 设置断点
+B_Resume = 继续
+B_GetGen6Seed = 获得初始Seed
