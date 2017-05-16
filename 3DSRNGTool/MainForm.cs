@@ -403,6 +403,8 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.Method = Method;
 
+            DGVToolTip.RemoveAll();
+
             if (Method < 6)
                 RNGMethod.TabPages[Method].Controls.Add(this.RNGInfo);
             if (Method < 4)
@@ -440,6 +442,12 @@ namespace Pk3DSRNGTool
                     CB_Category.SelectedIndex = category < CB_Category.Items.Count ? category : 0;
                     Poke.SelectedIndex = poke < Poke.Items.Count ? poke : 0;
                 }
+            }
+
+            if (MainRNGEgg.Checked)
+            {
+                DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 4-6");
+                DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 4-6");
             }
 
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
@@ -647,6 +655,16 @@ namespace Pk3DSRNGTool
                     Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
                 }
                 return;
+            }
+            switch (specform)
+            {
+                case 791: case 792:
+                    DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 2 or 6, it depends on save");
+                    DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 2 or 6, it depends on save"); break; // SolLuna
+                case 801:
+                    DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 6 or 7. Depends on the person walking by");
+                    DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 6 or 7. Depends on the person walking by"); break; // Magearna
+                default: DGVToolTip.RemoveAll(); break;
             }
 
             Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =
