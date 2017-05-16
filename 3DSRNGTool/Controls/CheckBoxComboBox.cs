@@ -266,9 +266,7 @@ namespace Pk3DSRNGTool.Controls
                 CheckBoxItems[0].ComboBoxItem = ListText;
             }
 
-            EventHandler handler = CheckBoxCheckedChanged;
-            if (handler != null)
-                handler(sender, e);
+            CheckBoxCheckedChanged?.Invoke(sender, e);
         }
 
         /// <summary>
@@ -726,9 +724,7 @@ namespace Pk3DSRNGTool.Controls
 
         protected void OnCheckBoxCheckedChanged(object sender, EventArgs e)
         {
-            EventHandler handler = CheckBoxCheckedChanged;
-            if (handler != null)
-                handler(sender, e);
+            CheckBoxCheckedChanged?.Invoke(sender, e);
         }
 
         private void item_CheckedChanged(object sender, EventArgs e)
@@ -1018,9 +1014,7 @@ namespace Pk3DSRNGTool.Controls
 
         protected void OnPropertyChanged()
         {
-            EventHandler handler = PropertyChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            PropertyChanged?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

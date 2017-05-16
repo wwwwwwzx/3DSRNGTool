@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace Pk3DSRNGTool.Controls
 {
