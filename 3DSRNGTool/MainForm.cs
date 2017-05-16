@@ -558,6 +558,32 @@ namespace Pk3DSRNGTool
         {
             Sta_Ability.Visible = Sta_AbilityLocked.Checked;
         }
+        
+        private void DGV_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Advanced.Checked)
+                return;
+            Rectangle cellRect = DGV.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            if (DGV.Columns[e.ColumnIndex].Name == "dgv_mark")
+            {
+                DGVToolTip.ToolTipTitle = "Marks";
+                DGVToolTip.Show("-: The safe frames can be 100% predicted.\r\n"
+                    + "★: One person on the map will blink soon. Warning for following frames.\r\n"
+                    + (Modelnum > 1 ? "?: The spread might be affected by the history of NPC blink status, it's unsafe."
+                                    : "5: This frame will survive for 5/30s.\r\n30: This frame will survive for 1.0s.\r\n36: This frame will survive for 1.2s")
+                    , this,
+                    DGV.Location.X + cellRect.X + cellRect.Size.Width,
+                    DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
+                    8000);
+                return;
+            }
+            DGVToolTip.Hide(this);
+        }
+
+        private void DGV_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DGVToolTip.Hide(this);
+        }
         #endregion
 
         #region DataEntry
@@ -1460,6 +1486,5 @@ namespace Pk3DSRNGTool
             B_Disconnect_Click(null, null);
         }
         #endregion
-
     }
 }

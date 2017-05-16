@@ -385,6 +385,7 @@
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -4351,6 +4352,8 @@
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(1095, 380);
             this.DGV.TabIndex = 89;
+            this.DGV.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellMouseEnter);
+            this.DGV.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellMouseLeave);
             this.DGV.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.DGV.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
@@ -5190,6 +5193,7 @@
         private System.Windows.Forms.Button B_OneClick;
         private System.Windows.Forms.Label L_NTRGuide;
         private System.Windows.Forms.RadioButton RB_EggShortest;
+        private System.Windows.Forms.ToolTip DGVToolTip;
     }
 }
 
