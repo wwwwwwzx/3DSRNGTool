@@ -61,7 +61,7 @@ namespace Pk3DSRNGTool
             {
                 SeedResults.Text = WAIT_STR[lindex];
                 var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked);
-                if (results == null || !results.Any())
+                if (!results?.Any() ?? true)
                     text = NORESULT_STR[lindex];
                 else
                 {
@@ -141,8 +141,8 @@ namespace Pk3DSRNGTool
 
         private void RB_Gen7_CheckedChanged(object sender, EventArgs e)
         {
-            StartClockInput.Enabled = EndClockInput.Enabled = !(sender as RadioButton).Checked;
-            ((sender as RadioButton).Checked ? StartClockInput : EndClockInput).Checked = true;
+            StartClockInput.Enabled = EndClockInput.Enabled = RB_Main.Checked && BySaveScreen.Checked;
+            (StartClockInput.Enabled ? EndClockInput : StartClockInput).Checked = true;
         }
 
         private void API_Click(object sender, EventArgs e)

@@ -3630,6 +3630,7 @@
             this.BySaveScreen.TabStop = true;
             this.BySaveScreen.Text = "读档指针序列检索Seed";
             this.BySaveScreen.UseVisualStyleBackColor = false;
+            this.BySaveScreen.CheckedChanged += new System.EventHandler(this.RB_Gen7_CheckedChanged);
             // 
             // QRInput
             // 

@@ -569,16 +569,17 @@ namespace Pk3DSRNGTool
             if (e.ColumnIndex < 0 || e.RowIndex < 0)
             {
                 DGVToolTip.Hide(this);
+                DGVToolTip.ToolTipTitle = null;
                 return;
             }
             Rectangle cellRect = DGV.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
-            if (DGV.Columns[e.ColumnIndex].Name == "dgv_mark")
+            if (DGV.Columns[e.ColumnIndex].Name == "dgv_mark" && !CreateTimeline.Checked)
             {
                 DGVToolTip.ToolTipTitle = "Marks";
                 DGVToolTip.Show("-: The safe frames can be 100% predicted.\r\n"
                     + "★: One person on the map will blink soon. Warning for following frames.\r\n"
                     + (Modelnum > 1 ? "?: The spread might be affected by the history of NPC blink status, it's unsafe."
-                                    : "5: This frame will survive for 5/30s.\r\n30: This frame will survive for 1.0s.\r\n36: This frame will survive for 1.2s")
+                                    : "5: This frame will survive for 5/30 second.\r\n30: This frame will survive for 1.00 second.\r\n36: This frame will survive for 1.20 second.")
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -656,8 +657,8 @@ namespace Pk3DSRNGTool
             switch (specform)
             {
                 case 382: case 383:
-                    DGVToolTip.SetToolTip(Timedelay, "Tips: The delay depends on save and console");
-                    DGVToolTip.SetToolTip(ConsiderDelay, "Tips: The delay depends on save and console"); break; // Grondon / Kyogre
+                    DGVToolTip.SetToolTip(Timedelay, "Tips: The delay varies from 2700-4000, depends on save and console");
+                    DGVToolTip.SetToolTip(ConsiderDelay, "Tips: The delay varies from 2700-4000, depends on save and console"); break; // Grondon / Kyogre
                 case 791: case 792:
                     DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 2 or 6, it depends on save");
                     DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 2 or 6, it depends on save"); break; // SolLuna
