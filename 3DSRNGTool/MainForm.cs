@@ -242,11 +242,6 @@ namespace Pk3DSRNGTool
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
         }
 
-        private void Poke_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Poke = (byte)Poke.SelectedIndex;
-        }
-
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
         {
             IVPanel.Visible = ByIVs.Checked;
@@ -641,8 +636,10 @@ namespace Pk3DSRNGTool
 
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Poke = (byte)Poke.SelectedIndex;
+
             int specform = (int)(Poke.SelectedValue);
-            // Reset_Click(null, null);
+
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
             GenderRatio.Enabled = FormPM.Conceptual;
