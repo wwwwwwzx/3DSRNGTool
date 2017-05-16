@@ -655,6 +655,9 @@ namespace Pk3DSRNGTool
             }
             switch (specform)
             {
+                case 382: case 383:
+                    DGVToolTip.SetToolTip(Timedelay, "Tips: The delay depends on save and console");
+                    DGVToolTip.SetToolTip(ConsiderDelay, "Tips: The delay depends on save and console"); break; // Grondon / Kyogre
                 case 791: case 792:
                     DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 2 or 6, it depends on save");
                     DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 2 or 6, it depends on save"); break; // SolLuna
