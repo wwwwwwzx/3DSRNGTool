@@ -563,6 +563,11 @@ namespace Pk3DSRNGTool
         {
             if (Advanced.Checked)
                 return;
+            if (e.ColumnIndex < 0 || e.RowIndex < 0)
+            {
+                DGVToolTip.Hide(this);
+                return;
+            }
             Rectangle cellRect = DGV.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_mark")
             {
@@ -577,11 +582,6 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
-            DGVToolTip.Hide(this);
-        }
-
-        private void DGV_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
             DGVToolTip.Hide(this);
         }
         #endregion

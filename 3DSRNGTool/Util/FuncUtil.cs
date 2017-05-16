@@ -81,8 +81,8 @@ namespace Pk3DSRNGTool
             {
                 if ((Randlist[0] & 0x7F) == 0)
                 {
-                    blink_flag = Unsaferange[blink_flag == 0 ? Checkafter(Randlist) : 1];
                     if (i >= min) blinkflaglist[i - min] = (byte)(blink_flag == 0 ? 1 : 3);
+                    blink_flag = Unsaferange[blink_flag == 0 ? Checkafter(Randlist) : 1];
                     continue;
                 }
                 if (blink_flag > 0)
