@@ -638,9 +638,9 @@ namespace Pk3DSRNGTool
         private void Poke_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Poke = (byte)Poke.SelectedIndex;
+            Filter_Lv.Value = 0;
 
             int specform = (int)(Poke.SelectedValue);
-
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
             GenderRatio.Enabled = FormPM.Conceptual;
@@ -962,6 +962,8 @@ namespace Pk3DSRNGTool
                     Search7();
                 AdjustDGVColumns();
             }
+            RNGPool.Clear();
+            GC.Collect();
         }
 
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };

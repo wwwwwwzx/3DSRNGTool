@@ -19,17 +19,21 @@ namespace Pk3DSRNGTool.Core
         public static bool Considerdelay;
         public static int DelayTime;
 
+        public static void Clear()
+        {
+            RandList.Clear();
+            RandList64.Clear();
+            RNGStateStr.Clear();
+        }
+
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
             if (rng is IRNG64 rng64)
             {
-                RandList64.Clear();
                 for (int i = 0; i < buffersize; i++)
                     RandList64.Add(rng64.Nextulong());
                 return;
             }
-            RandList.Clear();
-            RNGStateStr.Clear();
             for (int i = 0; i < buffersize; i++)
             {
                 RNGStateStr.Add((rng as RNGState)?.CurrentState());
