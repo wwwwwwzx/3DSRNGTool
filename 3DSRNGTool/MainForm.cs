@@ -681,21 +681,15 @@ namespace Pk3DSRNGTool
             DGV.Rows.Clear();
 
             filter = FilterSettings;
-            RNGPool.RNGmethod = Method;
-            switch (RNGPool.RNGmethod)
-            {
-                case 0: RNGPool.sta_rng = getStaSettings(); break;
-                case 1: RNGPool.event_rng = getEventSetting(); break;
-                case 2: RNGPool.wild_rng = getWildSetting(); break;
-                case 3: RNGPool.egg_rng = getEggRNG(); break;
-            }
+            RNGPool.igenerator = getGenerator(Method);
+            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked;
 
             if (MainRNGEgg.Checked) // Get first egg
             {
-                RNGPool.sta_rng = getStaSettings();
                 TinyMT tmt = new TinyMT(Status);
                 RNGPool.CreateBuffer(50, tmt);
                 RNGPool.firstegg = RNGPool.GenerateEgg7() as EggResult;
+                RNGPool.igenerator = getStaSettings();
             }
 
             int buffersize = 150;
@@ -725,6 +719,18 @@ namespace Pk3DSRNGTool
                     Standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
+        }
+
+        private IGenerator getGenerator(byte method)
+        {
+            switch (method)
+            {
+                case 0: return getStaSettings();
+                case 1: return getEventSetting();
+                case 2: return getWildSetting();
+                case 3: return getEggRNG();
+                default: return null;
+            }
         }
 
         private RNGFilters FilterSettings => new RNGFilters

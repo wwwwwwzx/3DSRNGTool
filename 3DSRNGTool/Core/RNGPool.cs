@@ -56,11 +56,8 @@ namespace Pk3DSRNGTool.Core
         }
 
         public static Pokemon PM;
-        public static byte RNGmethod;
-        public static StationaryRNG sta_rng;
-        public static EventRNG event_rng;
-        public static WildRNG wild_rng;
-        public static EggRNG egg_rng;
+        public static bool IsMainRNGEgg;
+        public static IGenerator igenerator;
 
         public static RNGResult Generate6()
         {
@@ -73,11 +70,14 @@ namespace Pk3DSRNGTool.Core
 
         public static RNGResult getresult6()
         {
-            switch (RNGmethod)
+            switch (igenerator)
             {
-                case 00: return (sta_rng as Stationary6).Generate();
-                case 01: return (event_rng as Event6).Generate();
-                case 02: return (wild_rng as Wild6).Generate();
+                case Stationary6 sta_rng:
+                    return sta_rng.Generate();
+                case Event6 event_rng:
+                    return event_rng.Generate();
+                case Wild6 wild_rng:
+                    return wild_rng.Generate();
             }
             return null;
         }
@@ -95,7 +95,7 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult GenerateEgg7()
         {
             index = 0;
-            var result = (egg_rng as Egg7).Generate() as EggResult;
+            var result = (igenerator as Egg7).Generate() as EggResult;
             result.RandNum = RandList[0];
             result.Status = RNGStateStr[0];
             result.FramesUsed = index;
@@ -104,12 +104,14 @@ namespace Pk3DSRNGTool.Core
 
         public static RNGResult getresult7()
         {
-            switch (RNGmethod)
+            switch (igenerator)
             {
-                case 00: return (sta_rng as Stationary7).Generate();
-                case 01: return (event_rng as Event7).Generate();
-                case 02: return (wild_rng as Wild7).Generate();
-                case 03: return (sta_rng as Stationary7).GenerateMainRNGPID(firstegg);
+                case Stationary7 sta_rng:
+                    return IsMainRNGEgg ? sta_rng.GenerateMainRNGPID(firstegg) : sta_rng.Generate();
+                case Event7 event_rng:
+                    return event_rng.Generate();
+                case Wild7 wild_rng:
+                    return wild_rng.Generate();
             }
             return null;
         }
@@ -211,7 +213,7 @@ namespace Pk3DSRNGTool.Core
             else
                 ResetModelStatus();
 
-            if (RNGmethod == 2) //Wild
+            if (igenerator is WildRNG) //Wild
             {
                 ResetModelStatus();
                 if (route17) Advance(2);
