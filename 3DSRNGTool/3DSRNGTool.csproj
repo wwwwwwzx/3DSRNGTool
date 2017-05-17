@@ -62,9 +62,6 @@
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\MainRNGEgg.cs" />
-    <Compile Include="MainForm_Egg.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Controls\CheckBoxComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +92,11 @@
     <Compile Include="Core\IGenerator.cs" />
     <Compile Include="Core\WildResult.cs" />
     <Compile Include="Core\WildRNG.cs" />
+    <Compile Include="Core\EventRNG.cs" />
+    <Compile Include="Core\RNGFilters.cs" />
+    <Compile Include="Core\RNGPool.cs" />
+    <Compile Include="Core\RNGResult.cs" />
+    <Compile Include="Core\StationaryRNG.cs" />
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
@@ -116,61 +118,48 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm_CtrlGroup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_Event.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_ToolKit7.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_Trans.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="MainForm_CtrlGroup.cs" />
+    <Compile Include="MainForm_Event.cs" />
+    <Compile Include="MainForm_Egg.cs" />
+    <Compile Include="MainForm_ToolKit6.cs" />
+    <Compile Include="MainForm_ToolKit7.cs" />
+    <Compile Include="MainForm_Trans.cs" />
     <Compile Include="Pokemon\Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
-    <Compile Include="Core\EventRNG.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
+    <Compile Include="Util\FormUtil.cs" />
+    <Compile Include="Util\FuncUtil.cs" />
+    <Compile Include="Util\Gen7EggPath.cs" />
+    <Compile Include="Util\MagikarpCalc.cs" />
+    <Compile Include="Util\NtrClient.cs" />
+    <Compile Include="Util\NTRSeedAPI.cs" />
+    <Compile Include="Util\SFMTSeedAPI.cs" />
+    <Compile Include="RNG\DeepCopy.cs" />
+    <Compile Include="RNG\IRNG.cs" />
+    <Compile Include="RNG\MT.cs" />
+    <Compile Include="RNG\SFMT.cs" />
+    <Compile Include="RNG\TinyMT.cs" />
+    <Compile Include="Subforms\TSVListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\TSVListForm.Designer.cs">
+      <DependentUpon>TSVListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\IVTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Subforms\IVTemplate.Designer.cs">
       <DependentUpon>IVTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\FormUtil.cs" />
-    <Compile Include="Util\FuncUtil.cs" />
-    <Compile Include="Core\RNGFilters.cs" />
-    <Compile Include="Core\RNGPool.cs" />
-    <Compile Include="Core\RNGResult.cs" />
-    <Compile Include="Core\StationaryRNG.cs" />
-    <Compile Include="RNG\DeepCopy.cs" />
-    <Compile Include="RNG\IRNG.cs" />
-    <Compile Include="RNG\MT.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RNG\SFMT.cs" />
-    <Compile Include="RNG\TinyMT.cs" />
     <Compile Include="Subforms\IVRange.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Subforms\IVRange.Designer.cs">
       <DependentUpon>IVRange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Util\Gen7EggPath.cs" />
-    <Compile Include="Util\MagikarpCalc.cs" />
-    <Compile Include="Util\NtrClient.cs" />
-    <Compile Include="Util\NTRSeedAPI.cs" />
-    <Compile Include="Util\SFMTSeedAPI.cs" />
-    <Compile Include="Subforms\TSVListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\TSVListForm.Designer.cs">
-      <DependentUpon>TSVListForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -195,10 +184,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="packages.config" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\text\lang_cn.txt" />
@@ -222,23 +213,23 @@
     <None Include="Resources\text\text_Location_xy_cn.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\pic\pic_Clock_0.png" />
-    <Content Include="Resources\pic\pic_Clock_1.png" />
-    <Content Include="Resources\pic\pic_Clock_10.png" />
-    <Content Include="Resources\pic\pic_Clock_11.png" />
-    <Content Include="Resources\pic\pic_Clock_12.png" />
-    <Content Include="Resources\pic\pic_Clock_13.png" />
-    <Content Include="Resources\pic\pic_Clock_14.png" />
-    <Content Include="Resources\pic\pic_Clock_15.png" />
-    <Content Include="Resources\pic\pic_Clock_16.png" />
-    <Content Include="Resources\pic\pic_Clock_2.png" />
-    <Content Include="Resources\pic\pic_Clock_3.png" />
-    <Content Include="Resources\pic\pic_Clock_4.png" />
-    <Content Include="Resources\pic\pic_Clock_5.png" />
-    <Content Include="Resources\pic\pic_Clock_6.png" />
-    <Content Include="Resources\pic\pic_Clock_7.png" />
-    <Content Include="Resources\pic\pic_Clock_8.png" />
-    <Content Include="Resources\pic\pic_Clock_9.png" />
+    <None Include="Resources\pic\pic_Clock_0.png" />
+    <None Include="Resources\pic\pic_Clock_1.png" />
+    <None Include="Resources\pic\pic_Clock_10.png" />
+    <None Include="Resources\pic\pic_Clock_11.png" />
+    <None Include="Resources\pic\pic_Clock_12.png" />
+    <None Include="Resources\pic\pic_Clock_13.png" />
+    <None Include="Resources\pic\pic_Clock_14.png" />
+    <None Include="Resources\pic\pic_Clock_15.png" />
+    <None Include="Resources\pic\pic_Clock_16.png" />
+    <None Include="Resources\pic\pic_Clock_2.png" />
+    <None Include="Resources\pic\pic_Clock_3.png" />
+    <None Include="Resources\pic\pic_Clock_4.png" />
+    <None Include="Resources\pic\pic_Clock_5.png" />
+    <None Include="Resources\pic\pic_Clock_6.png" />
+    <None Include="Resources\pic\pic_Clock_7.png" />
+    <None Include="Resources\pic\pic_Clock_8.png" />
+    <None Include="Resources\pic\pic_Clock_9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
