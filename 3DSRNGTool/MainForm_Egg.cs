@@ -175,6 +175,12 @@ namespace Pk3DSRNGTool
             catch
             { }
         }
+
+        private void B_Template_Click(object sender, EventArgs e)
+        {
+            IVTemplate newform = new IVTemplate(this);
+            newform.Show();
+        }
         #endregion
     }
 }

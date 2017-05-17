@@ -168,6 +168,7 @@ RB_EggShortest = Shortest Path
 L_TargetFrame = Target Frame
 B_EggReset = Reset
 B_Fast = Fast Mode
+B_Template = Template
 dgv_adv = Advance
 dgv_status = Status
 dgv_ball = Ball

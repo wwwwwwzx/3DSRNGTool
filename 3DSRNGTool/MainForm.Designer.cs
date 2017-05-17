@@ -207,6 +207,7 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
+            this.B_Template = new System.Windows.Forms.Button();
             this.NidoType = new System.Windows.Forms.CheckBox();
             this.ConsiderOtherTSV = new System.Windows.Forms.CheckBox();
             this.B_TSVList = new System.Windows.Forms.Button();
@@ -2667,6 +2668,7 @@
             // 
             // Parents_Info
             // 
+            this.Parents_Info.Controls.Add(this.B_Template);
             this.Parents_Info.Controls.Add(this.NidoType);
             this.Parents_Info.Controls.Add(this.ConsiderOtherTSV);
             this.Parents_Info.Controls.Add(this.B_TSVList);
@@ -2710,6 +2712,16 @@
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
             // 
+            // B_Template
+            // 
+            this.B_Template.Location = new System.Drawing.Point(182, 67);
+            this.B_Template.Name = "B_Template";
+            this.B_Template.Size = new System.Drawing.Size(83, 25);
+            this.B_Template.TabIndex = 106;
+            this.B_Template.Text = "模板";
+            this.B_Template.UseVisualStyleBackColor = true;
+            this.B_Template.Click += new System.EventHandler(this.B_Template_Click);
+            // 
             // NidoType
             // 
             this.NidoType.AutoSize = true;
@@ -2733,9 +2745,9 @@
             // 
             // B_TSVList
             // 
-            this.B_TSVList.Location = new System.Drawing.Point(185, 187);
+            this.B_TSVList.Location = new System.Drawing.Point(182, 189);
             this.B_TSVList.Name = "B_TSVList";
-            this.B_TSVList.Size = new System.Drawing.Size(78, 25);
+            this.B_TSVList.Size = new System.Drawing.Size(83, 25);
             this.B_TSVList.TabIndex = 103;
             this.B_TSVList.Text = "TSV列表";
             this.B_TSVList.UseVisualStyleBackColor = true;
@@ -2743,9 +2755,9 @@
             // 
             // B_Fast
             // 
-            this.B_Fast.Location = new System.Drawing.Point(185, 65);
+            this.B_Fast.Location = new System.Drawing.Point(182, 109);
             this.B_Fast.Name = "B_Fast";
-            this.B_Fast.Size = new System.Drawing.Size(78, 25);
+            this.B_Fast.Size = new System.Drawing.Size(83, 25);
             this.B_Fast.TabIndex = 100;
             this.B_Fast.Text = "快速模式";
             this.B_Fast.UseVisualStyleBackColor = true;
@@ -3227,9 +3239,9 @@
             // 
             // B_EggReset
             // 
-            this.B_EggReset.Location = new System.Drawing.Point(185, 29);
+            this.B_EggReset.Location = new System.Drawing.Point(183, 25);
             this.B_EggReset.Name = "B_EggReset";
-            this.B_EggReset.Size = new System.Drawing.Size(78, 25);
+            this.B_EggReset.Size = new System.Drawing.Size(83, 25);
             this.B_EggReset.TabIndex = 30;
             this.B_EggReset.Text = "恢复默认";
             this.B_EggReset.UseVisualStyleBackColor = true;
@@ -3259,9 +3271,9 @@
             "♂1：♀3",
             "只有♂",
             "只有♀"});
-            this.Egg_GenderRatio.Location = new System.Drawing.Point(185, 157);
+            this.Egg_GenderRatio.Location = new System.Drawing.Point(182, 151);
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
-            this.Egg_GenderRatio.Size = new System.Drawing.Size(78, 21);
+            this.Egg_GenderRatio.Size = new System.Drawing.Size(82, 21);
             this.Egg_GenderRatio.TabIndex = 7;
             // 
             // L_EggAbility
@@ -5194,6 +5206,7 @@
         private System.Windows.Forms.Label L_NTRGuide;
         private System.Windows.Forms.RadioButton RB_EggShortest;
         private System.Windows.Forms.ToolTip DGVToolTip;
+        private System.Windows.Forms.Button B_Template;
     }
 }
 

@@ -55,7 +55,7 @@ namespace Pk3DSRNGTool
                 Stat3.Value = value[3]; Stat4.Value = value[4]; Stat5.Value = value[5];
             }
         }
-        private int[] IV_Male
+        public int[] IV_Male
         {
             get => new[] { (int)M_IV0.Value, (int)M_IV1.Value, (int)M_IV2.Value, (int)M_IV3.Value, (int)M_IV4.Value, (int)M_IV5.Value, };
             set
@@ -65,7 +65,7 @@ namespace Pk3DSRNGTool
                 M_IV3.Value = value[3]; M_IV4.Value = value[4]; M_IV5.Value = value[5];
             }
         }
-        private int[] IV_Female
+        public int[] IV_Female
         {
             get => new[] { (int)F_IV0.Value, (int)F_IV1.Value, (int)F_IV2.Value, (int)F_IV3.Value, (int)F_IV4.Value, (int)F_IV5.Value, };
             set

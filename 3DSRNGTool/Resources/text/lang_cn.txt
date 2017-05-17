@@ -158,6 +158,7 @@ M_Ditto = 父方
 F_Ditto = 母方
 MM = 父母语言不同
 B_Fast = 快速模式
+B_Template = 模板
 ConsiderOtherTSV = 考虑其他TSV
 B_TSVList = TSV列表
 MainRNGEgg = 主乱数蛋 (PID)

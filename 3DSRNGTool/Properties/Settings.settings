@@ -47,5 +47,8 @@
     <Setting Name="IP" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.0.1</Value>
     </Setting>
+    <Setting Name="Ivspread" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

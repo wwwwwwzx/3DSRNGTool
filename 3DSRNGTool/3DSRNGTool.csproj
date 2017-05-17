@@ -136,6 +136,12 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
+    <Compile Include="Subforms\IVTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\IVTemplate.Designer.cs">
+      <DependentUpon>IVTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\FormUtil.cs" />
     <Compile Include="Util\FuncUtil.cs" />
     <Compile Include="Core\RNGFilters.cs" />
