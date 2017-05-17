@@ -88,6 +88,8 @@ namespace Pk3DSRNGTool
                 Gameversion.Items[i] = GAMEVERSION_STR[lindex, i];
 
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
+            Frame.Parents[1] = PARENTS_STR[lindex, 1];
+            Frame.Parents[2] = PARENTS_STR[lindex, 2];
 
             RefreshCategory();
             if (Method == 2)

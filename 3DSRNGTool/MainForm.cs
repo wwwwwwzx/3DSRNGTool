@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.5.2";
+        private string version = "0.5.3";
 
         private int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
@@ -29,10 +29,11 @@ namespace Pk3DSRNGTool
         private int[] slotspecies => ea?.getSpecies(Ver, IsNight) ?? new int[0];
         private byte Modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter = new RNGFilters();
-        private int Standard;
         private byte lastmethod;
         private ushort lasttableindex;
         private int timercounter;
+        List<Frame> Frames = new List<Frame>();
+        List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
         private static NtrClient ntrclient = new NtrClient();
         #endregion
@@ -45,19 +46,14 @@ namespace Pk3DSRNGTool
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DGV_ID.Columns["dgv_ID_state"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV_ID.Columns["dgv_ID_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV_ID.Columns["dgv_ID_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_rand64"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_rand"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_pid"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_EC"].DefaultCellStyle.Font = new Font("Consolas", 9);
-            DGV.Columns["dgv_status"].DefaultCellStyle.Font = new Font("Consolas", 9);
             Type dgvtype = typeof(DataGridView);
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
             dgvPropertyInfo.SetValue(DGV_ID, true, null);
+
+            DGV.AutoGenerateColumns = false;
+            DGV_ID.AutoGenerateColumns = false;
 
             IVInputer = new IVRange(this);
 
@@ -561,7 +557,7 @@ namespace Pk3DSRNGTool
         {
             Sta_Ability.Visible = Sta_AbilityLocked.Checked;
         }
-        
+
         private void DGV_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Advanced.Checked)
@@ -656,10 +652,12 @@ namespace Pk3DSRNGTool
             }
             switch (specform)
             {
-                case 382: case 383:
+                case 382:
+                case 383:
                     DGVToolTip.SetToolTip(Timedelay, "Tips: The delay varies from 2700-4000, depends on save and console");
                     DGVToolTip.SetToolTip(ConsiderDelay, "Tips: The delay varies from 2700-4000, depends on save and console"); break; // Grondon / Kyogre
-                case 791: case 792:
+                case 791:
+                case 792:
                     DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 2 or 6, it depends on save");
                     DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 2 or 6, it depends on save"); break; // SolLuna
                 case 801:
@@ -677,8 +675,9 @@ namespace Pk3DSRNGTool
         #region UI communication
         private void getsetting(IRNG rng)
         {
-            dgvrowlist.Clear();
-            DGV.Rows.Clear();
+            DGV.CellFormatting -= new DataGridViewCellFormattingEventHandler(DGV_CellFormatting); //Stop Freshing
+            Frames.Clear();
+            DGV.DataSource = null;
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
@@ -692,6 +691,7 @@ namespace Pk3DSRNGTool
                 RNGPool.igenerator = getStaSettings();
             }
 
+            Frame.showstats = ShowStats.Checked;
             int buffersize = 150;
             if (Gen7)
             {
@@ -708,7 +708,7 @@ namespace Pk3DSRNGTool
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
                 if (Method < 3 || MainRNGEgg.Checked)
-                    Standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
+                    Frame.standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
             }
             if (Gen6)
             {
@@ -716,7 +716,7 @@ namespace Pk3DSRNGTool
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
                 if (Method < 3)
-                    Standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
+                    Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -924,6 +924,10 @@ namespace Pk3DSRNGTool
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
                 dgv_ID_rand.Visible = Gen6;
                 dgv_ID_state.Visible = MT.Checked && Gen6;
+
+                DGV_ID.DataSource = IDFrames;
+                DGV_ID.Refresh();
+                DGV_ID.CurrentCell = null;
                 return;
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
@@ -937,6 +941,10 @@ namespace Pk3DSRNGTool
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+            DGV.DataSource = Frames;
+            DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
+            DGV.Refresh();
+            DGV.CurrentCell = null;
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -972,57 +980,27 @@ namespace Pk3DSRNGTool
             GC.Collect();
         }
 
-        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
         private static Font BoldFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
-
-        private DataGridViewRow getRow(int i, RNGResult result, int eggnum = -1, int time = -1)
+        private void DGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(DGV);
-
-            string true_nature = StringItem.naturestr[result.Nature];
-            if (null != ((result as EggResult)?.BE_InheritParents))
-                true_nature = ((result as EggResult).BE_InheritParents == true) ? M_ditto.Text : F_ditto.Text;
-            string EggNum = eggnum > 0 ? eggnum.ToString() : null;
-            string advance = (result as EggResult)?.FramesUsed.ToString("+#") ?? (result as Result6)?.FrameUsed.ToString("+00");
-            string delay = (result as Result7)?.FrameDelayUsed.ToString("+#;-#;0");
-            byte blink = (result as Result7)?.Blink ?? 0;
-            string Mark = blink < 4 ? blinkmarks[blink] : blink.ToString();
-            string SynchronizeFlag = result.Synchronize ? "O" : "X";
-            string PSV = result.PSV.ToString("D4");
-
-            string slots = (result as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[CB_Category.SelectedIndex] : (result as WildResult)?.Slot.ToString();
-            string Lv = result.Level.ToString();
-            string item = (result as WildResult)?.ItemStr;
-
-            string ball = PARENTS_STR[lindex, (result as EggResult)?.Ball ?? (result as MainRNGEgg)?.Ball ?? 0];
-            string randstr = (result as Result6)?.RandNum.ToString("X8") ?? (result as EggResult)?.RandNum.ToString("X8");
-            string rand64str = (result as Result7)?.RandNum.ToString("X16");
-            string shift = time > -1 ? (time - Standard).ToString("+#;-#;0") : null;
-            string realtime = time > -1 ? FuncUtil.Convert2timestr(time / 60.0) : null;
-            row.Cells[02].Style.Alignment =                                           // Shift
-            row.Cells[04].Style.Alignment =                                           // Advance
-            row.Cells[27].Style.Alignment = DataGridViewContentAlignment.MiddleRight; // Realtime
-
-            string seed = (result as EggResult)?.Status ?? (result as Result6)?.Status;
-
-            int[] status = ShowStats.Checked ? result.Stats : result.IVs;
-
-            row.SetValues(
-                eggnum, i, shift, Mark, advance,
-                status[0], status[1], status[2], status[3], status[4], status[5],
-                true_nature, SynchronizeFlag, StringItem.hpstr[result.hiddenpower + 1], PSV, StringItem.genderstr[result.Gender], StringItem.abilitystr[result.Ability], delay,
-                slots, Lv, ball, item,
-                randstr, rand64str, result.PID.ToString("X8"), result.EC.ToString("X8"), seed, realtime
-                );
+            int index = e.RowIndex;
+            if (Frames.Count <= index || Frames[index].Formatted)
+                return;
+            var result = Frames[index].rt;
+            var row = DGV.Rows[index];
 
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
+
+            Frames[index].Formatted = true;
 
             bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as MainRNGEgg)?.InheritMaleIV;
             const int ivstart = 5;
             if (ivsflag != null)
             {
+                if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 1])
+                    row.DefaultCellStyle.BackColor = Color.LightYellow;
+
                 for (int k = 0; k < 6; k++)
                 {
                     if (ivsflag[k] != null)
@@ -1030,7 +1008,7 @@ namespace Pk3DSRNGTool
                     if (result.IVs[k] > 29)
                     { row.Cells[ivstart + k].Style.ForeColor = Color.MediumSeaGreen; row.Cells[ivstart + k].Style.Font = BoldFont; }
                 }
-                return row;
+                return;
             }
             for (int k = 0; k < 6; k++)
             {
@@ -1045,20 +1023,6 @@ namespace Pk3DSRNGTool
                     row.Cells[ivstart + k].Style.ForeColor = Color.MediumSeaGreen;
                 }
             }
-            return row;
-        }
-
-        private DataGridViewRow getIDRow(int i, IDResult rt)
-        {
-            DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(DGV_ID);
-            row.SetValues(
-                i, (rt as ID7)?.G7TID.ToString("D6"), rt.TSV.ToString("D4"),
-                rt.TID.ToString("D5"), rt.SID.ToString("D5"), (((rt as ID7)?.Clock + Clk_Correction.Value) % 17).ToString(),
-                (rt as ID6)?.RandNum.ToString("X8"), (rt as ID7)?.RandNum.ToString("X16"),
-                (rt as ID6)?.Status
-                );
-            return row;
         }
         #endregion
 
@@ -1104,12 +1068,10 @@ namespace Pk3DSRNGTool
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;
-                dgvrowlist.Add(getRow(i, result, time: i - min));
-                if (dgvrowlist.Count > 100000)
+                Frames.Add(new Frame(result, frame: i, time: i - min));
+                if (Frames.Count > 100000)
                     break;
             }
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
         }
 
         private void Search6_ID()
@@ -1118,8 +1080,9 @@ namespace Pk3DSRNGTool
             var rng = getRNGSource();
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
-            dgvrowlist.Clear();
-            DGV_ID.Rows.Clear();
+            IDFrames.Clear();
+            DGV_ID.DataSource = null;
+            Frame_ID.correction = 0xFF;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
                 rng.Next();
@@ -1130,12 +1093,8 @@ namespace Pk3DSRNGTool
                     continue;
                 if (tweak)
                 { Frame_min.Value = i; tweak = false; }
-                dgvrowlist.Add(getIDRow(i, result));
-                if (dgvrowlist.Count > 100000)
-                    break;
+                IDFrames.Add(new Frame_ID(result, i));
             }
-            DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
-            DGV_ID.CurrentCell = null;
         }
         #endregion
 
@@ -1211,17 +1170,16 @@ namespace Pk3DSRNGTool
 
                     if (!filter.CheckResult(result))
                         continue;
-                    dgvrowlist.Add(getRow(i - 1, result, time: frametime * 2));
+                    Frames.Add(new Frame(result, frame: i - 1, time: frametime * 2));
                 }
                 while (frameadvance > 0);
-                if (dgvrowlist.Count > 100000) break;
 
+                if (Frames.Count > 100000)
+                    return;
                 // Backup status of frame
                 status.CopyTo(stmp);
                 frametime = realtime;
             }
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
         }
 
         private void Search7_Timeline()
@@ -1256,13 +1214,11 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
 
-                dgvrowlist.Add(getRow(Currentframe, result, time: i * 2));
+                Frames.Add(new Frame(result, frame: Currentframe, time: i * 2));
 
-                if (dgvrowlist.Count > 100000)
-                    break;
+                if (Frames.Count > 100000)
+                    return;
             }
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
         }
 
         private void Search7_Egg()
@@ -1282,12 +1238,10 @@ namespace Pk3DSRNGTool
                 var result = RNGPool.GenerateEgg7() as EggResult;
                 if (!filter.CheckResult(result))
                     continue;
-                dgvrowlist.Add(getRow(i, result));
-                if (dgvrowlist.Count > 100000)
-                    break;
+                Frames.Add(new Frame(result, frame: i));
+                if (Frames.Count > 100000)
+                    return;
             }
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
         }
 
         private void Search7_EggList()
@@ -1321,12 +1275,10 @@ namespace Pk3DSRNGTool
                     RNGPool.Next(rng);
                 if (i < min || !filter.CheckResult(result))
                     continue;
-                dgvrowlist.Add(getRow(frame - advance, result, eggnum: i + 1));
-                if (dgvrowlist.Count > 100000)
+                Frames.Add(new Frame(result, frame: frame - advance, eggnum: i + 1));
+                if (Frames.Count > 100000)
                     break;
             }
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
             if (!gotresult)
                 Egg_Instruction.Text = getEggListString(-1, -1);
         }
@@ -1349,20 +1301,17 @@ namespace Pk3DSRNGTool
                 int index = FrameIndexList[i];
                 var result = ResultsList[index];
                 result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);
-                var row = getRow(index, result, eggnum: i + 1);
+                var Frame = new Frame(result, frame: index, eggnum: i + 1);
                 if (i == max - 1 || FrameIndexList[i + 1] - index > 1)
-                    row.Cells[4].Value = EGGACCEPT_STR[lindex, 0];
+                    Frame.FrameUsed = EGGACCEPT_STR[lindex, 0];
                 else
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightYellow;
-                    row.Cells[4].Value = EGGACCEPT_STR[lindex, 1];
+                    Frame.FrameUsed = EGGACCEPT_STR[lindex, 1];
                     rejectcount++;
                 }
-                dgvrowlist.Add(row);
+                Frames.Add(Frame);
             }
             Egg_Instruction.Text = getEggListString(max - rejectcount - 1, rejectcount, true);
-            DGV.Rows.AddRange(dgvrowlist.ToArray());
-            DGV.CurrentCell = null;
         }
 
         private void Search7_ID()
@@ -1370,8 +1319,9 @@ namespace Pk3DSRNGTool
             SFMT rng = new SFMT((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
-            dgvrowlist.Clear();
-            DGV_ID.Rows.Clear();
+            IDFrames.Clear();
+            DGV.DataSource = null;
+            Frame_ID.correction = (byte)Clk_Correction.Value;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
                 rng.Next();
@@ -1380,14 +1330,9 @@ namespace Pk3DSRNGTool
                 var result = new ID7(rng.Nextulong());
                 if (!idfilter.CheckResult(result))
                     continue;
-                dgvrowlist.Add(getIDRow(i, result));
-                if (dgvrowlist.Count > 100000)
-                    break;
+                IDFrames.Add(new Frame_ID(result, i));
             }
-            DGV_ID.Rows.AddRange(dgvrowlist.ToArray());
-            DGV_ID.CurrentCell = null;
         }
         #endregion
-        
     }
 }

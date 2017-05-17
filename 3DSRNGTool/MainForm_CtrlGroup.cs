@@ -87,7 +87,6 @@ namespace Pk3DSRNGTool
         }
         private NumericUpDown[] EventIV => new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, };
         private CheckBox[] EventIVLocked => new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, };
-        private List<DataGridViewRow> dgvrowlist = new List<DataGridViewRow>();
         private List<Controls.ComboItem> Locationlist = new List<Controls.ComboItem>();
     }
 }
