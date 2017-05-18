@@ -7,7 +7,6 @@ namespace Pk3DSRNGTool
         public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
         public byte Blink;
         public ulong RandNum;
-        public byte Clock;
         public int FrameDelayUsed;
     }
 }

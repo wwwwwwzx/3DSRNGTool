@@ -43,6 +43,7 @@
             this.InputBox.Name = "InputBox";
             this.InputBox.Size = new System.Drawing.Size(199, 20);
             this.InputBox.TabIndex = 0;
+            this.InputBox.Text = "SpreadName = 1,2,3,4,5,6";
             // 
             // IVSpread
             // 

@@ -43,7 +43,7 @@ namespace Pk3DSRNGTool
             AbilityLocked.Checked = Data[0xA2] < 3;
             Event_Ability.SelectedIndex = AbilityLocked.Checked ? Data[0xA2] + 1 : Data[0xA2] - 3;
             NatureLocked.Checked = Data[0xA0] != 0xFF;
-            Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] + 1 : 0;
+            Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] : 0;
             GenderLocked.Checked = Data[0xA1] != 3;
             Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
             switch (Data[0xAF])
