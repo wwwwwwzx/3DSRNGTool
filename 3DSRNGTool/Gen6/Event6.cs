@@ -12,10 +12,14 @@ namespace Pk3DSRNGTool
 
         public override RNGResult Generate()
         {
+            Generate_Once();
+            return Generate_Once();
+        }
+
+        private RNGResult Generate_Once()
+        {
             Result6 rt = new Result6();
             rt.Level = Level;
-            
-            Advance(10);
 
             //Encryption Constant
             rt.EC = EC > 0 ? EC : getrand;

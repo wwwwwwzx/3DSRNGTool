@@ -62,6 +62,7 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult Generate6()
         {
             index = Considerdelay ? DelayTime : 0;
+            Advance(1);
             var result = getresult6() as Result6;
             result.RandNum = RandList[0];
             result.Status = RNGStateStr[0];
