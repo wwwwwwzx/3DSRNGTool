@@ -41,6 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.B_LoadFilter = new System.Windows.Forms.Button();
             this.B_SaveFilter = new System.Windows.Forms.Button();
@@ -4700,7 +4701,8 @@
             // dgv_gen7ID
             // 
             this.dgv_gen7ID.DataPropertyName = "G7TID";
-            this.dgv_gen7ID.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Format = "D6";
+            this.dgv_gen7ID.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_gen7ID.HeaderText = "Gen7PID";
             this.dgv_gen7ID.Name = "dgv_gen7ID";
             this.dgv_gen7ID.Width = 60;
@@ -4716,8 +4718,8 @@
             // dgv_TID
             // 
             this.dgv_TID.DataPropertyName = "TID";
-            dataGridViewCellStyle10.Format = "D5";
-            this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Format = "D5";
+            this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_TID.HeaderText = "TID";
             this.dgv_TID.Name = "dgv_TID";
             this.dgv_TID.Width = 50;
@@ -4725,7 +4727,7 @@
             // dgv_SID
             // 
             this.dgv_SID.DataPropertyName = "SID";
-            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_SID.HeaderText = "SID";
             this.dgv_SID.Name = "dgv_SID";
             this.dgv_SID.Width = 50;

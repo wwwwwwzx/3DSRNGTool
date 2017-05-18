@@ -936,6 +936,7 @@ namespace Pk3DSRNGTool
                 dgv_ID_state.Visible = MT.Checked && Gen6;
 
                 DGV_ID.DataSource = IDFrames;
+                DGV_ID.Refresh();
                 DGV_ID.Focus();
                 DGV_ID.CurrentCell = null;
                 return;
@@ -1330,7 +1331,7 @@ namespace Pk3DSRNGTool
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
-            DGV.DataSource = null;
+            DGV_ID.DataSource = null;
             Frame_ID.correction = (byte)Clk_Correction.Value;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
