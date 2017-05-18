@@ -4418,7 +4418,7 @@
             this.dgv_adv.HeaderText = "消耗";
             this.dgv_adv.Name = "dgv_adv";
             this.dgv_adv.Visible = false;
-            this.dgv_adv.Width = 40;
+            this.dgv_adv.Width = 50;
             // 
             // dgv_H
             // 

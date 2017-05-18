@@ -585,7 +585,7 @@ namespace Pk3DSRNGTool
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
             {
                 DGVToolTip.ToolTipTitle = "Frame Advance";
-                DGVToolTip.Show(EggPanel.Visible ? "By receiving this egg." : "By recieving this Pokemon."
+                DGVToolTip.Show(EggPanel.Visible ? RB_EggShortest.Checked ?  "To reach target frame, please precisely folllow the listed procedure" : "By receiving this egg." : "By recieving this Pokemon."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
