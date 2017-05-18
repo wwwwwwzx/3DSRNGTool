@@ -582,6 +582,16 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
+            if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
+            {
+                DGVToolTip.ToolTipTitle = "Frame Advance";
+                DGVToolTip.Show(EggPanel.Visible ? "By receiving this egg." : "By recieving this Pokemon."
+                    , this,
+                    DGV.Location.X + cellRect.X + cellRect.Size.Width,
+                    DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
+                    8000);
+                return;
+            }
             DGVToolTip.Hide(this);
         }
         #endregion
