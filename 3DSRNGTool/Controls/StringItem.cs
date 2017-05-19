@@ -25,7 +25,7 @@ namespace Pk3DSRNGTool
         public static ComboItem[] HiddenPowerList
             => hpstr.Skip(1).Take(16).Select((str, i) => new ComboItem(str, i)).ToArray();
 
-        private static byte[] genderratiodata = new byte[] { 0xFF, 0x7F, 0x1F, 0x3F, 0xBF, 0x00, 0xFE };
+        private static byte[] genderratiodata = new byte[] { 0xFF, 0x7F, 0x1F, 0x3F, 0xBF, 0xE1, 0x00, 0xFE };
 
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();

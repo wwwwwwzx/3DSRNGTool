@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
                 case 0x3F: // 062
                 case 0x7F: // 126
                 case 0xBF: // 190
+                case 0xE1: // 224
                     return (byte)(genderratio - 1);
                 // fixed
                 case 0x00: return 1;
