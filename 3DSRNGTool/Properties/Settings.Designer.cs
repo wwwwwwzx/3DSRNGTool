@@ -214,5 +214,17 @@ namespace Pk3DSRNGTool.Properties {
                 this["Ivspread"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11989707411478653366")]
+        public ulong Key {
+            get {
+                return ((ulong)(this["Key"]));
+            }
+            set {
+                this["Key"] = value;
+            }
+        }
     }
 }

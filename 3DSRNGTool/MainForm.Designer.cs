@@ -216,7 +216,9 @@
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
             this.MT_SeedKey = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.Key0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.label20 = new System.Windows.Forms.Label();
             this.Key1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.B_Template = new System.Windows.Forms.Button();
             this.NidoType = new System.Windows.Forms.CheckBox();
@@ -398,8 +400,6 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -2742,6 +2742,16 @@
             this.MT_SeedKey.TabStop = false;
             this.MT_SeedKey.Text = "Egg Seed";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label19.Location = new System.Drawing.Point(6, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(28, 14);
+            this.label19.TabIndex = 101;
+            this.label19.Text = "[0]";
+            // 
             // Key0
             // 
             this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2751,6 +2761,17 @@
             this.Key0.Size = new System.Drawing.Size(78, 22);
             this.Key0.TabIndex = 94;
             this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key0.ValueChanged += new System.EventHandler(this.Key_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label20.Location = new System.Drawing.Point(6, 36);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 14);
+            this.label20.TabIndex = 100;
+            this.label20.Text = "[1]";
             // 
             // Key1
             // 
@@ -2761,6 +2782,7 @@
             this.Key1.Size = new System.Drawing.Size(78, 22);
             this.Key1.TabIndex = 95;
             this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key1.ValueChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // B_Template
             // 
@@ -4821,26 +4843,6 @@
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label19.Location = new System.Drawing.Point(6, 65);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(28, 14);
-            this.label19.TabIndex = 101;
-            this.label19.Text = "[0]";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label20.Location = new System.Drawing.Point(6, 36);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 14);
-            this.label20.TabIndex = 100;
-            this.label20.Text = "[1]";
             // 
             // MainForm
             // 

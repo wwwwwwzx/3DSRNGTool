@@ -50,5 +50,8 @@
     <Setting Name="Ivspread" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Key" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">11989707411478653366</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

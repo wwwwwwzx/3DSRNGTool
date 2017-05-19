@@ -62,6 +62,9 @@ namespace Pk3DSRNGTool
             var LastPkm = Properties.Settings.Default.Poke;
             var LastCategory = Properties.Settings.Default.Category;
             var LastMethod = Properties.Settings.Default.Method;
+            var Eggseed = Properties.Settings.Default.Key;
+            Key0.Value = (uint)Eggseed;
+            Key1.Value = Eggseed >> 32;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             IP.Text = Properties.Settings.Default.IP;
@@ -207,6 +210,11 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.ST1 = (uint)St1.Value;
             Properties.Settings.Default.ST2 = (uint)St2.Value;
             Properties.Settings.Default.ST3 = (uint)St3.Value;
+        }
+
+        private void Key_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Key = (ulong)Key0.Value | ((ulong)Key1.Value << 32);
         }
 
         private void TSV_ValueChanged(object sender, EventArgs e)
@@ -725,13 +733,15 @@ namespace Pk3DSRNGTool
             }
             if (Gen6)
             {
+                switch (Method)
+                {
+                    case 1: buffersize = 80; break;
+                    case 3: buffersize = 3; break;
+                }
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
-                if (Method == 3)
-                    buffersize = 20;
-                if (Method < 4)
-                    Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
+                Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
         }
@@ -1109,6 +1119,7 @@ namespace Pk3DSRNGTool
             uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
             var eggnow = RNGPool.GenerateAnEgg6(key);
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
+            eggnow.Status = "Current";
             Frames.Add(new Frame(eggnow, frame: -1));
 
             // Start
