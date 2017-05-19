@@ -969,6 +969,7 @@ namespace Pk3DSRNGTool
             dgv_shift.Visible = dgv_time.Visible = Gen6 || Method < 3 || MainRNGEgg.Checked;
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
+            dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             DGV.DataSource = Frames;

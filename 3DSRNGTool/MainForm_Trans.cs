@@ -44,11 +44,15 @@ namespace Pk3DSRNGTool
             new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
             new string[] { "HP", "攻击", "防御", "特攻", "特防", "速度" },
         };
-
         private static readonly string[][] IVJUDGE_STR =
         {
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
+        };
+        private static readonly string[][] RAND64_STR =
+         {
+            new string[] { "Random Number", "Egg Seed" },
+            new string[] { "随机数", "蛋随机数种子" },
         };
 
         private string curlanguage;
