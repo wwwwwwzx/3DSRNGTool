@@ -718,6 +718,8 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * 100;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
+                if (Method == 3 && !MainRNGEgg.Checked)
+                    buffersize = 100;
                 if (Method < 3 || MainRNGEgg.Checked)
                     Frame.standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
             }
@@ -726,6 +728,8 @@ namespace Pk3DSRNGTool
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
+                if (Method == 3)
+                    buffersize = 20;
                 if (Method < 4)
                     Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
