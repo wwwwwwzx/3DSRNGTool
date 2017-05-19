@@ -19,6 +19,7 @@ namespace Pk3DSRNGTool
         // DataSource Display Block
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
         public static string[] Parents = { "-", "Male", "Female" };
+        public static string SpecialSlotStr;
 
         public static bool showstats;
         public static int standard;
@@ -57,7 +58,7 @@ namespace Pk3DSRNGTool
         public string GenderStr => StringItem.genderstr[rt.Gender];
         public string AbilityStr => StringItem.abilitystr[rt.Ability];
         public int Delay => (rt as Result7)?.FrameDelayUsed ?? 0;
-        public string Slot => (rt as WildResult)?.IsSpecial ?? false ? StringItem.gen7wildtypestr[1] : (rt as WildResult)?.Slot.ToString(); //todo
+        public string Slot => (rt as WildResult)?.IsSpecial ?? false ? SpecialSlotStr : (rt as WildResult)?.Slot.ToString();
         public byte Level => rt.Level;
         public string Ball => Parents[(rt as EggResult)?.Ball ?? (rt as MainRNGEgg)?.Ball ?? 0];
         public string Item => (rt as WildResult)?.ItemStr ?? "";

@@ -723,7 +723,10 @@ namespace Pk3DSRNGTool
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
 
                 if (Method == 2)
+                {
+                    Frame.SpecialSlotStr = StringItem.gen7wildtypestr[CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 100;
+                }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
                 if (Method == 3 && !MainRNGEgg.Checked)
