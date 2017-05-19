@@ -42,7 +42,7 @@ namespace Pk3DSRNGTool
             // Chooses which parent if necessary
             if (Both_Power)
             {
-                if ((getrand & 1) == 0)
+                if ((getrand >> 31) == 0)
                     egg.InheritMaleIV[M_Power] = true;
                 else
                     egg.InheritMaleIV[F_Power] = false;
@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
                 }
                 while (egg.InheritMaleIV.Count(iv => iv != null) <= i);
 
-                egg.InheritMaleIV[tmp] = (getrand & 1) == 0;
+                egg.InheritMaleIV[tmp] = (getrand >> 31) == 0;
             }
 
             // IVs
