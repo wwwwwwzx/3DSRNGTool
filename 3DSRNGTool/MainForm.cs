@@ -425,7 +425,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
-            B_Search.Enabled = Gen7 || Method < 2 || 3 < Method || Ver > 1;
+            B_Search.Enabled = Gen7 || Method != 2;
 
             if (Method > 4)
                 return;
@@ -962,6 +962,7 @@ namespace Pk3DSRNGTool
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            dgv_rand.Visible &= Advanced.Checked;
             dgv_status.Visible = Gen6 && Method < 4 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && Method == 3;
@@ -972,6 +973,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+            dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
             DGV.Focus();
