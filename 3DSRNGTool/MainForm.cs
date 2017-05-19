@@ -416,7 +416,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !MainRNGEgg.Checked;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
-            B_Search.Enabled = Gen7 || Method < 2 || 3 < Method || Method == 2 && Ver > 1;
+            B_Search.Enabled = Gen7 || Method < 2 || 3 < Method || Ver > 1;
 
             if (Method > 4)
                 return;
@@ -449,6 +449,7 @@ namespace Pk3DSRNGTool
 
             SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
 
+            MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
@@ -901,7 +902,7 @@ namespace Pk3DSRNGTool
 
         private EggRNG getEggRNG()
         {
-            var setting = Gen6 ? null : new Egg7();
+            var setting = Gen6 ? new Egg6() : (EggRNG)new Egg7();
             setting.FemaleIVs = IV_Female;
             setting.MaleIVs = IV_Male;
             setting.MaleItem = (byte)M_Items.SelectedIndex;
@@ -944,12 +945,13 @@ namespace Pk3DSRNGTool
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
-            dgv_status.Visible = Gen6 && Method < 2 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            dgv_status.Visible = Gen6 && Method < 4 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && Method == 3;
-            dgv_adv.Visible = Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
+            dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
+            dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
             DGV.DataSource = Frames;
@@ -1045,6 +1047,11 @@ namespace Pk3DSRNGTool
                 Search6_ID();
                 return;
             }
+            if (Method == 3)
+            {
+                Search6_Egg();
+                return;
+            }
             Search6_Normal();
         }
 
@@ -1061,9 +1068,8 @@ namespace Pk3DSRNGTool
         private void Search6_Normal()
         {
             var rng = new MersenneTwister((uint)Seed.Value);
-            int max, min;
-            min = (int)Frame_min.Value;
-            max = (int)Frame_max.Value;
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
             {
                 min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
@@ -1082,6 +1088,36 @@ namespace Pk3DSRNGTool
                 Frames.Add(new Frame(result, frame: i, time: i - min));
                 if (Frames.Count > 100000)
                     break;
+            }
+        }
+
+        private void Search6_Egg()
+        {
+            var rng = new MersenneTwister((uint)Seed.Value);
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+
+            // Advance
+            for (int i = 0; i < min; i++)
+                rng.Next();
+
+            // Prepare
+            getsetting(rng);
+
+            // The egg already have
+            uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
+            Frames.Add(new Frame(RNGPool.GenerateAnEgg6(key), frame: -1));
+
+            return; //To-do
+            // Start
+            for (int i = min; i <= max; i++, RNGPool.Next(rng))
+            {
+                var result = RNGPool.GenerateEgg6() as EggResult;
+                if (!filter.CheckResult(result))
+                    continue;
+                Frames.Add(new Frame(result, frame: i));
+                if (Frames.Count > 100000)
+                    return;
             }
         }
 
@@ -1235,9 +1271,8 @@ namespace Pk3DSRNGTool
         private void Search7_Egg()
         {
             var rng = new TinyMT(Status);
-            int max, min;
-            min = (int)Frame_min.Value;
-            max = (int)Frame_max.Value;
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
             // Advance
             for (int i = 0; i < min; i++)
                 rng.Next();
@@ -1258,9 +1293,8 @@ namespace Pk3DSRNGTool
         private void Search7_EggList()
         {
             var rng = new TinyMT(Status);
-            int max, min;
-            min = (int)Egg_min.Value - 1;
-            max = (int)Egg_max.Value - 1;
+            int min = (int)Egg_min.Value - 1;
+            int max = (int)Egg_max.Value - 1;
             int target = (int)TargetFrame.Value;
             bool gotresult = false;
             // Advance

@@ -1,4 +1,5 @@
 ﻿using Pk3DSRNGTool.RNG;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Pk3DSRNGTool.Core
@@ -66,6 +67,22 @@ namespace Pk3DSRNGTool.Core
             var result = getresult6() as Result6;
             result.RandNum = RandList[0];
             result.Status = RNGStateStr[0];
+            return result;
+        }
+
+        public static RNGResult GenerateEgg6()
+        {
+            // to-do
+            var result = GenerateAnEgg6(new uint[2]);
+            result.RandNum = RandList[0];
+            return result;
+        }
+
+        public static EggResult GenerateAnEgg6(uint[] key)
+        {
+            Egg6.ReSeed(key);
+            var result = (igenerator as Egg6).Generate() as EggResult;
+            result.EggSeed = key[0] | ((ulong)key[1] << 32);
             return result;
         }
 

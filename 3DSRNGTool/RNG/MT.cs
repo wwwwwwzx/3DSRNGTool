@@ -114,6 +114,11 @@ namespace Pk3DSRNGTool.RNG
             init(seed);
         }
 
+        public MersenneTwister(uint[] Key)
+        {
+            init_by_array(Key, Key.Length);
+        }
+
         // copy constructor
         public MersenneTwister(MersenneTwister old)
         {
@@ -126,6 +131,11 @@ namespace Pk3DSRNGTool.RNG
         public void Reseed(uint seed)
         {
             init(seed);
+        }
+
+        public void Reseed(uint[] Key)
+        {
+            init_by_array(Key, Key.Length);
         }
 
         /// <summary>
@@ -144,7 +154,7 @@ namespace Pk3DSRNGTool.RNG
         {
             Generateuint();
         }
-        
+
         public string CurrentState() => _mt[_mti].ToString("X8");
 
         #endregion
@@ -157,6 +167,7 @@ namespace Pk3DSRNGTool.RNG
         /// </returns>
         protected uint Generateuint()
         {
+            // Run-time shuffle, modified by wwwwwwzx
             short kk = (short)(_mti < N - 1 ? _mti + 1 : 0);
             short jj = (short)(_mti < N - M ? _mti + M : _mti + M - N);
             uint y = (_mt[_mti] & UpperMask) | (_mt[kk] & LowerMask);
@@ -193,28 +204,6 @@ namespace Pk3DSRNGTool.RNG
             return (y >> 18);
         }
 
-        public static uint Next624(uint[] MTarray)
-        {
-            uint y = (MTarray[0] & 0x80000000) | (MTarray[1] & 0x7FFFFFFF);
-            MTarray[0] = MTarray[397] ^ (y >> 1);
-            if ((y & 1) == 1)
-            {
-                MTarray[0] = MTarray[0] ^ 0x9908b0df;
-            }
-            return MTarray[0];
-        }
-
-        public static uint[] generateArray(uint seed)
-        {
-            var MTarray = new uint[624];
-            MTarray[0] = seed;
-            for (int i = 1; i <= 623; i++)
-            {
-                MTarray[i] = (uint)(0x6c078965 * (MTarray[i - 1] ^ (MTarray[i - 1] >> 30)) + i) & 0xFFFFFFFF;
-            }
-            return MTarray;
-        }
-
         private void init(uint seed)
         {
             _mt[0] = seed & 0xffffffffU;
@@ -232,6 +221,32 @@ namespace Pk3DSRNGTool.RNG
             }
 
             _mti = 0;
+        }
+
+        private readonly static uint[] InitialTable = new MersenneTwister(0x12BD6AA)._mt;
+
+        private void init_by_array(uint[] init_key, int key_length)
+        {
+            short i, j;
+            // Reduce Run-time Calculation, modified by wwwwwwzx
+            InitialTable.CopyTo(_mt, 0);
+            i = 1; j = 0;
+            _mti = (short)(N > key_length ? N : key_length);
+            for (; _mti > 0; _mti--)
+            {
+                _mt[i] = (uint)((_mt[i] ^ ((_mt[i - 1] ^ (_mt[i - 1] >> 30)) * 0x19660D)) + init_key[j] + j);
+                i++; j++;
+                if (i >= N) { _mt[0] = _mt[N - 1]; i = 1; }
+                if (j >= key_length) j = 0;
+            }
+            for (_mti = N - 1; _mti > 0; _mti--)
+            {
+                _mt[i] = (uint)((_mt[i] ^ ((_mt[i - 1] ^ (_mt[i - 1] >> 30)) * 0x5D588B65)) - i);
+                i++;
+                if (i >= N) { _mt[0] = _mt[N - 1]; i = 1; }
+            }
+
+            _mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */
         }
     }
 

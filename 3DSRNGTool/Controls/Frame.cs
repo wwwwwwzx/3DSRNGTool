@@ -62,7 +62,7 @@ namespace Pk3DSRNGTool
         public string Ball => Parents[(rt as EggResult)?.Ball ?? (rt as MainRNGEgg)?.Ball ?? 0];
         public string Item => (rt as WildResult)?.ItemStr ?? "";
         public uint Rand => (rt as Result6)?.RandNum ?? (rt as EggResult)?.RandNum ?? 0;
-        public ulong Rand64 => (rt as Result7)?.RandNum ?? 0;
+        public ulong Rand64 => (rt as Result7)?.RandNum ?? (rt as EggResult)?.EggSeed ?? 0;
         public uint PID => rt.PID;
         public uint EC => rt.EC;
         public string Status => (rt as EggResult)?.Status ?? (rt as Result6)?.Status ?? "";

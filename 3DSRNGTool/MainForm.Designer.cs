@@ -215,6 +215,9 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
+            this.MT_SeedKey = new System.Windows.Forms.GroupBox();
+            this.Key0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Key1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.B_Template = new System.Windows.Forms.Button();
             this.NidoType = new System.Windows.Forms.CheckBox();
             this.ConsiderOtherTSV = new System.Windows.Forms.CheckBox();
@@ -395,6 +398,8 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -460,6 +465,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).BeginInit();
             this.TP_EggRNG.SuspendLayout();
             this.Parents_Info.SuspendLayout();
+            this.MT_SeedKey.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Key0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Key1)).BeginInit();
             this.TinyMT_Status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.St3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.St2)).BeginInit();
@@ -2676,6 +2684,7 @@
             // 
             // Parents_Info
             // 
+            this.Parents_Info.Controls.Add(this.MT_SeedKey);
             this.Parents_Info.Controls.Add(this.B_Template);
             this.Parents_Info.Controls.Add(this.NidoType);
             this.Parents_Info.Controls.Add(this.ConsiderOtherTSV);
@@ -2719,6 +2728,39 @@
             this.Parents_Info.TabIndex = 7;
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
+            // 
+            // MT_SeedKey
+            // 
+            this.MT_SeedKey.Controls.Add(this.label19);
+            this.MT_SeedKey.Controls.Add(this.Key0);
+            this.MT_SeedKey.Controls.Add(this.label20);
+            this.MT_SeedKey.Controls.Add(this.Key1);
+            this.MT_SeedKey.Location = new System.Drawing.Point(271, 2);
+            this.MT_SeedKey.Name = "MT_SeedKey";
+            this.MT_SeedKey.Size = new System.Drawing.Size(128, 103);
+            this.MT_SeedKey.TabIndex = 102;
+            this.MT_SeedKey.TabStop = false;
+            this.MT_SeedKey.Text = "Egg Seed";
+            // 
+            // Key0
+            // 
+            this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Key0.Hexadecimal = true;
+            this.Key0.Location = new System.Drawing.Point(40, 63);
+            this.Key0.Name = "Key0";
+            this.Key0.Size = new System.Drawing.Size(78, 22);
+            this.Key0.TabIndex = 94;
+            this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Key1
+            // 
+            this.Key1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Key1.Hexadecimal = true;
+            this.Key1.Location = new System.Drawing.Point(40, 33);
+            this.Key1.Name = "Key1";
+            this.Key1.Size = new System.Drawing.Size(78, 22);
+            this.Key1.TabIndex = 95;
+            this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // B_Template
             // 
@@ -4780,6 +4822,26 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label19.Location = new System.Drawing.Point(6, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(28, 14);
+            this.label19.TabIndex = 101;
+            this.label19.Text = "[0]";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label20.Location = new System.Drawing.Point(6, 36);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 14);
+            this.label20.TabIndex = 100;
+            this.label20.Text = "[1]";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4879,6 +4941,10 @@
             this.TP_EggRNG.ResumeLayout(false);
             this.Parents_Info.ResumeLayout(false);
             this.Parents_Info.PerformLayout();
+            this.MT_SeedKey.ResumeLayout(false);
+            this.MT_SeedKey.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Key0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Key1)).EndInit();
             this.TinyMT_Status.ResumeLayout(false);
             this.TinyMT_Status.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.St3)).EndInit();
@@ -5283,6 +5349,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
+        private System.Windows.Forms.GroupBox MT_SeedKey;
+        private Controls.HexNumericUpdown Key0;
+        private Controls.HexNumericUpdown Key1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }
 
