@@ -401,20 +401,21 @@ namespace Pk3DSRNGTool
             if (Method < 4)
                 RNGMethod.TabPages[Method].Controls.Add(this.Filters);
             MainRNGEgg.Checked &= Method == 3;
+            bool mainrngegg = Method == 3 && (MainRNGEgg.Checked || Gen6);
             RB_FrameRange.Checked = true;
 
             DGV.Visible = Method < 4;
             DGV_ID.Visible = Method == 4;
 
             // Contorls in RNGInfo
-            AroundTarget.Visible = Method < 3 || MainRNGEgg.Checked;
-            timedelaypanel.Visible = Method < 3 || MainRNGEgg.Checked || Method == 5;
+            AroundTarget.Visible = Method < 3 || mainrngegg;
+            timedelaypanel.Visible = Method < 3 || mainrngegg || Method == 5;
             L_Correction.Visible = Correction.Visible = Gen7 && Method == 2; // Honey
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
             L_NPC.Visible = NPC.Visible = Gen7 || Method == 5; // not show in gen6
             RB_EggShortest.Visible =
-            EggPanel.Visible = EggNumber.Visible = Method == 3 && !MainRNGEgg.Checked;
+            EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             B_Search.Enabled = Gen7 || Method < 2 || 3 < Method || Ver > 1;
 
@@ -447,7 +448,8 @@ namespace Pk3DSRNGTool
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
             BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
 
-            SetAsCurrent.Visible = SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
+            SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
 
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
@@ -458,8 +460,6 @@ namespace Pk3DSRNGTool
             GB_RNGGEN7ID.Visible =
             BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
-
-            RB_EggShortest.Visible &= Gen7;
 
             MM_CheckedChanged(null, null);
 
@@ -586,7 +586,7 @@ namespace Pk3DSRNGTool
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
             {
                 DGVToolTip.ToolTipTitle = "Frame Advance";
-                DGVToolTip.Show(EggPanel.Visible ? RB_EggShortest.Checked ?  "To reach target frame, please precisely folllow the listed procedure" : "By receiving this egg." : "By recieving this Pokemon."
+                DGVToolTip.Show(EggPanel.Visible ? RB_EggShortest.Checked ? "To reach target frame, please precisely folllow the listed procedure" : "By receiving this egg." : "By recieving this Pokemon."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -726,7 +726,7 @@ namespace Pk3DSRNGTool
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
-                if (Method < 3)
+                if (Method < 4)
                     Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
@@ -949,7 +949,7 @@ namespace Pk3DSRNGTool
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
-            dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Method < 3 || MainRNGEgg.Checked);
+            dgv_shift.Visible = dgv_time.Visible = Gen6 || Method < 3 || MainRNGEgg.Checked;
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
@@ -1042,17 +1042,12 @@ namespace Pk3DSRNGTool
         #region Gen6 Search
         private void Search6()
         {
-            if (Method == 4)
+            switch (Method)
             {
-                Search6_ID();
-                return;
+                case 3: Search6_Egg(); return;
+                case 4: Search6_ID(); return;
+                default: Search6_Normal(); return;
             }
-            if (Method == 3)
-            {
-                Search6_Egg();
-                return;
-            }
-            Search6_Normal();
         }
 
         private IRNG getRNGSource()
@@ -1096,26 +1091,29 @@ namespace Pk3DSRNGTool
             var rng = new MersenneTwister((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
-
+            if (AroundTarget.Checked)
+            {
+                min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
+            }
             // Advance
             for (int i = 0; i < min; i++)
                 rng.Next();
-
             // Prepare
             getsetting(rng);
 
             // The egg already have
             uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
-            Frames.Add(new Frame(RNGPool.GenerateAnEgg6(key), frame: -1));
+            var eggnow = RNGPool.GenerateAnEgg6(key);
+            eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
+            Frames.Add(new Frame(eggnow, frame: -1));
 
-            return; //To-do
             // Start
             for (int i = min; i <= max; i++, RNGPool.Next(rng))
             {
-                var result = RNGPool.GenerateEgg6() as EggResult;
+                var result = RNGPool.GenerateEgg6();
                 if (!filter.CheckResult(result))
                     continue;
-                Frames.Add(new Frame(result, frame: i));
+                Frames.Add(new Frame(result, frame: i, time: i - min));
                 if (Frames.Count > 100000)
                     return;
             }

@@ -72,9 +72,11 @@ namespace Pk3DSRNGTool.Core
 
         public static RNGResult GenerateEgg6()
         {
-            // to-do
-            var result = GenerateAnEgg6(new uint[2]);
+            index = Considerdelay ? DelayTime : 0;
+            Advance(1);
+            var result = GenerateAnEgg6(new uint[] { getrand, getrand });
             result.RandNum = RandList[0];
+            result.Status = RNGStateStr[0];
             return result;
         }
 

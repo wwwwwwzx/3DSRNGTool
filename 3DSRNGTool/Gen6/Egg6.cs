@@ -7,13 +7,9 @@ namespace Pk3DSRNGTool
     public class Egg6 : EggRNG
     {
         private static MersenneTwister mt = new MersenneTwister(19650218u);
-        public static void ReSeed(uint[] key)
-        {
-            mt.Reseed(key);
-        }
+        public static void ReSeed(uint[] key) => mt.Reseed(key);
         private static uint getrand => mt.Nextuint();
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
-        private static void Advance(int n) => RNGPool.Advance(n);
 
         public override RNGResult Generate()
         {
@@ -36,7 +32,7 @@ namespace Pk3DSRNGTool
                 egg.BE_InheritParents = MaleItem == 1;
 
             // Ability
-            egg.Ability = (byte)getRandomAbility(InheritAbility, rand(20));
+            egg.Ability = (byte)getRandomAbility(InheritAbility, rand(100));
 
             // PowerItem
             // Chooses which parent if necessary

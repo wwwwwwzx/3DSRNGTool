@@ -50,6 +50,8 @@ namespace Pk3DSRNGTool
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
             MainRNGEgg.Visible = !ShinyCharm.Checked && !MM.Checked;
+            if (Gen6 && Method == 3)
+                Timedelay.Value = 16;
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
@@ -133,6 +135,13 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                if (Gen6)
+                {
+                    ulong key = (ulong)DGV.CurrentRow.Cells["dgv_rand64"].Value;
+                    Key1.Value = key >> 32;
+                    Key0.Value = (uint)key;
+                    return;
+                }
                 var seed = (string)DGV.CurrentRow.Cells["dgv_status"].Value;
                 Status = SeedStr2Array(seed) ?? Status;
             }
