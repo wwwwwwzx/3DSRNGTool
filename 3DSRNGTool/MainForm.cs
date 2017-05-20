@@ -1033,14 +1033,14 @@ namespace Pk3DSRNGTool
             var result = Frames[index].rt;
             var row = DGV.Rows[index];
 
+            if (result.Shiny)
+                row.DefaultCellStyle.BackColor = Color.LightCyan;
             if (Gen6 && Method == 3)
             {
                 if (index == 0) row.DefaultCellStyle.BackColor = DefaultBackColor;
                 if (!MM.Checked && !ShinyCharm.Checked)
                     row.Cells["dgv_psv"].Style.BackColor = row.Cells["dgv_pid"].Style.BackColor = DefaultBackColor;
             }
-            if (result.Shiny)
-                row.DefaultCellStyle.BackColor = Color.LightCyan;
 
             Frames[index].Formatted = true;
 

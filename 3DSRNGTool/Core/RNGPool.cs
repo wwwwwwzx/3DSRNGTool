@@ -76,7 +76,13 @@ namespace Pk3DSRNGTool.Core
             Advance(1);
             if (IsMainRNGEgg) Advance(1); // Previous Egg PID
             var result = GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
-            if (IsMainRNGEgg) result.PID = RandList[index - 3];
+            if (IsMainRNGEgg)
+            {
+                result.PID = RandList[index - 3];
+                var egg6 = igenerator as Egg6;
+                int PSV = (int)result.PSV;
+                result.Shiny = egg6.TSV == PSV || egg6.ConsiderOtherTSV && egg6.OtherTSVs.Contains(PSV);
+            }
             result.RandNum = RandList[0];
             result.Status = RNGStateStr[0];
             return result;
