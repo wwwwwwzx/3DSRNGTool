@@ -3684,9 +3684,9 @@
             // 
             this.Magikarp.Controls.Add(this.RTB_EggSeed);
             this.Magikarp.Controls.Add(this.B_EggSeed127);
-            this.Magikarp.Location = new System.Drawing.Point(6, 422);
+            this.Magikarp.Location = new System.Drawing.Point(6, 379);
             this.Magikarp.Name = "Magikarp";
-            this.Magikarp.Size = new System.Drawing.Size(787, 120);
+            this.Magikarp.Size = new System.Drawing.Size(787, 163);
             this.Magikarp.TabIndex = 104;
             this.Magikarp.TabStop = false;
             // 
@@ -3695,13 +3695,13 @@
             this.RTB_EggSeed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTB_EggSeed.Location = new System.Drawing.Point(18, 22);
             this.RTB_EggSeed.Name = "RTB_EggSeed";
-            this.RTB_EggSeed.Size = new System.Drawing.Size(663, 85);
+            this.RTB_EggSeed.Size = new System.Drawing.Size(663, 124);
             this.RTB_EggSeed.TabIndex = 103;
             this.RTB_EggSeed.Text = "";
             // 
             // B_EggSeed127
             // 
-            this.B_EggSeed127.Location = new System.Drawing.Point(707, 77);
+            this.B_EggSeed127.Location = new System.Drawing.Point(697, 119);
             this.B_EggSeed127.Name = "B_EggSeed127";
             this.B_EggSeed127.Size = new System.Drawing.Size(72, 27);
             this.B_EggSeed127.TabIndex = 29;
@@ -3741,7 +3741,7 @@
             this.TimeResult.FormattingEnabled = true;
             this.TimeResult.Location = new System.Drawing.Point(799, 301);
             this.TimeResult.Name = "TimeResult";
-            this.TimeResult.Size = new System.Drawing.Size(285, 108);
+            this.TimeResult.Size = new System.Drawing.Size(285, 69);
             this.TimeResult.TabIndex = 54;
             // 
             // BySaveScreen
@@ -4072,14 +4072,14 @@
             this.QRBox.Controls.Add(this.QRList);
             this.QRBox.Location = new System.Drawing.Point(383, 173);
             this.QRBox.Name = "QRBox";
-            this.QRBox.Size = new System.Drawing.Size(410, 243);
+            this.QRBox.Size = new System.Drawing.Size(410, 200);
             this.QRBox.TabIndex = 32;
             this.QRBox.TabStop = false;
             // 
             // QRResult
             // 
             this.QRResult.FormattingEnabled = true;
-            this.QRResult.Location = new System.Drawing.Point(92, 128);
+            this.QRResult.Location = new System.Drawing.Point(92, 91);
             this.QRResult.Name = "QRResult";
             this.QRResult.Size = new System.Drawing.Size(300, 95);
             this.QRResult.TabIndex = 28;
@@ -4087,7 +4087,7 @@
             // L_QRList
             // 
             this.L_QRList.AutoSize = true;
-            this.L_QRList.Location = new System.Drawing.Point(16, 44);
+            this.L_QRList.Location = new System.Drawing.Point(16, 28);
             this.L_QRList.Name = "L_QRList";
             this.L_QRList.Size = new System.Drawing.Size(55, 13);
             this.L_QRList.TabIndex = 27;
@@ -4095,7 +4095,7 @@
             // 
             // QRSearch
             // 
-            this.QRSearch.Location = new System.Drawing.Point(320, 81);
+            this.QRSearch.Location = new System.Drawing.Point(320, 57);
             this.QRSearch.Name = "QRSearch";
             this.QRSearch.Size = new System.Drawing.Size(72, 27);
             this.QRSearch.TabIndex = 26;
@@ -4106,7 +4106,7 @@
             // L_QRresult
             // 
             this.L_QRresult.AutoSize = true;
-            this.L_QRresult.Location = new System.Drawing.Point(16, 128);
+            this.L_QRresult.Location = new System.Drawing.Point(16, 91);
             this.L_QRresult.Name = "L_QRresult";
             this.L_QRresult.Size = new System.Drawing.Size(55, 13);
             this.L_QRresult.TabIndex = 23;
@@ -4115,7 +4115,7 @@
             // QRList
             // 
             this.QRList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QRList.Location = new System.Drawing.Point(92, 39);
+            this.QRList.Location = new System.Drawing.Point(92, 23);
             this.QRList.Name = "QRList";
             this.QRList.Size = new System.Drawing.Size(300, 22);
             this.QRList.TabIndex = 24;
@@ -4131,7 +4131,7 @@
             this.SearchSeedBox.Controls.Add(this.Clock_List);
             this.SearchSeedBox.Location = new System.Drawing.Point(6, 173);
             this.SearchSeedBox.Name = "SearchSeedBox";
-            this.SearchSeedBox.Size = new System.Drawing.Size(371, 243);
+            this.SearchSeedBox.Size = new System.Drawing.Size(371, 200);
             this.SearchSeedBox.TabIndex = 31;
             this.SearchSeedBox.TabStop = false;
             // 
