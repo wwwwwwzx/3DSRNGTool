@@ -1052,9 +1052,12 @@ namespace Pk3DSRNGTool
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
             if (Gen6 && Method == 3)
             {
-                if (index == 0) row.DefaultCellStyle.BackColor = DefaultBackColor;
                 if (!MM.Checked && !ShinyCharm.Checked)
-                    row.Cells["dgv_psv"].Style.BackColor = row.Cells["dgv_pid"].Style.BackColor = DefaultBackColor;
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.Cells["dgv_psv"].Style.BackColor = row.Cells["dgv_pid"].Style.BackColor = result.Shiny ? Color.LightCyan : DefaultBackColor;
+                }
+                if (index == 0) row.DefaultCellStyle.BackColor = DefaultBackColor;
             }
 
             Frames[index].Formatted = true;

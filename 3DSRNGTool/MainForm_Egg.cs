@@ -49,9 +49,13 @@ namespace Pk3DSRNGTool
 
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
-            MainRNGEgg.Visible = Gen7 && !ShinyCharm.Checked && !MM.Checked;
+            bool mainrng = !ShinyCharm.Checked && !MM.Checked;
+            MainRNGEgg.Visible = Gen7 && mainrng;
             if (Gen6 && Method == 3)
+            {
+                if (mainrng && sender != CB_Accept) CB_Accept.Checked = true;
                 Timedelay.Value = CB_Accept.Checked ? 16 : 0;
+            }
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
