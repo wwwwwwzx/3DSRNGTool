@@ -459,6 +459,7 @@ namespace Pk3DSRNGTool
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
 
+            CB_Accept.Visible =
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
@@ -591,6 +592,16 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
+            if (Gen6 && RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
+            {
+                DGVToolTip.ToolTipTitle = "Tips";
+                DGVToolTip.Show("This column shows the main rng PID/PSV of the current egg (w/o mm or sc)\r\nNot the spread of egg seed in the same row."
+                    , this,
+                    DGV.Location.X + cellRect.X + cellRect.Size.Width,
+                    DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
+                    8000);
+                return;
+            }
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
             {
                 DGVToolTip.ToolTipTitle = "Frame Advance";
@@ -700,7 +711,7 @@ namespace Pk3DSRNGTool
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
-            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked;
+            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && CB_Accept.Checked;
 
             if (MainRNGEgg.Checked) // Get first egg
             {
@@ -739,7 +750,7 @@ namespace Pk3DSRNGTool
                 switch (Method)
                 {
                     case 1: buffersize = 80; break;
-                    case 3: buffersize = 3; break;
+                    case 3: buffersize = 4; break;
                 }
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
@@ -972,7 +983,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = !MainRNGEgg.Visible || MainRNGEgg.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || CB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
@@ -1022,6 +1033,12 @@ namespace Pk3DSRNGTool
             var result = Frames[index].rt;
             var row = DGV.Rows[index];
 
+            if (Gen6 && Method == 3)
+            {
+                if (index == 0) row.DefaultCellStyle.BackColor = DefaultBackColor;
+                if (!MM.Checked && !ShinyCharm.Checked)
+                    row.Cells["dgv_psv"].Style.BackColor = row.Cells["dgv_pid"].Style.BackColor = DefaultBackColor;
+            }
             if (result.Shiny)
                 row.DefaultCellStyle.BackColor = Color.LightCyan;
 
@@ -1125,6 +1142,7 @@ namespace Pk3DSRNGTool
             uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
             var eggnow = RNGPool.GenerateAnEgg6(key);
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
+            eggnow.PID = 0xFFFFFFFF;
             eggnow.Status = "Current";
             Frames.Add(new Frame(eggnow, frame: -1));
 

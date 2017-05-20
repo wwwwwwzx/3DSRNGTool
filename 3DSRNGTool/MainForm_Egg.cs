@@ -49,9 +49,9 @@ namespace Pk3DSRNGTool
 
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
-            MainRNGEgg.Visible = !ShinyCharm.Checked && !MM.Checked;
+            MainRNGEgg.Visible = Gen7 && !ShinyCharm.Checked && !MM.Checked;
             if (Gen6 && Method == 3)
-                Timedelay.Value = 16;
+                Timedelay.Value = CB_Accept.Checked ? 16 : 0;
             if (MainRNGEgg.Checked)
             {
                 NPC.Value = 4;
@@ -78,7 +78,7 @@ namespace Pk3DSRNGTool
                     if (File.Exists(file))
                     {
                         string[] list = File.ReadAllLines(file);
-                        
+
                         uint.TryParse(list[3], System.Globalization.NumberStyles.HexNumber, null, out uint s0);
                         uint.TryParse(list[2], System.Globalization.NumberStyles.HexNumber, null, out uint s1);
                         uint.TryParse(list[1], System.Globalization.NumberStyles.HexNumber, null, out uint s2);

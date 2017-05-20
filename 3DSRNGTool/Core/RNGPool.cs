@@ -74,7 +74,9 @@ namespace Pk3DSRNGTool.Core
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            var result = GenerateAnEgg6(new uint[] { getrand, getrand });
+            if (IsMainRNGEgg) Advance(1); // Previous Egg PID
+            var result = GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
+            if (IsMainRNGEgg) result.PID = RandList[index - 3];
             result.RandNum = RandList[0];
             result.Status = RNGStateStr[0];
             return result;

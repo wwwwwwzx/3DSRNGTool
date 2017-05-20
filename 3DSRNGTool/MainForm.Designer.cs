@@ -215,6 +215,7 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
+            this.CB_Accept = new System.Windows.Forms.CheckBox();
             this.MT_SeedKey = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.Key0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
@@ -1407,7 +1408,7 @@
             this.RNGMethod.Location = new System.Drawing.Point(12, 32);
             this.RNGMethod.Name = "RNGMethod";
             this.RNGMethod.SelectedIndex = 0;
-            this.RNGMethod.Size = new System.Drawing.Size(1097, 687);
+            this.RNGMethod.Size = new System.Drawing.Size(1097, 570);
             this.RNGMethod.TabIndex = 5;
             this.RNGMethod.SelectedIndexChanged += new System.EventHandler(this.RNGMethod_Changed);
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
@@ -1421,7 +1422,7 @@
             this.TP_StationaryRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_StationaryRNG.Name = "TP_StationaryRNG";
             this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_StationaryRNG.Size = new System.Drawing.Size(1089, 661);
+            this.TP_StationaryRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_StationaryRNG.TabIndex = 0;
             this.TP_StationaryRNG.Text = "定点乱数";
             this.TP_StationaryRNG.UseVisualStyleBackColor = true;
@@ -1992,7 +1993,7 @@
             this.TP_EventRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EventRNG.Name = "TP_EventRNG";
             this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EventRNG.Size = new System.Drawing.Size(1089, 661);
+            this.TP_EventRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
             this.TP_EventRNG.UseVisualStyleBackColor = true;
@@ -2506,7 +2507,7 @@
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_WildRNG.Name = "TP_WildRNG";
             this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_WildRNG.Size = new System.Drawing.Size(1089, 661);
+            this.TP_WildRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
             this.TP_WildRNG.UseVisualStyleBackColor = true;
@@ -2677,13 +2678,14 @@
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EggRNG.Size = new System.Drawing.Size(1089, 661);
+            this.TP_EggRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
             this.TP_EggRNG.UseVisualStyleBackColor = true;
             // 
             // Parents_Info
             // 
+            this.Parents_Info.Controls.Add(this.CB_Accept);
             this.Parents_Info.Controls.Add(this.MT_SeedKey);
             this.Parents_Info.Controls.Add(this.B_Template);
             this.Parents_Info.Controls.Add(this.NidoType);
@@ -2729,6 +2731,19 @@
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
             // 
+            // CB_Accept
+            // 
+            this.CB_Accept.AutoSize = true;
+            this.CB_Accept.Location = new System.Drawing.Point(281, 246);
+            this.CB_Accept.Name = "CB_Accept";
+            this.CB_Accept.Size = new System.Drawing.Size(50, 17);
+            this.CB_Accept.TabIndex = 107;
+            this.CB_Accept.Text = "接受";
+            this.CB_Accept.UseVisualStyleBackColor = true;
+            this.CB_Accept.Visible = false;
+            this.CB_Accept.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
+            this.CB_Accept.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
+            // 
             // MT_SeedKey
             // 
             this.MT_SeedKey.Controls.Add(this.label19);
@@ -2737,7 +2752,7 @@
             this.MT_SeedKey.Controls.Add(this.Key1);
             this.MT_SeedKey.Location = new System.Drawing.Point(271, 2);
             this.MT_SeedKey.Name = "MT_SeedKey";
-            this.MT_SeedKey.Size = new System.Drawing.Size(128, 103);
+            this.MT_SeedKey.Size = new System.Drawing.Size(128, 126);
             this.MT_SeedKey.TabIndex = 102;
             this.MT_SeedKey.TabStop = false;
             this.MT_SeedKey.Text = "Egg Seed";
@@ -3416,7 +3431,7 @@
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_IDRNG.Size = new System.Drawing.Size(1089, 661);
+            this.TP_IDRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
@@ -3634,7 +3649,7 @@
             this.TP_Gen7ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
             this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1089, 661);
+            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1089, 544);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
             this.TP_Gen7ToolKit.UseVisualStyleBackColor = true;
@@ -4169,7 +4184,7 @@
             this.TP_Gen6ToolKit.Controls.Add(this.GB_NTR);
             this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen6ToolKit.Name = "TP_Gen6ToolKit";
-            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1089, 661);
+            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1089, 544);
             this.TP_Gen6ToolKit.TabIndex = 6;
             this.TP_Gen6ToolKit.Text = "Gen6 Tool Kit";
             this.TP_Gen6ToolKit.UseVisualStyleBackColor = true;
@@ -4436,7 +4451,7 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1095, 380);
+            this.DGV.Size = new System.Drawing.Size(1095, 263);
             this.DGV.TabIndex = 89;
             this.DGV.VirtualMode = true;
             this.DGV.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellMouseEnter);
@@ -4749,7 +4764,7 @@
             this.DGV_ID.RowHeadersWidth = 18;
             this.DGV_ID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV_ID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_ID.Size = new System.Drawing.Size(1095, 380);
+            this.DGV_ID.Size = new System.Drawing.Size(1095, 263);
             this.DGV_ID.TabIndex = 92;
             this.DGV_ID.VirtualMode = true;
             this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
@@ -4848,7 +4863,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 729);
+            this.ClientSize = new System.Drawing.Size(1119, 612);
             this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
             this.Controls.Add(this.Seed);
@@ -4862,7 +4877,7 @@
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1134, 648);
+            this.MinimumSize = new System.Drawing.Size(1135, 650);
             this.Name = "MainForm";
             this.Text = "3DS RNG Tool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_Close);
@@ -5356,6 +5371,7 @@
         private Controls.HexNumericUpdown Key1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox CB_Accept;
     }
 }
 

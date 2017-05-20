@@ -161,6 +161,7 @@ B_Fast = 快速模式
 B_Template = 模板
 ConsiderOtherTSV = 考虑其他TSV
 B_TSVList = TSV列表
+CB_Accept = 接受
 MainRNGEgg = 主乱数蛋 (PID)
 Homogeneity = 父母同图鉴
 NidoType = 尼多型
