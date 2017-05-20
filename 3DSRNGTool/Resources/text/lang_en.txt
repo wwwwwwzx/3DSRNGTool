@@ -177,6 +177,7 @@ dgv_eggnum = Egg Number
 SetAsCurrent = Set as Current Status
 SetAsTarget = Set as Target Frame
 SetAsAfter = Set the Status after receiving this Egg as Current
+SetAsStarting = Set as Starting Frame
 ---------------------TabPage5----------------------------------
 dgv_G7TID = G7TID
 dgv_ID_Rand = Rand#

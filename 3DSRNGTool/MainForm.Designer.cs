@@ -401,6 +401,7 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.SetAsStarting = new System.Windows.Forms.ToolStripMenuItem();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -4712,9 +4713,10 @@
             this.DGVMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SetAsTarget,
             this.SetAsCurrent,
-            this.SetAsAfter});
+            this.SetAsAfter,
+            this.SetAsStarting});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(263, 70);
+            this.DGVMS.Size = new System.Drawing.Size(263, 114);
             // 
             // SetAsTarget
             // 
@@ -4883,6 +4885,13 @@
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // SetAsStarting
+            // 
+            this.SetAsStarting.Name = "SetAsStarting";
+            this.SetAsStarting.Size = new System.Drawing.Size(262, 22);
+            this.SetAsStarting.Text = "Set as Starting Frame";
+            this.SetAsStarting.Click += new System.EventHandler(this.SetAsStarting_Click);
             // 
             // MainForm
             // 
@@ -5397,6 +5406,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox CB_Accept;
+        private System.Windows.Forms.ToolStripMenuItem SetAsStarting;
     }
 }
 

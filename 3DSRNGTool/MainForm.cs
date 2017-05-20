@@ -297,6 +297,16 @@ namespace Pk3DSRNGTool
             ShinyOnly.Checked = DisableFilters.Checked = false;
         }
 
+        private void SetAsStarting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var f = (int)DGV.CurrentRow.Cells["dgv_Frame"].Value;
+                Frame_min.Value = f;
+            }
+            catch { }
+        }
+
         private void B_SaveFilter_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog()
