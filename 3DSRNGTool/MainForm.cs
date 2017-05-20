@@ -1142,7 +1142,7 @@ namespace Pk3DSRNGTool
             uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
             var eggnow = RNGPool.GenerateAnEgg6(key);
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
-            eggnow.PID = 0xFFFFFFFF;
+            if (RNGPool.IsMainRNGEgg) eggnow.PID = 0xFFFFFFFF;
             eggnow.Status = "Current";
             Frames.Add(new Frame(eggnow, frame: -1));
 
