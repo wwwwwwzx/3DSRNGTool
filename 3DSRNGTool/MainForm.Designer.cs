@@ -386,6 +386,7 @@
             this.SetAsTarget = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsCurrent = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetAsStarting = new System.Windows.Forms.ToolStripMenuItem();
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
@@ -401,7 +402,6 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.SetAsStarting = new System.Windows.Forms.ToolStripMenuItem();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -3686,22 +3686,22 @@
             this.Magikarp.Controls.Add(this.B_EggSeed127);
             this.Magikarp.Location = new System.Drawing.Point(6, 422);
             this.Magikarp.Name = "Magikarp";
-            this.Magikarp.Size = new System.Drawing.Size(806, 236);
+            this.Magikarp.Size = new System.Drawing.Size(787, 120);
             this.Magikarp.TabIndex = 104;
             this.Magikarp.TabStop = false;
             // 
             // RTB_EggSeed
             // 
             this.RTB_EggSeed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RTB_EggSeed.Location = new System.Drawing.Point(20, 31);
+            this.RTB_EggSeed.Location = new System.Drawing.Point(18, 22);
             this.RTB_EggSeed.Name = "RTB_EggSeed";
-            this.RTB_EggSeed.Size = new System.Drawing.Size(657, 182);
+            this.RTB_EggSeed.Size = new System.Drawing.Size(663, 85);
             this.RTB_EggSeed.TabIndex = 103;
             this.RTB_EggSeed.Text = "";
             // 
             // B_EggSeed127
             // 
-            this.B_EggSeed127.Location = new System.Drawing.Point(705, 186);
+            this.B_EggSeed127.Location = new System.Drawing.Point(707, 77);
             this.B_EggSeed127.Name = "B_EggSeed127";
             this.B_EggSeed127.Size = new System.Drawing.Size(72, 27);
             this.B_EggSeed127.TabIndex = 29;
@@ -4716,7 +4716,7 @@
             this.SetAsAfter,
             this.SetAsStarting});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(263, 114);
+            this.DGVMS.Size = new System.Drawing.Size(263, 92);
             // 
             // SetAsTarget
             // 
@@ -4738,6 +4738,13 @@
             this.SetAsAfter.Size = new System.Drawing.Size(262, 22);
             this.SetAsAfter.Text = "Set as Status after receiving this Egg";
             this.SetAsAfter.Click += new System.EventHandler(this.SetAsAfter_Click);
+            // 
+            // SetAsStarting
+            // 
+            this.SetAsStarting.Name = "SetAsStarting";
+            this.SetAsStarting.Size = new System.Drawing.Size(262, 22);
+            this.SetAsStarting.Text = "Set as Starting Frame";
+            this.SetAsStarting.Click += new System.EventHandler(this.SetAsStarting_Click);
             // 
             // Gameversion
             // 
@@ -4885,13 +4892,6 @@
             this.Seed.TabIndex = 88;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // SetAsStarting
-            // 
-            this.SetAsStarting.Name = "SetAsStarting";
-            this.SetAsStarting.Size = new System.Drawing.Size(262, 22);
-            this.SetAsStarting.Text = "Set as Starting Frame";
-            this.SetAsStarting.Click += new System.EventHandler(this.SetAsStarting_Click);
             // 
             // MainForm
             // 
