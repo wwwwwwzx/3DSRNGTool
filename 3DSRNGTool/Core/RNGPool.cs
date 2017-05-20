@@ -6,16 +6,40 @@ namespace Pk3DSRNGTool.Core
 {
     internal static class RNGPool
     {
-        public static int index { get; private set; }
-        public static void ResetIndex() => index = 0;
-        public static void Advance(int d) => index += d;
-
         private static List<uint> RandList = new List<uint>();
         private static List<ulong> RandList64 = new List<ulong>();
-        public static uint getrand => RandList[index++];
-        public static ulong getrand64 => RandList64[index++];
-
         private static List<string> RNGStateStr = new List<string>();
+
+        // Queue
+        private static int Tail, BufferSize, Pointer;
+        private static int Head => Tail == BufferSize - 1 ? 0 : Tail + 1;
+        public static uint getrand => RandList[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
+        public static ulong getrand64 => RandList64[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
+
+        public static int index
+        {
+            get
+            {
+                int i = Pointer - Tail;
+                if (i < 0)
+                    i += BufferSize;
+                return i;
+            }
+            private set
+            {
+                Pointer = Tail + value;
+                if (Pointer >= BufferSize)
+                    Pointer -= BufferSize;
+            }
+        }
+
+        public static void Advance(int d)
+        {
+            Pointer += d;
+            if (Pointer >= BufferSize)
+                Pointer -= BufferSize;
+        }
+
 
         public static bool Considerdelay;
         public static int DelayTime;
@@ -29,6 +53,8 @@ namespace Pk3DSRNGTool.Core
 
         public static void CreateBuffer(int buffersize, IRNG rng)
         {
+            BufferSize = buffersize;
+            Tail = buffersize - 1;
             if (rng is IRNG64 rng64)
             {
                 for (int i = 0; i < buffersize; i++)
@@ -46,14 +72,13 @@ namespace Pk3DSRNGTool.Core
         {
             if (rng is IRNG64 rng64)
             {
-                RandList64.RemoveAt(0);
-                RandList64.Add(rng64.Nextulong());
+                RandList64[Head] = rng64.Nextulong();
+                if (++Tail == BufferSize) Tail = 0;
                 return;
             }
-            RNGStateStr.RemoveAt(0);
-            RNGStateStr.Add((rng as RNGState)?.CurrentState());
-            RandList.RemoveAt(0);
-            RandList.Add(rng.Nextuint());
+            RNGStateStr[Head] = (rng as RNGState)?.CurrentState();
+            RandList[Head] = rng.Nextuint();
+            if (++Tail == BufferSize) Tail = 0;
         }
 
         public static Pokemon PM;
@@ -65,26 +90,27 @@ namespace Pk3DSRNGTool.Core
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
             var result = getresult6() as Result6;
-            result.RandNum = RandList[0];
-            result.Status = RNGStateStr[0];
+            result.RandNum = RandList[Head];
+            result.Status = RNGStateStr[Head];
             return result;
         }
 
+        public static uint PIDTemp;
         public static RNGResult GenerateEgg6()
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            if (IsMainRNGEgg) Advance(1); // Previous Egg PID
+            if (IsMainRNGEgg) PIDTemp = getrand; // Previous Egg PID
             var result = GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
             if (IsMainRNGEgg)
             {
-                result.PID = RandList[index - 3];
+                result.PID = PIDTemp;
                 var egg6 = igenerator as Egg6;
-                int PSV = (int)result.PSV;
-                result.Shiny = egg6.TSV == PSV || egg6.ConsiderOtherTSV && egg6.OtherTSVs.Contains(PSV);
+                int tmp = (int)result.PSV;
+                result.Shiny = egg6.TSV == tmp || egg6.ConsiderOtherTSV && egg6.OtherTSVs.Contains(tmp);
             }
-            result.RandNum = RandList[0];
-            result.Status = RNGStateStr[0];
+            result.RandNum = RandList[Head];
+            result.Status = RNGStateStr[Head];
             return result;
         }
 
@@ -112,20 +138,20 @@ namespace Pk3DSRNGTool.Core
 
         public static RNGResult Generate7()
         {
-            index = 0;
+            Pointer = Tail;
             int frameshift = getframeshift();
             var result = getresult7() as Result7;
-            result.RandNum = RandList64[0];
+            result.RandNum = RandList64[Head];
             result.FrameDelayUsed = frameshift;
             return result;
         }
 
         public static RNGResult GenerateEgg7()
         {
-            index = 0;
+            Pointer = Tail;
             var result = (igenerator as Egg7).Generate() as EggResult;
-            result.RandNum = RandList[0];
-            result.Status = RNGStateStr[0];
+            result.RandNum = RandList[Head];
+            result.Status = RNGStateStr[Head];
             result.FramesUsed = index;
             return result;
         }
@@ -246,7 +272,7 @@ namespace Pk3DSRNGTool.Core
                 ResetModelStatus();
                 if (route17) Advance(2);
                 time_elapse(1);              //Blink process also occurs when loading map
-                index += PreHoneyCorrection - modelnumber;  //Pre-HoneyCorrection
+                Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
                 time_elapse(93);
             }
             return index;
