@@ -37,8 +37,14 @@ namespace Pk3DSRNGTool
 
             //IV
             rt.IVs = (int[])IVs?.Clone() ?? new[] { -1, -1, -1, -1, -1, -1 };
-            while (rt.IVs.Count(iv => iv == 31) < PerfectIVCount)
-                rt.IVs[rand(6)] = 31;
+            for (int i = PerfectIVCount; i > 0;)
+            {
+                uint tmp = rand(6);
+                if (rt.IVs[tmp] < 0)
+                {
+                    i--; rt.IVs[tmp] = 31;
+                }
+            }
             for (int i = 0; i < 6; i++)
                 if (rt.IVs[i] < 0)
                     rt.IVs[i] = (int)(getrand >> 27);
@@ -51,7 +57,7 @@ namespace Pk3DSRNGTool
 
             //Gender
             rt.Gender = (byte)(RandomGender ? (rand(252) >= Gender ? 1 : 2) : Gender);
-            
+
             //For Pokemon Link
             rt.FrameUsed = (byte)(RNGPool.index - 1);
 

@@ -48,14 +48,12 @@ namespace Pk3DSRNGTool
 
             //IV
             rt.IVs = (int[])IVs.Clone();
-            int cnt = IVsCount;
-            while (cnt > 0)
+            for (int i = IVsCount; i > 0;)
             {
-                uint ran = rand(6);
-                if (rt.IVs[ran] < 0)
+                uint tmp = rand(6);
+                if (rt.IVs[tmp] < 0)
                 {
-                    rt.IVs[ran] = 31;
-                    cnt--;
+                    i--; rt.IVs[tmp] = 31;
                 }
             }
             for (int i = 0; i < 6; i++)

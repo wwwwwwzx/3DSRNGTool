@@ -55,13 +55,8 @@ namespace Pk3DSRNGTool
             int tmp;
             for (int i = Power ? 1 : 0; i < InheritIVs_Cnt; i++)
             {
-                do
-                {
-                    tmp = (int)rand(6);
-                    egg.InheritMaleIV[tmp] = egg.InheritMaleIV[tmp] ?? false;
-                }
-                while (egg.InheritMaleIV.Count(iv => iv != null) <= i);
-
+                do { tmp = (int)rand(6); }
+                while (egg.InheritMaleIV[tmp] != null);
                 egg.InheritMaleIV[tmp] = (getrand >> 31) == 0;
             }
 
