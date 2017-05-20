@@ -912,6 +912,7 @@
             this.PerfectIVs.Name = "PerfectIVs";
             this.PerfectIVs.Size = new System.Drawing.Size(49, 22);
             this.PerfectIVs.TabIndex = 74;
+            this.PerfectIVs.Enter += new System.EventHandler(this.TabSelected);
             // 
             // L_IVRange
             // 
@@ -935,6 +936,7 @@
             this.ivmin0.Name = "ivmin0";
             this.ivmin0.Size = new System.Drawing.Size(49, 22);
             this.ivmin0.TabIndex = 6;
+            this.ivmin0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax0
             // 
@@ -954,6 +956,7 @@
             0,
             0,
             0});
+            this.ivmax0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmin1
             // 
@@ -968,6 +971,7 @@
             this.ivmin1.Name = "ivmin1";
             this.ivmin1.Size = new System.Drawing.Size(49, 22);
             this.ivmin1.TabIndex = 8;
+            this.ivmin1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label6
             // 
@@ -991,6 +995,7 @@
             this.ivmin2.Name = "ivmin2";
             this.ivmin2.Size = new System.Drawing.Size(49, 22);
             this.ivmin2.TabIndex = 10;
+            this.ivmin2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label5
             // 
@@ -1014,6 +1019,7 @@
             this.ivmin3.Name = "ivmin3";
             this.ivmin3.Size = new System.Drawing.Size(49, 22);
             this.ivmin3.TabIndex = 12;
+            this.ivmin3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label4
             // 
@@ -1037,6 +1043,7 @@
             this.ivmin4.Name = "ivmin4";
             this.ivmin4.Size = new System.Drawing.Size(49, 22);
             this.ivmin4.TabIndex = 14;
+            this.ivmin4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label3
             // 
@@ -1060,6 +1067,7 @@
             this.ivmin5.Name = "ivmin5";
             this.ivmin5.Size = new System.Drawing.Size(49, 22);
             this.ivmin5.TabIndex = 16;
+            this.ivmin5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label2
             // 
@@ -1097,6 +1105,7 @@
             0,
             0,
             0});
+            this.ivmax1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax5
             // 
@@ -1116,6 +1125,7 @@
             0,
             0,
             0});
+            this.ivmax5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax2
             // 
@@ -1135,6 +1145,7 @@
             0,
             0,
             0});
+            this.ivmax2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax4
             // 
@@ -1154,6 +1165,7 @@
             0,
             0,
             0});
+            this.ivmax4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax3
             // 
@@ -1173,6 +1185,7 @@
             0,
             0,
             0});
+            this.ivmax3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // StatPanel
             // 
@@ -1421,7 +1434,7 @@
             this.TP_StationaryRNG.Controls.Add(this.Filters);
             this.TP_StationaryRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_StationaryRNG.Name = "TP_StationaryRNG";
-            this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(3);
             this.TP_StationaryRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_StationaryRNG.TabIndex = 0;
             this.TP_StationaryRNG.Text = "定点乱数";
@@ -1992,7 +2005,7 @@
             this.TP_EventRNG.Controls.Add(this.EventSetting);
             this.TP_EventRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EventRNG.Name = "TP_EventRNG";
-            this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(3);
             this.TP_EventRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
@@ -2506,7 +2519,7 @@
             this.TP_WildRNG.Controls.Add(this.Wild_Setting);
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_WildRNG.Name = "TP_WildRNG";
-            this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3);
             this.TP_WildRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
@@ -2677,7 +2690,7 @@
             this.TP_EggRNG.Controls.Add(this.Parents_Info);
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
-            this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
             this.TP_EggRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
@@ -3088,6 +3101,7 @@
             0,
             0,
             0});
+            this.M_IV0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // M_IV1
             // 
@@ -3107,6 +3121,7 @@
             0,
             0,
             0});
+            this.M_IV1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_IV4
             // 
@@ -3126,6 +3141,7 @@
             0,
             0,
             0});
+            this.F_IV4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_IV3
             // 
@@ -3145,6 +3161,7 @@
             0,
             0,
             0});
+            this.F_IV3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_IV2
             // 
@@ -3164,6 +3181,7 @@
             0,
             0,
             0});
+            this.F_IV2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_IV1
             // 
@@ -3183,6 +3201,7 @@
             0,
             0,
             0});
+            this.F_IV1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // M_IV2
             // 
@@ -3202,6 +3221,7 @@
             0,
             0,
             0});
+            this.M_IV2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_IV5
             // 
@@ -3221,6 +3241,7 @@
             0,
             0,
             0});
+            this.F_IV5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // F_ability
             // 
@@ -3253,6 +3274,7 @@
             0,
             0,
             0});
+            this.F_IV0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // M_ability
             // 
@@ -3285,6 +3307,7 @@
             0,
             0,
             0});
+            this.M_IV5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // M_IV3
             // 
@@ -3304,6 +3327,7 @@
             0,
             0,
             0});
+            this.M_IV3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // M_IV4
             // 
@@ -3323,6 +3347,7 @@
             0,
             0,
             0});
+            this.M_IV4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // B_EggReset
             // 
@@ -3430,7 +3455,7 @@
             this.TP_IDRNG.Controls.Add(this.Filter_ID);
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
-            this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
             this.TP_IDRNG.Size = new System.Drawing.Size(1089, 544);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
@@ -3648,7 +3673,7 @@
             this.TP_Gen7ToolKit.Controls.Add(this.SearchSeedBox);
             this.TP_Gen7ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
-            this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(3);
             this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1089, 544);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";

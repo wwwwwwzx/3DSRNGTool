@@ -204,6 +204,11 @@ namespace Pk3DSRNGTool
                 (sender as CheckBox).Checked = false;
         }
 
+        private void TabSelected(object sender, EventArgs e)
+        {
+            (sender as NumericUpDown)?.Select(0, Text.Length);
+        }
+
         private void Status_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.ST0 = (uint)St0.Value;
