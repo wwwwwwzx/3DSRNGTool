@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Pk3DSRNGTool.Core;
+﻿using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
@@ -9,16 +8,17 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
+        public bool Sync;
+
         public override RNGResult Generate()
         {
             Result6 rt = new Result6();
             rt.Level = Level;
 
-            //Sync
-            if (AlwaysSync)
-                rt.Synchronize = true;
-            else
-                Advance(60); // Synchro where are you...
+            //Sync: From another RNG
+            rt.Synchronize = Sync;
+            if (!AlwaysSync)
+                Advance(60);
 
             //Encryption Constant
             rt.EC = getrand;

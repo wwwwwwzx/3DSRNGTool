@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Pk3DSRNGTool.Core;
+﻿using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
