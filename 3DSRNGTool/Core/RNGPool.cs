@@ -1,16 +1,13 @@
 ﻿using Pk3DSRNGTool.RNG;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Pk3DSRNGTool.Core
 {
     internal static class RNGPool
     {
-        private static List<uint> RandList = new List<uint>();
-        private static List<ulong> RandList64 = new List<ulong>();
-        private static List<PRNGState> RNGStateStr = new List<PRNGState>();
-
         // Queue
+        private static uint[] RandList;
+        private static ulong[] RandList64;
+        private static PRNGState[] RNGStateStr;
         private static int Tail, BufferSize, Pointer;
         private static int Head => Tail == BufferSize - 1 ? 0 : Tail + 1;
         public static uint getrand => RandList[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
@@ -40,15 +37,11 @@ namespace Pk3DSRNGTool.Core
                 Pointer -= BufferSize;
         }
 
-
-        public static bool Considerdelay;
-        public static int DelayTime;
-
         public static void Clear()
         {
-            RandList.Clear();
-            RandList64.Clear();
-            RNGStateStr.Clear();
+            RandList = null;
+            RandList64 = null;
+            RNGStateStr = null;
         }
 
         public static void CreateBuffer(int buffersize, IRNG rng)
@@ -57,18 +50,21 @@ namespace Pk3DSRNGTool.Core
             Tail = buffersize - 1;
             if (rng is IRNG64 rng64)
             {
+                RandList64 = new ulong[buffersize];
                 for (int i = 0; i < buffersize; i++)
-                    RandList64.Add(rng64.Nextulong());
+                    RandList64[i] = rng64.Nextulong();
                 return;
             }
+            RandList = new uint[buffersize];
+            RNGStateStr = new PRNGState[buffersize];
             for (int i = 0; i < buffersize; i++)
             {
-                RNGStateStr.Add((rng as IRNGState)?.CurrentState());
-                RandList.Add(rng.Nextuint());
+                RNGStateStr[i] = (rng as IRNGState)?.CurrentState();
+                RandList[i] = rng.Nextuint();
             }
         }
 
-        public static void Next(IRNG rng)
+        public static void AddNext(IRNG rng)
         {
             if (rng is IRNG64 rng64)
             {
@@ -80,6 +76,9 @@ namespace Pk3DSRNGTool.Core
             RandList[Head] = rng.Nextuint();
             if (++Tail == BufferSize) Tail = 0;
         }
+        
+        public static bool Considerdelay;
+        public static int DelayTime;
 
         public static Pokemon PM;
         public static bool IsMainRNGEgg;
@@ -94,7 +93,7 @@ namespace Pk3DSRNGTool.Core
             result.Status = RNGStateStr[Head];
             return result;
         }
-        
+
         public static RNGResult GenerateEgg6()
         {
             index = Considerdelay ? DelayTime : 0;
@@ -270,7 +269,7 @@ namespace Pk3DSRNGTool.Core
             return index;
         }
 
-        // MainRNGEgg
+        // Gen7 MainRNGEgg
         public static EggResult firstegg;
         #endregion
     }

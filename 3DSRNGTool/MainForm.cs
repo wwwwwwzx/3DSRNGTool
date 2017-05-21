@@ -1130,7 +1130,7 @@ namespace Pk3DSRNGTool
             // Prepare
             getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng))
+            for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
             {
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
@@ -1165,7 +1165,7 @@ namespace Pk3DSRNGTool
             Frames.Add(new Frame(eggnow, frame: -1));
 
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng))
+            for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
             {
                 var result = RNGPool.GenerateEgg6();
                 if (!filter.CheckResult(result))
@@ -1261,7 +1261,7 @@ namespace Pk3DSRNGTool
                     RNGPool.CopyStatus(stmp);
                     var result = RNGPool.Generate7() as Result7;
 
-                    RNGPool.Next(sfmt);
+                    RNGPool.AddNext(sfmt);
 
                     frameadvance--;
                     i++;
@@ -1311,7 +1311,7 @@ namespace Pk3DSRNGTool
                 frameadvance = status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
-                    RNGPool.Next(sfmt);
+                    RNGPool.AddNext(sfmt);
 
                 if (!filter.CheckResult(result))
                     continue;
@@ -1334,7 +1334,7 @@ namespace Pk3DSRNGTool
             // Prepare
             getsetting(rng);
             // Start
-            for (int i = min; i <= max; i++, RNGPool.Next(rng))
+            for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
             {
                 var result = RNGPool.GenerateEgg7() as EggResult;
                 if (!filter.CheckResult(result))
@@ -1372,7 +1372,7 @@ namespace Pk3DSRNGTool
                 }
                 frame += advance;
                 for (int j = advance; j > 0; j--)
-                    RNGPool.Next(rng);
+                    RNGPool.AddNext(rng);
                 if (i < min || !filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: frame - advance, eggnum: i + 1));
@@ -1392,7 +1392,7 @@ namespace Pk3DSRNGTool
             // Prepare
             getsetting(rng);
             // Start
-            for (int i = 0; i <= max; i++, RNGPool.Next(rng))
+            for (int i = 0; i <= max; i++, RNGPool.AddNext(rng))
                 ResultsList.Add(RNGPool.GenerateEgg7() as EggResult);
             var FrameIndexList = Gen7EggPath.Calc(ResultsList.Select(egg => egg.FramesUsed).ToArray());
             max = FrameIndexList.Count;
