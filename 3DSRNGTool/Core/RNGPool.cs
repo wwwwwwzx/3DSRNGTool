@@ -127,7 +127,6 @@ namespace Pk3DSRNGTool.Core
             switch (igenerator)
             {
                 case Stationary6 sta_rng:
-                    sta_rng.Sync = sta_rng.AlwaysSync ? true : false; // To-do
                     return sta_rng.Generate();
                 case Event6 event_rng:
                     return event_rng.Generate();

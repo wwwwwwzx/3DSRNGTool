@@ -8,7 +8,7 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
-        public bool Sync;
+        private bool getSync => AlwaysSync || false; //to - do
 
         public override RNGResult Generate()
         {
@@ -16,7 +16,7 @@ namespace Pk3DSRNGTool
             rt.Level = Level;
 
             //Sync: From another RNG
-            rt.Synchronize = Sync;
+            rt.Synchronize = getSync;
             if (!AlwaysSync)
                 Advance(60);
 
@@ -27,12 +27,14 @@ namespace Pk3DSRNGTool
             for (int i = PIDroll_count; i > 0; i--)
             {
                 rt.PID = getrand;
-                if (rt.PSV == TSV) { rt.Shiny = true; break; }
-            }
-            if (IsShinyLocked && rt.Shiny)
-            {
-                rt.PID ^= 0x10000000;
-                rt.Shiny = false;
+                if (rt.PSV == TSV)
+                {
+                    if (IsShinyLocked)
+                        rt.PID ^= 0x10000000;
+                    else
+                        rt.Shiny = true;
+                    break;
+                }
             }
 
             //IV
