@@ -65,28 +65,28 @@
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\MainRNGEgg.cs" />
-    <Compile Include="Controls\CheckBoxComboBox.cs">
+    <Compile Include="Controls\CheckBoxComboBox\CheckBoxComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CheckBoxComboBox.Designer.cs">
+    <Compile Include="Controls\CheckBoxComboBox\CheckBoxComboBox.Designer.cs">
       <DependentUpon>CheckBoxComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ComboItem.cs" />
-    <Compile Include="Controls\GripBounds.cs" />
+    <Compile Include="Controls\CheckBoxComboBox\GripBounds.cs" />
     <Compile Include="Controls\HexNumericUpdown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\NativeMethods.cs" />
-    <Compile Include="Controls\Popup.cs">
+    <Compile Include="Controls\CheckBoxComboBox\NativeMethods.cs" />
+    <Compile Include="Controls\CheckBoxComboBox\Popup.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Popup.Designer.cs">
+    <Compile Include="Controls\CheckBoxComboBox\Popup.Designer.cs">
       <DependentUpon>Popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PopupComboBox.cs">
+    <Compile Include="Controls\CheckBoxComboBox\PopupComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\PopupComboBox.Designer.cs">
+    <Compile Include="Controls\CheckBoxComboBox\PopupComboBox.Designer.cs">
       <DependentUpon>PopupComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
@@ -146,7 +146,7 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
-    <Compile Include="RNG\PRNGState.cs" />
+    <Compile Include="RNG\IRNGState.cs" />
     <Compile Include="Util\FormUtil.cs" />
     <Compile Include="Util\FuncUtil.cs" />
     <Compile Include="Util\Gen7EggPath.cs" />
