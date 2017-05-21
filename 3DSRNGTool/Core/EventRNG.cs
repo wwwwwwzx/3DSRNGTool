@@ -2,19 +2,19 @@
 {
     public abstract class EventRNG : IPKM, IGenerator
     {
-        public ushort TSV { get; set; }
-        public byte IVsCount { get; set; }
-        public bool YourID { get; set; }
-        public bool IsEgg { get; set; }
-        public byte PIDType { get; set; }
-        public bool AbilityLocked { get; set; }
-        public bool NatureLocked { get; set; }
-        public bool GenderLocked { get; set; }
-        public bool OtherInfo { get; set; }
-        public ushort TID { get; set; }
-        public ushort SID { get; set; }
-        public uint EC { get; set; }
-        public uint PID { get; set; }
+        public ushort TSV;
+        public byte IVsCount;
+        public bool YourID;
+        public bool IsEgg;
+        public byte PIDType;
+        public bool AbilityLocked;
+        public bool NatureLocked;
+        public bool GenderLocked;
+        public bool OtherInfo;
+        public ushort TID;
+        public ushort SID;
+        public uint EC;
+        public uint PID;
         
         protected bool IsRandomGender;
         protected byte SettingGender;
