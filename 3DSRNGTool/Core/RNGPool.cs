@@ -94,21 +94,13 @@ namespace Pk3DSRNGTool.Core
             result.Status = RNGStateStr[Head];
             return result;
         }
-
-        public static uint PIDTemp;
+        
         public static RNGResult GenerateEgg6()
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            if (IsMainRNGEgg) PIDTemp = getrand; // Previous Egg PID
+            if (IsMainRNGEgg) Egg6.MainRNGPID = getrand; // Previous Egg PID
             var result = GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
-            if (IsMainRNGEgg)
-            {
-                result.PID = PIDTemp;
-                var egg6 = igenerator as Egg6;
-                int tmp = (int)result.PSV;
-                result.Shiny = egg6.TSV == tmp || egg6.ConsiderOtherTSV && egg6.OtherTSVs.Contains(tmp);
-            }
             result.RandNum = RandList[Head];
             result.Status = RNGStateStr[Head];
             return result;

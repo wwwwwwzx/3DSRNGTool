@@ -8,6 +8,7 @@ namespace Pk3DSRNGTool
     {
         private static MersenneTwister mt = new MersenneTwister(19650218u);
         public static void ReSeed(uint[] key) => mt.Reseed(key);
+        public static uint? MainRNGPID;
         private static uint getrand => mt.Nextuint();
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
 
@@ -73,11 +74,17 @@ namespace Pk3DSRNGTool
             egg.EC = getrand;
 
             // PID
-            for (int i = PID_Rerollcount; i > 0; i--)
+            if (MainRNGPID != null)
             {
-                egg.PID = getrand;
-                if (egg.PSV == TSV) { egg.Shiny = true; break; }
+                egg.PID = (uint)MainRNGPID;
+                egg.Shiny = egg.PSV == TSV;
             }
+            else
+                for (int i = PID_Rerollcount; i > 0; i--)
+                {
+                    egg.PID = getrand;
+                    if (egg.PSV == TSV) { egg.Shiny = true; break; }
+                }
 
             // Other TSVs
             tmp = (int)egg.PSV;

@@ -765,7 +765,7 @@ namespace Pk3DSRNGTool
                 switch (Method)
                 {
                     case 1: buffersize = 80; break;
-                    case 3: buffersize = 4; break;
+                    case 3: buffersize = 4; Egg6.MainRNGPID = null; break;
                 }
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
