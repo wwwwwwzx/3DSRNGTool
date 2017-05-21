@@ -8,7 +8,7 @@ namespace Pk3DSRNGTool.Core
     {
         private static List<uint> RandList = new List<uint>();
         private static List<ulong> RandList64 = new List<ulong>();
-        private static List<string> RNGStateStr = new List<string>();
+        private static List<PRNGState> RNGStateStr = new List<PRNGState>();
 
         // Queue
         private static int Tail, BufferSize, Pointer;
@@ -63,7 +63,7 @@ namespace Pk3DSRNGTool.Core
             }
             for (int i = 0; i < buffersize; i++)
             {
-                RNGStateStr.Add((rng as RNGState)?.CurrentState());
+                RNGStateStr.Add((rng as IRNGState)?.CurrentState());
                 RandList.Add(rng.Nextuint());
             }
         }
@@ -76,7 +76,7 @@ namespace Pk3DSRNGTool.Core
                 if (++Tail == BufferSize) Tail = 0;
                 return;
             }
-            RNGStateStr[Head] = (rng as RNGState)?.CurrentState();
+            RNGStateStr[Head] = (rng as IRNGState)?.CurrentState();
             RandList[Head] = rng.Nextuint();
             if (++Tail == BufferSize) Tail = 0;
         }

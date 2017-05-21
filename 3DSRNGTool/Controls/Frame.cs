@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
         public ulong Rand64 => (rt as Result7)?.RandNum ?? (rt as EggResult)?.EggSeed ?? 0;
         public uint PID => rt.PID;
         public uint EC => rt.EC;
-        public string Status => (rt as EggResult)?.Status ?? (rt as Result6)?.Status ?? "";
+        public string Status => ((rt as EggResult)?.Status ?? (rt as Result6)?.Status)?.ToString() ?? "";
         public string RealTime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : "";
     }
 }

@@ -88,7 +88,7 @@ namespace Pk3DSRNGTool.RNG
     ///     for details
     ///     on the algorithm.
     /// </remarks>
-    public class MersenneTwister : IRNG, RNGState
+    public class MersenneTwister : IRNG, IRNGState
     {
         /* Period parameters */
         private const Int32 N = 624;
@@ -155,7 +155,7 @@ namespace Pk3DSRNGTool.RNG
             Generateuint();
         }
 
-        public string CurrentState() => _mt[_mti].ToString("X8");
+        public PRNGState CurrentState() => new PRNGState(_mt[_mti]);
 
         #endregion
 

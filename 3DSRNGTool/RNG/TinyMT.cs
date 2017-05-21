@@ -4,7 +4,7 @@ using System.Linq;
 namespace Pk3DSRNGTool.RNG
 {
     [Serializable()]
-    public class TinyMT : IRNG, RNGState
+    public class TinyMT : IRNG, IRNGState
     {
         public uint[] status { get; set; }
         public uint mat1 { get; } = 0x8f7011ee;
@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool.RNG
             return t0;
         }
 
-        public string CurrentState() => string.Join(",", status.Select(v => v.ToString("X8")).Reverse());
+        public PRNGState CurrentState() => new PRNGState(status);
 
         #region IRNG Member
         public void Next()

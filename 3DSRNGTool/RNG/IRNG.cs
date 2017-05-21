@@ -11,9 +11,4 @@
     {
         ulong Nextulong();
     }
-
-    internal interface RNGState
-    {
-        string CurrentState();
-    }
 }

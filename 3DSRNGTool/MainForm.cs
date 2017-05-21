@@ -1190,7 +1190,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
-                var result = new ID6(str: (rng as RNGState)?.CurrentState(), rand: rng.Nextuint());
+                var result = new ID6(str: (rng as IRNGState)?.CurrentState().ToString(), rand: rng.Nextuint());
                 if (!idfilter.CheckResult(result))
                     continue;
                 if (tweak)
