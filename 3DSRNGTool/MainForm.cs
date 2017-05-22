@@ -235,7 +235,7 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            B_BreakPoint.Visible = B_Resume.Visible = B_GetGen6Seed.Visible = Advanced.Checked;
+            B_GetTiny.Visible = B_BreakPoint.Visible = B_Resume.Visible = B_GetGen6Seed.Visible = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
         }
 
@@ -976,8 +976,7 @@ namespace Pk3DSRNGTool
             if (Method == 4)
             {
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
-                dgv_ID_rand.Visible = Gen6;
-                dgv_ID_state.Width = Gen6 ? 260 : 65;
+                dgv_ID_Sync.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
                 DGV_ID.Focus();

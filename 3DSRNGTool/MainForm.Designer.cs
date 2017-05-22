@@ -42,6 +42,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.Filters = new System.Windows.Forms.GroupBox();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.B_LoadFilter = new System.Windows.Forms.Button();
             this.B_SaveFilter = new System.Windows.Forms.Button();
@@ -273,6 +275,7 @@
             this.L_ClkCorrection = new System.Windows.Forms.Label();
             this.Clk_Correction = new System.Windows.Forms.NumericUpDown();
             this.RNGPanel = new System.Windows.Forms.GroupBox();
+            this.B_GetTiny = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.label24 = new System.Windows.Forms.Label();
@@ -395,18 +398,19 @@
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
+            this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
+            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.dgv_IDframe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gen7ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_ID_Sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
-            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -3475,9 +3479,9 @@
             // 
             this.GB_RNGGEN7ID.Controls.Add(this.L_ClkCorrection);
             this.GB_RNGGEN7ID.Controls.Add(this.Clk_Correction);
-            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 166);
+            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 193);
             this.GB_RNGGEN7ID.Name = "GB_RNGGEN7ID";
-            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 115);
+            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 88);
             this.GB_RNGGEN7ID.TabIndex = 116;
             this.GB_RNGGEN7ID.TabStop = false;
             this.GB_RNGGEN7ID.Text = "Gen7";
@@ -3485,7 +3489,7 @@
             // L_ClkCorrection
             // 
             this.L_ClkCorrection.AutoSize = true;
-            this.L_ClkCorrection.Location = new System.Drawing.Point(15, 54);
+            this.L_ClkCorrection.Location = new System.Drawing.Point(19, 41);
             this.L_ClkCorrection.Name = "L_ClkCorrection";
             this.L_ClkCorrection.Size = new System.Drawing.Size(55, 13);
             this.L_ClkCorrection.TabIndex = 87;
@@ -3494,7 +3498,7 @@
             // Clk_Correction
             // 
             this.Clk_Correction.Font = new System.Drawing.Font("Consolas", 9F);
-            this.Clk_Correction.Location = new System.Drawing.Point(107, 52);
+            this.Clk_Correction.Location = new System.Drawing.Point(111, 39);
             this.Clk_Correction.Maximum = new decimal(new int[] {
             16,
             0,
@@ -3506,6 +3510,7 @@
             // 
             // RNGPanel
             // 
+            this.RNGPanel.Controls.Add(this.B_GetTiny);
             this.RNGPanel.Controls.Add(this.label23);
             this.RNGPanel.Controls.Add(this.ID_Tiny2);
             this.RNGPanel.Controls.Add(this.label24);
@@ -3516,10 +3521,21 @@
             this.RNGPanel.Controls.Add(this.ID_Tiny1);
             this.RNGPanel.Location = new System.Drawing.Point(3, 6);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Size = new System.Drawing.Size(183, 154);
+            this.RNGPanel.Size = new System.Drawing.Size(183, 181);
             this.RNGPanel.TabIndex = 115;
             this.RNGPanel.TabStop = false;
             this.RNGPanel.Text = "Gen6";
+            // 
+            // B_GetTiny
+            // 
+            this.B_GetTiny.Enabled = false;
+            this.B_GetTiny.Location = new System.Drawing.Point(36, 140);
+            this.B_GetTiny.Name = "B_GetTiny";
+            this.B_GetTiny.Size = new System.Drawing.Size(102, 25);
+            this.B_GetTiny.TabIndex = 110;
+            this.B_GetTiny.Text = "I\'m Lazy";
+            this.B_GetTiny.UseVisualStyleBackColor = true;
+            this.B_GetTiny.Click += new System.EventHandler(this.B_gettiny_Click);
             // 
             // label23
             // 
@@ -4852,6 +4868,7 @@
             this.dgv_TID,
             this.dgv_SID,
             this.dgv_clock,
+            this.dgv_ID_Sync,
             this.dgv_ID_rand,
             this.dgv_ID_rand64,
             this.dgv_ID_state});
@@ -4865,6 +4882,23 @@
             this.DGV_ID.VirtualMode = true;
             this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.DGV_ID.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
+            // 
+            // NTR_Timer
+            // 
+            this.NTR_Timer.Interval = 1000;
+            this.NTR_Timer.Tick += new System.EventHandler(this.NTRTick);
+            // 
+            // Seed
+            // 
+            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Hexadecimal = true;
+            this.Seed.Location = new System.Drawing.Point(755, 12);
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(78, 22);
+            this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
             // dgv_IDframe
             // 
@@ -4893,7 +4927,7 @@
             // dgv_TID
             // 
             this.dgv_TID.DataPropertyName = "TID";
-            dataGridViewCellStyle11.Format = "D5";
+            dataGridViewCellStyle12.Format = "D5";
             this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_TID.HeaderText = "TID";
             this.dgv_TID.Name = "dgv_TID";
@@ -4913,6 +4947,13 @@
             this.dgv_clock.HeaderText = "Clock";
             this.dgv_clock.Name = "dgv_clock";
             this.dgv_clock.Width = 40;
+            // 
+            // dgv_ID_Sync
+            // 
+            this.dgv_ID_Sync.DataPropertyName = "Sync";
+            this.dgv_ID_Sync.HeaderText = "Sync?";
+            this.dgv_ID_Sync.Name = "dgv_ID_Sync";
+            this.dgv_ID_Sync.Width = 40;
             // 
             // dgv_ID_rand
             // 
@@ -4936,24 +4977,7 @@
             this.dgv_ID_state.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_ID_state.HeaderText = "Status";
             this.dgv_ID_state.Name = "dgv_ID_state";
-            this.dgv_ID_state.Width = 75;
-            // 
-            // NTR_Timer
-            // 
-            this.NTR_Timer.Interval = 1000;
-            this.NTR_Timer.Tick += new System.EventHandler(this.NTRTick);
-            // 
-            // Seed
-            // 
-            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(755, 12);
-            this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(78, 22);
-            this.Seed.TabIndex = 88;
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            this.dgv_ID_state.Width = 260;
             // 
             // MainForm
             // 
@@ -5454,15 +5478,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_EC;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_IDframe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gen7ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.GroupBox MT_SeedKey;
         private Controls.HexNumericUpdown Key0;
         private Controls.HexNumericUpdown Key1;
@@ -5478,6 +5493,17 @@
         private Controls.HexNumericUpdown ID_Tiny0;
         private System.Windows.Forms.Label label22;
         private Controls.HexNumericUpdown ID_Tiny1;
+        private System.Windows.Forms.Button B_GetTiny;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_IDframe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gen7ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_Sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
     }
 }
 

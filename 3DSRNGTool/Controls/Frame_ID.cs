@@ -20,6 +20,7 @@ namespace Pk3DSRNGTool
         // Gen6
         public uint Rand => (id as ID6)?.RandNum ?? 0;
         public string Status => (id as ID6)?.Status ?? "";
+        public char Sync => ((Rand * (ulong)100) >> 32) < 50 ? 'O' : 'X';
 
         // Gen7
         public ulong Rand64 => (id as ID7)?.RandNum ?? 0;

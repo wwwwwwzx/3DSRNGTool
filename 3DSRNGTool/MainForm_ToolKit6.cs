@@ -35,7 +35,7 @@ namespace Pk3DSRNGTool
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
-            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+            B_GetTiny.Enabled = B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
         }
 
         private void OnConnected(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
+            B_GetTiny.Enabled = B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
             Properties.Settings.Default.IP = IP.Text;
         }
 
@@ -122,21 +122,22 @@ namespace Pk3DSRNGTool
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
-            if (ModifierKeys == Keys.Control)
-            {
-                byte[] tiny = ntrclient.ReadTiny();
-                ID_Tiny0.Value = BitConverter.ToUInt32(tiny, 0);
-                ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
-                ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
-                ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
-                return;
-            }
             byte[] seed_ay = ntrclient.ReadSeed();
             if (seed_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800000, seed_ay, ntrclient.Pid);
             Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
             ntrclient.resume();
             B_Disconnect_Click(null, null);
+        }
+
+        private void B_gettiny_Click(object sender, EventArgs e)
+        {
+            byte[] tiny = ntrclient.ReadTiny();
+            if (tiny == null) { Error("Timeout"); return; }
+            ID_Tiny0.Value = BitConverter.ToUInt32(tiny, 0);
+            ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
+            ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
+            ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
         }
         #endregion
     }
