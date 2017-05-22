@@ -39,10 +39,10 @@ namespace Pk3DSRNGTool
             {
                 case 0:
                 case 1:
-                    BPOffset = 0x1D4088; MTOffset = 0x8c52848; break;
+                    BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x8c52808; break;
                 case 2:
                 case 3:
-                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8C59E04; break;
+                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8c59E04; break;
             }
             return true;
         }
