@@ -20,8 +20,6 @@ namespace Pk3DSRNGTool.Core
 
         public byte Ball;
 
-        public bool BlinkFOnly, SafeFOnly;
-
         private bool CheckIVs(RNGResult result)
         {
             for (int i = 0; i < 6; i++)
@@ -55,15 +53,6 @@ namespace Pk3DSRNGTool.Core
             return HPType[val];
         }
 
-        private bool CheckBlink(int blinkflag)
-        {
-            if (BlinkFOnly)
-                return blinkflag > 4;
-            if (SafeFOnly)
-                return blinkflag < 2;
-            return true;
-        }
-
         private bool CheckSlot(int slot)
         {
             if (Slot.All(n => !n)) return true;
@@ -79,8 +68,6 @@ namespace Pk3DSRNGTool.Core
                 return true;
             }
             if (result is EggResult egg && Ball != 0 && Ball != egg.Ball)
-                return false;
-            if (result is Result7 rt7 && !CheckBlink(rt7.Blink))
                 return false;
             if (ShinyOnly && !result.Shiny)
                 return false;

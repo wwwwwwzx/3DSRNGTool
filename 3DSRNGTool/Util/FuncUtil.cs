@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Gen7 blink flag
-        private static byte[] blinkflaglist;
+        public static byte[] blinkflaglist;
 
         public static void getblinkflaglist(int min, int max, SFMT sfmt, int ModelNumber = 1)
         {
@@ -101,14 +101,6 @@ namespace Pk3DSRNGTool
             if (Randlist.Last() % 3 == 0) return 1;
             return 0;
         }
-
-        public static void MarkResults(Result7 result, int blinkidx = -1)
-        {
-            // Mark Blink
-            if (0 <= blinkidx && blinkidx < blinkflaglist.Length)
-                result.Blink = blinkflaglist[blinkidx];
-        }
-
         #endregion
 
         public static string Convert2timestr(double sec)

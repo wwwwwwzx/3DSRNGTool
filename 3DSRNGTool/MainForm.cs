@@ -805,9 +805,6 @@ namespace Pk3DSRNGTool
             Slot = new bool[IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => e.Checked)).ToArray(),
             SpecialOnly = SpecialOnly.Checked,
 
-            BlinkFOnly = BlinkFOnly.Checked,
-            SafeFOnly = SafeFOnly.Checked,
-
             Ball = (byte)Ball.SelectedIndex,
         };
 
@@ -1255,12 +1252,14 @@ namespace Pk3DSRNGTool
                     i++;
                     if (i <= min || i > max + 1)
                         continue;
-
-                    FuncUtil.MarkResults(result, i - min - 1);
-
+                    byte blinkflag = FuncUtil.blinkflaglist[i - min - 1];
+                    if (BlinkFOnly.Checked && blinkflag < 4)
+                        continue;
+                    if (SafeFOnly.Checked && blinkflag >= 2)
+                        continue;
                     if (!filter.CheckResult(result))
                         continue;
-                    Frames.Add(new Frame(result, frame: i - 1, time: frametime * 2));
+                    Frames.Add(new Frame(result, frame: i - 1, time: frametime * 2, blink: blinkflag));
                 }
                 while (frameadvance > 0);
 
@@ -1294,7 +1293,6 @@ namespace Pk3DSRNGTool
                 RNGPool.CopyStatus(status);
 
                 var result = RNGPool.Generate7() as Result7;
-                FuncUtil.MarkResults(result, i);
 
                 frameadvance = status.NextState();
                 frame += frameadvance;
@@ -1307,8 +1305,10 @@ namespace Pk3DSRNGTool
                 Frames.Add(new Frame(result, frame: Currentframe, time: i * 2));
 
                 if (Frames.Count > 100000)
-                    return;
+                    break;
             }
+            if (Frames.FirstOrDefault()?.FrameNum == (int)Frame_min.Value)
+                Frames[0].Blink = FuncUtil.blinkflaglist[0];
         }
 
         private void Search7_Egg()

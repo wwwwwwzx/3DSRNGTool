@@ -8,12 +8,13 @@ namespace Pk3DSRNGTool
         private int realtime;
         public bool Formatted;
 
-        public Frame(RNGResult sc, int frame = -1, int time = -1, int eggnum = -1)
+        public Frame(RNGResult sc, int frame = -1, int time = -1, int eggnum = -1, byte blink = 0)
         {
             rt = sc;
             FrameNum = frame;
             realtime = time;
             EggNum = eggnum;
+            Blink = blink;
         }
 
         // DataSource Display Block
@@ -27,14 +28,8 @@ namespace Pk3DSRNGTool
         public int EggNum { get; private set; }
         public int FrameNum { get; private set; }
         public int Shift => realtime > -1 ? realtime - standard : 0;
-        public string Mark
-        {
-            get
-            {
-                byte blink = (rt as Result7)?.Blink ?? 0;
-                return blink < 4 ? blinkmarks[blink] : blink.ToString();
-            }
-        }
+        public byte Blink;
+        public string Mark => Blink < 4 ? blinkmarks[Blink] : Blink.ToString();
         private string _FrameUsed;
         public string FrameUsed { get => _FrameUsed ?? (rt as EggResult)?.FramesUsed.ToString("+#") ?? (rt as Result6)?.FrameUsed.ToString("+00") ?? ""; set => _FrameUsed = value; }
         public int HP => showstats ? rt.Stats[0] : rt.IVs[0];
