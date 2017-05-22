@@ -43,6 +43,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Filters = new System.Windows.Forms.GroupBox();
             this.B_LoadFilter = new System.Windows.Forms.Button();
             this.B_SaveFilter = new System.Windows.Forms.Button();
@@ -402,11 +406,11 @@
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.dgv_IDframe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gen7ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_Sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -3713,9 +3717,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(383, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 13);
+            this.label14.Size = new System.Drawing.Size(69, 13);
             this.label14.TabIndex = 112;
-            this.label14.Text = "Current Rand";
+            this.label14.Text = "Current Seed";
             // 
             // TSV_List
             // 
@@ -4863,11 +4867,11 @@
             this.DGV_ID.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_IDframe,
             this.dgv_gen7ID,
-            this.dgv_TSV,
             this.dgv_TID,
             this.dgv_SID,
-            this.dgv_clock,
+            this.dgv_TSV,
             this.dgv_ID_Sync,
+            this.dgv_clock,
             this.dgv_ID_rand,
             this.dgv_ID_rand64,
             this.dgv_ID_state});
@@ -4911,22 +4915,14 @@
             this.dgv_gen7ID.DataPropertyName = "G7TID";
             dataGridViewCellStyle10.Format = "D6";
             this.dgv_gen7ID.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgv_gen7ID.HeaderText = "Gen7PID";
+            this.dgv_gen7ID.HeaderText = "Gen7TID";
             this.dgv_gen7ID.Name = "dgv_gen7ID";
             this.dgv_gen7ID.Width = 60;
-            // 
-            // dgv_TSV
-            // 
-            this.dgv_TSV.DataPropertyName = "TSV";
-            this.dgv_TSV.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_TSV.HeaderText = "TSV";
-            this.dgv_TSV.Name = "dgv_TSV";
-            this.dgv_TSV.Width = 40;
             // 
             // dgv_TID
             // 
             this.dgv_TID.DataPropertyName = "TID";
-            dataGridViewCellStyle12.Format = "D5";
+            dataGridViewCellStyle11.Format = "D5";
             this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_TID.HeaderText = "TID";
             this.dgv_TID.Name = "dgv_TID";
@@ -4935,17 +4931,20 @@
             // dgv_SID
             // 
             this.dgv_SID.DataPropertyName = "SID";
-            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Format = "D5";
+            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgv_SID.HeaderText = "SID";
             this.dgv_SID.Name = "dgv_SID";
             this.dgv_SID.Width = 50;
             // 
-            // dgv_clock
+            // dgv_TSV
             // 
-            this.dgv_clock.DataPropertyName = "Clock";
-            this.dgv_clock.HeaderText = "Clock";
-            this.dgv_clock.Name = "dgv_clock";
-            this.dgv_clock.Width = 40;
+            this.dgv_TSV.DataPropertyName = "TSV";
+            dataGridViewCellStyle13.Format = "D4";
+            this.dgv_TSV.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgv_TSV.HeaderText = "TSV";
+            this.dgv_TSV.Name = "dgv_TSV";
+            this.dgv_TSV.Width = 40;
             // 
             // dgv_ID_Sync
             // 
@@ -4954,10 +4953,19 @@
             this.dgv_ID_Sync.Name = "dgv_ID_Sync";
             this.dgv_ID_Sync.Width = 40;
             // 
+            // dgv_clock
+            // 
+            this.dgv_clock.DataPropertyName = "Clock";
+            this.dgv_clock.HeaderText = "Clock";
+            this.dgv_clock.Name = "dgv_clock";
+            this.dgv_clock.Width = 40;
+            // 
             // dgv_ID_rand
             // 
             this.dgv_ID_rand.DataPropertyName = "Rand";
-            this.dgv_ID_rand.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle14.Format = "X8";
+            this.dgv_ID_rand.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgv_ID_rand.HeaderText = "Rand#";
             this.dgv_ID_rand.Name = "dgv_ID_rand";
             this.dgv_ID_rand.Width = 75;
@@ -4965,7 +4973,9 @@
             // dgv_ID_rand64
             // 
             this.dgv_ID_rand64.DataPropertyName = "Rand64";
-            this.dgv_ID_rand64.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle15.Format = "X16";
+            this.dgv_ID_rand64.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgv_ID_rand64.HeaderText = "Random Number";
             this.dgv_ID_rand64.Name = "dgv_ID_rand64";
             this.dgv_ID_rand64.Width = 130;
@@ -4973,7 +4983,8 @@
             // dgv_ID_state
             // 
             this.dgv_ID_state.DataPropertyName = "Status";
-            this.dgv_ID_state.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9F);
+            this.dgv_ID_state.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgv_ID_state.HeaderText = "Status";
             this.dgv_ID_state.Name = "dgv_ID_state";
             this.dgv_ID_state.Width = 260;
@@ -5495,11 +5506,11 @@
         private System.Windows.Forms.Button B_GetTiny;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_IDframe;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gen7ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_Sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;

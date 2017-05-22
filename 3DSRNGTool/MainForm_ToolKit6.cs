@@ -83,6 +83,7 @@ namespace Pk3DSRNGTool
                             B_GetGen6Seed_Click(null, null);
                         if (ntrclient.phase == 2) // the (2nd) freeze after setting breakpoint
                         {
+                            B_gettiny_Click(null, null);
                             B_Resume_Click(null, null);
                             NTR_Timer.Interval = 500;
                             ntrclient.phase = 3;

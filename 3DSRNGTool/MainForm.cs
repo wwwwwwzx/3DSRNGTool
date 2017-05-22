@@ -974,6 +974,7 @@ namespace Pk3DSRNGTool
             {
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
                 dgv_ID_Sync.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
+                dgv_ID_rand.Visible &= Advanced.Checked;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
                 DGV_ID.Focus();
@@ -1163,7 +1164,6 @@ namespace Pk3DSRNGTool
 
         private void Search6_ID()
         {
-            bool tweak = true; // tmp tweak
             var rng = new TinyMT(new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value });
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
@@ -1175,11 +1175,9 @@ namespace Pk3DSRNGTool
                 rng.Next();
             for (int i = min; i <= max; i++)
             {
-                var result = new ID6(str: (rng as IRNGState)?.CurrentState().ToString(), rand: rng.Nextuint());
+                var result = new ID6(rng);
                 if (!idfilter.CheckResult(result))
                     continue;
-                if (tweak)
-                { Frame_min.Value = i; tweak = false; }
                 IDFrames.Add(new Frame_ID(result, i));
             }
         }
@@ -1190,6 +1188,7 @@ namespace Pk3DSRNGTool
         {
             if (Method == 4)
             {
+                Frame_min.Value = Math.Max(Frame_min.Value, 1012);
                 Search7_ID();
                 return;
             }
@@ -1203,6 +1202,7 @@ namespace Pk3DSRNGTool
                     Search7_Egg();
                 return;
             }
+            Frame_min.Value = Math.Max(Frame_min.Value, 418);
             // method 0-2 & MainRNGEgg
             if (CreateTimeline.Checked)
                 Search7_Timeline();
@@ -1219,7 +1219,6 @@ namespace Pk3DSRNGTool
             {
                 min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
             }
-            min = Math.Max(min, 418);
             // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
             // Advance

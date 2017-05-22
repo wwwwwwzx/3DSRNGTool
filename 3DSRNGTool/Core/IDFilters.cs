@@ -47,7 +47,7 @@ namespace Pk3DSRNGTool.Core
 
         private bool CheckRand(IDResult ID)
         {
-            string Randstr = (ID as ID6)?.Status ?? (ID as ID6)?.RandNum.ToString("X8") ?? (ID as ID7)?.RandNum.ToString("X16");
+            string Randstr = (ID as ID6)?.Status.ToString() ?? (ID as ID7)?.RandNum.ToString("X16");
             return RandList.Any(rand => rand != "" && Randstr.IndexOf(rand.ToUpper(), System.StringComparison.Ordinal) >= 0);
         }
 
