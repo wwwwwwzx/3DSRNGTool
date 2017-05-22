@@ -122,6 +122,15 @@ namespace Pk3DSRNGTool
 
         private void B_GetGen6Seed_Click(object sender, EventArgs e)
         {
+            if (ModifierKeys == Keys.Control)
+            {
+                byte[] tiny = ntrclient.ReadTiny();
+                ID_Tiny0.Value = BitConverter.ToUInt32(tiny, 0);
+                ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
+                ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
+                ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
+                return;
+            }
             byte[] seed_ay = ntrclient.ReadSeed();
             if (seed_ay == null) { Error("Timeout"); return; }
             ntrclient.Write(0x8800000, seed_ay, ntrclient.Pid);

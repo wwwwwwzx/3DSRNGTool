@@ -977,8 +977,7 @@ namespace Pk3DSRNGTool
             {
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
                 dgv_ID_rand.Visible = Gen6;
-                dgv_ID_state.Visible = MT.Checked && Gen6;
-
+                dgv_ID_state.Width = Gen6 ? 260 : 65;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
                 DGV_ID.Focus();
@@ -1105,16 +1104,6 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private IRNG getRNGSource()
-        {
-            if (MTFast.Checked)
-                return new MersenneTwisterFast((uint)Seed.Value, 227);
-            if (MTUntempered.Checked)
-                return new MersenneTwisterUntempered((int)Seed.Value);
-
-            return new MersenneTwister((uint)Seed.Value);
-        }
-
         private void Search6_Normal()
         {
             var rng = new MersenneTwister((uint)Seed.Value);
@@ -1179,7 +1168,7 @@ namespace Pk3DSRNGTool
         private void Search6_ID()
         {
             bool tweak = true; // tmp tweak
-            var rng = getRNGSource();
+            var rng = new TinyMT(new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value });
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();

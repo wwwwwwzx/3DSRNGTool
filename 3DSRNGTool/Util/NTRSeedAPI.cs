@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
         public byte[] Data { get; private set; }
         private uint BPOffset { get; set; }
         private uint MTOffset { get; set; }
+        private uint TinyOffset { get; set; }
 
         private bool DataReady;
         public bool VersionDetected;
@@ -41,7 +42,7 @@ namespace Pk3DSRNGTool
                     BPOffset = 0x1D4088; MTOffset = 0x8c52848; break;
                 case 2:
                 case 3:
-                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; break;
+                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8C59E04; break;
             }
             return true;
         }
@@ -72,5 +73,6 @@ namespace Pk3DSRNGTool
 
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
         public byte[] ReadSeed() => SingleThreadRead(MTOffset + 4, 0x4);  // MT[0]
+        public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
     }
 }

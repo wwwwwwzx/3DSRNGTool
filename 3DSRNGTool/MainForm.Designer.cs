@@ -273,9 +273,14 @@
             this.L_ClkCorrection = new System.Windows.Forms.Label();
             this.Clk_Correction = new System.Windows.Forms.NumericUpDown();
             this.RNGPanel = new System.Windows.Forms.GroupBox();
-            this.MT = new System.Windows.Forms.RadioButton();
-            this.MTUntempered = new System.Windows.Forms.RadioButton();
-            this.MTFast = new System.Windows.Forms.RadioButton();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
             this.Filter_G7TID = new System.Windows.Forms.RadioButton();
@@ -491,6 +496,10 @@
             this.GB_RNGGEN7ID.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).BeginInit();
             this.RNGPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny1)).BeginInit();
             this.Filter_ID.SuspendLayout();
             this.TP_Gen7ToolKit.SuspendLayout();
             this.Magikarp.SuspendLayout();
@@ -3466,9 +3475,9 @@
             // 
             this.GB_RNGGEN7ID.Controls.Add(this.L_ClkCorrection);
             this.GB_RNGGEN7ID.Controls.Add(this.Clk_Correction);
-            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 155);
+            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 166);
             this.GB_RNGGEN7ID.Name = "GB_RNGGEN7ID";
-            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 126);
+            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 115);
             this.GB_RNGGEN7ID.TabIndex = 116;
             this.GB_RNGGEN7ID.TabStop = false;
             this.GB_RNGGEN7ID.Text = "Gen7";
@@ -3476,7 +3485,7 @@
             // L_ClkCorrection
             // 
             this.L_ClkCorrection.AutoSize = true;
-            this.L_ClkCorrection.Location = new System.Drawing.Point(12, 51);
+            this.L_ClkCorrection.Location = new System.Drawing.Point(15, 54);
             this.L_ClkCorrection.Name = "L_ClkCorrection";
             this.L_ClkCorrection.Size = new System.Drawing.Size(55, 13);
             this.L_ClkCorrection.TabIndex = 87;
@@ -3485,7 +3494,7 @@
             // Clk_Correction
             // 
             this.Clk_Correction.Font = new System.Drawing.Font("Consolas", 9F);
-            this.Clk_Correction.Location = new System.Drawing.Point(104, 49);
+            this.Clk_Correction.Location = new System.Drawing.Point(107, 52);
             this.Clk_Correction.Maximum = new decimal(new int[] {
             16,
             0,
@@ -3497,47 +3506,100 @@
             // 
             // RNGPanel
             // 
-            this.RNGPanel.Controls.Add(this.MT);
-            this.RNGPanel.Controls.Add(this.MTUntempered);
-            this.RNGPanel.Controls.Add(this.MTFast);
+            this.RNGPanel.Controls.Add(this.label23);
+            this.RNGPanel.Controls.Add(this.ID_Tiny2);
+            this.RNGPanel.Controls.Add(this.label24);
+            this.RNGPanel.Controls.Add(this.ID_Tiny3);
+            this.RNGPanel.Controls.Add(this.label21);
+            this.RNGPanel.Controls.Add(this.ID_Tiny0);
+            this.RNGPanel.Controls.Add(this.label22);
+            this.RNGPanel.Controls.Add(this.ID_Tiny1);
             this.RNGPanel.Location = new System.Drawing.Point(3, 6);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Size = new System.Drawing.Size(183, 143);
+            this.RNGPanel.Size = new System.Drawing.Size(183, 154);
             this.RNGPanel.TabIndex = 115;
             this.RNGPanel.TabStop = false;
             this.RNGPanel.Text = "Gen6";
             // 
-            // MT
+            // label23
             // 
-            this.MT.AutoSize = true;
-            this.MT.Checked = true;
-            this.MT.Location = new System.Drawing.Point(18, 22);
-            this.MT.Name = "MT";
-            this.MT.Size = new System.Drawing.Size(41, 17);
-            this.MT.TabIndex = 0;
-            this.MT.TabStop = true;
-            this.MT.Text = "MT";
-            this.MT.UseVisualStyleBackColor = true;
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label23.Location = new System.Drawing.Point(26, 54);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(28, 14);
+            this.label23.TabIndex = 109;
+            this.label23.Text = "[2]";
             // 
-            // MTUntempered
+            // ID_Tiny2
             // 
-            this.MTUntempered.AutoSize = true;
-            this.MTUntempered.Location = new System.Drawing.Point(18, 90);
-            this.MTUntempered.Name = "MTUntempered";
-            this.MTUntempered.Size = new System.Drawing.Size(99, 17);
-            this.MTUntempered.TabIndex = 2;
-            this.MTUntempered.Text = "MTUntempered";
-            this.MTUntempered.UseVisualStyleBackColor = true;
+            this.ID_Tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny2.Hexadecimal = true;
+            this.ID_Tiny2.Location = new System.Drawing.Point(60, 52);
+            this.ID_Tiny2.Name = "ID_Tiny2";
+            this.ID_Tiny2.Size = new System.Drawing.Size(78, 22);
+            this.ID_Tiny2.TabIndex = 106;
+            this.ID_Tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // MTFast
+            // label24
             // 
-            this.MTFast.AutoSize = true;
-            this.MTFast.Location = new System.Drawing.Point(18, 56);
-            this.MTFast.Name = "MTFast";
-            this.MTFast.Size = new System.Drawing.Size(61, 17);
-            this.MTFast.TabIndex = 1;
-            this.MTFast.Text = "MTFast";
-            this.MTFast.UseVisualStyleBackColor = true;
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label24.Location = new System.Drawing.Point(26, 25);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(28, 14);
+            this.label24.TabIndex = 108;
+            this.label24.Text = "[3]";
+            // 
+            // ID_Tiny3
+            // 
+            this.ID_Tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny3.Hexadecimal = true;
+            this.ID_Tiny3.Location = new System.Drawing.Point(60, 22);
+            this.ID_Tiny3.Name = "ID_Tiny3";
+            this.ID_Tiny3.Size = new System.Drawing.Size(78, 22);
+            this.ID_Tiny3.TabIndex = 107;
+            this.ID_Tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label21.Location = new System.Drawing.Point(26, 114);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(28, 14);
+            this.label21.TabIndex = 105;
+            this.label21.Text = "[0]";
+            // 
+            // ID_Tiny0
+            // 
+            this.ID_Tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny0.Hexadecimal = true;
+            this.ID_Tiny0.Location = new System.Drawing.Point(60, 112);
+            this.ID_Tiny0.Name = "ID_Tiny0";
+            this.ID_Tiny0.Size = new System.Drawing.Size(78, 22);
+            this.ID_Tiny0.TabIndex = 102;
+            this.ID_Tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label22.Location = new System.Drawing.Point(26, 85);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(28, 14);
+            this.label22.TabIndex = 104;
+            this.label22.Text = "[1]";
+            // 
+            // ID_Tiny1
+            // 
+            this.ID_Tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny1.Hexadecimal = true;
+            this.ID_Tiny1.Location = new System.Drawing.Point(60, 82);
+            this.ID_Tiny1.Name = "ID_Tiny1";
+            this.ID_Tiny1.Size = new System.Drawing.Size(78, 22);
+            this.ID_Tiny1.TabIndex = 103;
+            this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Filter_ID
             // 
@@ -5020,6 +5082,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).EndInit();
             this.RNGPanel.ResumeLayout(false);
             this.RNGPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny1)).EndInit();
             this.Filter_ID.ResumeLayout(false);
             this.Filter_ID.PerformLayout();
             this.TP_Gen7ToolKit.ResumeLayout(false);
@@ -5271,9 +5337,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox ID_Disable;
         private System.Windows.Forms.CheckBox ID_RE;
-        private System.Windows.Forms.RadioButton MTUntempered;
-        private System.Windows.Forms.RadioButton MTFast;
-        private System.Windows.Forms.RadioButton MT;
         private System.Windows.Forms.ContextMenuStrip DGVMS;
         private System.Windows.Forms.ToolStripMenuItem SetAsTarget;
         private System.Windows.Forms.CheckBox BlinkWhenSync;
@@ -5407,6 +5470,14 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox CB_Accept;
         private System.Windows.Forms.ToolStripMenuItem SetAsStarting;
+        private System.Windows.Forms.Label label23;
+        private Controls.HexNumericUpdown ID_Tiny2;
+        private System.Windows.Forms.Label label24;
+        private Controls.HexNumericUpdown ID_Tiny3;
+        private System.Windows.Forms.Label label21;
+        private Controls.HexNumericUpdown ID_Tiny0;
+        private System.Windows.Forms.Label label22;
+        private Controls.HexNumericUpdown ID_Tiny1;
     }
 }
 
