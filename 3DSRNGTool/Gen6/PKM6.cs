@@ -179,8 +179,8 @@
                 Text = "Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 716, Level = 50, Ability = 1, ShinyLocked = true, Version = GameVersion.X, }, // Xerneas
-                    new PKM6 { Species = 717, Level = 50, Ability = 1, ShinyLocked = true, Version = GameVersion.Y, }, // Yveltal
+                    new PKM6 { Species = 716, Level = 50, Ability = 1, ShinyLocked = true, Delay = 158, Version = GameVersion.X, }, // Xerneas
+                    new PKM6 { Species = 717, Level = 50, Ability = 1, ShinyLocked = true, Delay = 208, Version = GameVersion.Y, }, // Yveltal
                     new PKM6 { Species = 718, Level = 70, Ability = 1, ShinyLocked = true }, // Zygarde
 
                     new PKM6 { Species = 150, Level = 70, Ability = 1, ShinyLocked = true, Delay = 2, }, // Mewtwo
