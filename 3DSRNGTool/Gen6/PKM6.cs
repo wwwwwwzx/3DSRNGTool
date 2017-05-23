@@ -179,15 +179,15 @@
                 Text = "Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 716, Level = 50, ShinyLocked = true, Version = GameVersion.X, }, // Xerneas
-                    new PKM6 { Species = 717, Level = 50, ShinyLocked = true, Version = GameVersion.Y, }, // Yveltal
-                    new PKM6 { Species = 718, Level = 70, ShinyLocked = true }, // Zygarde
+                    new PKM6 { Species = 716, Level = 50, Ability = 1, ShinyLocked = true, Version = GameVersion.X, }, // Xerneas
+                    new PKM6 { Species = 717, Level = 50, Ability = 1, ShinyLocked = true, Version = GameVersion.Y, }, // Yveltal
+                    new PKM6 { Species = 718, Level = 70, Ability = 1, ShinyLocked = true }, // Zygarde
 
-                    new PKM6 { Species = 150, Level = 70, ShinyLocked = true }, // Mewtwo
+                    new PKM6 { Species = 150, Level = 70, Ability = 1, ShinyLocked = true, Delay = 2, }, // Mewtwo
 
-                    new PKM6 { Species = 144, Level = 70, ShinyLocked = true }, // Articuno
-                    new PKM6 { Species = 145, Level = 70, ShinyLocked = true }, // Zapdos
-                    new PKM6 { Species = 146, Level = 70, ShinyLocked = true }, // Moltres
+                    new PKM6 { Species = 144, Level = 70, Ability = 1, ShinyLocked = true }, // Articuno
+                    new PKM6 { Species = 145, Level = 70, Ability = 1, ShinyLocked = true }, // Zapdos
+                    new PKM6 { Species = 146, Level = 70, Ability = 1, ShinyLocked = true }, // Moltres
                 }
             },
             new PokemonList
