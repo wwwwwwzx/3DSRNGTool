@@ -10,9 +10,11 @@ namespace Pk3DSRNGTool
         private static uint rand(int n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
+        public bool IsORAS;
+
         public override RNGResult Generate()
         {
-            Generate_Once();
+            if (IsORAS) Generate_Once();
             return Generate_Once();
         }
 

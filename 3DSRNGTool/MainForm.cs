@@ -867,6 +867,8 @@ namespace Pk3DSRNGTool
                 IVs = new[] { -1, -1, -1, -1, -1, -1 };
             }
             EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
+            if (e is Event6 e6)
+                e6.IsORAS = Ver > 1;
             e.Species = (short)Event_Species.SelectedIndex;
             e.Forme = (byte)Event_Forme.SelectedIndex;
             e.Level = (byte)Filter_Lv.Value;
