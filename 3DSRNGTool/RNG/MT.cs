@@ -120,10 +120,13 @@ namespace Pk3DSRNGTool.RNG
         }
 
         // copy constructor
-        public MersenneTwister(MersenneTwister old)
+        public MersenneTwister(byte[] Data)
         {
-            _mt = old._mt;
-            _mti = old._mti;
+            if (Data.Length != N * 4 + 4)
+                return;
+            _mti = BitConverter.ToInt16(Data, 0);
+            for (int i = 0; i < N; i++)
+                _mt[i] = BitConverter.ToUInt32(Data, i * 4 + 4);
         }
 
         #region IRNG Members
