@@ -230,9 +230,9 @@
                     new PKM6 { Gift = true, Species = 653, Level = 5, Delay = 280, }, // Fennekin
                     new PKM6 { Gift = true, Species = 656, Level = 5, Delay = 330, }, // Froakie
 
-                    new PKM6 { Gift = true, Species = 1, Level = 10, }, // Bulbasaur
-                    new PKM6 { Gift = true, Species = 4, Level = 10, }, // Charmander
-                    new PKM6 { Gift = true, Species = 7, Level = 10, }, // Squirtle
+                    new PKM6 { Gift = true, Species = 1, Level = 10, Delay = 4,}, // Bulbasaur
+                    new PKM6 { Gift = true, Species = 4, Level = 10, Delay = 4,}, // Charmander
+                    new PKM6 { Gift = true, Species = 7, Level = 10, Delay = 4,}, // Squirtle
                 }
             },
             new PokemonList

@@ -1817,7 +1817,7 @@
             this.Frame_max.Size = new System.Drawing.Size(75, 22);
             this.Frame_max.TabIndex = 41;
             this.Frame_max.Value = new decimal(new int[] {
-            5000,
+            50000,
             0,
             0,
             0});
