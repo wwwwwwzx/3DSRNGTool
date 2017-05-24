@@ -209,10 +209,10 @@ namespace Pk3DSRNGTool.Core
         }
 
         //model # changes when screen turns black
+        private readonly static int[] order = { 0, 1, 2, 5, 6 };
         private static void SolLunaRearrange()
         {
             modelnumber = 5;//2 guys offline...
-            int[] order = { 0, 1, 2, 5, 6 };
             for (int i = 0; i < 5; i++)
                 remain_frame[i] = remain_frame[order[i]];
         }
@@ -258,7 +258,7 @@ namespace Pk3DSRNGTool.Core
             else
                 ResetModelStatus();
 
-            if (igenerator is WildRNG) //Wild
+            if (igenerator is Wild7) //Wild
             {
                 ResetModelStatus();
                 if (route17) Advance(2);
