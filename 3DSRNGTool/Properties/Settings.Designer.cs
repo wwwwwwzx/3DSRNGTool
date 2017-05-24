@@ -121,6 +121,18 @@ namespace Pk3DSRNGTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte _Method {
+            get {
+                return ((byte)(this["_Method"]));
+            }
+            set {
+                this["_Method"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("426368620")]
         public uint ST3 {
             get {

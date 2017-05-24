@@ -26,6 +26,9 @@
     <Setting Name="Method" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="_Method" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
     <Setting Name="ST3" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">426368620</Value>
     </Setting>

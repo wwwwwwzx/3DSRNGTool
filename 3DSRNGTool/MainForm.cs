@@ -20,7 +20,7 @@ namespace Pk3DSRNGTool
         private Pokemon FormPM => RNGPool.PM;
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
-        private bool IsPokemonLink => (FormPM as PKM6)?.PokemonLink ?? false;
+        private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 6;
         private byte lastgen;
@@ -28,7 +28,7 @@ namespace Pk3DSRNGTool
         private bool IsNight => Night.Checked;
         private int[] slotspecies => ea?.getSpecies(Ver, IsNight) ?? new int[0];
         private byte Modelnum => (byte)(NPC.Value + 1);
-        private RNGFilters filter = new RNGFilters();
+        private RNGFilters filter;
         private byte lastmethod;
         private ushort lasttableindex;
         private int timercounter;
@@ -62,6 +62,7 @@ namespace Pk3DSRNGTool
             var LastPkm = Properties.Settings.Default.Poke;
             var LastCategory = Properties.Settings.Default.Category;
             var LastMethod = Properties.Settings.Default.Method;
+            var _LastMethod = Properties.Settings.Default._Method;
             var Eggseed = Properties.Settings.Default.Key;
             Key0.Value = (uint)Eggseed;
             Key1.Value = Eggseed >> 32;
@@ -101,11 +102,11 @@ namespace Pk3DSRNGTool
             Egg_GenderRatio.SelectedIndex = 1;
 
             Gameversion.SelectedIndex = LastGameversion;
-            RNGMethod.SelectedIndex = LastMethod;
+            RNGMethod.SelectedIndex = _LastMethod;
             RNGMethod_Changed(null, null);
-
             CB_Category.SelectedIndex = LastCategory;
             Poke.SelectedIndex = LastPkm < Poke.Items.Count ? LastPkm : 0;
+            RNGMethod.SelectedIndex = LastMethod;
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
@@ -454,6 +455,7 @@ namespace Pk3DSRNGTool
                     var category = CB_Category.SelectedIndex;
                     RefreshCategory();
                     lastmethod = (byte)currmethod;
+                    Properties.Settings.Default._Method = Method;
                     CB_Category.SelectedIndex = category < CB_Category.Items.Count ? category : 0;
                     Poke.SelectedIndex = poke < Poke.Items.Count ? poke : 0;
                 }
@@ -610,7 +612,7 @@ namespace Pk3DSRNGTool
             if (Gen6 && RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
             {
                 DGVToolTip.ToolTipTitle = "Tips";
-                DGVToolTip.Show("This column shows the main rng PID/PSV of the current egg (w/o mm or sc)\r\nNot the spread of egg seed in the same row."
+                DGVToolTip.Show("This column shows the main RNG PID/PSV of the current egg (w/o mm or sc)\r\nNot the part of spread prediction of the egg seed in the same row."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -991,7 +993,7 @@ namespace Pk3DSRNGTool
             dgv_status.Width = Gen6 ? 65 : 260;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
-            dgv_shift.Visible = dgv_time.Visible = Gen6 || Method < 3 || MainRNGEgg.Checked;
+            dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
