@@ -215,10 +215,11 @@
                 List = new[]
                 {
                     new PKM6 { Species = 143, Level = 15,}, // Snorlax
-                    //new PKM6 { Species = 568, Wild = true, Levelmin = 35, Levelmax = 38 }, // Trubbish
-                    //new PKM6 { Species = 569, Wild = true, Levelmin = 46, Levelmax = 50 }, // Garbodor
-                    //new PKM6 { Species = 354, Wild = true, Levelmin = 46, Levelmax = 50 }, // Banette
-                    new PKM6 { Species = 479, Level = 38, }, // Rotom
+                    // Todo: Move to wild as trash cans rng
+                    new PKM6 { Species = 568, Level = 35, Delay = 18 }, // Trubbish
+                    new PKM6 { Species = 569, Level = 35, Delay = 18 }, // Garbodor
+                    new PKM6 { Species = 354, Level = 35, Delay = 18 }, // Banette
+                    new PKM6 { Species = 479, Level = 38, Delay = 18 }, // Rotom
                 }
             },
             new PokemonList

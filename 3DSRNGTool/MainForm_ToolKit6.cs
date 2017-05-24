@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
                     {
                         B_BreakPoint_Click(null, null);
                         ntrclient.phase = 2;
-                        timercounter = -4;
+                        timercounter = Ver < 2 ? -3 : -4;
                     }
                 }
                 if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
@@ -87,7 +87,7 @@ namespace Pk3DSRNGTool
                             B_Resume_Click(null, null);
                             NTR_Timer.Interval = 500;
                             ntrclient.phase = 3;
-                            timercounter = -10;
+                            timercounter = Ver < 2 ? -8 : -10;
                         }
                     }
                 }
