@@ -226,9 +226,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 650, Level = 5, }, // Chespin
-                    new PKM6 { Gift = true, Species = 653, Level = 5, }, // Fennekin
-                    new PKM6 { Gift = true, Species = 656, Level = 5, }, // Froakie
+                    new PKM6 { Gift = true, Species = 650, Level = 5, Delay = 280, }, // Chespin
+                    new PKM6 { Gift = true, Species = 653, Level = 5, Delay = 280, }, // Fennekin
+                    new PKM6 { Gift = true, Species = 656, Level = 5, Delay = 330, }, // Froakie
 
                     new PKM6 { Gift = true, Species = 1, Level = 10, }, // Bulbasaur
                     new PKM6 { Gift = true, Species = 4, Level = 10, }, // Charmander
