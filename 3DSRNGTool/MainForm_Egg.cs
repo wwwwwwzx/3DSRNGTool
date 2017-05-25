@@ -196,6 +196,11 @@ namespace Pk3DSRNGTool
             IVTemplate newform = new IVTemplate(this);
             newform.Show();
         }
+
+        private void ConsiderOtherTSV_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ConsiderOtherTSV.Checked) ShinyOnly.Checked = true;
+        }
         #endregion
     }
 }

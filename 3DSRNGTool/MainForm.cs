@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.5.4";
+        private string version = "0.6.0";
 
         private int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
@@ -513,7 +513,8 @@ namespace Pk3DSRNGTool
                 Frame_min.Value = Method < 3 || MainRNGEgg.Checked ? 418 : Method == 4 ? 1012 : 0;
             else
                 Frame_min.Value = 0;
-            TargetFrame.Value = Frame_max.Value = 5000;
+            TargetFrame.Value = 5000;
+            Frame_max.Value = 50000;
             if (0 == Method || Method == 2)
                 Poke_SelectedIndexChanged(null, null);
         }
