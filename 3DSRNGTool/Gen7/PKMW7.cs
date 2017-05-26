@@ -14,7 +14,7 @@
                 Text = "Normal Wild",
                 List = new[]
                 {
-                   new PKMW7 { Species = 000, Level = 60, Conceptual = true },
+                   new PKMW7 { Species = 000, Conceptual = true },
                 }
             },
             new PokemonList
