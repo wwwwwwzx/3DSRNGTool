@@ -982,7 +982,6 @@ namespace Pk3DSRNGTool
                 dgv_ID_rand.Visible &= Advanced.Checked;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
-                DGV_ID.Focus();
                 DGV_ID.CurrentCell = null;
                 return;
             }
@@ -1003,7 +1002,6 @@ namespace Pk3DSRNGTool
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
-            DGV.Focus();
             DGV.CurrentCell = null;
         }
 
