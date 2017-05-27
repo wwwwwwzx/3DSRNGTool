@@ -853,7 +853,7 @@ namespace Pk3DSRNGTool
             if (setting is Stationary7 setting7)
                 setting7.blinkwhensync = BlinkWhenSync.Checked;
             if (setting is Stationary6 setting6)
-                setting6.Ability = (byte)(AbilityLocked.Checked ? Ability.SelectedIndex + 1 : 0);
+                setting6.Ability = (byte)(Sta_AbilityLocked.Checked ? Sta_Ability.SelectedIndex + 1 : 0);
 
             return setting;
         }

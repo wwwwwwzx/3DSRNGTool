@@ -169,6 +169,19 @@
                     new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 80, }, // Amaura
                 }
             },
+            new PokemonList
+            {
+                Text = "Rock Smash", // Move to wild
+                List = new[]
+                {
+                    new PKM6 { Species = 074, Level = 20, Delay = 280, }, // Geodude
+                    new PKM6 { Species = 075, Level = 20, Delay = 280, }, // Graveler
+                    new PKM6 { Species = 299, Level = 20, Delay = 280, }, // Nosepass
+                    new PKM6 { Species = 688, Level = 20, Delay = 280, }, // Binacle
+                    new PKM6 { Species = 525, Level = 20, Delay = 280, }, // Boldore
+                    new PKM6 { Species = 558, Level = 20, Delay = 280, }, // Crustle
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_XY =
@@ -215,11 +228,6 @@
                 List = new[]
                 {
                     new PKM6 { Species = 143, Level = 15,}, // Snorlax
-                    // Todo: Move to wild as trash cans rng
-                    new PKM6 { Species = 568, Level = 35, Delay = 18 }, // Trubbish
-                    new PKM6 { Species = 569, Level = 35, Delay = 18 }, // Garbodor
-                    new PKM6 { Species = 354, Level = 35, Delay = 18 }, // Banette
-                    new PKM6 { Species = 479, Level = 38, Delay = 18 }, // Rotom
                 }
             },
             new PokemonList
@@ -252,6 +260,30 @@
                     new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 80, }, // Archen
                     new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 80, }, // Tyrunt
                     new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 80, }, // Amaura
+                }
+            },
+            new PokemonList
+            {
+                Text = "Trash Can", // Move to wild
+                List = new[]
+                {
+                    new PKM6 { Species = 568, Level = 35, Delay = 18 }, // Trubbish
+                    new PKM6 { Species = 569, Level = 35, Delay = 18 }, // Garbodor
+                    new PKM6 { Species = 354, Level = 35, Delay = 18 }, // Banette
+                    new PKM6 { Species = 479, Level = 38, Delay = 18 }, // Rotom
+                }
+            },
+            new PokemonList
+            {
+                Text = "Rock Smash", // Move to wild
+                List = new[]
+                {
+                    new PKM6 { Species = 557, Level = 20, Delay = 284, }, // Dwebble
+                    new PKM6 { Species = 075, Level = 20, Delay = 284, }, // Graveler
+                    new PKM6 { Species = 095, Level = 20, Delay = 284, }, // Onix
+                    new PKM6 { Species = 688, Level = 20, Delay = 284, }, // Binacle
+                    new PKM6 { Species = 213, Level = 20, Delay = 284, }, // Shuckle
+                    new PKM6 { Species = 218, Level = 20, Delay = 284, }, // Slugma
                 }
             },
         };

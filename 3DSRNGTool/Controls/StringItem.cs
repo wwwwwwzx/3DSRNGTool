@@ -61,6 +61,8 @@ namespace Pk3DSRNGTool
             new [] { "Normal Wild", "普通野外" },
             new [] { "Johto Starters", "城都御三家" },
             new [] { "Legendary Titans", "三神柱" },
+            new [] { "Trash Can", "垃圾桶" },
+            new [] { "Rock Smash", "碎岩" },
             new [] { "Not Impled", "功能未开放" },
         };
 
