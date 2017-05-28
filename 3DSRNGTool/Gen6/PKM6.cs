@@ -227,6 +227,7 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
+                    new PKM6 { Species = 016, Level = 03, Ability = 1, Delay = 14, ShinyLocked = true, }, // Pidgey
                     new PKM6 { Species = 143, Level = 15,}, // Snorlax
                 }
             },

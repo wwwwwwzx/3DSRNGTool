@@ -243,6 +243,7 @@ namespace Pk3DSRNGTool
         private void Seed_ValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Seed = Seed.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
