@@ -127,6 +127,7 @@
                     new PKM6 { Species = 101, Level = 40, Delay = 122, }, // Electrode @ Magma Hideout, Aqua Hideout
                     new PKM6 { Species = 100, Level = 20, Delay = 120, }, // Voltorb @ Route 119
                     new PKM6 { Species = 442, Level = 50, }, // Spiritomb @ Route 120
+                    new PKM6 { Species = 265, Level = 03, Delay = 12, ShinyLocked = true, }, // Wurmple
                 }
             },
             new PokemonList
@@ -208,7 +209,7 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, },
+                    new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, }, // Bank Celebi
                     new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans
                     new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
                 }
