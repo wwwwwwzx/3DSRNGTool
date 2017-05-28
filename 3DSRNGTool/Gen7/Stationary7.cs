@@ -50,17 +50,17 @@ namespace Pk3DSRNGTool
             }
 
             //IV
-            rt.IVs = new int[6];
+            rt.IVs = (int[])IVs.Clone();
             for (int i = PerfectIVCount; i > 0;)
             {
                 int tmp = (int)(getrand % 6);
-                if (rt.IVs[tmp] == 0)
+                if (rt.IVs[tmp] < 0)
                 {
                     i--; rt.IVs[tmp] = 31;
                 }
             }
             for (int i = 0; i < 6; i++)
-                if (rt.IVs[i] == 0)
+                if (rt.IVs[i] < 0)
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability

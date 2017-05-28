@@ -53,6 +53,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, Level = 18, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
+                    new PKM7 { Species = 731, Level = 03, NPC = 1, Delay = 16, ShinyLocked = true, IVs = new[] { -1, -1, -1, -1, -1, 1 }, }, // Pikipek
                     new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, },  // Exeggutor
                 }
             },

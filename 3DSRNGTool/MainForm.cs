@@ -654,11 +654,6 @@ namespace Pk3DSRNGTool
             AlwaysSynced.Checked = FormPM.AlwaysSync;
             ShinyLocked.Checked = FormPM.ShinyLocked;
             GenderRatio.SelectedValue = (int)FormPM.GenderRatio;
-            if (FormPM.IVs != null)
-            {
-                IVlow = FormPM.IVs.Select(iv => iv >= 0 ? iv : 0).ToArray();
-                IVup = FormPM.IVs.Select(iv => iv >= 0 ? iv : 31).ToArray();
-            }
             AlwaysSynced.Text = SYNC_STR[lindex, FormPM.Syncable && FormPM.Nature > 25 ? 0 : 1];
             if (!FormPM.Syncable)
                 SyncNature.SelectedIndex = 0;
@@ -850,6 +845,7 @@ namespace Pk3DSRNGTool
             setting.AlwaysSync = AlwaysSynced.Checked;
             setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
+            setting.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
 
             if (setting is Stationary7 setting7)
                 setting7.blinkwhensync = BlinkWhenSync.Checked;

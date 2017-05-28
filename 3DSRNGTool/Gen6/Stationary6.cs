@@ -38,7 +38,7 @@ namespace Pk3DSRNGTool
             }
 
             //IV
-            rt.IVs = (int[])IVs?.Clone() ?? new[] { -1, -1, -1, -1, -1, -1 };
+            rt.IVs = (int[])IVs.Clone();
             for (int i = PerfectIVCount; i > 0;)
             {
                 uint tmp = rand(6);
