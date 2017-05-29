@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.6.0";
+        private string version = "0.7.0";
 
         private int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
@@ -692,6 +692,10 @@ namespace Pk3DSRNGTool
                 {
                     Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
                     Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
+                }
+                else if (FormPM is PKMW6 pmw6)
+                {
+                    Special_th.Value = 0;
                 }
                 return;
             }
