@@ -31,62 +31,65 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 
 #### Generation 6
 
-- Pokemon Link: _Would you like to retrieve data using Pokemon Link? Yes/No_
-- Fossils: _This is xxx! Please take good care of it._
-- Kalos/Hoenn Starters: _Choose this Pokemon? Yes/No_
-- Rock Smash: _Would you like to use Rock Smash? Yes/No_
-- **Mystery Gift**: _xxx received xxx!_
-- **Eggs** from Day Care: 
+- __Pokemon Link__: _Would you like to retrieve data using Pokemon Link? Yes/No_
+- __Fossils__: _This is xxx! Please take good care of it._
+- __Kalos/Hoenn Starters__: _Choose this Pokemon? Yes/No_
+- __Horde__: Sweet Scent / Honey Selected. USE/GIVE/DISCARD
+- __Rock Smash__: _Would you like to use Rock Smash? Yes/No_
+- __Mystery Gift__: _xxx received xxx!_
+- __Eggs__ from Day Care: 
 Accepting: _You do want it. don't you? / You'll be wanting it won't you?_  
 Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on to it. Thank you!_
-- **ID** : _xxx... Tres bien! What a fantastic name! / So you're xxx? Yes/No_
+- __ID__ : _xxx... Tres bien! What a fantastic name! / So you're xxx? Yes/No_
 
 ##### XY
-- Mewtwo: _Mew!_
-- Xerneas, Yveltal: _Xshaa!/Ygaaa!_
-- Zygarde: _Zzzz-dddd-aaaaaa!_
-- Kanto Legendary Birds: No dialogue.\* Press arrow key or use circle pad to run to it.\*\*
-- Pidgey: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key or use circle pad to run to it.\*\*
-- Kanto Starters: _You picked xxx. then! I see. That's simply wonderful!_
-- Snorlax: _Snorlax opened its eyes wide!_
-- Lucario: _Lucario is staring intently at xxx. Will you take Lucario with you? Yes/No_
-- Lapras: _Would you mind taking Lapras with you on your journey? Sure!/I coundn't_
-- Berry Tree: _A Pokemon appeared!_
-- Shaking Trash Can: No dialogue.\*
+- __Mewtwo__: _Mew!_
+- __Xerneas/Yveltal__: _Xshaa!/Ygaaa!_
+- __Zygarde__: _Zzzz-dddd-aaaaaa!_
+- __Kanto Legendary Birds__: No dialogue.\* Press arrow key or use circle pad to run to it.\*\*
+- __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key or use circle pad to run to it.\*\*
+- __Kanto Starters__: _You picked xxx. then! I see. That's simply wonderful!_
+- __Snorlax__: _Snorlax opened its eyes wide!_
+- __Lucario__: _Lucario is staring intently at xxx. Will you take Lucario with you? Yes/No_
+- __Lapras__: _Would you mind taking Lapras with you on your journey? Sure!/I coundn't_
+- __Berry Tree__: _A Pokemon appeared!_
+- __Shaking Trash Can__: No dialogue.\*
 
 ##### Omega Ruby and Alpha Sapphire
-- Portal / Hoopa Ring: _Would you like to put your hand deep in the hole? / Would you like to examine it? Yes/No_
-- Soaring Legends: _Despite that, do you want to fly into the clouds? / Do you want to fly into the gap? Yes/No_
-- Storyline Latios/Latias: _xxx joined your team!_
-- Eon Ticket Latios/Latias: _Hyahhn!_
-- Primal Kyogre/Groudon: No dialogue.\*  (Do NOT open the wild view during the delay. The delay varies from console and save. and it should be an odd number)
-- Rayquaza: _Kiiiryarrrarrrarrrraaaashiiiii!!!_ (Tip: Wait until it finishes its movement)
-- Deoxys: _The stone tablet before you--!!!_
-- Regirock, Regice and Registeel: No dialogue.\*
-- Regigigas: _Zut zutt!_
-- Starters(Gen 2/4/5): _Yes, that one from the xxx region._
-- Wrumple: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.\*\*
-- Cosplay Pikachu: _You'll really, really, really stand out if you two go on stage with matching costumes!_
-- Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi): _xxx recieved xxx._
-- Beldum: _xxx obtained a Beldum_
-- Spiritomb: _Shahhh!_
-- Kecleon: _The startled Pokemon attacked!_
-- Voltorb, Electrode: No dialogue.\*
+- __Portal(Hoopa Ring)__: _Would you like to put your hand deep in the hole? / Would you like to examine it? Yes/No_
+- __Soaring Legends__: _Despite that, do you want to fly into the clouds? / Do you want to fly into the gap? Yes/No_
+- __Storyline Latios/Latias__: _xxx joined your team!_
+- __Eon Ticket Latios/Latias__: _Hyahhn!_
+- __Primal Kyogre/Groudon__: No dialogue.\*  (Do NOT open the wild view during the delay. The delay varies from console and save. and it should be an odd number)
+- __Rayquaza__: _Kiiiryarrrarrrarrrraaaashiiiii!!!_ (Tip: Wait until it finishes its movement)
+- __Deoxys__: _The stone tablet before you--!!!_
+- __Regirock, Regice and Registeel__: No dialogue.\*
+- __Regigigas__: _Zut zutt!_
+- __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
+- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.\*\*
+- __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
+- __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
+- __Beldum__: _xxx obtained a Beldum_
+- __Spiritomb__: _Shahhh!_
+- __Kecleon__: _The startled Pokemon attacked!_
+- __Voltorb, Electrode__: No dialogue.\*
 
 ##### Tip: 
+
  \* for consistent delay, use D-pad to move along grid.   
+ 
  \*\*For PokeCalcNTR User, hold circle pad in one direction and unpause.
 
 #### Generation 7
 
 ##### Sun and Moon
-- Tapus: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
-- Solgaleo/Lunala: No dialogue. (Tip: NPC number can be 2 or 6, depends on save)
-- Zygarde: _Zygarde has gone into a Poke Ball!_
-- UBs, Island Scan & wild Pokemon: Press A and enter the bag from X menu.
-- Type:Null/Cosmog/Porygon/Aerodactyl/Magearna/Fossils/Gift Eevee egg and Mystery Gift: _You received xxx!_
-- Crabrawler: _There was a Pokemon feeding on the Berries and it leaped out at you!_
-- Pikipek: No dialogue. Before the fourth step in grass.
-- Exeggutor: _Ahhh! What is that, xxx?!_
-- Main RNG egg: _But you want the Egg your Pokemon was holding. right?_
-- Starters: _Having accepted on another, you'll surely be friends for life"._
+- __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
+- __Solgaleo/Lunala__: No dialogue. (Tip: NPC number can be 2 or 6, depends on save)
+- __Zygarde__: _Zygarde has gone into a Poke Ball!_
+- __UBs, Island Scan & wild Pokemon__: Press A and enter the bag from X menu.
+- __Type:Null/Cosmog/Porygon/Aerodactyl/Magearna/Fossils/Gift Eevee egg and Mystery Gift__: _You received xxx!_
+- __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
+- __Pikipek__: No dialogue. Before the fourth step in grass.
+- __Exeggutor__: _Ahhh! What is that, xxx?!_
+- __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
+- __Starters__: _Having accepted on another, you'll surely be friends for life"._
