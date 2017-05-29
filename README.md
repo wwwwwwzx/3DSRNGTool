@@ -44,33 +44,38 @@ Rejecting: "Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - Mewtwo: Mew!
 - Xerneas, Yveltal:
 - Zygarde: Zzzz-dddd-aaaaaa!
-- Kanto Legendary Birds: No dialogue. Press arrow key or use circle pad to run to it. (Hold circle pad in one direction and unpause)
+- Kanto Legendary Birds: No dialogue.\* Press arrow key or use circle pad to run to it.\*\*
 - Mystery Gift: xxx received xxx!
-- Pidgey: No dialogue. Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key or use circle pad to run to it. (Hold circle pad in one direction and unpause)
+- Pidgey: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key or use circle pad to run to it.\*\*
 - Kanto Starters: You picked xxx. then! I see. That's simply wonderful!
 - Snorlax: Snorlax opened its eyes wide!
 - Lucario: Lucario is staring intently at xxx. Will you take Lucario with you? Yes/No
 - Lapras: Would you mind taking Lapras with you on your journey? Sure!/I coundn't
-- Shaking Trash Can: No dialogue. 
+- Berry Tree: A Pokemon appeared!
+- Shaking Trash Can: No dialogue.\*
 
 ##### Omega Ruby and Alpha Sapphire
 - Portal / Hoopa Ring:  Would you like to put your hand deep in the hole? / Would you like to examine it? Yes/No
 - Soaring Legends: Despite that, do you want to fly into the clouds? / Do you want to fly into the gap? Yes/No
 - Storyline Latios/Latias: xxx joined your team!
 - Eon Ticket Latios/Latias: Hyahhn!
-- Primal Kyogre/Groudon: No dialogue.  (Tip: for consistent delay, use D-pad to move along grid. Do NOT open the wild view during the delay. The delay varied from console and save. and it should be an odd number)
+- Primal Kyogre/Groudon: No dialogue.\*  (Do NOT open the wild view during the delay. The delay varies from console and save. and it should be an odd number)
 - Rayquaza: Kiiiryarrrarrrarrrraaaashiiiii!!! (Tip: Wait until it finishes its movement)
 - Deoxys: The stone tablet before you--!!!
-- Regirock, Regice and Registeel: No dialogue. (Tip: for consistent delay, use D-pad to move along grid)
+- Regirock, Regice and Registeel: No dialogue.\*
 - Regigigas: Zut zutt!
 - Starters(Gen 2/4/5): "Yes, that one from the xxx region."
-- Wrumple: No dialogue. Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it. (Hold circle pad in one direction and unpause)
+- Wrumple: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.\*\*
 - Cosplay Pikachu: "You'll really, really, really stand out if you two go on stage with matching costumes!"
 - Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi): xxx recieved xxx.
 - Beldum: xxx obtained a Beldum
 - Spiritomb: Shahhh!
 - Kecleon: The startled Pokemon attacked!
-- Voltorb, Electrode: No dialogue. (Tip: for consistent delay, use D-pad to move along grid)
+- Voltorb, Electrode: No dialogue.\*
+
+Tip: 
+ \* for consistent delay, use D-pad to move along grid  
+ \*\*Hold circle pad in one direction and unpause.
 
 #### Generation 7
 

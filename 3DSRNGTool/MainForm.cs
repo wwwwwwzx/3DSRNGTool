@@ -21,7 +21,7 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
-        private bool IsHorde => Method == 2 && ((FormPM as PKMW6)?.Horde ?? false);
+        private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 6;
         private byte lastgen;
@@ -146,10 +146,11 @@ namespace Pk3DSRNGTool
         {
             int[] locationlist = null;
             if (Gen6)
-                locationlist = FormPM.Conceptual ? LocationTable6.Table_ORAS.Select(loc => loc.Locationidx).ToArray() : null;
+                locationlist = null;
             else if (Gen7)
                 locationlist = FormPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (FormPM as PKMW7)?.Location;
-
+            
+            MetLocation.Visible = SlotSpecies.Visible = Day.Visible = Night.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
             if (locationlist == null)
                 return;
             Locationlist = locationlist.Select(loc => new ComboItem(StringItem.getlocationstr(loc, Ver), loc)).ToList();
@@ -443,7 +444,6 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
-            B_Search.Enabled = Gen7 || Method != 2;
 
             if (Method > 4)
                 return;
@@ -935,6 +935,11 @@ namespace Pk3DSRNGTool
                         setting6.SpecForm[i] = FormPM.SpecForm;
                         setting6.SlotLevel[i] = FormPM.Level;
                     }
+                }
+                else if ((FormPM as PKMW6)?.Type == EncounterType.SingleSlot)
+                {
+                    setting6.SpecForm = new[] { 0, FormPM.SpecForm };
+                    setting6.SlotLevel = new byte[] { 0, FormPM.Level };
                 }
                 else
                 {

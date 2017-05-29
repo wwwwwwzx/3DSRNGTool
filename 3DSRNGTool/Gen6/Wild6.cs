@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
             slot = rt.Slot = getSlot;
             Advance(60);
             Generate_Once(rt);
+            rt.ItemStr = "-";
             return rt;
         }
         
@@ -36,6 +37,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 5; i++)
             {
                 var rt = new ResultW6();
+                rt.Synchronize = getSync;
                 slot = rt.Slot = (byte)(i + 1);
                 rt.Ability = getAbility;
                 Generate_Once(rt);
