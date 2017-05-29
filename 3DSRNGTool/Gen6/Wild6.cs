@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using PKHeX.Core;
+﻿using PKHeX.Core;
 using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
@@ -10,21 +9,45 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
+        private bool getSync => false; // Todo
+        private byte getSlot => 1; // Todo
+        private byte getAbility => 0; // Todo
+
         protected override int PIDroll_count => ShinyCharm ? 3 : 1;
 
         public byte[] SlotLevel;
         public bool CompoundEye;
+        public bool Horde;
 
         public override RNGResult Generate()
         {
-            ResultW6 rt = new ResultW6();
-
-            Advance(1);
-
-            rt.Slot = getslot((int)(getrand >> 16) / 656);
-            rt.Level = SlotLevel[rt.Slot];
-
+            var rt = new ResultW6();
+            rt.Synchronize = getSync;
+            slot = rt.Slot = getSlot;
             Advance(60);
+            Generate_Once(rt);
+            return rt;
+        }
+        
+        public ResultW6[] Generate_Horde()
+        {
+            var results = new ResultW6[5];
+            Advance(60);
+            for (int i = 0; i < 5; i++)
+            {
+                var rt = new ResultW6();
+                slot = rt.Slot = (byte)(i + 1);
+                rt.Ability = getAbility;
+                Generate_Once(rt);
+                results[i] = rt;
+            }
+            return results;
+        }
+
+        private void Generate_Once(ResultW6 rt)
+        {
+            //Level
+            rt.Level = SlotLevel[slot];
 
             //Encryption Constant
             rt.EC = getrand;
@@ -38,26 +61,26 @@ namespace Pk3DSRNGTool
 
             //IV
             rt.IVs = new int[6];
-            while (rt.IVs.Count(iv => iv == 31) < PerfectIVCount)
-                rt.IVs[(int)(getrand % 6)] = 31;
+            for (int i = PerfectIVCount; i > 0;)
+            {
+                uint tmp = rand(6);
+                if (rt.IVs[tmp] == 0)
+                {
+                    i--; rt.IVs[tmp] = 31;
+                }
+            }
             for (int i = 0; i < 6; i++)
                 if (rt.IVs[i] == 0)
                     rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = (byte)((getrand >> 31) + 1);
+            rt.Ability = (byte)(rt.Ability < 3 ? (getrand >> 31) + 1 : 3);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
 
             //Gender
             rt.Gender = (byte)(RandomGender[slot] ? (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
-
-            //Item
-            rt.Item = (byte)rand(100);
-            rt.ItemStr = getitemstr(rt.Item);
-
-            return rt;
         }
 
         public override void Markslots()

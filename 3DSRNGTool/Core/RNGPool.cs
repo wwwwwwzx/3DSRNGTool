@@ -94,6 +94,19 @@ namespace Pk3DSRNGTool.Core
             return result;
         }
 
+        public static RNGResult[] GenerateHorde6()
+        {
+            index = Considerdelay ? DelayTime : 0;
+            Advance(1);
+            var results = (igenerator as Wild6).Generate_Horde();
+            foreach (var result in results)
+            {
+                result.RandNum = RandList[Head];
+                result.Status = RNGStateStr[Head];
+            }
+            return results;
+        }
+
         public static RNGResult GenerateEgg6()
         {
             index = Considerdelay ? DelayTime : 0;

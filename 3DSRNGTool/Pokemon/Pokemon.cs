@@ -77,7 +77,7 @@ namespace Pk3DSRNGTool
                     return method == 0 ? PKM6.Species_XY : NotImpled;
                 case 2:
                 case 3:
-                    return method == 0 ? PKM6.Species_ORAS : NotImpled;
+                    return method == 0 ? PKM6.Species_ORAS : PKMW6.Species_ORAS;
                 case 4:
                 case 5:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;

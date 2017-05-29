@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
+        private bool IsHorde => Method == 2 && ((FormPM as PKMW6)?.Horde ?? false);
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 6;
         private byte lastgen;
@@ -925,15 +926,28 @@ namespace Pk3DSRNGTool
             }
             if (setting is Wild6 setting6)
             {
-                var area = ea as EncounterArea6;
-                setting6.SpecForm = new int[13];
-                setting6.SlotLevel = new byte[13];
-                for (int i = 1; i < 13; i++)
+                if (IsHorde)
                 {
-                    setting6.SpecForm[i] = slotspecies[i - 1];
-                    setting6.SlotLevel[i] = area.Level[i - 1];
+                    setting6.SpecForm = new int[6];
+                    setting6.SlotLevel = new byte[6];
+                    for (int i = 1; i < 6; i++)
+                    {
+                        setting6.SpecForm[i] = FormPM.SpecForm;
+                        setting6.SlotLevel[i] = FormPM.Level;
+                    }
                 }
-                slottype = 2;
+                else
+                {
+                    var area = ea as EncounterArea6;
+                    setting6.SpecForm = new int[13];
+                    setting6.SlotLevel = new byte[13];
+                    for (int i = 1; i < 13; i++)
+                    {
+                        setting6.SpecForm[i] = slotspecies[i - 1];
+                        setting6.SlotLevel[i] = area.Level[i - 1];
+                    }
+                    slottype = 2;
+                }
             }
 
             setting.Markslots();
@@ -1095,6 +1109,7 @@ namespace Pk3DSRNGTool
         {
             switch (Method)
             {
+                case 2: if (IsHorde) { Search6_Horde(); return; } goto default;
                 case 3: Search6_Egg(); return;
                 case 4: Search6_ID(); return;
                 default: Search6_Normal(); return;
@@ -1123,6 +1138,35 @@ namespace Pk3DSRNGTool
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
                 if (Frames.Count > 100000)
+                    break;
+            }
+        }
+
+        private void Search6_Horde()
+        {
+            var rng = new MersenneTwister((uint)Seed.Value);
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+            if (AroundTarget.Checked)
+            {
+                min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
+            }
+            // Advance
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            // Prepare
+            getsetting(rng);
+            // Start
+            for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
+            {
+                var results = RNGPool.GenerateHorde6();
+                foreach (var result in results)
+                {
+                    if (!filter.CheckResult(result))
+                        continue;
+                    Frames.Add(new Frame(result, frame: i, time: i - min));
+                }
+                if (Frames.Count > 500000)
                     break;
             }
         }
