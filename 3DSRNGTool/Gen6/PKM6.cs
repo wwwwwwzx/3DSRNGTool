@@ -220,7 +220,7 @@
                 List = new[]
                 {
                     new PKM6 { Species = 131, Level = 30, Ability = 1, Nature = 06, IVs = new[] {31, 20, 20, 20, 20, 20}, Gift = true, Delay = 18, }, // Lapras
-                    new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, IVs = new[] {06, 25, 16, 25, 19, 31}, Gift = true, ShinyLocked = true, Gender = 1, }, // Lucario
+                    new PKM6 { Species = 448, Level = 32, Ability = 1, Nature = 11, IVs = new[] {06, 25, 16, 25, 19, 31}, Gift = true, Delay = 20, ShinyLocked = true, Gender = 1, }, // Lucario
                 }
             },
             new PokemonList
