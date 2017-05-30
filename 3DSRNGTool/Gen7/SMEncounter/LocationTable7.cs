@@ -560,7 +560,7 @@ namespace Pk3DSRNGTool
                 Location = 174, idx = 6, mark = "B1F-C",
                 Correction = 8,
                 LevelMin = 41,
-                Species = new[] {14,042,055,055,055},
+                Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea7
             {
