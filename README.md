@@ -1,9 +1,9 @@
 # 3DS RNG Tool
 
-RNG Tool for Pokemon main series game on 3DS platform. Some parts should work with PokeClacNTR using CFW-NTR.
+This is a RNG Tool for Pokemon main series game on 3DS platform. Some parts should work with PokeClacNTR using CFW-NTR.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG, including stationary Pokemon, Mystery Gift Pokemon, Eggs and ID.
+- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, part of wild Pokemon, Eggs and ID.
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
 - Nidoran line/Volbeat/Illumise gender prediction and shortest accept/reject path solution for Gen7 Egg RNG.
@@ -17,9 +17,9 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 ## Credit
 
 - Zaksabeast, Zap715, Real96, Admiral Fish and ShinySylveon for great teamworks on gen6 development  
-  Zaksabeast and Admiral Fish for building up the plugin 
-  Real96 for testing and lots of good advice 
-  Zap715 for figuring out tons of infomation from the assembly 
+  Zaksabeast and Admiral Fish for building up the plugin  
+  Real96 for testing and lots of good advice  
+  Zap715 for figuring out tons of infomation from the assembly  
   ShinySylveon for contribution to Gen6 Egg RNG
   
 - Kaphotics for PkHeX and Pk3DS. I borrowed some code from the PKHeX Core Library and extract useful info from the ROM.
@@ -75,16 +75,13 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Voltorb, Electrode__: No dialogue.\*
 
 ##### Tip: 
-
- \* for consistent delay, use D-pad to move along grid.   
- 
- \*\*For PokeCalcNTR User, hold circle pad in one direction and unpause.
+ \* For consistent delay, use D-pad (arrow keys) to move along grid.  
+ \*\* For PokeCalcNTR User, hold circle pad in one direction and unpause.
 
 #### Generation 7
-
 ##### Sun and Moon
 - __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
-- __Solgaleo/Lunala__: No dialogue. (Tip: NPC number can be 2 or 6, depends on save)
+- __Solgaleo/Lunala__: No dialogue.
 - __Zygarde__: _Zygarde has gone into a Poke Ball!_
 - __UBs, Island Scan & wild Pokemon__: Press A and enter the bag from X menu.
 - __Type:Null/Cosmog/Porygon/Aerodactyl/Magearna/Fossils/Gift Eevee egg and Mystery Gift__: _You received xxx!_
