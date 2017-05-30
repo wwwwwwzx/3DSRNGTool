@@ -229,23 +229,23 @@
     <None Include="Resources\text\text_Location_xy_cn.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pic\pic_Clock_0.png" />
-    <None Include="Resources\pic\pic_Clock_1.png" />
-    <None Include="Resources\pic\pic_Clock_10.png" />
-    <None Include="Resources\pic\pic_Clock_11.png" />
-    <None Include="Resources\pic\pic_Clock_12.png" />
-    <None Include="Resources\pic\pic_Clock_13.png" />
-    <None Include="Resources\pic\pic_Clock_14.png" />
-    <None Include="Resources\pic\pic_Clock_15.png" />
-    <None Include="Resources\pic\pic_Clock_16.png" />
-    <None Include="Resources\pic\pic_Clock_2.png" />
-    <None Include="Resources\pic\pic_Clock_3.png" />
-    <None Include="Resources\pic\pic_Clock_4.png" />
-    <None Include="Resources\pic\pic_Clock_5.png" />
-    <None Include="Resources\pic\pic_Clock_6.png" />
-    <None Include="Resources\pic\pic_Clock_7.png" />
-    <None Include="Resources\pic\pic_Clock_8.png" />
-    <None Include="Resources\pic\pic_Clock_9.png" />
+    <None Include="Resources\pic\Clock_00.jpg" />
+    <None Include="Resources\pic\Clock_01.jpg" />
+    <None Include="Resources\pic\Clock_02.jpg" />
+    <None Include="Resources\pic\Clock_03.jpg" />
+    <None Include="Resources\pic\Clock_04.jpg" />
+    <None Include="Resources\pic\Clock_05.jpg" />
+    <None Include="Resources\pic\Clock_06.jpg" />
+    <None Include="Resources\pic\Clock_07.jpg" />
+    <None Include="Resources\pic\Clock_08.jpg" />
+    <None Include="Resources\pic\Clock_09.jpg" />
+    <None Include="Resources\pic\Clock_10.jpg" />
+    <None Include="Resources\pic\Clock_11.jpg" />
+    <None Include="Resources\pic\Clock_12.jpg" />
+    <None Include="Resources\pic\Clock_13.jpg" />
+    <None Include="Resources\pic\Clock_14.jpg" />
+    <None Include="Resources\pic\Clock_15.jpg" />
+    <None Include="Resources\pic\Clock_16.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

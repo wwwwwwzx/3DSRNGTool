@@ -3917,7 +3917,7 @@
             // 
             // button16
             // 
-            this.button16.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_16;
+            this.button16.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_16;
             this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button16.Location = new System.Drawing.Point(756, 31);
             this.button16.Name = "button16";
@@ -3941,7 +3941,7 @@
             // 
             // button9
             // 
-            this.button9.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_9;
+            this.button9.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_09;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button9.Location = new System.Drawing.Point(434, 31);
             this.button9.Name = "button9";
@@ -3952,7 +3952,7 @@
             // 
             // button8
             // 
-            this.button8.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_8;
+            this.button8.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_08;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button8.Location = new System.Drawing.Point(388, 31);
             this.button8.Name = "button8";
@@ -3983,7 +3983,7 @@
             // 
             // button10
             // 
-            this.button10.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_10;
+            this.button10.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_10;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button10.Location = new System.Drawing.Point(480, 31);
             this.button10.Name = "button10";
@@ -4004,7 +4004,7 @@
             // 
             // button7
             // 
-            this.button7.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_7;
+            this.button7.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_07;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button7.Location = new System.Drawing.Point(342, 31);
             this.button7.Name = "button7";
@@ -4015,7 +4015,7 @@
             // 
             // button11
             // 
-            this.button11.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_11;
+            this.button11.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_11;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button11.Location = new System.Drawing.Point(526, 31);
             this.button11.Name = "button11";
@@ -4026,7 +4026,7 @@
             // 
             // button6
             // 
-            this.button6.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_6;
+            this.button6.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_06;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button6.Location = new System.Drawing.Point(296, 31);
             this.button6.Name = "button6";
@@ -4037,7 +4037,7 @@
             // 
             // button12
             // 
-            this.button12.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_12;
+            this.button12.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_12;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button12.Location = new System.Drawing.Point(572, 31);
             this.button12.Name = "button12";
@@ -4048,7 +4048,7 @@
             // 
             // button5
             // 
-            this.button5.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_5;
+            this.button5.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_05;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.Location = new System.Drawing.Point(250, 31);
             this.button5.Name = "button5";
@@ -4059,7 +4059,7 @@
             // 
             // button0
             // 
-            this.button0.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_0;
+            this.button0.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_00;
             this.button0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button0.Location = new System.Drawing.Point(20, 31);
             this.button0.Name = "button0";
@@ -4070,7 +4070,7 @@
             // 
             // button13
             // 
-            this.button13.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_13;
+            this.button13.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_13;
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button13.Location = new System.Drawing.Point(618, 31);
             this.button13.Name = "button13";
@@ -4081,7 +4081,7 @@
             // 
             // button1
             // 
-            this.button1.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_1;
+            this.button1.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_01;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.Location = new System.Drawing.Point(66, 31);
             this.button1.Name = "button1";
@@ -4092,7 +4092,7 @@
             // 
             // button4
             // 
-            this.button4.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_4;
+            this.button4.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_04;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.Location = new System.Drawing.Point(204, 31);
             this.button4.Name = "button4";
@@ -4103,7 +4103,7 @@
             // 
             // button14
             // 
-            this.button14.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_14;
+            this.button14.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_14;
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button14.Location = new System.Drawing.Point(664, 31);
             this.button14.Name = "button14";
@@ -4114,7 +4114,7 @@
             // 
             // button2
             // 
-            this.button2.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_2;
+            this.button2.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_02;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.Location = new System.Drawing.Point(112, 31);
             this.button2.Name = "button2";
@@ -4125,7 +4125,7 @@
             // 
             // button3
             // 
-            this.button3.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_3;
+            this.button3.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_03;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.Location = new System.Drawing.Point(158, 31);
             this.button3.Name = "button3";
@@ -4136,7 +4136,7 @@
             // 
             // button15
             // 
-            this.button15.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.pic_Clock_15;
+            this.button15.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_15;
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button15.Location = new System.Drawing.Point(710, 31);
             this.button15.Name = "button15";
