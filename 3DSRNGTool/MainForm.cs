@@ -622,6 +622,16 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
+            if (Gen7 && DGV.Columns[e.ColumnIndex].Name == "dgv_shift")
+            {
+                DGVToolTip.ToolTipTitle = "Frame Shift for Eontimer Calibration";
+                DGVToolTip.Show("This column directly shows the frame derivation in Gen3 frame unit, i.e. 1F = 1/60 sec."
+                    , this,
+                    DGV.Location.X + cellRect.X + cellRect.Size.Width,
+                    DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
+                    3000);
+                return;
+            }
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
             {
                 DGVToolTip.ToolTipTitle = "Frame Advance";
