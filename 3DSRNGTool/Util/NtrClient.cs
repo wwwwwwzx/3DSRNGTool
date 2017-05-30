@@ -258,6 +258,7 @@ namespace Pk3DSRNGTool
         private void log(string msg)
         {
             onLogArrival?.Invoke(msg);
+            #if Debug
             try
             {
                 Console.WriteLine(msg);
@@ -266,6 +267,7 @@ namespace Pk3DSRNGTool
             {
                 MessageBox.Show(ex.Message);
             }
+            #endif
         }
     }
 }

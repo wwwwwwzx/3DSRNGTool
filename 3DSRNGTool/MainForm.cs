@@ -1003,6 +1003,7 @@ namespace Pk3DSRNGTool
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
                 DGV_ID.CurrentCell = null;
+                if (IDFrames.Count > 0) DGV_ID.FirstDisplayedScrollingRowIndex = 0;
                 return;
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
@@ -1023,6 +1024,7 @@ namespace Pk3DSRNGTool
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
             DGV.CurrentCell = null;
+            if (Frames.Count > 0) DGV.FirstDisplayedScrollingRowIndex = 0;
         }
 
         private void Search_Click(object sender, EventArgs e)

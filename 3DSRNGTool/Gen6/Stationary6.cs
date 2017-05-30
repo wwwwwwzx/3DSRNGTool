@@ -15,7 +15,9 @@ namespace Pk3DSRNGTool
             Result6 rt = new Result6();
             rt.Level = Level;
 
-            //Sync: From another RNG
+            int StartFrame = RNGPool.index;
+
+            //Sync
             rt.Synchronize = getSync;
             if (!AlwaysSync)
                 Advance(60);
@@ -61,7 +63,7 @@ namespace Pk3DSRNGTool
             rt.Gender = (byte)(RandomGender ? (rand(252) >= Gender ? 1 : 2) : Gender);
 
             //For Pokemon Link
-            rt.FrameUsed = (byte)(RNGPool.index - 1);
+            rt.FrameUsed = (byte)(RNGPool.index - StartFrame);
 
             return rt;
         }
