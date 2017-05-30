@@ -28,7 +28,7 @@
 
         public abstract RNGResult Generate();
 
-        public virtual void MarkItem()
+        public void MarkItem()
         {
             EverStone = MaleItem == 1 || FemaleItem == 1;
             Both_Everstone = MaleItem == 1 && FemaleItem == 1;

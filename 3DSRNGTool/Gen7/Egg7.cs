@@ -11,26 +11,6 @@ namespace Pk3DSRNGTool
         public bool Homogeneous;
         public bool FemaleIsDitto;
 
-        public override void MarkItem()
-        {
-            EverStone = MaleItem == 1 || FemaleItem == 1;
-            Both_Everstone = MaleItem == 1 && FemaleItem == 1;
-            DestinyKnot = MaleItem == 2 || FemaleItem == 2;
-            Power = MaleItem > 2 || FemaleItem > 2;
-            Both_Power = MaleItem > 2 && FemaleItem > 2;
-            M_Power = (byte)(MaleItem - 3);
-            F_Power = (byte)(FemaleItem - 3);
-
-            if (ShinyCharm)
-                PID_Rerollcount += 2;
-            if (MMethod)
-                PID_Rerollcount += 6;
-
-            InheritIVs_Cnt = (byte)(DestinyKnot ? 5 : 3);
-            RandomGender = Gender > 0x0F;
-            ConsiderOtherTSV &= PID_Rerollcount > 0;
-        }
-
         public override RNGResult Generate()
         {
             EggResult egg = new EggResult();
