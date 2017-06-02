@@ -9,11 +9,11 @@ namespace Pk3DSRNGTool
         public static string[] hpstr = new bool[18].Select(i => "").ToArray();
         public static string[] genderratio = new bool[7].Select(i => "").ToArray();
 
-        public static string[] genderstr = { "-", "♂", "♀" };
-        public static string[] abilitystr = { "-", "1", "2", "H" };
-        public static string[] eventabilitystr = { "1/2", "1/2/H" };
+        public readonly static string[] genderstr = { "-", "♂", "♀" };
+        public readonly static string[] abilitystr = { "-", "1", "2", "H" };
+        public readonly static string[] eventabilitystr = { "1/2", "1/2/H" };
 
-        public static string[] gen7wildtypestr = { "-", "UB", "QR" };
+        public readonly static string[] gen7wildtypestr = { "-", "UB", "QR" };
 
         public static string[] species;
         public static string[] smlocation, gen6location;
@@ -25,7 +25,7 @@ namespace Pk3DSRNGTool
         public static ComboItem[] HiddenPowerList
             => hpstr.Skip(1).Take(16).Select((str, i) => new ComboItem(str, i)).ToArray();
 
-        private static byte[] genderratiodata = new byte[] { 0xFF, 0x7F, 0x1F, 0x3F, 0xBF, 0xE1, 0x00, 0xFE };
+        private readonly static byte[] genderratiodata = new byte[] { 0xFF, 0x7F, 0x1F, 0x3F, 0xBF, 0xE1, 0x00, 0xFE };
 
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();
@@ -45,7 +45,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private static string[][] Translation =
+        private readonly static string[][] Translation_Table =
         {
             new [] { "Legendary", "定点传说" },
             new [] { "Starters", "御三家" },
@@ -59,10 +59,12 @@ namespace Pk3DSRNGTool
             new [] { "Unova Legendary", "合众传说" },
             new [] { "Island Scan", "岛屿搜索" },
             new [] { "Normal Wild", "普通野外" },
+            new [] { "Berry Tree", "果树" },
             new [] { "Johto Starters", "城都御三家" },
             new [] { "Legendary Titans", "三神柱" },
             new [] { "Trash Can", "垃圾桶" },
             new [] { "Rock Smash", "碎岩" },
+            new [] { "Horde", "群战" },
             new [] { "Not Impled", "功能未开放" },
         };
 
@@ -70,7 +72,7 @@ namespace Pk3DSRNGTool
         {
             if (0 >= language || language >= 2)
                 return input;
-            foreach (string[] a in Translation)
+            foreach (string[] a in Translation_Table)
                 if (input == a[0])
                     return a[language];
             return input;
