@@ -149,7 +149,7 @@ namespace Pk3DSRNGTool
                 locationlist = null;
             else if (Gen7)
                 locationlist = FormPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (FormPM as PKMW7)?.Location;
-            
+
             MetLocation.Visible = SlotSpecies.Visible = Day.Visible = Night.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
             if (locationlist == null)
                 return;
@@ -473,7 +473,6 @@ namespace Pk3DSRNGTool
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
             L_Slot.Visible = Slot.Visible = Method == 2;
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
-            BlinkFOnly.Visible = SafeFOnly.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
 
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
@@ -490,6 +489,7 @@ namespace Pk3DSRNGTool
             Filter_G7TID.Visible = Gen7;
 
             MM_CheckedChanged(null, null);
+            NPC_ValueChanged(null, null);
 
             switch (Method)
             {
@@ -523,10 +523,9 @@ namespace Pk3DSRNGTool
 
         private void NPC_ValueChanged(object sender, EventArgs e)
         {
-            if (!Gen7)
-                return;
-            (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
-            (NPC.Value == 0 ? SafeFOnly : BlinkFOnly).Visible = false;
+            SafeFOnly.Visible = BlinkFOnly.Visible = false;
+            if (Gen7 && Method < 3 || MainRNGEgg.Checked)
+                (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
         }
 
         // Wild RNG
