@@ -2583,9 +2583,9 @@
             // 
             this.WildIVsCnt.AccessibleName = "";
             this.WildIVsCnt.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WildIVsCnt.Location = new System.Drawing.Point(97, 155);
+            this.WildIVsCnt.Location = new System.Drawing.Point(107, 155);
             this.WildIVsCnt.Maximum = new decimal(new int[] {
-            6,
+            3,
             0,
             0,
             0});

@@ -65,6 +65,7 @@ namespace Pk3DSRNGTool
             new [] { "Trash Can", "垃圾桶" },
             new [] { "Rock Smash", "碎岩" },
             new [] { "Horde", "群战" },
+            new [] { "Poke Radar", "宝可雷达" },
             new [] { "Not Impled", "功能未开放" },
         };
 
