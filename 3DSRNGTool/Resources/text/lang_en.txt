@@ -136,6 +136,7 @@ L_Forme = Form
 Wild_Setting = Wild Encounter Setting
 L_Location = Location
 L_Slots = Slots
+L_WildIVsCnt = Guarenteed IVs #
 Day = Day
 Night = Night
 CompoundEyes = Compound Eyes

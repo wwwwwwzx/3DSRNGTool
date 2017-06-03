@@ -14,10 +14,11 @@ namespace Pk3DSRNGTool
         private byte getAbility => 0; // Todo
 
         protected override int PIDroll_count => ShinyCharm ? 3 : 1;
+        public int _ivcnt = -1;
+        protected override int PerfectIVCount => _ivcnt >= 0 ? _ivcnt : IV3[slot] ? 3 : 0;
 
         public byte[] SlotLevel;
         public bool CompoundEye;
-        public bool Horde;
 
         public override RNGResult Generate()
         {

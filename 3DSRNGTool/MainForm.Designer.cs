@@ -205,6 +205,8 @@
             this.Event_Nature = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.L_WildIVsCnt = new System.Windows.Forms.Label();
+            this.WildIVsCnt = new System.Windows.Forms.NumericUpDown();
             this.CompoundEyes = new System.Windows.Forms.CheckBox();
             this.L_Rate = new System.Windows.Forms.Label();
             this.Special_th = new System.Windows.Forms.NumericUpDown();
@@ -474,6 +476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Event_TID)).BeginInit();
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).BeginInit();
@@ -2544,6 +2547,8 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.L_WildIVsCnt);
+            this.Wild_Setting.Controls.Add(this.WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.CompoundEyes);
             this.Wild_Setting.Controls.Add(this.L_Rate);
             this.Wild_Setting.Controls.Add(this.Special_th);
@@ -2563,6 +2568,32 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // L_WildIVsCnt
+            // 
+            this.L_WildIVsCnt.AutoSize = true;
+            this.L_WildIVsCnt.Location = new System.Drawing.Point(8, 160);
+            this.L_WildIVsCnt.Name = "L_WildIVsCnt";
+            this.L_WildIVsCnt.Size = new System.Drawing.Size(74, 13);
+            this.L_WildIVsCnt.TabIndex = 94;
+            this.L_WildIVsCnt.Text = "保底个体V数";
+            this.L_WildIVsCnt.Visible = false;
+            // 
+            // WildIVsCnt
+            // 
+            this.WildIVsCnt.AccessibleName = "";
+            this.WildIVsCnt.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WildIVsCnt.Location = new System.Drawing.Point(97, 155);
+            this.WildIVsCnt.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.WildIVsCnt.Name = "WildIVsCnt";
+            this.WildIVsCnt.Size = new System.Drawing.Size(44, 22);
+            this.WildIVsCnt.TabIndex = 93;
+            this.WildIVsCnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WildIVsCnt.Visible = false;
             // 
             // CompoundEyes
             // 
@@ -5083,6 +5114,7 @@
             this.TP_WildRNG.ResumeLayout(false);
             this.Wild_Setting.ResumeLayout(false);
             this.Wild_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).EndInit();
@@ -5515,6 +5547,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
+        private System.Windows.Forms.Label L_WildIVsCnt;
+        private System.Windows.Forms.NumericUpDown WildIVsCnt;
     }
 }
 

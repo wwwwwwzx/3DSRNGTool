@@ -6,6 +6,7 @@
         Horde,
         RockSmash,
         TrashCan,
+        PokeRadar,
     }
 
     public class PKMW6 : Pokemon
@@ -45,6 +46,14 @@
                     new PKMW6 { Species = 569, Level = 35, Delay = 18 }, // Garbodor
                     new PKMW6 { Species = 354, Level = 35, Delay = 18 }, // Banette
                     new PKMW6 { Species = 479, Level = 38, Delay = 18 }, // Rotom
+                }
+            },
+            new PokemonList
+            {
+                Text = "Poke Radar",
+                List = new[]
+                {
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14},
                 }
             },
         };
