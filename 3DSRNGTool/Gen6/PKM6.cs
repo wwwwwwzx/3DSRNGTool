@@ -186,9 +186,9 @@
 
                     new PKM6 { Species = 150, Level = 70, Ability = 1, ShinyLocked = true, Delay = 2, }, // Mewtwo
 
-                    new PKM6 { Species = 144, Level = 70, Ability = 1, ShinyLocked = true, Delay = 120, }, // Articuno
-                    new PKM6 { Species = 145, Level = 70, Ability = 1, ShinyLocked = true, Delay = 120, }, // Zapdos
-                    new PKM6 { Species = 146, Level = 70, Ability = 1, ShinyLocked = true, Delay = 120, }, // Moltres
+                    new PKM6 { Species = 144, Level = 70, Ability = 1, ShinyLocked = true, Delay = 114, }, // Articuno
+                    new PKM6 { Species = 145, Level = 70, Ability = 1, ShinyLocked = true, Delay = 114, }, // Zapdos
+                    new PKM6 { Species = 146, Level = 70, Ability = 1, ShinyLocked = true, Delay = 114, }, // Moltres
                 }
             },
             new PokemonList

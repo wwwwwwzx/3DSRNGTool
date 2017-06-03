@@ -46,8 +46,8 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Mewtwo__: _Mew!_
 - __Xerneas/Yveltal__: _Xshaa!/Ygaaa!_
 - __Zygarde__: _Zzzz-dddd-aaaaaa!_
-- __Kanto Legendary Birds__: No dialogue.\* Press arrow key or use circle pad to run to it.\*\*
-- __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key or use circle pad to run to it.\*\*
+- __Kanto Legendary Birds__: No dialogue.\* Press arrow key to run to it.
+- __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key to run to it.
 - __Kanto Starters__: _You picked xxx. then! I see. That's simply wonderful!_
 - __Snorlax__: _Snorlax opened its eyes wide!_
 - __Lucario__: _Lucario is staring intently at xxx. Will you take Lucario with you? Yes/No_
@@ -66,7 +66,7 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Regirock, Regice and Registeel__: No dialogue.\*
 - __Regigigas__: _Zut zutt!_
 - __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
-- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.\*\*
+- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.
 - __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
 - __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
 - __Beldum__: _xxx obtained a Beldum_
@@ -76,7 +76,6 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 
 ##### Tip: 
  \* For consistent delay, use D-pad (arrow keys) to move along grid.  
- \*\* For PokeCalcNTR User, hold circle pad in one direction and unpause.
 
 #### Generation 7
 ##### Sun and Moon
