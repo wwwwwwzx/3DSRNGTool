@@ -409,6 +409,7 @@
             this.dgv_TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_ID_Mod100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_Sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -4914,6 +4915,7 @@
             this.dgv_TID,
             this.dgv_SID,
             this.dgv_TSV,
+            this.dgv_ID_Mod100,
             this.dgv_ID_Sync,
             this.dgv_clock,
             this.dgv_ID_rand,
@@ -4972,6 +4974,13 @@
             this.dgv_TSV.HeaderText = "TSV";
             this.dgv_TSV.Name = "dgv_TSV";
             this.dgv_TSV.Width = 40;
+            // 
+            // dgv_ID_Mod100
+            // 
+            this.dgv_ID_Mod100.DataPropertyName = "Mod100";
+            this.dgv_ID_Mod100.HeaderText = "%100";
+            this.dgv_ID_Mod100.Name = "dgv_ID_Mod100";
+            this.dgv_ID_Mod100.Width = 45;
             // 
             // dgv_ID_Sync
             // 
@@ -5554,6 +5563,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_Mod100;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_Sync;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;

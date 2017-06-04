@@ -1018,7 +1018,7 @@ namespace Pk3DSRNGTool
             if (Method == 4)
             {
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
-                dgv_ID_Sync.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
+                dgv_ID_Mod100.Visible = dgv_ID_Sync.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
                 dgv_ID_rand.Visible &= Advanced.Checked;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
