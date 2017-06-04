@@ -681,7 +681,7 @@ namespace Pk3DSRNGTool
             if (FormPM is PKM6 pm6)
                 if (Sta_AbilityLocked.Checked = pm6.Ability > 0)
                     Sta_Ability.SelectedIndex = pm6.Ability >> 1; // 1/2/4 -> 0/1/2
-            L_WildIVsCnt.Visible = WildIVsCnt.Visible = (FormPM is PKMW6 pmw6 && pmw6.Type == EncounterType.PokeRadar);
+            FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = (FormPM is PKMW6 pmw6 && pmw6.Type == EncounterType.PokeRadar);
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
@@ -955,6 +955,7 @@ namespace Pk3DSRNGTool
                             }
                             break;
                         case EncounterType.PokeRadar:
+                            setting6.IsShinyLocked = !FirstEncounter.Checked;
                             setting6._ivcnt = (int)WildIVsCnt.Value;
                             setting6.SpecForm = new[] { 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };

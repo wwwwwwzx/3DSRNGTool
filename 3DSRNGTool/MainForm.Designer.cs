@@ -205,6 +205,7 @@
             this.Event_Nature = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.FirstEncounter = new System.Windows.Forms.CheckBox();
             this.L_WildIVsCnt = new System.Windows.Forms.Label();
             this.WildIVsCnt = new System.Windows.Forms.NumericUpDown();
             this.CompoundEyes = new System.Windows.Forms.CheckBox();
@@ -2547,6 +2548,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.FirstEncounter);
             this.Wild_Setting.Controls.Add(this.L_WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.CompoundEyes);
@@ -2568,6 +2570,16 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // FirstEncounter
+            // 
+            this.FirstEncounter.AutoSize = true;
+            this.FirstEncounter.Location = new System.Drawing.Point(183, 158);
+            this.FirstEncounter.Name = "FirstEncounter";
+            this.FirstEncounter.Size = new System.Drawing.Size(50, 17);
+            this.FirstEncounter.TabIndex = 95;
+            this.FirstEncounter.Text = "初遇";
+            this.FirstEncounter.UseVisualStyleBackColor = true;
             // 
             // L_WildIVsCnt
             // 
@@ -5549,6 +5561,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.Label L_WildIVsCnt;
         private System.Windows.Forms.NumericUpDown WildIVsCnt;
+        private System.Windows.Forms.CheckBox FirstEncounter;
     }
 }
 

@@ -137,6 +137,7 @@ Wild_Setting = Wild Encounter Setting
 L_Location = Location
 L_Slots = Slots
 L_WildIVsCnt = Guaranteed IVs #
+FirstEncounter = First Encounter
 Day = Day
 Night = Night
 CompoundEyes = Compound Eyes

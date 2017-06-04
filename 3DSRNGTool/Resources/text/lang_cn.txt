@@ -137,6 +137,7 @@ Wild_Setting = 野生草丛遇敌设置
 L_Location = 地点
 L_Slots = 类别
 L_WildIVsCnt = 保底完美个体数
+FirstEncounter = 初次遇敌
 Day = 白天
 Night = 夜晚
 CompoundEyes = 复眼

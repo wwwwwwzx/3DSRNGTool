@@ -13,7 +13,8 @@ namespace Pk3DSRNGTool
         private byte getSlot => 1; // Todo
         private byte getAbility => 0; // Todo
 
-        protected override int PIDroll_count => ShinyCharm ? 3 : 1;
+        public bool IsShinyLocked;
+        protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
         public int _ivcnt = -1;
         protected override int PerfectIVCount => _ivcnt >= 0 ? _ivcnt : IV3[slot] ? 3 : 0;
 
@@ -59,7 +60,14 @@ namespace Pk3DSRNGTool
             for (int i = PIDroll_count; i > 0; i--)
             {
                 rt.PID = getrand;
-                if (rt.PSV == TSV) { rt.Shiny = true; break; }
+                if (rt.PSV == TSV)
+                {
+                    if (IsShinyLocked)
+                        rt.PID ^= 0x10000000;
+                    else
+                        rt.Shiny = true;
+                    break;
+                }
             }
 
             //IV
