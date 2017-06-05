@@ -1,0 +1,8 @@
+version: 0.8.0.{build}
+build:
+  verbosity: minimal
+after_build:
+- cmd: 7z a 3DSRNGTool.zip .\3DSRNGTool\bin\Release\3DSRNGTool.exe
+artifacts:
+- path: 3DSRNGTool.zip
+  name: 3DSRNGTool
