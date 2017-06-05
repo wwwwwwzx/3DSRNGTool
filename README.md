@@ -3,7 +3,7 @@
 This is a RNG Tool for Pokemon main series game on 3DS platform. Some parts should work with PokeClacNTR using CFW-NTR.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, part of wild Pokemon, Eggs and ID.
+- Gen6 RNG. including stationary Pokemon(80%), Mystery Gift Pokemon(100%), wild Pokemon(40%), Eggs(100%) and ID(90%).
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
 - Nidoran line/Volbeat/Illumise gender prediction and shortest accept/reject path solution for Gen7 Egg RNG.

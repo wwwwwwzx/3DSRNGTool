@@ -36,7 +36,7 @@ namespace Pk3DSRNGTool
         };
         private static readonly string[,] EGGACCEPT_STR =
         {
-            { "Accecpt", "Reject" },
+            { "Accept", "Reject" },
             { "接受", "拒绝" },
         };
         private static readonly string[][] STATS_STR =
