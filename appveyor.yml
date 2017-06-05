@@ -1,4 +1,6 @@
 version: 0.8.0.{build}
+image: Visual Studio 2017
+configuration: Release
 build:
   verbosity: minimal
 after_build:
