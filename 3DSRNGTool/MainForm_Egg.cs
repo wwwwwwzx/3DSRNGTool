@@ -60,8 +60,8 @@ namespace Pk3DSRNGTool
             }
             if (Gen6)
             {
-                if (mainrng && sender != CB_Accept) CB_Accept.Checked = true;
-                Timedelay.Value = CB_Accept.Checked ? 16 : 0;
+                if (mainrng && sender != RB_Reject && sender != RB_Accept) RB_Accept.Checked = true;
+                Timedelay.Value = RB_Accept.Checked ? 16 : 0;
             }
         }
 

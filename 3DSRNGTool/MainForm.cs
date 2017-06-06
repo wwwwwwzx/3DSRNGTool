@@ -478,8 +478,8 @@ namespace Pk3DSRNGTool
 
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
-
-            CB_Accept.Visible =
+            Gen6EggPanel.Visible = Gen6 && Method == 3;
+            
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
@@ -742,7 +742,7 @@ namespace Pk3DSRNGTool
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
-            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && CB_Accept.Checked;
+            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
 
             if (MainRNGEgg.Checked) // Get first egg
             {
@@ -1041,7 +1041,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || CB_Accept.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);

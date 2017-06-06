@@ -123,6 +123,9 @@
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.L_StartingPoint = new System.Windows.Forms.Label();
             this.timedelaypanel = new System.Windows.Forms.Panel();
+            this.Gen6EggPanel = new System.Windows.Forms.Panel();
+            this.RB_Reject = new System.Windows.Forms.RadioButton();
+            this.RB_Accept = new System.Windows.Forms.RadioButton();
             this.L_Correction = new System.Windows.Forms.Label();
             this.Correction = new System.Windows.Forms.NumericUpDown();
             this.Timedelay = new System.Windows.Forms.NumericUpDown();
@@ -223,7 +226,6 @@
             this.L_Location = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
-            this.CB_Accept = new System.Windows.Forms.CheckBox();
             this.MT_SeedKey = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.Key0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
@@ -451,6 +453,7 @@
             this.TP_StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
             this.timedelaypanel.SuspendLayout();
+            this.Gen6EggPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
@@ -1519,6 +1522,7 @@
             // 
             // timedelaypanel
             // 
+            this.timedelaypanel.Controls.Add(this.Gen6EggPanel);
             this.timedelaypanel.Controls.Add(this.L_Correction);
             this.timedelaypanel.Controls.Add(this.Correction);
             this.timedelaypanel.Controls.Add(this.Timedelay);
@@ -1530,6 +1534,40 @@
             this.timedelaypanel.Name = "timedelaypanel";
             this.timedelaypanel.Size = new System.Drawing.Size(240, 72);
             this.timedelaypanel.TabIndex = 96;
+            // 
+            // Gen6EggPanel
+            // 
+            this.Gen6EggPanel.Controls.Add(this.RB_Reject);
+            this.Gen6EggPanel.Controls.Add(this.RB_Accept);
+            this.Gen6EggPanel.Location = new System.Drawing.Point(3, 27);
+            this.Gen6EggPanel.Name = "Gen6EggPanel";
+            this.Gen6EggPanel.Size = new System.Drawing.Size(215, 36);
+            this.Gen6EggPanel.TabIndex = 109;
+            this.Gen6EggPanel.Visible = false;
+            // 
+            // RB_Reject
+            // 
+            this.RB_Reject.AutoSize = true;
+            this.RB_Reject.Location = new System.Drawing.Point(115, 10);
+            this.RB_Reject.Name = "RB_Reject";
+            this.RB_Reject.Size = new System.Drawing.Size(49, 17);
+            this.RB_Reject.TabIndex = 1;
+            this.RB_Reject.Text = "拒绝";
+            this.RB_Reject.UseVisualStyleBackColor = true;
+            this.RB_Reject.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
+            // 
+            // RB_Accept
+            // 
+            this.RB_Accept.AutoSize = true;
+            this.RB_Accept.Checked = true;
+            this.RB_Accept.Location = new System.Drawing.Point(14, 10);
+            this.RB_Accept.Name = "RB_Accept";
+            this.RB_Accept.Size = new System.Drawing.Size(49, 17);
+            this.RB_Accept.TabIndex = 0;
+            this.RB_Accept.TabStop = true;
+            this.RB_Accept.Text = "接受";
+            this.RB_Accept.UseVisualStyleBackColor = true;
+            this.RB_Accept.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
             // 
             // L_Correction
             // 
@@ -2759,7 +2797,6 @@
             // 
             // Parents_Info
             // 
-            this.Parents_Info.Controls.Add(this.CB_Accept);
             this.Parents_Info.Controls.Add(this.MT_SeedKey);
             this.Parents_Info.Controls.Add(this.B_Template);
             this.Parents_Info.Controls.Add(this.NidoType);
@@ -2804,19 +2841,6 @@
             this.Parents_Info.TabIndex = 7;
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
-            // 
-            // CB_Accept
-            // 
-            this.CB_Accept.AutoSize = true;
-            this.CB_Accept.Location = new System.Drawing.Point(281, 246);
-            this.CB_Accept.Name = "CB_Accept";
-            this.CB_Accept.Size = new System.Drawing.Size(50, 17);
-            this.CB_Accept.TabIndex = 107;
-            this.CB_Accept.Text = "接受";
-            this.CB_Accept.UseVisualStyleBackColor = true;
-            this.CB_Accept.Visible = false;
-            this.CB_Accept.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
-            this.CB_Accept.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // MT_SeedKey
             // 
@@ -5103,6 +5127,8 @@
             this.RNGInfo.PerformLayout();
             this.timedelaypanel.ResumeLayout(false);
             this.timedelaypanel.PerformLayout();
+            this.Gen6EggPanel.ResumeLayout(false);
+            this.Gen6EggPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
@@ -5547,7 +5573,6 @@
         private Controls.HexNumericUpdown Key1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.CheckBox CB_Accept;
         private System.Windows.Forms.ToolStripMenuItem SetAsStarting;
         private System.Windows.Forms.Label label23;
         private Controls.HexNumericUpdown ID_Tiny2;
@@ -5572,6 +5597,9 @@
         private System.Windows.Forms.Label L_WildIVsCnt;
         private System.Windows.Forms.NumericUpDown WildIVsCnt;
         private System.Windows.Forms.CheckBox FirstEncounter;
+        private System.Windows.Forms.Panel Gen6EggPanel;
+        private System.Windows.Forms.RadioButton RB_Reject;
+        private System.Windows.Forms.RadioButton RB_Accept;
     }
 }
 
