@@ -1,6 +1,6 @@
 # 3DS RNG Tool [![Build status](https://ci.appveyor.com/api/projects/status/p58tu8nai3cqexuq/branch/master?svg=true)](https://ci.appveyor.com/project/wwwwwwzx/3dsrngtool/branch/master)
 
-This is a RNG Tool for Pokemon main series game on 3DS platform. Some parts should work with PokeClacNTR using CFW-NTR.
+This is an RNG Tool for main 3DS Pokemon games. Some parts should work with PokeCalcNTR using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
 - Gen6 RNG. including stationary Pokemon(80%), Mystery Gift Pokemon(100%), wild Pokemon(40%), Eggs(100%) and ID(90%).
@@ -20,7 +20,7 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
   Zaksabeast and Admiral Fish for building up the plugin  
   Real96 for testing and lots of good advice  
   Zep715 for figuring out tons of infomation from the assembly  
-  ShinySylveon for contribution to Gen6 Egg RNG
+  ShinySylveon for contributions to Gen6 Egg RNG
   
 - Kaphotics for PkHeX and Pk3DS. I borrowed some code from the PKHeX Core Library and extract useful info from the ROM.
 - 44670 for NTRClient.

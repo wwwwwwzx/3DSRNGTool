@@ -614,7 +614,7 @@ namespace Pk3DSRNGTool
             if (Gen6 && RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
             {
                 DGVToolTip.ToolTipTitle = "Tips";
-                DGVToolTip.Show("This column shows the main RNG PID/PSV of the current egg (w/o mm or sc)\r\nNot the part of spread prediction of the egg seed in the same row."
+                DGVToolTip.Show("This column shows the main RNG PID/ESV of the current egg (w/o mm or sc)\r\nNot the part of spread prediction of the egg seed in the same row."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -624,7 +624,7 @@ namespace Pk3DSRNGTool
             if (Gen7 && DGV.Columns[e.ColumnIndex].Name == "dgv_shift")
             {
                 DGVToolTip.ToolTipTitle = "Frame Shift for Eontimer Calibration";
-                DGVToolTip.Show("This column directly shows the frame derivation in Gen3 frame unit, i.e. 1F = 1/60 sec."
+                DGVToolTip.Show("This column shows frame to time conversion, i.e. 1F = 1/60 sec."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -634,7 +634,7 @@ namespace Pk3DSRNGTool
             if (DGV.Columns[e.ColumnIndex].Name == "dgv_adv")
             {
                 DGVToolTip.ToolTipTitle = "Frame Advance";
-                DGVToolTip.Show(EggPanel.Visible ? RB_EggShortest.Checked ? "To reach target frame, please precisely folllow the listed procedure" : "By receiving this egg." : "By recieving this Pokemon."
+                DGVToolTip.Show(EggPanel.Visible ? RB_EggShortest.Checked ? "To reach target frame, please precisely follow the listed procedure" : "By receiving this egg." : "By recieving this Pokemon."
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
