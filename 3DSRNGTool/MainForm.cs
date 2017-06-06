@@ -461,6 +461,8 @@ namespace Pk3DSRNGTool
                     CB_Category.SelectedIndex = category < CB_Category.Items.Count ? category : 0;
                     Poke.SelectedIndex = poke < Poke.Items.Count ? poke : 0;
                 }
+                else if (Poke.Items.Count > 0)
+                    Poke_SelectedIndexChanged(null, null);
             }
 
             if (MainRNGEgg.Checked)
