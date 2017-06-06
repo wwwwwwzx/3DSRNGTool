@@ -23,7 +23,7 @@ namespace Pk3DSRNGTool
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
-        private bool Gen7 => 4 <= Ver && Ver < 6;
+        private bool Gen7 => 4 <= Ver && Ver < 8;
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;

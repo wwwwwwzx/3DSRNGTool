@@ -1769,7 +1769,7 @@
             0});
             this.TargetFrame.Location = new System.Drawing.Point(92, 91);
             this.TargetFrame.Maximum = new decimal(new int[] {
-            1000000,
+            100000000,
             0,
             0,
             0});
