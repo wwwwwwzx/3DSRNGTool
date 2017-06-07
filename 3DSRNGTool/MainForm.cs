@@ -1041,7 +1041,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || RB_Accept.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);

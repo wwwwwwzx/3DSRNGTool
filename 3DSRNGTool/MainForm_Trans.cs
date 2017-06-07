@@ -150,7 +150,7 @@ namespace Pk3DSRNGTool
             }
             switch (lindex)
             {
-                case 0: tmp += $"Accepted {eggnum} eggs"; break;
+                case 0: tmp += $"Accept {eggnum} eggs"; break;
                 case 1: tmp += $"接受 {eggnum} 个蛋"; break;
             }
             if (rejectnum == 0)
