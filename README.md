@@ -20,9 +20,9 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
   Zaksabeast and Admiral Fish for building up the plugin  
   Real96 for testing and lots of good advice  
   Zep715 for figuring out tons of infomation from the assembly  
-  ShinySylveon for contributions to Gen6 Egg RNG
+  Shiny_Sylveon for contributions to Gen6 Egg RNG
   
-- Kaphotics for PkHeX and Pk3DS. I borrowed some code from the PKHeX Core Library and extract useful info from the ROM.
+- Kaphotics for PkHeX and Pk3DS. I borrowed some code from the PKHeX Core Library and extracted ROM info using Pk3DS.
 - 44670 for NTRClient.
 
 ## Final Screen

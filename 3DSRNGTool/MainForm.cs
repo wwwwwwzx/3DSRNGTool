@@ -738,7 +738,7 @@ namespace Pk3DSRNGTool
         {
             DGV.CellFormatting -= new DataGridViewCellFormattingEventHandler(DGV_CellFormatting); //Stop Freshing
             Frames.Clear();
-            DGV.DataSource = null;
+            Frames = new List<Frame>();
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
