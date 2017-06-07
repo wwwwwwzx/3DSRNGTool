@@ -56,6 +56,8 @@ namespace Pk3DSRNGTool
                 case 3: return list.Where(s => s.Version.Contains(GameVersion.AS)).ToArray();
                 case 4: return list.Where(s => s.Version.Contains(GameVersion.SN)).ToArray();
                 case 5: return list.Where(s => s.Version.Contains(GameVersion.MN)).ToArray();
+                case 6: return list.Where(s => s.Version.Contains(GameVersion.US)).ToArray();
+                case 7: return list.Where(s => s.Version.Contains(GameVersion.UM)).ToArray();
                 default: return new Pokemon[0];
             }
         }
