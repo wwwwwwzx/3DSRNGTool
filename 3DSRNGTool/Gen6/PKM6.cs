@@ -256,12 +256,35 @@
                 Text = "Berry Tree",
                 List = new[]
                 {
-                    new PKM6 { Species = 165, Level = 14, }, // Ledyba @ Red
-                    new PKM6 { Species = 313, Level = 14, }, // Volbeat @ Blue
-                    new PKM6 { Species = 314, Level = 14, }, // Illumise @ Purple
-                    new PKM6 { Species = 412, Level = 14, }, // Burmy @ Green
-                    new PKM6 { Species = 415, Level = 14, }, // Combee @ Yellow
-                    new PKM6 { Species = 665, Level = 14, }, // Spewpa @ Pink
+                    new PKM6 { Species = 165, }, // Ledyba @ Red
+                    new PKM6 { Species = 313, }, // Volbeat @ Blue
+                    new PKM6 { Species = 314, }, // Illumise @ Purple
+                    new PKM6 { Species = 412, }, // Burmy @ Green
+                    new PKM6 { Species = 415, }, // Combee @ Yellow
+                    new PKM6 { Species = 665, }, // Spewpa @ Pink
+                }
+            },
+            new PokemonList
+            {
+                Text = "Cave Drop",
+                List = new[]
+                {
+                   new PKM6 { Species = 527, Delay = 76 }, // Woobat
+                   new PKM6 { Species = 597, Delay = 76 }, // Ferroseed
+                   new PKM6 { Species = 168, Delay = 76 }, // Ariados
+                   new PKM6 { Species = 714, Delay = 76 }, // Noibat
+                   new PKM6 { Species = 075, Delay = 76 }, // Graveler
+                }
+            },
+            new PokemonList
+            {
+                Text = "Rustling Bush",
+                List = new[]
+                {
+                   new PKM6 { Species = 543, Delay = 54 }, // Venipede
+                   new PKM6 { Species = 531, Delay = 54 }, // Audino
+                   new PKM6 { Species = 632, Delay = 54 }, // Durant
+                   new PKM6 { Species = 631, Delay = 54 }, // Heatmor
                 }
             },
         };

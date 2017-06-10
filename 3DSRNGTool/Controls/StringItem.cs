@@ -60,6 +60,8 @@ namespace Pk3DSRNGTool
             new [] { "Island Scan", "岛屿搜索" },
             new [] { "Normal Wild", "普通野外" },
             new [] { "Berry Tree", "果树" },
+            new [] { "Cave Drop", "洞穴坠物" },
+            new [] { "Rustling Bush", "晃动树影" },
             new [] { "Johto Starters", "城都御三家" },
             new [] { "Legendary Titans", "三神柱" },
             new [] { "Trash Can", "垃圾桶" },
