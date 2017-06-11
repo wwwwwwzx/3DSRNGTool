@@ -144,7 +144,10 @@ namespace Pk3DSRNGTool
         private void getTiny(object sender, EventArgs e)
         {
             if (!B_Disconnect.Enabled)
+            {
+                if (Advanced.Checked) B_Connect_Click(null, null);
                 return;
+            }
             byte[] tiny = ntrclient.ReadTiny();
             if (tiny == null) { Error("Timeout"); return; }
             Gen6Tiny = new uint[]

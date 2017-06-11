@@ -114,7 +114,6 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
-            AlwaysSynced_CheckedChanged(null, null);
             ntrclient.Connected += OnConnected;
         }
 
@@ -221,12 +220,6 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.ST1 = (uint)St1.Value;
             Properties.Settings.Default.ST2 = (uint)St2.Value;
             Properties.Settings.Default.ST3 = (uint)St3.Value;
-        }
-
-        private void AlwaysSynced_CheckedChanged(object sender, EventArgs e)
-        {
-            CreateTimeline.Visible = TimeSpan.Visible = gen6timeline_available;
-            GB_Tiny.Visible = gen6timeline_available && CreateTimeline.Checked;
         }
 
         private void Key_ValueChanged(object sender, EventArgs e)
@@ -453,6 +446,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
+            GB_Tiny.Visible = gen6timeline_available && CreateTimeline.Checked;
 
             if (Method > 4)
                 return;
@@ -470,7 +464,7 @@ namespace Pk3DSRNGTool
                     CB_Category.SelectedIndex = category < CB_Category.Items.Count ? category : 0;
                     Poke.SelectedIndex = poke < Poke.Items.Count ? poke : 0;
                 }
-                else if (Poke.Items.Count > 0)
+                else if (Poke.Items.Count > 0 && sender != AlwaysSynced)
                     Poke_SelectedIndexChanged(null, null);
             }
 

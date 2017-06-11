@@ -2169,7 +2169,7 @@
             this.AlwaysSynced.TabIndex = 9;
             this.AlwaysSynced.Text = "必定同步";
             this.AlwaysSynced.UseVisualStyleBackColor = true;
-            this.AlwaysSynced.CheckedChanged += new System.EventHandler(this.AlwaysSynced_CheckedChanged);
+            this.AlwaysSynced.CheckedChanged += new System.EventHandler(this.RNGMethod_Changed);
             // 
             // Fix3v
             // 
