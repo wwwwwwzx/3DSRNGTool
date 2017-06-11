@@ -139,7 +139,21 @@ namespace Pk3DSRNGTool
             ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
             ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
             ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
-            Gen6Tiny = new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value };
+        }
+
+        private void getTiny(object sender, EventArgs e)
+        {
+            if (!B_Disconnect.Enabled)
+                return;
+            byte[] tiny = ntrclient.ReadTiny();
+            if (tiny == null) { Error("Timeout"); return; }
+            Gen6Tiny = new uint[]
+            {
+                BitConverter.ToUInt32(tiny, 0),
+                BitConverter.ToUInt32(tiny, 4),
+                BitConverter.ToUInt32(tiny, 8),
+                BitConverter.ToUInt32(tiny, 12),
+            };
         }
         #endregion
     }

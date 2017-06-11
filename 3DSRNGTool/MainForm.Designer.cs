@@ -1961,6 +1961,7 @@
             this.label25.Size = new System.Drawing.Size(28, 14);
             this.label25.TabIndex = 99;
             this.label25.Text = "[0]";
+            this.label25.DoubleClick += new System.EventHandler(this.getTiny);
             // 
             // tiny2
             // 
@@ -1981,6 +1982,7 @@
             this.label26.Size = new System.Drawing.Size(28, 14);
             this.label26.TabIndex = 98;
             this.label26.Text = "[1]";
+            this.label26.DoubleClick += new System.EventHandler(this.getTiny);
             // 
             // tiny1
             // 
@@ -2011,6 +2013,7 @@
             this.label27.Size = new System.Drawing.Size(28, 14);
             this.label27.TabIndex = 97;
             this.label27.Text = "[2]";
+            this.label27.DoubleClick += new System.EventHandler(this.getTiny);
             // 
             // label28
             // 
@@ -2021,6 +2024,7 @@
             this.label28.Size = new System.Drawing.Size(28, 14);
             this.label28.TabIndex = 96;
             this.label28.Text = "[3]";
+            this.label28.DoubleClick += new System.EventHandler(this.getTiny);
             // 
             // Sta_AbilityLocked
             // 
