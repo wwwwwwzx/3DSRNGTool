@@ -750,6 +750,8 @@ namespace Pk3DSRNGTool
                 RNGPool.CreateBuffer(50, tmt);
                 RNGPool.firstegg = RNGPool.GenerateEgg7() as EggResult;
                 RNGPool.igenerator = getStaSettings();
+                (RNGPool.igenerator as Stationary7).ConsiderOtherTSV = ConsiderOtherTSV.Checked;
+                (RNGPool.igenerator as Stationary7).OtherTSVs = OtherTSVList.ToArray();
             }
 
             Frame.showstats = ShowStats.Checked;
@@ -1006,7 +1008,7 @@ namespace Pk3DSRNGTool
             setting.MMethod = MM.Checked;
             setting.NidoType = NidoType.Checked;
 
-            setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked && (ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked);
+            setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked && (ShinyCharm.Checked || MM.Checked || Gen6 && RB_Accept.Checked);
             setting.OtherTSVs = OtherTSVList.ToArray();
 
             setting.MarkItem();

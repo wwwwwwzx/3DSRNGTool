@@ -1,4 +1,5 @@
-﻿using Pk3DSRNGTool.Core;
+﻿using System.Linq;
+using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
@@ -75,11 +76,14 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
+        public bool ConsiderOtherTSV;
+        public int[] OtherTSVs;
         public RNGResult GenerateMainRNGPID(EggResult egg)
         {
             MainRNGEgg rt = new MainRNGEgg(egg);
             rt.PID = (uint)(getrand & 0xFFFFFFFF);
-            rt.Shiny = rt.PSV == TSV;
+            var tmp = rt.PSV;
+            rt.Shiny = tmp == TSV || ConsiderOtherTSV && OtherTSVs.Contains((int)tmp);
             return rt;
         }
 
