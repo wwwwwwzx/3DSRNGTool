@@ -6,8 +6,8 @@ namespace Pk3DSRNGTool
     internal class TinyStatus
     {
         public TinyMT tinyrng = new TinyMT(0);
-        private byte getcooldown1 => (byte)(((tinyrng.Nextuint() * 60ul) >> 32) + 62);
-        private byte getcooldown2 => (byte)(getblink ? 10 : 6);
+        private byte getcooldown1 => (byte)(((tinyrng.Nextuint() * 60ul) >> 32) + 61);
+        private byte getcooldown2 => (byte)(getblink ? 9 : 5);
         private bool getblink => ((tinyrng.Nextuint() * 3ul) >> 32) == 0;
 
         public int Modelnumber;
@@ -29,7 +29,7 @@ namespace Pk3DSRNGTool
                 {
                     if (blink)
                     {
-                        remain_frame[i] = getcooldown2;
+                        remain_frame[i] = getcooldown1;
                         blink = false;
                         continue;
                     }

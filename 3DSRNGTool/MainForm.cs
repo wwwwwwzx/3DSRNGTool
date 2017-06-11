@@ -1156,6 +1156,7 @@ namespace Pk3DSRNGTool
         {
             switch (Method)
             {
+                case 0: if (CreateTimeline.Checked) { Search6_Timeline(); return; } goto default;
                 case 2: if (IsHorde) { Search6_Horde(); return; } goto default;
                 case 3: Search6_Egg(); return;
                 case 4: Search6_ID(); return;
