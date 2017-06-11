@@ -5,7 +5,6 @@
         public int FramesUsed;
         public uint RandNum;
         public ulong? EggSeed;
-        public object Status;
         public bool?[] InheritMaleIV = new bool?[6]; //null random; T male; F female
         public bool? BE_InheritParents; //Both Everstone
         public byte Ball;

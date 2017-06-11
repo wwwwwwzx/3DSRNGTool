@@ -24,6 +24,8 @@ namespace Pk3DSRNGTool
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 8;
+        private bool gen6timeline => Gen6 && CreateTimeline.Checked && Gen6Tiny.Any(t => t > 0);
+        private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2);
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
@@ -112,6 +114,7 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
+            AlwaysSynced_CheckedChanged(null, null);
             ntrclient.Connected += OnConnected;
         }
 
@@ -218,6 +221,12 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.ST1 = (uint)St1.Value;
             Properties.Settings.Default.ST2 = (uint)St2.Value;
             Properties.Settings.Default.ST3 = (uint)St3.Value;
+        }
+
+        private void AlwaysSynced_CheckedChanged(object sender, EventArgs e)
+        {
+            CreateTimeline.Visible = TimeSpan.Visible = gen6timeline_available;
+            GB_Tiny.Visible = gen6timeline_available && CreateTimeline.Checked;
         }
 
         private void Key_ValueChanged(object sender, EventArgs e)
@@ -443,7 +452,7 @@ namespace Pk3DSRNGTool
             L_NPC.Visible = NPC.Visible = Gen7 || Method == 5; // not show in gen6
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
-            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
+            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
 
             if (Method > 4)
                 return;
@@ -479,6 +488,7 @@ namespace Pk3DSRNGTool
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             Gen6EggPanel.Visible = Gen6 && Method == 3;
+            GB_Tiny.Visible &= Gen6;
 
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
@@ -508,7 +518,7 @@ namespace Pk3DSRNGTool
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
 
-            if (CreateTimeline.Checked) ConsiderDelay.Checked = true;
+            if (CreateTimeline.Checked) { ConsiderDelay.Checked = true; GB_Tiny.Visible = gen6timeline_available; };
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -708,6 +718,7 @@ namespace Pk3DSRNGTool
                 else if (FormPM is PKMW6 pmw6)
                 {
                     Special_th.Value = 0;
+                    GB_Tiny.Visible = true;
                 }
                 return;
             }
@@ -1034,14 +1045,15 @@ namespace Pk3DSRNGTool
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2;
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
-            dgv_status.Visible = Gen6 && Method < 4 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
-            dgv_status.Width = Gen6 ? 65 : 260;
+            dgv_state.Visible = Gen6 && Method < 4;
+            dgv_tinystate.Visible = Gen6 && (Method == 0 || Method == 2) && gen6timeline || Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
-            dgv_rand64.HeaderText = RAND64_STR[lindex][Gen6 ? 1 : 0];
+            dgv_rand64.HeaderText = COLUMN_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
@@ -1172,6 +1184,30 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
+                if (Frames.Count > 100000)
+                    break;
+            }
+        }
+
+        private void Search6_Timeline()
+        {
+            var rng = new MersenneTwister((uint)Seed.Value);
+            int min = (int)Frame_min.Value;
+            int max = (int)TimeSpan.Value * 60 + min;
+            // Advance
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            // Prepare
+            getsetting(rng);
+            var tiny = new TinyStatus(Gen6Tiny);
+            // Start
+            for (int i = min; i <= max; i += 2, RNGPool.AddNext(rng), tiny.NextState())
+            {
+                RNGResult result = RNGPool.Generate6();
+                if (!filter.CheckResult(result))
+                    continue;
+                Frames.Add(new Frame(result, frame: i, time: i - min));
+                Frames.Last()._tinystate = tiny.ToString();
                 if (Frames.Count > 100000)
                     break;
             }

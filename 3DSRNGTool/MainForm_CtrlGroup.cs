@@ -85,6 +85,16 @@ namespace Pk3DSRNGTool
                 St2.Value = value[2]; St3.Value = value[3];
             }
         }
+        private uint[] Gen6Tiny
+        {
+            get => new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value };
+            set
+            {
+                if (value.Length < 4) return;
+                tiny0.Value = value[0]; tiny1.Value = value[1];
+                tiny2.Value = value[2]; tiny3.Value = value[3];
+            }
+        }
         private NumericUpDown[] EventIV => new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, };
         private CheckBox[] EventIVLocked => new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, };
         private List<Controls.ComboItem> Locationlist = new List<Controls.ComboItem>();

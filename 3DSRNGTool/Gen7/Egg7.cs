@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
 
         public override RNGResult Generate()
         {
-            EggResult egg = new EggResult();
+            ResultE7 egg = new ResultE7();
 
             // Gender
             if (NidoType)

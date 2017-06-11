@@ -61,7 +61,9 @@
     <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
+    <Compile Include="Gen6\ResultE6.cs" />
     <Compile Include="Gen6\ResultW6.cs" />
+    <Compile Include="Gen6\TinyStatus.cs" />
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\MainRNGEgg.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Gen6\Stationary6.cs" />
     <Compile Include="Gen7\Egg7.cs" />
     <Compile Include="Gen7\PKMW7.cs" />
+    <Compile Include="Gen7\ResultE7.cs" />
     <Compile Include="Gen7\ResultW7.cs" />
     <Compile Include="Gen7\SMEncounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Event7.cs" />

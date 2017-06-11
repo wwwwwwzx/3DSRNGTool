@@ -49,10 +49,10 @@ namespace Pk3DSRNGTool
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
         };
-        private static readonly string[][] RAND64_STR =
+        private static readonly string[][] COLUMN_STR =
          {
-            new string[] { "Random Number", "Egg Seed" },
-            new string[] { "随机数", "蛋随机数种子" },
+            new string[] { "Random Number", "Egg Seed", "Tiny State"},
+            new string[] { "随机数", "蛋乱数种子","Tiny 状态" },
         };
 
         private string curlanguage;

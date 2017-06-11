@@ -118,10 +118,10 @@ namespace Pk3DSRNGTool.Core
             return result;
         }
 
-        public static EggResult GenerateAnEgg6(uint[] key)
+        public static ResultE6 GenerateAnEgg6(uint[] key)
         {
             Egg6.ReSeed(key);
-            var result = (igenerator as Egg6).Generate() as EggResult;
+            var result = (igenerator as Egg6).Generate() as ResultE6;
             result.EggSeed = key[0] | ((ulong)key[1] << 32);
             return result;
         }
@@ -153,7 +153,7 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult GenerateEgg7()
         {
             Pointer = Tail;
-            var result = (igenerator as Egg7).Generate() as EggResult;
+            var result = (igenerator as Egg7).Generate() as ResultE7;
             result.RandNum = RandList[Head];
             result.Status = RNGStateStr[Head];
             result.FramesUsed = index;
