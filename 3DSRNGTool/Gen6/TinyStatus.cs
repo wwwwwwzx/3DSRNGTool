@@ -54,9 +54,6 @@ namespace Pk3DSRNGTool
             des.blink = blink;
         }
 
-        public override string ToString()
-        {
-            return string.Join(",", tinyrng.status.Select(v => v.ToString("X8")).Reverse());
-        }
+        public PRNGState State => tinyrng.CurrentState();
     }
 }

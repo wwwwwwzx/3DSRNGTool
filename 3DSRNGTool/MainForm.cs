@@ -1033,7 +1033,7 @@ namespace Pk3DSRNGTool
             if (Method == 4)
             {
                 dgv_ID_rand64.Visible = dgv_clock.Visible = dgv_gen7ID.Visible = Gen7;
-                dgv_ID_Mod100.Visible = dgv_ID_Sync.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
+                dgv_ID_Mod100.Visible = dgv_ID_state.Visible = dgv_ID_rand.Visible = Gen6;
                 dgv_ID_rand.Visible &= Advanced.Checked;
                 DGV_ID.DataSource = IDFrames;
                 DGV_ID.Refresh();
@@ -1201,15 +1201,16 @@ namespace Pk3DSRNGTool
             // Prepare
             getsetting(rng);
             var tiny = new TinyStatus(Gen6Tiny);
+            RNGPool.tiny = new TinyStatus(Gen6Tiny);
             // Start
-            for (int i = min; i <= max; i += 2, RNGPool.AddNext(rng), tiny.NextState())
+            for (int i = min; i <= max; i += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng), tiny.NextState())
             {
                 RNGPool.TinyAdvance(tiny);
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
-                Frames.Last()._tinystate = tiny.ToString();
+                Frames.Last()._tinystate = tiny.State;
                 if (Frames.Count > 100000)
                     break;
             }

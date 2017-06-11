@@ -62,8 +62,8 @@ namespace Pk3DSRNGTool
         public uint PID => rt.PID;
         public uint EC => rt.EC;
         public string State => (rt as Result6)?.Status.ToString() ?? (rt as ResultE6)?.Status.ToString() ?? "";
-        public string _tinystate;
-        public string TinyState => _tinystate ?? (rt as ResultE7)?.Status.ToString() ?? "";
+        public PRNGState _tinystate;
+        public string TinyState => (_tinystate ?? (rt as ResultE7)?.Status)?.ToString() ?? "";
         public string RealTime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : "";
     }
 }
