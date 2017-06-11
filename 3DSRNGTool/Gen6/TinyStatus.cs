@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Pk3DSRNGTool.RNG;
+﻿using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -10,9 +9,11 @@ namespace Pk3DSRNGTool
         public byte[] remain_frame;
         public bool blink;
 
-        private byte getcooldown1 => (byte)(((tinyrng.Nextuint() * 60ul) >> 32) + 61);
+        public uint getrand => tinyrng.Nextuint();
+        public PRNGState State => tinyrng.CurrentState();
+        private bool getblink => getrand < 0x55555556; // rand(3) == 0
+        private byte getcooldown1 => (byte)(((getrand * 60ul) >> 32) + 61);
         private byte getcooldown2 => (byte)(getblink ? 9 : 5);
-        private bool getblink => ((tinyrng.Nextuint() * 3ul) >> 32) == 0;
 
         public TinyStatus(uint[] status, int n = 1)
         {
@@ -44,8 +45,6 @@ namespace Pk3DSRNGTool
                 tinyrng.Next();
         }
 
-        public uint getrand => tinyrng.Nextuint();
-
         public void Copyto(TinyStatus des)
         {
             des.tinyrng.status = (uint[])tinyrng.status.Clone();
@@ -53,7 +52,5 @@ namespace Pk3DSRNGTool
             des.remain_frame = (byte[])remain_frame.Clone();
             des.blink = blink;
         }
-
-        public PRNGState State => tinyrng.CurrentState();
     }
 }
