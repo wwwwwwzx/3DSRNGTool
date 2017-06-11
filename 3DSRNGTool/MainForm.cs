@@ -479,7 +479,7 @@ namespace Pk3DSRNGTool
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             Gen6EggPanel.Visible = Gen6 && Method == 3;
-            
+
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
@@ -1006,7 +1006,7 @@ namespace Pk3DSRNGTool
             setting.MMethod = MM.Checked;
             setting.NidoType = NidoType.Checked;
 
-            setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked;
+            setting.ConsiderOtherTSV = ConsiderOtherTSV.Checked && (ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked);
             setting.OtherTSVs = OtherTSVList.ToArray();
 
             setting.MarkItem();

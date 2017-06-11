@@ -45,7 +45,6 @@
 
             InheritIVs_Cnt = (byte)(DestinyKnot ? 5 : 3);
             RandomGender = Gender > 0x0F;
-            ConsiderOtherTSV &= PID_Rerollcount > 0;
         }
 
         protected static int getRandomAbility(int ability, uint value)
