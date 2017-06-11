@@ -7,8 +7,9 @@ namespace Pk3DSRNGTool
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
+        private static bool tinysync => (uint)(RNGPool.tiny.getrand * 100ul >> 32) < 50;
 
-        private bool getSync => AlwaysSync || false; //to - do
+        private bool getSync => AlwaysSync || tinysync;
 
         public override RNGResult Generate()
         {

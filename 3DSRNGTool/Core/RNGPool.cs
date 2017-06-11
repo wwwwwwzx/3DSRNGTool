@@ -76,7 +76,7 @@ namespace Pk3DSRNGTool.Core
             RandList[Head] = rng.Nextuint();
             if (++Tail == BufferSize) Tail = 0;
         }
-        
+
         public static bool Considerdelay;
         public static int DelayTime;
 
@@ -173,6 +173,16 @@ namespace Pk3DSRNGTool.Core
             }
             return null;
         }
+        #region Gen6 TimeKeeping
+        public static TinyStatus tiny = new TinyStatus(new uint[4]);
+        public static void TinyAdvance(TinyStatus source)
+        {
+            source.Copyto(tiny);
+            for (int i = DelayTime / 2; i > 0; i--)
+                tiny.NextState();
+        }
+
+        #endregion
 
         #region Gen7 Time keeping
 

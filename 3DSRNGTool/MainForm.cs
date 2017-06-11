@@ -1204,6 +1204,7 @@ namespace Pk3DSRNGTool
             // Start
             for (int i = min; i <= max; i += 2, RNGPool.AddNext(rng), tiny.NextState())
             {
+                RNGPool.TinyAdvance(tiny);
                 RNGResult result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;

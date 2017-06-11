@@ -6,13 +6,13 @@ namespace Pk3DSRNGTool
     internal class TinyStatus
     {
         public TinyMT tinyrng = new TinyMT(0);
-        private byte getcooldown1 => (byte)(((tinyrng.Nextuint() * 60ul) >> 32) + 61);
-        private byte getcooldown2 => (byte)(getblink ? 9 : 5);
-        private bool getblink => ((tinyrng.Nextuint() * 3ul) >> 32) == 0;
-
         public int Modelnumber;
         public byte[] remain_frame;
         public bool blink;
+
+        private byte getcooldown1 => (byte)(((tinyrng.Nextuint() * 60ul) >> 32) + 61);
+        private byte getcooldown2 => (byte)(getblink ? 9 : 5);
+        private bool getblink => ((tinyrng.Nextuint() * 3ul) >> 32) == 0;
 
         public TinyStatus(uint[] status, int n = 1)
         {
@@ -44,9 +44,14 @@ namespace Pk3DSRNGTool
                 tinyrng.Next();
         }
 
-        public uint getrand()
+        public uint getrand => tinyrng.Nextuint();
+
+        public void Copyto(TinyStatus des)
         {
-            return tinyrng.Nextuint();
+            des.tinyrng.status = (uint[])tinyrng.status.Clone();
+            des.Modelnumber = Modelnumber;
+            des.remain_frame = (byte[])remain_frame.Clone();
+            des.blink = blink;
         }
 
         public override string ToString()
