@@ -115,5 +115,22 @@ namespace Pk3DSRNGTool
             min -= 60 * hour;
             return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
+
+        private static int[] parseIVs(string text)
+        {
+            try
+            {
+                string[] ivstr = text.Split(',', ' ', '/', '-');
+                int[] ivs = ivstr.Select(str => Convert.ToInt32(str)).ToArray();
+                if (ivs.Length == 6 && ivs.All(iv => 0 <= iv && iv <= 31))
+                    return ivs;
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }

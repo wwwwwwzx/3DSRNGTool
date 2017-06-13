@@ -209,19 +209,9 @@ namespace Pk3DSRNGTool.RNG
 
         private void init(uint seed)
         {
-            _mt[0] = seed & 0xffffffffU;
-
+            _mt[0] = seed;
             for (_mti = 1; _mti < N; _mti++)
-            {
                 _mt[_mti] = (uint)(1812433253U * (_mt[_mti - 1] ^ (_mt[_mti - 1] >> 30)) + _mti);
-                // See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. 
-                // In the previous versions, MSBs of the seed affect   
-                // only MSBs of the array _mt[].                        
-                // 2002/01/09 modified by Makoto Matsumoto             
-                //note: this is expensive and is probably unnessisary, look into removal later
-                _mt[_mti] &= 0xffffffffU;
-                // for >32 bit machines
-            }
 
             _mti = 0;
         }
@@ -250,6 +240,98 @@ namespace Pk3DSRNGTool.RNG
             }
 
             _mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */
+        }
+    }
+
+
+    public class MersenneTwister_Fast // Little Faster Version
+    {
+        /* Period parameters */
+        private const Int32 N = 624;
+        private const Int32 M = 397;
+        private const uint MatrixA = 0x9908b0df; /* constant vector a */
+        private const uint UpperMask = 0x80000000; /* most significant w-r bits */
+        private const uint LowerMask = 0x7fffffff; /* least significant r bits */
+
+        /* Tempering parameters */
+        private const uint TemperingMaskB = 0x9d2c5680;
+        private const uint TemperingMaskC = 0xefc60000;
+        private static readonly uint[] _mag01 = { 0x0, MatrixA };
+        private readonly uint[] _mt = new uint[N]; /* the array for the state vector  */
+        private short _mti;
+
+        public MersenneTwister_Fast(uint seed)
+        {
+            init(seed);
+        }
+
+        public uint Nextuint()
+        {
+            return Generateuint();
+        }
+
+        private uint y;
+        public void Next()
+        {
+            if (_mti >= N)
+            {
+                short kk = 0;
+
+                for (; kk < N - M; ++kk)
+                {
+                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
+                    _mt[kk] = _mt[kk + M] ^ (y >> 1) ^ _mag01[y & 0x1];
+                }
+
+                for (; kk < N - 1; ++kk)
+                {
+                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
+                    _mt[kk] = _mt[kk + (M - N)] ^ (y >> 1) ^ _mag01[y & 0x1];
+                }
+
+                y = (_mt[N - 1] & UpperMask) | (_mt[0] & LowerMask);
+                _mt[N - 1] = _mt[M - 1] ^ (y >> 1) ^ _mag01[y & 0x1];
+
+                _mti = 0;
+            }
+            y = _mt[_mti++];
+        }
+
+        private uint Generateuint()
+        {
+            Next();
+            y ^= temperingShiftU(y);
+            y ^= temperingShiftS(y) & TemperingMaskB;
+            y ^= temperingShiftT(y) & TemperingMaskC;
+            y ^= temperingShiftL(y);
+            return y;
+        }
+
+        private static uint temperingShiftU(uint y)
+        {
+            return (y >> 11);
+        }
+
+        private static uint temperingShiftS(uint y)
+        {
+            return (y << 7);
+        }
+
+        private static uint temperingShiftT(uint y)
+        {
+            return (y << 15);
+        }
+
+        private static uint temperingShiftL(uint y)
+        {
+            return (y >> 18);
+        }
+
+        private void init(uint seed)
+        {
+            _mt[0] = seed;
+            for (_mti = 1; _mti < N; _mti++)
+                _mt[_mti] = (uint)(1812433253U * (_mt[_mti - 1] ^ (_mt[_mti - 1] >> 30)) + _mti);
         }
     }
 }

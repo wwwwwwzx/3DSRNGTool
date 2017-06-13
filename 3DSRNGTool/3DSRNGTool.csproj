@@ -150,6 +150,7 @@
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="RNG\IRNGState.cs" />
+    <Compile Include="Util\MTSeedFinder.cs" />
     <Compile Include="Util\FormUtil.cs" />
     <Compile Include="Util\FuncUtil.cs" />
     <Compile Include="Util\Gen7EggPath.cs" />
