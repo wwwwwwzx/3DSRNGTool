@@ -141,7 +141,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                if (Gen6)
+                if (Gen6 && dgv_rand64.Visible)
                 {
                     ulong key = (ulong)DGV.CurrentRow.Cells["dgv_rand64"].Value;
                     Key1.Value = key >> 32;
@@ -149,7 +149,10 @@ namespace Pk3DSRNGTool
                     return;
                 }
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
-                Status = SeedStr2Array(seed) ?? Status;
+                if (Gen7)
+                    Status = SeedStr2Array(seed) ?? Status;
+                else
+                    Gen6Tiny = SeedStr2Array(seed);
             }
             catch (NullReferenceException)
             {

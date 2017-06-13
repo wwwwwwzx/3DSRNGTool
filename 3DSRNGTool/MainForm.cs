@@ -107,7 +107,7 @@ namespace Pk3DSRNGTool
             Gameversion.SelectedIndex = LastGameversion;
             RNGMethod.SelectedIndex = _LastMethod;
             RNGMethod_Changed(null, null);
-            CB_Category.SelectedIndex = LastCategory;
+            CB_Category.SelectedIndex = LastCategory < CB_Category.Items.Count ? LastCategory : 0;
             Poke.SelectedIndex = LastPkm < Poke.Items.Count ? LastPkm : 0;
             RNGMethod.SelectedIndex = LastMethod;
 
@@ -478,9 +478,7 @@ namespace Pk3DSRNGTool
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
             L_Slot.Visible = Slot.Visible = Method == 2;
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
-
-            SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
-            SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            
             Gen6EggPanel.Visible = Gen6 && Method == 3;
             GB_Tiny.Visible &= Gen6;
 
@@ -1040,8 +1038,11 @@ namespace Pk3DSRNGTool
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
             dgv_state.Visible = Gen6 && Method < 4;
+            SetAsCurrent.Visible =
             dgv_tinystate.Visible = Gen6 && (Method == 0 || Method == 2) && gen6timeline || Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            if (Gen6 && Method == 3) SetAsCurrent.Visible = true;
             dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
+            SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);
