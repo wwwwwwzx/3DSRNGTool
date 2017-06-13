@@ -111,6 +111,14 @@ namespace Pk3DSRNGTool
             L_Event_TSV.Text = "TSV:   ";
             uint EventTSV = ((uint)Event_TID.Value ^ (uint)Event_SID.Value) >> 4;
             L_Event_TSV.Text += EventTSV.ToString("D4");
+            if (Gen6) return;
+            string g7tid = "G7TID:  ";
+            uint G7TID = ((uint)Event_TID.Value + ((uint)Event_SID.Value << 16)) % 1000000;
+            g7tid += G7TID.ToString("D6");
+            DGVToolTip.SetToolTip(L_TID, g7tid);
+            DGVToolTip.SetToolTip(L_SID, g7tid);
+            DGVToolTip.SetToolTip(Event_TID, g7tid);
+            DGVToolTip.SetToolTip(Event_SID, g7tid);
         }
 
         private void NatureLocked_CheckedChanged(object sender, EventArgs e)
