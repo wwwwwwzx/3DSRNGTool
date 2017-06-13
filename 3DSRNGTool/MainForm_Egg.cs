@@ -148,7 +148,7 @@ namespace Pk3DSRNGTool
                     Key0.Value = (uint)key;
                     return;
                 }
-                var seed = (string)DGV.CurrentRow.Cells["dgv_status"].Value;
+                var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 Status = SeedStr2Array(seed) ?? Status;
             }
             catch (NullReferenceException)
@@ -179,7 +179,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                var seed = (string)DGV.CurrentRow.Cells["dgv_status"].Value;
+                var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 var adv = Convert.ToInt32((string)DGV.CurrentRow.Cells["dgv_adv"].Value);
                 uint[] St = SeedStr2Array(seed);
                 TinyMT tmt = new TinyMT(St);
