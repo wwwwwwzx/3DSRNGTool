@@ -39,6 +39,7 @@ namespace Pk3DSRNGTool
         List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
         private static NtrClient ntrclient = new NtrClient();
+        private static MTSeedFinder finder = new MTSeedFinder();
         #endregion
 
         public MainForm()
@@ -115,12 +116,14 @@ namespace Pk3DSRNGTool
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
             ntrclient.Connected += OnConnected;
+            finder.Update += UpdateProgressBar;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
             ntrclient.disconnect();
+            finder.Abort();
         }
 
         private void RefreshPKM()
@@ -478,7 +481,7 @@ namespace Pk3DSRNGTool
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
             L_Slot.Visible = Slot.Visible = Method == 2;
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
-            
+
             Gen6EggPanel.Visible = Gen6 && Method == 3;
             GB_Tiny.Visible &= Gen6;
 
@@ -1520,7 +1523,6 @@ namespace Pk3DSRNGTool
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
-            DGV_ID.DataSource = null;
             Frame_ID.correction = (byte)Clk_Correction.Value;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using static PKHeX.Util;
 
 namespace Pk3DSRNGTool
@@ -157,6 +158,56 @@ namespace Pk3DSRNGTool
                 BitConverter.ToUInt32(tiny, 8),
                 BitConverter.ToUInt32(tiny, 12),
             };
+        }
+        #endregion
+
+        #region Bruteforce Seed Finder
+        private void B_MTSearch_Click(object sender, EventArgs e)
+        {
+            var IV1 = FuncUtil.parseIVs(WildIV1.Text);
+            var IV2 = FuncUtil.parseIVs(WildIV2.Text);
+            var min1 = (int)Wild1_Fmin.Value;
+            var max1 = (int)Wild1_Fmax.Value;
+            var min2 = (int)Wild2_Fmin.Value;
+            var max2 = (int)Wild2_Fmax.Value;
+            if (IV1 == null || IV2 == null || min1 > max1 || max1 > min2 || min2 > max2)
+            {
+                Error("Invalid Input");
+                return;
+            }
+            FinderPBar.Value = 0;
+            L_Progress.Text = "0.00%";
+            DGV_Seed.CurrentCell = null;
+            DGV_Seed.DataSource = new BindingSource(new List<Frame_Seed>(), null);
+            finder.Clear();
+            finder.setFinder(IV1, min1, max1, IV2, min2, max2);
+            finder.FullSearch();
+            FinderPBar.Maximum = finder.Max;
+            B_MTSearch.Visible = false;
+            B_Abort.Visible = true;
+        }
+
+        private void B_Abort_Click(object sender, EventArgs e)
+        {
+            finder.Abort();
+            Alert($"Found {finder.seedlist.Count} Frame(s)");
+            B_MTSearch.Visible = true;
+            B_Abort.Visible = false;
+            DGV_Seed.DataSource = new BindingSource(finder.seedlist,null);
+            DGV_Seed.CurrentCell = null;
+        }
+
+        private void UpdateProgressBar(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
+                DGV_Seed.CurrentCell = null;
+                FinderPBar.Value = finder.Cnt;
+                L_Progress.Text = (finder.Cnt / (finder.Max / 100.00)).ToString("F2") + "%";
+                if (finder.Cnt == finder.Max)
+                    B_Abort_Click(null, null);
+            }));
         }
         #endregion
     }

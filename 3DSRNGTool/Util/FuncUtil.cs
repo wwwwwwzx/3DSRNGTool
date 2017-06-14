@@ -116,7 +116,7 @@ namespace Pk3DSRNGTool
             return hour.ToString() + "h " + min.ToString("D2") + "m " + sec.ToString("00.0s");
         }
 
-        private static int[] parseIVs(string text)
+        public static int[] parseIVs(string text)
         {
             try
             {

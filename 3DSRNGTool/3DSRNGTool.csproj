@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Controls\Frame.cs" />
     <Compile Include="Controls\Frame_ID.cs" />
+    <Compile Include="Controls\Frame_Seed.cs" />
     <Compile Include="Core\EncounterArea.cs" />
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
