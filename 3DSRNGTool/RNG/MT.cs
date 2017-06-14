@@ -131,32 +131,13 @@ namespace Pk3DSRNGTool.RNG
 
         #region IRNG Members
 
-        public void Reseed(uint seed)
-        {
-            init(seed);
-        }
+        public void Reseed(uint seed) => init(seed);
 
-        public void Reseed(uint[] Key)
-        {
-            init_by_array(Key, Key.Length);
-        }
+        public void Reseed(uint[] Key) => init_by_array(Key, Key.Length);
+        
+        public uint Nextuint() => Generateuint();
 
-        /// <summary>
-        ///     Returns the next pseudo-random <see cref="uint" />.
-        /// </summary>
-        /// <returns>
-        ///     A pseudo-random <see cref="uint" /> value.
-        /// </returns>
-        public uint Nextuint()
-        {
-            return Generateuint();
-        }
-
-        // Interface call
-        public void Next()
-        {
-            Generateuint();
-        }
+        public void Next() => Generateuint();
 
         public PRNGState CurrentState() => new PRNGState(_mt[_mti]);
 
@@ -187,25 +168,13 @@ namespace Pk3DSRNGTool.RNG
             return y;
         }
 
-        private static uint temperingShiftU(uint y)
-        {
-            return (y >> 11);
-        }
+        private static uint temperingShiftU(uint y) => (y >> 11);
 
-        private static uint temperingShiftS(uint y)
-        {
-            return (y << 7);
-        }
+        private static uint temperingShiftS(uint y) => (y << 7);
 
-        private static uint temperingShiftT(uint y)
-        {
-            return (y << 15);
-        }
+        private static uint temperingShiftT(uint y) => (y << 15);
 
-        private static uint temperingShiftL(uint y)
-        {
-            return (y >> 18);
-        }
+        private static uint temperingShiftL(uint y) => (y >> 18);
 
         private void init(uint seed)
         {
@@ -259,7 +228,9 @@ namespace Pk3DSRNGTool.RNG
         private static readonly uint[] _mag01 = { 0x0, MatrixA };
         private readonly uint[] _mt = new uint[N]; /* the array for the state vector  */
         private short _mti;
-
+        
+        private uint y;
+        
         public MersenneTwister_Fast(uint seed)
         {
             init(seed);
@@ -267,10 +238,14 @@ namespace Pk3DSRNGTool.RNG
 
         public uint Nextuint()
         {
-            return Generateuint();
+            Next();
+            y ^= temperingShiftU(y);
+            y ^= temperingShiftS(y) & TemperingMaskB;
+            y ^= temperingShiftT(y) & TemperingMaskC;
+            y ^= temperingShiftL(y);
+            return y;
         }
 
-        private uint y;
         public void Next()
         {
             if (_mti >= N)
@@ -297,35 +272,13 @@ namespace Pk3DSRNGTool.RNG
             y = _mt[_mti++];
         }
 
-        private uint Generateuint()
-        {
-            Next();
-            y ^= temperingShiftU(y);
-            y ^= temperingShiftS(y) & TemperingMaskB;
-            y ^= temperingShiftT(y) & TemperingMaskC;
-            y ^= temperingShiftL(y);
-            return y;
-        }
+        private static uint temperingShiftU(uint y) => (y >> 11);
 
-        private static uint temperingShiftU(uint y)
-        {
-            return (y >> 11);
-        }
+        private static uint temperingShiftS(uint y) => (y << 7);
 
-        private static uint temperingShiftS(uint y)
-        {
-            return (y << 7);
-        }
+        private static uint temperingShiftT(uint y) => (y << 15);
 
-        private static uint temperingShiftT(uint y)
-        {
-            return (y << 15);
-        }
-
-        private static uint temperingShiftL(uint y)
-        {
-            return (y >> 18);
-        }
+        private static uint temperingShiftL(uint y) => (y >> 18);
 
         private void init(uint seed)
         {

@@ -7,9 +7,9 @@ namespace Pk3DSRNGTool.RNG
     public class TinyMT : IRNG, IRNGState
     {
         public uint[] status { get; set; }
-        public uint mat1 { get; } = 0x8f7011ee;
-        public uint mat2 { get; } = 0xfc78ff1f;
-        public uint tmat { get; } = 0x3793fdff;
+        public const uint mat1 = 0x8f7011ee;
+        public const uint mat2 = 0xfc78ff1f;
+        public const uint tmat = 0x3793fdff;
 
         private const int MIN_LOOP = 8;
         private const int PRE_LOOP = 8;
@@ -74,8 +74,6 @@ namespace Pk3DSRNGTool.RNG
             return t0;
         }
 
-        public PRNGState CurrentState() => new PRNGState(status);
-
         #region IRNG Member
         public void Next()
         {
@@ -92,6 +90,8 @@ namespace Pk3DSRNGTool.RNG
         {
             init(seed);
         }
+        
+        public PRNGState CurrentState() => new PRNGState(status);
         #endregion
 
         private void period_certification()
