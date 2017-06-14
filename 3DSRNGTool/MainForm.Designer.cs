@@ -4678,7 +4678,7 @@
             this.Wild2_Fmin.Size = new System.Drawing.Size(54, 22);
             this.Wild2_Fmin.TabIndex = 95;
             this.Wild2_Fmin.Value = new decimal(new int[] {
-            2500,
+            2000,
             0,
             0,
             0});
@@ -4714,7 +4714,7 @@
             this.Wild1_Fmin.Size = new System.Drawing.Size(54, 22);
             this.Wild1_Fmin.TabIndex = 93;
             this.Wild1_Fmin.Value = new decimal(new int[] {
-            200,
+            250,
             0,
             0,
             0});

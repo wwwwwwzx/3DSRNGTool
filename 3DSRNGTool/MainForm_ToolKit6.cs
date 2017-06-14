@@ -175,8 +175,6 @@ namespace Pk3DSRNGTool
                 Error("Invalid Input");
                 return;
             }
-            FinderPBar.Value = 0;
-            L_Progress.Text = "0.00%";
             DGV_Seed.CurrentCell = null;
             DGV_Seed.DataSource = new BindingSource(new List<Frame_Seed>(), null);
             finder.Clear();
@@ -195,6 +193,8 @@ namespace Pk3DSRNGTool
             B_Abort.Visible = false;
             DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
             DGV_Seed.CurrentCell = null;
+            FinderPBar.Value = 0;
+            L_Progress.Text = "0.00%";
         }
 
         private void UpdateProgressBar(object sender, EventArgs e)
