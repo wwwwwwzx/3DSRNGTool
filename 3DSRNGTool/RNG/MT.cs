@@ -211,9 +211,8 @@ namespace Pk3DSRNGTool.RNG
             _mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */
         }
     }
-
-
-    public class MersenneTwister_Fast // Little Faster Version
+    
+    public class MersenneTwister_Fast // Little faster version, Modified by wwwwwwzx
     {
         /* Period parameters */
         private const Int32 N = 624;
@@ -229,8 +228,6 @@ namespace Pk3DSRNGTool.RNG
         private readonly uint[] _mt = new uint[N]; /* the array for the state vector  */
         private short _mti;
         
-        private uint y;
-        
         public MersenneTwister_Fast(uint seed)
         {
             init(seed);
@@ -238,20 +235,10 @@ namespace Pk3DSRNGTool.RNG
 
         public uint Nextuint()
         {
-            Next();
-            y ^= temperingShiftU(y);
-            y ^= temperingShiftS(y) & TemperingMaskB;
-            y ^= temperingShiftT(y) & TemperingMaskC;
-            y ^= temperingShiftL(y);
-            return y;
-        }
-
-        public void Next()
-        {
+            uint y;
             if (_mti >= N)
             {
                 short kk = 0;
-
                 for (; kk < N - M; ++kk)
                 {
                     y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
@@ -270,6 +257,37 @@ namespace Pk3DSRNGTool.RNG
                 _mti = 0;
             }
             y = _mt[_mti++];
+            y ^= temperingShiftU(y);
+            y ^= temperingShiftS(y) & TemperingMaskB;
+            y ^= temperingShiftT(y) & TemperingMaskC;
+            y ^= temperingShiftL(y);
+            return y;
+        }
+
+        public void Next(int n)
+        {
+            _mti += (short)n;
+            while (_mti >= N)
+            {
+                short kk = 0;
+                uint y;
+                for (; kk < N - M; ++kk)
+                {
+                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
+                    _mt[kk] = _mt[kk + M] ^ (y >> 1) ^ _mag01[y & 0x1];
+                }
+
+                for (; kk < N - 1; ++kk)
+                {
+                    y = (_mt[kk] & UpperMask) | (_mt[kk + 1] & LowerMask);
+                    _mt[kk] = _mt[kk + (M - N)] ^ (y >> 1) ^ _mag01[y & 0x1];
+                }
+
+                y = (_mt[N - 1] & UpperMask) | (_mt[0] & LowerMask);
+                _mt[N - 1] = _mt[M - 1] ^ (y >> 1) ^ _mag01[y & 0x1];
+
+                _mti -= N;
+            }
         }
 
         private static uint temperingShiftU(uint y) => (y >> 11);

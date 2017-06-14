@@ -53,10 +53,7 @@ namespace Pk3DSRNGTool
             var rng = new MersenneTwister_Fast(seed);
             int[] result = new int[2];
             int i;
-            for (i = 0; i < PreAdvance; i++)
-                rng.Next();
-            for (i = 0; i < minframe1; i++)
-                rng.Next();
+            rng.Next(PreAdvance + minframe1);
             for (i = 0; i < poolsize1; i++)
                 Pool1[i] = rng.Nextuint() >> 27;
             for (i = 0; i < _poolsize1; i++)
@@ -68,8 +65,7 @@ namespace Pk3DSRNGTool
             if (i == _poolsize1)
                 return result;
             result[0] = i + minframe1;
-            for (i = 0; i < gap; i++)
-                rng.Next();
+            rng.Next(gap);
             for (i = 0; i < poolsize2; i++)
                 Pool2[i] = rng.Nextuint() >> 27;
             for (i = 0; i < _poolsize2; i++)
@@ -88,15 +84,9 @@ namespace Pk3DSRNGTool
         {
             var frame = new Frame_Seed() { Seed = seed, Frame1 = frame1, Frame2 = frame2 };
             var rng = new MersenneTwister_Fast(seed);
-            for (int i = 0; i < PreAdvance; i++)
-                rng.Next();
-            for (int i = 0; i < 7; i++)
-                rng.Next();
-            for (int i = 0; i < frame1; i++)
-                rng.Next();
+            rng.Next(PreAdvance + 7 + frame1);
             frame.nature1 = (byte)((rng.Nextuint() * 25ul) >> 32);
-            for (int i = frame1 + 1; i < frame2; i++)
-                rng.Next();
+            rng.Next(frame2 - frame1 - 1);
             frame.nature2 = (byte)((rng.Nextuint() * 25ul) >> 32);
             seedlist.Add(frame);
             UpdateProgress(null);
@@ -146,10 +136,7 @@ namespace Pk3DSRNGTool
         {
             var rng = new MersenneTwister_Fast(seed);
             int i;
-            for (i = 0; i < PreAdvance; i++)
-                rng.Next();
-            for (i = 0; i < minframe; i++)
-                rng.Next();
+            rng.Next(PreAdvance + minframe);
             for (i = 0; i < poolsize; i++)
                 Pool[i] = rng.Nextuint() >> 27;
             for (i = 0; i < _poolsize; i++)
@@ -186,12 +173,7 @@ namespace Pk3DSRNGTool
         {
             var Frame = new Frame_Seed() { Seed = seed, Frame1 = frame, };
             var rng = new MersenneTwister_Fast(seed);
-            for (int i = 0; i < PreAdvance; i++)
-                rng.Next();
-            for (int i = 0; i < 7; i++)
-                rng.Next();
-            for (int i = 0; i < frame; i++)
-                rng.Next();
+            rng.Next(PreAdvance + 7 + frame);
             Frame.nature1 = (byte)((rng.Nextuint() * 25ul) >> 32);
             seedlist.Add(Frame);
         }
