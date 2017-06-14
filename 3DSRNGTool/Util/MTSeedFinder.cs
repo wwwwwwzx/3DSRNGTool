@@ -19,7 +19,14 @@ namespace Pk3DSRNGTool
         public event EventHandler Update;
         private void UpdateProgress(EventArgs e)
         {
+            Cnt++;
             Update?.Invoke(this, e);
+        }
+
+        public event EventHandler NewResult;
+        private void UpdateTable(EventArgs e)
+        {
+            NewResult?.Invoke(this, e);
         }
 
         public void Abort()
@@ -89,7 +96,7 @@ namespace Pk3DSRNGTool
             rng.Next(frame2 - frame1 - 1);
             frame.nature2 = (byte)((rng.Nextuint() * 25ul) >> 32);
             seedlist.Add(frame);
-            UpdateProgress(null);
+            UpdateTable(null);
         }
 
         private object _locker = new object();
@@ -109,7 +116,6 @@ namespace Pk3DSRNGTool
                     }
                 if ((ushort)i == 0xFFFF)
                 {
-                    Cnt++;
                     UpdateProgress(null);
                     if (i == 0xFFFFFFFF) // 0xFFFFFFFF ++ = 0
                         break;
@@ -194,7 +200,6 @@ namespace Pk3DSRNGTool
                     }
                 if ((ushort)i == updatepoint)
                 {
-                    Cnt++;
                     UpdateProgress(null);
                     if (i == 0xFFFFFFFF) // (0xFFFFFFFF)++ = 0
                         break;

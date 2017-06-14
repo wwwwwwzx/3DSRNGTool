@@ -117,6 +117,7 @@ namespace Pk3DSRNGTool
             Advanced_CheckedChanged(null, null);
             ntrclient.Connected += OnConnected;
             finder.Update += UpdateProgressBar;
+            finder.NewResult += UpdateDGV;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)

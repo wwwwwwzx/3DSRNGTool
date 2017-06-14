@@ -193,7 +193,7 @@ namespace Pk3DSRNGTool
             Alert($"Found {finder.seedlist.Count} Frame(s)");
             B_MTSearch.Visible = true;
             B_Abort.Visible = false;
-            DGV_Seed.DataSource = new BindingSource(finder.seedlist,null);
+            DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
             DGV_Seed.CurrentCell = null;
         }
 
@@ -201,12 +201,19 @@ namespace Pk3DSRNGTool
         {
             Invoke(new Action(() =>
             {
-                DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
-                DGV_Seed.CurrentCell = null;
                 FinderPBar.Value = finder.Cnt;
                 L_Progress.Text = (finder.Cnt / (finder.Max / 100.00)).ToString("F2") + "%";
                 if (finder.Cnt == finder.Max)
                     B_Abort_Click(null, null);
+            }));
+        }
+
+        private void UpdateDGV(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
+                DGV_Seed.CurrentCell = null;
             }));
         }
         #endregion
