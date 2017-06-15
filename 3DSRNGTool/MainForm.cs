@@ -84,6 +84,7 @@ namespace Pk3DSRNGTool
             Ball.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
+            Wild_Nature.Items.AddRange(StringItem.naturestr);
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -102,6 +103,7 @@ namespace Pk3DSRNGTool
             Event_Ability.SelectedIndex = Event_Gender.SelectedIndex =
             M_ability.SelectedIndex = F_ability.SelectedIndex =
             M_Items.SelectedIndex = F_Items.SelectedIndex =
+            Wild_Nature.SelectedIndex =
             0;
             Egg_GenderRatio.SelectedIndex = 1;
 
@@ -266,6 +268,12 @@ namespace Pk3DSRNGTool
             IVPanel.Visible = ByIVs.Checked;
             StatPanel.Visible = ByStats.Checked;
             ShowStats.Enabled = ShowStats.Checked = ByStats.Checked;
+        }
+
+        private void RB_Gen6_CheckedChanged(object sender, EventArgs e)
+        {
+            WildPanel1.Visible = RB_1Wild.Checked;
+            WildPanel2.Visible = RB_2Wild.Checked;
         }
 
         private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)

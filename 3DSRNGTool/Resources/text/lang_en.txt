@@ -207,9 +207,26 @@ RB_Main = Main
 RB_ID = ID
 Magikarp = 127 Magikarp Calculator (M=0, F=1) (Spaces and line breaks will be ignored)
 ---------------------TabPage7----------------------------------
+GB_NTR = NTR Helper
 B_OneClick = One Click
 B_Connect = Connect
 B_Disconnect = Disconnect
 B_Breakpoint = Set Break Point
 B_Resume = Resume
 B_GetGen6Seed = Get Initial Seed
+----
+GB_SeedFinder = Seed Finder
+B_Abort = Abort
+B_MTSearch = Search
+L_WildFrameRange = Encounter Frame Range
+L_IV = IVs
+L_Wild1 = Wild1
+L_Wild2 = Wild2
+RB_1Wild = By IVs Range of a wild
+RB_2Wild = By IVs of two wilds
+L_SeedRange = Seed Range
+L_WildFrameRange2 = Encounter Frame Range
+L_WildLower = Lower
+L_WildUpper = Upper
+L_WildIVRange = Wild IVs Range
+L_WildNature = Nature

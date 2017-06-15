@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using Pk3DSRNGTool.RNG;
@@ -15,12 +16,17 @@ namespace Pk3DSRNGTool
         public List<Thread> thrds = new List<Thread>();
 
         public int PreAdvance = 63;  // Misc consumption 60 + 1 + EC + PID
+        const int Thread_Number = 8;
 
+        #region Threading
         public event EventHandler Update;
         private void UpdateProgress(EventArgs e)
         {
-            Cnt++;
-            Update?.Invoke(this, e);
+            lock (_locker)
+            {
+                Cnt++;
+                Update?.Invoke(this, e);
+            }
         }
 
         public event EventHandler NewResult;
@@ -28,6 +34,8 @@ namespace Pk3DSRNGTool
         {
             NewResult?.Invoke(this, e);
         }
+
+        private object _locker = new object();
 
         public void Abort()
         {
@@ -45,7 +53,9 @@ namespace Pk3DSRNGTool
             thrds.Clear();
             Cnt = 0;
         }
+        #endregion
 
+        #region Search1
         public void setFinder(int[] iv1, int min1, int max1, int[] iv2, int min2, int max2)
         {
             IV1 = iv1; minframe1 = min1; maxframe1 = max1;
@@ -95,47 +105,55 @@ namespace Pk3DSRNGTool
             frame.nature1 = (byte)((rng.Nextuint() * 25ul) >> 32);
             rng.Next(frame2 - frame1 - 1);
             frame.nature2 = (byte)((rng.Nextuint() * 25ul) >> 32);
-            seedlist.Add(frame);
-            UpdateTable(null);
+            lock (_locker)
+            {
+                seedlist.Add(frame);
+                UpdateTable(null);
+            }
         }
-
-        private object _locker = new object();
 
         private void findseed(uint seedmin, uint seedmax)
         {
             uint[] Pool1 = new uint[poolsize1];
             uint[] Pool2 = new uint[poolsize2];
             int[] frame;
+            ushort updatepoint = (ushort)seedmax;
             for (uint i = seedmin; i <= seedmax; i++)
             {
                 frame = FindFrame(i, Pool1, Pool2);
                 if (frame[1] != 0)
-                    lock (_locker)
-                    {
-                        parseseed(i, frame[0], frame[1]);
-                    }
-                if ((ushort)i == 0xFFFF)
+                    parseseed(i, frame[0], frame[1]);
+                if ((ushort)i == updatepoint)
                 {
                     UpdateProgress(null);
                     if (i == 0xFFFFFFFF) // 0xFFFFFFFF ++ = 0
                         break;
                 }
             }
+            UpdateProgress(null);
         }
 
-        public void FullSearch()
+        private void findseed1(object param)
         {
-            Max = 0x10000;
-            thrds.Add(new Thread(() => findseed(0x00000000, 0x1FFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0x20000000, 0x3FFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0x40000000, 0x5FFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0x60000000, 0x7FFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0x80000000, 0x9FFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0xA0000000, 0xBFFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0xC0000000, 0xDFFFFFFF)));
-            thrds.Add(new Thread(() => findseed(0xE0000000, 0xFFFFFFFF)));
-            foreach (var t in thrds)
-            { t.IsBackground = true; t.Start(); }
+            var seedrange = (uint[])param;
+            findseed(seedrange[0], seedrange[1]);
+        }
+        #endregion
+
+        #region Search2
+        private int[] IVmin, IVmax;
+        private byte Nature;
+        private int minframe, maxframe, poolsize, _poolsize;
+
+        public void setFinder2(int[] iv_min, int[] iv_max, int min, int max, byte nature)
+        {
+            IVmin = iv_min;
+            IVmax = iv_max;
+            minframe = min;
+            maxframe = max;
+            Nature = nature;
+            poolsize = max - min + 1;
+            _poolsize = poolsize - 5;
         }
 
         private int FindFrame2(uint seed, uint[] Pool)
@@ -147,57 +165,45 @@ namespace Pk3DSRNGTool
                 Pool[i] = rng.Nextuint() >> 27;
             for (i = 0; i < _poolsize; i++)
             {
-                if (
-                    IVmin[0] <= Pool[i] && Pool[i] <= IVmax[0] &&
+                if (IVmin[0] <= Pool[i] && Pool[i] <= IVmax[0] &&
                     IVmin[1] <= Pool[i + 1] && Pool[i + 1] <= IVmax[1] &&
                     IVmin[2] <= Pool[i + 2] && Pool[i + 2] <= IVmax[2] &&
                     IVmin[3] <= Pool[i + 3] && Pool[i + 3] <= IVmax[3] &&
                     IVmin[4] <= Pool[i + 4] && Pool[i + 4] <= IVmax[4] &&
-                    IVmin[5] <= Pool[i + 5] && Pool[i + 5] <= IVmax[5]
-                 )
+                    IVmin[5] <= Pool[i + 5] && Pool[i + 5] <= IVmax[5])
                     break;
             }
-            if (i == _poolsize1)
+            if (i == _poolsize)
                 return 0;
             return i + minframe;
         }
 
-        private int[] IVmin, IVmax;
-        private int minframe, maxframe, poolsize, _poolsize;
-
-        public void setFinder2(int[] iv_min, int[] iv_max, int min, int max)
-        {
-            IVmin = iv_min;
-            IVmax = iv_max;
-            minframe = min;
-            maxframe = max;
-            poolsize = max - min + 1;
-            _poolsize = poolsize - 5;
-        }
-
         private void parseseed2(uint seed, int frame)
         {
-            var Frame = new Frame_Seed() { Seed = seed, Frame1 = frame, };
+            var NewFrame = new Frame_Seed() { Seed = seed, Frame1 = frame, };
             var rng = new MersenneTwister_Fast(seed);
             rng.Next(PreAdvance + 7 + frame);
-            Frame.nature1 = (byte)((rng.Nextuint() * 25ul) >> 32);
-            seedlist.Add(Frame);
+            NewFrame.nature1 = (byte)((rng.Nextuint() * 25ul) >> 32);
+            if (Nature != NewFrame.nature1)
+                return;
+            NewFrame.gender = (byte)((rng.Nextuint() * 252ul) >> 32);
+            lock (_locker)
+            {
+                seedlist.Add(NewFrame);
+                seedlist = seedlist.OrderBy(t => t.Seed).ToList();
+                UpdateTable(null);
+            }
         }
 
         public void findseed2(uint seedmin, uint seedmax)
         {
             uint[] Pool = new uint[poolsize];
-            int frame;
-            Max = (int)((seedmax - seedmin) >> 16) + 1;
             ushort updatepoint = (ushort)seedmax;
             for (uint i = seedmin; i <= seedmax; i++)
             {
-                frame = FindFrame2(i, Pool);
-                if (frame != 0)
-                    lock (_locker)
-                    {
-                        parseseed2(i, frame);
-                    }
+                int frame = FindFrame2(i, Pool);
+                if (0 != frame)
+                    parseseed2(i, frame);
                 if ((ushort)i == updatepoint)
                 {
                     UpdateProgress(null);
@@ -205,6 +211,33 @@ namespace Pk3DSRNGTool
                         break;
                 }
             }
+            UpdateProgress(null);
+        }
+
+        private void findseed2(object param)
+        {
+            var seedrange = (uint[])param;
+            findseed2(seedrange[0], seedrange[1]);
+        }
+        #endregion
+
+        public void Search(uint seedmin, uint seedmax, bool full)
+        {
+            var threadstart = full ? new ParameterizedThreadStart(findseed1) : new ParameterizedThreadStart(findseed2);
+            ulong blocksize = (seedmax - seedmin) / Thread_Number + 1;
+            ulong i = seedmin;
+            List<object> paramlist = new List<object>();
+            for (; i + blocksize <= seedmax; i += blocksize)
+                paramlist.Add(new uint[] { (uint)i, (uint)(i + blocksize - 1) });
+            paramlist.Add(new uint[] { (uint)i, seedmax });
+            for (int j = 0; j < paramlist.Count; j++)
+            {
+                var t = new Thread(threadstart);
+                t.IsBackground = true;
+                t.Start(paramlist[j]);
+                thrds.Add(t);
+            }
+            Max = (int)((seedmax - seedmin) >> 16) + 1 + paramlist.Count;
         }
     }
 }

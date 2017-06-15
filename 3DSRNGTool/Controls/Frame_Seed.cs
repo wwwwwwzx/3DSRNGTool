@@ -9,6 +9,6 @@
         public int Frame2 { get; set; }
         public string Nature1 => StringItem.naturestr[nature1];
         public string Nature2 => StringItem.naturestr[nature2];
-        public string Gender => StringItem.genderstr[nature2];
+        public string Gender => gender.ToString();
     }
 }

@@ -206,9 +206,26 @@ RB_Main = 主乱数
 RB_ID = ID乱数
 Magikarp = 127鲤鱼王计算器 （公记为0,母记为0）（空格及换行软件将自动忽略）
 ---------------------TabPage7----------------------------------
+GB_NTR = NTR 助手
 B_OneClick = 一键完成
 B_Connect = 连接
 B_Disconnect = 断开
 B_Breakpoint = 设置断点
 B_Resume = 继续
 B_GetGen6Seed = 获得初始Seed
+----
+GB_SeedFinder = Seed 搜索器
+B_Abort = 终止
+B_MTSearch = 检索
+L_WildFrameRange = 遇敌帧数范围
+L_IV = 个体值
+L_Wild1 = 宝可梦1
+L_Wild2 = 宝可梦2
+RB_1Wild = 通过单个野生宝可梦个体范围
+RB_2Wild = 通过两个野生宝可梦个体
+L_SeedRange = Seed 范围
+L_WildFrameRange2 = 遇敌帧数范围
+L_WildLower = 下限
+L_WildUpper = 上限
+L_WildIVRange = 个体范围
+L_WildNature = 性格
