@@ -11,14 +11,15 @@ namespace Pk3DSRNGTool
         private int minframe1, maxframe1, minframe2, maxframe2, poolsize1, _poolsize1, poolsize2, _poolsize2, gap;
         private int[] IV1, IV2;
 
-        public int Cnt, Max; // Progress
         public List<Frame_Seed> seedlist = new List<Frame_Seed>();
-        public List<Thread> thrds = new List<Thread>();
-
         public int PreAdvance = 63;  // Misc consumption 60 + 1 + EC + PID
-        const int Thread_Number = 8;
 
         #region Threading
+        public List<Thread> thrds = new List<Thread>();
+
+        public int Cnt, Max; // Progress
+        const int Thread_Number = 8;
+
         public event EventHandler Update;
         private void UpdateProgress(EventArgs e)
         {
@@ -195,7 +196,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void findseed2(uint seedmin, uint seedmax)
+        private void findseed2(uint seedmin, uint seedmax)
         {
             uint[] Pool = new uint[poolsize];
             ushort updatepoint = (ushort)seedmax;

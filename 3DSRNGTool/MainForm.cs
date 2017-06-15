@@ -282,10 +282,7 @@ namespace Pk3DSRNGTool
             {
                 CompoundEyes.Checked = false;
                 if (AlwaysSynced.Checked)
-                {
                     Nature.ClearSelection();
-                    Nature.CheckBoxItems[SyncNature.SelectedIndex].Checked = true;
-                }
             }
             CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
         }
