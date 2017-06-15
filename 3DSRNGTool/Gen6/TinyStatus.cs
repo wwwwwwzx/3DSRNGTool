@@ -7,7 +7,9 @@ namespace Pk3DSRNGTool
         public TinyMT tinyrng = new TinyMT(0);
         public int Modelnumber;
         public byte[] remain_frame;
-        public bool blink;
+        public bool[] blink;
+
+        public byte Condition;
 
         public uint getrand => tinyrng.Nextuint();
         public PRNGState State => tinyrng.CurrentState();
@@ -20,22 +22,43 @@ namespace Pk3DSRNGTool
             tinyrng.status = (uint[])status.Clone();
             Modelnumber = n;
             remain_frame = new byte[n];
+            blink = new bool[n];
         }
 
         public void NextState()
+        {
+            switch(Condition)
+            {
+                case 0:
+                    NextState0(); return;
+                case 1:
+                    NextState1(); return;
+            }
+        }
+
+        private void NextState0()
         {
             for (int i = 0; i < Modelnumber; i++)
             {
                 if (remain_frame[i]-- == 0)
                 {
-                    if (blink)
+                    if (blink[i])
                     {
                         remain_frame[i] = getcooldown1;
-                        blink = false;
+                        blink[i] = false;
                         continue;
                     }
-                    remain_frame[i] = (blink = getblink) ? getcooldown2 : getcooldown1;
+                    remain_frame[i] = (blink[i] = getblink) ? getcooldown2 : getcooldown1;
                 }
+            }
+        }
+
+        private void NextState1()
+        {
+            if (remain_frame[0]-- == 0)
+            {
+                remain_frame[0] = 89;
+                tinyrng.Next();
             }
         }
 
@@ -50,7 +73,7 @@ namespace Pk3DSRNGTool
             des.tinyrng.status = (uint[])tinyrng.status.Clone();
             des.Modelnumber = Modelnumber;
             des.remain_frame = (byte[])remain_frame.Clone();
-            des.blink = blink;
+            des.blink = (bool[])blink.Clone();
         }
     }
 }
