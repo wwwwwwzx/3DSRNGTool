@@ -54,10 +54,10 @@ namespace Pk3DSRNGTool
             }
 
             // Inherit IV
-            int tmp;
+            uint tmp;
             for (int i = Power ? 1 : 0; i < InheritIVs_Cnt; i++)
             {
-                do { tmp = (int)rand(6); }
+                do { tmp = rand(6); }
                 while (egg.InheritMaleIV[tmp] != null);
                 egg.InheritMaleIV[tmp] = rand2;
             }
@@ -84,12 +84,12 @@ namespace Pk3DSRNGTool
                 for (int i = PID_Rerollcount; i > 0; i--)
                 {
                     egg.PID = getrand;
-                    if (egg.PSV == TSV) { egg.Shiny = true; break; }
+                    if (egg.PSV == TSV) { egg.Shiny = true; return egg; }
                 }
 
             // Other TSVs
-            tmp = (int)egg.PSV;
-            if (ConsiderOtherTSV && OtherTSVs.Contains(tmp))
+            tmp = egg.PSV;
+            if (ConsiderOtherTSV && OtherTSVs.Contains((int)tmp))
                 egg.Shiny = true;
 
             return egg;

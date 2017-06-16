@@ -254,7 +254,7 @@ namespace Pk3DSRNGTool.Core
 
         private static void time_delay()
         {
-            time_elapse(2); // Buttom press delay
+            time_elapse(2); // Button pressing delay
             if (IsSolgaleo || IsLunala)
             {
                 int crydelay = IsSolgaleo ? 79 : 76;
@@ -265,7 +265,7 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(crydelay);
                 return;
             }
-            else if (IsExeggutor)
+            if (IsExeggutor)
             {
                 time_elapse(1);
                 if (modelnumber == 1) ExeggutorRearrange();
@@ -274,7 +274,7 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(DelayTime - 43);
                 return;
             }
-            else if (igenerator is Event7 e && e.YourID && !e.IsEgg)
+            if (igenerator is Event7 e && e.YourID && !e.IsEgg)
                 e.Generate();
             time_elapse(DelayTime);
         }
