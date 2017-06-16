@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public int[] remain_frame;
         public bool phase;
 
-        public static bool route17;
+        public static bool raining;
 
         public ModelStatus(byte n, SFMT st)
         {
@@ -40,7 +40,7 @@ namespace Pk3DSRNGTool
                 if ((int)(getrand & 0x7F) == 0)                //Not Blinking
                     remain_frame[i] = -5;
             }
-            if (route17 && (phase = !phase))
+            if (raining && (phase = !phase))
             {
                 frameshift(2);
                 cnt += 2;

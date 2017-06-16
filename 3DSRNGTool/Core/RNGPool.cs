@@ -193,7 +193,7 @@ namespace Pk3DSRNGTool.Core
         public static byte modelnumber;
         public static int[] remain_frame;
 
-        public static bool route17, phase;
+        public static bool raining, phase;
         public static int PreHoneyCorrection;
 
         public static void ResetModelStatus()
@@ -229,7 +229,7 @@ namespace Pk3DSRNGTool.Core
                     if ((int)(getrand64 & 0x7F) == 0)              //Not Blinking
                         remain_frame[i] = -5;
                 }
-                if (route17 && (phase = !phase))
+                if (raining && (phase = !phase))
                     Advance(2);
             }
         }
@@ -289,7 +289,7 @@ namespace Pk3DSRNGTool.Core
             if (igenerator is Wild7) //Wild
             {
                 ResetModelStatus();
-                if (route17) Advance(2);
+                if (raining) Advance(2);
                 time_elapse(1);              //Blink process also occurs when loading map
                 Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
                 time_elapse(93);

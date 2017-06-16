@@ -775,7 +775,7 @@ namespace Pk3DSRNGTool
                 RNGPool.IsLunala = Method == 0 && FormPM.Species == 792;
                 RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
-                RNGPool.route17 = ModelStatus.route17 = Method == 2 && ea.Location == 120;
+                RNGPool.raining = ModelStatus.raining = Method == 2 && ea.Location == 120;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
 
                 if (Method == 2)
