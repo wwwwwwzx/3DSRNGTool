@@ -174,7 +174,7 @@ namespace Pk3DSRNGTool.Core
             }
             return null;
         }
-        #region Gen6 TimeKeeping
+        #region Gen6 Time Keeping
 
         public static TinyStatus tiny;
         public static void TinyAdvance(TinyStatus source)
@@ -265,7 +265,7 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(crydelay);
                 return;
             }
-            if (IsExeggutor)
+            else if (IsExeggutor)
             {
                 time_elapse(1);
                 if (modelnumber == 1) ExeggutorRearrange();
@@ -274,6 +274,8 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(DelayTime - 43);
                 return;
             }
+            else if (igenerator is Event7 e && e.YourID && !e.IsEgg)
+                e.Generate();
             time_elapse(DelayTime);
         }
 
