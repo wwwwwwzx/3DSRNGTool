@@ -520,6 +520,7 @@ namespace Pk3DSRNGTool
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
 
             if (CreateTimeline.Checked) { ConsiderDelay.Checked = true; GB_Tiny.Visible = gen6timeline_available; };
+            NPC_ValueChanged(null, null);
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -537,7 +538,7 @@ namespace Pk3DSRNGTool
         private void NPC_ValueChanged(object sender, EventArgs e)
         {
             SafeFOnly.Visible = BlinkFOnly.Visible = false;
-            if (Gen7 && Method < 3 || MainRNGEgg.Checked)
+            if (Gen7 && !CreateTimeline.Checked && (Method < 3 || MainRNGEgg.Checked) )
                 (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
         }
 
