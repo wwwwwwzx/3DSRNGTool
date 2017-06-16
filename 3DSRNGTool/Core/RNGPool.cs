@@ -182,11 +182,7 @@ namespace Pk3DSRNGTool.Core
             source.Copyto(tiny);
             for (int i = DelayTime / 2; i > 0; i--)
                 tiny.NextState();
-        }
-
-        public static void PreFunction()
-        {
-            // To-Do
+            tiny.SceneChange(DelayTime > 0 ? 5 : 0);
         }
 
         #endregion

@@ -62,9 +62,16 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void frameshift(int n)
+        public void SceneChange(int n)
         {
             for (int i = 0; i < n; i++)
+                Sub_Func();
+        }
+
+        private void Sub_Func() //sub_469A94 in oras
+        {
+            tinyrng.Next();
+            if (tinyrng.Nextuint() < tinyrng.Nextuint())
                 tinyrng.Next();
         }
 

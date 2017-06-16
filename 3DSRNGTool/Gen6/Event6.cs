@@ -31,6 +31,7 @@ namespace Pk3DSRNGTool
             {
                 case 0: //Random PID
                     rt.PID = getrand;
+                    rt.Shiny = rt.PSV == TSV;
                     break;
                 case 1: //Random NonShiny
                     rt.PID = getrand;
@@ -41,12 +42,13 @@ namespace Pk3DSRNGTool
                     rt.PID = getrand;
                     if (OtherInfo)
                         rt.PID = (uint)(((TID ^ SID ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF));
+                    rt.Shiny = true;
                     break;
                 case 3: //Specified
                     rt.PID = PID;
+                    rt.Shiny = rt.PSV == TSV;
                     break;
             }
-            rt.Shiny = PIDType != 1 && (PIDType == 2 || rt.PSV == TSV);
 
             //IV
             rt.IVs = (int[])IVs.Clone();

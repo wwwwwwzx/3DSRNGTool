@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
         public static uint? MainRNGPID;
         private static uint getrand => mt.Nextuint();
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
+        private static bool rand2 => getrand < 0x80000000;
 
         public override RNGResult Generate()
         {
@@ -18,7 +19,7 @@ namespace Pk3DSRNGTool
 
             // Gender
             if (NidoType)
-                egg.Gender = (byte)((getrand >> 31) + 1);
+                egg.Gender = (byte)(rand2 ? 1 : 2);
             else
                 egg.Gender = (byte)(RandomGender ? (rand(252) >= Gender ? 1 : 2) : Gender);
 
@@ -28,7 +29,7 @@ namespace Pk3DSRNGTool
             // Everstone
             // Chooses which parent if necessary;
             if (Both_Everstone)
-                egg.BE_InheritParents = (getrand >> 31) == 0;
+                egg.BE_InheritParents = rand2;
             else if (EverStone)
                 egg.BE_InheritParents = MaleItem == 1;
 
@@ -39,7 +40,7 @@ namespace Pk3DSRNGTool
             // Chooses which parent if necessary
             if (Both_Power)
             {
-                if ((getrand >> 31) == 0)
+                if (rand2)
                     egg.InheritMaleIV[M_Power] = true;
                 else
                     egg.InheritMaleIV[F_Power] = false;
@@ -58,7 +59,7 @@ namespace Pk3DSRNGTool
             {
                 do { tmp = (int)rand(6); }
                 while (egg.InheritMaleIV[tmp] != null);
-                egg.InheritMaleIV[tmp] = (getrand >> 31) == 0;
+                egg.InheritMaleIV[tmp] = rand2;
             }
 
             // IVs
