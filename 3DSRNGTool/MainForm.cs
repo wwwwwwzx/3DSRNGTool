@@ -981,6 +981,7 @@ namespace Pk3DSRNGTool
                         case EncounterType.FriendSafari:
                             setting6._ivcnt = 2;
                             setting6._PIDroll_count = 4;
+                            setting6.HA = true;
                             setting6.SpecForm = new[] { 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
                             break;

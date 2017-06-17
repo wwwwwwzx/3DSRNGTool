@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool
         private byte getSlot => 1; // Todo
         private byte getAbility => 0; // Todo
 
+        public bool HA;
         public bool IsShinyLocked;
         public int _PIDroll_count;
         protected override int PIDroll_count => _PIDroll_count;
@@ -87,7 +88,7 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = (byte)(rt.Ability < 3 ? (getrand >> 31) + 1 : 3);
+            rt.Ability = (byte)(rt.Ability < 3 ? (HA ? rand(3) : (getrand >> 31)) + 1 : 3);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
