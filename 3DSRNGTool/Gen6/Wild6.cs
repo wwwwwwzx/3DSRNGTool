@@ -14,9 +14,11 @@ namespace Pk3DSRNGTool
         private byte getAbility => 0; // Todo
 
         public bool IsShinyLocked;
-        protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
+        public int _PIDroll_count;
+        protected override int PIDroll_count => _PIDroll_count;
         public int _ivcnt = -1;
         protected override int PerfectIVCount => _ivcnt >= 0 ? _ivcnt : IV3[slot] ? 3 : 0;
+        public int BlankGenderRatio;
 
         public byte[] SlotLevel;
         public bool CompoundEye;
@@ -31,7 +33,7 @@ namespace Pk3DSRNGTool
             rt.ItemStr = "-";
             return rt;
         }
-        
+
         public ResultW6[] Generate_Horde()
         {
             var results = new ResultW6[5];
@@ -101,13 +103,21 @@ namespace Pk3DSRNGTool
             Gender = new byte[SpecForm.Length];
             for (int i = 0; i < SpecForm.Length; i++)
             {
-                if (SpecForm[i] == 0) continue;
+                if (SpecForm[i] == 0)
+                {
+                    if (i == 0)
+                        continue;
+                    Gender[i] = FuncUtil.getGenderRatio(BlankGenderRatio);
+                    RandomGender[i] = FuncUtil.IsRandomGender(BlankGenderRatio);
+                    continue;
+                }
                 PersonalInfo info = PersonalTable.ORAS.getFormeEntry(SpecForm[i] & 0x7FF, SpecForm[i] >> 11);
                 byte genderratio = (byte)info.Gender;
                 IV3[i] = info.EggGroups[0] == 0xF;
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
             }
+            _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
         private string getitemstr(int rand) // to-do

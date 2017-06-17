@@ -7,6 +7,7 @@
         RockSmash,
         TrashCan,
         PokeRadar,
+        FriendSafari,
     }
 
     public class PKMW6 : Pokemon
@@ -21,7 +22,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                   new PKMW6 { Species = 041, Level = 14, Delay = 352, Type = EncounterType.Horde,},
+                   new PKMW6 { Species = 000, Conceptual = true, Delay = 352, Type = EncounterType.Horde,},
                 }
             },
             new PokemonList
@@ -56,6 +57,14 @@
                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14},
                 }
             },
+            new PokemonList
+            {
+                Text = "Friend Safari",
+                List = new[]
+                {
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6},
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_ORAS =
@@ -65,7 +74,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                   new PKMW6 { Species = 043, Level = 12, Delay = 352, Type = EncounterType.Horde,},
+                   new PKMW6 { Species = 000, Conceptual = true, Delay = 352, Type = EncounterType.Horde,},
                 }
             },
             new PokemonList

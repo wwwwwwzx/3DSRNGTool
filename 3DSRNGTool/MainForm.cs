@@ -959,9 +959,10 @@ namespace Pk3DSRNGTool
             {
                 if (FormPM is PKMW6 pmw6)
                 {
+                    if (pmw6.Conceptual)
+                        setting6.BlankGenderRatio = (int)GenderRatio.SelectedValue;
                     switch (pmw6.Type)
                     {
-
                         case EncounterType.Horde:
                             setting6.SpecForm = new int[6];
                             setting6.SlotLevel = new byte[6];
@@ -974,6 +975,12 @@ namespace Pk3DSRNGTool
                         case EncounterType.PokeRadar:
                             setting6.IsShinyLocked = !FirstEncounter.Checked;
                             setting6._ivcnt = (int)WildIVsCnt.Value;
+                            setting6.SpecForm = new[] { 0, 0 };
+                            setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
+                            break;
+                        case EncounterType.FriendSafari:
+                            setting6._ivcnt = 2;
+                            setting6._PIDroll_count = 4;
                             setting6.SpecForm = new[] { 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
                             break;
@@ -1288,7 +1295,7 @@ namespace Pk3DSRNGTool
         private void Search6_ID()
         {
             var rng = new TinyMT(new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value });
-            int min = (int)Frame_min.Value;
+            int min = Advanced.Checked ? 0 :(int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
             DGV_ID.DataSource = null;
