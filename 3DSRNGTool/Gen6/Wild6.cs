@@ -9,8 +9,8 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
-        private bool getSync => false; // Todo
         private byte getSlot => 1; // Todo
+        private bool getSync => false; // Todo
         private byte getAbility => 0; // Todo
 
         public bool HA;
@@ -37,12 +37,13 @@ namespace Pk3DSRNGTool
 
         public ResultW6[] Generate_Horde()
         {
+            bool Sync = getSync;
             var results = new ResultW6[5];
             Advance(60);
             for (int i = 0; i < 5; i++)
             {
                 var rt = new ResultW6();
-                rt.Synchronize = getSync;
+                rt.Synchronize = Sync;
                 slot = rt.Slot = (byte)(i + 1);
                 rt.Ability = getAbility;
                 Generate_Once(rt);
