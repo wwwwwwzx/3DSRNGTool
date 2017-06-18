@@ -709,6 +709,8 @@ namespace Pk3DSRNGTool
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
             GenderRatio.Enabled = FormPM.Conceptual;
+            if (FormPM.Conceptual)
+                GenderRatio.SelectedIndex = 1;
             if (Method == 2)
             {
                 RefreshLocation();
