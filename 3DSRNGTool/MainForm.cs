@@ -1301,7 +1301,7 @@ namespace Pk3DSRNGTool
             int min = Advanced.Checked ? 0 :(int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
-            DGV_ID.DataSource = null;
+            IDFrames = new List<Frame_ID>();
             Frame_ID.correction = 0xFF;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
@@ -1540,6 +1540,7 @@ namespace Pk3DSRNGTool
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
+            IDFrames = new List<Frame_ID>();
             Frame_ID.correction = (byte)Clk_Correction.Value;
             IDFilters idfilter = getIDFilter();
             for (int i = 0; i < min; i++)
