@@ -176,14 +176,7 @@ namespace Pk3DSRNGTool.Core
         }
         #region Gen6 Time Keeping
 
-        public static TinyStatus tiny;
-        public static void TinyAdvance(TinyStatus source)
-        {
-            source.Copyto(tiny);
-            for (int i = DelayTime / 2; i > 0; i--)
-                tiny.NextState();
-            tiny.SceneChange(DelayTime > 0 ? 5 : 0);
-        }
+        public static TinyTimeline tiny;
 
         #endregion
 

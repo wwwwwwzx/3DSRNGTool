@@ -65,8 +65,7 @@
     <Compile Include="Gen6\PKMW6.cs" />
     <Compile Include="Gen6\ResultE6.cs" />
     <Compile Include="Gen6\ResultW6.cs" />
-    <Compile Include="Gen6\TinyCall.cs" />
-    <Compile Include="Gen6\TinyStatus.cs" />
+    <Compile Include="Gen6\TinyTimeline.cs" />
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\MainRNGEgg.cs" />

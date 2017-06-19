@@ -15,6 +15,7 @@ namespace Pk3DSRNGTool
             }
         }
         private IVRange IVInputer;
+        private TinyTimelineTool TTT;
         public int[] IVup
         {
             get => new[] { (int)ivmax0.Value, (int)ivmax1.Value, (int)ivmax2.Value, (int)ivmax3.Value, (int)ivmax4.Value, (int)ivmax5.Value, };
@@ -83,16 +84,6 @@ namespace Pk3DSRNGTool
                 if (value.Length < 4) return;
                 St0.Value = value[0]; St1.Value = value[1];
                 St2.Value = value[2]; St3.Value = value[3];
-            }
-        }
-        private uint[] Gen6Tiny
-        {
-            get => new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value };
-            set
-            {
-                if (value.Length < 4) return;
-                tiny0.Value = value[0]; tiny1.Value = value[1];
-                tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
         private NumericUpDown[] EventIV => new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, };

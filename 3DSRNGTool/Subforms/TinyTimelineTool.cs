@@ -19,49 +19,32 @@ namespace Pk3DSRNGTool
         {
             list.Clear();
             list = new List<Frame_Tiny>();
-            var state = new TinyMT(new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value });
-            var NextCall = new TinyCallList();
-            int mainframe = (int)Frame1.Value - 2;
-            NextCall.Add((int)Frame1.Value, 0);
-            for (int i = 0; i < 10000; i++)
-            {
-                var newdata = new Frame_Tiny();
-                newdata.Frame = i;
-                newdata.state = state.CurrentState();
-                newdata.framemin = mainframe;
-                var call = NextCall.First();
-                mainframe = newdata.framemax = call.frame;
-                newdata.rand = state.Nextuint();
-                switch (call.type)
-                {
-                    case 0:
-                        NextCall.Addfront(mainframe, newdata.rand < 0x55555556 ? 1 : 2);
-                        break;
-                    case 1:
-                        NextCall.Addfront(mainframe + getcooldown2(newdata.rand), 2);
-                        break;
-                    case 2:
-                        NextCall.Addfront(mainframe + getcooldown1(newdata.rand), 0);
-                        break;
-                    case 3:
-                        NextCall.Addfront(mainframe + 180, 3);
-                        break;
-                }
-                list.Add(newdata);
-            }
+            var state = gettimeline();
+            list = state.Generate(10000);
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
         }
 
-        public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
-        public static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
-        
-        private void Update(uint[] tiny)
+        public TinyTimeline gettimeline()
         {
-            tiny0.Value = tiny[0];
-            tiny1.Value = tiny[1];
-            tiny2.Value = tiny[2];
-            tiny3.Value = tiny[3];
+            var line = new TinyTimeline()
+            {
+                Tinyrng = new TinyMT(Gen6Tiny),
+                Startingframe = (int)Frame1.Value,
+            };
+            line.Add((int)Frame1.Value, 0);
+            return line;
+        }
+
+        public uint[] Gen6Tiny
+        {
+            get => new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value };
+            private set
+            {
+                if (value.Length < 4) return;
+                tiny0.Value = value[0]; tiny1.Value = value[1];
+                tiny2.Value = value[2]; tiny3.Value = value[3];
+            }
         }
 
         private void B_update_Click(object sender, EventArgs e)
@@ -71,13 +54,13 @@ namespace Pk3DSRNGTool
                 MainForm.ntrclient.connectToServer();
                 byte[] tiny = MainForm.ntrclient.ReadTiny();
                 if (tiny == null) { return; }
-                Update(new uint[]
+                Gen6Tiny = new[]
                 {
                 BitConverter.ToUInt32(tiny, 0),
                 BitConverter.ToUInt32(tiny, 4),
                 BitConverter.ToUInt32(tiny, 8),
                 BitConverter.ToUInt32(tiny, 12),
-                });
+                };
             }
             catch
             {

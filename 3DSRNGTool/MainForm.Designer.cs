@@ -157,15 +157,6 @@
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
             this.B_OpenTool = new System.Windows.Forms.Button();
-            this.GB_Tiny = new System.Windows.Forms.GroupBox();
-            this.tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.label25 = new System.Windows.Forms.Label();
-            this.tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.label26 = new System.Windows.Forms.Label();
-            this.tiny1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.tiny0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.Sta_AbilityLocked = new System.Windows.Forms.CheckBox();
             this.Sta_Ability = new System.Windows.Forms.ComboBox();
             this.BlinkWhenSync = new System.Windows.Forms.CheckBox();
@@ -466,9 +457,6 @@
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
-            this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
-            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.dgv_IDframe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gen7ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -478,6 +466,9 @@
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
+            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -523,11 +514,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
-            this.GB_Tiny.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny0)).BeginInit();
             this.EnctrPanel.SuspendLayout();
             this.TP_EventRNG.SuspendLayout();
             this.EventSetting.SuspendLayout();
@@ -1967,7 +1953,6 @@
             // Sta_Setting
             // 
             this.Sta_Setting.Controls.Add(this.B_OpenTool);
-            this.Sta_Setting.Controls.Add(this.GB_Tiny);
             this.Sta_Setting.Controls.Add(this.Sta_AbilityLocked);
             this.Sta_Setting.Controls.Add(this.Sta_Ability);
             this.Sta_Setting.Controls.Add(this.BlinkWhenSync);
@@ -1984,114 +1969,14 @@
             // 
             // B_OpenTool
             // 
-            this.B_OpenTool.Location = new System.Drawing.Point(11, 235);
+            this.B_OpenTool.Location = new System.Drawing.Point(277, 237);
             this.B_OpenTool.Name = "B_OpenTool";
-            this.B_OpenTool.Size = new System.Drawing.Size(122, 24);
+            this.B_OpenTool.Size = new System.Drawing.Size(122, 23);
             this.B_OpenTool.TabIndex = 103;
             this.B_OpenTool.Text = "Tiny Timeline Tool";
             this.B_OpenTool.UseVisualStyleBackColor = true;
+            this.B_OpenTool.Visible = false;
             this.B_OpenTool.Click += new System.EventHandler(this.OpenTinyTool);
-            // 
-            // GB_Tiny
-            // 
-            this.GB_Tiny.Controls.Add(this.tiny3);
-            this.GB_Tiny.Controls.Add(this.label25);
-            this.GB_Tiny.Controls.Add(this.tiny2);
-            this.GB_Tiny.Controls.Add(this.label26);
-            this.GB_Tiny.Controls.Add(this.tiny1);
-            this.GB_Tiny.Controls.Add(this.tiny0);
-            this.GB_Tiny.Controls.Add(this.label27);
-            this.GB_Tiny.Controls.Add(this.label28);
-            this.GB_Tiny.Location = new System.Drawing.Point(269, 137);
-            this.GB_Tiny.Name = "GB_Tiny";
-            this.GB_Tiny.Size = new System.Drawing.Size(130, 136);
-            this.GB_Tiny.TabIndex = 102;
-            this.GB_Tiny.TabStop = false;
-            this.GB_Tiny.Text = "Tiny";
-            // 
-            // tiny3
-            // 
-            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Hexadecimal = true;
-            this.tiny3.Location = new System.Drawing.Point(37, 21);
-            this.tiny3.Name = "tiny3";
-            this.tiny3.Size = new System.Drawing.Size(78, 22);
-            this.tiny3.TabIndex = 92;
-            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label25.Location = new System.Drawing.Point(9, 109);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(28, 14);
-            this.label25.TabIndex = 99;
-            this.label25.Text = "[0]";
-            this.label25.DoubleClick += new System.EventHandler(this.getTiny);
-            // 
-            // tiny2
-            // 
-            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Hexadecimal = true;
-            this.tiny2.Location = new System.Drawing.Point(37, 49);
-            this.tiny2.Name = "tiny2";
-            this.tiny2.Size = new System.Drawing.Size(78, 22);
-            this.tiny2.TabIndex = 93;
-            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label26.Location = new System.Drawing.Point(9, 80);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(28, 14);
-            this.label26.TabIndex = 98;
-            this.label26.Text = "[1]";
-            this.label26.DoubleClick += new System.EventHandler(this.getTiny);
-            // 
-            // tiny1
-            // 
-            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Hexadecimal = true;
-            this.tiny1.Location = new System.Drawing.Point(37, 77);
-            this.tiny1.Name = "tiny1";
-            this.tiny1.Size = new System.Drawing.Size(78, 22);
-            this.tiny1.TabIndex = 94;
-            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tiny0
-            // 
-            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Hexadecimal = true;
-            this.tiny0.Location = new System.Drawing.Point(37, 106);
-            this.tiny0.Name = "tiny0";
-            this.tiny0.Size = new System.Drawing.Size(78, 22);
-            this.tiny0.TabIndex = 95;
-            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label27.Location = new System.Drawing.Point(9, 51);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(28, 14);
-            this.label27.TabIndex = 97;
-            this.label27.Text = "[2]";
-            this.label27.DoubleClick += new System.EventHandler(this.getTiny);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label28.Location = new System.Drawing.Point(9, 23);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(28, 14);
-            this.label28.TabIndex = 96;
-            this.label28.Text = "[3]";
-            this.label28.DoubleClick += new System.EventHandler(this.getTiny);
             // 
             // Sta_AbilityLocked
             // 
@@ -2794,7 +2679,7 @@
             this.Wild_Setting.Controls.Add(this.L_Location);
             this.Wild_Setting.Location = new System.Drawing.Point(6, 6);
             this.Wild_Setting.Name = "Wild_Setting";
-            this.Wild_Setting.Size = new System.Drawing.Size(404, 240);
+            this.Wild_Setting.Size = new System.Drawing.Size(404, 275);
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
@@ -5662,23 +5547,6 @@
             this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.DGV_ID.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
-            // NTR_Timer
-            // 
-            this.NTR_Timer.Interval = 1000;
-            this.NTR_Timer.Tick += new System.EventHandler(this.NTRTick);
-            // 
-            // Seed
-            // 
-            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(755, 12);
-            this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(78, 22);
-            this.Seed.TabIndex = 88;
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
             // dgv_IDframe
             // 
             this.dgv_IDframe.DataPropertyName = "FrameNum";
@@ -5758,6 +5626,23 @@
             this.dgv_ID_state.Name = "dgv_ID_state";
             this.dgv_ID_state.Width = 260;
             // 
+            // NTR_Timer
+            // 
+            this.NTR_Timer.Interval = 1000;
+            this.NTR_Timer.Tick += new System.EventHandler(this.NTRTick);
+            // 
+            // Seed
+            // 
+            this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Hexadecimal = true;
+            this.Seed.Location = new System.Drawing.Point(755, 12);
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(78, 22);
+            this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5834,12 +5719,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
-            this.GB_Tiny.ResumeLayout(false);
-            this.GB_Tiny.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny0)).EndInit();
             this.EnctrPanel.ResumeLayout(false);
             this.EnctrPanel.PerformLayout();
             this.TP_EventRNG.ResumeLayout(false);
@@ -6303,15 +6182,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_tinystate;
-        private System.Windows.Forms.GroupBox GB_Tiny;
-        private Controls.HexNumericUpdown tiny3;
-        private System.Windows.Forms.Label label25;
-        private Controls.HexNumericUpdown tiny2;
-        private System.Windows.Forms.Label label26;
-        private Controls.HexNumericUpdown tiny1;
-        private Controls.HexNumericUpdown tiny0;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox GB_SeedFinder;
         private System.Windows.Forms.NumericUpDown Wild2_Fmax;
         private System.Windows.Forms.NumericUpDown Wild2_Fmin;

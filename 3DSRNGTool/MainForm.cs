@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 8;
-        private bool gen6timeline => Gen6 && CreateTimeline.Checked && Gen6Tiny.Any(t => t > 0);
+        private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT != null && TTT.Gen6Tiny.Any(t => t > 0);
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2);
         private byte lastgen;
         private EncounterArea ea;
@@ -455,7 +455,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
-            GB_Tiny.Visible = gen6timeline_available && CreateTimeline.Checked;
+            B_OpenTool.Visible = gen6timeline_available;
 
             if (Method > 4)
                 return;
@@ -489,9 +489,7 @@ namespace Pk3DSRNGTool
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
 
             Gen6EggPanel.Visible = Gen6 && Method == 3;
-            GB_Tiny.Visible &= Gen6;
 
-            B_OpenTool.Visible = 
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
@@ -507,9 +505,9 @@ namespace Pk3DSRNGTool
 
             switch (Method)
             {
-                case 0: Sta_Setting.Controls.Add(EnctrPanel); return;
+                case 0: Sta_Setting.Controls.Add(EnctrPanel); Sta_Setting.Controls.Add(B_OpenTool); return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
-                case 2: Wild_Setting.Controls.Add(EnctrPanel); return;
+                case 2: Wild_Setting.Controls.Add(EnctrPanel); Wild_Setting.Controls.Add(B_OpenTool); return;
                 case 3: ByIVs.Checked = true; break;
                 case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
@@ -520,7 +518,8 @@ namespace Pk3DSRNGTool
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
 
-            if (CreateTimeline.Checked) { ConsiderDelay.Checked = true; GB_Tiny.Visible = gen6timeline_available; };
+            if (CreateTimeline.Checked)
+                ConsiderDelay.Checked = true;
             NPC_ValueChanged(null, null);
         }
 
@@ -539,7 +538,7 @@ namespace Pk3DSRNGTool
         private void NPC_ValueChanged(object sender, EventArgs e)
         {
             SafeFOnly.Visible = BlinkFOnly.Visible = false;
-            if (Gen7 && !CreateTimeline.Checked && (Method < 3 || MainRNGEgg.Checked) )
+            if (Gen7 && !CreateTimeline.Checked && (Method < 3 || MainRNGEgg.Checked))
                 (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
         }
 
@@ -591,11 +590,11 @@ namespace Pk3DSRNGTool
                 Error(NOSELECTION_STR[lindex]);
             }
         }
-        
+
         private void OpenTinyTool(object sender, EventArgs e)
         {
-            TinyTimelineTool tool = new TinyTimelineTool();
-            tool.ShowDialog();
+            if (TTT == null) TTT = new TinyTimelineTool();
+            TTT.ShowDialog();
         }
 
         private void B_IVInput_Click(object sender, EventArgs e)
@@ -716,7 +715,7 @@ namespace Pk3DSRNGTool
             RNGPool.PM = Pokemonlist[Poke.SelectedIndex];
             SetPersonalInfo(specform);
             GenderRatio.Enabled = FormPM.Conceptual;
-            if (FormPM.Conceptual)
+            if (FormPM.Conceptual && GenderRatio.Items.Count > 0)
                 GenderRatio.SelectedIndex = 1;
             if (Method == 2)
             {
@@ -727,10 +726,7 @@ namespace Pk3DSRNGTool
                     Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
                 }
                 else if (FormPM is PKMW6 pmw6)
-                {
                     Special_th.Value = 0;
-                    GB_Tiny.Visible = true;
-                }
                 return;
             }
             switch (specform)
@@ -1065,11 +1061,10 @@ namespace Pk3DSRNGTool
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
             dgv_state.Visible = Gen6 && Method < 4;
-            SetAsCurrent.Visible =
             dgv_tinystate.Visible = Gen6 && (Method == 0 || Method == 2) && gen6timeline || Gen7 && Method == 3 && !MainRNGEgg.Checked;
-            if (Gen6 && Method == 3) SetAsCurrent.Visible = true;
             dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
+            SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);
@@ -1214,6 +1209,11 @@ namespace Pk3DSRNGTool
 
         private void Search6_Timeline()
         {
+            if (TTT == null || TTT.Gen6Tiny.All(t => t == 0))
+            {
+                Error("Please Calibrate Timeline");
+                return;
+            }
             var rng = new MersenneTwister((uint)Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)TimeSpan.Value * 60 + min;
@@ -1222,20 +1222,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             // Prepare
             getsetting(rng);
-            var tiny = new TinyStatus(Gen6Tiny);
-            RNGPool.tiny = new TinyStatus(Gen6Tiny);
-            // Start
-            for (int i = min; i <= max; i += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng), tiny.NextState())
-            {
-                RNGPool.TinyAdvance(tiny);
-                RNGResult result = RNGPool.Generate6();
-                if (!filter.CheckResult(result))
-                    continue;
-                Frames.Add(new Frame(result, frame: i, time: i - min));
-                Frames.Last()._tinystate = tiny.State;
-                if (Frames.Count > 100000)
-                    break;
-            }
+            Error("Not Impled Yet");
         }
 
         private void Search6_Horde()
@@ -1305,7 +1292,7 @@ namespace Pk3DSRNGTool
         private void Search6_ID()
         {
             var rng = new TinyMT(new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value });
-            int min = Advanced.Checked ? 0 :(int)Frame_min.Value;
+            int min = Advanced.Checked ? 0 : (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
             IDFrames = new List<Frame_ID>();

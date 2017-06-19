@@ -141,24 +141,6 @@ namespace Pk3DSRNGTool
             ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
             ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
         }
-
-        private void getTiny(object sender, EventArgs e)
-        {
-            if (!B_Disconnect.Enabled)
-            {
-                if (Advanced.Checked) B_Connect_Click(null, null);
-                return;
-            }
-            byte[] tiny = ntrclient.ReadTiny();
-            if (tiny == null) { Error("Timeout"); return; }
-            Gen6Tiny = new uint[]
-            {
-                BitConverter.ToUInt32(tiny, 0),
-                BitConverter.ToUInt32(tiny, 4),
-                BitConverter.ToUInt32(tiny, 8),
-                BitConverter.ToUInt32(tiny, 12),
-            };
-        }
         #endregion
 
         #region Bruteforce Seed Finder

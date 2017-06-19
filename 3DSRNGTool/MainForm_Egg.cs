@@ -151,8 +151,6 @@ namespace Pk3DSRNGTool
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 if (Gen7)
                     Status = SeedStr2Array(seed) ?? Status;
-                else
-                    Gen6Tiny = SeedStr2Array(seed);
             }
             catch (NullReferenceException)
             {
