@@ -98,10 +98,13 @@ namespace Pk3DSRNGTool
 
         private void MarkSync(List<Frame_Tiny> list)
         {
-            for (int i = 0; list[i].framemin < Maxframe; i++)
+            const int delay1 = 15;
+            const int delay2 = 20;
+            int max = list.Count - delay2;
+            for (int i = 0; i < max; i++)
             {
                 list[i]._sync = true;
-                for (int j = i + 15; j < i + 20; j++)
+                for (int j = i + delay1; j < i + delay2; j++)
                 {
                     if (list[j].rand > 0x7FFFFFFF)
                     {
