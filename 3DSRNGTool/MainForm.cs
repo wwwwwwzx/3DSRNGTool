@@ -38,7 +38,7 @@ namespace Pk3DSRNGTool
         List<Frame> Frames = new List<Frame>();
         List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
-        private static NtrClient ntrclient = new NtrClient();
+        public static NtrClient ntrclient = new NtrClient();
         private static MTSeedFinder finder = new MTSeedFinder();
         #endregion
 
@@ -491,6 +491,7 @@ namespace Pk3DSRNGTool
             Gen6EggPanel.Visible = Gen6 && Method == 3;
             GB_Tiny.Visible &= Gen6;
 
+            B_OpenTool.Visible = 
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
@@ -589,6 +590,12 @@ namespace Pk3DSRNGTool
             {
                 Error(NOSELECTION_STR[lindex]);
             }
+        }
+        
+        private void OpenTinyTool(object sender, EventArgs e)
+        {
+            TinyTimelineTool tool = new TinyTimelineTool();
+            tool.ShowDialog();
         }
 
         private void B_IVInput_Click(object sender, EventArgs e)

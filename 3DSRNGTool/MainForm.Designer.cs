@@ -156,6 +156,7 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.B_OpenTool = new System.Windows.Forms.Button();
             this.GB_Tiny = new System.Windows.Forms.GroupBox();
             this.tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.label25 = new System.Windows.Forms.Label();
@@ -1966,6 +1967,7 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.B_OpenTool);
             this.Sta_Setting.Controls.Add(this.GB_Tiny);
             this.Sta_Setting.Controls.Add(this.Sta_AbilityLocked);
             this.Sta_Setting.Controls.Add(this.Sta_Ability);
@@ -1980,6 +1982,16 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // B_OpenTool
+            // 
+            this.B_OpenTool.Location = new System.Drawing.Point(11, 235);
+            this.B_OpenTool.Name = "B_OpenTool";
+            this.B_OpenTool.Size = new System.Drawing.Size(122, 24);
+            this.B_OpenTool.TabIndex = 103;
+            this.B_OpenTool.Text = "Tiny Timeline Tool";
+            this.B_OpenTool.UseVisualStyleBackColor = true;
+            this.B_OpenTool.Click += new System.EventHandler(this.OpenTinyTool);
             // 
             // GB_Tiny
             // 
@@ -6362,6 +6374,7 @@
         private System.Windows.Forms.TextBox Wild_lower;
         private System.Windows.Forms.Label L_WildNature;
         private System.Windows.Forms.ComboBox Wild_Nature;
+        private System.Windows.Forms.Button B_OpenTool;
     }
 }
 

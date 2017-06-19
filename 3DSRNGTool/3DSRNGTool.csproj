@@ -54,6 +54,7 @@
     <Compile Include="Controls\Frame.cs" />
     <Compile Include="Controls\Frame_ID.cs" />
     <Compile Include="Controls\Frame_Seed.cs" />
+    <Compile Include="Controls\Frame_Tiny.cs" />
     <Compile Include="Core\EncounterArea.cs" />
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Gen6\PKMW6.cs" />
     <Compile Include="Gen6\ResultE6.cs" />
     <Compile Include="Gen6\ResultW6.cs" />
+    <Compile Include="Gen6\TinyCall.cs" />
     <Compile Include="Gen6\TinyStatus.cs" />
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen7\ID7.cs" />
@@ -151,6 +153,12 @@
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="RNG\IRNGState.cs" />
+    <Compile Include="Subforms\TinyTimelineTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\TinyTimelineTool.Designer.cs">
+      <DependentUpon>TinyTimelineTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\MTSeedFinder.cs" />
     <Compile Include="Util\FormUtil.cs" />
     <Compile Include="Util\FuncUtil.cs" />
@@ -195,6 +203,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Subforms\TinyTimelineTool.resx">
+      <DependentUpon>TinyTimelineTool.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
