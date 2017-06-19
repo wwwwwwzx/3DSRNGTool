@@ -39,6 +39,8 @@ namespace Pk3DSRNGTool
         }
         #endregion
 
+        const int Buffer = 100;
+
         public int Startingframe;
         public int Maxframe;
         private TinyCallList Status = new TinyCallList();
@@ -79,7 +81,35 @@ namespace Pk3DSRNGTool
                 }
                 list.Add(newdata);
             }
+            int imax = i + Buffer;
+            for (; i < imax; i++)
+            {
+                var newdata = new Frame_Tiny();
+                newdata.Index = i;
+                newdata.state = State;
+                newdata.framemin = Currentframe;
+                newdata.framemax = Currentframe;
+                newdata.rand = Tinyrng.Nextuint();
+                list.Add(newdata);
+            }
+            MarkSync(list);
             return list;
+        }
+
+        private void MarkSync(List<Frame_Tiny> list)
+        {
+            for (int i = 0; list[i].framemin < Maxframe; i++)
+            {
+                list[i]._sync = true;
+                for (int j = i + 15; j < i + 20; j++)
+                {
+                    if (list[j].rand > 0x7FFFFFFF)
+                    {
+                        list[i]._sync = false;
+                        break;
+                    }
+                }
+            }
         }
 
         private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));

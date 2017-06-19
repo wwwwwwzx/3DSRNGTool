@@ -50,6 +50,7 @@
             this.GB_Cali = new System.Windows.Forms.GroupBox();
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
@@ -163,6 +164,7 @@
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tiny_MTFRange,
             this.tiny_index,
+            this.dgv_sync,
             this.tiny_rand100,
             this.tiny_state});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -304,6 +306,14 @@
             this.tiny_index.ReadOnly = true;
             this.tiny_index.Width = 50;
             // 
+            // dgv_sync
+            // 
+            this.dgv_sync.DataPropertyName = "Sync";
+            this.dgv_sync.HeaderText = "Sync";
+            this.dgv_sync.Name = "dgv_sync";
+            this.dgv_sync.ReadOnly = true;
+            this.dgv_sync.Width = 40;
+            // 
             // tiny_rand100
             // 
             this.tiny_rand100.DataPropertyName = "Rand100";
@@ -379,6 +389,7 @@
         private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_sync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }
