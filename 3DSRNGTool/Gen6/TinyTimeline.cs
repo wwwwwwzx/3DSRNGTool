@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
 
             public void Add(int f, int t)
             {
+                if (t < 0) return;
                 list.Add(new TinyCall(f, t));
                 list = list.OrderByDescending(e => e.frame).ToList();
             }
@@ -74,13 +75,15 @@ namespace Pk3DSRNGTool
                         Status.Addfront(Currentframe, newdata.rand < 0x55555556 ? 1 : 2);
                         break;
                     case 1:
-                        Status.Addfront(Currentframe + getcooldown2(newdata.rand), 2);
+                        Status.Add(Currentframe + getcooldown2(newdata.rand), 2);
                         break;
                     case 2:
-                        Status.Addfront(Currentframe + getcooldown1(newdata.rand), 0);
+                        Status.Add(Currentframe + getcooldown1(newdata.rand), 0);
                         break;
                     case 3:
-                        Status.Addfront(Currentframe + 180, 3);
+                        Status.Add(Currentframe + 180, 3);
+                        break;
+                    case 4:
                         break;
                 }
                 results.Add(newdata);

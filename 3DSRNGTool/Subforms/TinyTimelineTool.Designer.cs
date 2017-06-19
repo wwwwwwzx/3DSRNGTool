@@ -54,6 +54,12 @@
             this.B_update = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
+            this.Type2 = new System.Windows.Forms.ComboBox();
+            this.Frame2 = new System.Windows.Forms.NumericUpDown();
+            this.Type1 = new System.Windows.Forms.ComboBox();
+            this.GB_Manu = new System.Windows.Forms.GroupBox();
+            this.Shift = new System.Windows.Forms.NumericUpDown();
+            this.Frame_J = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -62,6 +68,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             this.GB_Cali.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
+            this.GB_Manu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
             this.SuspendLayout();
             // 
             // tiny3
@@ -296,7 +306,7 @@
             0,
             0,
             0});
-            this.Frame_max.Location = new System.Drawing.Point(15, 412);
+            this.Frame_max.Location = new System.Drawing.Point(15, 418);
             this.Frame_max.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -325,7 +335,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label4.Location = new System.Drawing.Point(12, 386);
+            this.label4.Location = new System.Drawing.Point(12, 392);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 14);
             this.label4.TabIndex = 114;
@@ -333,20 +343,108 @@
             // 
             // GB_Cali
             // 
+            this.GB_Cali.Controls.Add(this.Type2);
+            this.GB_Cali.Controls.Add(this.Frame2);
             this.GB_Cali.Controls.Add(this.L_Mainframe);
             this.GB_Cali.Controls.Add(this.Frame1);
             this.GB_Cali.Location = new System.Drawing.Point(5, 172);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(140, 190);
+            this.GB_Cali.Size = new System.Drawing.Size(140, 113);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
+            // 
+            // Type2
+            // 
+            this.Type2.FormattingEnabled = true;
+            this.Type2.Location = new System.Drawing.Point(79, 81);
+            this.Type2.Name = "Type2";
+            this.Type2.Size = new System.Drawing.Size(44, 21);
+            this.Type2.TabIndex = 116;
+            // 
+            // Frame2
+            // 
+            this.Frame2.AccessibleName = "";
+            this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame2.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Frame2.Location = new System.Drawing.Point(13, 81);
+            this.Frame2.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame2.Name = "Frame2";
+            this.Frame2.Size = new System.Drawing.Size(60, 22);
+            this.Frame2.TabIndex = 112;
+            this.Frame2.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Type1
+            // 
+            this.Type1.FormattingEnabled = true;
+            this.Type1.Location = new System.Drawing.Point(84, 226);
+            this.Type1.Name = "Type1";
+            this.Type1.Size = new System.Drawing.Size(44, 21);
+            this.Type1.TabIndex = 112;
+            // 
+            // GB_Manu
+            // 
+            this.GB_Manu.Controls.Add(this.Shift);
+            this.GB_Manu.Controls.Add(this.Frame_J);
+            this.GB_Manu.Location = new System.Drawing.Point(5, 291);
+            this.GB_Manu.Name = "GB_Manu";
+            this.GB_Manu.Size = new System.Drawing.Size(140, 62);
+            this.GB_Manu.TabIndex = 117;
+            this.GB_Manu.TabStop = false;
+            this.GB_Manu.Text = "Manipulate";
+            // 
+            // Shift
+            // 
+            this.Shift.AccessibleName = "";
+            this.Shift.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Shift.Location = new System.Drawing.Point(79, 24);
+            this.Shift.Name = "Shift";
+            this.Shift.Size = new System.Drawing.Size(43, 22);
+            this.Shift.TabIndex = 112;
+            // 
+            // Frame_J
+            // 
+            this.Frame_J.AccessibleName = "";
+            this.Frame_J.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_J.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Frame_J.Location = new System.Drawing.Point(12, 24);
+            this.Frame_J.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_J.Name = "Frame_J";
+            this.Frame_J.Size = new System.Drawing.Size(60, 22);
+            this.Frame_J.TabIndex = 109;
+            this.Frame_J.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 500);
+            this.Controls.Add(this.GB_Manu);
+            this.Controls.Add(this.Type1);
             this.Controls.Add(this.GB_Cali);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.B_update);
@@ -375,6 +473,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
+            this.GB_Manu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +506,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
+        private System.Windows.Forms.ComboBox Type2;
+        private System.Windows.Forms.NumericUpDown Frame2;
+        private System.Windows.Forms.ComboBox Type1;
+        private System.Windows.Forms.GroupBox GB_Manu;
+        private System.Windows.Forms.NumericUpDown Shift;
+        private System.Windows.Forms.NumericUpDown Frame_J;
     }
 }

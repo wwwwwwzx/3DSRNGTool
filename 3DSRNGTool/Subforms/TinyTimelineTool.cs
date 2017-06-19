@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
+using Pk3DSRNGTool.Controls;
 
 namespace Pk3DSRNGTool
 {
@@ -11,6 +13,16 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
+            int[] typelist = { -1, 0, 2, 3 };
+            string[] typestrlist = { "-", "0", "1", "2" };
+            var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
+            Type1.DisplayMember = "Text";
+            Type1.ValueMember = "Value";
+            Type1.DataSource = new BindingSource(List.Skip(1), null);
+            Type2.DisplayMember = "Text";
+            Type2.ValueMember = "Value";
+            Type2.DataSource = new BindingSource(List, null);
+            Type1.SelectedIndex = Type2.SelectedIndex = 0;
         }
 
         private List<Frame_Tiny> list = new List<Frame_Tiny>();
@@ -33,7 +45,10 @@ namespace Pk3DSRNGTool
                 Startingframe = (int)Frame1.Value,
                 Maxframe = (int)Frame_max.Value,
             };
-            line.Add((int)Frame1.Value, 0);
+            line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
+            line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
+            for (int i = (int)Shift.Value; i > 0; i--)
+                line.Add((int)Frame_J.Value, 4);
             return line;
         }
 
