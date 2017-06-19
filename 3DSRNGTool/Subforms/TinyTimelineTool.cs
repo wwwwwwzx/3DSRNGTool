@@ -20,8 +20,8 @@ namespace Pk3DSRNGTool
             list.Clear();
             list = new List<Frame_Tiny>();
             var state = gettimeline();
-            list = state.Generate();
-            MainDGV.DataSource = list;
+            state.Generate();
+            MainDGV.DataSource = state.results;
             MainDGV.CurrentCell = null;
         }
 
@@ -66,6 +66,13 @@ namespace Pk3DSRNGTool
             catch
             {
             }
+        }
+
+        private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
     }
 }

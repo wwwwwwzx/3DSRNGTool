@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.MainDGV = new System.Windows.Forms.DataGridView();
+            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
@@ -48,11 +54,6 @@
             this.B_update = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
-            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -164,7 +165,8 @@
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tiny_MTFRange,
             this.tiny_index,
-            this.dgv_sync,
+            this.tiny_sync,
+            this.tiny_slot,
             this.tiny_rand100,
             this.tiny_state});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -189,6 +191,56 @@
             this.MainDGV.RowHeadersWidth = 18;
             this.MainDGV.Size = new System.Drawing.Size(544, 476);
             this.MainDGV.TabIndex = 108;
+            // 
+            // tiny_MTFRange
+            // 
+            this.tiny_MTFRange.DataPropertyName = "FrameRange";
+            this.tiny_MTFRange.HeaderText = "Main RNG Frame";
+            this.tiny_MTFRange.Name = "tiny_MTFRange";
+            this.tiny_MTFRange.ReadOnly = true;
+            this.tiny_MTFRange.Width = 112;
+            // 
+            // tiny_index
+            // 
+            this.tiny_index.DataPropertyName = "Index";
+            this.tiny_index.HeaderText = "Index";
+            this.tiny_index.Name = "tiny_index";
+            this.tiny_index.ReadOnly = true;
+            this.tiny_index.Width = 50;
+            // 
+            // tiny_sync
+            // 
+            this.tiny_sync.DataPropertyName = "Sync";
+            this.tiny_sync.HeaderText = "Sync";
+            this.tiny_sync.Name = "tiny_sync";
+            this.tiny_sync.ReadOnly = true;
+            this.tiny_sync.Width = 40;
+            // 
+            // tiny_slot
+            // 
+            this.tiny_slot.DataPropertyName = "Slot";
+            this.tiny_slot.HeaderText = "Slot";
+            this.tiny_slot.Name = "tiny_slot";
+            this.tiny_slot.ReadOnly = true;
+            this.tiny_slot.Width = 40;
+            // 
+            // tiny_rand100
+            // 
+            this.tiny_rand100.DataPropertyName = "Rand100";
+            this.tiny_rand100.HeaderText = "M100";
+            this.tiny_rand100.Name = "tiny_rand100";
+            this.tiny_rand100.ReadOnly = true;
+            this.tiny_rand100.Width = 40;
+            // 
+            // tiny_state
+            // 
+            this.tiny_state.DataPropertyName = "Status";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle2;
+            this.tiny_state.HeaderText = "Tiny Status";
+            this.tiny_state.Name = "tiny_state";
+            this.tiny_state.ReadOnly = true;
+            this.tiny_state.Width = 255;
             // 
             // Frame1
             // 
@@ -290,48 +342,6 @@
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
             // 
-            // tiny_MTFRange
-            // 
-            this.tiny_MTFRange.DataPropertyName = "FrameRange";
-            this.tiny_MTFRange.HeaderText = "Main RNG Frame";
-            this.tiny_MTFRange.Name = "tiny_MTFRange";
-            this.tiny_MTFRange.ReadOnly = true;
-            this.tiny_MTFRange.Width = 112;
-            // 
-            // tiny_index
-            // 
-            this.tiny_index.DataPropertyName = "Index";
-            this.tiny_index.HeaderText = "Index";
-            this.tiny_index.Name = "tiny_index";
-            this.tiny_index.ReadOnly = true;
-            this.tiny_index.Width = 50;
-            // 
-            // dgv_sync
-            // 
-            this.dgv_sync.DataPropertyName = "Sync";
-            this.dgv_sync.HeaderText = "Sync";
-            this.dgv_sync.Name = "dgv_sync";
-            this.dgv_sync.ReadOnly = true;
-            this.dgv_sync.Width = 40;
-            // 
-            // tiny_rand100
-            // 
-            this.tiny_rand100.DataPropertyName = "Rand100";
-            this.tiny_rand100.HeaderText = "M100";
-            this.tiny_rand100.Name = "tiny_rand100";
-            this.tiny_rand100.ReadOnly = true;
-            this.tiny_rand100.Width = 40;
-            // 
-            // tiny_state
-            // 
-            this.tiny_state.DataPropertyName = "Status";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle2;
-            this.tiny_state.HeaderText = "Tiny Status";
-            this.tiny_state.Name = "tiny_state";
-            this.tiny_state.ReadOnly = true;
-            this.tiny_state.Width = 255;
-            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,10 +361,11 @@
             this.Controls.Add(this.tiny0);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.MinimumSize = new System.Drawing.Size(700, 500);
+            this.MinimumSize = new System.Drawing.Size(720, 500);
             this.Name = "TinyTimelineTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiny Timeline Tool";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TinyTimelineTool_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).EndInit();
@@ -389,7 +400,8 @@
         private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }

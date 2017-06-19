@@ -39,22 +39,26 @@ namespace Pk3DSRNGTool
         }
         #endregion
 
-        const int Buffer = 100;
+        public const int Buffer = 100;
 
         public int Startingframe;
         public int Maxframe;
         private TinyCallList Status = new TinyCallList();
         public TinyMT Tinyrng;
 
+        public int TinyLength => results.Count - Buffer;
         public void Add(int f, int t) => Status.Add(f, t);
         public uint getrand => Tinyrng.Nextuint();
-        public PRNGState State => Tinyrng.CurrentState();
+        public uint[] State => (uint[])Tinyrng.status.Clone();
 
-        public List<Frame_Tiny> Generate()
+        public List<Frame_Tiny> results;
+        public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
+
+        public void Generate()
         {
             int Currentframe = Startingframe - 2;
             int i = 0;
-            var list = new List<Frame_Tiny>();
+            results = new List<Frame_Tiny>();
             while (Currentframe <= Maxframe)
             {
                 var newdata = new Frame_Tiny();
@@ -79,7 +83,7 @@ namespace Pk3DSRNGTool
                         Status.Addfront(Currentframe + 180, 3);
                         break;
                 }
-                list.Add(newdata);
+                results.Add(newdata);
             }
             int imax = i + Buffer;
             for (; i < imax; i++)
@@ -90,25 +94,24 @@ namespace Pk3DSRNGTool
                 newdata.framemin = Currentframe;
                 newdata.framemax = Currentframe;
                 newdata.rand = Tinyrng.Nextuint();
-                list.Add(newdata);
+                results.Add(newdata);
             }
-            MarkSync(list);
-            return list;
+            MarkSync();
         }
 
-        private void MarkSync(List<Frame_Tiny> list)
+        private void MarkSync()
         {
             const int delay1 = 15;
             const int delay2 = 20;
-            int max = list.Count - delay2;
+            int max = results.Count - delay2;
             for (int i = 0; i < max; i++)
             {
-                list[i]._sync = true;
+                results[i]._sync = true;
                 for (int j = i + delay1; j < i + delay2; j++)
                 {
-                    if (list[j].rand > 0x7FFFFFFF)
+                    if (results[j].rand > 0x7FFFFFFF)
                     {
-                        list[i]._sync = false;
+                        results[i]._sync = false;
                         break;
                     }
                 }

@@ -594,7 +594,7 @@ namespace Pk3DSRNGTool
         private void OpenTinyTool(object sender, EventArgs e)
         {
             if (TTT == null) TTT = new TinyTimelineTool();
-            TTT.ShowDialog();
+            TTT.Show();
         }
 
         private void B_IVInput_Click(object sender, EventArgs e)
@@ -1222,7 +1222,29 @@ namespace Pk3DSRNGTool
                 rng.Next();
             // Prepare
             getsetting(rng);
-            Error("Not Impled Yet");
+            var line = TTT.gettimeline();
+            line.Maxframe = max;
+            line.Generate();
+            int listlength = line.TinyLength;
+            for (int i = 0; i < listlength; i++)
+            {
+                var tinyframe = line.results[i];
+                if (tinyframe.unhitable)
+                    continue;
+                if (tinyframe.framemax < min)
+                    continue;
+                for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
+                {
+                    RNGPool.tiny = line.FindFrame(j + RNGPool.DelayTime);
+                    RNGResult result = RNGPool.Generate6();
+                    if (j < min || !filter.CheckResult(result))
+                        continue;
+                    Frames.Add(new Frame(result, frame: j, time: j - min));
+                    Frames.Last()._tinystate = new PRNGState(tinyframe.state);
+                    if (Frames.Count > 100000)
+                        return;
+                }
+            }
         }
 
         private void Search6_Horde()
