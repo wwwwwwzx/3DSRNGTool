@@ -40,7 +40,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         public int Startingframe;
-        public int Currentframe;
+        public int Maxframe;
         private TinyCallList Status = new TinyCallList();
         public TinyMT Tinyrng;
 
@@ -48,14 +48,15 @@ namespace Pk3DSRNGTool
         public uint getrand => Tinyrng.Nextuint();
         public PRNGState State => Tinyrng.CurrentState();
 
-        public List<Frame_Tiny> Generate(int tinyframe)
+        public List<Frame_Tiny> Generate()
         {
-            Currentframe = Startingframe - 2;
+            int Currentframe = Startingframe - 2;
+            int i = 0;
             var list = new List<Frame_Tiny>();
-            for (int i = 0; i < tinyframe; i++)
+            while (Currentframe <= Maxframe)
             {
                 var newdata = new Frame_Tiny();
-                newdata.Frame = i;
+                newdata.Index = i++;
                 newdata.state = State;
                 newdata.framemin = Currentframe;
                 var call = Status.First();
@@ -84,5 +85,4 @@ namespace Pk3DSRNGTool
         private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
         private static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
     }
-
 }

@@ -20,7 +20,7 @@ namespace Pk3DSRNGTool
             list.Clear();
             list = new List<Frame_Tiny>();
             var state = gettimeline();
-            list = state.Generate(10000);
+            list = state.Generate();
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
         }
@@ -31,6 +31,7 @@ namespace Pk3DSRNGTool
             {
                 Tinyrng = new TinyMT(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
+                Maxframe = (int)Frame_max.Value,
             };
             line.Add((int)Frame1.Value, 0);
             return line;

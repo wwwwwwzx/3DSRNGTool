@@ -2,7 +2,7 @@
 {
     public class Frame_Tiny
     {
-        public int Frame { get; set; }
+        public int Index { get; set; }
         public PRNGState state;
         public uint rand;
         public int framemin;

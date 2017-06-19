@@ -42,7 +42,7 @@ namespace Pk3DSRNGTool.Core
             RandList = null;
             RandList64 = null;
             RNGStateStr = null;
-            tiny = null;
+            tinyrand = null;
         }
 
         public static void CreateBuffer(int buffersize, IRNG rng)
@@ -174,9 +174,11 @@ namespace Pk3DSRNGTool.Core
             }
             return null;
         }
-        #region Gen6 Time Keeping
+        #region Gen6 Tiny Timeline
 
-        public static TinyTimeline tiny;
+        public static uint?[] tinyrand;
+        public static int tinyindex;
+        public static uint? gettinyrand => tinyrand == null || tinyindex >= tinyrand.Length ? null : tinyrand[tinyindex++];
 
         #endregion
 

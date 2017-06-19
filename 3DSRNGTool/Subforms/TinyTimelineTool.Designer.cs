@@ -41,29 +41,32 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.MainDGV = new System.Windows.Forms.DataGridView();
-            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
-            this.Frame2 = new System.Windows.Forms.NumericUpDown();
+            this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.B_update = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.GB_Cali = new System.Windows.Forms.GroupBox();
+            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
+            this.GB_Cali.SuspendLayout();
             this.SuspendLayout();
             // 
             // tiny3
             // 
             this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny3.Hexadecimal = true;
-            this.tiny3.Location = new System.Drawing.Point(53, 21);
+            this.tiny3.Location = new System.Drawing.Point(50, 21);
             this.tiny3.Name = "tiny3";
             this.tiny3.Size = new System.Drawing.Size(78, 22);
             this.tiny3.TabIndex = 100;
@@ -73,7 +76,7 @@
             // 
             this.label0.AutoSize = true;
             this.label0.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label0.Location = new System.Drawing.Point(25, 109);
+            this.label0.Location = new System.Drawing.Point(22, 109);
             this.label0.Name = "label0";
             this.label0.Size = new System.Drawing.Size(28, 14);
             this.label0.TabIndex = 107;
@@ -83,7 +86,7 @@
             // 
             this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny2.Hexadecimal = true;
-            this.tiny2.Location = new System.Drawing.Point(53, 49);
+            this.tiny2.Location = new System.Drawing.Point(50, 49);
             this.tiny2.Name = "tiny2";
             this.tiny2.Size = new System.Drawing.Size(78, 22);
             this.tiny2.TabIndex = 101;
@@ -93,7 +96,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label1.Location = new System.Drawing.Point(25, 80);
+            this.label1.Location = new System.Drawing.Point(22, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 14);
             this.label1.TabIndex = 106;
@@ -103,7 +106,7 @@
             // 
             this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny1.Hexadecimal = true;
-            this.tiny1.Location = new System.Drawing.Point(53, 77);
+            this.tiny1.Location = new System.Drawing.Point(50, 77);
             this.tiny1.Name = "tiny1";
             this.tiny1.Size = new System.Drawing.Size(78, 22);
             this.tiny1.TabIndex = 102;
@@ -113,7 +116,7 @@
             // 
             this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny0.Hexadecimal = true;
-            this.tiny0.Location = new System.Drawing.Point(53, 106);
+            this.tiny0.Location = new System.Drawing.Point(50, 106);
             this.tiny0.Name = "tiny0";
             this.tiny0.Size = new System.Drawing.Size(78, 22);
             this.tiny0.TabIndex = 103;
@@ -123,7 +126,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label2.Location = new System.Drawing.Point(25, 51);
+            this.label2.Location = new System.Drawing.Point(22, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 105;
@@ -133,7 +136,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label3.Location = new System.Drawing.Point(25, 23);
+            this.label3.Location = new System.Drawing.Point(22, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 14);
             this.label3.TabIndex = 104;
@@ -159,7 +162,7 @@
             this.MainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tiny_MTFRange,
-            this.tiny_frame,
+            this.tiny_index,
             this.tiny_rand100,
             this.tiny_state});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -185,6 +188,106 @@
             this.MainDGV.Size = new System.Drawing.Size(544, 476);
             this.MainDGV.TabIndex = 108;
             // 
+            // Frame1
+            // 
+            this.Frame1.AccessibleName = "";
+            this.Frame1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame1.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Frame1.Location = new System.Drawing.Point(13, 53);
+            this.Frame1.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame1.Name = "Frame1";
+            this.Frame1.Size = new System.Drawing.Size(60, 22);
+            this.Frame1.TabIndex = 109;
+            this.Frame1.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // B_Create
+            // 
+            this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.B_Create.Location = new System.Drawing.Point(85, 465);
+            this.B_Create.Name = "B_Create";
+            this.B_Create.Size = new System.Drawing.Size(60, 23);
+            this.B_Create.TabIndex = 110;
+            this.B_Create.Text = "Create";
+            this.B_Create.UseVisualStyleBackColor = true;
+            this.B_Create.Click += new System.EventHandler(this.B_Create_Click);
+            // 
+            // L_Mainframe
+            // 
+            this.L_Mainframe.AutoSize = true;
+            this.L_Mainframe.Font = new System.Drawing.Font("Consolas", 9F);
+            this.L_Mainframe.Location = new System.Drawing.Point(12, 27);
+            this.L_Mainframe.Name = "L_Mainframe";
+            this.L_Mainframe.Size = new System.Drawing.Size(105, 14);
+            this.L_Mainframe.TabIndex = 111;
+            this.L_Mainframe.Text = "Main RNG Frame";
+            // 
+            // Frame_max
+            // 
+            this.Frame_max.AccessibleName = "";
+            this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_max.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Frame_max.Location = new System.Drawing.Point(15, 412);
+            this.Frame_max.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_max.Name = "Frame_max";
+            this.Frame_max.Size = new System.Drawing.Size(88, 22);
+            this.Frame_max.TabIndex = 112;
+            this.Frame_max.Value = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            // 
+            // B_update
+            // 
+            this.B_update.Location = new System.Drawing.Point(40, 143);
+            this.B_update.Name = "B_update";
+            this.B_update.Size = new System.Drawing.Size(75, 23);
+            this.B_update.TabIndex = 113;
+            this.B_update.Text = "Update";
+            this.B_update.UseVisualStyleBackColor = true;
+            this.B_update.Click += new System.EventHandler(this.B_update_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Consolas", 9F);
+            this.label4.Location = new System.Drawing.Point(12, 386);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 14);
+            this.label4.TabIndex = 114;
+            this.label4.Text = "Target Frame";
+            // 
+            // GB_Cali
+            // 
+            this.GB_Cali.Controls.Add(this.L_Mainframe);
+            this.GB_Cali.Controls.Add(this.Frame1);
+            this.GB_Cali.Location = new System.Drawing.Point(5, 172);
+            this.GB_Cali.Name = "GB_Cali";
+            this.GB_Cali.Size = new System.Drawing.Size(140, 190);
+            this.GB_Cali.TabIndex = 115;
+            this.GB_Cali.TabStop = false;
+            this.GB_Cali.Text = "Calibration";
+            // 
             // tiny_MTFRange
             // 
             this.tiny_MTFRange.DataPropertyName = "FrameRange";
@@ -193,13 +296,13 @@
             this.tiny_MTFRange.ReadOnly = true;
             this.tiny_MTFRange.Width = 112;
             // 
-            // tiny_frame
+            // tiny_index
             // 
-            this.tiny_frame.DataPropertyName = "Frame";
-            this.tiny_frame.HeaderText = "Frame";
-            this.tiny_frame.Name = "tiny_frame";
-            this.tiny_frame.ReadOnly = true;
-            this.tiny_frame.Width = 50;
+            this.tiny_index.DataPropertyName = "Index";
+            this.tiny_index.HeaderText = "Index";
+            this.tiny_index.Name = "tiny_index";
+            this.tiny_index.ReadOnly = true;
+            this.tiny_index.Width = 50;
             // 
             // tiny_rand100
             // 
@@ -219,95 +322,16 @@
             this.tiny_state.ReadOnly = true;
             this.tiny_state.Width = 255;
             // 
-            // Frame1
-            // 
-            this.Frame1.AccessibleName = "";
-            this.Frame1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame1.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.Frame1.Location = new System.Drawing.Point(13, 229);
-            this.Frame1.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame1.Name = "Frame1";
-            this.Frame1.Size = new System.Drawing.Size(60, 22);
-            this.Frame1.TabIndex = 109;
-            this.Frame1.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
-            // B_Create
-            // 
-            this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_Create.Location = new System.Drawing.Point(70, 465);
-            this.B_Create.Name = "B_Create";
-            this.B_Create.Size = new System.Drawing.Size(75, 23);
-            this.B_Create.TabIndex = 110;
-            this.B_Create.Text = "Create";
-            this.B_Create.UseVisualStyleBackColor = true;
-            this.B_Create.Click += new System.EventHandler(this.B_Create_Click);
-            // 
-            // L_Mainframe
-            // 
-            this.L_Mainframe.AutoSize = true;
-            this.L_Mainframe.Font = new System.Drawing.Font("Consolas", 9F);
-            this.L_Mainframe.Location = new System.Drawing.Point(12, 203);
-            this.L_Mainframe.Name = "L_Mainframe";
-            this.L_Mainframe.Size = new System.Drawing.Size(105, 14);
-            this.L_Mainframe.TabIndex = 111;
-            this.L_Mainframe.Text = "Main RNG Frame";
-            // 
-            // Frame2
-            // 
-            this.Frame2.AccessibleName = "";
-            this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame2.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.Frame2.Location = new System.Drawing.Point(13, 257);
-            this.Frame2.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame2.Name = "Frame2";
-            this.Frame2.Size = new System.Drawing.Size(60, 22);
-            this.Frame2.TabIndex = 112;
-            this.Frame2.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
-            // B_update
-            // 
-            this.B_update.Location = new System.Drawing.Point(43, 143);
-            this.B_update.Name = "B_update";
-            this.B_update.Size = new System.Drawing.Size(75, 23);
-            this.B_update.TabIndex = 113;
-            this.B_update.Text = "Update";
-            this.B_update.UseVisualStyleBackColor = true;
-            this.B_update.Click += new System.EventHandler(this.B_update_Click);
-            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 500);
+            this.Controls.Add(this.GB_Cali);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.B_update);
-            this.Controls.Add(this.Frame2);
-            this.Controls.Add(this.L_Mainframe);
+            this.Controls.Add(this.Frame_max);
             this.Controls.Add(this.B_Create);
-            this.Controls.Add(this.Frame1);
             this.Controls.Add(this.MainDGV);
             this.Controls.Add(this.tiny3);
             this.Controls.Add(this.label0);
@@ -327,7 +351,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tiny0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
+            this.GB_Cali.ResumeLayout(false);
+            this.GB_Cali.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,10 +373,12 @@
         private System.Windows.Forms.NumericUpDown Frame1;
         private System.Windows.Forms.Button B_Create;
         private System.Windows.Forms.Label L_Mainframe;
-        private System.Windows.Forms.NumericUpDown Frame2;
+        private System.Windows.Forms.NumericUpDown Frame_max;
         private System.Windows.Forms.Button B_update;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }
