@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 
@@ -16,6 +10,7 @@ namespace Pk3DSRNGTool
         public TinyTimelineTool()
         {
             InitializeComponent();
+            MainDGV.AutoGenerateColumns = false;
         }
 
         private List<Frame_Tiny> list = new List<Frame_Tiny>();

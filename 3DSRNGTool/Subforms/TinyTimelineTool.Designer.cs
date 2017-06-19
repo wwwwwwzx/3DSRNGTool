@@ -41,15 +41,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.MainDGV = new System.Windows.Forms.DataGridView();
+            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.B_update = new System.Windows.Forms.Button();
-            this.tiny_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -158,8 +158,8 @@
             this.MainDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.MainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tiny_frame,
             this.tiny_MTFRange,
+            this.tiny_frame,
             this.tiny_rand100,
             this.tiny_state});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -185,6 +185,40 @@
             this.MainDGV.Size = new System.Drawing.Size(544, 476);
             this.MainDGV.TabIndex = 108;
             // 
+            // tiny_MTFRange
+            // 
+            this.tiny_MTFRange.DataPropertyName = "FrameRange";
+            this.tiny_MTFRange.HeaderText = "Main RNG Frame";
+            this.tiny_MTFRange.Name = "tiny_MTFRange";
+            this.tiny_MTFRange.ReadOnly = true;
+            this.tiny_MTFRange.Width = 112;
+            // 
+            // tiny_frame
+            // 
+            this.tiny_frame.DataPropertyName = "Frame";
+            this.tiny_frame.HeaderText = "Frame";
+            this.tiny_frame.Name = "tiny_frame";
+            this.tiny_frame.ReadOnly = true;
+            this.tiny_frame.Width = 50;
+            // 
+            // tiny_rand100
+            // 
+            this.tiny_rand100.DataPropertyName = "Rand100";
+            this.tiny_rand100.HeaderText = "M100";
+            this.tiny_rand100.Name = "tiny_rand100";
+            this.tiny_rand100.ReadOnly = true;
+            this.tiny_rand100.Width = 40;
+            // 
+            // tiny_state
+            // 
+            this.tiny_state.DataPropertyName = "Status";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle2;
+            this.tiny_state.HeaderText = "Tiny Status";
+            this.tiny_state.Name = "tiny_state";
+            this.tiny_state.ReadOnly = true;
+            this.tiny_state.Width = 255;
+            // 
             // Frame1
             // 
             this.Frame1.AccessibleName = "";
@@ -194,7 +228,7 @@
             0,
             0,
             0});
-            this.Frame1.Location = new System.Drawing.Point(26, 229);
+            this.Frame1.Location = new System.Drawing.Point(13, 229);
             this.Frame1.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -211,6 +245,7 @@
             // 
             // B_Create
             // 
+            this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.B_Create.Location = new System.Drawing.Point(70, 465);
             this.B_Create.Name = "B_Create";
             this.B_Create.Size = new System.Drawing.Size(75, 23);
@@ -223,11 +258,11 @@
             // 
             this.L_Mainframe.AutoSize = true;
             this.L_Mainframe.Font = new System.Drawing.Font("Consolas", 9F);
-            this.L_Mainframe.Location = new System.Drawing.Point(25, 203);
+            this.L_Mainframe.Location = new System.Drawing.Point(12, 203);
             this.L_Mainframe.Name = "L_Mainframe";
-            this.L_Mainframe.Size = new System.Drawing.Size(77, 14);
+            this.L_Mainframe.Size = new System.Drawing.Size(105, 14);
             this.L_Mainframe.TabIndex = 111;
-            this.L_Mainframe.Text = "Main frame";
+            this.L_Mainframe.Text = "Main RNG Frame";
             // 
             // Frame2
             // 
@@ -238,7 +273,7 @@
             0,
             0,
             0});
-            this.Frame2.Location = new System.Drawing.Point(26, 257);
+            this.Frame2.Location = new System.Drawing.Point(13, 257);
             this.Frame2.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -263,40 +298,6 @@
             this.B_update.UseVisualStyleBackColor = true;
             this.B_update.Click += new System.EventHandler(this.B_update_Click);
             // 
-            // tiny_frame
-            // 
-            this.tiny_frame.DataPropertyName = "Frame";
-            this.tiny_frame.HeaderText = "Frame";
-            this.tiny_frame.Name = "tiny_frame";
-            this.tiny_frame.ReadOnly = true;
-            this.tiny_frame.Width = 65;
-            // 
-            // tiny_MTFRange
-            // 
-            this.tiny_MTFRange.DataPropertyName = "FrameRange";
-            this.tiny_MTFRange.HeaderText = "Main RNG Frame";
-            this.tiny_MTFRange.Name = "tiny_MTFRange";
-            this.tiny_MTFRange.ReadOnly = true;
-            this.tiny_MTFRange.Width = 115;
-            // 
-            // tiny_rand100
-            // 
-            this.tiny_rand100.DataPropertyName = "Rand100";
-            this.tiny_rand100.HeaderText = "M100";
-            this.tiny_rand100.Name = "tiny_rand100";
-            this.tiny_rand100.ReadOnly = true;
-            this.tiny_rand100.Width = 40;
-            // 
-            // tiny_state
-            // 
-            this.tiny_state.DataPropertyName = "Status";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle2;
-            this.tiny_state.HeaderText = "Tiny Status";
-            this.tiny_state.Name = "tiny_state";
-            this.tiny_state.ReadOnly = true;
-            this.tiny_state.Width = 255;
-            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,7 +317,9 @@
             this.Controls.Add(this.tiny0);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "TinyTimelineTool";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiny Timeline Tool";
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).EndInit();
@@ -346,8 +349,8 @@
         private System.Windows.Forms.Label L_Mainframe;
         private System.Windows.Forms.NumericUpDown Frame2;
         private System.Windows.Forms.Button B_update;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }
