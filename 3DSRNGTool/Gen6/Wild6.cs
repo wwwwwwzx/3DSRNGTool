@@ -18,19 +18,20 @@ namespace Pk3DSRNGTool
         {
             get
             {
+                if (tiny == null) return slot = 1;
                 switch (Wildtype)
                 {
                     case EncounterType.FriendSafari:
                         return slot = (byte)(TinyRand(3) + 1); // Default unlock all
                     case EncounterType.SingleSlot:
-                        return 1;
+                        return slot = 1;
                     case EncounterType.PokeRadar:
-                        return IsShinyLocked ? (byte)1 : getslot(TinyRand(100));
+                        return IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
                     default: return getslot(TinyRand(100));
                 }
             }
         }
-        private bool getSync => getTinyRand < 0x80000000;
+        private bool getSync => tiny == null ? false : getTinyRand < 0x80000000;
         private byte getAbility => 0; // Todo
 
         public EncounterType Wildtype;
@@ -48,13 +49,9 @@ namespace Pk3DSRNGTool
         public override RNGResult Generate()
         {
             var rt = new ResultW6();
-            if (null != (tiny = RNGPool.tiny?.getTiny))
-            {
-                rt.Synchronize = getSync;
-                rt.Slot = getSlot;
-            }
-            else
-                slot = rt.Slot = 1;
+            tiny = RNGPool.tiny?.getTiny;
+            rt.Synchronize = getSync;
+            rt.Slot = getSlot;
             Advance(60);
             Generate_Once(rt);
             rt.ItemStr = "-";
