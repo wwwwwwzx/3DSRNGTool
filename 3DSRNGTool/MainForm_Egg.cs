@@ -150,29 +150,11 @@ namespace Pk3DSRNGTool
                 }
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 if (Gen7)
-                    Status = SeedStr2Array(seed) ?? Status;
+                    Status = FuncUtil.SeedStr2Array(seed) ?? Status;
             }
             catch (NullReferenceException)
             {
                 Error(NOSELECTION_STR[lindex]);
-            }
-        }
-
-        private uint[] SeedStr2Array(string seed)
-        {
-            try
-            {
-                string[] Data = seed.Split(',');
-                uint[] St = new uint[4];
-                St[3] = Convert.ToUInt32(Data[0], 16);
-                St[2] = Convert.ToUInt32(Data[1], 16);
-                St[1] = Convert.ToUInt32(Data[2], 16);
-                St[0] = Convert.ToUInt32(Data[3], 16);
-                return St;
-            }
-            catch
-            {
-                return null;
             }
         }
 
@@ -182,7 +164,7 @@ namespace Pk3DSRNGTool
             {
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 var adv = Convert.ToInt32((string)DGV.CurrentRow.Cells["dgv_adv"].Value);
-                uint[] St = SeedStr2Array(seed);
+                uint[] St = FuncUtil.SeedStr2Array(seed);
                 TinyMT tmt = new TinyMT(St);
                 for (int i = adv; i > 0; i--)
                     tmt.Next();

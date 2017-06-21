@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -62,6 +63,8 @@
             this.GB_Manu = new System.Windows.Forms.GroupBox();
             this.Shift = new System.Windows.Forms.NumericUpDown();
             this.Frame_J = new System.Windows.Forms.NumericUpDown();
+            this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -74,6 +77,7 @@
             this.GB_Manu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
+            this.CMS.SuspendLayout();
             this.SuspendLayout();
             // 
             // tiny3
@@ -182,6 +186,7 @@
             this.tiny_high16bit,
             this.tiny_rand100,
             this.tiny_state});
+            this.MainDGV.ContextMenuStrip = this.CMS;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -453,6 +458,20 @@
             0,
             0});
             // 
+            // CMS
+            // 
+            this.CMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyStatusToolStripMenuItem});
+            this.CMS.Name = "CMS";
+            this.CMS.Size = new System.Drawing.Size(138, 26);
+            // 
+            // copyStatusToolStripMenuItem
+            // 
+            this.copyStatusToolStripMenuItem.Name = "copyStatusToolStripMenuItem";
+            this.copyStatusToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.copyStatusToolStripMenuItem.Text = "Copy Status";
+            this.copyStatusToolStripMenuItem.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
+            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,6 +511,7 @@
             this.GB_Manu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
+            this.CMS.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -528,5 +548,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
+        private System.Windows.Forms.ContextMenuStrip CMS;
+        private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
     }
 }

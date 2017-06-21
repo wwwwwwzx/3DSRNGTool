@@ -131,6 +131,24 @@ namespace Pk3DSRNGTool
                 return null;
             }
         }
+        
+        public static uint[] SeedStr2Array(string seed)
+        {
+            try
+            {
+                string[] Data = seed.Split(',');
+                uint[] St = new uint[4];
+                St[3] = Convert.ToUInt32(Data[0], 16);
+                St[2] = Convert.ToUInt32(Data[1], 16);
+                St[1] = Convert.ToUInt32(Data[2], 16);
+                St[0] = Convert.ToUInt32(Data[3], 16);
+                return St;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
     }
 }

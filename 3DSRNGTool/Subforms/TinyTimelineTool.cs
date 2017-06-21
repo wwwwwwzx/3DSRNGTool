@@ -100,5 +100,17 @@ namespace Pk3DSRNGTool
             if (list[index].High16bit < 9)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
+
+        private void copyStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var seed = (string)MainDGV.CurrentRow.Cells["tiny_state"].Value;
+                Gen6Tiny = FuncUtil.SeedStr2Array(seed) ?? Gen6Tiny;
+            }
+            catch (NullReferenceException)
+            {
+            }
+        }
     }
 }

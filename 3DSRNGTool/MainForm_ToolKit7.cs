@@ -219,7 +219,7 @@ namespace Pk3DSRNGTool
             var seed = MagikarpCalc.calc(inlist);
             if (Prompt(MessageBoxButtons.YesNo, $"Your Current Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
             {
-                Status = SeedStr2Array(seed);
+                Status = FuncUtil.SeedStr2Array(seed);
                 B_Backup_Click(null, null);
             }
         }
