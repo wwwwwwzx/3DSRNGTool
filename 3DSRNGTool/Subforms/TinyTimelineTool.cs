@@ -9,6 +9,8 @@ namespace Pk3DSRNGTool
 {
     public partial class TinyTimelineTool : Form
     {
+
+        #region Basic UI
         public TinyTimelineTool()
         {
             InitializeComponent();
@@ -24,34 +26,12 @@ namespace Pk3DSRNGTool
             Type2.DataSource = new BindingSource(List, null);
             Type1.SelectedIndex = Type2.SelectedIndex = 0;
         }
-
-        private List<Frame_Tiny> list = new List<Frame_Tiny>();
-
-        private void B_Create_Click(object sender, EventArgs e)
+        private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
         {
-            list.Clear();
-            list = new List<Frame_Tiny>();
-            var state = gettimeline();
-            state.Generate();
-            MainDGV.DataSource = state.results;
-            MainDGV.CurrentCell = null;
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
-
-        public TinyTimeline gettimeline()
-        {
-            var line = new TinyTimeline()
-            {
-                Tinyrng = new TinyMT(Gen6Tiny),
-                Startingframe = (int)Frame1.Value,
-                Maxframe = (int)Frame_max.Value,
-            };
-            line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
-            line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
-            for (int i = (int)Shift.Value; i > 0; i--)
-                line.Add((int)Frame_J.Value, 4);
-            return line;
-        }
-
         public uint[] Gen6Tiny
         {
             get => new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value };
@@ -62,7 +42,6 @@ namespace Pk3DSRNGTool
                 tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
-
         private void B_update_Click(object sender, EventArgs e)
         {
             try
@@ -82,12 +61,44 @@ namespace Pk3DSRNGTool
             {
             }
         }
+        #endregion
 
-        private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
+        private List<Frame_Tiny> list = new List<Frame_Tiny>();
+
+        private void B_Create_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Parent = null;
-            e.Cancel = true;
+            list.Clear();
+            list = new List<Frame_Tiny>();
+            var state = gettimeline();
+            state.Generate();
+            list = state.results;
+            MainDGV.DataSource = list;
+            MainDGV.CurrentCell = null;
+        }
+
+        public TinyTimeline gettimeline()
+        {
+            var line = new TinyTimeline()
+            {
+                Tinyrng = new TinyMT(Gen6Tiny),
+                Startingframe = (int)Frame1.Value,
+                Maxframe = (int)Frame_max.Value,
+            };
+            line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
+            line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
+            for (int i = (int)Shift.Value; i > 0; i--)
+                line.Add((int)Frame_J.Value, 4);
+            return line;
+        }
+
+        private void MainDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (list.Count <= index)
+                return;
+            var row = MainDGV.Rows[index];
+            if (list[index].High16bit < 9)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
     }
 }

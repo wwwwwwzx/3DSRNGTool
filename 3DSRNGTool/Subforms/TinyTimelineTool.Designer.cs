@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
             this.label0 = new System.Windows.Forms.Label();
             this.tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
@@ -45,6 +46,7 @@
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
@@ -177,30 +179,32 @@
             this.tiny_index,
             this.tiny_sync,
             this.tiny_slot,
+            this.tiny_high16bit,
             this.tiny_rand100,
             this.tiny_state});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MainDGV.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MainDGV.DefaultCellStyle = dataGridViewCellStyle4;
             this.MainDGV.Location = new System.Drawing.Point(151, 12);
             this.MainDGV.Name = "MainDGV";
             this.MainDGV.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.MainDGV.RowHeadersWidth = 18;
             this.MainDGV.Size = new System.Drawing.Size(544, 476);
             this.MainDGV.TabIndex = 108;
+            this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
             // 
             // tiny_MTFRange
             // 
@@ -234,6 +238,17 @@
             this.tiny_slot.ReadOnly = true;
             this.tiny_slot.Width = 40;
             // 
+            // tiny_high16bit
+            // 
+            this.tiny_high16bit.DataPropertyName = "High16bit";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "X4";
+            this.tiny_high16bit.DefaultCellStyle = dataGridViewCellStyle2;
+            this.tiny_high16bit.HeaderText = "High16";
+            this.tiny_high16bit.Name = "tiny_high16bit";
+            this.tiny_high16bit.ReadOnly = true;
+            this.tiny_high16bit.Width = 45;
+            // 
             // tiny_rand100
             // 
             this.tiny_rand100.DataPropertyName = "Rand100";
@@ -245,8 +260,8 @@
             // tiny_state
             // 
             this.tiny_state.DataPropertyName = "Status";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle3;
             this.tiny_state.HeaderText = "Tiny Status";
             this.tiny_state.Name = "tiny_state";
             this.tiny_state.ReadOnly = true;
@@ -500,17 +515,18 @@
         private System.Windows.Forms.Button B_update;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox GB_Cali;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.ComboBox Type2;
         private System.Windows.Forms.NumericUpDown Frame2;
         private System.Windows.Forms.ComboBox Type1;
         private System.Windows.Forms.GroupBox GB_Manu;
         private System.Windows.Forms.NumericUpDown Shift;
         private System.Windows.Forms.NumericUpDown Frame_J;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }
 }

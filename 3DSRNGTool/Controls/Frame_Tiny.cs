@@ -18,7 +18,8 @@ namespace Pk3DSRNGTool
 
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
         public char Sync => _sync ? 'O' : 'X';
-        public ulong Rand100 => (rand * 100ul) >> 32;
+        public byte Rand100 => (byte)((rand * 100ul) >> 32);
+        public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : (framemin + 2).ToString() + " ~ " + framemax.ToString();
         public byte Slot
         {
