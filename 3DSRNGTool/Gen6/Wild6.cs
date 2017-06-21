@@ -1,5 +1,6 @@
 ﻿using PKHeX.Core;
 using Pk3DSRNGTool.Core;
+using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -9,16 +10,36 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
 
-        private byte getSlot => 1; // Todo
-        private bool getSync => false; // Todo
+        private static TinyMT tiny;
+        private static uint getTinyRand => tiny.Nextuint();
+        private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
+
+        private byte getSlot
+        {
+            get
+            {
+                switch (Wildtype)
+                {
+                    case EncounterType.FriendSafari:
+                        return slot = (byte)(TinyRand(3) + 1); // Default unlock all
+                    case EncounterType.SingleSlot:
+                        return 1;
+                    case EncounterType.PokeRadar:
+                        return IsShinyLocked ? (byte)1 : getslot(TinyRand(100));
+                    default: return getslot(TinyRand(100));
+                }
+            }
+        }
+        private bool getSync => getTinyRand < 0x80000000;
         private byte getAbility => 0; // Todo
 
+        public EncounterType Wildtype;
         public bool HA;
         public bool IsShinyLocked;
         public int _PIDroll_count;
         protected override int PIDroll_count => _PIDroll_count;
         public int _ivcnt = -1;
-        protected override int PerfectIVCount => _ivcnt >= 0 ? _ivcnt : IV3[slot] ? 3 : 0;
+        protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
         public int BlankGenderRatio;
 
         public byte[] SlotLevel;
@@ -27,8 +48,13 @@ namespace Pk3DSRNGTool
         public override RNGResult Generate()
         {
             var rt = new ResultW6();
-            rt.Synchronize = getSync;
-            slot = rt.Slot = getSlot;
+            if (null != (tiny = RNGPool.tiny?.getTiny))
+            {
+                rt.Synchronize = getSync;
+                rt.Slot = getSlot;
+            }
+            else
+                slot = rt.Slot = 1;
             Advance(60);
             Generate_Once(rt);
             rt.ItemStr = "-";

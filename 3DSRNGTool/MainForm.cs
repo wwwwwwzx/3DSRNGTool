@@ -966,6 +966,7 @@ namespace Pk3DSRNGTool
                 {
                     if (pmw6.Conceptual)
                         setting6.BlankGenderRatio = (int)GenderRatio.SelectedValue;
+                    setting6.Wildtype = pmw6.Type;
                     switch (pmw6.Type)
                     {
                         case EncounterType.Horde:
@@ -979,6 +980,8 @@ namespace Pk3DSRNGTool
                             break;
                         case EncounterType.PokeRadar:
                             setting6.IsShinyLocked = !FirstEncounter.Checked;
+                            if (FirstEncounter.Checked)
+                                goto default;
                             setting6._ivcnt = (int)WildIVsCnt.Value;
                             setting6.SpecForm = new[] { 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
@@ -987,8 +990,8 @@ namespace Pk3DSRNGTool
                             setting6._ivcnt = 2;
                             setting6._PIDroll_count = 4;
                             setting6.HA = true;
-                            setting6.SpecForm = new[] { 0, 0 };
-                            setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
+                            setting6.SpecForm = new[] { 0, 0, 0, 0 };
+                            setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
                             break;
                         case EncounterType.SingleSlot:
                             setting6.SpecForm = new[] { 0, FormPM.SpecForm };
@@ -998,12 +1001,14 @@ namespace Pk3DSRNGTool
                             var area = ea as EncounterArea6;
                             setting6.SpecForm = new int[13];
                             setting6.SlotLevel = new byte[13];
+                            slottype = 2;
+                            if (slotspecies.Length == 0)
+                                break;
                             for (int i = 1; i < 13; i++)
                             {
                                 setting6.SpecForm[i] = slotspecies[i - 1];
                                 setting6.SlotLevel[i] = area.Level[i - 1];
                             }
-                            slottype = 2;
                             break;
                     };
                 }
@@ -1173,11 +1178,19 @@ namespace Pk3DSRNGTool
         {
             switch (Method)
             {
-                case 0: if (CreateTimeline.Checked) { Search6_Timeline(); return; } goto default;
-                case 2: if (IsHorde) { Search6_Horde(); return; } goto default;
-                case 3: Search6_Egg(); return;
-                case 4: Search6_ID(); return;
-                default: Search6_Normal(); return;
+                case 0:
+                    if (CreateTimeline.Checked) { Search6_Timeline(); return; }
+                    goto default;
+                case 2:
+                    if (IsHorde) { Search6_Horde(); return; }
+                    if (CreateTimeline.Checked) { Search6_Timeline(); return; }
+                    goto default;
+                case 3:
+                    Search6_Egg(); return;
+                case 4:
+                    Search6_ID(); return;
+                default:
+                    Search6_Normal(); return;
             }
         }
 
