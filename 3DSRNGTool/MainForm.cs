@@ -502,7 +502,7 @@ namespace Pk3DSRNGTool
             Filter_G7TID.Visible = Gen7;
 
             MM_CheckedChanged(null, null);
-            NPC_ValueChanged(null, null);
+            CreateTimeline_CheckedChanged(null, null);
 
             switch (Method)
             {
@@ -521,6 +521,10 @@ namespace Pk3DSRNGTool
 
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
+            if (Gen6)
+                CB_3rdSlotUnlocked.Enabled = CompoundEyes.Enabled = CreateTimeline.Checked;
+            else
+                CompoundEyes.Enabled = true;
             NPC_ValueChanged(null, null);
         }
 
@@ -1026,7 +1030,7 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new int[13];
                             setting6.SlotLevel = new byte[13];
                             slottype = 2;
-                            if (slotspecies.Length == 0)
+                            if (slotspecies.Length == 0 || area == null)
                                 break;
                             for (int i = 1; i < 13; i++)
                             {
