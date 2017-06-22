@@ -81,12 +81,10 @@ namespace Pk3DSRNGTool
                         Status.Add(Currentframe + getcooldown1(newdata.rand), 0);
                         break;
                     case 3:
-                        Status.Add(Currentframe + 180, 3);
+                        Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
                         break;
                     case 4:
-                        break;
-                    case 5:
-                        Status.Add(Currentframe + getcooldown3(newdata.rand), 5);
+                        Status.Add(Currentframe + 180, 3);
                         break;
                 }
                 results.Add(newdata);

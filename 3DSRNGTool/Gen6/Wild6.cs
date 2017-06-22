@@ -22,7 +22,7 @@ namespace Pk3DSRNGTool
                 switch (Wildtype)
                 {
                     case EncounterType.FriendSafari:
-                        return slot = (byte)(TinyRand(3) + 1); // Default unlock all
+                        return slot = (byte)(TinyRand(SlotNum) + 1); // Default unlock all
                     case EncounterType.SingleSlot:
                         return slot = 1;
                     case EncounterType.PokeRadar:
@@ -42,6 +42,7 @@ namespace Pk3DSRNGTool
         public int _ivcnt = -1;
         protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
         public int BlankGenderRatio;
+        public byte SlotNum;
 
         public byte[] SlotLevel;
         public bool CompoundEye;

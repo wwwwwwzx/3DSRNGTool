@@ -215,6 +215,7 @@
             this.Event_Nature = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.CB_HAUnlocked = new System.Windows.Forms.CheckBox();
             this.FirstEncounter = new System.Windows.Forms.CheckBox();
             this.L_WildIVsCnt = new System.Windows.Forms.Label();
             this.WildIVsCnt = new System.Windows.Forms.NumericUpDown();
@@ -469,6 +470,7 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -2661,6 +2663,8 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.CB_3rdSlotUnlocked);
+            this.Wild_Setting.Controls.Add(this.CB_HAUnlocked);
             this.Wild_Setting.Controls.Add(this.FirstEncounter);
             this.Wild_Setting.Controls.Add(this.L_WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.WildIVsCnt);
@@ -2683,6 +2687,18 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // CB_HAUnlocked
+            // 
+            this.CB_HAUnlocked.AutoSize = true;
+            this.CB_HAUnlocked.Checked = true;
+            this.CB_HAUnlocked.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_HAUnlocked.Location = new System.Drawing.Point(17, 158);
+            this.CB_HAUnlocked.Name = "CB_HAUnlocked";
+            this.CB_HAUnlocked.Size = new System.Drawing.Size(86, 17);
+            this.CB_HAUnlocked.TabIndex = 96;
+            this.CB_HAUnlocked.Text = "梦特已解锁";
+            this.CB_HAUnlocked.UseVisualStyleBackColor = true;
             // 
             // FirstEncounter
             // 
@@ -5643,6 +5659,18 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // CB_3rdSlotUnlocked
+            // 
+            this.CB_3rdSlotUnlocked.AutoSize = true;
+            this.CB_3rdSlotUnlocked.Checked = true;
+            this.CB_3rdSlotUnlocked.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_3rdSlotUnlocked.Location = new System.Drawing.Point(142, 158);
+            this.CB_3rdSlotUnlocked.Name = "CB_3rdSlotUnlocked";
+            this.CB_3rdSlotUnlocked.Size = new System.Drawing.Size(98, 17);
+            this.CB_3rdSlotUnlocked.TabIndex = 97;
+            this.CB_3rdSlotUnlocked.Text = "第三只已解锁";
+            this.CB_3rdSlotUnlocked.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6235,6 +6263,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
+        private System.Windows.Forms.CheckBox CB_HAUnlocked;
+        private System.Windows.Forms.CheckBox CB_3rdSlotUnlocked;
     }
 }
 

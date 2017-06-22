@@ -701,7 +701,16 @@ namespace Pk3DSRNGTool
             if (FormPM is PKM6 pm6)
                 if (Sta_AbilityLocked.Checked = pm6.Ability > 0)
                     Sta_Ability.SelectedIndex = pm6.Ability >> 1; // 1/2/4 -> 0/1/2
-            FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = (FormPM is PKMW6 pmw6 && pmw6.Type == EncounterType.PokeRadar);
+            if (FormPM is PKMW6 pmw6)
+            {
+                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
+                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
+            }
+            else
+            {
+                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
+                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
+            }
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
@@ -989,7 +998,8 @@ namespace Pk3DSRNGTool
                         case EncounterType.FriendSafari:
                             setting6._ivcnt = 2;
                             setting6._PIDroll_count = 4;
-                            setting6.HA = true;
+                            setting6.SlotNum = (byte)(CB_3rdSlotUnlocked.Checked ? 3 : 2);
+                            setting6.HA = CB_HAUnlocked.Checked;
                             setting6.SpecForm = new[] { 0, 0, 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
                             break;
@@ -1062,7 +1072,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
-            dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2;
+            dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2 && (Gen7 || Gen6 && gen6timeline);
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
             dgv_state.Visible = Gen6 && Method < 4;

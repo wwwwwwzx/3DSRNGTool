@@ -15,8 +15,8 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
-            int[] typelist = { -1, 0, 2, 3, 5 };
-            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Soaring", "stretch" };
+            int[] typelist = { -1, 0, 2, 3, 4 };
+            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", };
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
             Type1.DisplayMember = "Text";
             Type1.ValueMember = "Value";
@@ -93,7 +93,7 @@ namespace Pk3DSRNGTool
             line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
             line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
             for (int i = (int)Shift.Value; i > 0; i--)
-                line.Add((int)Frame_J.Value, 4);
+                line.Add((int)Frame_J.Value, 5);
             return line;
         }
 
