@@ -46,6 +46,8 @@
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_friendsafari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_portalsync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,14 +60,17 @@
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
+            this.L_Type = new System.Windows.Forms.Label();
+            this.Type3 = new System.Windows.Forms.ComboBox();
+            this.Frame3 = new System.Windows.Forms.NumericUpDown();
             this.Type2 = new System.Windows.Forms.ComboBox();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
             this.GB_Manu = new System.Windows.Forms.GroupBox();
+            this.L_Method = new System.Windows.Forms.Label();
+            this.Method = new System.Windows.Forms.ComboBox();
             this.Shift = new System.Windows.Forms.NumericUpDown();
             this.Frame_J = new System.Windows.Forms.NumericUpDown();
-            this.Type3 = new System.Windows.Forms.ComboBox();
-            this.Frame3 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -75,11 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             this.GB_Cali.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
             this.GB_Manu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             this.SuspendLayout();
             // 
             // tiny3
@@ -188,6 +193,8 @@
             this.tiny_MTFRange,
             this.tiny_index,
             this.tiny_sync,
+            this.tiny_friendsafari,
+            this.tiny_portalsync,
             this.tiny_slot,
             this.tiny_high16bit,
             this.tiny_rand100,
@@ -240,6 +247,22 @@
             this.tiny_sync.Name = "tiny_sync";
             this.tiny_sync.ReadOnly = true;
             this.tiny_sync.Width = 40;
+            // 
+            // tiny_friendsafari
+            // 
+            this.tiny_friendsafari.DataPropertyName = "FS";
+            this.tiny_friendsafari.HeaderText = "FS";
+            this.tiny_friendsafari.Name = "tiny_friendsafari";
+            this.tiny_friendsafari.ReadOnly = true;
+            this.tiny_friendsafari.Width = 40;
+            // 
+            // tiny_portalsync
+            // 
+            this.tiny_portalsync.DataPropertyName = "PortalSync";
+            this.tiny_portalsync.HeaderText = "PSync";
+            this.tiny_portalsync.Name = "tiny_portalsync";
+            this.tiny_portalsync.ReadOnly = true;
+            this.tiny_portalsync.Width = 45;
             // 
             // tiny_slot
             // 
@@ -308,7 +331,7 @@
             0,
             0});
             this.Frame1.Name = "Frame1";
-            this.Frame1.Size = new System.Drawing.Size(60, 22);
+            this.Frame1.Size = new System.Drawing.Size(73, 22);
             this.Frame1.TabIndex = 109;
             this.Frame1.Value = new decimal(new int[] {
             5000,
@@ -330,10 +353,10 @@
             // L_Mainframe
             // 
             this.L_Mainframe.AutoSize = true;
-            this.L_Mainframe.Font = new System.Drawing.Font("Consolas", 9F);
-            this.L_Mainframe.Location = new System.Drawing.Point(13, 144);
+            this.L_Mainframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_Mainframe.Location = new System.Drawing.Point(12, 145);
             this.L_Mainframe.Name = "L_Mainframe";
-            this.L_Mainframe.Size = new System.Drawing.Size(105, 14);
+            this.L_Mainframe.Size = new System.Drawing.Size(89, 13);
             this.L_Mainframe.TabIndex = 111;
             this.L_Mainframe.Text = "Main RNG Frame";
             // 
@@ -346,7 +369,7 @@
             0,
             0,
             0});
-            this.Frame_max.Location = new System.Drawing.Point(12, 96);
+            this.Frame_max.Location = new System.Drawing.Point(95, 101);
             this.Frame_max.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -364,15 +387,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label4.Location = new System.Drawing.Point(9, 69);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(10, 105);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 14);
+            this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 114;
             this.label4.Text = "Target Frame";
             // 
             // GB_Cali
             // 
+            this.GB_Cali.Controls.Add(this.L_Type);
             this.GB_Cali.Controls.Add(this.Type3);
             this.GB_Cali.Controls.Add(this.Frame3);
             this.GB_Cali.Controls.Add(this.Type2);
@@ -390,96 +414,20 @@
             this.GB_Cali.Controls.Add(this.tiny1);
             this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(189, 282);
+            this.GB_Cali.Size = new System.Drawing.Size(189, 263);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
             // 
-            // Type2
+            // L_Type
             // 
-            this.Type2.FormattingEnabled = true;
-            this.Type2.Location = new System.Drawing.Point(94, 198);
-            this.Type2.Name = "Type2";
-            this.Type2.Size = new System.Drawing.Size(76, 21);
-            this.Type2.TabIndex = 116;
-            // 
-            // Frame2
-            // 
-            this.Frame2.AccessibleName = "";
-            this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame2.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.Frame2.Location = new System.Drawing.Point(15, 199);
-            this.Frame2.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame2.Name = "Frame2";
-            this.Frame2.Size = new System.Drawing.Size(60, 22);
-            this.Frame2.TabIndex = 112;
-            this.Frame2.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
-            // Type1
-            // 
-            this.Type1.FormattingEnabled = true;
-            this.Type1.Location = new System.Drawing.Point(94, 172);
-            this.Type1.Name = "Type1";
-            this.Type1.Size = new System.Drawing.Size(76, 21);
-            this.Type1.TabIndex = 112;
-            // 
-            // GB_Manu
-            // 
-            this.GB_Manu.Controls.Add(this.Shift);
-            this.GB_Manu.Controls.Add(this.Frame_J);
-            this.GB_Manu.Controls.Add(this.Frame_max);
-            this.GB_Manu.Controls.Add(this.label4);
-            this.GB_Manu.Location = new System.Drawing.Point(5, 300);
-            this.GB_Manu.Name = "GB_Manu";
-            this.GB_Manu.Size = new System.Drawing.Size(189, 136);
-            this.GB_Manu.TabIndex = 117;
-            this.GB_Manu.TabStop = false;
-            this.GB_Manu.Text = "Manipulate";
-            // 
-            // Shift
-            // 
-            this.Shift.AccessibleName = "";
-            this.Shift.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Shift.Location = new System.Drawing.Point(79, 24);
-            this.Shift.Name = "Shift";
-            this.Shift.Size = new System.Drawing.Size(43, 22);
-            this.Shift.TabIndex = 112;
-            // 
-            // Frame_J
-            // 
-            this.Frame_J.AccessibleName = "";
-            this.Frame_J.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame_J.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.Frame_J.Location = new System.Drawing.Point(12, 24);
-            this.Frame_J.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame_J.Name = "Frame_J";
-            this.Frame_J.Size = new System.Drawing.Size(60, 22);
-            this.Frame_J.TabIndex = 109;
-            this.Frame_J.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
+            this.L_Type.AutoSize = true;
+            this.L_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_Type.Location = new System.Drawing.Point(109, 145);
+            this.L_Type.Name = "L_Type";
+            this.L_Type.Size = new System.Drawing.Size(31, 13);
+            this.L_Type.TabIndex = 119;
+            this.L_Type.Text = "Type";
             // 
             // Type3
             // 
@@ -505,9 +453,119 @@
             0,
             0});
             this.Frame3.Name = "Frame3";
-            this.Frame3.Size = new System.Drawing.Size(60, 22);
+            this.Frame3.Size = new System.Drawing.Size(73, 22);
             this.Frame3.TabIndex = 117;
             this.Frame3.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Type2
+            // 
+            this.Type2.FormattingEnabled = true;
+            this.Type2.Location = new System.Drawing.Point(94, 198);
+            this.Type2.Name = "Type2";
+            this.Type2.Size = new System.Drawing.Size(76, 21);
+            this.Type2.TabIndex = 116;
+            // 
+            // Frame2
+            // 
+            this.Frame2.AccessibleName = "";
+            this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame2.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.Frame2.Location = new System.Drawing.Point(15, 199);
+            this.Frame2.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame2.Name = "Frame2";
+            this.Frame2.Size = new System.Drawing.Size(73, 22);
+            this.Frame2.TabIndex = 112;
+            this.Frame2.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
+            // Type1
+            // 
+            this.Type1.FormattingEnabled = true;
+            this.Type1.Location = new System.Drawing.Point(94, 172);
+            this.Type1.Name = "Type1";
+            this.Type1.Size = new System.Drawing.Size(76, 21);
+            this.Type1.TabIndex = 112;
+            // 
+            // GB_Manu
+            // 
+            this.GB_Manu.Controls.Add(this.L_Method);
+            this.GB_Manu.Controls.Add(this.Method);
+            this.GB_Manu.Controls.Add(this.Shift);
+            this.GB_Manu.Controls.Add(this.Frame_J);
+            this.GB_Manu.Controls.Add(this.Frame_max);
+            this.GB_Manu.Controls.Add(this.label4);
+            this.GB_Manu.Location = new System.Drawing.Point(5, 281);
+            this.GB_Manu.Name = "GB_Manu";
+            this.GB_Manu.Size = new System.Drawing.Size(189, 136);
+            this.GB_Manu.TabIndex = 117;
+            this.GB_Manu.TabStop = false;
+            this.GB_Manu.Text = "Manipulate";
+            // 
+            // L_Method
+            // 
+            this.L_Method.AutoSize = true;
+            this.L_Method.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_Method.Location = new System.Drawing.Point(19, 30);
+            this.L_Method.Name = "L_Method";
+            this.L_Method.Size = new System.Drawing.Size(43, 13);
+            this.L_Method.TabIndex = 116;
+            this.L_Method.Text = "Method";
+            // 
+            // Method
+            // 
+            this.Method.FormattingEnabled = true;
+            this.Method.Items.AddRange(new object[] {
+            "Friend Safari",
+            "PokeRadar",
+            "ORAS Portal"});
+            this.Method.Location = new System.Drawing.Point(82, 27);
+            this.Method.Name = "Method";
+            this.Method.Size = new System.Drawing.Size(88, 21);
+            this.Method.TabIndex = 115;
+            // 
+            // Shift
+            // 
+            this.Shift.AccessibleName = "";
+            this.Shift.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Shift.Location = new System.Drawing.Point(94, 62);
+            this.Shift.Name = "Shift";
+            this.Shift.Size = new System.Drawing.Size(43, 22);
+            this.Shift.TabIndex = 112;
+            // 
+            // Frame_J
+            // 
+            this.Frame_J.AccessibleName = "";
+            this.Frame_J.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame_J.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.Frame_J.Location = new System.Drawing.Point(12, 62);
+            this.Frame_J.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame_J.Name = "Frame_J";
+            this.Frame_J.Size = new System.Drawing.Size(76, 22);
+            this.Frame_J.TabIndex = 109;
+            this.Frame_J.Value = new decimal(new int[] {
             5000,
             0,
             0,
@@ -537,12 +595,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Manu.ResumeLayout(false);
             this.GB_Manu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -570,16 +628,21 @@
         private System.Windows.Forms.GroupBox GB_Manu;
         private System.Windows.Forms.NumericUpDown Shift;
         private System.Windows.Forms.NumericUpDown Frame_J;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.ContextMenuStrip CMS;
         private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
         private System.Windows.Forms.ComboBox Type3;
         private System.Windows.Forms.NumericUpDown Frame3;
+        private System.Windows.Forms.ComboBox Method;
+        private System.Windows.Forms.Label L_Method;
+        private System.Windows.Forms.Label L_Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_friendsafari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_portalsync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
     }
 }

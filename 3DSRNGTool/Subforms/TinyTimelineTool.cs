@@ -27,6 +27,7 @@ namespace Pk3DSRNGTool
             Type3.DisplayMember = "Text";
             Type3.ValueMember = "Value";
             Type3.DataSource = new BindingSource(List, null);
+            Method.SelectedIndex =
             Type3.SelectedIndex =
             Type2.SelectedIndex = 
             Type1.SelectedIndex = 0;
@@ -76,9 +77,15 @@ namespace Pk3DSRNGTool
             list = new List<Frame_Tiny>();
             var state = gettimeline();
             state.Generate();
+            switch (Method.SelectedIndex)
+            {
+                case 0: state.MarkFS(); break;
+                case 2: state.MarkSync(); break;
+            }
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
+            Method_Changed();
         }
 
         public TinyTimeline gettimeline()
@@ -103,7 +110,9 @@ namespace Pk3DSRNGTool
             if (list.Count <= index)
                 return;
             var row = MainDGV.Rows[index];
-            if (list[index].High16bit < 9)
+            if (Method.SelectedIndex == 0 && list[index]._fs > 0)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            if (Method.SelectedIndex == 1 && list[index].High16bit < 9)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
 
@@ -117,6 +126,15 @@ namespace Pk3DSRNGTool
             catch (NullReferenceException)
             {
             }
+        }
+
+        private void Method_Changed()
+        {
+            tiny_friendsafari.Visible = Method.SelectedIndex == 0;
+            tiny_high16bit.Visible = Method.SelectedIndex == 1;
+            tiny_slot.Visible = Method.SelectedIndex == 1;
+            tiny_portalsync.Visible = Method.SelectedIndex == 2;
+            tiny_sync.Visible = Method.SelectedIndex != 2;
         }
     }
 }

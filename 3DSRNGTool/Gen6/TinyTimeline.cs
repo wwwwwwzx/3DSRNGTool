@@ -100,10 +100,9 @@ namespace Pk3DSRNGTool
                 newdata.rand = Tinyrng.Nextuint();
                 results.Add(newdata);
             }
-            MarkSync();
         }
 
-        private void MarkSync()
+        public void MarkSync()
         {
             const int delay1 = 15;
             const int delay2 = 20;
@@ -119,6 +118,16 @@ namespace Pk3DSRNGTool
                         break;
                     }
                 }
+            }
+        }
+
+        public void MarkFS()
+        {
+            int max = results.Count - 2;
+            for (int i = 0; i < max; i++)
+            {
+                if (results[i + 1].Rand100 < 13)
+                    results[i]._fs = (byte)(((results[i + 2].rand * 3ul) >> 32) + 1);
             }
         }
 
