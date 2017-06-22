@@ -1274,7 +1274,7 @@ namespace Pk3DSRNGTool
                 {
                     RNGPool.tinyframe = line.FindFrame(j + RNGPool.DelayTime);
                     RNGResult result = RNGPool.Generate6();
-                    if (j < min || !filter.CheckResult(result))
+                    if (j < min || !filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
                         continue;
                     Frames.Add(new Frame(result, frame: j, time: j - min));
                     Frames.Last()._tinystate = new PRNGState(tinyframe.state);
