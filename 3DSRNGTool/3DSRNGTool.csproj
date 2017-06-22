@@ -59,6 +59,7 @@
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
     <Compile Include="Gen6\Egg6.cs" />
+    <Compile Include="Gen6\Gen6Encounter\HordeTable6.cs" />
     <Compile Include="Gen6\ID6.cs" />
     <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />

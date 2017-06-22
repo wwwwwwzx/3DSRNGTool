@@ -60,8 +60,8 @@ namespace Pk3DSRNGTool
 
         public ResultW6[] Generate_Horde()
         {
-            bool Sync = getSync;
             var results = new ResultW6[5];
+            bool Sync = getSync;
             Advance(60);
             for (int i = 0; i < 5; i++)
             {

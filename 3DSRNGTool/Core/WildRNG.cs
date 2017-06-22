@@ -8,7 +8,7 @@
 
         public byte[] SlotSplitter;
         public int[] SpecForm;
-        
+
         // Store personal info in memory
         protected byte[] Gender;
         protected bool[] RandomGender;
@@ -37,6 +37,8 @@
             new byte[] { 20,20,10,10,10,10,10,5,4,1 }, //SuMo Normal
             new byte[] { 10,10,20,20,10,10,10,5,4,1 }, //SuMo Poni Plains
             new byte[] { 10,10,10,10,10,10,10,10,10,5,4,1 }, // Gen6
+            new byte[] { 60,35,5 }, // Horde
+            new byte[] { 50,30,15,4,1 }, // Rock Smash
         };
     }
 }
