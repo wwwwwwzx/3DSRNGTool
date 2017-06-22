@@ -15,8 +15,8 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
-            int[] typelist = { -1, 0, 2, 3 };
-            string[] typestrlist = { "-", "0", "1", "2" };
+            int[] typelist = { -1, 0, 2, 3, 5 };
+            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Soaring", "stretch" };
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
             Type1.DisplayMember = "Text";
             Type1.ValueMember = "Value";
@@ -24,7 +24,12 @@ namespace Pk3DSRNGTool
             Type2.DisplayMember = "Text";
             Type2.ValueMember = "Value";
             Type2.DataSource = new BindingSource(List, null);
-            Type1.SelectedIndex = Type2.SelectedIndex = 0;
+            Type3.DisplayMember = "Text";
+            Type3.ValueMember = "Value";
+            Type3.DataSource = new BindingSource(List, null);
+            Type3.SelectedIndex =
+            Type2.SelectedIndex = 
+            Type1.SelectedIndex = 0;
         }
         private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -42,7 +47,7 @@ namespace Pk3DSRNGTool
                 tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
-        private void B_update_Click(object sender, EventArgs e)
+        private void Update_Click(object sender, EventArgs e)
         {
             try
             {
@@ -86,6 +91,7 @@ namespace Pk3DSRNGTool
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
             line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
+            line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
             for (int i = (int)Shift.Value; i > 0; i--)
                 line.Add((int)Frame_J.Value, 4);
             return line;

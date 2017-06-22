@@ -50,11 +50,12 @@
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
-            this.B_update = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
             this.Type2 = new System.Windows.Forms.ComboBox();
@@ -63,13 +64,14 @@
             this.GB_Manu = new System.Windows.Forms.GroupBox();
             this.Shift = new System.Windows.Forms.NumericUpDown();
             this.Frame_J = new System.Windows.Forms.NumericUpDown();
-            this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Type3 = new System.Windows.Forms.ComboBox();
+            this.Frame3 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).BeginInit();
+            this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             this.GB_Cali.SuspendLayout();
@@ -77,14 +79,14 @@
             this.GB_Manu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
-            this.CMS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             this.SuspendLayout();
             // 
             // tiny3
             // 
             this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny3.Hexadecimal = true;
-            this.tiny3.Location = new System.Drawing.Point(50, 21);
+            this.tiny3.Location = new System.Drawing.Point(62, 25);
             this.tiny3.Name = "tiny3";
             this.tiny3.Size = new System.Drawing.Size(78, 22);
             this.tiny3.TabIndex = 100;
@@ -94,17 +96,18 @@
             // 
             this.label0.AutoSize = true;
             this.label0.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label0.Location = new System.Drawing.Point(22, 109);
+            this.label0.Location = new System.Drawing.Point(34, 113);
             this.label0.Name = "label0";
             this.label0.Size = new System.Drawing.Size(28, 14);
             this.label0.TabIndex = 107;
             this.label0.Text = "[0]";
+            this.label0.DoubleClick += new System.EventHandler(this.Update_Click);
             // 
             // tiny2
             // 
             this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny2.Hexadecimal = true;
-            this.tiny2.Location = new System.Drawing.Point(50, 49);
+            this.tiny2.Location = new System.Drawing.Point(62, 53);
             this.tiny2.Name = "tiny2";
             this.tiny2.Size = new System.Drawing.Size(78, 22);
             this.tiny2.TabIndex = 101;
@@ -114,17 +117,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label1.Location = new System.Drawing.Point(22, 80);
+            this.label1.Location = new System.Drawing.Point(34, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 14);
             this.label1.TabIndex = 106;
             this.label1.Text = "[1]";
+            this.label1.DoubleClick += new System.EventHandler(this.Update_Click);
             // 
             // tiny1
             // 
             this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny1.Hexadecimal = true;
-            this.tiny1.Location = new System.Drawing.Point(50, 77);
+            this.tiny1.Location = new System.Drawing.Point(62, 81);
             this.tiny1.Name = "tiny1";
             this.tiny1.Size = new System.Drawing.Size(78, 22);
             this.tiny1.TabIndex = 102;
@@ -134,7 +138,7 @@
             // 
             this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiny0.Hexadecimal = true;
-            this.tiny0.Location = new System.Drawing.Point(50, 106);
+            this.tiny0.Location = new System.Drawing.Point(62, 110);
             this.tiny0.Name = "tiny0";
             this.tiny0.Size = new System.Drawing.Size(78, 22);
             this.tiny0.TabIndex = 103;
@@ -144,21 +148,23 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label2.Location = new System.Drawing.Point(22, 51);
+            this.label2.Location = new System.Drawing.Point(34, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 105;
             this.label2.Text = "[2]";
+            this.label2.DoubleClick += new System.EventHandler(this.Update_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label3.Location = new System.Drawing.Point(22, 23);
+            this.label3.Location = new System.Drawing.Point(34, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 14);
             this.label3.TabIndex = 104;
             this.label3.Text = "[3]";
+            this.label3.DoubleClick += new System.EventHandler(this.Update_Click);
             // 
             // MainDGV
             // 
@@ -195,7 +201,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.MainDGV.DefaultCellStyle = dataGridViewCellStyle4;
-            this.MainDGV.Location = new System.Drawing.Point(151, 12);
+            this.MainDGV.Location = new System.Drawing.Point(200, 12);
             this.MainDGV.Name = "MainDGV";
             this.MainDGV.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -207,7 +213,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.MainDGV.RowHeadersWidth = 18;
-            this.MainDGV.Size = new System.Drawing.Size(544, 476);
+            this.MainDGV.Size = new System.Drawing.Size(572, 458);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
             // 
@@ -272,16 +278,30 @@
             this.tiny_state.ReadOnly = true;
             this.tiny_state.Width = 255;
             // 
+            // CMS
+            // 
+            this.CMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyStatusToolStripMenuItem});
+            this.CMS.Name = "CMS";
+            this.CMS.Size = new System.Drawing.Size(138, 26);
+            // 
+            // copyStatusToolStripMenuItem
+            // 
+            this.copyStatusToolStripMenuItem.Name = "copyStatusToolStripMenuItem";
+            this.copyStatusToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.copyStatusToolStripMenuItem.Text = "Copy Status";
+            this.copyStatusToolStripMenuItem.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
+            // 
             // Frame1
             // 
             this.Frame1.AccessibleName = "";
             this.Frame1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame1.Increment = new decimal(new int[] {
-            100,
+            2,
             0,
             0,
             0});
-            this.Frame1.Location = new System.Drawing.Point(13, 53);
+            this.Frame1.Location = new System.Drawing.Point(15, 171);
             this.Frame1.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -299,9 +319,9 @@
             // B_Create
             // 
             this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_Create.Location = new System.Drawing.Point(85, 465);
+            this.B_Create.Location = new System.Drawing.Point(99, 441);
             this.B_Create.Name = "B_Create";
-            this.B_Create.Size = new System.Drawing.Size(60, 23);
+            this.B_Create.Size = new System.Drawing.Size(76, 29);
             this.B_Create.TabIndex = 110;
             this.B_Create.Text = "Create";
             this.B_Create.UseVisualStyleBackColor = true;
@@ -311,7 +331,7 @@
             // 
             this.L_Mainframe.AutoSize = true;
             this.L_Mainframe.Font = new System.Drawing.Font("Consolas", 9F);
-            this.L_Mainframe.Location = new System.Drawing.Point(12, 27);
+            this.L_Mainframe.Location = new System.Drawing.Point(13, 144);
             this.L_Mainframe.Name = "L_Mainframe";
             this.L_Mainframe.Size = new System.Drawing.Size(105, 14);
             this.L_Mainframe.TabIndex = 111;
@@ -326,7 +346,7 @@
             0,
             0,
             0});
-            this.Frame_max.Location = new System.Drawing.Point(15, 418);
+            this.Frame_max.Location = new System.Drawing.Point(12, 96);
             this.Frame_max.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -341,21 +361,11 @@
             0,
             0});
             // 
-            // B_update
-            // 
-            this.B_update.Location = new System.Drawing.Point(40, 143);
-            this.B_update.Name = "B_update";
-            this.B_update.Size = new System.Drawing.Size(75, 23);
-            this.B_update.TabIndex = 113;
-            this.B_update.Text = "Update";
-            this.B_update.UseVisualStyleBackColor = true;
-            this.B_update.Click += new System.EventHandler(this.B_update_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label4.Location = new System.Drawing.Point(12, 392);
+            this.label4.Location = new System.Drawing.Point(9, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 14);
             this.label4.TabIndex = 114;
@@ -363,13 +373,24 @@
             // 
             // GB_Cali
             // 
+            this.GB_Cali.Controls.Add(this.Type3);
+            this.GB_Cali.Controls.Add(this.Frame3);
             this.GB_Cali.Controls.Add(this.Type2);
             this.GB_Cali.Controls.Add(this.Frame2);
+            this.GB_Cali.Controls.Add(this.Type1);
             this.GB_Cali.Controls.Add(this.L_Mainframe);
             this.GB_Cali.Controls.Add(this.Frame1);
-            this.GB_Cali.Location = new System.Drawing.Point(5, 172);
+            this.GB_Cali.Controls.Add(this.tiny3);
+            this.GB_Cali.Controls.Add(this.label0);
+            this.GB_Cali.Controls.Add(this.label3);
+            this.GB_Cali.Controls.Add(this.tiny2);
+            this.GB_Cali.Controls.Add(this.label2);
+            this.GB_Cali.Controls.Add(this.label1);
+            this.GB_Cali.Controls.Add(this.tiny0);
+            this.GB_Cali.Controls.Add(this.tiny1);
+            this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(140, 113);
+            this.GB_Cali.Size = new System.Drawing.Size(189, 282);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
@@ -377,9 +398,9 @@
             // Type2
             // 
             this.Type2.FormattingEnabled = true;
-            this.Type2.Location = new System.Drawing.Point(79, 81);
+            this.Type2.Location = new System.Drawing.Point(94, 198);
             this.Type2.Name = "Type2";
-            this.Type2.Size = new System.Drawing.Size(44, 21);
+            this.Type2.Size = new System.Drawing.Size(76, 21);
             this.Type2.TabIndex = 116;
             // 
             // Frame2
@@ -387,11 +408,11 @@
             this.Frame2.AccessibleName = "";
             this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame2.Increment = new decimal(new int[] {
-            100,
+            2,
             0,
             0,
             0});
-            this.Frame2.Location = new System.Drawing.Point(13, 81);
+            this.Frame2.Location = new System.Drawing.Point(15, 199);
             this.Frame2.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -409,18 +430,20 @@
             // Type1
             // 
             this.Type1.FormattingEnabled = true;
-            this.Type1.Location = new System.Drawing.Point(84, 226);
+            this.Type1.Location = new System.Drawing.Point(94, 172);
             this.Type1.Name = "Type1";
-            this.Type1.Size = new System.Drawing.Size(44, 21);
+            this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
             // 
             // GB_Manu
             // 
             this.GB_Manu.Controls.Add(this.Shift);
             this.GB_Manu.Controls.Add(this.Frame_J);
-            this.GB_Manu.Location = new System.Drawing.Point(5, 291);
+            this.GB_Manu.Controls.Add(this.Frame_max);
+            this.GB_Manu.Controls.Add(this.label4);
+            this.GB_Manu.Location = new System.Drawing.Point(5, 300);
             this.GB_Manu.Name = "GB_Manu";
-            this.GB_Manu.Size = new System.Drawing.Size(140, 62);
+            this.GB_Manu.Size = new System.Drawing.Size(189, 136);
             this.GB_Manu.TabIndex = 117;
             this.GB_Manu.TabStop = false;
             this.GB_Manu.Text = "Manipulate";
@@ -458,42 +481,48 @@
             0,
             0});
             // 
-            // CMS
+            // Type3
             // 
-            this.CMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyStatusToolStripMenuItem});
-            this.CMS.Name = "CMS";
-            this.CMS.Size = new System.Drawing.Size(138, 26);
+            this.Type3.FormattingEnabled = true;
+            this.Type3.Location = new System.Drawing.Point(94, 225);
+            this.Type3.Name = "Type3";
+            this.Type3.Size = new System.Drawing.Size(76, 21);
+            this.Type3.TabIndex = 118;
             // 
-            // copyStatusToolStripMenuItem
+            // Frame3
             // 
-            this.copyStatusToolStripMenuItem.Name = "copyStatusToolStripMenuItem";
-            this.copyStatusToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.copyStatusToolStripMenuItem.Text = "Copy Status";
-            this.copyStatusToolStripMenuItem.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
+            this.Frame3.AccessibleName = "";
+            this.Frame3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame3.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.Frame3.Location = new System.Drawing.Point(15, 226);
+            this.Frame3.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.Frame3.Name = "Frame3";
+            this.Frame3.Size = new System.Drawing.Size(60, 22);
+            this.Frame3.TabIndex = 117;
+            this.Frame3.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 500);
+            this.ClientSize = new System.Drawing.Size(784, 482);
             this.Controls.Add(this.GB_Manu);
-            this.Controls.Add(this.Type1);
             this.Controls.Add(this.GB_Cali);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.B_update);
-            this.Controls.Add(this.Frame_max);
             this.Controls.Add(this.B_Create);
             this.Controls.Add(this.MainDGV);
-            this.Controls.Add(this.tiny3);
-            this.Controls.Add(this.label0);
-            this.Controls.Add(this.tiny2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tiny1);
-            this.Controls.Add(this.tiny0);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.MinimumSize = new System.Drawing.Size(720, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 520);
             this.Name = "TinyTimelineTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiny Timeline Tool";
@@ -503,17 +532,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).EndInit();
+            this.CMS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Manu.ResumeLayout(false);
+            this.GB_Manu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
-            this.CMS.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -532,7 +562,6 @@
         private System.Windows.Forms.Button B_Create;
         private System.Windows.Forms.Label L_Mainframe;
         private System.Windows.Forms.NumericUpDown Frame_max;
-        private System.Windows.Forms.Button B_update;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.ComboBox Type2;
@@ -550,5 +579,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.ContextMenuStrip CMS;
         private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
+        private System.Windows.Forms.ComboBox Type3;
+        private System.Windows.Forms.NumericUpDown Frame3;
     }
 }
