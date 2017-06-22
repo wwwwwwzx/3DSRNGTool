@@ -71,6 +71,16 @@ namespace Pk3DSRNGTool
             DataReady = true;
         }
 
+#if DEBUG
+        public void WriteTiny(uint[] tiny)
+        {
+            Write(TinyOffset, BitConverter.GetBytes(tiny[0]), Pid);
+            Write(TinyOffset + 4, BitConverter.GetBytes(tiny[1]), Pid);
+            Write(TinyOffset + 8, BitConverter.GetBytes(tiny[2]), Pid);
+            Write(TinyOffset + 12, BitConverter.GetBytes(tiny[3]), Pid);
+        }
+#endif
+
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
         public byte[] ReadSeed() => SingleThreadRead(MTOffset + 4, 0x4);  // MT[0]
         public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
