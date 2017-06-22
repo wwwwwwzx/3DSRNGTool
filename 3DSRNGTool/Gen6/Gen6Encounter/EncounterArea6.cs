@@ -18,7 +18,9 @@ namespace Pk3DSRNGTool
 
         public override bool VersionDifference => Species.Any(i => ORList.Contains(i));
 
-        public int[] getSpecies(bool IsAS, bool IsNight)
+        public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 3);
+
+        private int[] getSpecies(bool IsAS)
         {
             int[] table = (int[])Species.Clone();
             if (IsAS && VersionDifference)  // Replace ORAS species

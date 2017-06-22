@@ -22,7 +22,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Delay = 352, Type = EncounterType.Horde,},
+                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Horde, Delay = 352 },
                 }
             },
             new PokemonList
@@ -30,12 +30,7 @@
                 Text = "Rock Smash",
                 List = new[]
                 {
-                    new PKMW6 { Species = 557, Level = 20, Delay = 284, }, // Dwebble
-                    new PKMW6 { Species = 075, Level = 20, Delay = 284, }, // Graveler
-                    new PKMW6 { Species = 095, Level = 20, Delay = 284, }, // Onix
-                    new PKMW6 { Species = 688, Level = 20, Delay = 284, }, // Binacle
-                    new PKMW6 { Species = 213, Level = 20, Delay = 284, }, // Shuckle
-                    new PKMW6 { Species = 218, Level = 20, Delay = 284, }, // Slugma
+                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.RockSmash, Delay = 284 },
                 }
             },
             new PokemonList
@@ -54,7 +49,7 @@
                 Text = "Poke Radar",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14},
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
                 }
             },
             new PokemonList
@@ -62,7 +57,7 @@
                 Text = "Friend Safari",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6},
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6 },
                 }
             },
         };
@@ -74,7 +69,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Delay = 352, Type = EncounterType.Horde,},
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Horde, Delay = 352 },
                 }
             },
             new PokemonList
@@ -82,12 +77,7 @@
                 Text = "Rock Smash",
                 List = new[]
                 {
-                    new PKMW6 { Species = 074, Level = 20, Delay = 280, }, // Geodude
-                    new PKMW6 { Species = 075, Level = 20, Delay = 280, }, // Graveler
-                    new PKMW6 { Species = 299, Level = 20, Delay = 280, }, // Nosepass
-                    new PKMW6 { Species = 688, Level = 20, Delay = 280, }, // Binacle
-                    new PKMW6 { Species = 525, Level = 20, Delay = 280, }, // Boldore
-                    new PKMW6 { Species = 558, Level = 20, Delay = 280, }, // Crustle
+                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.RockSmash, Delay = 280 },
                 }
             },
         };

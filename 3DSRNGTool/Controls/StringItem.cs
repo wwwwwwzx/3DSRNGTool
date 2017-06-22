@@ -32,17 +32,11 @@ namespace Pk3DSRNGTool
 
         public static string getlocationstr(int locationidx, int ver)
         {
-            switch (ver)
-            {
-                case 2:
-                case 3:
-                    return gen6location[locationidx & 0x1FF] + LocationTable6.Table_ORAS.FirstOrDefault(t => t.Locationidx == locationidx).mark;
-                case 4:
-                case 5:
+            if (ver < 4)
+                return gen6location[locationidx & 0x1FF] + LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+            else if (ver < 6)
                     return smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
-                default:
-                    return "-";
-            }
+            return "-";
         }
 
         private readonly static string[][] Translation_Table =

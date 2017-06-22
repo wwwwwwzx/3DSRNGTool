@@ -29,7 +29,22 @@ namespace Pk3DSRNGTool
         private readonly static int[] Special = SpecialHorde.Select(t => t[0]).ToArray();
 
         public override bool VersionDifference => Species.Any(i => XList.Contains(i));
+        public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 1);
 
+        private int[] getSpecies(bool IsY)
+        {
+            int[] table = (int[])Species.Clone();
+            if (IsY && VersionDifference)  // Replace ORAS species
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    int idx = Array.IndexOf(XList, table[i]);
+                    if (idx > -1)
+                        table[i] = YList[idx];
+                }
+            }
+            return table;
+        }
         public int[] getSpecies(bool IsY, byte Slot)
         {
             int[] table = new int[5];
@@ -44,7 +59,7 @@ namespace Pk3DSRNGTool
                 {
                     idx = Array.IndexOf(XList, table[i]);
                     if (idx > -1)
-                        table[i] = XList[idx];
+                        table[i] = YList[idx];
                 }
             return table;
         }
@@ -65,7 +80,22 @@ namespace Pk3DSRNGTool
         private readonly static int[] Special = SpecialHorde.Select(t => t[0]).ToArray();
 
         public override bool VersionDifference => Species.Any(i => ORList.Contains(i));
+        public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 3);
 
+        private int[] getSpecies(bool IsAS)
+        {
+            int[] table = (int[])Species.Clone();
+            if (IsAS && VersionDifference)  // Replace ORAS species
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    int idx = Array.IndexOf(ORList, table[i]);
+                    if (idx > -1)
+                        table[i] = ASList[idx];
+                }
+            }
+            return table;
+        }
         public int[] getSpecies(bool IsAS, byte Slot)
         {
             int[] table = new int[5];
@@ -81,7 +111,7 @@ namespace Pk3DSRNGTool
                 {
                     idx = Array.IndexOf(ORList, table[i]);
                     if (idx > -1)
-                        table[i] = ORList[idx];
+                        table[i] = ASList[idx];
                 }
                 if (Location == 230 && species == 270) //Route 114
                     table[3] = 333;

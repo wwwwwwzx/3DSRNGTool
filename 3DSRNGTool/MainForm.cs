@@ -154,11 +154,11 @@ namespace Pk3DSRNGTool
         {
             int[] locationlist = null;
             if (Gen6)
-                locationlist = null;
+                locationlist = LocationTable6.getLocation(FormPM as PKMW6, Ver < 2);
             else if (Gen7)
                 locationlist = FormPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (FormPM as PKMW7)?.Location;
 
-            MetLocation.Visible = SlotSpecies.Visible = Day.Visible = Night.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
+            MetLocation.Visible = SlotSpecies.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
             if (locationlist == null)
                 return;
             Locationlist = locationlist.Select(loc => new ComboItem(StringItem.getlocationstr(loc, Ver), loc)).ToList();
@@ -494,6 +494,7 @@ namespace Pk3DSRNGTool
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
+            Day.Visible = Night.Visible =
             TinyMT_Status.Visible = Homogeneity.Visible =
             Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible =
             GB_RNGGEN7ID.Visible =
@@ -555,8 +556,10 @@ namespace Pk3DSRNGTool
                 Lv_min.Value = ea.VersionDifference && Ver == 5 ? tmp.LevelMinMoon : tmp.LevelMin;
                 Lv_max.Value = ea.VersionDifference && Ver == 5 ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
-            else
-                ea = (Ver > 1 ? LocationTable6.Table_ORAS : null)?.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+            else if (Gen6)
+            {
+                ea = LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+            }
 
             RefreshWildSpecies();
         }

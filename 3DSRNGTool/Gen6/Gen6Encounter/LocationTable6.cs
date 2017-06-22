@@ -1,12 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Pk3DSRNGTool.Core;
+
 namespace Pk3DSRNGTool
 {
     public static class LocationTable6
     {
+        public static EncounterArea[] TableNow;
+
+        public static int[] getLocation(PKMW6 pm, bool IsXY = true)
+        {
+            EncounterType type = pm.Type;
+            switch (type)
+            {
+                case EncounterType.Horde:
+                    TableNow = IsXY ? (EncounterArea[])Horde_XY : Horde_ORAS;
+                    break;
+                case EncounterType.RockSmash:
+                    TableNow = IsXY ? RockSmash_XY : RockSmash_ORAS;
+                    break;
+                default:
+                    TableNow = null; return null;
+            }
+            return TableNow.Select(t => t.Locationidx).ToArray();
+        }
+
         #region Horde
-        public readonly static HordeArea_ORAS[] table =
+        public readonly static HordeArea_ORAS[] Horde_ORAS =
         {
             new HordeArea_ORAS
             {

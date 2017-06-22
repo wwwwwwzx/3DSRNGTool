@@ -7,6 +7,6 @@ namespace Pk3DSRNGTool
         public override int Locationidx => Location + (idx << 9);
         public override int[] Species { get; set; } = new int[5];
         public byte[] Level = new byte[5];
-
+        public override int[] getSpecies(int ver, bool IsNight) => (int[])Species.Clone();
     }
 }
