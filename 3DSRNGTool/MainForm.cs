@@ -1272,7 +1272,7 @@ namespace Pk3DSRNGTool
                     continue;
                 for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
                 {
-                    RNGPool.tiny = line.FindFrame(j + RNGPool.DelayTime);
+                    RNGPool.tinyframe = line.FindFrame(j + RNGPool.DelayTime);
                     RNGResult result = RNGPool.Generate6();
                     if (j < min || !filter.CheckResult(result))
                         continue;
