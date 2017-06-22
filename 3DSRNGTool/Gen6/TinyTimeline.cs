@@ -84,7 +84,7 @@ namespace Pk3DSRNGTool
                         Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
                         break;
                     case 4:
-                        Status.Add(Currentframe + 180, 3);
+                        Status.Add(Currentframe + 180, 4);
                         break;
                 }
                 results.Add(newdata);
