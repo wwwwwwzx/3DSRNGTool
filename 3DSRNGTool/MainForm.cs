@@ -1010,6 +1010,17 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new[] { 0, FormPM.SpecForm };
                             setting6.SlotLevel = new byte[] { 0, FormPM.Level };
                             break;
+                        case EncounterType.RockSmash:
+                            var RS_area = ea as RockSmashArea6;
+                            setting6.SpecForm = new int[6];
+                            setting6.SlotLevel = new byte[6];
+                            slottype = 4;
+                            for (int i = 1; i < 6; i++)
+                            {
+                                setting6.SpecForm[i] = slotspecies[i - 1];
+                                setting6.SlotLevel[i] = RS_area.Level[i - 1];
+                            }
+                            break;
                         default:
                             var area = ea as EncounterArea6;
                             setting6.SpecForm = new int[13];
