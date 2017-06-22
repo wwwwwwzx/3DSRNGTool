@@ -19,7 +19,10 @@ namespace Pk3DSRNGTool
         private void Prepare(ResultW6 rt)
         {
             if (null == (tiny = RNGPool.tinyframe?.getTiny))
+            {
                 rt.Slot = slot = 1;
+                return;
+            }
             rt.Synchronize = getSync;
             switch (Wildtype)
             {
@@ -150,12 +153,14 @@ namespace Pk3DSRNGTool
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
-        private string getitemstr(int rand) // to-do
+        private string getitemstr(int rand)
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return "50%";
             if (rand < (CompoundEye ? 80 : 55))
                 return "5%";
+            if (rand < (CompoundEye ? 85 : 56))
+                return "1%";
             return "-";
         }
     }
