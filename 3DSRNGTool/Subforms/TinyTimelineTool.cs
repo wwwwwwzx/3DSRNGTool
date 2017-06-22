@@ -114,6 +114,8 @@ namespace Pk3DSRNGTool
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 1 && list[index].High16bit < 9)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
+            if (Method.SelectedIndex == 2 && list[index]._sync)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
         }
 
         private void copyStatusToolStripMenuItem_Click(object sender, EventArgs e)

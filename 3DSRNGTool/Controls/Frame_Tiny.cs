@@ -7,6 +7,7 @@ namespace Pk3DSRNGTool
     {
         public int Index { get; set; }
         public bool _sync;
+        public byte _fs;
         public uint[] state;
         public uint rand;
         public int framemin;
@@ -19,8 +20,7 @@ namespace Pk3DSRNGTool
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
         public char Sync => rand < 0x80000000 ? 'O' : 'X';
         public char PortalSync => _sync ? 'O' : 'X';
-        public byte _fs;
-        public char FS => _fs > 0 ? _fs.ToString()[0] : 'X';
+        public string FS => _fs > 0 ? _fs.ToString() : "X";
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : (framemin + 2).ToString() + " ~ " + framemax.ToString();
