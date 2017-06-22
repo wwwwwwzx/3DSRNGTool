@@ -8,5 +8,6 @@ namespace Pk3DSRNGTool
         public bool IsSpecial { get; set; }
         public byte Item { get; set; }
         public string ItemStr { get; set; }
+        public bool IsPokemon;
     }
 }

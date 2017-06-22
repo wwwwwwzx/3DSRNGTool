@@ -14,25 +14,35 @@ namespace Pk3DSRNGTool
         private static uint getTinyRand => tiny.Nextuint();
         private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
 
-        private byte getSlot
+        private bool getSync => getTinyRand < 0x80000000;
+        private byte getAbility => 0; // Todo
+        private void Prepare(ResultW6 rt)
         {
-            get
+            if (null == (tiny = RNGPool.tinyframe?.getTiny))
             {
-                if (tiny == null) return slot = 1;
-                switch (Wildtype)
-                {
-                    case EncounterType.FriendSafari:
-                        return slot = (byte)(TinyRand(SlotNum) + 1); // Default unlock all
-                    case EncounterType.SingleSlot:
-                        return slot = 1;
-                    case EncounterType.PokeRadar:
-                        return IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
-                    default: return getslot(TinyRand(100));
-                }
+                rt.Slot = slot = 1;
+                return;
+            }
+            rt.Synchronize = getSync;
+            switch (Wildtype)
+            {
+                case EncounterType.FriendSafari:
+                    rt.IsPokemon = TinyRand(100) < 13;
+                    rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
+                    rt.Item = TinyRand(100);
+                    rt.ItemStr = getitemstr(rt.Item);
+                    break;
+                case EncounterType.SingleSlot:
+                    rt.Slot = slot = 1;
+                    break;
+                case EncounterType.PokeRadar:
+                    rt.Slot = IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
+                    break;
+                default:
+                    rt.Slot = getslot(TinyRand(100));
+                    break;
             }
         }
-        private bool getSync => tiny == null ? false : getTinyRand < 0x80000000;
-        private byte getAbility => 0; // Todo
 
         public EncounterType Wildtype;
         public bool HA;
@@ -50,19 +60,16 @@ namespace Pk3DSRNGTool
         public override RNGResult Generate()
         {
             var rt = new ResultW6();
-            tiny = RNGPool.tiny?.getTiny;
-            rt.Synchronize = getSync;
-            rt.Slot = getSlot;
+            Prepare(rt);
             Advance(60);
             Generate_Once(rt);
-            rt.ItemStr = "-";
             return rt;
         }
 
         public ResultW6[] Generate_Horde()
         {
             var results = new ResultW6[5];
-            bool Sync = getSync;
+            bool Sync = tiny == null ? false : getSync;
             Advance(60);
             for (int i = 0; i < 5; i++)
             {
@@ -146,12 +153,14 @@ namespace Pk3DSRNGTool
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
-        private string getitemstr(int rand) // to-do
+        private string getitemstr(int rand)
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return "50%";
             if (rand < (CompoundEye ? 80 : 55))
                 return "5%";
+            if (rand < (CompoundEye ? 85 : 56))
+                return "1%";
             return "-";
         }
     }
