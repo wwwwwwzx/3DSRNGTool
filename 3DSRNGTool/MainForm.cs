@@ -776,7 +776,8 @@ namespace Pk3DSRNGTool
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
-            RNGPool.IsMainRNGEgg = MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
+            RNGPool.IsMainRNGEgg = Method == 3;
+            RNGPool.IsMainRNGEgg &= MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
 
             if (MainRNGEgg.Checked) // Get first egg
             {

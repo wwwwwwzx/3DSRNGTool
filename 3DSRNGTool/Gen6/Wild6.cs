@@ -13,6 +13,11 @@ namespace Pk3DSRNGTool
         private static TinyMT tiny;
         private static uint getTinyRand => tiny.Nextuint();
         private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
+        private static void tiny_Advance(int n)
+        {
+            for (int i = n; i > 0; i--)
+                tiny.Nextuint();
+        }
 
         private bool getSync => getTinyRand < 0x80000000;
         private byte getAbility => 0; // Todo
@@ -32,11 +37,15 @@ namespace Pk3DSRNGTool
                     rt.Item = TinyRand(100);
                     rt.ItemStr = getitemstr(rt.Item);
                     break;
-                case EncounterType.SingleSlot:
-                    rt.Slot = slot = 1;
+                case EncounterType.TrashCan:
+                    tiny_Advance(2);
+                    rt.Slot = getslot(TinyRand(100));
                     break;
                 case EncounterType.PokeRadar:
                     rt.Slot = IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
+                    break;
+                case EncounterType.SingleSlot:
+                    rt.Slot = slot = 1;
                     break;
                 default:
                     rt.Slot = getslot(TinyRand(100));
