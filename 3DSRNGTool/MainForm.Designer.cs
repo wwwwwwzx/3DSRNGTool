@@ -215,6 +215,7 @@
             this.Event_Nature = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.CB_HAUnlocked = new System.Windows.Forms.CheckBox();
             this.FirstEncounter = new System.Windows.Forms.CheckBox();
             this.L_WildIVsCnt = new System.Windows.Forms.Label();
@@ -470,7 +471,6 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -1024,6 +1024,7 @@
             this.ivmin0.Name = "ivmin0";
             this.ivmin0.Size = new System.Drawing.Size(49, 22);
             this.ivmin0.TabIndex = 6;
+            this.ivmin0.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax0
@@ -1044,6 +1045,7 @@
             0,
             0,
             0});
+            this.ivmax0.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax0.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmin1
@@ -1059,6 +1061,7 @@
             this.ivmin1.Name = "ivmin1";
             this.ivmin1.Size = new System.Drawing.Size(49, 22);
             this.ivmin1.TabIndex = 8;
+            this.ivmin1.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label6
@@ -1083,6 +1086,7 @@
             this.ivmin2.Name = "ivmin2";
             this.ivmin2.Size = new System.Drawing.Size(49, 22);
             this.ivmin2.TabIndex = 10;
+            this.ivmin2.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label5
@@ -1107,6 +1111,7 @@
             this.ivmin3.Name = "ivmin3";
             this.ivmin3.Size = new System.Drawing.Size(49, 22);
             this.ivmin3.TabIndex = 12;
+            this.ivmin3.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label4
@@ -1131,6 +1136,7 @@
             this.ivmin4.Name = "ivmin4";
             this.ivmin4.Size = new System.Drawing.Size(49, 22);
             this.ivmin4.TabIndex = 14;
+            this.ivmin4.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label3
@@ -1155,6 +1161,7 @@
             this.ivmin5.Name = "ivmin5";
             this.ivmin5.Size = new System.Drawing.Size(49, 22);
             this.ivmin5.TabIndex = 16;
+            this.ivmin5.Click += new System.EventHandler(this.IVs_Click);
             this.ivmin5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // label2
@@ -1193,6 +1200,7 @@
             0,
             0,
             0});
+            this.ivmax1.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax1.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax5
@@ -1213,6 +1221,7 @@
             0,
             0,
             0});
+            this.ivmax5.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax5.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax2
@@ -1233,6 +1242,7 @@
             0,
             0,
             0});
+            this.ivmax2.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax2.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax4
@@ -1253,6 +1263,7 @@
             0,
             0,
             0});
+            this.ivmax4.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax4.Enter += new System.EventHandler(this.TabSelected);
             // 
             // ivmax3
@@ -1273,6 +1284,7 @@
             0,
             0,
             0});
+            this.ivmax3.Click += new System.EventHandler(this.IVs_Click);
             this.ivmax3.Enter += new System.EventHandler(this.TabSelected);
             // 
             // StatPanel
@@ -2687,6 +2699,18 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // CB_3rdSlotUnlocked
+            // 
+            this.CB_3rdSlotUnlocked.AutoSize = true;
+            this.CB_3rdSlotUnlocked.Checked = true;
+            this.CB_3rdSlotUnlocked.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CB_3rdSlotUnlocked.Location = new System.Drawing.Point(142, 158);
+            this.CB_3rdSlotUnlocked.Name = "CB_3rdSlotUnlocked";
+            this.CB_3rdSlotUnlocked.Size = new System.Drawing.Size(98, 17);
+            this.CB_3rdSlotUnlocked.TabIndex = 97;
+            this.CB_3rdSlotUnlocked.Text = "第三只已解锁";
+            this.CB_3rdSlotUnlocked.UseVisualStyleBackColor = true;
             // 
             // CB_HAUnlocked
             // 
@@ -5659,18 +5683,6 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // CB_3rdSlotUnlocked
-            // 
-            this.CB_3rdSlotUnlocked.AutoSize = true;
-            this.CB_3rdSlotUnlocked.Checked = true;
-            this.CB_3rdSlotUnlocked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_3rdSlotUnlocked.Location = new System.Drawing.Point(142, 158);
-            this.CB_3rdSlotUnlocked.Name = "CB_3rdSlotUnlocked";
-            this.CB_3rdSlotUnlocked.Size = new System.Drawing.Size(98, 17);
-            this.CB_3rdSlotUnlocked.TabIndex = 97;
-            this.CB_3rdSlotUnlocked.Text = "第三只已解锁";
-            this.CB_3rdSlotUnlocked.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5694,6 +5706,7 @@
             this.Text = "3DS RNG Tool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_Close);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Click += new System.EventHandler(this.IVs_Click);
             this.Filters.ResumeLayout(false);
             this.Filters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).EndInit();

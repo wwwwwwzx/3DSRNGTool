@@ -321,6 +321,16 @@ namespace Pk3DSRNGTool
             }
             catch { }
         }
+        
+        private void IVs_Click(object sender, EventArgs e)
+        {
+            switch (ModifierKeys)
+            {
+                case Keys.Shift: (sender as NumericUpDown).Value = 0; break;
+                case Keys.Control: (sender as NumericUpDown).Value = 30; break;
+                case Keys.Alt: (sender as NumericUpDown).Value = 31; break;
+            }
+        }
 
         private void B_SaveFilter_Click(object sender, EventArgs e)
         {
