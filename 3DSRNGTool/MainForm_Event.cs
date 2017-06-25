@@ -15,10 +15,10 @@ namespace Pk3DSRNGTool
             try
             {
                 bool valid;
-                if (filename.IndexOf("full", StringComparison.Ordinal) > 0) // Trim full wc file
+                if (filename.Substring(filename.Length - 4, 4) == "full") // Trim full wc file
                 {
                     br.ReadBytes(0x208);
-                    filename = filename.Remove(filename.IndexOf("full", StringComparison.Ordinal), 4);
+                    filename = filename.Substring(0, filename.Length - 4);
                 }
                 if (Path.GetExtension(filename) != (Gen6 ? ".wc6" : ".wc7"))
                     valid = false;
