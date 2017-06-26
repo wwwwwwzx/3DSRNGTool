@@ -126,7 +126,6 @@ namespace Pk3DSRNGTool
         {
             byte[] seed_ay = ntrclient.ReadSeed();
             if (seed_ay == null) { Error("Timeout"); return; }
-            ntrclient.Write(0x8800000, seed_ay, ntrclient.Pid);
             Seed.Value = BitConverter.ToUInt32(seed_ay, 0);
             ntrclient.resume();
             B_Disconnect_Click(null, null);

@@ -514,7 +514,7 @@
             this.GB_Manu.Size = new System.Drawing.Size(189, 136);
             this.GB_Manu.TabIndex = 117;
             this.GB_Manu.TabStop = false;
-            this.GB_Manu.Text = "Manipulate";
+            this.GB_Manu.Text = "Adjustment";
             // 
             // L_Method
             // 
@@ -532,7 +532,8 @@
             this.Method.Items.AddRange(new object[] {
             "Friend Safari",
             "PokeRadar",
-            "ORAS Portal"});
+            "Portal/Soaring",
+            "Instant Sync"});
             this.Method.Location = new System.Drawing.Point(82, 27);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);

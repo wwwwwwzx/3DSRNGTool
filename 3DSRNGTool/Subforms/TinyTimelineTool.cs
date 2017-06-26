@@ -97,8 +97,12 @@ namespace Pk3DSRNGTool
                 Maxframe = (int)Frame_max.Value,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
-            line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
-            line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
+            if (Frame2.Value > Frame1.Value)
+            {
+                line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
+                if (Frame3.Value > Frame2.Value)
+                    line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
+            }
             for (int i = (int)Shift.Value; i > 0; i--)
                 line.Add((int)Frame_J.Value, 5);
             return line;

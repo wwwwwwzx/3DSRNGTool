@@ -5706,7 +5706,6 @@
             this.Text = "3DS RNG Tool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_Close);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Click += new System.EventHandler(this.IVs_Click);
             this.Filters.ResumeLayout(false);
             this.Filters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).EndInit();
