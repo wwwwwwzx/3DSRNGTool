@@ -67,10 +67,12 @@
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
             this.GB_Manu = new System.Windows.Forms.GroupBox();
+            this.Parameters = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
             this.Method = new System.Windows.Forms.ComboBox();
             this.Shift = new System.Windows.Forms.NumericUpDown();
             this.Frame_J = new System.Windows.Forms.NumericUpDown();
+            this.TTTToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
@@ -83,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
             this.GB_Manu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
             this.SuspendLayout();
@@ -504,6 +507,7 @@
             // 
             // GB_Manu
             // 
+            this.GB_Manu.Controls.Add(this.Parameters);
             this.GB_Manu.Controls.Add(this.L_Method);
             this.GB_Manu.Controls.Add(this.Method);
             this.GB_Manu.Controls.Add(this.Shift);
@@ -517,11 +521,20 @@
             this.GB_Manu.TabStop = false;
             this.GB_Manu.Text = "Adjustment";
             // 
+            // Parameters
+            // 
+            this.Parameters.AccessibleName = "";
+            this.Parameters.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Parameters.Location = new System.Drawing.Point(142, 26);
+            this.Parameters.Name = "Parameters";
+            this.Parameters.Size = new System.Drawing.Size(43, 22);
+            this.Parameters.TabIndex = 117;
+            // 
             // L_Method
             // 
             this.L_Method.AutoSize = true;
             this.L_Method.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Method.Location = new System.Drawing.Point(19, 30);
+            this.L_Method.Location = new System.Drawing.Point(7, 30);
             this.L_Method.Name = "L_Method";
             this.L_Method.Size = new System.Drawing.Size(43, 13);
             this.L_Method.TabIndex = 116;
@@ -535,10 +548,11 @@
             "PokeRadar",
             "Portal/Soaring",
             "Instant Sync"});
-            this.Method.Location = new System.Drawing.Point(82, 27);
+            this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);
             this.Method.TabIndex = 115;
+            this.Method.SelectedIndexChanged += new System.EventHandler(this.Method_SelectedIndexChanged);
             // 
             // Shift
             // 
@@ -601,6 +615,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Manu.ResumeLayout(false);
             this.GB_Manu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
             this.ResumeLayout(false);
@@ -646,5 +661,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
+        private System.Windows.Forms.NumericUpDown Parameters;
+        private System.Windows.Forms.ToolTip TTTToolTip;
     }
 }

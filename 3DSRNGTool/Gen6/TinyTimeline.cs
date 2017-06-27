@@ -121,13 +121,13 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void MarkFS()
+        public void MarkFS(ulong SlotNum)
         {
             int max = results.Count - 2;
             for (int i = 0; i < max; i++)
             {
                 if (results[i + 1].Rand100 < 13)
-                    results[i]._fs = (byte)(((results[i + 2].rand * 3ul) >> 32) + 1);
+                    results[i]._fs = (byte)(((results[i + 2].rand * SlotNum) >> 32) + 1);
             }
         }
 

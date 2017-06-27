@@ -139,13 +139,16 @@ namespace Pk3DSRNGTool
 
         private void DGV_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
             {
-                var hti = DGV.HitTest(e.X, e.Y);
-                DGV.ClearSelection();
-                DGV.Rows[hti.RowIndex].Selected = true;
-                DGV.CurrentCell = DGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
+                if (e.Button == MouseButtons.Right)
+                {
+                    var hti = DGV.HitTest(e.X, e.Y);
+                    DGV.ClearSelection();
+                    DGV.CurrentCell = DGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
+                }
             }
+            catch { }
         }
 
         private void SetAsCurrent_Click(object sender, EventArgs e)

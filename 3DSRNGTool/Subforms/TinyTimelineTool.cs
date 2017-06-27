@@ -79,7 +79,7 @@ namespace Pk3DSRNGTool
             state.Generate();
             switch (Method.SelectedIndex)
             {
-                case 0: state.MarkFS(); break;
+                case 0: state.MarkFS((ulong)Parameters.Value); break;
                 case 2: state.MarkSync(); break;
             }
             list = state.results;
@@ -116,7 +116,7 @@ namespace Pk3DSRNGTool
             var row = MainDGV.Rows[index];
             if (Method.SelectedIndex == 0 && list[index]._fs > 0)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            if (Method.SelectedIndex == 1 && list[index].High16bit < 9)
+            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535/(8200 - 200 * Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
             if (Method.SelectedIndex == 2 && list[index]._sync)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
@@ -145,12 +145,39 @@ namespace Pk3DSRNGTool
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
             {
-                var hti = MainDGV.HitTest(e.X, e.Y);
-                MainDGV.ClearSelection();
-                MainDGV.Rows[hti.RowIndex].Selected = true;
-                MainDGV.CurrentCell = MainDGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
+                if (e.Button == MouseButtons.Right)
+                {
+                    var hti = MainDGV.HitTest(e.X, e.Y);
+                    MainDGV.ClearSelection();
+                    MainDGV.CurrentCell = MainDGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
+                }
+            }
+            catch { };
+        }
+
+        private void Method_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Parameters.Visible = true;
+            TTTToolTip.RemoveAll();
+            switch (Method.SelectedIndex)
+            {
+                case 0:
+                    Parameters.Maximum = 3;
+                    Parameters.Minimum = 2;
+                    Parameters.Value = 3;
+                    TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
+                    break;
+                case 1:
+                    Parameters.Maximum = 256;
+                    Parameters.Minimum = 0;
+                    Parameters.Value = 40;
+                    TTTToolTip.SetToolTip(Parameters, "Chain Length");
+                    break;
+                default:
+                    Parameters.Visible = false;
+                    break;
             }
         }
     }
