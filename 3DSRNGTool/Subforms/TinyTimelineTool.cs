@@ -150,6 +150,7 @@ namespace Pk3DSRNGTool
                 var hti = MainDGV.HitTest(e.X, e.Y);
                 MainDGV.ClearSelection();
                 MainDGV.Rows[hti.RowIndex].Selected = true;
+                MainDGV.CurrentCell = MainDGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
             }
         }
     }
