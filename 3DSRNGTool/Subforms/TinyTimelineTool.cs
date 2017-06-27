@@ -116,7 +116,7 @@ namespace Pk3DSRNGTool
             var row = MainDGV.Rows[index];
             if (Method.SelectedIndex == 0 && list[index]._fs > 0)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535/(8200 - 200 * Parameters.Value)))
+            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535/(8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
             if (Method.SelectedIndex == 2 && list[index]._sync)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
@@ -170,7 +170,7 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
                     break;
                 case 1:
-                    Parameters.Maximum = 256;
+                    Parameters.Maximum = 40;
                     Parameters.Minimum = 0;
                     Parameters.Value = 40;
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
