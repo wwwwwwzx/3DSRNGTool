@@ -223,6 +223,7 @@
             this.MainDGV.Size = new System.Drawing.Size(572, 458);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
+            this.MainDGV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainDGV_MouseDown);
             // 
             // tiny_MTFRange
             // 

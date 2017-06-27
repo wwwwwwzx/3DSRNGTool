@@ -29,7 +29,7 @@ namespace Pk3DSRNGTool
             Type3.DataSource = new BindingSource(List, null);
             Method.SelectedIndex =
             Type3.SelectedIndex =
-            Type2.SelectedIndex = 
+            Type2.SelectedIndex =
             Type1.SelectedIndex = 0;
         }
         private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
@@ -141,6 +141,16 @@ namespace Pk3DSRNGTool
             tiny_slot.Visible = Method.SelectedIndex == 1;
             tiny_portalsync.Visible = Method.SelectedIndex == 2;
             tiny_sync.Visible = Method.SelectedIndex != 2;
+        }
+
+        private void MainDGV_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hti = MainDGV.HitTest(e.X, e.Y);
+                MainDGV.ClearSelection();
+                MainDGV.Rows[hti.RowIndex].Selected = true;
+            }
         }
     }
 }

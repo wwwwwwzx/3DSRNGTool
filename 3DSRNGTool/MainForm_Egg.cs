@@ -4,7 +4,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static PKHeX.Util;
-using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -137,6 +136,17 @@ namespace Pk3DSRNGTool
         }
 
         #region DGV menu
+
+        private void DGV_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hti = DGV.HitTest(e.X, e.Y);
+                DGV.ClearSelection();
+                DGV.Rows[hti.RowIndex].Selected = true;
+            }
+        }
+
         private void SetAsCurrent_Click(object sender, EventArgs e)
         {
             try
@@ -163,9 +173,9 @@ namespace Pk3DSRNGTool
             try
             {
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
-                var adv = Convert.ToInt32((string)DGV.CurrentRow.Cells["dgv_adv"].Value);
+                int adv = (Frames[DGV.CurrentRow.Index].rt as Core.EggResult).FramesUsed;
                 uint[] St = FuncUtil.SeedStr2Array(seed);
-                TinyMT tmt = new TinyMT(St);
+                var tmt = new RNG.TinyMT(St);
                 for (int i = adv; i > 0; i--)
                     tmt.Next();
                 Status = tmt.status;
