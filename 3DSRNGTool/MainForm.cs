@@ -807,7 +807,6 @@ namespace Pk3DSRNGTool
                 RNGPool.IsSolgaleo = Method == 0 && FormPM.Species == 791;
                 RNGPool.IsLunala = Method == 0 && FormPM.Species == 792;
                 RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103;
-                RNGPool.IsPelago = FormPM is PKM7 pm7 && pm7.IsPelago;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.raining = ModelStatus.raining = Method == 2 && ea.Location == 120;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;

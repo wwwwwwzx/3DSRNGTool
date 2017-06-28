@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
         private static void Advance(int n) => RNGPool.Advance(n);
 
         public bool blinkwhensync;
+        private bool IsPelago;
 
         private bool blink_process()
         {
@@ -25,7 +26,9 @@ namespace Pk3DSRNGTool
             rt.Level = Level;
 
             //Synchronize
-            if (AlwaysSync)
+            if (IsPelago)
+                Advance(60);
+            else if (AlwaysSync)
                 rt.Synchronize = true;
             else
             {
@@ -92,7 +95,11 @@ namespace Pk3DSRNGTool
             base.UseTemplate(PM);
             var pm7 = PM as PKM7;
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
-            if (pm7.IsPelago) PIDroll_count = 2;
+            if (pm7.IsPelago)
+            {
+                PIDroll_count = 2;
+                IsPelago = true;
+            }
         }
     }
 }
