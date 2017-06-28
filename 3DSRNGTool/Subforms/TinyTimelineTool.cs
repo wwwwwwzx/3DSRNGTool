@@ -9,7 +9,6 @@ namespace Pk3DSRNGTool
 {
     public partial class TinyTimelineTool : Form
     {
-
         #region Basic UI
         public TinyTimelineTool()
         {

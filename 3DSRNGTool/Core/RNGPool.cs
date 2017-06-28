@@ -182,7 +182,7 @@ namespace Pk3DSRNGTool.Core
 
         #region Gen7 Time keeping
 
-        public static bool IsSolgaleo, IsLunala, IsExeggutor;
+        public static bool IsSolgaleo, IsLunala, IsExeggutor, IsPelago;
         public static byte modelnumber;
         public static int[] remain_frame;
 
@@ -267,6 +267,8 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(DelayTime - 43);
                 return;
             }
+            if (IsPelago)
+                Advance(60);
             if (igenerator is Event7 e && e.YourID && !e.IsEgg)
                 e.Generate();
             time_elapse(DelayTime);

@@ -16,9 +16,13 @@
         public byte Ability;
         public int[] IVs;
 
-        // Generated Attributes
-        protected virtual int PerfectIVCount => IV3 ? 3 : 0;
-        protected virtual int PIDroll_count => ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
+        protected int PerfectIVCount;
+        protected int PIDroll_count;
+        public void SetValue()
+        {
+            PerfectIVCount = IV3 ? 3 : 0;
+            PIDroll_count = ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
+        }
 
         public abstract RNGResult Generate();
 
@@ -34,6 +38,7 @@
             RandomGender = PM.IsRandomGender;
             if (PM.Nature < 25)
                 Synchro_Stat = PM.Nature;
+            SetValue();
         }
     }
 }

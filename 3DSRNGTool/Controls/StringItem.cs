@@ -56,6 +56,7 @@ namespace Pk3DSRNGTool
             new [] { "Berry Tree", "果树" },
             new [] { "Cave Drop", "洞穴坠物" },
             new [] { "Rustling Bush", "晃动树影" },
+            new [] { "Poke Pelago", "宝可度假地" },
             new [] { "Johto Starters", "城都御三家" },
             new [] { "Legendary Titans", "三神柱" },
             new [] { "Trash Can", "垃圾桶" },

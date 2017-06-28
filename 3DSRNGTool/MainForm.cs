@@ -807,6 +807,7 @@ namespace Pk3DSRNGTool
                 RNGPool.IsSolgaleo = Method == 0 && FormPM.Species == 791;
                 RNGPool.IsLunala = Method == 0 && FormPM.Species == 792;
                 RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103;
+                RNGPool.IsPelago = FormPM is PKM7 pm7 && pm7.IsPelago;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.raining = ModelStatus.raining = Method == 2 && ea.Location == 120;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
@@ -910,12 +911,12 @@ namespace Pk3DSRNGTool
             setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
             setting.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
+            setting.SetValue();
 
             if (setting is Stationary7 setting7)
                 setting7.blinkwhensync = BlinkWhenSync.Checked;
             if (setting is Stationary6 setting6)
                 setting6.Ability = (byte)(Sta_AbilityLocked.Checked ? Sta_Ability.SelectedIndex + 1 : 0);
-
             return setting;
         }
 

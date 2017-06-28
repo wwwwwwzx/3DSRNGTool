@@ -90,7 +90,9 @@ namespace Pk3DSRNGTool
         public override void UseTemplate(Pokemon PM)
         {
             base.UseTemplate(PM);
-            blinkwhensync = !AlwaysSync && !(PM as PKM7).NoBlink;
+            var pm7 = PM as PKM7;
+            blinkwhensync = !AlwaysSync && !pm7.NoBlink;
+            if (pm7.IsPelago) PIDroll_count = 2;
         }
     }
 }
