@@ -26,7 +26,7 @@ namespace Pk3DSRNGTool
 
         public override bool VersionDifference => Species.Any(i => SunList.Contains(i));
         public override bool DayNightDifference => Species.Any(i => DayList.Contains(i));
-        public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 5, IsNight);
+        public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 6, IsNight);
 
         private int[] getSpecies(bool IsMoon, bool IsNight)
         {

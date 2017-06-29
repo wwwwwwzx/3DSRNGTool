@@ -21,11 +21,11 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
-        private bool IsTransporter => Method == 0 && ((FormPM as PKM6)?.Transporter ?? false);
         private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
-        private bool Gen6 => Ver < 4;
-        private bool Gen7 => 4 <= Ver && Ver < 8;
+        private bool Gen6 => Ver < 5;
+        private bool IsTransporter => Ver == 4;
+        private bool Gen7 => 5 <= Ver && Ver < 9;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT != null && TTT.Gen6Tiny.Any(t => t > 0);
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2);
         private byte lastgen;
@@ -476,6 +476,8 @@ namespace Pk3DSRNGTool
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
             B_OpenTool.Visible = gen6timeline_available;
 
+            B_Search.Enabled = !(Ver == 4 && 0 < Method && Method < 5);
+
             if (Method > 4)
                 return;
 
@@ -576,8 +578,8 @@ namespace Pk3DSRNGTool
                 NPC.Value = tmp.NPC;
                 Correction.Value = tmp.Correction;
 
-                Lv_min.Value = ea.VersionDifference && Ver == 5 ? tmp.LevelMinMoon : tmp.LevelMin;
-                Lv_max.Value = ea.VersionDifference && Ver == 5 ? tmp.LevelMaxMoon : tmp.LevelMax;
+                Lv_min.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMinMoon : tmp.LevelMin;
+                Lv_max.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
             else if (Gen6)
             {
@@ -712,7 +714,7 @@ namespace Pk3DSRNGTool
             GenderRatio.SelectedValue = (int)FormPM.GenderRatio;
             AlwaysSynced.Text = SYNC_STR[lindex, FormPM.Syncable && FormPM.Nature > 25 ? 0 : 1];
             if (!FormPM.Syncable)
-                SyncNature.SelectedIndex = IsTransporter ? 1 : 0;
+                SyncNature.SelectedIndex = 0;
             if (FormPM.Nature < 25)
                 SyncNature.SelectedIndex = FormPM.Nature + 1;
             Fix3v.Checked &= !FormPM.Egg;
@@ -898,7 +900,7 @@ namespace Pk3DSRNGTool
         private StationaryRNG getStaSettings()
         {
             StationaryRNG setting = Gen6 ? new Stationary6() : (StationaryRNG)new Stationary7();
-            setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            setting.Synchro_Stat = (byte)(IsTransporter ? 0 : SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
             if (MainRNGEgg.Checked)

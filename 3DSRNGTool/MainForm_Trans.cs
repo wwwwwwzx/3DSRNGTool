@@ -26,8 +26,8 @@ namespace Pk3DSRNGTool
         };
         private static readonly string[,] GAMEVERSION_STR =
         {
-            { "X", "Y", "OR", "AS", "Sun", "Moon" },
-            { "X", "Y", "红宝石", "蓝宝石", "太阳", "月亮" },
+            { "X", "Y", "OR", "AS", "Transporter", "Sun", "Moon" },
+            { "X", "Y", "红宝石", "蓝宝石", "虚拟传送", "太阳", "月亮" },
         };
         private static readonly string[,] SYNC_STR =
         {
@@ -88,7 +88,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 3; i++)
                 Ball.Items[i] = PARENTS_STR[lindex, i];
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < Gameversion.Items.Count; i++)
                 Gameversion.Items[i] = GAMEVERSION_STR[lindex, i];
 
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);

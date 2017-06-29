@@ -21,7 +21,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="GameVersion" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="Method" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>

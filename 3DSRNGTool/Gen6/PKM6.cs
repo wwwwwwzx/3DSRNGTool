@@ -95,15 +95,6 @@
             },
             new PokemonList
             {
-                Text = "Poke Transporter",
-                List = new[]
-                {
-                    new PKM6 { PokemonLink = true, Species = 150, Conceptual = true, Ability = 4, }, // Transporter 
-                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, }, // Mew
-                }
-            },
-            new PokemonList
-            {
                 Text = "Pokemon Link",
                 List = new[]
                 {
@@ -203,15 +194,6 @@
             },
             new PokemonList
             {
-                Text = "Poke Transporter",
-                List = new[]
-                {
-                    new PKM6 { PokemonLink = true, Species = 150, Conceptual = true, Ability = 4, }, // Transporter 
-                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, }, // Mew
-                }
-            },
-            new PokemonList
-            {
                 Text = "Pokemon Link",
                 List = new[]
                 {
@@ -304,6 +286,19 @@
                    new PKM6 { Species = 531, Delay = 54 }, // Audino
                    new PKM6 { Species = 632, Delay = 54 }, // Durant
                    new PKM6 { Species = 631, Delay = 54 }, // Heatmor
+                }
+            },
+        };
+
+        public readonly static PokemonList[] Species_VC =
+        {
+            new PokemonList
+            {
+                Text = "Poke Transporter",
+                List = new[]
+                {
+                    new PKM6 { PokemonLink = true, Species = 150, Conceptual = true, Ability = 4, }, // Transporter 
+                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, }, // Mew
                 }
             },
         };

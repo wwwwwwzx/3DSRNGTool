@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
             return false;
         }
 
-        private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "niji_loc" };
+        private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "----", "niji_loc", "niji_loc" };
         private bool getGame(string logmsg)
         {
             string pname;

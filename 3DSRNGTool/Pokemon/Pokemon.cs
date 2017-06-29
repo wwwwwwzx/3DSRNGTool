@@ -54,10 +54,11 @@ namespace Pk3DSRNGTool
                 case 1: return list.Where(s => s.Version.Contains(GameVersion.Y)).ToArray();
                 case 2: return list.Where(s => s.Version.Contains(GameVersion.OR)).ToArray();
                 case 3: return list.Where(s => s.Version.Contains(GameVersion.AS)).ToArray();
-                case 4: return list.Where(s => s.Version.Contains(GameVersion.SN)).ToArray();
-                case 5: return list.Where(s => s.Version.Contains(GameVersion.MN)).ToArray();
-                case 6: return list.Where(s => s.Version.Contains(GameVersion.US)).ToArray();
-                case 7: return list.Where(s => s.Version.Contains(GameVersion.UM)).ToArray();
+                case 4: return list;
+                case 5: return list.Where(s => s.Version.Contains(GameVersion.SN)).ToArray();
+                case 6: return list.Where(s => s.Version.Contains(GameVersion.MN)).ToArray();
+                case 7: return list.Where(s => s.Version.Contains(GameVersion.US)).ToArray();
+                case 8: return list.Where(s => s.Version.Contains(GameVersion.UM)).ToArray();
                 default: return new Pokemon[0];
             }
         }
@@ -81,7 +82,9 @@ namespace Pk3DSRNGTool
                 case 3:
                     return method == 0 ? PKM6.Species_ORAS : PKMW6.Species_ORAS;
                 case 4:
+                    return method == 0 ? PKM6.Species_VC : PKMW6.Species_VC;
                 case 5:
+                case 6:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;
                 default: return NotImpled;
             }

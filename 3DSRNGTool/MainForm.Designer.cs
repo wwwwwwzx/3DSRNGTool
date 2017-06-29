@@ -5103,7 +5103,7 @@
             "简体中文"});
             this.Lang.Location = new System.Drawing.Point(503, 13);
             this.Lang.Name = "Lang";
-            this.Lang.Size = new System.Drawing.Size(76, 21);
+            this.Lang.Size = new System.Drawing.Size(70, 21);
             this.Lang.TabIndex = 87;
             this.Lang.SelectedIndexChanged += new System.EventHandler(this.ChangeLanguage);
             // 
@@ -5145,7 +5145,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(723, 17);
+            this.L_Seed.Location = new System.Drawing.Point(727, 17);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -5534,11 +5534,12 @@
             "Y",
             "OR",
             "AS",
+            "Transporter",
             "Sun",
             "Moon"});
-            this.Gameversion.Location = new System.Drawing.Point(654, 13);
+            this.Gameversion.Location = new System.Drawing.Point(646, 13);
             this.Gameversion.Name = "Gameversion";
-            this.Gameversion.Size = new System.Drawing.Size(64, 21);
+            this.Gameversion.Size = new System.Drawing.Size(78, 21);
             this.Gameversion.TabIndex = 91;
             this.Gameversion.SelectedIndexChanged += new System.EventHandler(this.GameVersion_SelectedIndexChanged);
             // 
@@ -5546,7 +5547,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(585, 17);
+            this.L_GameVersion.Location = new System.Drawing.Point(577, 17);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -5672,7 +5673,7 @@
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(755, 12);
+            this.Seed.Location = new System.Drawing.Point(759, 12);
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(78, 22);
             this.Seed.TabIndex = 88;
@@ -5684,15 +5685,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 612);
+            this.Controls.Add(this.TSV);
+            this.Controls.Add(this.Seed);
             this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
-            this.Controls.Add(this.Seed);
             this.Controls.Add(this.Lang);
             this.Controls.Add(this.Advanced);
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
-            this.Controls.Add(this.TSV);
             this.Controls.Add(this.DGV_ID);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
