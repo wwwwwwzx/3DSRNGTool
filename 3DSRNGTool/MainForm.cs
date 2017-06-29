@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
+        private bool IsTransporter => Method == 0 && FormPM is PKM6 pm6 && pm6.PokemonLink && pm6.Conceptual;
         private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
@@ -711,7 +712,7 @@ namespace Pk3DSRNGTool
             GenderRatio.SelectedValue = (int)FormPM.GenderRatio;
             AlwaysSynced.Text = SYNC_STR[lindex, FormPM.Syncable && FormPM.Nature > 25 ? 0 : 1];
             if (!FormPM.Syncable)
-                SyncNature.SelectedIndex = 0;
+                SyncNature.SelectedIndex = IsTransporter ? 1 : 0;
             if (FormPM.Nature < 25)
                 SyncNature.SelectedIndex = FormPM.Nature + 1;
             Fix3v.Checked &= !FormPM.Egg;
@@ -1112,6 +1113,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
+            dgv_nature.Visible = !IsTransporter;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2 && (Gen7 || Gen6 && gen6timeline);
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
