@@ -4,7 +4,7 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
         public override bool Syncable => !PokemonLink && (!Gift || IV3 && !Egg); // Stationary encounter or undiscovered egg group non-egg gift
-        public override bool ShinyLocked { get => PokemonLink || _ShinyLocked;  protected set => _ShinyLocked = value; }
+        public override bool ShinyLocked { get => PokemonLink || _ShinyLocked; protected set => _ShinyLocked = value; }
         public override bool AlwaysSync => base.AlwaysSync || PokemonLink;
 
         public bool PokemonLink;
@@ -97,6 +97,7 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
+                    new PKM6 { PokemonLink = true, Species = 151, Conceptual = true, Ability = 4, }, // Transporter
                     new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans 
                     new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
                 }
@@ -196,6 +197,7 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
+                    new PKM6 { PokemonLink = true, Species = 151, Conceptual = true, Ability = 4, }, // Transporter
                     new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, }, // Bank Celebi
                     new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans
                     new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
