@@ -68,5 +68,12 @@ namespace Pk3DSRNGTool
 
             return rt;
         }
+
+        public override void UseTemplate(Pokemon PM)
+        {
+            base.UseTemplate(PM);
+            if (PM is PKM6 pm6 && pm6.Transporter && pm6.Species == 151)
+                PerfectIVCount = 5;
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
-        private bool IsTransporter => Method == 0 && FormPM is PKM6 pm6 && pm6.PokemonLink && pm6.Conceptual;
+        private bool IsTransporter => Method == 0 && ((FormPM as PKM6)?.Transporter ?? false);
         private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;

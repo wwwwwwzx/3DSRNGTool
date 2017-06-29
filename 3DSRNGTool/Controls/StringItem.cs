@@ -45,6 +45,7 @@ namespace Pk3DSRNGTool
             new [] { "Starters", "御三家" },
             new [] { "In-Game Gift", "礼物" },
             new [] { "Pokemon Link", "宝可梦连接" },
+            new [] { "Poke Transporter", "宝可虚拟传送" },
             new [] { "Normal Stationary","普通定点" },
             new [] { "Fossils", "化石" },
             new [] { "Hoenn Legendary", "丰缘传说" },
