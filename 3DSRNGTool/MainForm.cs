@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
+        private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 4;
         private bool Gen7 => 4 <= Ver && Ver < 8;
@@ -261,6 +262,12 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
+            if (IsPelago)
+            {
+                Correction.Minimum = 0; Correction.Maximum = 255;
+                L_Correction.Visible = Correction.Visible = true;
+                Correction.Value = 0;
+            }
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -321,7 +328,7 @@ namespace Pk3DSRNGTool
             }
             catch { }
         }
-        
+
         private void IVs_Click(object sender, EventArgs e)
         {
             switch (ModifierKeys)
@@ -458,7 +465,8 @@ namespace Pk3DSRNGTool
             // Contorls in RNGInfo
             AroundTarget.Visible = Method < 3 || mainrngegg;
             timedelaypanel.Visible = Method < 3 || mainrngegg || Method == 5;
-            L_Correction.Visible = Correction.Visible = Gen7 && Method == 2; // Honey
+            L_Correction.Visible = Correction.Visible = Gen7 && Method == 2; // Not time-based shift
+            Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
             L_NPC.Visible = NPC.Visible = Gen7 || Method == 5; // not show in gen6
@@ -818,6 +826,8 @@ namespace Pk3DSRNGTool
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
+                if (IsPelago)
+                    buffersize += 256;
                 if (Method == 3 && !MainRNGEgg.Checked)
                     buffersize = 100;
                 if (Method < 3 || MainRNGEgg.Checked)
@@ -890,10 +900,11 @@ namespace Pk3DSRNGTool
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
-
             if (MainRNGEgg.Checked)
                 return setting;
 
+            if (IsPelago)
+                (setting as Stationary7).PelagoShift = (byte)Correction.Value;
             // Load from template
             if (!FormPM.Conceptual)
             {

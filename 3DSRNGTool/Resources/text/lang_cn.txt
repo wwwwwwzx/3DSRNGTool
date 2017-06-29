@@ -83,7 +83,7 @@ B_ResetFrame = 默认
 CreateTimeline = 生成时间线/秒
 ---
 ConsiderDelay = 考虑延迟
-L_Correction = 甜甜蜜修正
+L_Correction = 帧数修正
 ---
 SetTargetFrame = 设为目标帧
 dgv_Frame = 帧

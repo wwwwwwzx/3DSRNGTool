@@ -1,9 +1,9 @@
 # 3DS RNG Tool [![Build status](https://ci.appveyor.com/api/projects/status/p58tu8nai3cqexuq/branch/master?svg=true)](https://ci.appveyor.com/project/wwwwwwzx/3dsrngtool/branch/master)
 
-This is an RNG Tool for main 3DS Pokemon games. Some parts should work with PokeCalcNTR using NTR-CFW.
+This is an RNG Tool for main 3DS Pokemon games. Some parts should work with [PokeCalcNTR](https://gbatemp.net/threads/pokecalcntr-for-gen-6-the-rng-tool-suite-for-the-3ds.473221/) using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG. including stationary Pokemon(80%), Mystery Gift Pokemon(100%), wild Pokemon(40%), Eggs(100%) and ID(90%).
+- Gen6 RNG. including stationary Pokemon(95%), Mystery Gift Pokemon(100%), wild Pokemon(60%), Eggs(100%) and ID(90%).
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
 - Nidoran line/Volbeat/Illumise gender prediction and shortest accept/reject path solution for Gen7 Egg RNG.
@@ -11,6 +11,7 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 ## User Guide and Useful References
 
 - [Final Screen](#final-screen) you should wait at and make the final key pressing.
+- [Reddit Gen 6 RNG Megathread](https://www.reddit.com/r/pokemonrng/comments/6fhnb8/gen_6_rng_megathread/)
 - [Gen VI Events Thread](https://projectpokemon.org/forums/forums/topic/39398-gen-vi-event-contribution-thread-2017/)
 - [Gen VII Events Thread](https://projectpokemon.org/forums/forums/topic/39400-gen-vii-events-contribution-thread/)
 
@@ -82,10 +83,11 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
 - __Solgaleo/Lunala__: No dialogue.
 - __Zygarde__: _Zygarde has gone into a Poke Ball!_
-- __UBs, Island Scan & wild Pokemon__: Press A and enter the bag from X menu.
+- __UBs, Island Scan & wild Pokemon__: Press A and thus enter the bag from X menu.
 - __Type:Null/Cosmog/Porygon/Aerodactyl/Magearna/Fossils/Gift Eevee egg and Mystery Gift__: _You received xxx!_
 - __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
 - __Pikipek__: No dialogue. Before the fourth step in grass.
 - __Exeggutor__: _Ahhh! What is that, xxx?!_
 - __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
 - __Starters__: _Having accepted on another, you'll surely be friends for life"._
+- __Poke Pelago__: Press A and thus go to Poke Pelago.

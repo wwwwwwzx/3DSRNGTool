@@ -1664,11 +1664,6 @@
             0,
             0,
             0});
-            this.Correction.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.Correction.Name = "Correction";
             this.Correction.Size = new System.Drawing.Size(38, 22);
             this.Correction.TabIndex = 66;

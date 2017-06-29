@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
 
         public bool blinkwhensync;
         private bool IsPelago;
+        public byte PelagoShift;
 
         private bool blink_process()
         {
@@ -26,9 +27,7 @@ namespace Pk3DSRNGTool
             rt.Level = Level;
 
             //Synchronize
-            if (IsPelago)
-                Advance(60);
-            else if (AlwaysSync)
+            if (AlwaysSync)
                 rt.Synchronize = true;
             else
             {
@@ -37,7 +36,15 @@ namespace Pk3DSRNGTool
             }
 
             //Encryption Constant
-            rt.EC = (uint)(getrand & 0xFFFFFFFF);
+            if (IsPelago)
+            {
+                Advance(60 + PelagoShift);
+                rt.EC = (uint)(getrand & 0xFFFFFFFF);
+                Advance(1);
+            }
+            else
+                rt.EC = (uint)(getrand & 0xFFFFFFFF);
+
 
             //PID
             for (int i = PIDroll_count; i > 0; i--)
@@ -96,10 +103,7 @@ namespace Pk3DSRNGTool
             var pm7 = PM as PKM7;
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             if (pm7.IsPelago)
-            {
-                PIDroll_count = 2;
                 IsPelago = true;
-            }
         }
     }
 }
