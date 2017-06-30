@@ -101,6 +101,9 @@
                     new PKM7 { Gift = true, IsPelago = true, Species = 131, Level = 50, Syncable = false, Delay = 8, }, // Lapras
                     new PKM7 { Gift = true, IsPelago = true, Species = 429, Level = 50, Syncable = false, Delay = 8, }, // Mismagius
                     new PKM7 { Gift = true, IsPelago = true, Species = 587, Level = 50, Syncable = false, Delay = 8, }, // Emolga
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 627, Level = 50, Syncable = false, Delay = 8, Version = GameVersion.SN, }, // Ruffle
+                    new PKM7 { Gift = true, IsPelago = true, Species = 629, Level = 50, Syncable = false, Delay = 8, Version = GameVersion.MN, }, // Vullaby
                 }
             },
             new PokemonList
