@@ -36,7 +36,7 @@ namespace Pk3DSRNGTool
                 Homogeneity.Enabled = Homogeneity.Checked = false;
             }
             else
-                Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked);
+                Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked || (int)Egg_GenderRatio.SelectedValue == 254);
         }
 
         private void NidoType_CheckedChanged(object sender, EventArgs e)
@@ -44,6 +44,24 @@ namespace Pk3DSRNGTool
             Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked);
             if (NidoType.Checked)
                 Homogeneity.Checked = false;
+        }
+
+        private void Egg_GenderRatio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var gender = (int)Egg_GenderRatio.SelectedValue;
+            M_ditto.Enabled = F_ditto.Enabled = true;
+            NidoType.Checked = false;
+            NidoType.Enabled = gender == 127;
+            switch (gender)
+            {
+                case 000:
+                case 255:
+                    M_ditto.Enabled = F_ditto.Enabled = false; F_ditto.Checked = true; return;
+                case 254:
+                    F_ditto.Enabled = F_ditto.Checked = false; Homogeneity.Checked = Homogeneity.Enabled = false; return;
+                default:
+                    M_ditto.Checked = F_ditto.Checked = false; return;
+            }
         }
 
         private void MM_CheckedChanged(object sender, EventArgs e)

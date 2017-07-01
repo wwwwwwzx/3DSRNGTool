@@ -3582,6 +3582,7 @@
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
             this.Egg_GenderRatio.Size = new System.Drawing.Size(82, 21);
             this.Egg_GenderRatio.TabIndex = 7;
+            this.Egg_GenderRatio.SelectedIndexChanged += new System.EventHandler(this.Egg_GenderRatio_SelectedIndexChanged);
             // 
             // L_EggAbility
             // 
