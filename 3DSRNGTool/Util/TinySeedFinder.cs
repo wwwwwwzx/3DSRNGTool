@@ -16,7 +16,7 @@ namespace Pk3DSRNGTool
 
         public int Cnt; // Progress
         const int Thread_Number = 8;
-        public readonly int Max = 4096 + Thread_Number;
+        public readonly int Max = 0x10000 + Thread_Number;
 
         public event EventHandler Update;
         private void UpdateProgress(EventArgs e)

@@ -227,14 +227,14 @@ namespace Pk3DSRNGTool
         private void B_TinySearch_Click(object sender, EventArgs e)
         {
             var nature = FuncUtil.parseNatureList(NatureList.Text);
-            if (nature.Length != 8)
-            {
-                Error("Incorrect number of natures");
-                return;
-            }
             if (nature == null)
             {
                 Error("Invalid Input");
+                return;
+            }
+            if (nature.Length != 8)
+            {
+                Error("Incorrect number of natures");
                 return;
             }
             if (tinyfinder == null)
@@ -307,6 +307,8 @@ namespace Pk3DSRNGTool
             {
                 if (str.LastIndexOf(',') != -1)
                     str = str.Remove(str.LastIndexOf(','));
+                else if (str.LastIndexOf(' ') != -1)
+                    str = str.Remove(str.LastIndexOf(' '));
                 else
                     str = "";
             }
@@ -318,7 +320,7 @@ namespace Pk3DSRNGTool
             try
             {
                 var seed = EggSeedList.SelectedItem.ToString();
-                if (Prompt(MessageBoxButtons.YesNo, $"Your Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
+                if (Prompt(MessageBoxButtons.YesNo, $"Your Selected Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
                 {
                     Status = FuncUtil.SeedStr2Array(seed);
                     B_Backup_Click(null, null);

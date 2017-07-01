@@ -109,7 +109,6 @@ namespace Pk3DSRNGTool
             Event_Ability.SelectedIndex = Event_Gender.SelectedIndex =
             M_ability.SelectedIndex = F_ability.SelectedIndex =
             M_Items.SelectedIndex = F_Items.SelectedIndex =
-            NatureInput.SelectedIndex =
             Wild_Nature.SelectedIndex =
             0;
             Egg_GenderRatio.SelectedIndex = 1;
@@ -120,7 +119,6 @@ namespace Pk3DSRNGTool
             CB_Category.SelectedIndex = LastCategory < CB_Category.Items.Count ? LastCategory : 0;
             Poke.SelectedIndex = LastPkm < Poke.Items.Count ? LastPkm : 0;
             RNGMethod.SelectedIndex = LastMethod;
-            NatureList.Text = "";
 
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);

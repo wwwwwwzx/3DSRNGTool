@@ -120,7 +120,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                string[] ivstr = text.Split(',', ' ', '/', '-');
+                string[] ivstr = text.Trim().Split(',', ' ', '/', '-');
                 int[] ivs = ivstr.Select(str => Convert.ToInt32(str)).ToArray();
                 if (ivs.Length == 6 && ivs.All(iv => 0 <= iv && iv <= 31))
                     return ivs;
@@ -136,7 +136,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                string[] naturestrs = text.Split(',', ' ', '/', '-');
+                string[] naturestrs = text.Trim().Split(',', ' ');
                 uint[] natures = naturestrs.Select(str => Convert.ToUInt32(str)).ToArray();
                 if (natures.All(nature => 0 <= nature && nature <= 25))
                     return natures;
