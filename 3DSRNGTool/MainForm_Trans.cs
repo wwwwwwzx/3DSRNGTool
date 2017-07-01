@@ -108,7 +108,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < StringItem.naturestr.Length; i++)
             {
                 Wild_Nature.Items[i] = Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
-                NatureInput.Items[i] = i.ToString() + " - " + StringItem.naturestr[i];
+                NatureInput.Items[i] = i.ToString("D2") + " - " + StringItem.naturestr[i];
             }
 
             for (int i = 0; i < StringItem.items.Length; i++)

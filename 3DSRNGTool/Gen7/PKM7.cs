@@ -53,7 +53,7 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM7 { Species = 739, Level = 18, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
+                    new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     new PKM7 { Species = 731, Level = 03, NPC = 1, Delay = 16, ShinyLocked = true, IVs = new[] { -1, -1, -1, -1, -1, 1 }, }, // Pikipek
                     new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, },  // Exeggutor
                 }
@@ -73,37 +73,37 @@
                 Text = "Poke Pelago",
                 List = new[]
                 {
-                    new PKM7 { Gift = true, IsPelago = true, Species = 021, Level = 50, Syncable = false, Delay = 8, }, // Spearow
-                    new PKM7 { Gift = true, IsPelago = true, Species = 041, Level = 50, Syncable = false, Delay = 8, }, // Zubat
-                    new PKM7 { Gift = true, IsPelago = true, Species = 090, Level = 50, Syncable = false, Delay = 8, }, // Shellder
-                    new PKM7 { Gift = true, IsPelago = true, Species = 278, Level = 50, Syncable = false, Delay = 8, }, // Wingull
-                    new PKM7 { Gift = true, IsPelago = true, Species = 731, Level = 50, Syncable = false, Delay = 8, }, // Pikipek
+                    new PKM7 { Gift = true, IsPelago = true, Species = 021, Syncable = false, Delay = 8, }, // Spearow
+                    new PKM7 { Gift = true, IsPelago = true, Species = 041, Syncable = false, Delay = 8, }, // Zubat
+                    new PKM7 { Gift = true, IsPelago = true, Species = 090, Syncable = false, Delay = 8, }, // Shellder
+                    new PKM7 { Gift = true, IsPelago = true, Species = 278, Syncable = false, Delay = 8, }, // Wingull
+                    new PKM7 { Gift = true, IsPelago = true, Species = 731, Syncable = false, Delay = 8, }, // Pikipek
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 064, Level = 50, Syncable = false, Delay = 8, }, // Kadabra
-                    new PKM7 { Gift = true, IsPelago = true, Species = 081, Level = 50, Syncable = false, Delay = 8, }, // Magnemite
-                    new PKM7 { Gift = true, IsPelago = true, Species = 092, Level = 50, Syncable = false, Delay = 8, }, // Gastly
-                    new PKM7 { Gift = true, IsPelago = true, Species = 198, Level = 50, Syncable = false, Delay = 8, }, // Murkrow
-                    new PKM7 { Gift = true, IsPelago = true, Species = 426, Level = 50, Syncable = false, Delay = 8, }, // Drifblim
-                    new PKM7 { Gift = true, IsPelago = true, Species = 703, Level = 50, Syncable = false, Delay = 8, }, // Carbink
+                    new PKM7 { Gift = true, IsPelago = true, Species = 064, Syncable = false, Delay = 8, }, // Kadabra
+                    new PKM7 { Gift = true, IsPelago = true, Species = 081, Syncable = false, Delay = 8, }, // Magnemite
+                    new PKM7 { Gift = true, IsPelago = true, Species = 092, Syncable = false, Delay = 8, }, // Gastly
+                    new PKM7 { Gift = true, IsPelago = true, Species = 198, Syncable = false, Delay = 8, }, // Murkrow
+                    new PKM7 { Gift = true, IsPelago = true, Species = 426, Syncable = false, Delay = 8, }, // Drifblim
+                    new PKM7 { Gift = true, IsPelago = true, Species = 703, Syncable = false, Delay = 8, }, // Carbink
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 060, Level = 50, Syncable = false, Delay = 8, }, // Poliwag
-                    new PKM7 { Gift = true, IsPelago = true, Species = 120, Level = 50, Syncable = false, Delay = 8, }, // Staryu
-                    new PKM7 { Gift = true, IsPelago = true, Species = 127, Level = 50, Syncable = false, Delay = 8, }, // Pinsir
-                    new PKM7 { Gift = true, IsPelago = true, Species = 661, Level = 50, Syncable = false, Delay = 8, }, // Fletchling
-                    new PKM7 { Gift = true, IsPelago = true, Species = 709, Level = 50, Syncable = false, Delay = 8, }, // Trevenant
-                    new PKM7 { Gift = true, IsPelago = true, Species = 771, Level = 50, Syncable = false, Delay = 8, }, // Pyukumuku
+                    new PKM7 { Gift = true, IsPelago = true, Species = 060, Syncable = false, Delay = 8, }, // Poliwag
+                    new PKM7 { Gift = true, IsPelago = true, Species = 120, Syncable = false, Delay = 8, }, // Staryu
+                    new PKM7 { Gift = true, IsPelago = true, Species = 127, Syncable = false, Delay = 8, }, // Pinsir
+                    new PKM7 { Gift = true, IsPelago = true, Species = 661, Syncable = false, Delay = 8, }, // Fletchling
+                    new PKM7 { Gift = true, IsPelago = true, Species = 709, Syncable = false, Delay = 8, }, // Trevenant
+                    new PKM7 { Gift = true, IsPelago = true, Species = 771, Syncable = false, Delay = 8, }, // Pyukumuku
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 227, Level = 50, Syncable = false, Delay = 8, }, // Skarmory
-                    new PKM7 { Gift = true, IsPelago = true, Species = 375, Level = 50, Syncable = false, Delay = 8, }, // Metang
-                    new PKM7 { Gift = true, IsPelago = true, Species = 707, Level = 50, Syncable = false, Delay = 8, }, // Klefki
+                    new PKM7 { Gift = true, IsPelago = true, Species = 227, Syncable = false, Delay = 8, }, // Skarmory
+                    new PKM7 { Gift = true, IsPelago = true, Species = 375, Syncable = false, Delay = 8, }, // Metang
+                    new PKM7 { Gift = true, IsPelago = true, Species = 707, Syncable = false, Delay = 8, }, // Klefki
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 123, Level = 50, Syncable = false, Delay = 8, }, // Scyther
-                    new PKM7 { Gift = true, IsPelago = true, Species = 131, Level = 50, Syncable = false, Delay = 8, }, // Lapras
-                    new PKM7 { Gift = true, IsPelago = true, Species = 429, Level = 50, Syncable = false, Delay = 8, }, // Mismagius
-                    new PKM7 { Gift = true, IsPelago = true, Species = 587, Level = 50, Syncable = false, Delay = 8, }, // Emolga
+                    new PKM7 { Gift = true, IsPelago = true, Species = 123, Syncable = false, Delay = 8, }, // Scyther
+                    new PKM7 { Gift = true, IsPelago = true, Species = 131, Syncable = false, Delay = 8, }, // Lapras
+                    new PKM7 { Gift = true, IsPelago = true, Species = 429, Syncable = false, Delay = 8, }, // Mismagius
+                    new PKM7 { Gift = true, IsPelago = true, Species = 587, Syncable = false, Delay = 8, }, // Emolga
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 627, Level = 50, Syncable = false, Delay = 8, Version = GameVersion.SN, }, // Ruffle
-                    new PKM7 { Gift = true, IsPelago = true, Species = 629, Level = 50, Syncable = false, Delay = 8, Version = GameVersion.MN, }, // Vullaby
+                    new PKM7 { Gift = true, IsPelago = true, Species = 627, Syncable = false, Delay = 8, Version = GameVersion.SN, }, // Ruffle
+                    new PKM7 { Gift = true, IsPelago = true, Species = 629, Syncable = false, Delay = 8, Version = GameVersion.MN, }, // Vullaby
                 }
             },
             new PokemonList

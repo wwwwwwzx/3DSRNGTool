@@ -33,7 +33,8 @@
             IsShinyLocked = PM.ShinyLocked;
             Ability = (byte)(PM.Ability > 3 ? 3 : PM.Ability); // Ability 0/1/2/4 => 0/1/2/3
             IVs = PM.IVs ?? new[] { -1, -1, -1, -1, -1, -1 };
-            Level = PM.Level;
+            if (PM.Level > 0)
+                Level = PM.Level;
             Gender = PM.SettingGender;
             RandomGender = PM.IsRandomGender;
             if (PM.Nature < 25)

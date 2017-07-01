@@ -908,6 +908,7 @@ namespace Pk3DSRNGTool
             StationaryRNG setting = Gen6 ? new Stationary6() : (StationaryRNG)new Stationary7();
             setting.Synchro_Stat = (byte)(IsTransporter ? 0 : SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
+            setting.Level = (byte)Filter_Lv.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
             if (MainRNGEgg.Checked)
                 return setting;
@@ -927,7 +928,6 @@ namespace Pk3DSRNGTool
             setting.Gender = FuncUtil.getGenderRatio(gender);
             setting.RandomGender = FuncUtil.IsRandomGender(gender);
             setting.AlwaysSync = AlwaysSynced.Checked;
-            setting.Level = (byte)Filter_Lv.Value;
             setting.IsShinyLocked = ShinyLocked.Checked;
             setting.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
             setting.SetValue();
