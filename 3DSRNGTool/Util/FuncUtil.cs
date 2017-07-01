@@ -138,7 +138,7 @@ namespace Pk3DSRNGTool
             {
                 string[] naturestrs = text.Split(',', ' ', '/', '-');
                 uint[] natures = naturestrs.Select(str => Convert.ToUInt32(str)).ToArray();
-                if (natures.Length == 8 && natures.All(nature => 0 <= nature && nature <= 25))
+                if (natures.All(nature => 0 <= nature && nature <= 25))
                     return natures;
                 return null;
             }

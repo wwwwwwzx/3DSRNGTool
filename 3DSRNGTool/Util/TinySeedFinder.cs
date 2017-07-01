@@ -75,8 +75,7 @@ namespace Pk3DSRNGTool
         #region Misc Private Function
         private bool Check(uint seed)
         {
-            TinyMT tiny = new TinyMT(0);
-            tiny.Reseed(seed);
+            TinyMT tiny = new TinyMT(seed);
             for (int i = 0; i < 7; i++)
             {
                 tiny.Next(); // Gender

@@ -226,12 +226,12 @@ namespace Pk3DSRNGTool
 
         private void B_TinySearch_Click(object sender, EventArgs e)
         {
-            if (NatureList.Text.Count(c => c == ',') != 7)
+            var nature = FuncUtil.parseNatureList(NatureList.Text);
+            if (nature.Length != 8)
             {
                 Error("Incorrect number of natures");
                 return;
             }
-            var nature = FuncUtil.parseNatureList(NatureList.Text);
             if (nature == null)
             {
                 Error("Invalid Input");
@@ -259,7 +259,7 @@ namespace Pk3DSRNGTool
             tinyfinder.Abort();
             B_TinySearch.Visible = true;
             B_Abort7.Visible = false;
-            L_Progress6.Text = sender == B_Abort7 ? "Cancelled" : "Done";
+            L_Progress7.Text = sender == B_Abort7 ? "Cancelled" : "Done";
             if (tinyfinder.seedlist.Count == 1)
             {
                 var seed = tinyfinder.seedlist[0];
