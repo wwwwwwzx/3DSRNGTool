@@ -43,6 +43,7 @@ BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
 L_Rate = Rate
 L_Lv = Level Range
+B_OpenTool = Tiny Timeline Tool
 ---
 Filters = Filters
 L_H = HP
@@ -185,9 +186,11 @@ SetAsTarget = Set as Target Frame
 SetAsAfter = Set the Status after receiving this Egg as Current
 SetAsStarting = Set as Starting Frame
 ---------------------TabPage5----------------------------------
-dgv_G7TID = G7TID
-dgv_ID_Rand = Rand#
-dgv_ID_Rand64 = Randon Number
+dgv_IDframe = Frame
+dgv_gen7ID = G7TID
+dgv_ID_rand = Rand#
+dgv_ID_rand64 = Randon Number
+dgv_ID_state = Tiny State
 L_ClkCorrection = Clock Correction
 ---------------------TabPage6----------------------------------
 InputBox = InputBox
@@ -232,3 +235,24 @@ L_WildLower = Lower
 L_WildUpper = Upper
 L_WildIVRange = IVs Range
 L_WildNature = Nature
+dgv_Seed_frame1 = Frame1
+dgv_Seed_Nature1 = Nature1
+dgv_Seed_frame2 = Frame2
+dgv_Seed_nature2 = Nature2
+dgv_Seed_gender = Gender
+----------------------TTT------------------------------------
+! TinyTimelineTool = Tiny Timeline Tool
+GB_Cali = Calibration
+L_Mainframe = Main RNG Frame
+L_Type = Type
+GB_Adj = Adjustment
+L_Method = Method
+L_TargetFrame = Target Frame
+B_Create = Create
+tiny_MTFRange = Main RNG Frame
+tiny_index = Index
+tiny_sync =Sync
+tiny_portalsync = PSync
+tiny_slot = Slot
+tiny_state = Tiny State
+! End

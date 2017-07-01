@@ -58,7 +58,7 @@
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.L_TargetFrame = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
             this.L_Type = new System.Windows.Forms.Label();
             this.Type3 = new System.Windows.Forms.ComboBox();
@@ -66,7 +66,7 @@
             this.Type2 = new System.Windows.Forms.ComboBox();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
-            this.GB_Manu = new System.Windows.Forms.GroupBox();
+            this.GB_Adj = new System.Windows.Forms.GroupBox();
             this.Parameters = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
             this.Method = new System.Windows.Forms.ComboBox();
@@ -84,7 +84,7 @@
             this.GB_Cali.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
-            this.GB_Manu.SuspendLayout();
+            this.GB_Adj.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Parameters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
@@ -191,7 +191,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MainDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.MainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tiny_MTFRange,
             this.tiny_index,
@@ -388,15 +388,15 @@
             0,
             0});
             // 
-            // label4
+            // L_TargetFrame
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
-            this.label4.TabIndex = 114;
-            this.label4.Text = "Target Frame";
+            this.L_TargetFrame.AutoSize = true;
+            this.L_TargetFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TargetFrame.Location = new System.Drawing.Point(10, 105);
+            this.L_TargetFrame.Name = "L_TargetFrame";
+            this.L_TargetFrame.Size = new System.Drawing.Size(70, 13);
+            this.L_TargetFrame.TabIndex = 114;
+            this.L_TargetFrame.Text = "Target Frame";
             // 
             // GB_Cali
             // 
@@ -505,21 +505,21 @@
             this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
             // 
-            // GB_Manu
+            // GB_Adj
             // 
-            this.GB_Manu.Controls.Add(this.Parameters);
-            this.GB_Manu.Controls.Add(this.L_Method);
-            this.GB_Manu.Controls.Add(this.Method);
-            this.GB_Manu.Controls.Add(this.Shift);
-            this.GB_Manu.Controls.Add(this.Frame_J);
-            this.GB_Manu.Controls.Add(this.Frame_max);
-            this.GB_Manu.Controls.Add(this.label4);
-            this.GB_Manu.Location = new System.Drawing.Point(5, 281);
-            this.GB_Manu.Name = "GB_Manu";
-            this.GB_Manu.Size = new System.Drawing.Size(189, 136);
-            this.GB_Manu.TabIndex = 117;
-            this.GB_Manu.TabStop = false;
-            this.GB_Manu.Text = "Adjustment";
+            this.GB_Adj.Controls.Add(this.Parameters);
+            this.GB_Adj.Controls.Add(this.L_Method);
+            this.GB_Adj.Controls.Add(this.Method);
+            this.GB_Adj.Controls.Add(this.Shift);
+            this.GB_Adj.Controls.Add(this.Frame_J);
+            this.GB_Adj.Controls.Add(this.Frame_max);
+            this.GB_Adj.Controls.Add(this.L_TargetFrame);
+            this.GB_Adj.Location = new System.Drawing.Point(5, 281);
+            this.GB_Adj.Name = "GB_Adj";
+            this.GB_Adj.Size = new System.Drawing.Size(189, 136);
+            this.GB_Adj.TabIndex = 117;
+            this.GB_Adj.TabStop = false;
+            this.GB_Adj.Text = "Adjustment";
             // 
             // Parameters
             // 
@@ -592,7 +592,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 482);
-            this.Controls.Add(this.GB_Manu);
+            this.Controls.Add(this.GB_Adj);
             this.Controls.Add(this.GB_Cali);
             this.Controls.Add(this.B_Create);
             this.Controls.Add(this.MainDGV);
@@ -613,8 +613,8 @@
             this.GB_Cali.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
-            this.GB_Manu.ResumeLayout(false);
-            this.GB_Manu.PerformLayout();
+            this.GB_Adj.ResumeLayout(false);
+            this.GB_Adj.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Parameters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
@@ -637,12 +637,12 @@
         private System.Windows.Forms.Button B_Create;
         private System.Windows.Forms.Label L_Mainframe;
         private System.Windows.Forms.NumericUpDown Frame_max;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label L_TargetFrame;
         private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.ComboBox Type2;
         private System.Windows.Forms.NumericUpDown Frame2;
         private System.Windows.Forms.ComboBox Type1;
-        private System.Windows.Forms.GroupBox GB_Manu;
+        private System.Windows.Forms.GroupBox GB_Adj;
         private System.Windows.Forms.NumericUpDown Shift;
         private System.Windows.Forms.NumericUpDown Frame_J;
         private System.Windows.Forms.ContextMenuStrip CMS;

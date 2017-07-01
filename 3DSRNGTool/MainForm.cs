@@ -622,6 +622,7 @@ namespace Pk3DSRNGTool
         private void OpenTinyTool(object sender, EventArgs e)
         {
             if (TTT == null) TTT = new TinyTimelineTool();
+            TranslateInterface(TTT, curlanguage);
             TTT.Show();
         }
 

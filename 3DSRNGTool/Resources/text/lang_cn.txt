@@ -43,6 +43,7 @@ L_Rate = 出现率
 L_Lv = 等级范围
 BlinkWhenSync = 同步时眨眼
 Sta_AbilityLocked = 固定特性
+B_OpenTool = TinyMT 时间线工具
 ---
 Filters = 个体筛选
 L_H = HP
@@ -184,9 +185,12 @@ SetAsTarget = 将该帧设为目标
 SetAsAfter = 将领取该蛋后的状态设为当前状态
 SetAsStarting = 将该帧设为起点
 ---------------------TabPage5----------------------------------
-dgv_G7TID = 7代ID
-dgv_ID_Rand = 乱数值
-dgv_ID_Rand64 = 乱数值
+dgv_IDframe = 帧
+dgv_gen7ID = 7代ID
+dgv_clock = 指针
+dgv_ID_rand = 乱数值
+dgv_ID_rand64 = 乱数值
+dgv_ID_state = 状态
 L_ClkCorrection = 指针修正
 ---------------------TabPage6----------------------------------
 InputBox = 输入
@@ -231,3 +235,25 @@ L_WildLower = 下限
 L_WildUpper = 上限
 L_WildIVRange = 个体范围
 L_WildNature = 性格
+dgv_Seed_frame1 = 帧1
+dgv_Seed_Nature1 = 性格1
+dgv_Seed_frame2 = 帧2
+dgv_Seed_nature2 = 性格2
+dgv_Seed_gender = 性别
+! End
+----------------------TTT------------------------------------
+! TinyTimelineTool = TinyMT 时间线工具
+GB_Cali = 校准
+L_Mainframe = 主乱数帧
+L_Type = 消耗类型
+GB_Adj = 操作
+L_Method = 类型
+L_TargetFrame = 目标帧数
+B_Create = 生成
+tiny_MTFRange = 主乱数帧范围
+tiny_index = 序号
+tiny_sync = 同步
+tiny_portalsync = P同步
+tiny_slot = 种类
+tiny_state = Tiny状态
+! End

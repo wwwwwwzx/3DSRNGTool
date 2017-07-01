@@ -71,7 +71,8 @@ namespace Pk3DSRNGTool
             TranslateInterface(this, curlanguage); // Translate the UI to language.
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();
-            TranslateInterface(this, lang);
+            if (TTT != null)
+                TranslateInterface(TTT, lang);
             Text = Text + $" v{version}";
 
             StringItem.naturestr = getStringList("Natures", curlanguage);
