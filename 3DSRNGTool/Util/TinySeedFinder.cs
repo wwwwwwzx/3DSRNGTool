@@ -7,16 +7,16 @@ namespace Pk3DSRNGTool
 {
     public class TinySeedFinder
     {
-        private TinyMT tiny = new TinyMT(0);
         private int Advance;
         public readonly uint[] NatureList = new uint[8];
 
         #region Threading
-        public List<Frame_Seed> seedlist = new List<Frame_Seed>();
+        public List<string> seedlist = new List<string>();
         public List<Thread> thrds = new List<Thread>();
 
-        public int Cnt, Max; // Progress
+        public int Cnt; // Progress
         const int Thread_Number = 8;
+        public readonly int Max = 4096 + Thread_Number;
 
         public event EventHandler Update;
         private void UpdateProgress(EventArgs e)
@@ -48,7 +48,7 @@ namespace Pk3DSRNGTool
         public void Clear()
         {
             seedlist.Clear();
-            seedlist = new List<Frame_Seed>();
+            seedlist = new List<string>();
             thrds.Clear();
             Cnt = 0;
         }
@@ -58,8 +58,7 @@ namespace Pk3DSRNGTool
             var rng = new TinyMT(seed);
             lock (_locker)
             {
-                seedlist.Add(new Frame_Seed() { Seed = seed, Status = rng.CurrentState().ToString() });
-                Console.WriteLine(seed);
+                seedlist.Add(rng.CurrentState().ToString());
                 UpdateTable(null);
             }
         }
@@ -76,21 +75,20 @@ namespace Pk3DSRNGTool
         #region Misc Private Function
         private bool Check(uint seed)
         {
+            TinyMT tiny = new TinyMT(0);
             tiny.Reseed(seed);
             for (int i = 0; i < 7; i++)
             {
                 tiny.Next(); // Gender
-                if (GenerateNature != NatureList[i])
+                if (tiny.Nextuint() % 25 != NatureList[i])
                     return false;
-                GenerateRest();
+                GenerateRest(tiny);
             }
             tiny.Next();
-            return GenerateNature == NatureList[7];
+            return tiny.Nextuint() % 25 == NatureList[7];
         }
 
-        private uint GenerateNature => tiny.Nextuint() % 25;
-
-        private void GenerateRest()
+        private void GenerateRest(TinyMT tiny)
         {
             // Ability
             tiny.Next();
@@ -152,7 +150,6 @@ namespace Pk3DSRNGTool
                 t.Start(paramlist[j]);
                 thrds.Add(t);
             }
-            Max = 4096 + paramlist.Count;
         }
     }
 }

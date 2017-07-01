@@ -148,8 +148,8 @@ namespace Pk3DSRNGTool
             if (mtfinder == null)
             {
                 mtfinder = new MTSeedFinder();
-                mtfinder.Update += UpdateProgressBar;
-                mtfinder.NewResult += UpdateDGV;
+                mtfinder.Update += UpdateProgressBar6;
+                mtfinder.NewResult += UpdateDGV6;
             }
             var seedmin = (uint)Seed_min.Value;
             var seedmax = (uint)Seed_max.Value;
@@ -195,43 +195,43 @@ namespace Pk3DSRNGTool
             }
             else
                 return;
-            FinderPBar.Value = 0;
-            L_Progress.Text = "0.00%";
+            Gen6PBar.Value = 0;
+            L_Progress6.Text = "0.00%";
             mtfinder.Clear();
             mtfinder.Search(seedmin, seedmax, RB_2Wild.Checked);
-            FinderPBar.Maximum = mtfinder.Max;
+            Gen6PBar.Maximum = mtfinder.Max;
             AdjustDGVSeedColumn();
             DGV_Seed.CurrentCell = null;
             DGV_Seed.DataSource = new BindingSource(new List<Frame_Seed>(), null);
             B_MTSearch.Visible = false;
-            B_Abort.Visible = true;
+            B_Abort6.Visible = true;
             RB_1Wild.Enabled = RB_2Wild.Enabled = false;
         }
 
-        private void B_Abort_Click(object sender, EventArgs e)
+        private void B_Abort6_Click(object sender, EventArgs e)
         {
             mtfinder.Abort();
             B_MTSearch.Visible = true;
-            B_Abort.Visible = false;
+            B_Abort6.Visible = false;
             RB_1Wild.Enabled = RB_2Wild.Enabled = true;
-            L_Progress.Text = sender == B_Abort ? "Cancelled" : "Done";
+            L_Progress6.Text = sender == B_Abort6 ? "Cancelled" : "Done";
             if (mtfinder.seedlist.Count == 1)
                 Seed.Value = mtfinder.seedlist[0].Seed;
             Alert($"Found {mtfinder.seedlist.Count} Frame(s)");
         }
 
-        private void UpdateProgressBar(object sender, EventArgs e)
+        private void UpdateProgressBar6(object sender, EventArgs e)
         {
             Invoke(new Action(() =>
             {
-                FinderPBar.Value = mtfinder.Cnt;
-                L_Progress.Text = (mtfinder.Cnt / (mtfinder.Max / 100.00)).ToString("F2") + "%";
+                Gen6PBar.Value = mtfinder.Cnt;
+                L_Progress6.Text = (mtfinder.Cnt / (mtfinder.Max / 100.00)).ToString("F2") + "%";
                 if (mtfinder.Cnt == mtfinder.Max)
-                    B_Abort_Click(null, null);
+                    B_Abort6_Click(null, null);
             }));
         }
 
-        private void UpdateDGV(object sender, EventArgs e)
+        private void UpdateDGV6(object sender, EventArgs e)
         {
             Invoke(new Action(() =>
             {

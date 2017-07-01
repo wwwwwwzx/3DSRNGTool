@@ -131,7 +131,23 @@ namespace Pk3DSRNGTool
                 return null;
             }
         }
-        
+
+        public static uint[] parseNatureList(string text)
+        {
+            try
+            {
+                string[] naturestrs = text.Split(',', ' ', '/', '-');
+                uint[] natures = naturestrs.Select(str => Convert.ToUInt32(str)).ToArray();
+                if (natures.Length == 8 && natures.All(nature => 0 <= nature && nature <= 25))
+                    return natures;
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static uint[] SeedStr2Array(string seed)
         {
             try

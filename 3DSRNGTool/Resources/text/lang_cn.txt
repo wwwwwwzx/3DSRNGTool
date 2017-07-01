@@ -211,6 +211,11 @@ L_EggSeed127 = Go!
 RB_Main = 主乱数
 RB_ID = ID乱数
 Magikarp = 127鲤鱼王计算器 （公记为0,母记为0）（空格及换行软件将自动忽略）
+GB_TinyFinder = 8蛋性格法(只适用于新存档)
+L_NatureList = 性格序列
+B_DelNature = 删去
+B_TinySearch = 检索
+B_Abort7 = 终止
 ---------------------TabPage7----------------------------------
 GB_NTR = NTR 助手
 B_OneClick = 一键完成
@@ -221,7 +226,7 @@ B_Resume = 继续
 B_GetGen6Seed = 获得初始Seed
 ----
 GB_SeedFinder = Seed 搜索器
-B_Abort = 终止
+B_Abort6 = 终止
 B_MTSearch = 检索
 L_WildFrameRange = 遇敌帧数范围
 L_IV = 个体值

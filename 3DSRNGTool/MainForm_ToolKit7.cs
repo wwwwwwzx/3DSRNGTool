@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
         {
             TextBox tmp = QRInput.Checked ? QRList : Clock_List;
             string str = ((Button)sender).Name;
-            string n = str.Remove(0,6);
+            string n = str.Remove(0, 6);
 
             if (tmp.Text != "") tmp.Text += ",";
             tmp.Text += !EndClockInput.Checked || QRInput.Checked ? n : ((Convert.ToInt32(n) + 13) % 17).ToString();
@@ -110,7 +110,7 @@ namespace Pk3DSRNGTool
 
                 for (int i = 0; i < min; i++)
                     sfmt.Next();
-                
+
                 int tmp = 0;
                 for (int i = min; i <= max; i++, sfmt.Next())
                 {
@@ -156,7 +156,7 @@ namespace Pk3DSRNGTool
         {
             if (min > max)
                 return CalcFrame(max, min).Select(t => -t).ToArray();
-               
+
             uint InitialSeed = (uint)Seed.Value;
             SFMT sfmt = new SFMT(InitialSeed);
 
@@ -189,18 +189,18 @@ namespace Pk3DSRNGTool
                 case 0: str = "Set Eontimer for" + str; break;
                 case 1: str = "计时器设置为" + str; break;
             }
-            TimeResult.Items.Add(str);
+            MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CalcTime(object sender, EventArgs e)
         {
-            TimeResult.Items.Clear();
             int min = (int)Time_min.Value;
             int max = (int)TargetFrame.Value;
             CalcTime_Output(min, max);
         }
         #endregion
 
+        #region Egg Seed Finder
         private void B_EggSeed127_Click(object sender, EventArgs e)
         {
             string inlist = RTB_EggSeed.Text;
@@ -223,5 +223,90 @@ namespace Pk3DSRNGTool
                 B_Backup_Click(null, null);
             }
         }
+
+        private void B_TinySearch_Click(object sender, EventArgs e)
+        {
+            var nature = FuncUtil.parseNatureList(NatureList.Text);
+            if (nature == null)
+            {
+                Error("Invalid Input");
+                return;
+            }
+            if (tinyfinder == null)
+            {
+                tinyfinder = new TinySeedFinder();
+                tinyfinder.Update += UpdateProgressBar7;
+                tinyfinder.NewResult += UpdateList7;
+            }
+            Gen7PBar.Value = 0;
+            Gen7PBar.Maximum = tinyfinder.Max;
+            L_Progress7.Text = "0.00%";
+            EggSeedList.Items.Clear();
+            tinyfinder.Clear();
+            tinyfinder.SetFinder(nature, ShinyCharm.Checked);
+            tinyfinder.Search();
+            B_TinySearch.Visible = false;
+            B_Abort7.Visible = true;
+        }
+
+        private void B_Abort7_Click(object sender, EventArgs e)
+        {
+            tinyfinder.Abort();
+            B_TinySearch.Visible = true;
+            B_Abort7.Visible = false;
+            L_Progress6.Text = sender == B_Abort7 ? "Cancelled" : "Done";
+            if (tinyfinder.seedlist.Count == 1)
+            {
+                var seed = tinyfinder.seedlist[0];
+                if (Prompt(MessageBoxButtons.YesNo, $"Your Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
+                {
+                    Status = FuncUtil.SeedStr2Array(seed);
+                    B_Backup_Click(null, null);
+                }
+                return;
+            }
+            Alert($"Found {tinyfinder.seedlist.Count} Frame(s)");
+        }
+
+        private void UpdateProgressBar7(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                Gen7PBar.Value = tinyfinder.Cnt;
+                L_Progress7.Text = (tinyfinder.Cnt / (tinyfinder.Max / 100.00)).ToString("F2") + "%";
+                if (tinyfinder.Cnt == tinyfinder.Max)
+                    B_Abort7_Click(null, null);
+            }));
+        }
+
+        private void UpdateList7(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                EggSeedList.Items.Clear();
+                EggSeedList.Items.AddRange(tinyfinder.seedlist.ToArray());
+                EggSeedList.Refresh();
+            }));
+        }
+        
+        private void NatureInput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NatureList.Text != "") NatureList.Text += ",";
+            NatureList.Text += NatureInput.SelectedIndex.ToString();
+        }
+
+        private void B_BackNature_Click(object sender, EventArgs e)
+        {
+            var str = NatureList.Text;
+            if (str != "")
+            {
+                if (str.LastIndexOf(',') != -1)
+                    str = str.Remove(str.LastIndexOf(','));
+                else
+                    str = "";
+            }
+            NatureList.Text = str;
+        }
+        #endregion
     }
 }
