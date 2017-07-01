@@ -226,6 +226,11 @@ namespace Pk3DSRNGTool
 
         private void B_TinySearch_Click(object sender, EventArgs e)
         {
+            if (NatureList.Text.Count(c => c == ',') != 7)
+            {
+                Error("Incorrect number of natures");
+                return;
+            }
             var nature = FuncUtil.parseNatureList(NatureList.Text);
             if (nature == null)
             {
@@ -306,6 +311,21 @@ namespace Pk3DSRNGTool
                     str = "";
             }
             NatureList.Text = str;
+        }
+        
+        private void EggSeedList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var seed = EggSeedList.SelectedItem.ToString();
+                if (Prompt(MessageBoxButtons.YesNo, $"Your Egg Seed is \"{seed}\"\nSet as Current Status in Egg RNG Tab?") == DialogResult.Yes)
+                {
+                    Status = FuncUtil.SeedStr2Array(seed);
+                    B_Backup_Click(null, null);
+                }
+            }
+            catch
+            { }
         }
         #endregion
     }

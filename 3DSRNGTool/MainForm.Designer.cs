@@ -3980,7 +3980,7 @@
             // NatureInput
             // 
             this.NatureInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NatureInput.Location = new System.Drawing.Point(19, 71);
+            this.NatureInput.Location = new System.Drawing.Point(19, 70);
             this.NatureInput.Name = "NatureInput";
             this.NatureInput.Size = new System.Drawing.Size(90, 21);
             this.NatureInput.TabIndex = 93;
@@ -4009,6 +4009,7 @@
             this.EggSeedList.Name = "EggSeedList";
             this.EggSeedList.Size = new System.Drawing.Size(290, 82);
             this.EggSeedList.TabIndex = 29;
+            this.EggSeedList.Click += new System.EventHandler(this.EggSeedList_Click);
             // 
             // L_NatureList
             // 
@@ -4039,7 +4040,7 @@
             // 
             // B_Abort7
             // 
-            this.B_Abort7.Location = new System.Drawing.Point(240, 69);
+            this.B_Abort7.Location = new System.Drawing.Point(240, 68);
             this.B_Abort7.Name = "B_Abort7";
             this.B_Abort7.Size = new System.Drawing.Size(61, 25);
             this.B_Abort7.TabIndex = 99;
@@ -5795,9 +5796,9 @@
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
-            this.Controls.Add(this.RNGMethod);
             this.Controls.Add(this.DGV_ID);
             this.Controls.Add(this.DGV);
+            this.Controls.Add(this.RNGMethod);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1134, 648);
             this.Name = "MainForm";
