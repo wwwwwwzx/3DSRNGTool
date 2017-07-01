@@ -41,7 +41,8 @@ namespace Pk3DSRNGTool
         List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
         public static NtrClient ntrclient = new NtrClient();
-        private static MTSeedFinder finder = new MTSeedFinder();
+        private static MTSeedFinder mtfinder;
+        private static TinySeedFinder tinyfinder;
         #endregion
 
         public MainForm()
@@ -57,9 +58,11 @@ namespace Pk3DSRNGTool
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
             dgvPropertyInfo.SetValue(DGV_ID, true, null);
+            dgvPropertyInfo.SetValue(DGV_Seed, true, null);
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
+            DGV_Seed.AutoGenerateColumns = false;
 
             IVInputer = new IVRange(this);
 
@@ -120,15 +123,14 @@ namespace Pk3DSRNGTool
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
             ntrclient.Connected += OnConnected;
-            finder.Update += UpdateProgressBar;
-            finder.NewResult += UpdateDGV;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
             ntrclient.disconnect();
-            finder.Abort();
+            mtfinder?.Abort();
+            tinyfinder?.Abort();
         }
 
         private void RefreshPKM()

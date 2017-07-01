@@ -145,6 +145,12 @@ namespace Pk3DSRNGTool
         #region Bruteforce Seed Finder
         private void B_MTSearch_Click(object sender, EventArgs e)
         {
+            if (mtfinder == null)
+            {
+                mtfinder = new MTSeedFinder();
+                mtfinder.Update += UpdateProgressBar;
+                mtfinder.NewResult += UpdateDGV;
+            }
             var seedmin = (uint)Seed_min.Value;
             var seedmax = (uint)Seed_max.Value;
             if (RB_2Wild.Checked)
@@ -160,7 +166,7 @@ namespace Pk3DSRNGTool
                     Error("Invalid Input");
                     return;
                 }
-                finder.setFinder(IV1, min1, max1, IV2, min2, max2);
+                mtfinder.setFinder(IV1, min1, max1, IV2, min2, max2);
             }
             else if (RB_1Wild.Checked)
             {
@@ -185,15 +191,15 @@ namespace Pk3DSRNGTool
                     Error("Seed Range too large");
                     return;
                 }
-                finder.setFinder2(IVlower, IVupper, min, max, nature);
+                mtfinder.setFinder2(IVlower, IVupper, min, max, nature);
             }
             else
                 return;
             FinderPBar.Value = 0;
             L_Progress.Text = "0.00%";
-            finder.Clear();
-            finder.Search(seedmin, seedmax, RB_2Wild.Checked);
-            FinderPBar.Maximum = finder.Max;
+            mtfinder.Clear();
+            mtfinder.Search(seedmin, seedmax, RB_2Wild.Checked);
+            FinderPBar.Maximum = mtfinder.Max;
             AdjustDGVSeedColumn();
             DGV_Seed.CurrentCell = null;
             DGV_Seed.DataSource = new BindingSource(new List<Frame_Seed>(), null);
@@ -204,23 +210,23 @@ namespace Pk3DSRNGTool
 
         private void B_Abort_Click(object sender, EventArgs e)
         {
-            finder.Abort();
+            mtfinder.Abort();
             B_MTSearch.Visible = true;
             B_Abort.Visible = false;
             RB_1Wild.Enabled = RB_2Wild.Enabled = true;
             L_Progress.Text = sender == B_Abort ? "Cancelled" : "Done";
-            if (finder.seedlist.Count == 1)
-                Seed.Value = finder.seedlist[0].Seed;
-            Alert($"Found {finder.seedlist.Count} Frame(s)");
+            if (mtfinder.seedlist.Count == 1)
+                Seed.Value = mtfinder.seedlist[0].Seed;
+            Alert($"Found {mtfinder.seedlist.Count} Frame(s)");
         }
 
         private void UpdateProgressBar(object sender, EventArgs e)
         {
             Invoke(new Action(() =>
             {
-                FinderPBar.Value = finder.Cnt;
-                L_Progress.Text = (finder.Cnt / (finder.Max / 100.00)).ToString("F2") + "%";
-                if (finder.Cnt == finder.Max)
+                FinderPBar.Value = mtfinder.Cnt;
+                L_Progress.Text = (mtfinder.Cnt / (mtfinder.Max / 100.00)).ToString("F2") + "%";
+                if (mtfinder.Cnt == mtfinder.Max)
                     B_Abort_Click(null, null);
             }));
         }
@@ -229,7 +235,7 @@ namespace Pk3DSRNGTool
         {
             Invoke(new Action(() =>
             {
-                DGV_Seed.DataSource = new BindingSource(finder.seedlist, null);
+                DGV_Seed.DataSource = new BindingSource(tinyfinder.seedlist, null);
                 DGV_Seed.CurrentCell = null;
             }));
         }

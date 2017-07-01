@@ -3,6 +3,7 @@
     public class Frame_Seed
     {
         public uint Seed { get; set; }
+        public string Status { get; set; }
         public byte nature1, nature2;
         public byte gender;
         public int Frame1 { get; set; }
