@@ -642,14 +642,14 @@
             this.Filters.Controls.Add(this.SafeFOnly);
             this.Filters.Location = new System.Drawing.Point(417, 6);
             this.Filters.Name = "Filters";
-            this.Filters.Size = new System.Drawing.Size(407, 273);
+            this.Filters.Size = new System.Drawing.Size(393, 273);
             this.Filters.TabIndex = 4;
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
             // 
             // B_LoadFilter
             // 
-            this.B_LoadFilter.Location = new System.Drawing.Point(272, 17);
+            this.B_LoadFilter.Location = new System.Drawing.Point(265, 17);
             this.B_LoadFilter.Name = "B_LoadFilter";
             this.B_LoadFilter.Size = new System.Drawing.Size(54, 25);
             this.B_LoadFilter.TabIndex = 99;
@@ -659,7 +659,7 @@
             // 
             // B_SaveFilter
             // 
-            this.B_SaveFilter.Location = new System.Drawing.Point(203, 17);
+            this.B_SaveFilter.Location = new System.Drawing.Point(196, 17);
             this.B_SaveFilter.Name = "B_SaveFilter";
             this.B_SaveFilter.Size = new System.Drawing.Size(54, 25);
             this.B_SaveFilter.TabIndex = 96;
@@ -680,7 +680,7 @@
             // L_Ball
             // 
             this.L_Ball.AutoSize = true;
-            this.L_Ball.Location = new System.Drawing.Point(200, 55);
+            this.L_Ball.Location = new System.Drawing.Point(193, 55);
             this.L_Ball.Name = "L_Ball";
             this.L_Ball.Size = new System.Drawing.Size(31, 13);
             this.L_Ball.TabIndex = 94;
@@ -689,7 +689,7 @@
             // Ball
             // 
             this.Ball.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Ball.Location = new System.Drawing.Point(200, 78);
+            this.Ball.Location = new System.Drawing.Point(193, 78);
             this.Ball.Name = "Ball";
             this.Ball.Size = new System.Drawing.Size(74, 21);
             this.Ball.TabIndex = 93;
@@ -714,7 +714,7 @@
             "8",
             "9",
             "10"});
-            this.Slot.Location = new System.Drawing.Point(200, 78);
+            this.Slot.Location = new System.Drawing.Point(193, 78);
             this.Slot.Name = "Slot";
             this.Slot.Size = new System.Drawing.Size(74, 21);
             this.Slot.TabIndex = 92;
@@ -722,7 +722,7 @@
             // L_Slot
             // 
             this.L_Slot.AutoSize = true;
-            this.L_Slot.Location = new System.Drawing.Point(200, 55);
+            this.L_Slot.Location = new System.Drawing.Point(193, 55);
             this.L_Slot.Name = "L_Slot";
             this.L_Slot.Size = new System.Drawing.Size(31, 13);
             this.L_Slot.TabIndex = 82;
@@ -731,7 +731,7 @@
             // SpecialOnly
             // 
             this.SpecialOnly.AutoSize = true;
-            this.SpecialOnly.Location = new System.Drawing.Point(200, 220);
+            this.SpecialOnly.Location = new System.Drawing.Point(193, 220);
             this.SpecialOnly.Name = "SpecialOnly";
             this.SpecialOnly.Size = new System.Drawing.Size(86, 17);
             this.SpecialOnly.TabIndex = 81;
@@ -743,7 +743,7 @@
             // BlinkFOnly
             // 
             this.BlinkFOnly.AutoSize = true;
-            this.BlinkFOnly.Location = new System.Drawing.Point(302, 194);
+            this.BlinkFOnly.Location = new System.Drawing.Point(295, 194);
             this.BlinkFOnly.Name = "BlinkFOnly";
             this.BlinkFOnly.Size = new System.Drawing.Size(74, 17);
             this.BlinkFOnly.TabIndex = 79;
@@ -759,7 +759,7 @@
             this.HiddenPower.DropDownHeight = 400;
             this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(295, 112);
+            this.HiddenPower.Location = new System.Drawing.Point(288, 112);
             this.HiddenPower.Name = "HiddenPower";
             this.HiddenPower.Size = new System.Drawing.Size(91, 21);
             this.HiddenPower.TabIndex = 78;
@@ -772,7 +772,7 @@
             this.Nature.DropDownHeight = 400;
             this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(295, 163);
+            this.Nature.Location = new System.Drawing.Point(288, 163);
             this.Nature.Name = "Nature";
             this.Nature.Size = new System.Drawing.Size(91, 21);
             this.Nature.TabIndex = 77;
@@ -780,7 +780,7 @@
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
-            this.ShowStats.Location = new System.Drawing.Point(201, 248);
+            this.ShowStats.Location = new System.Drawing.Point(194, 248);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(86, 17);
             this.ShowStats.TabIndex = 75;
@@ -789,7 +789,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(341, 17);
+            this.Reset.Location = new System.Drawing.Point(334, 17);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(54, 25);
             this.Reset.TabIndex = 73;
@@ -824,7 +824,7 @@
             // L_Lv_S
             // 
             this.L_Lv_S.AutoSize = true;
-            this.L_Lv_S.Location = new System.Drawing.Point(299, 65);
+            this.L_Lv_S.Location = new System.Drawing.Point(292, 65);
             this.L_Lv_S.Name = "L_Lv_S";
             this.L_Lv_S.Size = new System.Drawing.Size(19, 13);
             this.L_Lv_S.TabIndex = 66;
@@ -833,7 +833,7 @@
             // L_Ability
             // 
             this.L_Ability.AutoSize = true;
-            this.L_Ability.Location = new System.Drawing.Point(200, 158);
+            this.L_Ability.Location = new System.Drawing.Point(193, 158);
             this.L_Ability.Name = "L_Ability";
             this.L_Ability.Size = new System.Drawing.Size(31, 13);
             this.L_Ability.TabIndex = 64;
@@ -843,7 +843,7 @@
             // 
             this.Filter_Lv.AccessibleName = "";
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Filter_Lv.Location = new System.Drawing.Point(318, 59);
+            this.Filter_Lv.Location = new System.Drawing.Point(311, 59);
             this.Filter_Lv.Name = "Filter_Lv";
             this.Filter_Lv.Size = new System.Drawing.Size(44, 22);
             this.Filter_Lv.TabIndex = 67;
@@ -856,7 +856,7 @@
             "1",
             "2",
             "H"});
-            this.Ability.Location = new System.Drawing.Point(200, 179);
+            this.Ability.Location = new System.Drawing.Point(193, 179);
             this.Ability.Name = "Ability";
             this.Ability.Size = new System.Drawing.Size(74, 21);
             this.Ability.TabIndex = 63;
@@ -864,7 +864,7 @@
             // DisableFilters
             // 
             this.DisableFilters.AutoSize = true;
-            this.DisableFilters.Location = new System.Drawing.Point(302, 248);
+            this.DisableFilters.Location = new System.Drawing.Point(295, 248);
             this.DisableFilters.Name = "DisableFilters";
             this.DisableFilters.Size = new System.Drawing.Size(74, 17);
             this.DisableFilters.TabIndex = 51;
@@ -874,7 +874,7 @@
             // ShinyOnly
             // 
             this.ShinyOnly.AutoSize = true;
-            this.ShinyOnly.Location = new System.Drawing.Point(302, 221);
+            this.ShinyOnly.Location = new System.Drawing.Point(295, 221);
             this.ShinyOnly.Name = "ShinyOnly";
             this.ShinyOnly.Size = new System.Drawing.Size(74, 17);
             this.ShinyOnly.TabIndex = 8;
@@ -884,7 +884,7 @@
             // L_gender
             // 
             this.L_gender.AutoSize = true;
-            this.L_gender.Location = new System.Drawing.Point(200, 108);
+            this.L_gender.Location = new System.Drawing.Point(193, 108);
             this.L_gender.Name = "L_gender";
             this.L_gender.Size = new System.Drawing.Size(31, 13);
             this.L_gender.TabIndex = 39;
@@ -893,7 +893,7 @@
             // Gender
             // 
             this.Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Gender.Location = new System.Drawing.Point(200, 129);
+            this.Gender.Location = new System.Drawing.Point(193, 129);
             this.Gender.Name = "Gender";
             this.Gender.Size = new System.Drawing.Size(74, 21);
             this.Gender.TabIndex = 38;
@@ -901,7 +901,7 @@
             // L_nature
             // 
             this.L_nature.AutoSize = true;
-            this.L_nature.Location = new System.Drawing.Point(295, 141);
+            this.L_nature.Location = new System.Drawing.Point(288, 141);
             this.L_nature.Name = "L_nature";
             this.L_nature.Size = new System.Drawing.Size(31, 13);
             this.L_nature.TabIndex = 35;
@@ -910,7 +910,7 @@
             // L_HP
             // 
             this.L_HP.AutoSize = true;
-            this.L_HP.Location = new System.Drawing.Point(295, 91);
+            this.L_HP.Location = new System.Drawing.Point(288, 91);
             this.L_HP.Name = "L_HP";
             this.L_HP.Size = new System.Drawing.Size(31, 13);
             this.L_HP.TabIndex = 34;
@@ -1507,7 +1507,7 @@
             // SafeFOnly
             // 
             this.SafeFOnly.AutoSize = true;
-            this.SafeFOnly.Location = new System.Drawing.Point(302, 194);
+            this.SafeFOnly.Location = new System.Drawing.Point(295, 194);
             this.SafeFOnly.Name = "SafeFOnly";
             this.SafeFOnly.Size = new System.Drawing.Size(74, 17);
             this.SafeFOnly.TabIndex = 80;
@@ -1531,7 +1531,7 @@
             this.RNGMethod.Location = new System.Drawing.Point(12, 32);
             this.RNGMethod.Name = "RNGMethod";
             this.RNGMethod.SelectedIndex = 0;
-            this.RNGMethod.Size = new System.Drawing.Size(1097, 570);
+            this.RNGMethod.Size = new System.Drawing.Size(1083, 570);
             this.RNGMethod.TabIndex = 5;
             this.RNGMethod.SelectedIndexChanged += new System.EventHandler(this.RNGMethod_Changed);
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
@@ -1545,7 +1545,7 @@
             this.TP_StationaryRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_StationaryRNG.Name = "TP_StationaryRNG";
             this.TP_StationaryRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_StationaryRNG.Size = new System.Drawing.Size(1089, 544);
+            this.TP_StationaryRNG.Size = new System.Drawing.Size(1075, 544);
             this.TP_StationaryRNG.TabIndex = 0;
             this.TP_StationaryRNG.Text = "定点乱数";
             this.TP_StationaryRNG.UseVisualStyleBackColor = true;
@@ -1568,7 +1568,7 @@
             this.RNGInfo.Controls.Add(this.Frame_max);
             this.RNGInfo.Controls.Add(this.Frame_min);
             this.RNGInfo.Controls.Add(this.AroundTarget);
-            this.RNGInfo.Location = new System.Drawing.Point(830, 6);
+            this.RNGInfo.Location = new System.Drawing.Point(816, 6);
             this.RNGInfo.Name = "RNGInfo";
             this.RNGInfo.Size = new System.Drawing.Size(252, 273);
             this.RNGInfo.TabIndex = 91;
@@ -2159,7 +2159,7 @@
             this.TP_EventRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EventRNG.Name = "TP_EventRNG";
             this.TP_EventRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EventRNG.Size = new System.Drawing.Size(1089, 544);
+            this.TP_EventRNG.Size = new System.Drawing.Size(1075, 544);
             this.TP_EventRNG.TabIndex = 1;
             this.TP_EventRNG.Text = "配信乱数";
             this.TP_EventRNG.UseVisualStyleBackColor = true;
@@ -2205,9 +2205,9 @@
             this.EventSetting.Controls.Add(this.L_Species);
             this.EventSetting.Controls.Add(this.L_Forme);
             this.EventSetting.Controls.Add(this.L_Event_PID);
-            this.EventSetting.Location = new System.Drawing.Point(3, 6);
+            this.EventSetting.Location = new System.Drawing.Point(6, 6);
             this.EventSetting.Name = "EventSetting";
-            this.EventSetting.Size = new System.Drawing.Size(409, 278);
+            this.EventSetting.Size = new System.Drawing.Size(405, 273);
             this.EventSetting.TabIndex = 97;
             this.EventSetting.TabStop = false;
             this.EventSetting.Text = "配信设置";
@@ -2700,7 +2700,7 @@
             this.Wild_Setting.Controls.Add(this.L_Location);
             this.Wild_Setting.Location = new System.Drawing.Point(6, 6);
             this.Wild_Setting.Name = "Wild_Setting";
-            this.Wild_Setting.Size = new System.Drawing.Size(404, 275);
+            this.Wild_Setting.Size = new System.Drawing.Size(405, 273);
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
@@ -2956,7 +2956,7 @@
             this.Parents_Info.Controls.Add(this.M_Items);
             this.Parents_Info.Location = new System.Drawing.Point(6, 6);
             this.Parents_Info.Name = "Parents_Info";
-            this.Parents_Info.Size = new System.Drawing.Size(404, 275);
+            this.Parents_Info.Size = new System.Drawing.Size(405, 273);
             this.Parents_Info.TabIndex = 7;
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
@@ -3662,7 +3662,7 @@
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_IDRNG.Size = new System.Drawing.Size(1089, 544);
+            this.TP_IDRNG.Size = new System.Drawing.Size(1075, 544);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
@@ -3671,9 +3671,9 @@
             // 
             this.GB_RNGGEN7ID.Controls.Add(this.Clk_Correction);
             this.GB_RNGGEN7ID.Controls.Add(this.L_ClkCorrection);
-            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(3, 193);
+            this.GB_RNGGEN7ID.Location = new System.Drawing.Point(6, 193);
             this.GB_RNGGEN7ID.Name = "GB_RNGGEN7ID";
-            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(183, 88);
+            this.GB_RNGGEN7ID.Size = new System.Drawing.Size(180, 88);
             this.GB_RNGGEN7ID.TabIndex = 116;
             this.GB_RNGGEN7ID.TabStop = false;
             this.GB_RNGGEN7ID.Text = "Gen7";
@@ -3711,9 +3711,9 @@
             this.RNGPanel.Controls.Add(this.ID_Tiny0);
             this.RNGPanel.Controls.Add(this.label22);
             this.RNGPanel.Controls.Add(this.ID_Tiny1);
-            this.RNGPanel.Location = new System.Drawing.Point(3, 6);
+            this.RNGPanel.Location = new System.Drawing.Point(6, 6);
             this.RNGPanel.Name = "RNGPanel";
-            this.RNGPanel.Size = new System.Drawing.Size(183, 181);
+            this.RNGPanel.Size = new System.Drawing.Size(180, 181);
             this.RNGPanel.TabIndex = 115;
             this.RNGPanel.TabStop = false;
             this.RNGPanel.Text = "Gen6";
@@ -3821,9 +3821,9 @@
             this.Filter_ID.Controls.Add(this.label14);
             this.Filter_ID.Controls.Add(this.TSV_List);
             this.Filter_ID.Controls.Add(this.Filter_TSV);
-            this.Filter_ID.Location = new System.Drawing.Point(192, 3);
+            this.Filter_ID.Location = new System.Drawing.Point(192, 6);
             this.Filter_ID.Name = "Filter_ID";
-            this.Filter_ID.Size = new System.Drawing.Size(630, 278);
+            this.Filter_ID.Size = new System.Drawing.Size(618, 273);
             this.Filter_ID.TabIndex = 114;
             this.Filter_ID.TabStop = false;
             // 
@@ -3945,7 +3945,7 @@
             this.TP_Gen7ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen7ToolKit.Name = "TP_Gen7ToolKit";
             this.TP_Gen7ToolKit.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1089, 544);
+            this.TP_Gen7ToolKit.Size = new System.Drawing.Size(1075, 544);
             this.TP_Gen7ToolKit.TabIndex = 5;
             this.TP_Gen7ToolKit.Text = "Gen7 Tool Kit";
             this.TP_Gen7ToolKit.UseVisualStyleBackColor = true;
@@ -3961,7 +3961,7 @@
             this.GB_TinyFinder.Controls.Add(this.NatureList);
             this.GB_TinyFinder.Controls.Add(this.B_TinySearch);
             this.GB_TinyFinder.Controls.Add(this.B_Abort7);
-            this.GB_TinyFinder.Location = new System.Drawing.Point(762, 287);
+            this.GB_TinyFinder.Location = new System.Drawing.Point(753, 287);
             this.GB_TinyFinder.Name = "GB_TinyFinder";
             this.GB_TinyFinder.Size = new System.Drawing.Size(319, 254);
             this.GB_TinyFinder.TabIndex = 33;
@@ -4055,7 +4055,7 @@
             this.Magikarp.Controls.Add(this.B_EggSeed127);
             this.Magikarp.Location = new System.Drawing.Point(6, 379);
             this.Magikarp.Name = "Magikarp";
-            this.Magikarp.Size = new System.Drawing.Size(752, 163);
+            this.Magikarp.Size = new System.Drawing.Size(741, 163);
             this.Magikarp.TabIndex = 104;
             this.Magikarp.TabStop = false;
             // 
@@ -4070,7 +4070,7 @@
             // 
             // B_EggSeed127
             // 
-            this.B_EggSeed127.Location = new System.Drawing.Point(653, 119);
+            this.B_EggSeed127.Location = new System.Drawing.Point(639, 119);
             this.B_EggSeed127.Name = "B_EggSeed127";
             this.B_EggSeed127.Size = new System.Drawing.Size(72, 27);
             this.B_EggSeed127.TabIndex = 29;
@@ -4081,7 +4081,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(933, 33);
+            this.label17.Location = new System.Drawing.Point(916, 33);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 13);
             this.label17.TabIndex = 102;
@@ -4090,7 +4090,7 @@
             // L_TimeCalculator
             // 
             this.L_TimeCalculator.AutoSize = true;
-            this.L_TimeCalculator.Location = new System.Drawing.Point(839, 6);
+            this.L_TimeCalculator.Location = new System.Drawing.Point(822, 6);
             this.L_TimeCalculator.Name = "L_TimeCalculator";
             this.L_TimeCalculator.Size = new System.Drawing.Size(80, 13);
             this.L_TimeCalculator.TabIndex = 101;
@@ -4099,7 +4099,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(800, 100);
+            this.label15.Location = new System.Drawing.Point(788, 100);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(43, 13);
             this.label15.TabIndex = 100;
@@ -4121,7 +4121,7 @@
             // QRInput
             // 
             this.QRInput.AutoSize = true;
-            this.QRInput.Location = new System.Drawing.Point(351, 157);
+            this.QRInput.Location = new System.Drawing.Point(345, 157);
             this.QRInput.Name = "QRInput";
             this.QRInput.Size = new System.Drawing.Size(137, 17);
             this.QRInput.TabIndex = 35;
@@ -4156,7 +4156,7 @@
             this.InputBox.Controls.Add(this.button15);
             this.InputBox.Location = new System.Drawing.Point(6, 6);
             this.InputBox.Name = "InputBox";
-            this.InputBox.Size = new System.Drawing.Size(816, 137);
+            this.InputBox.Size = new System.Drawing.Size(803, 137);
             this.InputBox.TabIndex = 34;
             this.InputBox.TabStop = false;
             this.InputBox.Text = "输入工具";
@@ -4164,7 +4164,7 @@
             // L_StartingFrame
             // 
             this.L_StartingFrame.AutoSize = true;
-            this.L_StartingFrame.Location = new System.Drawing.Point(637, 96);
+            this.L_StartingFrame.Location = new System.Drawing.Point(625, 96);
             this.L_StartingFrame.Name = "L_StartingFrame";
             this.L_StartingFrame.Size = new System.Drawing.Size(43, 13);
             this.L_StartingFrame.TabIndex = 98;
@@ -4179,7 +4179,7 @@
             0,
             0,
             0});
-            this.Time_min.Location = new System.Drawing.Point(720, 92);
+            this.Time_min.Location = new System.Drawing.Point(708, 92);
             this.Time_min.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -4198,7 +4198,7 @@
             // 
             this.button16.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_16;
             this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button16.Location = new System.Drawing.Point(756, 31);
+            this.button16.Location = new System.Drawing.Point(749, 31);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(40, 40);
             this.button16.TabIndex = 15;
@@ -4222,7 +4222,7 @@
             // 
             this.button9.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_09;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button9.Location = new System.Drawing.Point(434, 31);
+            this.button9.Location = new System.Drawing.Point(427, 31);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(40, 40);
             this.button9.TabIndex = 8;
@@ -4233,7 +4233,7 @@
             // 
             this.button8.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_08;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.Location = new System.Drawing.Point(388, 31);
+            this.button8.Location = new System.Drawing.Point(381, 31);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(40, 40);
             this.button8.TabIndex = 7;
@@ -4264,7 +4264,7 @@
             // 
             this.button10.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_10;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(480, 31);
+            this.button10.Location = new System.Drawing.Point(473, 31);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(40, 40);
             this.button10.TabIndex = 9;
@@ -4285,7 +4285,7 @@
             // 
             this.button7.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_07;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.Location = new System.Drawing.Point(342, 31);
+            this.button7.Location = new System.Drawing.Point(335, 31);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(40, 40);
             this.button7.TabIndex = 6;
@@ -4296,7 +4296,7 @@
             // 
             this.button11.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_11;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Location = new System.Drawing.Point(526, 31);
+            this.button11.Location = new System.Drawing.Point(519, 31);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(40, 40);
             this.button11.TabIndex = 10;
@@ -4307,7 +4307,7 @@
             // 
             this.button6.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_06;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(296, 31);
+            this.button6.Location = new System.Drawing.Point(289, 31);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(40, 40);
             this.button6.TabIndex = 5;
@@ -4318,7 +4318,7 @@
             // 
             this.button12.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_12;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.Location = new System.Drawing.Point(572, 31);
+            this.button12.Location = new System.Drawing.Point(565, 31);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(40, 40);
             this.button12.TabIndex = 11;
@@ -4329,7 +4329,7 @@
             // 
             this.button5.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_05;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(250, 31);
+            this.button5.Location = new System.Drawing.Point(243, 31);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(40, 40);
             this.button5.TabIndex = 4;
@@ -4340,7 +4340,7 @@
             // 
             this.button0.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_00;
             this.button0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button0.Location = new System.Drawing.Point(20, 31);
+            this.button0.Location = new System.Drawing.Point(13, 31);
             this.button0.Name = "button0";
             this.button0.Size = new System.Drawing.Size(40, 40);
             this.button0.TabIndex = 16;
@@ -4351,7 +4351,7 @@
             // 
             this.button13.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_13;
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Location = new System.Drawing.Point(618, 31);
+            this.button13.Location = new System.Drawing.Point(611, 31);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(40, 40);
             this.button13.TabIndex = 12;
@@ -4362,7 +4362,7 @@
             // 
             this.button1.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_01;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(66, 31);
+            this.button1.Location = new System.Drawing.Point(59, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 40);
             this.button1.TabIndex = 0;
@@ -4373,7 +4373,7 @@
             // 
             this.button4.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_04;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(204, 31);
+            this.button4.Location = new System.Drawing.Point(197, 31);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(40, 40);
             this.button4.TabIndex = 3;
@@ -4384,7 +4384,7 @@
             // 
             this.button14.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_14;
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.Location = new System.Drawing.Point(664, 31);
+            this.button14.Location = new System.Drawing.Point(657, 31);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(40, 40);
             this.button14.TabIndex = 13;
@@ -4395,7 +4395,7 @@
             // 
             this.button2.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_02;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(112, 31);
+            this.button2.Location = new System.Drawing.Point(105, 31);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(40, 40);
             this.button2.TabIndex = 1;
@@ -4406,7 +4406,7 @@
             // 
             this.button3.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_03;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Location = new System.Drawing.Point(158, 31);
+            this.button3.Location = new System.Drawing.Point(151, 31);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(40, 40);
             this.button3.TabIndex = 2;
@@ -4417,7 +4417,7 @@
             // 
             this.button15.BackgroundImage = global::Pk3DSRNGTool.Properties.Resources.Clock_15;
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button15.Location = new System.Drawing.Point(710, 31);
+            this.button15.Location = new System.Drawing.Point(703, 31);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(40, 40);
             this.button15.TabIndex = 14;
@@ -4431,9 +4431,9 @@
             this.QRBox.Controls.Add(this.QRSearch);
             this.QRBox.Controls.Add(this.L_QRresult);
             this.QRBox.Controls.Add(this.QRList);
-            this.QRBox.Location = new System.Drawing.Point(348, 173);
+            this.QRBox.Location = new System.Drawing.Point(342, 173);
             this.QRBox.Name = "QRBox";
-            this.QRBox.Size = new System.Drawing.Size(410, 200);
+            this.QRBox.Size = new System.Drawing.Size(405, 200);
             this.QRBox.TabIndex = 32;
             this.QRBox.TabStop = false;
             // 
@@ -4492,14 +4492,14 @@
             this.SearchSeedBox.Controls.Add(this.Clock_List);
             this.SearchSeedBox.Location = new System.Drawing.Point(6, 173);
             this.SearchSeedBox.Name = "SearchSeedBox";
-            this.SearchSeedBox.Size = new System.Drawing.Size(336, 200);
+            this.SearchSeedBox.Size = new System.Drawing.Size(330, 200);
             this.SearchSeedBox.TabIndex = 31;
             this.SearchSeedBox.TabStop = false;
             // 
             // RB_ID
             // 
             this.RB_ID.AutoSize = true;
-            this.RB_ID.Location = new System.Drawing.Point(179, 23);
+            this.RB_ID.Location = new System.Drawing.Point(172, 23);
             this.RB_ID.Name = "RB_ID";
             this.RB_ID.Size = new System.Drawing.Size(60, 17);
             this.RB_ID.TabIndex = 24;
@@ -4512,7 +4512,7 @@
             // 
             this.RB_Main.AutoSize = true;
             this.RB_Main.Checked = true;
-            this.RB_Main.Location = new System.Drawing.Point(57, 23);
+            this.RB_Main.Location = new System.Drawing.Point(50, 23);
             this.RB_Main.Name = "RB_Main";
             this.RB_Main.Size = new System.Drawing.Size(61, 17);
             this.RB_Main.TabIndex = 23;
@@ -4524,7 +4524,7 @@
             // L_clocklist
             // 
             this.L_clocklist.AutoSize = true;
-            this.L_clocklist.Location = new System.Drawing.Point(16, 67);
+            this.L_clocklist.Location = new System.Drawing.Point(9, 67);
             this.L_clocklist.Name = "L_clocklist";
             this.L_clocklist.Size = new System.Drawing.Size(55, 13);
             this.L_clocklist.TabIndex = 22;
@@ -4532,7 +4532,7 @@
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(249, 104);
+            this.Search.Location = new System.Drawing.Point(242, 104);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(72, 27);
             this.Search.TabIndex = 21;
@@ -4543,7 +4543,7 @@
             // L_SeedResult
             // 
             this.L_SeedResult.AutoSize = true;
-            this.L_SeedResult.Location = new System.Drawing.Point(18, 151);
+            this.L_SeedResult.Location = new System.Drawing.Point(11, 151);
             this.L_SeedResult.Name = "L_SeedResult";
             this.L_SeedResult.Size = new System.Drawing.Size(55, 13);
             this.L_SeedResult.TabIndex = 6;
@@ -4552,7 +4552,7 @@
             // SeedResults
             // 
             this.SeedResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SeedResults.Location = new System.Drawing.Point(79, 151);
+            this.SeedResults.Location = new System.Drawing.Point(72, 151);
             this.SeedResults.Name = "SeedResults";
             this.SeedResults.Size = new System.Drawing.Size(242, 22);
             this.SeedResults.TabIndex = 20;
@@ -4560,7 +4560,7 @@
             // Clock_List
             // 
             this.Clock_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clock_List.Location = new System.Drawing.Point(77, 62);
+            this.Clock_List.Location = new System.Drawing.Point(70, 62);
             this.Clock_List.Name = "Clock_List";
             this.Clock_List.Size = new System.Drawing.Size(244, 22);
             this.Clock_List.TabIndex = 19;
@@ -4572,7 +4572,7 @@
             this.TP_Gen6ToolKit.Controls.Add(this.GB_NTR);
             this.TP_Gen6ToolKit.Location = new System.Drawing.Point(4, 22);
             this.TP_Gen6ToolKit.Name = "TP_Gen6ToolKit";
-            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1089, 544);
+            this.TP_Gen6ToolKit.Size = new System.Drawing.Size(1075, 544);
             this.TP_Gen6ToolKit.TabIndex = 6;
             this.TP_Gen6ToolKit.Text = "Gen6 Tool Kit";
             this.TP_Gen6ToolKit.UseVisualStyleBackColor = true;
@@ -4592,7 +4592,7 @@
             this.GB_SeedFinder.Controls.Add(this.B_Abort6);
             this.GB_SeedFinder.Controls.Add(this.WildPanel2);
             this.GB_SeedFinder.Controls.Add(this.WildPanel1);
-            this.GB_SeedFinder.Location = new System.Drawing.Point(10, 170);
+            this.GB_SeedFinder.Location = new System.Drawing.Point(6, 160);
             this.GB_SeedFinder.Name = "GB_SeedFinder";
             this.GB_SeedFinder.Size = new System.Drawing.Size(709, 324);
             this.GB_SeedFinder.TabIndex = 113;
@@ -5097,7 +5097,7 @@
             this.GB_NTR.Controls.Add(this.B_GetGen6Seed);
             this.GB_NTR.Controls.Add(this.label18);
             this.GB_NTR.Controls.Add(this.IP);
-            this.GB_NTR.Location = new System.Drawing.Point(10, 10);
+            this.GB_NTR.Location = new System.Drawing.Point(6, 6);
             this.GB_NTR.Name = "GB_NTR";
             this.GB_NTR.Size = new System.Drawing.Size(329, 154);
             this.GB_NTR.TabIndex = 0;
@@ -5203,7 +5203,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(503, 13);
+            this.Lang.Location = new System.Drawing.Point(488, 13);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(70, 21);
             this.Lang.TabIndex = 87;
@@ -5213,7 +5213,7 @@
             // 
             this.Advanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Advanced.AutoSize = true;
-            this.Advanced.Location = new System.Drawing.Point(1026, 15);
+            this.Advanced.Location = new System.Drawing.Point(1011, 15);
             this.Advanced.Name = "Advanced";
             this.Advanced.Size = new System.Drawing.Size(74, 17);
             this.Advanced.TabIndex = 86;
@@ -5225,7 +5225,7 @@
             // 
             this.ShinyCharm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShinyCharm.AutoSize = true;
-            this.ShinyCharm.Location = new System.Drawing.Point(946, 15);
+            this.ShinyCharm.Location = new System.Drawing.Point(931, 15);
             this.ShinyCharm.Name = "ShinyCharm";
             this.ShinyCharm.Size = new System.Drawing.Size(74, 17);
             this.ShinyCharm.TabIndex = 85;
@@ -5237,7 +5237,7 @@
             // 
             this.L_TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(844, 17);
+            this.L_TSV.Location = new System.Drawing.Point(829, 17);
             this.L_TSV.Name = "L_TSV";
             this.L_TSV.Size = new System.Drawing.Size(28, 13);
             this.L_TSV.TabIndex = 84;
@@ -5247,7 +5247,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(727, 17);
+            this.L_Seed.Location = new System.Drawing.Point(712, 17);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -5257,7 +5257,7 @@
             // 
             this.TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TSV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV.Location = new System.Drawing.Point(874, 12);
+            this.TSV.Location = new System.Drawing.Point(859, 12);
             this.TSV.Maximum = new decimal(new int[] {
             4095,
             0,
@@ -5340,7 +5340,7 @@
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(1095, 263);
+            this.DGV.Size = new System.Drawing.Size(1081, 263);
             this.DGV.TabIndex = 89;
             this.DGV.VirtualMode = true;
             this.DGV.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellMouseEnter);
@@ -5639,7 +5639,7 @@
             "Transporter",
             "Sun",
             "Moon"});
-            this.Gameversion.Location = new System.Drawing.Point(646, 13);
+            this.Gameversion.Location = new System.Drawing.Point(631, 13);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(78, 21);
             this.Gameversion.TabIndex = 91;
@@ -5649,7 +5649,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(577, 17);
+            this.L_GameVersion.Location = new System.Drawing.Point(562, 17);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -5680,7 +5680,7 @@
             this.DGV_ID.RowHeadersWidth = 18;
             this.DGV_ID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV_ID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_ID.Size = new System.Drawing.Size(1095, 263);
+            this.DGV_ID.Size = new System.Drawing.Size(1081, 263);
             this.DGV_ID.TabIndex = 92;
             this.DGV_ID.VirtualMode = true;
             this.DGV_ID.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
@@ -5775,7 +5775,7 @@
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed.Hexadecimal = true;
-            this.Seed.Location = new System.Drawing.Point(759, 12);
+            this.Seed.Location = new System.Drawing.Point(744, 12);
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(78, 22);
             this.Seed.TabIndex = 88;
@@ -5786,7 +5786,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 612);
+            this.ClientSize = new System.Drawing.Size(1104, 612);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.Seed);
             this.Controls.Add(this.Gameversion);
@@ -5800,7 +5800,7 @@
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1134, 648);
+            this.MinimumSize = new System.Drawing.Size(1120, 648);
             this.Name = "MainForm";
             this.Text = "3DS RNG Tool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_Close);
