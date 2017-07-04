@@ -133,6 +133,7 @@ B_Open = 导入
 OtherInfo = 其他信息
 L_Species = 种类
 L_Forme = 形态
+NoDex = 未登入图鉴
 ---------------------TabPage3----------------------------------
 Wild_Setting = 野生草丛遇敌设置
 L_Location = 地点

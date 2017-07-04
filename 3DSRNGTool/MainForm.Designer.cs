@@ -140,6 +140,7 @@
             this.ConsiderDelay = new System.Windows.Forms.CheckBox();
             this.L_NPC = new System.Windows.Forms.Label();
             this.NPC = new System.Windows.Forms.NumericUpDown();
+            this.NoDex = new System.Windows.Forms.CheckBox();
             this.EggPanel = new System.Windows.Forms.Panel();
             this.Egg_Instruction = new System.Windows.Forms.Label();
             this.Egg_max = new System.Windows.Forms.NumericUpDown();
@@ -1639,6 +1640,7 @@
             this.timedelaypanel.Controls.Add(this.ConsiderDelay);
             this.timedelaypanel.Controls.Add(this.L_NPC);
             this.timedelaypanel.Controls.Add(this.NPC);
+            this.timedelaypanel.Controls.Add(this.NoDex);
             this.timedelaypanel.Location = new System.Drawing.Point(4, 130);
             this.timedelaypanel.Name = "timedelaypanel";
             this.timedelaypanel.Size = new System.Drawing.Size(240, 72);
@@ -1763,6 +1765,18 @@
             this.NPC.Size = new System.Drawing.Size(32, 22);
             this.NPC.TabIndex = 40;
             this.NPC.ValueChanged += new System.EventHandler(this.NPC_ValueChanged);
+            // 
+            // NoDex
+            // 
+            this.NoDex.AutoSize = true;
+            this.NoDex.Location = new System.Drawing.Point(129, 42);
+            this.NoDex.Name = "NoDex";
+            this.NoDex.Size = new System.Drawing.Size(86, 17);
+            this.NoDex.TabIndex = 110;
+            this.NoDex.Text = "未登录图鉴";
+            this.NoDex.UseVisualStyleBackColor = true;
+            this.NoDex.CheckedChanged += new System.EventHandler(this.Event_CheckedChanged);
+            this.NoDex.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // EggPanel
             // 
@@ -2673,7 +2687,7 @@
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_WildRNG.Name = "TP_WildRNG";
             this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_WildRNG.Size = new System.Drawing.Size(1089, 544);
+            this.TP_WildRNG.Size = new System.Drawing.Size(1075, 544);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
             this.TP_WildRNG.UseVisualStyleBackColor = true;
@@ -2909,7 +2923,7 @@
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EggRNG.Size = new System.Drawing.Size(1089, 544);
+            this.TP_EggRNG.Size = new System.Drawing.Size(1075, 544);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
             this.TP_EggRNG.UseVisualStyleBackColor = true;
@@ -6387,6 +6401,7 @@
         private System.Windows.Forms.Label L_Progress7;
         private System.Windows.Forms.ComboBox NatureInput;
         private System.Windows.Forms.Button B_DelNature;
+        private System.Windows.Forms.CheckBox NoDex;
     }
 }
 

@@ -267,7 +267,7 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(DelayTime - 43);
                 return;
             }
-            if (igenerator is Event7 e && e.YourID && !e.IsEgg)
+            if (igenerator is Event7 e && (e.NoDex || e.YourID && !e.IsEgg))
                 e.Generate();
             time_elapse(DelayTime);
         }

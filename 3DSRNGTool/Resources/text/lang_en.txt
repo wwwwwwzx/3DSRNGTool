@@ -133,6 +133,7 @@ B_Open = Import...
 OtherInfo = Other Information
 L_Species = Species
 L_Forme = Form
+NoDex = No Dex Entry
 ---------------------TabPage3----------------------------------
 Wild_Setting = Wild Encounter Setting
 L_Location = Location

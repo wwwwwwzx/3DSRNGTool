@@ -181,7 +181,7 @@ namespace Pk3DSRNGTool
         private void Event_CheckedChanged(object sender, EventArgs e)
         {
             if (Gen7)
-                Timedelay.Value = YourID.Checked && !IsEgg.Checked ? 62 : 0;
+                Timedelay.Value = YourID.Checked && !IsEgg.Checked || NoDex.Checked ? 62 : 0;
             if (Gen6)
                 Timedelay.Value = 0;
         }

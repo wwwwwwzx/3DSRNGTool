@@ -513,6 +513,7 @@ namespace Pk3DSRNGTool
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
 
             Gen6EggPanel.Visible = Gen6 && Method == 3;
+            NoDex.Visible = Gen7 && Method == 1;
 
             MT_SeedKey.Visible =
             Sta_AbilityLocked.Visible =
@@ -951,6 +952,8 @@ namespace Pk3DSRNGTool
             EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
             if (e is Event6 e6)
                 e6.IsORAS = Ver > 1;
+            else if (e is Event7 e7)
+                e7.NoDex = NoDex.Checked;
             e.Species = (short)Event_Species.SelectedIndex;
             e.Forme = (byte)Event_Forme.SelectedIndex;
             e.Level = (byte)Filter_Lv.Value;

@@ -6,6 +6,7 @@ namespace Pk3DSRNGTool
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
 
+        public bool NoDex;
         private static ulong getrand => RNGPool.getrand64;
 
         public override RNGResult Generate()
