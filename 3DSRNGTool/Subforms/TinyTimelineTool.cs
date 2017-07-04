@@ -79,7 +79,7 @@ namespace Pk3DSRNGTool
             switch (Method.SelectedIndex)
             {
                 case 0: state.MarkFS((ulong)Parameters.Value); break;
-                case 2: state.MarkSync(); break;
+                case 2: state.MarkSync((int)Parameters.Value); break;
             }
             list = state.results;
             MainDGV.DataSource = list;
@@ -173,6 +173,12 @@ namespace Pk3DSRNGTool
                     Parameters.Minimum = 0;
                     Parameters.Value = 40;
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
+                    break;
+                case 2:
+                    Parameters.Maximum = 7;
+                    Parameters.Minimum = 3;
+                    Parameters.Value = 6;
+                    TTTToolTip.SetToolTip(Parameters, "Number of Cutscene Calls");
                     break;
                 default:
                     Parameters.Visible = false;

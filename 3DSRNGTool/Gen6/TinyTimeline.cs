@@ -102,10 +102,10 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void MarkSync()
+        public void MarkSync(int Call_Num)
         {
-            const int delay1 = 15;
-            const int delay2 = 20;
+            int delay1 = 3 * Call_Num;
+            int delay2 = 4 * Call_Num;
             int max = results.Count - delay2;
             for (int i = 0; i < max; i++)
             {
