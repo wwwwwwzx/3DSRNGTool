@@ -20,6 +20,9 @@ namespace Pk3DSRNGTool
                 case EncounterType.RockSmash:
                     TableNow = IsXY ? RockSmash_XY : RockSmash_ORAS;
                     break;
+                case EncounterType.CaveShadow:
+                    TableNow = IsXY ? Shadow_XY : null;
+                    break;
                 default:
                     TableNow = null; return null;
             }
@@ -523,5 +526,15 @@ namespace Pk3DSRNGTool
             },
         };
         #endregion
+
+        public static readonly EncounterArea_XY[] Shadow_XY =
+        {
+            new EncounterArea_XY
+            {
+                Location = 132,
+                Species = new[] { 066, 066, 066, 111, 095, 104, 104, 337, 338, 115, 303, 303,},
+                Level = new byte[] { 15, 16, 17, 17, 17, 15, 16, 17, 17, 17, 15, 16 },
+            },
+        };
     }
 }

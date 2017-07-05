@@ -20,7 +20,6 @@ namespace Pk3DSRNGTool
         }
 
         private bool getSync => getTinyRand < 0x80000000;
-        private byte getAbility => 0; // Todo
         private void Prepare(ResultW6 rt)
         {
             if (null == (tiny = RNGPool.tinyframe?.getTiny))
@@ -78,16 +77,20 @@ namespace Pk3DSRNGTool
         public ResultW6[] Generate_Horde()
         {
             var results = new ResultW6[5];
-            bool Sync = tiny == null ? false : getSync;
+            for (int i = 0; i < 5; i++)
+                results[i] = new ResultW6();
+            bool Sync = false;
+            if (null != (tiny = RNGPool.tinyframe?.getTiny))
+            {
+                Sync = getSync;
+                MarkHA(results);
+            }
             Advance(60);
             for (int i = 0; i < 5; i++)
             {
-                var rt = new ResultW6();
-                rt.Synchronize = Sync;
-                slot = rt.Slot = (byte)(i + 1);
-                rt.Ability = getAbility;
-                Generate_Once(rt);
-                results[i] = rt;
+                results[i].Synchronize = Sync;
+                slot = results[i].Slot = (byte)(i + 1);
+                Generate_Once(results[i]);
             }
             return results;
         }
@@ -171,6 +174,14 @@ namespace Pk3DSRNGTool
             if (rand < (CompoundEye ? 85 : 56))
                 return "1%";
             return "-";
+        }
+
+        private void MarkHA(ResultW6[] horde)
+        {
+            int idx = TinyRand(6);
+            if (idx > 4)
+                return;
+            horde[idx].Ability = 3;
         }
     }
 }

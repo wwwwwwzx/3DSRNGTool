@@ -8,6 +8,7 @@
         TrashCan,
         PokeRadar,
         FriendSafari,
+        CaveShadow,
     }
 
     public class PKMW6 : Pokemon
@@ -58,6 +59,14 @@
                 List = new[]
                 {
                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6 },
+                }
+            },
+            new PokemonList
+            {
+                Text = "Cave Shadows",
+                List = new[]
+                {
+                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.CaveShadow, Delay = 78, },
                 }
             },
         };
