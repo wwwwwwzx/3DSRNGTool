@@ -111,17 +111,17 @@
                 Text = "Fossils",
                 List = new[]
                 {
-                    new PKM7 { Gift = true, Species = 138, Level = 20, NPC = 1, Delay = 40, }, // Omanyte
-                    new PKM7 { Gift = true, Species = 140, Level = 20, NPC = 1, Delay = 40, }, // Kabuto
-                    new PKM7 { Gift = true, Species = 142, Level = 20, NPC = 1, Delay = 40, }, // Aerodactyl
-                    new PKM7 { Gift = true, Species = 345, Level = 20, NPC = 1, Delay = 40, }, // Lileep
-                    new PKM7 { Gift = true, Species = 347, Level = 20, NPC = 1, Delay = 40, }, // Anorith
-                    new PKM7 { Gift = true, Species = 408, Level = 20, NPC = 1, Delay = 40, }, // Cranidos
-                    new PKM7 { Gift = true, Species = 410, Level = 20, NPC = 1, Delay = 40, }, // Shieldon
-                    new PKM7 { Gift = true, Species = 564, Level = 20, NPC = 1, Delay = 40, }, // Tirtouga
-                    new PKM7 { Gift = true, Species = 566, Level = 20, NPC = 1, Delay = 40, }, // Archen
-                    new PKM7 { Gift = true, Species = 696, Level = 20, NPC = 1, Delay = 40, }, // Tyrunt
-                    new PKM7 { Gift = true, Species = 698, Level = 20, NPC = 1, Delay = 40, }, // Amaura
+                    new PKM7 { Gift = true, Species = 408, Level = 15, NPC = 1, Delay = 40, }, // Cranidos
+                    new PKM7 { Gift = true, Species = 410, Level = 15, NPC = 1, Delay = 40, }, // Shieldon
+                    new PKM7 { Gift = true, Species = 564, Level = 15, NPC = 1, Delay = 40, }, // Tirtouga
+                    new PKM7 { Gift = true, Species = 566, Level = 15, NPC = 1, Delay = 40, }, // Archen
+                    new PKM7 { Gift = true, Species = 138, Level = 15, NPC = 1, Delay = 40, }, // Omanyte
+                    new PKM7 { Gift = true, Species = 140, Level = 15, NPC = 1, Delay = 40, }, // Kabuto
+                    new PKM7 { Gift = true, Species = 142, Level = 15, NPC = 1, Delay = 40, }, // Aerodactyl
+                    new PKM7 { Gift = true, Species = 345, Level = 15, NPC = 1, Delay = 40, }, // Lileep
+                    new PKM7 { Gift = true, Species = 347, Level = 15, NPC = 1, Delay = 40, }, // Anorith
+                    new PKM7 { Gift = true, Species = 696, Level = 15, NPC = 1, Delay = 40, }, // Tyrunt
+                    new PKM7 { Gift = true, Species = 698, Level = 15, NPC = 1, Delay = 40, }, // Amaura
                 }
             },
         };
