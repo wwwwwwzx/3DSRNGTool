@@ -15,22 +15,22 @@ namespace Pk3DSRNGTool
             rt.Level = Level;
 
             //Encryption Constant
-            rt.EC = EC > 0 ? EC : (uint)(getrand & 0xFFFFFFFF);
+            rt.EC = EC > 0 ? EC : (uint)getrand;
 
             //PID
             switch (PIDType)
             {
                 case 0: //Random PID
-                    rt.PID = (uint)(getrand & 0xFFFFFFFF);
+                    rt.PID = (uint)getrand;
                     rt.Shiny = rt.PSV == TSV;
                     break;
                 case 1: //Random NonShiny
-                    rt.PID = (uint)(getrand & 0xFFFFFFFF);
+                    rt.PID = (uint)getrand;
                     if (rt.PSV == TSV)
                         rt.PID ^= 0x10000000;
                     break;
                 case 2: //Random Shiny
-                    rt.PID = (uint)(getrand & 0xFFFFFFFF);
+                    rt.PID = (uint)getrand;
                     rt.Shiny = true;
                     if (OtherInfo)
                         rt.PID = (uint)(((TID ^ SID ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF));

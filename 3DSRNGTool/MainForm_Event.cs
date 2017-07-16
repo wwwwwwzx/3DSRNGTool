@@ -124,7 +124,7 @@ namespace Pk3DSRNGTool
         private void NatureLocked_CheckedChanged(object sender, EventArgs e)
         {
             Event_Nature.Enabled = NatureLocked.Checked;
-            if (!NatureLocked.Checked) Event_Nature.SelectedIndex = 0;
+            if (!NatureLocked.Checked || Event_Nature.SelectedIndex < 0) Event_Nature.SelectedIndex = 0;
         }
 
         private void GenderLocked_CheckedChanged(object sender, EventArgs e)

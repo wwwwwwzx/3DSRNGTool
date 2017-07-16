@@ -17,7 +17,7 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 
 ## Credit
 
-- Zaksabeast, Zep715, Real96, Admiral Fish and ShinySylveon for great teamworks on gen6 development  
+- Zaksabeast, Zep715, Real96, Admiral Fish and Shiny_Sylveon for great teamworks on gen6 development  
   Zaksabeast and Admiral Fish for building up the plugin  
   Real96 for testing and lots of good advice  
   Zep715 for figuring out tons of infomation from the assembly  
@@ -61,13 +61,13 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Soaring Legends__: _Despite that, do you want to fly into the clouds? / Do you want to fly into the gap? Yes/No_
 - __Storyline Latios/Latias__: _xxx joined your team!_
 - __Eon Ticket Latios/Latias__: _Hyahhn!_
-- __Primal Kyogre/Groudon__: No dialogue.\*  (Do NOT open the wild view during the delay. The delay varies from console and save. and it should be an odd number)
+- __Primal Kyogre/Groudon__: No dialogue.\*  (The delay varies from console and save, and should be an odd number)
 - __Rayquaza__: _Kiiiryarrrarrrarrrraaaashiiiii!!!_ (Tip: Wait until it finishes its movement)
 - __Deoxys__: _The stone tablet before you--!!!_
 - __Regirock, Regice and Registeel__: No dialogue.\*
 - __Regigigas__: _Zut zutt!_
 - __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
-- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key or use circle pad to run to it.
+- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key to run to it.
 - __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
 - __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
 - __Beldum__: _xxx obtained a Beldum_
@@ -89,5 +89,5 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Pikipek__: No dialogue. Before the fourth step in grass.
 - __Exeggutor__: _Ahhh! What is that, xxx?!_
 - __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
-- __Starters__: _Having accepted on another, you'll surely be friends for life"._
-- __Poke Pelago__: Press A and thus go to Poke Pelago.
+- __Starters__: _Having accepted on another, you'll surely be friends for life._
+- __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.

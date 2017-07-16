@@ -664,7 +664,7 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
-            if (Gen6 && RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
+            if (RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
             {
                 DGVToolTip.ToolTipTitle = "Tips";
                 DGVToolTip.Show("This column shows the main RNG PID/ESV of the current egg (w/o mm or sc)\r\nNot the part of spread prediction of the egg seed in the same row."
@@ -802,18 +802,9 @@ namespace Pk3DSRNGTool
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
-            RNGPool.IsMainRNGEgg = Method == 3;
-            RNGPool.IsMainRNGEgg &= MainRNGEgg.Checked || Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
-
-            if (MainRNGEgg.Checked) // Get first egg
-            {
-                TinyMT tmt = new TinyMT(Status);
-                RNGPool.CreateBuffer(50, tmt);
-                RNGPool.firstegg = RNGPool.GenerateEgg7() as EggResult;
-                RNGPool.igenerator = getStaSettings();
-                (RNGPool.igenerator as Stationary7).ConsiderOtherTSV = ConsiderOtherTSV.Checked;
-                (RNGPool.igenerator as Stationary7).OtherTSVs = OtherTSVList.ToArray();
-            }
+            if (MainRNGEgg.Checked)
+                RNGPool.igenerator = getmaineggrng();
+            RNGPool.IsMainRNGEgg = Method == 3 && Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
 
             Frame.showstats = ShowStats.Checked;
             int buffersize = 150;
@@ -909,8 +900,6 @@ namespace Pk3DSRNGTool
             setting.TSV = (int)TSV.Value;
             setting.Level = (byte)Filter_Lv.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
-            if (MainRNGEgg.Checked)
-                return setting;
 
             if (IsPelago)
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
@@ -1105,6 +1094,18 @@ namespace Pk3DSRNGTool
             setting.MarkItem();
             return setting;
         }
+
+        private MainEggRNG getmaineggrng()
+        {
+            RNGPool.CreateBuffer(50, new TinyMT(Status));
+            ResultME7.Egg = RNGPool.GenerateEgg7() as EggResult; // First Egg From Tiny
+            return new MainEggRNG()
+            {
+                TSV = (int)TSV.Value,
+                ConsiderOtherTSV = ConsiderOtherTSV.Checked,
+                OtherTSVs = OtherTSVList.ToArray()
+            };
+        }
         #endregion
 
         #region Start Calculation
@@ -1202,7 +1203,7 @@ namespace Pk3DSRNGTool
 
             Frames[index].Formatted = true;
 
-            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as MainRNGEgg)?.InheritMaleIV;
+            bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as ResultME7)?.InheritMaleIV;
             const int ivstart = 5;
             if (ivsflag != null)
             {

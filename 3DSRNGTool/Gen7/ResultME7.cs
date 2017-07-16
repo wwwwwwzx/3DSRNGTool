@@ -2,9 +2,9 @@
 
 namespace Pk3DSRNGTool
 {
-    public class MainRNGEgg : Result7
+    public class ResultME7 : Result7
     {
-        private EggResult Egg;
+        public static EggResult Egg;
         
         public override byte Ability => Egg.Ability;
         public override byte Nature => Egg.Nature;
@@ -12,11 +12,10 @@ namespace Pk3DSRNGTool
 
         public byte Ball => Egg.Ball;
         public bool?[] InheritMaleIV => Egg.InheritMaleIV;
-        public MainRNGEgg(EggResult egg)
+        public ResultME7()
         {
-            Egg = egg;
-            EC = egg.EC;
-            IVs = (int[])egg.IVs.Clone();
+            EC = Egg.EC;
+            IVs = (int[])Egg.IVs.Clone();
         }
     }
 }

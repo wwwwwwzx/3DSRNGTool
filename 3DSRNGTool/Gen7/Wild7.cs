@@ -50,12 +50,12 @@ namespace Pk3DSRNGTool
             Advance(60);
 
             //Encryption Constant
-            rt.EC = (uint)(getrand & 0xFFFFFFFF);
+            rt.EC = (uint)getrand;
 
             //PID
             for (int i = PIDroll_count; i > 0; i--)
             {
-                rt.PID = (uint)(getrand & 0xFFFFFFFF);
+                rt.PID = (uint)getrand;
                 if (rt.PSV == TSV)
                 {
                     if (IsShinyLocked)

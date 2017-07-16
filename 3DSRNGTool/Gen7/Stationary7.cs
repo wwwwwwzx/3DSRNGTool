@@ -39,17 +39,17 @@ namespace Pk3DSRNGTool
             if (IsPelago)
             {
                 Advance(60 + PelagoShift);
-                rt.EC = (uint)(getrand & 0xFFFFFFFF);
+                rt.EC = (uint)getrand;
                 Advance(1);
             }
             else
-                rt.EC = (uint)(getrand & 0xFFFFFFFF);
+                rt.EC = (uint)getrand;
 
 
             //PID
             for (int i = PIDroll_count; i > 0; i--)
             {
-                rt.PID = (uint)(getrand & 0xFFFFFFFF);
+                rt.PID = (uint)getrand;
                 if (rt.PSV == TSV)
                 {
                     if (IsShinyLocked)
@@ -86,17 +86,6 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
-        public bool ConsiderOtherTSV;
-        public int[] OtherTSVs;
-        public RNGResult GenerateMainRNGPID(EggResult egg)
-        {
-            MainRNGEgg rt = new MainRNGEgg(egg);
-            rt.PID = (uint)(getrand & 0xFFFFFFFF);
-            var tmp = rt.PSV;
-            rt.Shiny = tmp == TSV || ConsiderOtherTSV && OtherTSVs.Contains((int)tmp);
-            return rt;
-        }
-
         public override void UseTemplate(Pokemon PM)
         {
             base.UseTemplate(PM);
@@ -104,6 +93,22 @@ namespace Pk3DSRNGTool
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             if (pm7.IsPelago)
                 IsPelago = true;
+        }
+    }
+
+    public class MainEggRNG : StationaryRNG
+    {
+        private static uint getpid => (uint)RNGPool.getrand64;
+
+        public bool ConsiderOtherTSV;
+        public int[] OtherTSVs;
+        public override RNGResult Generate()
+        {
+            var rt = new ResultME7();
+            rt.PID = getpid;
+            var tmp = rt.PSV;
+            rt.Shiny = tmp == TSV || ConsiderOtherTSV && OtherTSVs.Contains((int)tmp);
+            return rt;
         }
     }
 }

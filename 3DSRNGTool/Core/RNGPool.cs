@@ -89,7 +89,7 @@ namespace Pk3DSRNGTool.Core
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            var result = getresult6() as Result6;
+            var result = igenerator.Generate() as Result6;
             result.RandNum = RandList[Head];
             result.Status = RNGStateStr[Head];
             return result;
@@ -122,30 +122,16 @@ namespace Pk3DSRNGTool.Core
         public static ResultE6 GenerateAnEgg6(uint[] key)
         {
             Egg6.ReSeed(key);
-            var result = (igenerator as Egg6).Generate() as ResultE6;
+            var result = igenerator.Generate() as ResultE6;
             result.EggSeed = key[0] | ((ulong)key[1] << 32);
             return result;
-        }
-
-        public static RNGResult getresult6()
-        {
-            switch (igenerator)
-            {
-                case Stationary6 sta_rng:
-                    return sta_rng.Generate();
-                case Event6 event_rng:
-                    return event_rng.Generate();
-                case Wild6 wild_rng:
-                    return wild_rng.Generate();
-            }
-            return null;
         }
 
         public static RNGResult Generate7()
         {
             Pointer = Tail;
             int frameshift = getframeshift();
-            var result = getresult7() as Result7;
+            var result = igenerator.Generate() as Result7;
             result.RandNum = RandList64[Head];
             result.FrameDelayUsed = frameshift;
             return result;
@@ -154,25 +140,11 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult GenerateEgg7()
         {
             Pointer = Tail;
-            var result = (igenerator as Egg7).Generate() as ResultE7;
+            var result = igenerator.Generate() as ResultE7;
             result.RandNum = RandList[Head];
             result.Status = RNGStateStr[Head];
             result.FramesUsed = index;
             return result;
-        }
-
-        public static RNGResult getresult7()
-        {
-            switch (igenerator)
-            {
-                case Stationary7 sta_rng:
-                    return IsMainRNGEgg ? sta_rng.GenerateMainRNGPID(firstegg) : sta_rng.Generate();
-                case Event7 event_rng:
-                    return event_rng.Generate();
-                case Wild7 wild_rng:
-                    return wild_rng.Generate();
-            }
-            return null;
         }
         #region Gen6 Tiny Timeline
 
@@ -289,9 +261,6 @@ namespace Pk3DSRNGTool.Core
             }
             return index;
         }
-
-        // Gen7 MainRNGEgg
-        public static EggResult firstegg;
         #endregion
     }
 }

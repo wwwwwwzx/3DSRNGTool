@@ -34,8 +34,8 @@
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
 
-                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300,}, // Kyogre
-                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300,}, // Groudon
+                    new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300, Unstable= true, }, // Kyogre
+                    new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300, Unstable= true, }, // Groudon
                     new PKM6 { Species = 384, Level = 70, ShinyLocked = true, }, // Rayquaza
                     new PKM6 { Species = 386, Level = 80, ShinyLocked = true, Delay = 300, }, // Deoxys
 
@@ -225,9 +225,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM6 { Gift = true, Species = 650, Level = 5, Delay = 280, }, // Chespin
-                    new PKM6 { Gift = true, Species = 653, Level = 5, Delay = 280, }, // Fennekin
-                    new PKM6 { Gift = true, Species = 656, Level = 5, Delay = 330, }, // Froakie
+                    new PKM6 { Gift = true, Species = 650, Level = 5, Delay = 280, Unstable= true, }, // Chespin
+                    new PKM6 { Gift = true, Species = 653, Level = 5, Delay = 280, Unstable= true, }, // Fennekin
+                    new PKM6 { Gift = true, Species = 656, Level = 5, Delay = 330, Unstable= true, }, // Froakie
 
                     new PKM6 { Gift = true, Species = 1, Level = 10, Delay = 4,}, // Bulbasaur
                     new PKM6 { Gift = true, Species = 4, Level = 10, Delay = 4,}, // Charmander
