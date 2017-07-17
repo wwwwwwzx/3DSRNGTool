@@ -55,9 +55,6 @@
     <Compile Include="Controls\Frame_ID.cs" />
     <Compile Include="Controls\Frame_Seed.cs" />
     <Compile Include="Controls\Frame_Tiny.cs" />
-    <Compile Include="Core\EncounterArea.cs" />
-    <Compile Include="Core\IDFilters.cs" />
-    <Compile Include="Core\IDResult.cs" />
     <Compile Include="Gen6\Egg6.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\RockSmashArea6.cs" />
@@ -96,6 +93,9 @@
       <DependentUpon>PopupComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
+    <Compile Include="Core\EncounterArea.cs" />
+    <Compile Include="Core\IDFilters.cs" />
+    <Compile Include="Core\IDResult.cs" />
     <Compile Include="Core\EggResult.cs" />
     <Compile Include="Core\EggRNG.cs" />
     <Compile Include="Core\IGenerator.cs" />
@@ -153,7 +153,6 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
-    <Compile Include="RNG\IRNGState.cs" />
     <Compile Include="Subforms\TinyTimelineTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +170,7 @@
     <Compile Include="Util\SFMTSeedAPI.cs" />
     <Compile Include="RNG\DeepCopy.cs" />
     <Compile Include="RNG\IRNG.cs" />
+    <Compile Include="RNG\IRNGState.cs" />
     <Compile Include="RNG\MT.cs" />
     <Compile Include="RNG\SFMT.cs" />
     <Compile Include="RNG\TinyMT.cs" />

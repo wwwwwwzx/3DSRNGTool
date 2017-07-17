@@ -154,11 +154,11 @@ namespace Pk3DSRNGTool.Core
 
         #region Gen7 Time keeping
 
-        public static bool IsSolgaleo, IsLunala, IsExeggutor;
+        public static bool raining, phase;
         public static byte modelnumber;
         public static int[] remain_frame;
-
-        public static bool raining, phase;
+        
+        public static bool IsSolgaleo, IsLunala, IsExeggutor;
         public static int PreHoneyCorrection;
 
         public static void ResetModelStatus()
@@ -216,10 +216,11 @@ namespace Pk3DSRNGTool.Core
             remain_frame = new int[2];
             remain_frame[0] = tmp;
         }
+        
+        public static void NormalDelay() => time_elapse(DelayTime);
 
-        private static void time_delay()
+        public static void StationaryDelay()
         {
-            time_elapse(2); // Button pressing delay
             if (IsSolgaleo || IsLunala)
             {
                 int crydelay = IsSolgaleo ? 79 : 76;
@@ -239,26 +240,28 @@ namespace Pk3DSRNGTool.Core
                 time_elapse(DelayTime - 43);
                 return;
             }
-            if (igenerator is Event7 e && (e.NoDex || e.YourID && !e.IsEgg))
-                e.Generate();
-            time_elapse(DelayTime);
+            NormalDelay();
+        }
+
+        public static void WildDelay()
+        {
+            NormalDelay();
+            ResetModelStatus();
+            if (raining) Advance(2);
+            time_elapse(1);              //Blink process also occurs when loading map
+            Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
+            time_elapse(93);
         }
 
         private static int getframeshift()
         {
             if (Considerdelay)
-                time_delay();
+            {
+                time_elapse(2); // Button pressing delay
+                igenerator.Delay();
+            }
             else
                 ResetModelStatus();
-
-            if (igenerator is Wild7) //Wild
-            {
-                ResetModelStatus();
-                if (raining) Advance(2);
-                time_elapse(1);              //Blink process also occurs when loading map
-                Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
-                time_elapse(93);
-            }
             return index;
         }
         #endregion

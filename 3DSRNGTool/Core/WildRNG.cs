@@ -18,6 +18,7 @@
         protected virtual int PerfectIVCount => IV3[slot] ? 3 : 0;
         protected virtual int PIDroll_count { get; }
 
+        public virtual void Delay() { }
         public abstract RNGResult Generate();
         public abstract void Markslots();
 

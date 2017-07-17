@@ -23,6 +23,7 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
+        public override void Delay() => RNGPool.WildDelay();
         public override RNGResult Generate()
         {
             ResultW7 rt = new ResultW7();

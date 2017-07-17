@@ -2,6 +2,7 @@
 {
     internal interface IGenerator
     {
+        void Delay();
         RNGResult Generate();
     }
 }

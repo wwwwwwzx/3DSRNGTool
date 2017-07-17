@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
             return sync;
         }
 
+        public override void Delay() => RNGPool.StationaryDelay();
         public override RNGResult Generate()
         {
             Result7 rt = new Result7();
@@ -102,6 +103,7 @@ namespace Pk3DSRNGTool
 
         public bool ConsiderOtherTSV;
         public int[] OtherTSVs;
+        public override void Delay() => RNGPool.NormalDelay();
         public override RNGResult Generate()
         {
             var rt = new ResultME7();

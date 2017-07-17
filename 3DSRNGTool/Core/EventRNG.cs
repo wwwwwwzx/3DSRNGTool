@@ -15,10 +15,11 @@
         public ushort SID;
         public uint EC;
         public uint PID;
-        
+
         protected bool IsRandomGender;
         protected byte SettingGender;
 
+        public virtual void Delay() { }
         public abstract RNGResult Generate();
         public virtual void GetGenderSetting()
         {

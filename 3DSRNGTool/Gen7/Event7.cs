@@ -9,6 +9,13 @@ namespace Pk3DSRNGTool
         public bool NoDex;
         private static ulong getrand => RNGPool.getrand64;
 
+        public override void Delay()
+        {
+            if (NoDex || YourID && !IsEgg)
+                Generate();
+            RNGPool.NormalDelay();
+        }
+
         public override RNGResult Generate()
         {
             Result7 rt = new Result7();

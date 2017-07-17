@@ -24,6 +24,7 @@
             PIDroll_count = ShinyCharm && !IsShinyLocked && !AlwaysSync ? 3 : 1;
         }
 
+        public virtual void Delay() { }
         public abstract RNGResult Generate();
 
         public virtual void UseTemplate(Pokemon PM)

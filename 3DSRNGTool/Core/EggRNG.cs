@@ -26,6 +26,7 @@
         protected byte InheritIVs_Cnt { get; set; }
         protected bool RandomGender { get; set; }
 
+        public virtual void Delay() { }
         public abstract RNGResult Generate();
 
         public void MarkItem()
