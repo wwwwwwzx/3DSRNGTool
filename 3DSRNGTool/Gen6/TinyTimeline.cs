@@ -110,7 +110,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < max; i++)
             {
                 results[i]._sync = true;
-                for (int j = i + delay1; j < i + delay2; j++)
+                for (int j = i + delay1; j <= i + delay2; j++)
                 {
                     if (results[j].rand > 0x7FFFFFFF)
                     {

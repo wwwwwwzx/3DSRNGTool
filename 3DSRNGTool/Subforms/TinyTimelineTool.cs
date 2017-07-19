@@ -175,10 +175,10 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
                 case 2:
-                    Parameters.Maximum = 7;
-                    Parameters.Minimum = 3;
-                    Parameters.Value = 6;
-                    TTTToolTip.SetToolTip(Parameters, "Number of Cutscene Calls");
+                    Parameters.Maximum = 6;
+                    Parameters.Minimum = 1;
+                    Parameters.Value = 1;
+                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 default:
                     Parameters.Visible = false;
