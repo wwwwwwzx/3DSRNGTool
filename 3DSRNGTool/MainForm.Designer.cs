@@ -5287,7 +5287,6 @@
             // 
             this.DGV.AllowDrop = true;
             this.DGV.AllowUserToAddRows = false;
-            this.DGV.AllowUserToResizeColumns = false;
             this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -5673,7 +5672,6 @@
             // 
             this.DGV_ID.AllowDrop = true;
             this.DGV_ID.AllowUserToAddRows = false;
-            this.DGV_ID.AllowUserToResizeColumns = false;
             this.DGV_ID.AllowUserToResizeRows = false;
             this.DGV_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
