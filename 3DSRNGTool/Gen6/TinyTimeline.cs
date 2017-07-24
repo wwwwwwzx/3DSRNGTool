@@ -44,6 +44,8 @@ namespace Pk3DSRNGTool
 
         public int Startingframe;
         public int Maxframe;
+        public byte Method;
+        public int Parameter;
         private TinyCallList Status = new TinyCallList();
         public TinyMT Tinyrng;
 
@@ -100,12 +102,20 @@ namespace Pk3DSRNGTool
                 newdata.rand = Tinyrng.Nextuint();
                 results.Add(newdata);
             }
+            switch (Method)
+            {
+                case 0: MarkFS(); break;
+                case 2: MarkSync(); break;
+            }
         }
 
-        public void MarkSync(int Call_Num)
+        private int PM_Num => Parameter;
+        private int SlotNum => Parameter;
+
+        public void MarkSync()
         {
-            int delay1 = 3 * Call_Num;
-            int delay2 = 4 * Call_Num;
+            int delay1 = 3 * PM_Num;
+            int delay2 = 4 * PM_Num;
             int max = results.Count - delay2;
             for (int i = 0; i < max; i++)
             {
@@ -121,7 +131,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void MarkFS(ulong SlotNum)
+        public void MarkFS()
         {
             int max = results.Count - 2;
             for (int i = 0; i < max; i++)

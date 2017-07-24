@@ -76,11 +76,6 @@ namespace Pk3DSRNGTool
             list = new List<Frame_Tiny>();
             var state = gettimeline();
             state.Generate();
-            switch (Method.SelectedIndex)
-            {
-                case 0: state.MarkFS((ulong)Parameters.Value); break;
-                case 2: state.MarkSync((int)Parameters.Value); break;
-            }
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
@@ -104,6 +99,8 @@ namespace Pk3DSRNGTool
             }
             for (int i = (int)Shift.Value; i > 0; i--)
                 line.Add((int)Frame_J.Value, 5);
+            line.Method = (byte)Method.SelectedIndex;
+            line.Parameter = (int)Parameters.Value;
             return line;
         }
 

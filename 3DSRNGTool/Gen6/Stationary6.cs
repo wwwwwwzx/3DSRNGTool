@@ -7,8 +7,8 @@ namespace Pk3DSRNGTool
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
-        private static bool tinysync => RNGPool.tinyframe?._sync == true;
-
+        public bool InstantSync;
+        private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
         private bool getSync => AlwaysSync || tinysync;
 
         public override RNGResult Generate()
@@ -72,7 +72,9 @@ namespace Pk3DSRNGTool
         public override void UseTemplate(Pokemon PM)
         {
             base.UseTemplate(PM);
-            if (PM is PKM6 pm6 && pm6.Transporter && pm6.Species == 151)
+            var pm6 = PM as PKM6;
+            InstantSync = pm6.InstantSync;
+            if (pm6.Transporter && pm6.Species == 151)
                 PerfectIVCount = 5;
         }
     }

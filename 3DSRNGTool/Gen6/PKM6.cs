@@ -8,6 +8,7 @@
         public override bool AlwaysSync => base.AlwaysSync || PokemonLink;
 
         public bool PokemonLink;
+        public bool InstantSync;
         public bool Transporter => PokemonLink && (Conceptual || Species == 151);
         private bool _ShinyLocked;
 
@@ -31,8 +32,8 @@
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Ability = 1, Gift = true, }, // Latias
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Ability = 1, Gift = true, }, // Latios
 
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, InstantSync = true, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, InstantSync = true, }, // Latias
 
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300, Unstable= true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300, Unstable= true, }, // Groudon
