@@ -400,7 +400,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 138, idx = 2,
                 Correction = 3, NPC = 1,
-                LevelMin = 27,
+                LevelMin = 27, lvldiff = -1,
                 Species = new[] {7,074,749,737,324,776,777,239},
             },
             new EncounterArea7
