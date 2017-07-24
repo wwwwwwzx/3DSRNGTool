@@ -5,6 +5,7 @@ namespace Pk3DSRNGTool
 {
     public class Frame_Tiny
     {
+        public static int Startingframe;
         public int Index { get; set; }
         public bool _sync;
         public byte _fs;
@@ -24,6 +25,7 @@ namespace Pk3DSRNGTool
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : (framemin + 2).ToString() + " ~ " + framemax.ToString();
+        public string RealTime => framemin == framemax ? "-" : FuncUtil.Convert2timestr((framemin + 2 - Startingframe)/60.0) + " ~ " + FuncUtil.Convert2timestr((framemax - Startingframe)/60.0);
         public byte Slot
         {
             get

@@ -74,6 +74,7 @@ namespace Pk3DSRNGTool
         {
             list.Clear();
             list = new List<Frame_Tiny>();
+            Frame_Tiny.Startingframe = (int)Frame1.Value;
             var state = gettimeline();
             state.Generate();
             list = state.results;
