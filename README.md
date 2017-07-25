@@ -68,6 +68,7 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Regigigas__: _Zut zutt!_
 - __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
 - __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key to run to it.
+- __DexNav Poochyena__: _xxx! Over here!_
 - __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
 - __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
 - __Beldum__: _xxx obtained a Beldum_
