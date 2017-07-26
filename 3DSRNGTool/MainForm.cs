@@ -1132,6 +1132,7 @@ namespace Pk3DSRNGTool
             dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
+            dgv_wurmpleevo.Visible = Method == 3 && Advanced.Checked;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
             dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);

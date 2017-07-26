@@ -95,6 +95,7 @@ namespace Pk3DSRNGTool
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
             Frame.Parents[1] = PARENTS_STR[lindex, 1];
             Frame.Parents[2] = PARENTS_STR[lindex, 2];
+            dgv_wurmpleevo.HeaderText = StringItem.species[265];
 
             RefreshCategory();
             if (Method == 2)
