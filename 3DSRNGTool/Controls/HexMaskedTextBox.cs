@@ -8,7 +8,8 @@ namespace Pk3DSRNGTool.Controls
         public HexMaskedTextBox()
         {
             Mask = "AAAAAAAA";
-            Size = new System.Drawing.Size(66, 22);
+            TextAlign = HorizontalAlignment.Right;
+            Size = new System.Drawing.Size(63, 22);
         }
 
         public uint Value

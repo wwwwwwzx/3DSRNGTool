@@ -91,16 +91,19 @@
             // tiny3
             // 
             this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Location = new System.Drawing.Point(62, 25);
+            this.tiny3.Location = new System.Drawing.Point(75, 25);
+            this.tiny3.Mask = "AAAAAAAA";
             this.tiny3.Name = "tiny3";
+            this.tiny3.Size = new System.Drawing.Size(63, 22);
             this.tiny3.TabIndex = 100;
             this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny3.Value = ((uint)(0u));
             // 
             // label0
             // 
             this.label0.AutoSize = true;
             this.label0.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label0.Location = new System.Drawing.Point(34, 113);
+            this.label0.Location = new System.Drawing.Point(47, 113);
             this.label0.Name = "label0";
             this.label0.Size = new System.Drawing.Size(28, 14);
             this.label0.TabIndex = 107;
@@ -110,16 +113,19 @@
             // tiny2
             // 
             this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Location = new System.Drawing.Point(62, 53);
+            this.tiny2.Location = new System.Drawing.Point(75, 53);
+            this.tiny2.Mask = "AAAAAAAA";
             this.tiny2.Name = "tiny2";
+            this.tiny2.Size = new System.Drawing.Size(63, 22);
             this.tiny2.TabIndex = 101;
             this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny2.Value = ((uint)(0u));
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label1.Location = new System.Drawing.Point(34, 84);
+            this.label1.Location = new System.Drawing.Point(47, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 14);
             this.label1.TabIndex = 106;
@@ -129,24 +135,30 @@
             // tiny1
             // 
             this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Location = new System.Drawing.Point(62, 81);
+            this.tiny1.Location = new System.Drawing.Point(75, 81);
+            this.tiny1.Mask = "AAAAAAAA";
             this.tiny1.Name = "tiny1";
+            this.tiny1.Size = new System.Drawing.Size(63, 22);
             this.tiny1.TabIndex = 102;
             this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny1.Value = ((uint)(0u));
             // 
             // tiny0
             // 
             this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Location = new System.Drawing.Point(62, 110);
+            this.tiny0.Location = new System.Drawing.Point(75, 110);
+            this.tiny0.Mask = "AAAAAAAA";
             this.tiny0.Name = "tiny0";
+            this.tiny0.Size = new System.Drawing.Size(63, 22);
             this.tiny0.TabIndex = 103;
             this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny0.Value = ((uint)(0u));
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label2.Location = new System.Drawing.Point(34, 55);
+            this.label2.Location = new System.Drawing.Point(47, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 105;
@@ -157,7 +169,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label3.Location = new System.Drawing.Point(34, 27);
+            this.label3.Location = new System.Drawing.Point(47, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 14);
             this.label3.TabIndex = 104;

@@ -2235,16 +2235,24 @@
             // 
             this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_PID.Location = new System.Drawing.Point(327, 203);
+            this.Event_PID.Mask = "AAAAAAAA";
             this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(64, 22);
             this.Event_PID.TabIndex = 92;
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Value = ((uint)(0u));
             this.Event_PID.Visible = false;
             // 
             // Event_EC
             // 
             this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_EC.Location = new System.Drawing.Point(327, 241);
+            this.Event_EC.Mask = "AAAAAAAA";
             this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(64, 22);
             this.Event_EC.TabIndex = 93;
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Value = ((uint)(0u));
             this.Event_EC.Visible = false;
             // 
             // Event_Species
@@ -2960,7 +2968,7 @@
             this.MT_SeedKey.Controls.Add(this.Key0);
             this.MT_SeedKey.Controls.Add(this.label20);
             this.MT_SeedKey.Controls.Add(this.Key1);
-            this.MT_SeedKey.Location = new System.Drawing.Point(271, 2);
+            this.MT_SeedKey.Location = new System.Drawing.Point(275, 2);
             this.MT_SeedKey.Name = "MT_SeedKey";
             this.MT_SeedKey.Size = new System.Drawing.Size(127, 103);
             this.MT_SeedKey.TabIndex = 102;
@@ -2971,7 +2979,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label19.Location = new System.Drawing.Point(6, 65);
+            this.label19.Location = new System.Drawing.Point(13, 65);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(28, 14);
             this.label19.TabIndex = 101;
@@ -2980,16 +2988,20 @@
             // Key0
             // 
             this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key0.Location = new System.Drawing.Point(40, 63);
+            this.Key0.Location = new System.Drawing.Point(47, 63);
+            this.Key0.Mask = "AAAAAAAA";
             this.Key0.Name = "Key0";
+            this.Key0.Size = new System.Drawing.Size(64, 22);
             this.Key0.TabIndex = 94;
+            this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key0.Value = ((uint)(0u));
             this.Key0.TextChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label20.Location = new System.Drawing.Point(6, 36);
+            this.label20.Location = new System.Drawing.Point(13, 36);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(28, 14);
             this.label20.TabIndex = 100;
@@ -2998,9 +3010,13 @@
             // Key1
             // 
             this.Key1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key1.Location = new System.Drawing.Point(40, 33);
+            this.Key1.Location = new System.Drawing.Point(47, 33);
+            this.Key1.Mask = "AAAAAAAA";
             this.Key1.Name = "Key1";
+            this.Key1.Size = new System.Drawing.Size(64, 22);
             this.Key1.TabIndex = 95;
+            this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key1.Value = ((uint)(0u));
             this.Key1.TextChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // B_Template
@@ -3090,16 +3106,20 @@
             // St3
             // 
             this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St3.Location = new System.Drawing.Point(34, 26);
+            this.St3.Location = new System.Drawing.Point(50, 25);
+            this.St3.Mask = "AAAAAAAA";
             this.St3.Name = "St3";
+            this.St3.Size = new System.Drawing.Size(64, 22);
             this.St3.TabIndex = 92;
+            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St3.Value = ((uint)(0u));
             this.St3.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label13.Location = new System.Drawing.Point(6, 114);
+            this.label13.Location = new System.Drawing.Point(22, 113);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(28, 14);
             this.label13.TabIndex = 99;
@@ -3118,9 +3138,13 @@
             // St2
             // 
             this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St2.Location = new System.Drawing.Point(34, 54);
+            this.St2.Location = new System.Drawing.Point(50, 53);
+            this.St2.Mask = "AAAAAAAA";
             this.St2.Name = "St2";
+            this.St2.Size = new System.Drawing.Size(64, 22);
             this.St2.TabIndex = 93;
+            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St2.Value = ((uint)(0u));
             this.St2.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // B_Backup
@@ -3137,7 +3161,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label11.Location = new System.Drawing.Point(6, 85);
+            this.label11.Location = new System.Drawing.Point(22, 84);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(28, 14);
             this.label11.TabIndex = 98;
@@ -3146,24 +3170,32 @@
             // St1
             // 
             this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St1.Location = new System.Drawing.Point(34, 82);
+            this.St1.Location = new System.Drawing.Point(50, 81);
+            this.St1.Mask = "AAAAAAAA";
             this.St1.Name = "St1";
+            this.St1.Size = new System.Drawing.Size(64, 22);
             this.St1.TabIndex = 94;
+            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St1.Value = ((uint)(0u));
             this.St1.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // St0
             // 
             this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St0.Location = new System.Drawing.Point(34, 111);
+            this.St0.Location = new System.Drawing.Point(50, 110);
+            this.St0.Mask = "AAAAAAAA";
             this.St0.Name = "St0";
+            this.St0.Size = new System.Drawing.Size(64, 22);
             this.St0.TabIndex = 95;
+            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St0.Value = ((uint)(0u));
             this.St0.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label8.Location = new System.Drawing.Point(6, 56);
+            this.label8.Location = new System.Drawing.Point(22, 55);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(28, 14);
             this.label8.TabIndex = 97;
@@ -3173,7 +3205,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label16.Location = new System.Drawing.Point(6, 28);
+            this.label16.Location = new System.Drawing.Point(22, 27);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(28, 14);
             this.label16.TabIndex = 96;
@@ -3718,8 +3750,12 @@
             // 
             this.ID_Tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_Tiny2.Location = new System.Drawing.Point(60, 52);
+            this.ID_Tiny2.Mask = "AAAAAAAA";
             this.ID_Tiny2.Name = "ID_Tiny2";
+            this.ID_Tiny2.Size = new System.Drawing.Size(64, 22);
             this.ID_Tiny2.TabIndex = 106;
+            this.ID_Tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny2.Value = ((uint)(0u));
             // 
             // label24
             // 
@@ -3735,8 +3771,12 @@
             // 
             this.ID_Tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_Tiny3.Location = new System.Drawing.Point(60, 22);
+            this.ID_Tiny3.Mask = "AAAAAAAA";
             this.ID_Tiny3.Name = "ID_Tiny3";
+            this.ID_Tiny3.Size = new System.Drawing.Size(64, 22);
             this.ID_Tiny3.TabIndex = 107;
+            this.ID_Tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny3.Value = ((uint)(0u));
             // 
             // label21
             // 
@@ -3752,8 +3792,12 @@
             // 
             this.ID_Tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_Tiny0.Location = new System.Drawing.Point(60, 112);
+            this.ID_Tiny0.Mask = "AAAAAAAA";
             this.ID_Tiny0.Name = "ID_Tiny0";
+            this.ID_Tiny0.Size = new System.Drawing.Size(64, 22);
             this.ID_Tiny0.TabIndex = 102;
+            this.ID_Tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny0.Value = ((uint)(0u));
             // 
             // label22
             // 
@@ -3769,8 +3813,12 @@
             // 
             this.ID_Tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_Tiny1.Location = new System.Drawing.Point(60, 82);
+            this.ID_Tiny1.Mask = "AAAAAAAA";
             this.ID_Tiny1.Name = "ID_Tiny1";
+            this.ID_Tiny1.Size = new System.Drawing.Size(64, 22);
             this.ID_Tiny1.TabIndex = 103;
+            this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny1.Value = ((uint)(0u));
             // 
             // Filter_ID
             // 
@@ -4600,16 +4648,24 @@
             this.Seed_max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed_max.Location = new System.Drawing.Point(239, 187);
+            this.Seed_max.Mask = "AAAAAAAA";
             this.Seed_max.Name = "Seed_max";
+            this.Seed_max.Size = new System.Drawing.Size(64, 22);
             this.Seed_max.TabIndex = 128;
+            this.Seed_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed_max.Value = ((uint)(0u));
             // 
             // Seed_min
             // 
             this.Seed_min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Seed_min.Location = new System.Drawing.Point(116, 187);
+            this.Seed_min.Mask = "AAAAAAAA";
             this.Seed_min.Name = "Seed_min";
+            this.Seed_min.Size = new System.Drawing.Size(64, 22);
             this.Seed_min.TabIndex = 127;
+            this.Seed_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed_min.Value = ((uint)(0u));
             // 
             // L_SeedRange
             // 
@@ -5145,7 +5201,7 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(488, 13);
+            this.Lang.Location = new System.Drawing.Point(503, 13);
             this.Lang.Name = "Lang";
             this.Lang.Size = new System.Drawing.Size(70, 21);
             this.Lang.TabIndex = 87;
@@ -5189,7 +5245,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(712, 17);
+            this.L_Seed.Location = new System.Drawing.Point(727, 17);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -5579,7 +5635,7 @@
             "Transporter",
             "Sun",
             "Moon"});
-            this.Gameversion.Location = new System.Drawing.Point(631, 13);
+            this.Gameversion.Location = new System.Drawing.Point(646, 13);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(78, 21);
             this.Gameversion.TabIndex = 91;
@@ -5589,7 +5645,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(562, 17);
+            this.L_GameVersion.Location = new System.Drawing.Point(577, 17);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -5713,9 +5769,13 @@
             // 
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Location = new System.Drawing.Point(744, 12);
+            this.Seed.Location = new System.Drawing.Point(759, 12);
+            this.Seed.Mask = "AAAAAAAA";
             this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(64, 22);
             this.Seed.TabIndex = 88;
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
             // MainForm
