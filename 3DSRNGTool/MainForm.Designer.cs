@@ -177,8 +177,8 @@
             this.EventSetting = new System.Windows.Forms.GroupBox();
             this.B_Open = new System.Windows.Forms.Button();
             this.Event_Forme = new System.Windows.Forms.ComboBox();
-            this.Event_PID = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.Event_EC = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Event_PID = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.Event_EC = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Event_Species = new System.Windows.Forms.ComboBox();
             this.Event_SID = new System.Windows.Forms.NumericUpDown();
             this.AbilityLocked = new System.Windows.Forms.CheckBox();
@@ -238,9 +238,9 @@
             this.Parents_Info = new System.Windows.Forms.GroupBox();
             this.MT_SeedKey = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.Key0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Key0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.Key1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Key1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Template = new System.Windows.Forms.Button();
             this.NidoType = new System.Windows.Forms.CheckBox();
             this.ConsiderOtherTSV = new System.Windows.Forms.CheckBox();
@@ -248,14 +248,14 @@
             this.B_Fast = new System.Windows.Forms.Button();
             this.MainRNGEgg = new System.Windows.Forms.CheckBox();
             this.TinyMT_Status = new System.Windows.Forms.GroupBox();
-            this.St3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.B_Load = new System.Windows.Forms.Button();
-            this.St2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Backup = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.St1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.St0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.St1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.St0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.L_Egg_S = new System.Windows.Forms.Label();
@@ -295,13 +295,13 @@
             this.RNGPanel = new System.Windows.Forms.GroupBox();
             this.B_GetTiny = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
             this.Filter_G7TID = new System.Windows.Forms.RadioButton();
@@ -375,8 +375,8 @@
             this.RB_1Wild = new System.Windows.Forms.RadioButton();
             this.RB_2Wild = new System.Windows.Forms.RadioButton();
             this.label35 = new System.Windows.Forms.Label();
-            this.Seed_max = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.Seed_min = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Seed_max = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.Seed_min = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.L_SeedRange = new System.Windows.Forms.Label();
             this.L_Progress6 = new System.Windows.Forms.Label();
             this.DGV_Seed = new System.Windows.Forms.DataGridView();
@@ -480,7 +480,7 @@
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.Seed = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
             this.IVPanel.SuspendLayout();
@@ -529,8 +529,6 @@
             this.EnctrPanel.SuspendLayout();
             this.TP_EventRNG.SuspendLayout();
             this.EventSetting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).BeginInit();
@@ -549,13 +547,7 @@
             this.TP_EggRNG.SuspendLayout();
             this.Parents_Info.SuspendLayout();
             this.MT_SeedKey.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Key0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Key1)).BeginInit();
             this.TinyMT_Status.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.St3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).BeginInit();
@@ -572,10 +564,6 @@
             this.GB_RNGGEN7ID.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).BeginInit();
             this.RNGPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny1)).BeginInit();
             this.Filter_ID.SuspendLayout();
             this.TP_Gen7ToolKit.SuspendLayout();
             this.GB_TinyFinder.SuspendLayout();
@@ -586,8 +574,6 @@
             this.SearchSeedBox.SuspendLayout();
             this.TP_Gen6ToolKit.SuspendLayout();
             this.GB_SeedFinder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Seed)).BeginInit();
             this.WildPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wild1_Fmax)).BeginInit();
@@ -602,7 +588,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed)).BeginInit();
             this.SuspendLayout();
             // 
             // Filters
@@ -2249,23 +2234,17 @@
             // Event_PID
             // 
             this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_PID.Hexadecimal = true;
             this.Event_PID.Location = new System.Drawing.Point(327, 203);
             this.Event_PID.Name = "Event_PID";
-            this.Event_PID.Size = new System.Drawing.Size(78, 22);
             this.Event_PID.TabIndex = 92;
-            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Event_PID.Visible = false;
             // 
             // Event_EC
             // 
             this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_EC.Hexadecimal = true;
             this.Event_EC.Location = new System.Drawing.Point(327, 241);
             this.Event_EC.Name = "Event_EC";
-            this.Event_EC.Size = new System.Drawing.Size(78, 22);
             this.Event_EC.TabIndex = 93;
-            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Event_EC.Visible = false;
             // 
             // Event_Species
@@ -3001,13 +2980,10 @@
             // Key0
             // 
             this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key0.Hexadecimal = true;
             this.Key0.Location = new System.Drawing.Point(40, 63);
             this.Key0.Name = "Key0";
-            this.Key0.Size = new System.Drawing.Size(78, 22);
             this.Key0.TabIndex = 94;
-            this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Key0.ValueChanged += new System.EventHandler(this.Key_ValueChanged);
+            this.Key0.TextChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // label20
             // 
@@ -3022,13 +2998,10 @@
             // Key1
             // 
             this.Key1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key1.Hexadecimal = true;
             this.Key1.Location = new System.Drawing.Point(40, 33);
             this.Key1.Name = "Key1";
-            this.Key1.Size = new System.Drawing.Size(78, 22);
             this.Key1.TabIndex = 95;
-            this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Key1.ValueChanged += new System.EventHandler(this.Key_ValueChanged);
+            this.Key1.TextChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // B_Template
             // 
@@ -3117,13 +3090,10 @@
             // St3
             // 
             this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St3.Hexadecimal = true;
             this.St3.Location = new System.Drawing.Point(34, 26);
             this.St3.Name = "St3";
-            this.St3.Size = new System.Drawing.Size(78, 22);
             this.St3.TabIndex = 92;
-            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St3.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            this.St3.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label13
             // 
@@ -3148,13 +3118,10 @@
             // St2
             // 
             this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St2.Hexadecimal = true;
             this.St2.Location = new System.Drawing.Point(34, 54);
             this.St2.Name = "St2";
-            this.St2.Size = new System.Drawing.Size(78, 22);
             this.St2.TabIndex = 93;
-            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St2.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            this.St2.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // B_Backup
             // 
@@ -3179,24 +3146,18 @@
             // St1
             // 
             this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St1.Hexadecimal = true;
             this.St1.Location = new System.Drawing.Point(34, 82);
             this.St1.Name = "St1";
-            this.St1.Size = new System.Drawing.Size(78, 22);
             this.St1.TabIndex = 94;
-            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St1.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            this.St1.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // St0
             // 
             this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St0.Hexadecimal = true;
             this.St0.Location = new System.Drawing.Point(34, 111);
             this.St0.Name = "St0";
-            this.St0.Size = new System.Drawing.Size(78, 22);
             this.St0.TabIndex = 95;
-            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St0.ValueChanged += new System.EventHandler(this.Status_ValueChanged);
+            this.St0.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label8
             // 
@@ -3756,12 +3717,9 @@
             // ID_Tiny2
             // 
             this.ID_Tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny2.Hexadecimal = true;
             this.ID_Tiny2.Location = new System.Drawing.Point(60, 52);
             this.ID_Tiny2.Name = "ID_Tiny2";
-            this.ID_Tiny2.Size = new System.Drawing.Size(78, 22);
             this.ID_Tiny2.TabIndex = 106;
-            this.ID_Tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label24
             // 
@@ -3776,12 +3734,9 @@
             // ID_Tiny3
             // 
             this.ID_Tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny3.Hexadecimal = true;
             this.ID_Tiny3.Location = new System.Drawing.Point(60, 22);
             this.ID_Tiny3.Name = "ID_Tiny3";
-            this.ID_Tiny3.Size = new System.Drawing.Size(78, 22);
             this.ID_Tiny3.TabIndex = 107;
-            this.ID_Tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label21
             // 
@@ -3796,12 +3751,9 @@
             // ID_Tiny0
             // 
             this.ID_Tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny0.Hexadecimal = true;
             this.ID_Tiny0.Location = new System.Drawing.Point(60, 112);
             this.ID_Tiny0.Name = "ID_Tiny0";
-            this.ID_Tiny0.Size = new System.Drawing.Size(78, 22);
             this.ID_Tiny0.TabIndex = 102;
-            this.ID_Tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label22
             // 
@@ -3816,12 +3768,9 @@
             // ID_Tiny1
             // 
             this.ID_Tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny1.Hexadecimal = true;
             this.ID_Tiny1.Location = new System.Drawing.Point(60, 82);
             this.ID_Tiny1.Name = "ID_Tiny1";
-            this.ID_Tiny1.Size = new System.Drawing.Size(78, 22);
             this.ID_Tiny1.TabIndex = 103;
-            this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Filter_ID
             // 
@@ -4650,38 +4599,17 @@
             // 
             this.Seed_max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed_max.Hexadecimal = true;
-            this.Seed_max.Increment = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
             this.Seed_max.Location = new System.Drawing.Point(239, 187);
             this.Seed_max.Name = "Seed_max";
-            this.Seed_max.Size = new System.Drawing.Size(78, 22);
             this.Seed_max.TabIndex = 128;
-            this.Seed_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed_max.Value = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
             // 
             // Seed_min
             // 
             this.Seed_min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed_min.Hexadecimal = true;
-            this.Seed_min.Increment = new decimal(new int[] {
-            16777216,
-            0,
-            0,
-            0});
             this.Seed_min.Location = new System.Drawing.Point(116, 187);
             this.Seed_min.Name = "Seed_min";
-            this.Seed_min.Size = new System.Drawing.Size(78, 22);
             this.Seed_min.TabIndex = 127;
-            this.Seed_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // L_SeedRange
             // 
@@ -5280,7 +5208,6 @@
             this.TSV.Name = "TSV";
             this.TSV.Size = new System.Drawing.Size(54, 22);
             this.TSV.TabIndex = 82;
-            this.TSV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TSV.ValueChanged += new System.EventHandler(this.TSV_ValueChanged);
             // 
             // DGV
@@ -5786,13 +5713,10 @@
             // 
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Hexadecimal = true;
             this.Seed.Location = new System.Drawing.Point(744, 12);
             this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(78, 22);
             this.Seed.TabIndex = 88;
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.ValueChanged += new System.EventHandler(this.Seed_ValueChanged);
+            this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
             // MainForm
             // 
@@ -5875,8 +5799,6 @@
             this.TP_EventRNG.ResumeLayout(false);
             this.EventSetting.ResumeLayout(false);
             this.EventSetting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_PID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Event_EC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Event_SID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventIV1)).EndInit();
@@ -5898,14 +5820,8 @@
             this.Parents_Info.PerformLayout();
             this.MT_SeedKey.ResumeLayout(false);
             this.MT_SeedKey.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Key0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Key1)).EndInit();
             this.TinyMT_Status.ResumeLayout(false);
             this.TinyMT_Status.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.St3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.St0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.F_IV4)).EndInit();
@@ -5924,10 +5840,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Clk_Correction)).EndInit();
             this.RNGPanel.ResumeLayout(false);
             this.RNGPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ID_Tiny1)).EndInit();
             this.Filter_ID.ResumeLayout(false);
             this.Filter_ID.PerformLayout();
             this.TP_Gen7ToolKit.ResumeLayout(false);
@@ -5945,8 +5857,6 @@
             this.TP_Gen6ToolKit.ResumeLayout(false);
             this.GB_SeedFinder.ResumeLayout(false);
             this.GB_SeedFinder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Seed)).EndInit();
             this.WildPanel2.ResumeLayout(false);
             this.WildPanel2.PerformLayout();
@@ -5964,7 +5874,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.DGVMS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6040,7 +5949,7 @@
         private System.Windows.Forms.Label L_TSV;
         private System.Windows.Forms.Label L_Seed;
         private System.Windows.Forms.NumericUpDown TSV;
-        private Controls.HexNumericUpdown Seed;
+        private Controls.HexMaskedTextBox Seed;
         private System.Windows.Forms.GroupBox Sta_Setting;
         private System.Windows.Forms.Label L_SyncNature;
         private System.Windows.Forms.ComboBox GenderRatio;
@@ -6094,8 +6003,8 @@
         private System.Windows.Forms.NumericUpDown EventIV2;
         private System.Windows.Forms.NumericUpDown EventIV1;
         private System.Windows.Forms.NumericUpDown EventIV0;
-        private Controls.HexNumericUpdown Event_EC;
-        private Controls.HexNumericUpdown Event_PID;
+        private Controls.HexMaskedTextBox Event_EC;
+        private Controls.HexMaskedTextBox Event_PID;
         private System.Windows.Forms.ComboBox Event_Species;
         private System.Windows.Forms.ComboBox Event_Forme;
         private System.Windows.Forms.Label L_Forme;
@@ -6139,10 +6048,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
-        private Controls.HexNumericUpdown St0;
-        private Controls.HexNumericUpdown St1;
-        private Controls.HexNumericUpdown St2;
-        private Controls.HexNumericUpdown St3;
+        private Controls.HexMaskedTextBox St0;
+        private Controls.HexMaskedTextBox St1;
+        private Controls.HexMaskedTextBox St2;
+        private Controls.HexMaskedTextBox St3;
         private System.Windows.Forms.Button B_Load;
         private System.Windows.Forms.Button B_Backup;
         private System.Windows.Forms.GroupBox Parents_Info;
@@ -6285,19 +6194,19 @@
         private System.Windows.Forms.Button B_Template;
         private System.Windows.Forms.DataGridView DGV;
         private System.Windows.Forms.GroupBox MT_SeedKey;
-        private Controls.HexNumericUpdown Key0;
-        private Controls.HexNumericUpdown Key1;
+        private Controls.HexMaskedTextBox Key0;
+        private Controls.HexMaskedTextBox Key1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem SetAsStarting;
         private System.Windows.Forms.Label label23;
-        private Controls.HexNumericUpdown ID_Tiny2;
+        private Controls.HexMaskedTextBox ID_Tiny2;
         private System.Windows.Forms.Label label24;
-        private Controls.HexNumericUpdown ID_Tiny3;
+        private Controls.HexMaskedTextBox ID_Tiny3;
         private System.Windows.Forms.Label label21;
-        private Controls.HexNumericUpdown ID_Tiny0;
+        private Controls.HexMaskedTextBox ID_Tiny0;
         private System.Windows.Forms.Label label22;
-        private Controls.HexNumericUpdown ID_Tiny1;
+        private Controls.HexMaskedTextBox ID_Tiny1;
         private System.Windows.Forms.Button B_GetTiny;
         private System.Windows.Forms.Label L_WildIVsCnt;
         private System.Windows.Forms.NumericUpDown WildIVsCnt;
@@ -6333,8 +6242,8 @@
         private System.Windows.Forms.RadioButton RB_1Wild;
         private System.Windows.Forms.RadioButton RB_2Wild;
         private System.Windows.Forms.Label label35;
-        private Controls.HexNumericUpdown Seed_max;
-        private Controls.HexNumericUpdown Seed_min;
+        private Controls.HexMaskedTextBox Seed_max;
+        private Controls.HexMaskedTextBox Seed_min;
         private System.Windows.Forms.Label L_SeedRange;
         private System.Windows.Forms.Panel WildPanel1;
         private System.Windows.Forms.Label label34;

@@ -78,7 +78,7 @@ namespace Pk3DSRNGTool
         }
         private uint[] Status
         {
-            get => new[] { (uint)St0.Value, (uint)St1.Value, (uint)St2.Value, (uint)St3.Value };
+            get => new[] { St0.Value, St1.Value, St2.Value, St3.Value };
             set
             {
                 if (value.Length < 4) return;

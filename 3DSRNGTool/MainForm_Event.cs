@@ -155,7 +155,7 @@ namespace Pk3DSRNGTool
         private void Event_PIDType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!OtherInfo.Checked)
-                Event_EC.Value = Event_PIDType.SelectedIndex == 3 ? 0x12 : 0;
+                Event_EC.Value = (uint)(Event_PIDType.SelectedIndex == 3 ? 0x12 : 0);
             L_EC.Visible = Event_EC.Visible = L_PID.Visible = Event_PID.Visible = Event_PIDType.SelectedIndex == 3;
         }
 

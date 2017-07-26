@@ -35,12 +35,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tiny3 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label0 = new System.Windows.Forms.Label();
-            this.tiny2 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tiny1 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
-            this.tiny0 = new Pk3DSRNGTool.Controls.HexNumericUpdown();
+            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -75,10 +75,6 @@
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny0)).BeginInit();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -95,10 +91,8 @@
             // tiny3
             // 
             this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Hexadecimal = true;
             this.tiny3.Location = new System.Drawing.Point(62, 25);
             this.tiny3.Name = "tiny3";
-            this.tiny3.Size = new System.Drawing.Size(78, 22);
             this.tiny3.TabIndex = 100;
             this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -116,10 +110,8 @@
             // tiny2
             // 
             this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Hexadecimal = true;
             this.tiny2.Location = new System.Drawing.Point(62, 53);
             this.tiny2.Name = "tiny2";
-            this.tiny2.Size = new System.Drawing.Size(78, 22);
             this.tiny2.TabIndex = 101;
             this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -137,20 +129,16 @@
             // tiny1
             // 
             this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Hexadecimal = true;
             this.tiny1.Location = new System.Drawing.Point(62, 81);
             this.tiny1.Name = "tiny1";
-            this.tiny1.Size = new System.Drawing.Size(78, 22);
             this.tiny1.TabIndex = 102;
             this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tiny0
             // 
             this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Hexadecimal = true;
             this.tiny0.Location = new System.Drawing.Point(62, 110);
             this.tiny0.Name = "tiny0";
-            this.tiny0.Size = new System.Drawing.Size(78, 22);
             this.tiny0.TabIndex = 103;
             this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -614,10 +602,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiny Timeline Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TinyTimelineTool_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.tiny3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tiny0)).EndInit();
             this.CMS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
@@ -637,12 +621,12 @@
 
         #endregion
 
-        private Controls.HexNumericUpdown tiny3;
+        private Controls.HexMaskedTextBox tiny3;
         private System.Windows.Forms.Label label0;
-        private Controls.HexNumericUpdown tiny2;
+        private Controls.HexMaskedTextBox tiny2;
         private System.Windows.Forms.Label label1;
-        private Controls.HexNumericUpdown tiny1;
-        private Controls.HexNumericUpdown tiny0;
+        private Controls.HexMaskedTextBox tiny1;
+        private Controls.HexMaskedTextBox tiny0;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown Frame1;

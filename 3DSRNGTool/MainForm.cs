@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
 
             IVInputer = new IVRange(this);
 
-            Seed.Value = Properties.Settings.Default.Seed;
+            Seed.Value = (uint)(Properties.Settings.Default.Seed);
             var LastGameversion = Properties.Settings.Default.GameVersion;
             var LastPkm = Properties.Settings.Default.Poke;
             var LastCategory = Properties.Settings.Default.Category;
@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
             var _LastMethod = Properties.Settings.Default._Method;
             var Eggseed = Properties.Settings.Default.Key;
             Key0.Value = (uint)Eggseed;
-            Key1.Value = Eggseed >> 32;
+            Key1.Value = (uint)(Eggseed >> 32);
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
             IP.Text = Properties.Settings.Default.IP;
@@ -227,10 +227,10 @@ namespace Pk3DSRNGTool
 
         private void Status_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ST0 = (uint)St0.Value;
-            Properties.Settings.Default.ST1 = (uint)St1.Value;
-            Properties.Settings.Default.ST2 = (uint)St2.Value;
-            Properties.Settings.Default.ST3 = (uint)St3.Value;
+            Properties.Settings.Default.ST0 = St0.Value;
+            Properties.Settings.Default.ST1 = St1.Value;
+            Properties.Settings.Default.ST2 = St2.Value;
+            Properties.Settings.Default.ST3 = St3.Value;
         }
 
         private void Key_ValueChanged(object sender, EventArgs e)
@@ -954,7 +954,7 @@ namespace Pk3DSRNGTool
             e.NatureLocked = NatureLocked.Checked;
             e.GenderLocked = GenderLocked.Checked;
             e.OtherInfo = OtherInfo.Checked;
-            e.EC = (uint)Event_EC.Value;
+            e.EC = Event_EC.Value;
             e.Ability = (byte)Event_Ability.SelectedIndex;
             e.Nature = (byte)Event_Nature.SelectedIndex;
             e.Gender = (byte)Event_Gender.SelectedIndex;
@@ -966,7 +966,7 @@ namespace Pk3DSRNGTool
                 e.TID = (ushort)Event_TID.Value;
                 e.SID = (ushort)Event_SID.Value;
                 e.TSV = (ushort)((e.TID ^ e.SID) >> 4);
-                e.PID = (uint)Event_PID.Value;
+                e.PID = Event_PID.Value;
             }
             e.GetGenderSetting();
             return e;
@@ -1258,7 +1258,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Normal()
         {
-            var rng = new MersenneTwister((uint)Seed.Value);
+            var rng = new MersenneTwister(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
@@ -1289,7 +1289,7 @@ namespace Pk3DSRNGTool
                 Error("Please Calibrate Timeline");
                 return;
             }
-            var rng = new MersenneTwister((uint)Seed.Value);
+            var rng = new MersenneTwister(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)TimeSpan.Value * 60 + min;
             // Advance
@@ -1324,7 +1324,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Horde()
         {
-            var rng = new MersenneTwister((uint)Seed.Value);
+            var rng = new MersenneTwister(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
@@ -1353,7 +1353,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Egg()
         {
-            var rng = new MersenneTwister((uint)Seed.Value);
+            var rng = new MersenneTwister(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
@@ -1367,7 +1367,7 @@ namespace Pk3DSRNGTool
             getsetting(rng);
 
             // The egg already have
-            uint[] key = { (uint)Key0.Value, (uint)Key1.Value };
+            uint[] key = { Key0.Value, Key1.Value };
             var eggnow = RNGPool.GenerateAnEgg6(key);
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
             if (RNGPool.IsMainRNGEgg) eggnow.PID = 0xFFFFFFFF;
@@ -1388,7 +1388,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_ID()
         {
-            var rng = new TinyMT(new uint[] { (uint)ID_Tiny0.Value, (uint)ID_Tiny1.Value, (uint)ID_Tiny2.Value, (uint)ID_Tiny3.Value });
+            var rng = new TinyMT(new uint[] { ID_Tiny0.Value, ID_Tiny1.Value, ID_Tiny2.Value, ID_Tiny3.Value });
             int min = Advanced.Checked ? 0 : (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
@@ -1436,7 +1436,7 @@ namespace Pk3DSRNGTool
 
         private void Search7_Normal()
         {
-            SFMT sfmt = new SFMT((uint)Seed.Value);
+            SFMT sfmt = new SFMT(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (AroundTarget.Checked)
@@ -1496,7 +1496,7 @@ namespace Pk3DSRNGTool
 
         private void Search7_Timeline()
         {
-            SFMT sfmt = new SFMT((uint)Seed.Value);
+            SFMT sfmt = new SFMT(Seed.Value);
             int start_frame = (int)Frame_min.Value;
             FuncUtil.getblinkflaglist(start_frame, start_frame, sfmt, Modelnum);
             // Advance
@@ -1627,7 +1627,7 @@ namespace Pk3DSRNGTool
 
         private void Search7_ID()
         {
-            SFMT rng = new SFMT((uint)Seed.Value);
+            SFMT rng = new SFMT(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();

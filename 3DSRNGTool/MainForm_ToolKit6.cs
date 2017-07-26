@@ -151,8 +151,8 @@ namespace Pk3DSRNGTool
                 mtfinder.Update += UpdateProgressBar6;
                 mtfinder.NewResult += UpdateDGV6;
             }
-            var seedmin = (uint)Seed_min.Value;
-            var seedmax = (uint)Seed_max.Value;
+            var seedmin = Seed_min.Value;
+            var seedmax = Seed_max.Value;
             if (RB_2Wild.Checked)
             {
                 var IV1 = FuncUtil.parseIVs(WildIV1.Text);

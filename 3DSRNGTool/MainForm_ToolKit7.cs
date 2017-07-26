@@ -92,7 +92,7 @@ namespace Pk3DSRNGTool
 
         private void QRSearch_Click(object sender, EventArgs e)
         {
-            uint InitialSeed = (uint)Seed.Value;
+            uint InitialSeed = Seed.Value;
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (QRList.Text == "")
@@ -157,7 +157,7 @@ namespace Pk3DSRNGTool
             if (min > max)
                 return CalcFrame(max, min).Select(t => -t).ToArray();
 
-            uint InitialSeed = (uint)Seed.Value;
+            uint InitialSeed = Seed.Value;
             SFMT sfmt = new SFMT(InitialSeed);
 
             for (int i = 0; i < min; i++)

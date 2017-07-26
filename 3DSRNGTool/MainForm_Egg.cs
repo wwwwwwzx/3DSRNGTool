@@ -176,7 +176,7 @@ namespace Pk3DSRNGTool
                 if (Gen6 && dgv_rand64.Visible)
                 {
                     ulong key = (ulong)DGV.CurrentRow.Cells["dgv_rand64"].Value;
-                    Key1.Value = key >> 32;
+                    Key1.Value = (uint)(key >> 32);
                     Key0.Value = (uint)key;
                     return;
                 }

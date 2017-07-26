@@ -76,7 +76,7 @@
     </Compile>
     <Compile Include="Controls\ComboItem.cs" />
     <Compile Include="Controls\CheckBoxComboBox\GripBounds.cs" />
-    <Compile Include="Controls\HexNumericUpdown.cs">
+    <Compile Include="Controls\HexMaskedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\CheckBoxComboBox\NativeMethods.cs" />

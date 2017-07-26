@@ -39,7 +39,7 @@ namespace Pk3DSRNGTool
         }
         public uint[] Gen6Tiny
         {
-            get => new[] { (uint)tiny0.Value, (uint)tiny1.Value, (uint)tiny2.Value, (uint)tiny3.Value };
+            get => new[] { tiny0.Value, tiny1.Value, tiny2.Value, tiny3.Value };
             private set
             {
                 if (value.Length < 4) return;
