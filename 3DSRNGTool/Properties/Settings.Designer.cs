@@ -238,5 +238,17 @@ namespace Pk3DSRNGTool.Properties {
                 this["Key"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OpenGen7Tool {
+            get {
+                return ((bool)(this["OpenGen7Tool"]));
+            }
+            set {
+                this["OpenGen7Tool"] = value;
+            }
+        }
     }
 }

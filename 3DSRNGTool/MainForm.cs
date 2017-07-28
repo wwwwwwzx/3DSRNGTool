@@ -110,12 +110,14 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
+
+            if (Properties.Settings.Default.OpenGen7Tool)
+                M_Gen7MainRNGTool_Click(null, null);
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            NTRHelper.ntrclient?.disconnect();
         }
 
         private void RefreshPKM()
@@ -1664,9 +1666,15 @@ namespace Pk3DSRNGTool
         //Gen7
         private void M_Gen7MainRNGTool_Click(object sender, EventArgs e)
         {
-            if (gen7tool == null) { gen7tool = new Gen7MainRNGTool(); gen7tool.UpdatePara(NPC.Value, TargetFrame.Value); }
+            if (gen7tool == null)
+            {
+                gen7tool = new Gen7MainRNGTool();
+                gen7tool.UpdatePara(NPC.Value, TargetFrame.Value);
+                gen7tool.Startup.Checked = Properties.Settings.Default.OpenGen7Tool;
+            }
             TranslateInterface(gen7tool, curlanguage);
             gen7tool.Show();
+            gen7tool.Focus();
         }
         public int IDCorrection { set => Clk_Correction.Value = value; }
         public decimal Framemin { set => Frame_min.Value = value; }

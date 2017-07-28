@@ -76,6 +76,10 @@ namespace Pk3DSRNGTool
             if (target >= 0)
                 TargetFrame.Value = target;
         }
+        private void Startup_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.OpenGen7Tool = Startup.Checked;
+        }
         #endregion
         #region Search
         private void SearchSeed()

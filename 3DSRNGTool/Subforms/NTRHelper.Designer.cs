@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            ntrclient?.disconnect();
             base.Dispose(disposing);
         }
 

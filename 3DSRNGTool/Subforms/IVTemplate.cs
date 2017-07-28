@@ -7,11 +7,10 @@ namespace Pk3DSRNGTool
 {
     public partial class IVTemplate : Form
     {
-        public MainForm parentform;
-        public IVTemplate(MainForm form)
+        public MainForm parentform => Program.mainform;
+        public IVTemplate()
         {
             InitializeComponent();
-            parentform = form;
             string txt = Properties.Settings.Default.Ivspread;
             if (txt == "")
             {

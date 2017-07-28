@@ -30,6 +30,7 @@
         {
             this.RB_SaveScreen = new System.Windows.Forms.RadioButton();
             this.InputBox = new System.Windows.Forms.GroupBox();
+            this.Startup = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.EndClockInput = new System.Windows.Forms.RadioButton();
             this.L_clocklist = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@
             // 
             // InputBox
             // 
+            this.InputBox.Controls.Add(this.Startup);
             this.InputBox.Controls.Add(this.button16);
             this.InputBox.Controls.Add(this.EndClockInput);
             this.InputBox.Controls.Add(this.L_clocklist);
@@ -125,6 +127,17 @@
             this.InputBox.TabIndex = 39;
             this.InputBox.TabStop = false;
             this.InputBox.Text = "输入工具";
+            // 
+            // Startup
+            // 
+            this.Startup.AutoSize = true;
+            this.Startup.Location = new System.Drawing.Point(675, 0);
+            this.Startup.Name = "Startup";
+            this.Startup.Size = new System.Drawing.Size(104, 17);
+            this.Startup.TabIndex = 105;
+            this.Startup.Text = "Open on Startup";
+            this.Startup.UseVisualStyleBackColor = true;
+            this.Startup.CheckedChanged += new System.EventHandler(this.Startup_CheckedChanged);
             // 
             // button16
             // 
@@ -698,5 +711,6 @@
         private System.Windows.Forms.NumericUpDown NPC;
         private System.Windows.Forms.Button B_Calc;
         private System.Windows.Forms.Label L_TargetFrame;
+        public System.Windows.Forms.CheckBox Startup;
     }
 }

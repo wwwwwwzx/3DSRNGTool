@@ -208,7 +208,7 @@ namespace Pk3DSRNGTool
 
         private void B_Template_Click(object sender, EventArgs e)
         {
-            IVTemplate newform = new IVTemplate(this);
+            IVTemplate newform = new IVTemplate();
             newform.Show();
         }
 

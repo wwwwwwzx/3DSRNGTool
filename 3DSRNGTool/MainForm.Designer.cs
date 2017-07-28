@@ -1068,7 +1068,7 @@
             this.M_Tool});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(180, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(88, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1140,7 +1140,7 @@
             this.TP_IDRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_IDRNG.Name = "TP_IDRNG";
             this.TP_IDRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_IDRNG.Size = new System.Drawing.Size(1075, 544);
+            this.TP_IDRNG.Size = new System.Drawing.Size(1075, 538);
             this.TP_IDRNG.TabIndex = 4;
             this.TP_IDRNG.Text = "ID乱数";
             this.TP_IDRNG.UseVisualStyleBackColor = true;
@@ -1422,7 +1422,7 @@
             this.TP_EggRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_EggRNG.Name = "TP_EggRNG";
             this.TP_EggRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_EggRNG.Size = new System.Drawing.Size(1075, 544);
+            this.TP_EggRNG.Size = new System.Drawing.Size(1075, 538);
             this.TP_EggRNG.TabIndex = 3;
             this.TP_EggRNG.Text = "孵化乱数";
             this.TP_EggRNG.UseVisualStyleBackColor = true;
@@ -1504,7 +1504,7 @@
             this.Key0.Mask = "AAAAAAAA";
             this.Key0.Name = "Key0";
             this.Key0.Size = new System.Drawing.Size(64, 22);
-            this.Key0.TabIndex = 94;
+            this.Key0.TabIndex = 95;
             this.Key0.Text = "00000000";
             this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Key0.Value = ((uint)(0u));
@@ -1527,7 +1527,7 @@
             this.Key1.Mask = "AAAAAAAA";
             this.Key1.Name = "Key1";
             this.Key1.Size = new System.Drawing.Size(64, 22);
-            this.Key1.TabIndex = 95;
+            this.Key1.TabIndex = 94;
             this.Key1.Text = "00000000";
             this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Key1.Value = ((uint)(0u));
@@ -1538,7 +1538,7 @@
             this.B_Template.Location = new System.Drawing.Point(182, 67);
             this.B_Template.Name = "B_Template";
             this.B_Template.Size = new System.Drawing.Size(83, 25);
-            this.B_Template.TabIndex = 106;
+            this.B_Template.TabIndex = 25;
             this.B_Template.Text = "模板";
             this.B_Template.UseVisualStyleBackColor = true;
             this.B_Template.Click += new System.EventHandler(this.B_Template_Click);
@@ -1549,7 +1549,7 @@
             this.NidoType.Location = new System.Drawing.Point(202, 246);
             this.NidoType.Name = "NidoType";
             this.NidoType.Size = new System.Drawing.Size(62, 17);
-            this.NidoType.TabIndex = 105;
+            this.NidoType.TabIndex = 20;
             this.NidoType.Text = "尼多型";
             this.NidoType.UseVisualStyleBackColor = true;
             this.NidoType.CheckedChanged += new System.EventHandler(this.NidoType_CheckedChanged);
@@ -1560,7 +1560,7 @@
             this.ConsiderOtherTSV.Location = new System.Drawing.Point(281, 195);
             this.ConsiderOtherTSV.Name = "ConsiderOtherTSV";
             this.ConsiderOtherTSV.Size = new System.Drawing.Size(95, 17);
-            this.ConsiderOtherTSV.TabIndex = 104;
+            this.ConsiderOtherTSV.TabIndex = 21;
             this.ConsiderOtherTSV.Text = "考虑其他TSV";
             this.ConsiderOtherTSV.UseVisualStyleBackColor = true;
             this.ConsiderOtherTSV.CheckedChanged += new System.EventHandler(this.ConsiderOtherTSV_CheckedChanged);
@@ -1570,7 +1570,7 @@
             this.B_TSVList.Location = new System.Drawing.Point(182, 189);
             this.B_TSVList.Name = "B_TSVList";
             this.B_TSVList.Size = new System.Drawing.Size(83, 25);
-            this.B_TSVList.TabIndex = 103;
+            this.B_TSVList.TabIndex = 28;
             this.B_TSVList.Text = "TSV列表";
             this.B_TSVList.UseVisualStyleBackColor = true;
             this.B_TSVList.Click += new System.EventHandler(this.B_TSVList_Click);
@@ -1580,7 +1580,7 @@
             this.B_Fast.Location = new System.Drawing.Point(182, 109);
             this.B_Fast.Name = "B_Fast";
             this.B_Fast.Size = new System.Drawing.Size(83, 25);
-            this.B_Fast.TabIndex = 100;
+            this.B_Fast.TabIndex = 26;
             this.B_Fast.Text = "快速模式";
             this.B_Fast.UseVisualStyleBackColor = true;
             this.B_Fast.Click += new System.EventHandler(this.B_Fast_Click);
@@ -1591,7 +1591,7 @@
             this.MainRNGEgg.Location = new System.Drawing.Point(281, 246);
             this.MainRNGEgg.Name = "MainRNGEgg";
             this.MainRNGEgg.Size = new System.Drawing.Size(92, 17);
-            this.MainRNGEgg.TabIndex = 102;
+            this.MainRNGEgg.TabIndex = 23;
             this.MainRNGEgg.Text = "主乱数蛋PID";
             this.MainRNGEgg.UseVisualStyleBackColor = true;
             this.MainRNGEgg.Visible = false;
@@ -1771,7 +1771,7 @@
             this.MM.Location = new System.Drawing.Point(281, 221);
             this.MM.Name = "MM";
             this.MM.Size = new System.Drawing.Size(86, 17);
-            this.MM.TabIndex = 5;
+            this.MM.TabIndex = 22;
             this.MM.Text = "父母异语言";
             this.MM.UseVisualStyleBackColor = true;
             this.MM.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
@@ -1791,7 +1791,7 @@
             this.Homogeneity.Location = new System.Drawing.Point(182, 221);
             this.Homogeneity.Name = "Homogeneity";
             this.Homogeneity.Size = new System.Drawing.Size(74, 17);
-            this.Homogeneity.TabIndex = 0;
+            this.Homogeneity.TabIndex = 19;
             this.Homogeneity.Text = "父母同种";
             this.Homogeneity.UseVisualStyleBackColor = true;
             // 
@@ -1825,7 +1825,7 @@
             0});
             this.M_IV0.Name = "M_IV0";
             this.M_IV0.Size = new System.Drawing.Size(45, 22);
-            this.M_IV0.TabIndex = 14;
+            this.M_IV0.TabIndex = 4;
             this.M_IV0.Value = new decimal(new int[] {
             31,
             0,
@@ -1845,7 +1845,7 @@
             0});
             this.M_IV1.Name = "M_IV1";
             this.M_IV1.Size = new System.Drawing.Size(45, 22);
-            this.M_IV1.TabIndex = 16;
+            this.M_IV1.TabIndex = 5;
             this.M_IV1.Value = new decimal(new int[] {
             31,
             0,
@@ -1865,7 +1865,7 @@
             0});
             this.F_IV4.Name = "F_IV4";
             this.F_IV4.Size = new System.Drawing.Size(45, 22);
-            this.F_IV4.TabIndex = 23;
+            this.F_IV4.TabIndex = 16;
             this.F_IV4.Value = new decimal(new int[] {
             31,
             0,
@@ -1885,7 +1885,7 @@
             0});
             this.F_IV3.Name = "F_IV3";
             this.F_IV3.Size = new System.Drawing.Size(45, 22);
-            this.F_IV3.TabIndex = 21;
+            this.F_IV3.TabIndex = 15;
             this.F_IV3.Value = new decimal(new int[] {
             31,
             0,
@@ -1905,7 +1905,7 @@
             0});
             this.F_IV2.Name = "F_IV2";
             this.F_IV2.Size = new System.Drawing.Size(45, 22);
-            this.F_IV2.TabIndex = 19;
+            this.F_IV2.TabIndex = 14;
             this.F_IV2.Value = new decimal(new int[] {
             31,
             0,
@@ -1925,7 +1925,7 @@
             0});
             this.F_IV1.Name = "F_IV1";
             this.F_IV1.Size = new System.Drawing.Size(45, 22);
-            this.F_IV1.TabIndex = 17;
+            this.F_IV1.TabIndex = 13;
             this.F_IV1.Value = new decimal(new int[] {
             31,
             0,
@@ -1945,7 +1945,7 @@
             0});
             this.M_IV2.Name = "M_IV2";
             this.M_IV2.Size = new System.Drawing.Size(45, 22);
-            this.M_IV2.TabIndex = 18;
+            this.M_IV2.TabIndex = 6;
             this.M_IV2.Value = new decimal(new int[] {
             31,
             0,
@@ -1965,7 +1965,7 @@
             0});
             this.F_IV5.Name = "F_IV5";
             this.F_IV5.Size = new System.Drawing.Size(45, 22);
-            this.F_IV5.TabIndex = 25;
+            this.F_IV5.TabIndex = 17;
             this.F_IV5.Value = new decimal(new int[] {
             31,
             0,
@@ -1984,7 +1984,7 @@
             this.F_ability.Location = new System.Drawing.Point(124, 45);
             this.F_ability.Name = "F_ability";
             this.F_ability.Size = new System.Drawing.Size(45, 21);
-            this.F_ability.TabIndex = 4;
+            this.F_ability.TabIndex = 11;
             // 
             // F_IV0
             // 
@@ -1998,7 +1998,7 @@
             0});
             this.F_IV0.Name = "F_IV0";
             this.F_IV0.Size = new System.Drawing.Size(45, 22);
-            this.F_IV0.TabIndex = 15;
+            this.F_IV0.TabIndex = 12;
             this.F_IV0.Value = new decimal(new int[] {
             31,
             0,
@@ -2017,7 +2017,7 @@
             this.M_ability.Location = new System.Drawing.Point(65, 45);
             this.M_ability.Name = "M_ability";
             this.M_ability.Size = new System.Drawing.Size(45, 21);
-            this.M_ability.TabIndex = 6;
+            this.M_ability.TabIndex = 3;
             // 
             // M_IV5
             // 
@@ -2031,7 +2031,7 @@
             0});
             this.M_IV5.Name = "M_IV5";
             this.M_IV5.Size = new System.Drawing.Size(45, 22);
-            this.M_IV5.TabIndex = 24;
+            this.M_IV5.TabIndex = 9;
             this.M_IV5.Value = new decimal(new int[] {
             31,
             0,
@@ -2051,7 +2051,7 @@
             0});
             this.M_IV3.Name = "M_IV3";
             this.M_IV3.Size = new System.Drawing.Size(45, 22);
-            this.M_IV3.TabIndex = 20;
+            this.M_IV3.TabIndex = 7;
             this.M_IV3.Value = new decimal(new int[] {
             31,
             0,
@@ -2071,7 +2071,7 @@
             0});
             this.M_IV4.Name = "M_IV4";
             this.M_IV4.Size = new System.Drawing.Size(45, 22);
-            this.M_IV4.TabIndex = 22;
+            this.M_IV4.TabIndex = 8;
             this.M_IV4.Value = new decimal(new int[] {
             31,
             0,
@@ -2084,7 +2084,7 @@
             this.B_EggReset.Location = new System.Drawing.Point(183, 25);
             this.B_EggReset.Name = "B_EggReset";
             this.B_EggReset.Size = new System.Drawing.Size(83, 25);
-            this.B_EggReset.TabIndex = 30;
+            this.B_EggReset.TabIndex = 24;
             this.B_EggReset.Text = "恢复默认";
             this.B_EggReset.UseVisualStyleBackColor = true;
             this.B_EggReset.Click += new System.EventHandler(this.B_EggReset_Click);
@@ -2116,7 +2116,7 @@
             this.Egg_GenderRatio.Location = new System.Drawing.Point(182, 151);
             this.Egg_GenderRatio.Name = "Egg_GenderRatio";
             this.Egg_GenderRatio.Size = new System.Drawing.Size(82, 21);
-            this.Egg_GenderRatio.TabIndex = 7;
+            this.Egg_GenderRatio.TabIndex = 27;
             this.Egg_GenderRatio.SelectedIndexChanged += new System.EventHandler(this.Egg_GenderRatio_SelectedIndexChanged);
             // 
             // L_EggAbility
@@ -2158,7 +2158,7 @@
             this.F_Items.Location = new System.Drawing.Point(105, 244);
             this.F_Items.Name = "F_Items";
             this.F_Items.Size = new System.Drawing.Size(93, 21);
-            this.F_Items.TabIndex = 10;
+            this.F_Items.TabIndex = 18;
             // 
             // M_Items
             // 
@@ -2177,7 +2177,7 @@
             this.M_Items.Location = new System.Drawing.Point(6, 244);
             this.M_Items.Name = "M_Items";
             this.M_Items.Size = new System.Drawing.Size(93, 21);
-            this.M_Items.TabIndex = 13;
+            this.M_Items.TabIndex = 10;
             // 
             // TP_WildRNG
             // 
@@ -2185,7 +2185,7 @@
             this.TP_WildRNG.Location = new System.Drawing.Point(4, 22);
             this.TP_WildRNG.Name = "TP_WildRNG";
             this.TP_WildRNG.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_WildRNG.Size = new System.Drawing.Size(1075, 544);
+            this.TP_WildRNG.Size = new System.Drawing.Size(1075, 538);
             this.TP_WildRNG.TabIndex = 2;
             this.TP_WildRNG.Text = "野生乱数";
             this.TP_WildRNG.UseVisualStyleBackColor = true;
