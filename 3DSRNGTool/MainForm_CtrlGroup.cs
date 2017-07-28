@@ -14,8 +14,6 @@ namespace Pk3DSRNGTool
                 return (p == 4) || (p == 6) || (p == 128);
             }
         }
-        private IVRange IVInputer;
-        private TinyTimelineTool TTT;
         public int[] IVup
         {
             get => new[] { (int)ivmax0.Value, (int)ivmax1.Value, (int)ivmax2.Value, (int)ivmax3.Value, (int)ivmax4.Value, (int)ivmax5.Value, };

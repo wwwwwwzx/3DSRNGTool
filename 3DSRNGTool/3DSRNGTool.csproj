@@ -137,12 +137,6 @@
     <Compile Include="MainForm_Egg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm_ToolKit6.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_ToolKit7.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MainForm_Trans.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +147,30 @@
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
     <Compile Include="Pokemon\PersonalInfoSM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
+    <Compile Include="Subforms\Gen6MTSeedFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Gen6MTSeedFinder.Designer.cs">
+      <DependentUpon>Gen6MTSeedFinder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Gen7EggSeedFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Gen7EggSeedFinder.Designer.cs">
+      <DependentUpon>Gen7EggSeedFinder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Gen7MainRNGTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Gen7MainRNGTool.Designer.cs">
+      <DependentUpon>Gen7MainRNGTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\NTRHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\NTRHelper.Designer.cs">
+      <DependentUpon>NTRHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\TinyTimelineTool.cs">
       <SubType>Form</SubType>
     </Compile>

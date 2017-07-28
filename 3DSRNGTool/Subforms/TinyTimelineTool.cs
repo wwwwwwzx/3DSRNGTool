@@ -51,8 +51,8 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                MainForm.ntrclient.connectToServer();
-                byte[] tiny = MainForm.ntrclient.ReadTiny();
+                NTRHelper.ntrclient.connectToServer();
+                byte[] tiny = NTRHelper.ntrclient.ReadTiny();
                 if (tiny == null) { return; }
                 Gen6Tiny = new[]
                 {

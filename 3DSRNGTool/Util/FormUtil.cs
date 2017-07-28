@@ -13,6 +13,8 @@ namespace PKHeX
         #region Form Translation
         internal static void TranslateInterface(Control form, string lang)
         {
+            if (form == null)
+                return;
             // Check to see if a the translation file exists in the same folder as the executable
             string externalLangPath = "lang_" + lang + ".txt";
             string[] rawlist;

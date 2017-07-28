@@ -35,14 +35,9 @@ namespace Pk3DSRNGTool
         private byte Modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter;
         private byte lastmethod;
-        private ushort lasttableindex;
-        private int timercounter;
         List<Frame> Frames = new List<Frame>();
         List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
-        public static NtrClient ntrclient = new NtrClient();
-        private static MTSeedFinder mtfinder;
-        private static TinySeedFinder tinyfinder;
         #endregion
 
         public MainForm()
@@ -58,13 +53,9 @@ namespace Pk3DSRNGTool
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(DGV, true, null);
             dgvPropertyInfo.SetValue(DGV_ID, true, null);
-            dgvPropertyInfo.SetValue(DGV_Seed, true, null);
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
-            DGV_Seed.AutoGenerateColumns = false;
-
-            IVInputer = new IVRange(this);
 
             Seed.Value = (uint)(Properties.Settings.Default.Seed);
             var LastGameversion = Properties.Settings.Default.GameVersion;
@@ -77,7 +68,6 @@ namespace Pk3DSRNGTool
             Key1.Value = (uint)(Eggseed >> 32);
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
-            IP.Text = Properties.Settings.Default.IP;
             Loadlist(Properties.Settings.Default.TSVList);
             Advanced.Checked = Properties.Settings.Default.Advance;
             Status = new uint[] { Properties.Settings.Default.ST0, Properties.Settings.Default.ST1, Properties.Settings.Default.ST2, Properties.Settings.Default.ST3 };
@@ -89,8 +79,6 @@ namespace Pk3DSRNGTool
             Ball.Items.AddRange(StringItem.genderstr);
             Event_Gender.Items.AddRange(StringItem.genderstr);
             Event_Nature.Items.AddRange(StringItem.naturestr);
-            Wild_Nature.Items.AddRange(StringItem.naturestr);
-            NatureInput.Items.AddRange(StringItem.naturestr);
             for (int i = 0; i <= StringItem.naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
@@ -109,7 +97,6 @@ namespace Pk3DSRNGTool
             Event_Ability.SelectedIndex = Event_Gender.SelectedIndex =
             M_ability.SelectedIndex = F_ability.SelectedIndex =
             M_Items.SelectedIndex = F_Items.SelectedIndex =
-            Wild_Nature.SelectedIndex =
             0;
             Egg_GenderRatio.SelectedIndex = 1;
 
@@ -123,15 +110,12 @@ namespace Pk3DSRNGTool
             ByIVs.Checked = true;
             B_ResetFrame_Click(null, null);
             Advanced_CheckedChanged(null, null);
-            ntrclient.Connected += OnConnected;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            ntrclient.disconnect();
-            mtfinder?.Abort();
-            tinyfinder?.Abort();
+            NTRHelper.ntrclient?.disconnect();
         }
 
         private void RefreshPKM()
@@ -251,7 +235,7 @@ namespace Pk3DSRNGTool
 
         private void Advanced_CheckedChanged(object sender, EventArgs e)
         {
-            B_GetTiny.Visible = B_BreakPoint.Visible = B_Resume.Visible = B_GetGen6Seed.Visible = Advanced.Checked;
+            B_GetTiny.Visible = Advanced.Checked;
             Properties.Settings.Default.Advance = Advanced.Checked;
         }
 
@@ -266,10 +250,10 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
+            L_Correction.Visible = Correction.Visible = IsPelago || Gen7 && Method == 2;
             if (IsPelago)
             {
                 Correction.Minimum = 0; Correction.Maximum = 255;
-                L_Correction.Visible = Correction.Visible = true;
                 Correction.Value = 0;
             }
         }
@@ -279,12 +263,6 @@ namespace Pk3DSRNGTool
             IVPanel.Visible = ByIVs.Checked;
             StatPanel.Visible = ByStats.Checked;
             ShowStats.Enabled = ShowStats.Checked = ByStats.Checked;
-        }
-
-        private void RB_Gen6_CheckedChanged(object sender, EventArgs e)
-        {
-            WildPanel1.Visible = RB_1Wild.Checked;
-            WildPanel2.Visible = RB_2Wild.Checked;
         }
 
         private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)
@@ -455,34 +433,28 @@ namespace Pk3DSRNGTool
 
             DGVToolTip.RemoveAll();
 
-            if (Method < 6)
-                RNGMethod.TabPages[Method].Controls.Add(this.RNGInfo);
-            if (Method < 4)
-                RNGMethod.TabPages[Method].Controls.Add(this.Filters);
+            DGV.Visible = Method < 4;
+            DGV_ID.Visible = Method == 4;
+            if (Method > 4)
+                return;
+
+            RNGMethod.TabPages[Method].Controls.Add(this.RNGInfo);
+            RNGMethod.TabPages[Method].Controls.Add(this.Filters);
             MainRNGEgg.Checked &= Method == 3;
             bool mainrngegg = Method == 3 && (MainRNGEgg.Checked || Gen6);
             RB_FrameRange.Checked = true;
 
-            DGV.Visible = Method < 4;
-            DGV_ID.Visible = Method == 4;
-
             // Contorls in RNGInfo
-            AroundTarget.Visible = Method < 3 || mainrngegg;
-            timedelaypanel.Visible = Method < 3 || mainrngegg || Method == 5;
+            AroundTarget.Visible = timedelaypanel.Visible = Method < 3 || mainrngegg;
             L_Correction.Visible = Correction.Visible = Gen7 && Method == 2; // Not time-based shift
             Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
-            L_NPC.Visible = NPC.Visible = Gen7 || Method == 5; // not show in gen6
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
             B_OpenTool.Visible = gen6timeline_available;
-
-            B_Search.Enabled = !(Ver == 4 && 0 < Method && Method < 5);
-
-            if (Method > 4)
-                return;
+            B_Search.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
             {
@@ -519,6 +491,7 @@ namespace Pk3DSRNGTool
             Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
+            L_NPC.Visible = NPC.Visible =
             Day.Visible = Night.Visible =
             TinyMT_Status.Visible = Homogeneity.Visible =
             Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible =
@@ -570,6 +543,7 @@ namespace Pk3DSRNGTool
             SafeFOnly.Visible = BlinkFOnly.Visible = false;
             if (Gen7 && !CreateTimeline.Checked && (Method < 3 || MainRNGEgg.Checked))
                 (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
+            gen7tool?.UpdatePara(npc: NPC.Value);
         }
 
         // Wild RNG
@@ -622,17 +596,10 @@ namespace Pk3DSRNGTool
                 Error(NOSELECTION_STR[lindex]);
             }
         }
-
-        private void OpenTinyTool(object sender, EventArgs e)
+        
+        private void TargetFrame_ValueChanged(object sender, EventArgs e)
         {
-            if (TTT == null) TTT = new TinyTimelineTool();
-            TranslateInterface(TTT, curlanguage);
-            TTT.Show();
-        }
-
-        private void B_IVInput_Click(object sender, EventArgs e)
-        {
-            IVInputer.ShowDialog();
+            gen7tool?.UpdatePara(target: TargetFrame.Value);
         }
 
         private void Sta_AbilityLocked_CheckedChanged(object sender, EventArgs e)
@@ -695,6 +662,16 @@ namespace Pk3DSRNGTool
                 return;
             }
             DGVToolTip.Hide(this);
+        }
+
+        public void B_gettiny_Click(object sender, EventArgs e)
+        {
+            byte[] tiny = NTRHelper.ntrclient.ReadTiny();
+            if (tiny == null) { Error("Timeout"); return; }
+            ID_Tiny0.Value = BitConverter.ToUInt32(tiny, 0);
+            ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
+            ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
+            ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
         }
         #endregion
 
@@ -830,7 +807,10 @@ namespace Pk3DSRNGTool
                 if (Method == 3 && !MainRNGEgg.Checked)
                     buffersize = 100;
                 if (Method < 3 || MainRNGEgg.Checked)
-                    Frame.standard = CalcFrame((int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value), (int)TargetFrame.Value)[0] * 2;
+                    Frame.standard = FuncUtil.CalcFrame(seed: Seed.Value,
+                        min: (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value),
+                        max: (int)TargetFrame.Value,
+                        ModelNumber: Modelnum)[0] * 2;
             }
             if (Gen6)
             {
@@ -1150,11 +1130,6 @@ namespace Pk3DSRNGTool
 
         private void Search_Click(object sender, EventArgs e)
         {
-            if (Method == 5) // Gen7 ToolKit
-            {
-                CalcTime(null, null);
-                return;
-            }
             if (ivmin0.Value > ivmax0.Value)
                 Error(SETTINGERROR_STR[lindex] + L_H.Text);
             else if (ivmin1.Value > ivmax1.Value)
@@ -1644,6 +1619,68 @@ namespace Pk3DSRNGTool
                     continue;
                 IDFrames.Add(new Frame_ID(result, i));
             }
+        }
+        #endregion
+
+        #region Misc Tools
+        public uint globalseed { get => Seed.Value; set => Seed.Value = value; }
+
+        // Tools
+        private IVRange IVInputer = new IVRange();
+        private TinyTimelineTool TTT;
+        private Gen7MainRNGTool gen7tool;
+        private NTRHelper ntrhelper;
+
+        private void B_IVInput_Click(object sender, EventArgs e)
+            => IVInputer.ShowDialog();
+        private void M_Exit_Click(object sender, EventArgs e)
+            => Close();
+
+        //Gen6
+        private void OpenTinyTool(object sender, EventArgs e)
+        {
+            if (TTT == null) TTT = new TinyTimelineTool();
+            TranslateInterface(TTT, curlanguage);
+            TTT.Show();
+        }
+        private void M_NTRHelper_Click(object sender, EventArgs e)
+        {
+            if (ntrhelper == null) ntrhelper = new NTRHelper();
+            TranslateInterface(ntrhelper, curlanguage);
+            ntrhelper.Show();
+        }
+        public void OnConnected_Changed(bool IsConnected)
+        {
+            B_GetTiny.Enabled = IsConnected;
+        }
+        public void SetGameVersion(byte ver)
+            => Gameversion.SelectedIndex = ver;
+        private void M_Gen6SeedFinder_Click(object sender, EventArgs e)
+        {
+            var newform = new Gen6MTSeedFinder();
+            newform.ShowDialog();
+        }
+
+        //Gen7
+        private void M_Gen7MainRNGTool_Click(object sender, EventArgs e)
+        {
+            if (gen7tool == null) { gen7tool = new Gen7MainRNGTool(); gen7tool.UpdatePara(NPC.Value, TargetFrame.Value); }
+            TranslateInterface(gen7tool, curlanguage);
+            gen7tool.Show();
+        }
+        public int IDCorrection { set => Clk_Correction.Value = value; }
+        public decimal Framemin { set => Frame_min.Value = value; }
+
+        private void M_Gen7EggSeedFinder_Click(object sender, EventArgs e)
+        {
+            var newform = new Gen7EggSeedFinder();
+            newform.ShowDialog();
+        }
+        public void SetNewEggSeed(string seed)
+        {
+            RNGMethod.SelectedIndex = 3;
+            Status = FuncUtil.SeedStr2Array(seed);
+            B_Backup_Click(null, null);
         }
         #endregion
     }

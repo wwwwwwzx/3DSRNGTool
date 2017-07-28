@@ -10,8 +10,6 @@ namespace Pk3DSRNGTool
         private static readonly string[] ANY_STR = { "Any", "任意" };
         private static readonly string[] NONE_STR = { "None", "无" };
         private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
-        private static readonly string[] NORESULT_STR = { "No Result", "没有结果" };
-        private static readonly string[] WAIT_STR = { "Please Wait...", "请稍后..." };
         private static readonly string[] NOSELECTION_STR = { "Please Select", "请选择" };
         private static readonly string[] FILEERRORSTR = { "Invalid file!", "文件格式不正确" };
         private static readonly string[,] PIDTYPE_STR =
@@ -50,14 +48,14 @@ namespace Pk3DSRNGTool
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
         };
         private static readonly string[][] COLUMN_STR =
-         {
+        {
             new string[] { "Random Number", "Egg Seed", "Tiny State"},
             new string[] { "随机数", "蛋乱数种子","Tiny 状态" },
         };
 
         private string curlanguage;
 
-        private int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
+        public int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
         private static readonly string[] langlist = { "en", "cn" };
 
         private void ChangeLanguage(object sender, EventArgs e)
@@ -71,8 +69,9 @@ namespace Pk3DSRNGTool
             TranslateInterface(this, curlanguage); // Translate the UI to language.
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();
-            if (TTT != null)
-                TranslateInterface(TTT, lang);
+            TranslateInterface(TTT, lang);
+            TranslateInterface(gen7tool, lang);
+            TranslateInterface(ntrhelper, lang);
             Text = Text + $" v{version}";
 
             StringItem.naturestr = getStringList("Natures", curlanguage);
@@ -107,10 +106,7 @@ namespace Pk3DSRNGTool
 
             SyncNature.Items[0] = NONE_STR[lindex];
             for (int i = 0; i < StringItem.naturestr.Length; i++)
-            {
-                Wild_Nature.Items[i] = Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
-                NatureInput.Items[i] = i.ToString("D2") + " - " + StringItem.naturestr[i];
-            }
+                Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
 
             for (int i = 0; i < StringItem.items.Length; i++)
                 M_Items.Items[i] = F_Items.Items[i] = StringItem.items[i];

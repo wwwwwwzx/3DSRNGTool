@@ -4,8 +4,8 @@ namespace Pk3DSRNGTool
 {
     public partial class IVRange : Form
     {
-        public MainForm parentform;
-        public IVRange(MainForm form)
+        public MainForm parentform => Program.mainform;
+        public IVRange()
         {
             InitializeComponent();
             foreach (string t in Judge_Str)
@@ -17,7 +17,6 @@ namespace Pk3DSRNGTool
                 this.D.Items.Add(t);
                 this.S.Items.Add(t);
             }
-            parentform = form;
             Reset();
         }
 

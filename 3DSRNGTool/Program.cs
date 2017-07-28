@@ -5,6 +5,8 @@ namespace Pk3DSRNGTool
 {
     static class Program
     {
+        public static MainForm mainform;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -13,7 +15,8 @@ namespace Pk3DSRNGTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            mainform = new MainForm();
+            Application.Run(mainform);
         }
     }
 }

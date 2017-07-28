@@ -103,6 +103,34 @@ namespace Pk3DSRNGTool
         }
         #endregion
 
+        #region Misc
+        public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber = 1)
+        {
+            Console.WriteLine(seed.ToString("X8") + " " + min.ToString() + max.ToString());
+            if (min > max)
+                return CalcFrame(seed, max, min).Select(t => -t).ToArray();
+
+            SFMT sfmt = new SFMT(seed);
+
+            for (int i = 0; i < min; i++)
+                sfmt.Next();
+
+            //total_frame[0] Start; total_frame[1] Duration
+            int[] total_frame = new int[2];
+            int n_count = 0;
+            int timer = 0;
+            ModelStatus status = new ModelStatus(ModelNumber, sfmt);
+
+            while (min + n_count <= max)
+            {
+                n_count += status.NextState();
+                total_frame[timer]++;
+                if (min + n_count == max)
+                    timer = 1;
+            }
+            return total_frame;
+        }
+
         public static string Convert2timestr(double sec)
         {
             if (sec < 60)
@@ -165,6 +193,6 @@ namespace Pk3DSRNGTool
                 return null;
             }
         }
-
+        #endregion
     }
 }
