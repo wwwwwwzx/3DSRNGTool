@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
         #region global variables
         private string version = "0.9.5";
 
-        private int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
+        public int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
         private byte Method => (byte)RNGMethod.SelectedIndex;
@@ -437,8 +437,6 @@ namespace Pk3DSRNGTool
 
             DGV.Visible = Method < 4;
             DGV_ID.Visible = Method == 4;
-            if (Method > 4)
-                return;
 
             RNGMethod.TabPages[Method].Controls.Add(this.RNGInfo);
             RNGMethod.TabPages[Method].Controls.Add(this.Filters);
@@ -1655,8 +1653,6 @@ namespace Pk3DSRNGTool
         {
             B_GetTiny.Enabled = IsConnected;
         }
-        public void SetGameVersion(byte ver)
-            => Gameversion.SelectedIndex = ver;
         private void M_Gen6SeedFinder_Click(object sender, EventArgs e)
         {
             var newform = new Gen6MTSeedFinder();

@@ -94,10 +94,7 @@ namespace Pk3DSRNGTool
             tcp = null;
         }
 
-        public void listprocess()
-        {
-            sendEmptyPacket(5);
-        }
+        public void listprocess() => sendEmptyPacket(5);
 
         private int readNetworkStream(NetworkStream stream, byte[] buf, int length)
         {
@@ -257,14 +254,14 @@ namespace Pk3DSRNGTool
         private void log(string msg)
         {
             onLogArrival?.Invoke(msg);
-            #if Debug
+            #if DEBUG
             try
             {
                 Console.WriteLine(msg);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             #endif
         }

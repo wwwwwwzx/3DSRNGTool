@@ -9,7 +9,7 @@ namespace Pk3DSRNGTool
         public static NtrClient ntrclient;
         private int timercounter;
         private ushort lasttableindex;
-        private static byte Ver => Properties.Settings.Default.Method;
+        private static int Ver { get => Program.mainform.Ver; set => Program.mainform.Ver = value; }
 
         public NTRHelper()
         {
@@ -82,7 +82,7 @@ namespace Pk3DSRNGTool
             {
                 if (ntrclient.VersionDetected)
                 {
-                    Program.mainform.SetGameVersion(ntrclient.Gameversion);
+                    Ver = ntrclient.Gameversion;
                     ntrclient.VersionDetected = false;
                     if (ntrclient.phase == 1 && Ver < 4) // One Click mode start
                     {
