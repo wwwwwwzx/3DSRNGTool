@@ -3,7 +3,7 @@ using Pk3DSRNGTool.Controls;
 
 namespace Pk3DSRNGTool
 {
-    class StringItem
+    internal static class StringItem
     {
         public static string[] naturestr = new bool[25].Select(i => "").ToArray();
         public static string[] hpstr = new bool[18].Select(i => "").ToArray();
@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
 
         public readonly static string[] gen7wildtypestr = { "-", "UB", "QR" };
 
-        public static string[] species;
+        public static string[] speciestr;
         public static string[] smlocation, gen6location;
         public static string[] items;
 
@@ -76,5 +76,55 @@ namespace Pk3DSRNGTool
                     return a[language];
             return input;
         }
+
+        public static readonly string[,] GAMEVERSION_STR =
+        {
+            { "X", "Y", "OR", "AS", "Transporter", "Sun", "Moon", "Ultra Sun", "Ultra Moon" },
+            { "X", "Y", "红宝石", "蓝宝石", "虚拟传送", "太阳", "月亮", "究极之日", "究极之月" },
+        };
+
+        public static readonly string[] ANY_STR = { "Any", "任意" };
+        public static readonly string[] NONE_STR = { "None", "无" };
+        public static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
+        public static readonly string[] NOSELECTION_STR = { "Please Select", "请选择" };
+        public static readonly string[] FILEERRORSTR = { "Invalid file!", "文件格式不正确" };
+        public static readonly string[] NORESULT_STR = { "No Result", "没有结果" };
+        public static readonly string[] WAIT_STR = { "Please Wait...", "请稍后..." };
+        public static readonly string[] INVALID_STR = { "Invalid Input", "输入格式不正确" };
+        public static readonly string[,] PIDTYPE_STR =
+        {
+            { "Random", "Nonshiny", "Shiny", "Specified"},
+            { "随机", "必不闪", "必闪", "特定"},
+        };
+        public static readonly string[,] PARENTS_STR =
+        {
+            { "-", "Male", "Female"},
+            { "-", "父方", "母方"},
+        };
+        public static readonly string[,] SYNC_STR =
+        {
+            { "Always Synced", "Can not be Synced" },
+            { "必定同步", "不能同步" },
+        };
+        public static readonly string[,] EGGACCEPT_STR =
+        {
+            { "Accept", "Reject" },
+            { "接受", "拒绝" },
+        };
+        public static readonly string[][] STATS_STR =
+        {
+            new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
+            new string[] { "HP", "攻击", "防御", "特攻", "特防", "速度" },
+        };
+        public static readonly string[][] IVJUDGE_STR =
+        {
+            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
+            new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
+        };
+        public static readonly string[][] COLUMN_STR =
+        {
+            new string[] { "Random Number", "Egg Seed", "Tiny State"},
+            new string[] { "随机数", "蛋乱数种子","Tiny 状态" },
+        };
     }
 }

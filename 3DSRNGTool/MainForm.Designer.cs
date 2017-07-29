@@ -112,7 +112,7 @@
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.MS_Toolkit = new System.Windows.Forms.MenuStrip();
             this.M_File = new System.Windows.Forms.ToolStripMenuItem();
-            this.Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Tool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Gen7MainRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Gen7EggSeedFinder = new System.Windows.Forms.ToolStripMenuItem();
@@ -478,9 +478,9 @@
             this.Lang.Items.AddRange(new object[] {
             "English",
             "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(503, 13);
+            this.Lang.Location = new System.Drawing.Point(500, 13);
             this.Lang.Name = "Lang";
-            this.Lang.Size = new System.Drawing.Size(70, 21);
+            this.Lang.Size = new System.Drawing.Size(73, 21);
             this.Lang.TabIndex = 87;
             this.Lang.SelectedIndexChanged += new System.EventHandler(this.ChangeLanguage);
             // 
@@ -1075,17 +1075,17 @@
             // M_File
             // 
             this.M_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Exit});
+            this.M_Exit});
             this.M_File.Name = "M_File";
             this.M_File.Size = new System.Drawing.Size(37, 20);
             this.M_File.Text = "File";
             // 
-            // Exit
+            // M_Exit
             // 
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(92, 22);
-            this.Exit.Text = "Exit";
-            this.Exit.Click += new System.EventHandler(this.M_Exit_Click);
+            this.M_Exit.Name = "M_Exit";
+            this.M_Exit.Size = new System.Drawing.Size(92, 22);
+            this.M_Exit.Text = "M_Exit";
+            this.M_Exit.Click += new System.EventHandler(this.M_Exit_Click);
             // 
             // M_Tool
             // 
@@ -4955,7 +4955,7 @@
         private System.Windows.Forms.CheckBox SafeFOnly;
         private System.Windows.Forms.TabControl RNGMethod;
         private System.Windows.Forms.ToolStripMenuItem M_Gen7EggSeedFinder;
-        private System.Windows.Forms.ToolStripMenuItem Exit;
+        private System.Windows.Forms.ToolStripMenuItem M_Exit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem M_NTRHelper;
         private System.Windows.Forms.ToolStripMenuItem M_Gen6MainSeedFinder;

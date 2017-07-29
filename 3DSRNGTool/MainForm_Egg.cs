@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static PKHeX.Util;
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
 {
@@ -151,6 +152,32 @@ namespace Pk3DSRNGTool
         private string List2str(List<int> list)
         {
             return string.Join(",", list.Select(i => i.ToString()).ToArray());
+        }
+        
+        private string getEggListString(int eggnum, int rejectnum, bool path = false)
+        {
+            string tmp = "";
+            if (eggnum < 0)
+            {
+                switch (lindex)
+                {
+                    case 0: return "Egg number is too small";
+                    case 1: return "蛋数范围太小";
+                }
+            }
+            switch (lindex)
+            {
+                case 0: tmp += $"Accept {eggnum} eggs"; break;
+                case 1: tmp += $"接受 {eggnum} 个蛋"; break;
+            }
+            if (rejectnum == 0)
+                return tmp;
+            switch (lindex)
+            {
+                case 0: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
+                case 1: tmp += path ? $",\n拒绝 {rejectnum} 次" : $",\n然后拒绝 {rejectnum} 次"; break;
+            }
+            return tmp;
         }
 
         #region DGV menu

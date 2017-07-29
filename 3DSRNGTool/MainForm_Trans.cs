@@ -2,61 +2,16 @@
 using System.Linq;
 using System.Windows.Forms;
 using static PKHeX.Util;
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
 {
     public partial class MainForm : Form
     {
-        private static readonly string[] ANY_STR = { "Any", "任意" };
-        private static readonly string[] NONE_STR = { "None", "无" };
-        private static readonly string[] SETTINGERROR_STR = { "Error at ", "出错啦0.0 发生在" };
-        private static readonly string[] NOSELECTION_STR = { "Please Select", "请选择" };
-        private static readonly string[] FILEERRORSTR = { "Invalid file!", "文件格式不正确" };
-        private static readonly string[,] PIDTYPE_STR =
-        {
-            { "Random", "Nonshiny", "Shiny", "Specified"},
-            { "随机", "必不闪", "必闪", "特定"},
-        };
-        private static readonly string[,] PARENTS_STR =
-        {
-            { "-", "Male", "Female"},
-            { "-", "父方", "母方"},
-        };
-        private static readonly string[,] GAMEVERSION_STR =
-        {
-            { "X", "Y", "OR", "AS", "Transporter", "Sun", "Moon" },
-            { "X", "Y", "红宝石", "蓝宝石", "虚拟传送", "太阳", "月亮" },
-        };
-        private static readonly string[,] SYNC_STR =
-        {
-            { "Always Synced", "Can not be Synced" },
-            { "必定同步", "不能同步" },
-        };
-        private static readonly string[,] EGGACCEPT_STR =
-        {
-            { "Accept", "Reject" },
-            { "接受", "拒绝" },
-        };
-        private static readonly string[][] STATS_STR =
-        {
-            new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
-            new string[] { "HP", "攻击", "防御", "特攻", "特防", "速度" },
-        };
-        private static readonly string[][] IVJUDGE_STR =
-        {
-            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
-            new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
-        };
-        private static readonly string[][] COLUMN_STR =
-        {
-            new string[] { "Random Number", "Egg Seed", "Tiny State"},
-            new string[] { "随机数", "蛋乱数种子","Tiny 状态" },
-        };
-
         private string curlanguage;
+        private static readonly string[] langlist = { "en", "cn" };
 
         public int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
-        private static readonly string[] langlist = { "en", "cn" };
 
         private void ChangeLanguage(object sender, EventArgs e)
         {
@@ -74,13 +29,13 @@ namespace Pk3DSRNGTool
             TranslateInterface(ntrhelper, lang);
             Text = Text + $" v{version}";
 
-            StringItem.naturestr = getStringList("Natures", curlanguage);
-            StringItem.hpstr = getStringList("Types", curlanguage);
-            StringItem.species = getStringList("Species", curlanguage);
-            StringItem.items = getStringList("Items", curlanguage);
-            StringItem.genderratio = getStringList("Genderratio", curlanguage);
-            StringItem.smlocation = getStringList("Location_sm", curlanguage);
-            StringItem.gen6location = getStringList("Location_xy", curlanguage);
+            naturestr = getStringList("Natures", curlanguage);
+            hpstr = getStringList("Types", curlanguage);
+            speciestr = getStringList("Species", curlanguage);
+            items = getStringList("Items", curlanguage);
+            genderratio = getStringList("Genderratio", curlanguage);
+            smlocation = getStringList("Location_sm", curlanguage);
+            gen6location = getStringList("Location_xy", curlanguage);
 
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
@@ -94,7 +49,7 @@ namespace Pk3DSRNGTool
             IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
             Frame.Parents[1] = PARENTS_STR[lindex, 1];
             Frame.Parents[2] = PARENTS_STR[lindex, 2];
-            dgv_wurmpleevo.HeaderText = StringItem.species[265];
+            dgv_wurmpleevo.HeaderText = speciestr[265];
 
             RefreshCategory();
             if (Method == 2)
@@ -102,31 +57,31 @@ namespace Pk3DSRNGTool
 
             Nature.Items.Clear();
             Nature.BlankText = ANY_STR[lindex];
-            Nature.Items.AddRange(StringItem.NatureList);
+            Nature.Items.AddRange(NatureList);
 
             SyncNature.Items[0] = NONE_STR[lindex];
-            for (int i = 0; i < StringItem.naturestr.Length; i++)
-                Event_Nature.Items[i] = SyncNature.Items[i + 1] = StringItem.naturestr[i];
+            for (int i = 0; i < naturestr.Length; i++)
+                Event_Nature.Items[i] = SyncNature.Items[i + 1] = naturestr[i];
 
-            for (int i = 0; i < StringItem.items.Length; i++)
-                M_Items.Items[i] = F_Items.Items[i] = StringItem.items[i];
+            for (int i = 0; i < items.Length; i++)
+                M_Items.Items[i] = F_Items.Items[i] = items[i];
 
             HiddenPower.Items.Clear();
             HiddenPower.BlankText = ANY_STR[lindex];
-            HiddenPower.Items.AddRange(StringItem.HiddenPowerList);
+            HiddenPower.Items.AddRange(HiddenPowerList);
 
             GenderRatio.ValueMember = "Value";
             GenderRatio.DisplayMember = "Text";
-            GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
+            GenderRatio.DataSource = new BindingSource(GenderRatioList, null);
             GenderRatio.SelectedIndex = 0;
 
             Egg_GenderRatio.ValueMember = "Value";
             Egg_GenderRatio.DisplayMember = "Text";
-            Egg_GenderRatio.DataSource = new BindingSource(StringItem.GenderRatioList, null);
+            Egg_GenderRatio.DataSource = new BindingSource(GenderRatioList, null);
             Egg_GenderRatio.SelectedIndex = 1;
 
             Event_Species.Items.Clear();
-            Event_Species.Items.AddRange(new string[] { "-" }.Concat(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
+            Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
             Event_Species.SelectedIndex = 0;
 
             // display something upon loading
@@ -136,32 +91,6 @@ namespace Pk3DSRNGTool
             HiddenPower.CheckBoxItems[0].Checked = false;
 
             AlwaysSynced.Text = SYNC_STR[lindex, 0];
-        }
-
-        private string getEggListString(int eggnum, int rejectnum, bool path = false)
-        {
-            string tmp = "";
-            if (eggnum < 0)
-            {
-                switch (lindex)
-                {
-                    case 0: return "Egg number is too small";
-                    case 1: return "蛋数范围太小";
-                }
-            }
-            switch (lindex)
-            {
-                case 0: tmp += $"Accept {eggnum} eggs"; break;
-                case 1: tmp += $"接受 {eggnum} 个蛋"; break;
-            }
-            if (rejectnum == 0)
-                return tmp;
-            switch (lindex)
-            {
-                case 0: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
-                case 1: tmp += path ? $",\n拒绝 {rejectnum} 次" : $",\n然后拒绝 {rejectnum} 次"; break;
-            }
-            return tmp;
         }
     }
 }

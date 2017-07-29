@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 using static PKHeX.Util;
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
 {
@@ -22,9 +23,6 @@ namespace Pk3DSRNGTool
 
         private static int lindex => Program.mainform.lindex;
         private static uint Seed { set => Program.mainform.globalseed = value; }
-        private static readonly string[] NORESULT_STR = { "No Result", "没有结果" };
-        private static readonly string[] WAIT_STR = { "Please Wait...", "请稍后..." };
-        private static readonly string[] INVALID_STR = { "Invalid Input", "输入格式不正确" };
 
         #region Controls
         private void Clear_Click(object sender, EventArgs e)

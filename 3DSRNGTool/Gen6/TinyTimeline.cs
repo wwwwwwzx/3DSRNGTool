@@ -93,15 +93,14 @@ namespace Pk3DSRNGTool
             }
             int imax = i + Buffer;
             for (; i < imax; i++)
-            {
-                var newdata = new Frame_Tiny();
-                newdata.Index = i;
-                newdata.state = State;
-                newdata.framemin = Currentframe;
-                newdata.framemax = Currentframe;
-                newdata.rand = Tinyrng.Nextuint();
-                results.Add(newdata);
-            }
+                results.Add(new Frame_Tiny()
+                {
+                    Index = i,
+                    state = State,
+                    framemin = Currentframe,
+                    framemax = Currentframe,
+                    rand = Tinyrng.Nextuint(),
+                });
             switch (Method)
             {
                 case 0: MarkFS(); break;

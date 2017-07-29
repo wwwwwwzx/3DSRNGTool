@@ -7,6 +7,7 @@ using Pk3DSRNGTool.Controls;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
 using static PKHeX.Util;
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
 {
@@ -75,11 +76,11 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 6; i++)
                 EventIV[i].Enabled = false;
 
-            Gender.Items.AddRange(StringItem.genderstr);
-            Ball.Items.AddRange(StringItem.genderstr);
-            Event_Gender.Items.AddRange(StringItem.genderstr);
-            Event_Nature.Items.AddRange(StringItem.naturestr);
-            for (int i = 0; i <= StringItem.naturestr.Length; i++)
+            Gender.Items.AddRange(genderstr);
+            Ball.Items.AddRange(genderstr);
+            Event_Gender.Items.AddRange(genderstr);
+            Event_Nature.Items.AddRange(naturestr);
+            for (int i = 0; i <= naturestr.Length; i++)
                 SyncNature.Items.Add("");
 
             string l = Properties.Settings.Default.Language;
@@ -124,7 +125,7 @@ namespace Pk3DSRNGTool
         {
             if (Method != 0 && Method != 2) return;
             Pokemonlist = Pokemon.getSpecFormList(Ver, CB_Category.SelectedIndex, Method);
-            var List = Pokemonlist.Select(s => new ComboItem(StringItem.Translate(s.ToString(), lindex), s.SpecForm)).ToList();
+            var List = Pokemonlist.Select(s => new ComboItem(Translate(s.ToString(), lindex), s.SpecForm)).ToList();
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
@@ -135,7 +136,7 @@ namespace Pk3DSRNGTool
         {
             Ver = Math.Max(Ver, 0);
             CB_Category.Items.Clear();
-            var Category = Pokemon.getCategoryList(Ver, Method).Select(t => StringItem.Translate(t.ToString(), lindex)).ToArray();
+            var Category = Pokemon.getCategoryList(Ver, Method).Select(t => Translate(t.ToString(), lindex)).ToArray();
             CB_Category.Items.AddRange(Category);
             CB_Category.SelectedIndex = 0;
             RefreshPKM();
@@ -152,7 +153,7 @@ namespace Pk3DSRNGTool
             MetLocation.Visible = SlotSpecies.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
             if (locationlist == null)
                 return;
-            Locationlist = locationlist.Select(loc => new ComboItem(StringItem.getlocationstr(loc, Ver), loc)).ToList();
+            Locationlist = locationlist.Select(loc => new ComboItem(getlocationstr(loc, Ver), loc)).ToList();
 
             MetLocation.DisplayMember = "Text";
             MetLocation.ValueMember = "Value";
@@ -165,8 +166,8 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = Gen7 ? species.Skip(1).Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm))
-                : species.Distinct().Select(SpecForm => new ComboItem(StringItem.species[SpecForm & 0x7FF], SpecForm));
+            var List = Gen7 ? species.Skip(1).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm))
+                : species.Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm));
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -363,14 +364,14 @@ namespace Pk3DSRNGTool
                             {
                                 case "Nature":
                                     var naturelist = value.Split(',').ToArray();
-                                    for (int i = StringItem.naturestr.Length - 1; i >= 0; i--)
-                                        if (naturelist.Contains(StringItem.naturestr[i]))
+                                    for (int i = naturestr.Length - 1; i >= 0; i--)
+                                        if (naturelist.Contains(naturestr[i]))
                                             Nature.CheckBoxItems[i + 1].Checked = true;
                                     break;
                                 case "HiddenPower":
                                     var hplist = value.Split(',').ToArray();
-                                    for (int i = StringItem.hpstr.Length - 2; i > 0; i--)
-                                        if (hplist.Contains(StringItem.hpstr[i]))
+                                    for (int i = hpstr.Length - 2; i > 0; i--)
+                                        if (hplist.Contains(hpstr[i]))
                                             HiddenPower.CheckBoxItems[i].Checked = true;
                                     break;
                                 case "ShinyOnly":
@@ -420,7 +421,7 @@ namespace Pk3DSRNGTool
                 Slot.CheckBoxItems[0].Checked = false;
 
                 Event_Species.Items.Clear();
-                Event_Species.Items.AddRange(new string[] { "-" }.Concat(StringItem.species.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
+                Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : 802)).ToArray());
                 Event_Species.SelectedIndex = 0;
 
                 lastgen = currentgen;
@@ -596,7 +597,7 @@ namespace Pk3DSRNGTool
                 Error(NOSELECTION_STR[lindex]);
             }
         }
-        
+
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
         {
             gen7tool?.UpdatePara(target: TargetFrame.Value);
@@ -797,7 +798,7 @@ namespace Pk3DSRNGTool
 
                 if (Method == 2)
                 {
-                    Frame.SpecialSlotStr = StringItem.gen7wildtypestr[CB_Category.SelectedIndex];
+                    Frame.SpecialSlotStr = gen7wildtypestr[CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 100;
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
@@ -1631,10 +1632,8 @@ namespace Pk3DSRNGTool
         private Gen7MainRNGTool gen7tool;
         private NTRHelper ntrhelper;
 
-        private void B_IVInput_Click(object sender, EventArgs e)
-            => IVInputer.ShowDialog();
-        private void M_Exit_Click(object sender, EventArgs e)
-            => Close();
+        private void B_IVInput_Click(object sender, EventArgs e) => IVInputer.ShowDialog();
+        private void M_Exit_Click(object sender, EventArgs e) => Close();
 
         //Gen6
         private void OpenTinyTool(object sender, EventArgs e)

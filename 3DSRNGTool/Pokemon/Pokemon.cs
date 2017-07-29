@@ -20,6 +20,7 @@ namespace Pk3DSRNGTool
         public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
         public virtual bool AlwaysSync => Gift || Nature < 25;
 
+        private static string[] speciestr => StringItem.speciestr;
         public override string ToString()
         {
             if (Conceptual) return "-";
@@ -28,12 +29,12 @@ namespace Pk3DSRNGTool
                 if (Species == 154) return "Johto Starters";
                 if (Species == 377) return "Legendary Titans";
             }
-            if (Egg) return StringItem.species[Species] + " (" + StringItem.species[0] + ")";
-            if (Unstable) return  StringItem.species[Species] + "(?)";
+            if (Egg) return speciestr[Species] + " (" + speciestr[0] + ")";
+            if (Unstable) return  speciestr[Species] + "(?)";
             switch (Species)
             {
-                case 718: return StringItem.species[718] + (Forme == 1 ? "-10%" : "-50%");
-                default: return StringItem.species[Species];
+                case 718: return speciestr[718] + (Forme == 1 ? "-10%" : "-50%");
+                default: return speciestr[Species];
             }
         }
         #endregion

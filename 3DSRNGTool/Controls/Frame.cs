@@ -61,7 +61,7 @@ namespace Pk3DSRNGTool
         public ulong Rand64 => (rt as Result7)?.RandNum ?? (rt as EggResult)?.EggSeed ?? 0;
         public uint PID => rt.PID;
         public uint EC => rt.EC;
-        public string WurmpleEvo => (rt.EC >> 16) % 10 < 5 ? StringItem.species[267] : StringItem.species[269];
+        public string WurmpleEvo => (rt.EC >> 16) % 10 < 5 ? StringItem.speciestr[267] : StringItem.speciestr[269];
         public string State => (rt as Result6)?.Status.ToString() ?? (rt as ResultE6)?.Status.ToString() ?? "";
         public PRNGState _tinystate;
         public string TinyState => (_tinystate ?? (rt as ResultE7)?.Status)?.ToString() ?? "";
