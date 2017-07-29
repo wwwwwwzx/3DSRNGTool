@@ -9,6 +9,7 @@
         PokeRadar,
         FriendSafari,
         CaveShadow,
+        Trap,
     }
 
     public class PKMW6 : Pokemon
@@ -69,6 +70,14 @@
                     new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.CaveShadow, Delay = 78, },
                 }
             },
+            new PokemonList
+            {
+                Text = "Trap",
+                List = new[]
+                {
+                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Trap, Delay = 32, },
+                }
+            }
         };
 
         public readonly static PokemonList[] Species_ORAS =

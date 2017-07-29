@@ -23,6 +23,9 @@ namespace Pk3DSRNGTool
                 case EncounterType.CaveShadow:
                     TableNow = IsXY ? Shadow_XY : null;
                     break;
+                case EncounterType.Trap:
+                    TableNow = IsXY ? Trap_XY : null;
+                    break;
                 default:
                     TableNow = null; return null;
             }
@@ -534,6 +537,15 @@ namespace Pk3DSRNGTool
                 Location = 132,
                 Species = new[] { 066, 066, 066, 111, 095, 104, 104, 337, 338, 115, 303, 303,},
                 Level = new byte[] { 15, 16, 17, 17, 17, 15, 16, 17, 17, 17, 15, 16 },
+            },
+        };
+        public static readonly EncounterArea_XY[] Trap_XY =
+        {
+            new EncounterArea_XY
+            {
+                Location = 066, // Route 13
+                Species = new[] { 051, 051, 051, 051, 328, 328, 328, 328, 443, 443, 443, 443,},
+                Level = new byte[] { 26, 27, 27, 28, 26, 27, 27, 28, 26, 27, 27, 28},
             },
         };
     }
