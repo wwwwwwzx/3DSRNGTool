@@ -137,7 +137,7 @@
     <Compile Include="MainForm_Egg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm_Trans.cs">
+    <Compile Include="MainForm_Core.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pokemon\Pokemon.cs" />
