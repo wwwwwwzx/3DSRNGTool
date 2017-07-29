@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
         public byte[] Data { get; private set; }
         private uint BPOffset { get; set; }
         private uint MTOffset { get; set; }
+        private uint SFMTOffset { get; set; }
         private uint TinyOffset { get; set; }
 
         private bool DataReady;
@@ -43,6 +44,10 @@ namespace Pk3DSRNGTool
                 case 2:
                 case 3:
                     BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8c59E04; break;
+                case 5:
+                case 6:
+                    SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC;
+                    WriteWifiPatch(); break;
             }
             return true;
         }
@@ -71,6 +76,15 @@ namespace Pk3DSRNGTool
             DataReady = true;
         }
 
+        // Gen7 Connection Patch
+        private const uint nfcOff = 0x3E14C0; // 1.0 offset was 0x3DFFD0
+        private const uint nfcVal = 0xE3A01000;
+        private void WriteWifiPatch()
+        {
+            byte[] command = BitConverter.GetBytes(nfcVal);
+            Write(nfcOff, command, Pid);
+        }
+
 #if DEBUG
         public void WriteTiny(uint[] tiny)
         {
@@ -82,7 +96,7 @@ namespace Pk3DSRNGTool
 #endif
 
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
-        public byte[] ReadSeed() => SingleThreadRead(MTOffset + 4, 0x4);  // MT[0]
+        public byte[] ReadSeed() => SingleThreadRead(Gameversion < 5 ? MTOffset + 4 : SFMTOffset, 0x4);  // MT[0]/SFMT
         public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
     }
 }

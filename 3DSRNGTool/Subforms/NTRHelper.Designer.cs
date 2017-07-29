@@ -36,7 +36,7 @@
             this.B_Resume = new System.Windows.Forms.Button();
             this.B_Disconnect = new System.Windows.Forms.Button();
             this.B_Connect = new System.Windows.Forms.Button();
-            this.B_GetGen6Seed = new System.Windows.Forms.Button();
+            this.B_GetSeed = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.IP = new System.Windows.Forms.TextBox();
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
@@ -105,16 +105,16 @@
             this.B_Connect.UseVisualStyleBackColor = true;
             this.B_Connect.Click += new System.EventHandler(this.B_Connect_Click);
             // 
-            // B_GetGen6Seed
+            // B_GetSeed
             // 
-            this.B_GetGen6Seed.Enabled = false;
-            this.B_GetGen6Seed.Location = new System.Drawing.Point(223, 98);
-            this.B_GetGen6Seed.Name = "B_GetGen6Seed";
-            this.B_GetGen6Seed.Size = new System.Drawing.Size(102, 25);
-            this.B_GetGen6Seed.TabIndex = 115;
-            this.B_GetGen6Seed.Text = "Get Initial Seed";
-            this.B_GetGen6Seed.UseVisualStyleBackColor = true;
-            this.B_GetGen6Seed.Click += new System.EventHandler(this.B_GetGen6Seed_Click);
+            this.B_GetSeed.Enabled = false;
+            this.B_GetSeed.Location = new System.Drawing.Point(223, 98);
+            this.B_GetSeed.Name = "B_GetSeed";
+            this.B_GetSeed.Size = new System.Drawing.Size(102, 25);
+            this.B_GetSeed.TabIndex = 115;
+            this.B_GetSeed.Text = "Get Initial Seed";
+            this.B_GetSeed.UseVisualStyleBackColor = true;
+            this.B_GetSeed.Click += new System.EventHandler(this.B_GetSeed_Click);
             // 
             // label18
             // 
@@ -161,7 +161,7 @@
             this.Controls.Add(this.B_Resume);
             this.Controls.Add(this.B_Disconnect);
             this.Controls.Add(this.B_Connect);
-            this.Controls.Add(this.B_GetGen6Seed);
+            this.Controls.Add(this.B_GetSeed);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.IP);
             this.MaximumSize = new System.Drawing.Size(360, 175);
@@ -182,7 +182,7 @@
         private System.Windows.Forms.Button B_Resume;
         private System.Windows.Forms.Button B_Disconnect;
         private System.Windows.Forms.Button B_Connect;
-        private System.Windows.Forms.Button B_GetGen6Seed;
+        private System.Windows.Forms.Button B_GetSeed;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox IP;
         private System.Windows.Forms.Timer NTR_Timer;

@@ -1639,6 +1639,7 @@
             this.label13.Size = new System.Drawing.Size(28, 14);
             this.label13.TabIndex = 99;
             this.label13.Text = "[0]";
+            this.label13.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
             // 
             // B_Load
             // 
@@ -1682,6 +1683,7 @@
             this.label11.Size = new System.Drawing.Size(28, 14);
             this.label11.TabIndex = 98;
             this.label11.Text = "[1]";
+            this.label11.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
             // 
             // St1
             // 
@@ -1718,6 +1720,7 @@
             this.label8.Size = new System.Drawing.Size(28, 14);
             this.label8.TabIndex = 97;
             this.label8.Text = "[2]";
+            this.label8.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
             // 
             // label16
             // 
@@ -1728,6 +1731,7 @@
             this.label16.Size = new System.Drawing.Size(28, 14);
             this.label16.TabIndex = 96;
             this.label16.Text = "[3]";
+            this.label16.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
             // 
             // L_Egg_S
             // 

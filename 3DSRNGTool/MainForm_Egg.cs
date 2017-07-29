@@ -153,7 +153,26 @@ namespace Pk3DSRNGTool
         {
             return string.Join(",", list.Select(i => i.ToString()).ToArray());
         }
-        
+
+        public void SyncGen7EggSeed(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] tiny = NTRHelper.ntrclient.ReadTiny();
+                if (tiny == null) { return; }
+                Status = new[]
+                {
+                BitConverter.ToUInt32(tiny, 0),
+                BitConverter.ToUInt32(tiny, 4),
+                BitConverter.ToUInt32(tiny, 8),
+                BitConverter.ToUInt32(tiny, 12),
+                };
+            }
+            catch
+            {
+            }
+        }
+
         private string getEggListString(int eggnum, int rejectnum, bool path = false)
         {
             string tmp = "";

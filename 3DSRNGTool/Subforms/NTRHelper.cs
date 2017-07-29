@@ -53,7 +53,7 @@ namespace Pk3DSRNGTool
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
-            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = false;
+            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
             Program.mainform.OnConnected_Changed(false);
         }
 
@@ -65,7 +65,7 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetGen6Seed.Enabled = B_Disconnect.Enabled = true;
+            B_GetSeed.Enabled = B_Disconnect.Enabled = true;
             Program.mainform.OnConnected_Changed(true);
             Properties.Settings.Default.IP = IP.Text;
         }
@@ -83,12 +83,23 @@ namespace Pk3DSRNGTool
                 if (ntrclient.VersionDetected)
                 {
                     Ver = ntrclient.Gameversion;
+                    B_BreakPoint.Enabled = B_Resume.Enabled = Ver < 4;
                     ntrclient.VersionDetected = false;
-                    if (ntrclient.phase == 1 && Ver < 4) // One Click mode start
+                    if (Ver > 4)
                     {
-                        B_BreakPoint_Click(null, null);
-                        ntrclient.phase = 2;
-                        timercounter = Ver < 2 ? -3 : -4;
+                        Program.mainform.SyncGen7EggSeed(null, null);
+                        B_GetSeed_Click(null, null);
+                    }
+                    if (ntrclient.phase == 1) // One Click mode start
+                    {
+                        if (Ver < 4)
+                        {
+                            B_BreakPoint_Click(null, null);
+                            ntrclient.phase = 2;
+                            timercounter = Ver < 2 ? -3 : -4;
+                        }
+                        else
+                            B_Disconnect_Click(null, null);
                     }
                 }
                 if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
@@ -100,7 +111,10 @@ namespace Pk3DSRNGTool
                     else
                     {
                         if (ntrclient.phase == 3) // the console reaches the breakpoint
-                            B_GetGen6Seed_Click(null, null);
+                        {
+                            B_GetSeed_Click(null, null);
+                            B_Disconnect_Click(null, null);
+                        }
                         if (ntrclient.phase == 2) // the (2nd) freeze after setting breakpoint
                         {
                             Program.mainform.B_gettiny_Click(null, null);
@@ -141,23 +155,23 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void B_GetGen6Seed_Click(object sender, EventArgs e)
+        private void B_GetSeed_Click(object sender, EventArgs e)
         {
             byte[] seed_ay = ntrclient.ReadSeed();
             if (seed_ay == null) { Error("Timeout"); return; }
             Program.mainform.globalseed = BitConverter.ToUInt32(seed_ay, 0);
             ntrclient.resume();
-            B_Disconnect_Click(null, null);
         }
 
         private readonly static string[] HElP_STR =
         {
-            "How to use it:\n" +
+            "Usage:\n" +
             "(1) Look for your 3DS' IP using FBI/Homebrew/Luma, input your console IP address here. Make sure your PC running this tool and your console are in the same network.\n" +
             "(2) Install and start NTR-CFW before you start the game.\n"+
-            "(3) Hold the left arrow key of your console while the game is starting, until the screen flashes 3 times.It will stay at 3DS logo, don't worry.\n"+
-            "(4) Click 'One Click' button here, the tool will try to connect the console and the game will proceed normally.\n"+
-            "(5) Press A or Select/Start to skip the title screen until you get to the continue screen."+
+            "(3) Gen6: Hold the left arrow key of your console while the game is starting, until the screen flashes 3 times.It will stay at 3DS logo, don't worry.\n"+
+            "Gen7: Proceed the game normally, stop at title screen or continue screen. Enable NTR Debugger via menu (Press X+Y) \n"+
+            "(4) Click 'One Click' button, the tool will try to connect the console and the game will proceed normally.\n"+
+            "(5) Gen7 Skip this. Press A or Select/Start to skip the title screen until you get to the continue screen."+
             "(6) All done.The tool will help you grab the initial seed and wrap up everything. Enjoy!",
 
             "如何使用:\n" +
