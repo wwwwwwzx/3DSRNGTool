@@ -141,7 +141,7 @@
             // 
             // B_Help
             // 
-            this.B_Help.Location = new System.Drawing.Point(311, 22);
+            this.B_Help.Location = new System.Drawing.Point(311, 21);
             this.B_Help.Name = "B_Help";
             this.B_Help.Size = new System.Drawing.Size(24, 25);
             this.B_Help.TabIndex = 121;

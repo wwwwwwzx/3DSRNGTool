@@ -46,8 +46,7 @@ namespace Pk3DSRNGTool
                     BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8c59E04; break;
                 case 5:
                 case 6:
-                    SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC;
-                    WriteWifiPatch(); break;
+                    WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; break;
             }
             return true;
         }
