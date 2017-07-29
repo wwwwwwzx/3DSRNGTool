@@ -8,8 +8,8 @@ namespace Pk3DSRNGTool
 {
     public partial class Gen7EggSeedFinder : Form
     {
-        private static TinySeedFinder tinyfinder;
-        private static void SetNewEggSeed(string seed) => Program.mainform.SetNewEggSeed(seed);
+        private TinySeedFinder tinyfinder;
+
         public Gen7EggSeedFinder()
         {
             InitializeComponent();
@@ -21,6 +21,7 @@ namespace Pk3DSRNGTool
             tinyfinder?.Abort();
         }
 
+        private void SetNewEggSeed(string seed) => Program.mainform.SetNewEggSeed(seed);
         private void B_EggSeed127_Click(object sender, EventArgs e)
         {
             string inlist = RTB_EggSeed.Text;

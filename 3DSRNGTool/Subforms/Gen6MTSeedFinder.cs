@@ -7,7 +7,7 @@ namespace Pk3DSRNGTool
 {
     public partial class Gen6MTSeedFinder : Form
     {
-        private static MTSeedFinder mtfinder;
+        private MTSeedFinder mtfinder;
 
         public Gen6MTSeedFinder()
         {
