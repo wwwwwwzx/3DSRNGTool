@@ -14,8 +14,6 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
-        private string version = "0.9.5";
-
         public int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
@@ -49,6 +47,7 @@ namespace Pk3DSRNGTool
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Updater.CheckUpdate();
             Type dgvtype = typeof(DataGridView);
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
@@ -217,7 +216,7 @@ namespace Pk3DSRNGTool
             TranslateInterface(TTT, lang);
             TranslateInterface(gen7tool, lang);
             TranslateInterface(ntrhelper, lang);
-            Text = Text + $" v{version}";
+            Text = Text + $" v{Updater.CurrentVersion}";
 
             naturestr = getStringList("Natures", curlanguage);
             hpstr = getStringList("Types", curlanguage);

@@ -252,7 +252,7 @@ B_Connect = Connect
 B_Disconnect = Disconnect
 B_Breakpoint = Set Break Point
 B_Resume = Resume
-B_GetGen6Seed = Get Initial Seed
+B_GetSeed = Get Initial Seed
 ! End
 -------------------MTSeedFinder--------------------------------------
 ! Gen6MTSeedFinder = Gen6 Main RNG Seed Finder

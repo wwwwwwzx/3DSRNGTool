@@ -252,7 +252,7 @@ B_Connect = 连接
 B_Disconnect = 断开
 B_Breakpoint = 设置断点
 B_Resume = 继续
-B_GetGen6Seed = 获得初始Seed
+B_GetSeed = 获得初始Seed
 ! End
 -------------------MTSeedFinder--------------------------------------
 ! Gen6MTSeedFinder = 6代主乱数Seed检索
