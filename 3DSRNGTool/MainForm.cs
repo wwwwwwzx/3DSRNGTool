@@ -1324,6 +1324,7 @@ namespace Pk3DSRNGTool
         {
             B_GetTiny.Enabled = IsConnected;
         }
+        public void SetTSV(int tsv) => TSV.Value = tsv;
         private void M_Gen6SeedFinder_Click(object sender, EventArgs e)
         {
             var newform = new Gen6MTSeedFinder();

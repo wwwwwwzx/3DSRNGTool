@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool
         private uint MTOffset { get; set; }
         private uint SFMTOffset { get; set; }
         private uint TinyOffset { get; set; }
+        private uint IDOffset { get; set; }
 
         private bool DataReady;
         public bool VersionDetected;
@@ -40,13 +41,13 @@ namespace Pk3DSRNGTool
             {
                 case 0:
                 case 1:
-                    BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x8c52808; break;
+                    BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x08c52808; IDOffset = 0x08C79C3C; break;
                 case 2:
                 case 3:
-                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x8c59E04; break;
+                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
                 case 5:
                 case 6:
-                    WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; break;
+                    WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; IDOffset = 0x330D67D0; break;
             }
             return true;
         }
@@ -97,5 +98,12 @@ namespace Pk3DSRNGTool
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
         public byte[] ReadSeed() => SingleThreadRead(Gameversion < 5 ? MTOffset + 4 : SFMTOffset, 0x4);  // MT[0]/SFMT
         public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
+        public int ReadTSV()
+        {
+            var FullID = SingleThreadRead(IDOffset, 0x4);
+            var TID = BitConverter.ToUInt16(FullID, 0);
+            var SID = BitConverter.ToUInt16(FullID, 2);
+            return (TID ^ SID) >> 4;
+        }
     }
 }

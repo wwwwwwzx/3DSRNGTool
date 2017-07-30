@@ -90,6 +90,7 @@ namespace Pk3DSRNGTool
                         Program.mainform.SyncGen7EggSeed(null, null);
                         B_GetSeed_Click(null, null);
                     }
+                    Program.mainform.SetTSV(ntrclient.ReadTSV());
                     if (ntrclient.phase == 1) // One Click mode start
                     {
                         if (Ver < 4)
