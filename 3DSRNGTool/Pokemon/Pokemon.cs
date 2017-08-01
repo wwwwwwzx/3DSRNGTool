@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
             if (Conceptual) return "-";
             if ((this as PKM6)?.PokemonLink ?? false)
             {
+                if (Species == 150) return "-";
                 if (Species == 154) return "Johto Starters";
                 if (Species == 377) return "Legendary Titans";
             }

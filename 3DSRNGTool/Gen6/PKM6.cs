@@ -299,7 +299,7 @@
                 Text = "Poke Transporter",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 150, Conceptual = true, Ability = 4, }, // Transporter 
+                    new PKM6 { PokemonLink = true, Species = 150, Ability = 4, }, // Transporter 
                     new PKM6 { PokemonLink = true, Species = 151, Ability = 4, }, // Mew
                 }
             },
