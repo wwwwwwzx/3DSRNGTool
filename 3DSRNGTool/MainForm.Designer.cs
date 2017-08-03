@@ -293,6 +293,8 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.L_Targetmon = new System.Windows.Forms.Label();
+            this.TargetMon = new System.Windows.Forms.NumericUpDown();
             this.B_OpenTool = new System.Windows.Forms.Button();
             this.Sta_AbilityLocked = new System.Windows.Forms.CheckBox();
             this.Sta_Ability = new System.Windows.Forms.ComboBox();
@@ -437,6 +439,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
             this.EnctrPanel.SuspendLayout();
             this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Filter_Lv)).BeginInit();
@@ -1083,7 +1086,7 @@
             // M_Exit
             // 
             this.M_Exit.Name = "M_Exit";
-            this.M_Exit.Size = new System.Drawing.Size(92, 22);
+            this.M_Exit.Size = new System.Drawing.Size(108, 22);
             this.M_Exit.Text = "M_Exit";
             this.M_Exit.Click += new System.EventHandler(this.M_Exit_Click);
             // 
@@ -1639,7 +1642,7 @@
             this.label13.Size = new System.Drawing.Size(28, 14);
             this.label13.TabIndex = 99;
             this.label13.Text = "[0]";
-            this.label13.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
+            this.label13.DoubleClick += new System.EventHandler(this.SyncGen7EggSeed);
             // 
             // B_Load
             // 
@@ -1683,7 +1686,7 @@
             this.label11.Size = new System.Drawing.Size(28, 14);
             this.label11.TabIndex = 98;
             this.label11.Text = "[1]";
-            this.label11.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
+            this.label11.DoubleClick += new System.EventHandler(this.SyncGen7EggSeed);
             // 
             // St1
             // 
@@ -1720,7 +1723,7 @@
             this.label8.Size = new System.Drawing.Size(28, 14);
             this.label8.TabIndex = 97;
             this.label8.Text = "[2]";
-            this.label8.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
+            this.label8.DoubleClick += new System.EventHandler(this.SyncGen7EggSeed);
             // 
             // label16
             // 
@@ -1731,7 +1734,7 @@
             this.label16.Size = new System.Drawing.Size(28, 14);
             this.label16.TabIndex = 96;
             this.label16.Text = "[3]";
-            this.label16.DoubleClick += new System.EventHandler(SyncGen7EggSeed);
+            this.label16.DoubleClick += new System.EventHandler(this.SyncGen7EggSeed);
             // 
             // L_Egg_S
             // 
@@ -3385,6 +3388,8 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.L_Targetmon);
+            this.Sta_Setting.Controls.Add(this.TargetMon);
             this.Sta_Setting.Controls.Add(this.B_OpenTool);
             this.Sta_Setting.Controls.Add(this.Sta_AbilityLocked);
             this.Sta_Setting.Controls.Add(this.Sta_Ability);
@@ -3399,6 +3404,34 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // L_Targetmon
+            // 
+            this.L_Targetmon.AutoSize = true;
+            this.L_Targetmon.Location = new System.Drawing.Point(200, 147);
+            this.L_Targetmon.Name = "L_Targetmon";
+            this.L_Targetmon.Size = new System.Drawing.Size(43, 13);
+            this.L_Targetmon.TabIndex = 100;
+            this.L_Targetmon.Text = "目标数";
+            // 
+            // TargetMon
+            // 
+            this.TargetMon.AccessibleName = "";
+            this.TargetMon.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TargetMon.Location = new System.Drawing.Point(277, 142);
+            this.TargetMon.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TargetMon.Name = "TargetMon";
+            this.TargetMon.Size = new System.Drawing.Size(44, 22);
+            this.TargetMon.TabIndex = 100;
+            this.TargetMon.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // B_OpenTool
             // 
@@ -4597,6 +4630,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
             this.EnctrPanel.ResumeLayout(false);
             this.EnctrPanel.PerformLayout();
             this.Filters.ResumeLayout(false);
@@ -4963,6 +4997,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem M_NTRHelper;
         private System.Windows.Forms.ToolStripMenuItem M_Gen6MainSeedFinder;
+        private System.Windows.Forms.Label L_Targetmon;
+        private System.Windows.Forms.NumericUpDown TargetMon;
     }
 }
 

@@ -8,6 +8,8 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
         public bool InstantSync;
+        public bool PkmLink;
+        public int Target;
         private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
         private bool getSync => AlwaysSync || tinysync;
 
@@ -15,6 +17,9 @@ namespace Pk3DSRNGTool
         {
             Result6 rt = new Result6();
             rt.Level = Level;
+            if (PkmLink)
+                for (int i = Target; i > 1; i--)
+                    Generate_Once();
 
             int StartFrame = RNGPool.index;
 
@@ -69,11 +74,34 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
+        private void Generate_Once() // For link/Transporter
+        {
+            if (!IV3) // Johto starters
+            {
+                Advance(10); // EC + PID + IVs + Nature + Gender
+                return;
+            }
+            Advance(2); // Link Legends/Transporter
+            // Indefinite advance
+            var IV = new bool[6];
+            for (int i = 3; i > 0;)
+            {
+                uint tmp = rand(6);
+                if (!IV[tmp])
+                {
+                    i--; IV[tmp] = true;
+                }
+            }
+            Advance(Synchro_Stat < 25 ? 3 : 4); // Random IVs and Nature
+            // No gender
+        }
+
         public override void UseTemplate(Pokemon PM)
         {
             base.UseTemplate(PM);
             var pm6 = PM as PKM6;
             InstantSync = pm6.InstantSync;
+            PkmLink = pm6.PokemonLink;
             if (pm6.Transporter && pm6.Species == 151)
                 PerfectIVCount = 5;
         }

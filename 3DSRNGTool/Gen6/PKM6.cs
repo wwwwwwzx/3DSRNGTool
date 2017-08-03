@@ -8,6 +8,7 @@
         public override bool AlwaysSync => base.AlwaysSync || PokemonLink;
 
         public bool PokemonLink;
+        public byte NumOfPkm = 1;
         public bool InstantSync;
         public bool Transporter => PokemonLink && (Conceptual || Species == 151);
         private bool _ShinyLocked;
@@ -99,8 +100,8 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans 
-                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
+                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Legendary Titans 
+                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Johto Starters
                 }
             },
             new PokemonList
@@ -200,8 +201,8 @@
                 List = new[]
                 {
                     new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, }, // Bank Celebi
-                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, }, // Legendary Titans
-                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, }, // Johto Starters
+                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Legendary Titans
+                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Johto Starters
                 }
             },
             new PokemonList
@@ -299,8 +300,8 @@
                 Text = "Poke Transporter",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 150, Ability = 4, }, // Transporter 
-                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, }, // Mew
+                    new PKM6 { PokemonLink = true, Species = 150, Ability = 4, NumOfPkm = 200, }, // Transporter 
+                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, NumOfPkm = 200, }, // Mew
                 }
             },
         };

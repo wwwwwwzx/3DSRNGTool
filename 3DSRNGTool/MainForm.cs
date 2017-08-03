@@ -819,6 +819,9 @@ namespace Pk3DSRNGTool
             GenderRatio.Enabled = FormPM.Conceptual;
             if (FormPM.Conceptual && GenderRatio.Items.Count > 0)
                 GenderRatio.SelectedIndex = 1;
+            L_Targetmon.Visible = TargetMon.Visible = IsPokemonLink;
+            if (IsPokemonLink)
+                TargetMon.Maximum = (FormPM as PKM6).NumOfPkm;
             if (Method == 2)
             {
                 RefreshLocation();
@@ -966,6 +969,8 @@ namespace Pk3DSRNGTool
 
             if (IsPelago)
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
+            if (IsPokemonLink)
+                (setting as Stationary6).Target = (int)TargetMon.Value;
             // Load from template
             if (!FormPM.Conceptual)
             {
