@@ -28,7 +28,7 @@ TP_IDRNG = ID RNG
 ----
 M_File = File
 M_Exit = Exit
-M_Tool = Tool
+M_Tool = Tools
 M_Gen7MainRNGTool = Gen7 Main RNG Tool
 M_Gen7EggSeedFinder = Gen7 Egg Seed Finder
 M_NTRHelper = NTR Helper

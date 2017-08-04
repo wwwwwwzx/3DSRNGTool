@@ -3,14 +3,14 @@
     public class PKM6 : Pokemon
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
-        public override bool Syncable => !PokemonLink && (!Gift || IV3 && !Egg); // Stationary encounter or undiscovered egg group non-egg gift
-        public override bool ShinyLocked { get => PokemonLink || _ShinyLocked; protected set => _ShinyLocked = value; }
-        public override bool AlwaysSync => base.AlwaysSync || PokemonLink;
+        public override bool Syncable => !Bank && (!Gift || IV3 && !Egg); // Stationary encounter or undiscovered egg group non-egg gift
+        public override bool ShinyLocked { get => Bank || _ShinyLocked; protected set => _ShinyLocked = value; }
+        public override bool AlwaysSync => base.AlwaysSync || Bank;
 
-        public bool PokemonLink;
+        public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1;
-        public bool InstantSync;
-        public bool Transporter => PokemonLink && (Conceptual || Species == 151);
+        public bool InstantSync => Delay == 0;
+        public bool Transporter => Bank && (Conceptual || Species == 151);
         private bool _ShinyLocked;
 
         public readonly static PokemonList Default = new PokemonList
@@ -33,8 +33,8 @@
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Ability = 1, Gift = true, }, // Latias
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Ability = 1, Gift = true, }, // Latios
 
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, InstantSync = true, }, // Latios
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, InstantSync = true, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
 
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300, Unstable= true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300, Unstable= true, }, // Groudon
@@ -100,8 +100,8 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Legendary Titans 
-                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Johto Starters
+                    new PKM6 { Bank = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Legendary Titans 
+                    new PKM6 { Bank = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3, }, // Johto Starters
                 }
             },
             new PokemonList
@@ -200,9 +200,9 @@
                 Text = "Pokemon Link",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 251, Level = 10, Delay = 16, Ability = 1, }, // Bank Celebi
-                    new PKM6 { PokemonLink = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Legendary Titans
-                    new PKM6 { PokemonLink = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Johto Starters
+                    new PKM6 { Bank = true, Species = 251, Level = 10, Delay = 16, Ability = 1, }, // Bank Celebi
+                    new PKM6 { Bank = true, Species = 377, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Legendary Titans
+                    new PKM6 { Bank = true, Species = 154, Level = 50, Delay = 16, Ability = 4, NumOfPkm = 3,}, // Johto Starters
                 }
             },
             new PokemonList
@@ -300,8 +300,8 @@
                 Text = "Poke Transporter",
                 List = new[]
                 {
-                    new PKM6 { PokemonLink = true, Species = 150, Ability = 4, NumOfPkm = 200, }, // Transporter 
-                    new PKM6 { PokemonLink = true, Species = 151, Ability = 4, NumOfPkm = 200, }, // Mew
+                    new PKM6 { Bank = true, Species = 150, Ability = 4, NumOfPkm = 200, }, // Transporter 
+                    new PKM6 { Bank = true, Species = 151, Ability = 4, NumOfPkm = 200, }, // Mew
                 }
             },
         };

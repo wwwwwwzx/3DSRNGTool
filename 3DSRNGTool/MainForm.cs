@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool
         private Pokemon FormPM => RNGPool.PM;
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
-        private bool IsPokemonLink => Method == 0 && ((FormPM as PKM6)?.PokemonLink ?? false);
+        private bool IsBank => Method == 0 && ((FormPM as PKM6)?.Bank ?? false);
         private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool Gen6 => Ver < 5;
@@ -819,8 +819,8 @@ namespace Pk3DSRNGTool
             GenderRatio.Enabled = FormPM.Conceptual;
             if (FormPM.Conceptual && GenderRatio.Items.Count > 0)
                 GenderRatio.SelectedIndex = 1;
-            L_Targetmon.Visible = TargetMon.Visible = IsPokemonLink;
-            if (IsPokemonLink)
+            L_Targetmon.Visible = TargetMon.Visible = IsBank;
+            if (IsBank)
                 TargetMon.Maximum = (FormPM as PKM6).NumOfPkm;
             if (Method == 2)
             {
@@ -969,7 +969,7 @@ namespace Pk3DSRNGTool
 
             if (IsPelago)
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
-            if (IsPokemonLink)
+            if (IsBank)
                 (setting as Stationary6).Target = (int)TargetMon.Value;
             // Load from template
             if (!FormPM.Conceptual)
@@ -1202,8 +1202,8 @@ namespace Pk3DSRNGTool
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
-            dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsPokemonLink;
-            dgv_shift.Visible = dgv_time.Visible = !IsPokemonLink && (Gen6 || Method < 3 || MainRNGEgg.Checked);
+            dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank;
+            dgv_shift.Visible = dgv_time.Visible = !IsBank && (Gen6 || Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = COLUMN_STR[lindex][Gen6 ? 1 : 0];

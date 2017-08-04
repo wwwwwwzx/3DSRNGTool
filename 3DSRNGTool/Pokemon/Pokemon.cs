@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
         public override string ToString()
         {
             if (Conceptual) return "-";
-            if ((this as PKM6)?.PokemonLink ?? false)
+            if ((this as PKM6)?.Bank ?? false)
             {
                 if (Species == 150) return "-";
                 if (Species == 154) return "Johto Starters";

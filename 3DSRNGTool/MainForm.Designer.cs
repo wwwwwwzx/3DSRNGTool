@@ -1099,8 +1099,8 @@
             this.M_NTRHelper,
             this.M_Gen6MainSeedFinder});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(43, 20);
-            this.M_Tool.Text = "Tool";
+            this.M_Tool.Size = new System.Drawing.Size(48, 20);
+            this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
             // 

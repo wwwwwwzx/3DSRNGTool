@@ -8,8 +8,8 @@ namespace Pk3DSRNGTool
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
         public bool InstantSync;
-        public bool PkmLink;
-        public int Target;
+        public bool Bank;  // Bank = PokemonLink or Transporter
+        public int Target; // Index of target pkm
         private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
         private bool getSync => AlwaysSync || tinysync;
 
@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
         {
             Result6 rt = new Result6();
             rt.Level = Level;
-            if (PkmLink)
+            if (Bank)
                 for (int i = Target; i > 1; i--)
                     Generate_Once();
 
@@ -101,7 +101,7 @@ namespace Pk3DSRNGTool
             base.UseTemplate(PM);
             var pm6 = PM as PKM6;
             InstantSync = pm6.InstantSync;
-            PkmLink = pm6.PokemonLink;
+            Bank = pm6.Bank;
             if (pm6.Transporter && pm6.Species == 151)
                 PerfectIVCount = 5;
         }
