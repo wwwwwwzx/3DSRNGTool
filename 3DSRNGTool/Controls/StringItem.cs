@@ -47,7 +47,7 @@ namespace Pk3DSRNGTool
             new [] { "Pokemon Link", "宝可梦连接" },
             new [] { "Poke Transporter", "宝可虚拟传送" },
             new [] { "Normal Stationary","普通定点" },
-            new [] { "Fossils", "化石" },
+            new [] { "Fossils", "复原化石" },
             new [] { "Hoenn Legendary", "丰缘传说" },
             new [] { "Johto Legendary", "城都传说" },
             new [] { "Sinnoh Legendary", "神奥传说" },
@@ -55,8 +55,11 @@ namespace Pk3DSRNGTool
             new [] { "Island Scan", "岛屿搜索" },
             new [] { "Normal Wild", "普通野外" },
             new [] { "Berry Tree", "果树" },
-            new [] { "Cave Drop", "洞穴坠物" },
+            new [] { "Cave Drop", "洞窟坠物" },
             new [] { "Rustling Bush", "晃动树影" },
+            new [] { "Friend Safari", "朋友狩猎区" },
+            new [] { "Cave Shadows", "洞窟阴影" },
+            new [] { "Trap", "沙尘" },
             new [] { "Poke Pelago", "宝可度假地" },
             new [] { "Johto Starters", "城都御三家" },
             new [] { "Legendary Titans", "三神柱" },
@@ -64,7 +67,7 @@ namespace Pk3DSRNGTool
             new [] { "Rock Smash", "碎岩" },
             new [] { "Horde", "群战" },
             new [] { "Poke Radar", "宝可雷达" },
-            new [] { "Not Impled", "功能未开放" },
+            new [] { "None", "无" },
         };
 
         public static string Translate(string input, int language)

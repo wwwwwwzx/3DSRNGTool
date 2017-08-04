@@ -99,17 +99,5 @@
                 }
             },
         };
-
-        public readonly static PokemonList[] Species_VC =
-        {
-            new PokemonList
-            {
-                Text = "None",
-                List = new[]
-                {
-                   new PKMW6 { Species = 000, Conceptual = true },
-                }
-            },
-        };
     }
 }

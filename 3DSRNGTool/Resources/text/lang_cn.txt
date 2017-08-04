@@ -47,7 +47,7 @@ L_GenderRatio = 性别比
 L_SyncNature = 同步性格
 L_Rate = 出现率
 L_Lv = 等级范围
-L_Targetmon = 目标序号
+L_Targetmon = 目标宝可梦序号
 BlinkWhenSync = 同步时眨眼
 Sta_AbilityLocked = 固定特性
 B_OpenTool = TinyMT 时间线工具
@@ -147,13 +147,13 @@ L_Location = 地点
 L_Slots = 类别
 L_WildIVsCnt = 保底完美个体数
 FirstEncounter = 初次遇敌
-CB_HAUnlocked = 梦特解锁
-CB_3rdSlotUnlocked = 第三只解锁
+CB_HAUnlocked = 梦特已解锁
+CB_3rdSlotUnlocked = 第三只已解锁
 Day = 白天
 Night = 夜晚
 CompoundEyes = 复眼
 ---------------------TabPage4----------------------------------
-TinyMT_Status = 状态
+TinyMT_Status = 当前状态
 B_Load = 导入...
 B_Backup = 备份
 ---
@@ -193,6 +193,9 @@ SetAsTarget = 将该帧设为目标
 SetAsAfter = 将领取该蛋后的状态设为当前状态
 SetAsStarting = 将该帧设为起点
 ---------------------TabPage5----------------------------------
+ID_RE = 正则表达式
+ID_Disable = 取消筛选
+L_CurrentSeed = 当前状态
 dgv_IDframe = 帧
 dgv_gen7ID = 7代ID
 dgv_clock = 指针

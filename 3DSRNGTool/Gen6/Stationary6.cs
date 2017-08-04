@@ -102,7 +102,7 @@ namespace Pk3DSRNGTool
             var pm6 = PM as PKM6;
             InstantSync = pm6.InstantSync;
             Bank = pm6.Bank;
-            if (pm6.Transporter && pm6.Species == 151)
+            if (pm6.Bank && (pm6.Species == 151 || pm6.Species == 251 && pm6.Ability == 4))
                 PerfectIVCount = 5;
         }
     }

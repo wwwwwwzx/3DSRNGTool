@@ -141,7 +141,7 @@
             this.RandList = new System.Windows.Forms.TextBox();
             this.ID_RE = new System.Windows.Forms.CheckBox();
             this.ID_List = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.L_CurrentSeed = new System.Windows.Forms.Label();
             this.TSV_List = new System.Windows.Forms.TextBox();
             this.Filter_TSV = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
@@ -1071,7 +1071,7 @@
             this.M_Tool});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(88, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(93, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1307,7 +1307,7 @@
             this.Filter_ID.Controls.Add(this.RandList);
             this.Filter_ID.Controls.Add(this.ID_RE);
             this.Filter_ID.Controls.Add(this.ID_List);
-            this.Filter_ID.Controls.Add(this.label14);
+            this.Filter_ID.Controls.Add(this.L_CurrentSeed);
             this.Filter_ID.Controls.Add(this.TSV_List);
             this.Filter_ID.Controls.Add(this.Filter_TSV);
             this.Filter_ID.Location = new System.Drawing.Point(192, 6);
@@ -1390,14 +1390,14 @@
             this.ID_List.TabIndex = 107;
             this.ID_List.WordWrap = false;
             // 
-            // label14
+            // L_CurrentSeed
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(383, 25);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 13);
-            this.label14.TabIndex = 112;
-            this.label14.Text = "Current Seed";
+            this.L_CurrentSeed.AutoSize = true;
+            this.L_CurrentSeed.Location = new System.Drawing.Point(383, 25);
+            this.L_CurrentSeed.Name = "L_CurrentSeed";
+            this.L_CurrentSeed.Size = new System.Drawing.Size(69, 13);
+            this.L_CurrentSeed.TabIndex = 112;
+            this.L_CurrentSeed.Text = "Current Seed";
             // 
             // TSV_List
             // 
@@ -3410,15 +3410,15 @@
             this.L_Targetmon.AutoSize = true;
             this.L_Targetmon.Location = new System.Drawing.Point(200, 147);
             this.L_Targetmon.Name = "L_Targetmon";
-            this.L_Targetmon.Size = new System.Drawing.Size(43, 13);
+            this.L_Targetmon.Size = new System.Drawing.Size(91, 13);
             this.L_Targetmon.TabIndex = 100;
-            this.L_Targetmon.Text = "目标数";
+            this.L_Targetmon.Text = "目标宝可梦序号";
             // 
             // TargetMon
             // 
             this.TargetMon.AccessibleName = "";
             this.TargetMon.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TargetMon.Location = new System.Drawing.Point(277, 142);
+            this.TargetMon.Location = new System.Drawing.Point(311, 141);
             this.TargetMon.Minimum = new decimal(new int[] {
             1,
             0,
@@ -4754,7 +4754,7 @@
         private System.Windows.Forms.TextBox RandList;
         private System.Windows.Forms.CheckBox ID_RE;
         private System.Windows.Forms.TextBox ID_List;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label L_CurrentSeed;
         private System.Windows.Forms.TextBox TSV_List;
         private System.Windows.Forms.Label Filter_TSV;
         private System.Windows.Forms.TabPage TP_EggRNG;

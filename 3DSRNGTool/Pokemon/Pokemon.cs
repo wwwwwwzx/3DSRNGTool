@@ -26,12 +26,12 @@ namespace Pk3DSRNGTool
             if (Conceptual) return "-";
             if ((this as PKM6)?.Bank ?? false)
             {
-                if (Species == 150) return "-";
+                if (Species == 150) return "-"; // Mewtwo for transporter template
                 if (Species == 154) return "Johto Starters";
                 if (Species == 377) return "Legendary Titans";
             }
             if (Egg) return speciestr[Species] + " (" + speciestr[0] + ")";
-            if (Unstable) return  speciestr[Species] + "(?)";
+            if (Unstable) return speciestr[Species] + " (?)";
             switch (Species)
             {
                 case 718: return speciestr[718] + (Forme == 1 ? "-10%" : "-50%");
@@ -68,8 +68,8 @@ namespace Pk3DSRNGTool
         public readonly static PokemonList[] NotImpled = {
             new PokemonList
             {
-                Text = "Not Impled",
-                List = new[]{ new Pokemon { Conceptual = true, Species= 000, Level = 50, },}
+                Text = "None",
+                List = new[]{ new Pokemon { Conceptual = true },}
             },
         };
 
@@ -84,7 +84,7 @@ namespace Pk3DSRNGTool
                 case 3:
                     return method == 0 ? PKM6.Species_ORAS : PKMW6.Species_ORAS;
                 case 4:
-                    return method == 0 ? PKM6.Species_VC : PKMW6.Species_VC;
+                    return method == 0 ? PKM6.Species_VC : NotImpled;
                 case 5:
                 case 6:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;

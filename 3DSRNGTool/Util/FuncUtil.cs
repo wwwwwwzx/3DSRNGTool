@@ -106,7 +106,6 @@ namespace Pk3DSRNGTool
         #region Misc
         public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber = 1)
         {
-            Console.WriteLine(seed.ToString("X8") + " " + min.ToString() + max.ToString());
             if (min > max)
                 return CalcFrame(seed, max, min).Select(t => -t).ToArray();
 

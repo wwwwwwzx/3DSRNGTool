@@ -10,7 +10,6 @@
         public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1;
         public bool InstantSync => Delay == 0;
-        public bool Transporter => Bank && (Conceptual || Species == 151);
         private bool _ShinyLocked;
 
         public readonly static PokemonList Default = new PokemonList
@@ -302,6 +301,7 @@
                 {
                     new PKM6 { Bank = true, Species = 150, Ability = 4, NumOfPkm = 200, }, // Transporter 
                     new PKM6 { Bank = true, Species = 151, Ability = 4, NumOfPkm = 200, }, // Mew
+                    // new PKM6 { Bank = true, Species = 251, Ability = 4, NumOfPkm = 200, }, // Celebi
                 }
             },
         };
