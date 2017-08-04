@@ -101,6 +101,7 @@ namespace Pk3DSRNGTool
                         }
                         else
                             B_Disconnect_Click(null, null);
+                        return;
                     }
                     Program.mainform.SetTSV(ntrclient.ReadTSV());
                 }
