@@ -89,8 +89,8 @@ namespace Pk3DSRNGTool
                     {
                         Program.mainform.SyncGen7EggSeed(null, null);
                         B_GetSeed_Click(null, null);
+                        Program.mainform.SetTSV(ntrclient.ReadTSV());
                     }
-                    Program.mainform.SetTSV(ntrclient.ReadTSV());
                     if (ntrclient.phase == 1) // One Click mode start
                     {
                         if (Ver < 4)
@@ -102,6 +102,7 @@ namespace Pk3DSRNGTool
                         else
                             B_Disconnect_Click(null, null);
                     }
+                    Program.mainform.SetTSV(ntrclient.ReadTSV());
                 }
                 if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
                 {
@@ -120,6 +121,7 @@ namespace Pk3DSRNGTool
                         {
                             Program.mainform.B_gettiny_Click(null, null);
                             B_Resume_Click(null, null);
+                            Program.mainform.SetTSV(ntrclient.ReadTSV());
                             NTR_Timer.Interval = 500;
                             ntrclient.phase = 3;
                             timercounter = Ver < 2 ? -8 : -10;

@@ -185,12 +185,14 @@ namespace Pk3DSRNGTool
         #region Gen7 Search
         private void Search7()
         {
+            // ID
             if (Method == 4)
             {
                 Frame_min.Value = Math.Max(Frame_min.Value, 1012);
                 Search7_ID();
                 return;
             }
+            // Eggs
             if (Method == 3 && !MainRNGEgg.Checked)
             {
                 if (EggNumber.Checked)
@@ -202,7 +204,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             Frame_min.Value = Math.Max(Frame_min.Value, 418);
-            // method 0-2 & MainRNGEgg
+            // Method 0-2 & MainRNGEgg
             if (CreateTimeline.Checked)
                 Search7_Timeline();
             else
@@ -263,7 +265,7 @@ namespace Pk3DSRNGTool
 
                 if (Frames.Count > 100000)
                     return;
-                // Backup status of frame
+                // Backup current status
                 status.CopyTo(stmp);
                 frametime = realtime;
             }

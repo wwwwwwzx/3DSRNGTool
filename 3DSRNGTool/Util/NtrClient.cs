@@ -15,8 +15,6 @@ namespace Pk3DSRNGTool
         private object syncLock = new object();
         private bool heartbeatSendable;
 
-        public delegate void logHandler(string msg);
-        public event logHandler onLogArrival;
         uint currentSeq;
         uint lastReadMemSeq;
         public volatile int progress = -1;
@@ -253,7 +251,6 @@ namespace Pk3DSRNGTool
 
         private void log(string msg)
         {
-            onLogArrival?.Invoke(msg);
             #if DEBUG
             try
             {

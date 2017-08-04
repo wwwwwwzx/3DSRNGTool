@@ -9,7 +9,7 @@
 
         public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1;
-        public bool InstantSync => Delay == 0;
+        public bool InstantSync => Delay == 0; // To-do
         private bool _ShinyLocked;
 
         public readonly static PokemonList Default = new PokemonList

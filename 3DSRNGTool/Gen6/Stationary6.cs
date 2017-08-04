@@ -7,19 +7,22 @@ namespace Pk3DSRNGTool
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
-        public bool InstantSync;
+
         public bool Bank;  // Bank = PokemonLink or Transporter
         public int Target; // Index of target pkm
+        public bool InstantSync; // Call Sync Function once battle starts, otherwise advance (3/4) * number of party pokemon
         private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
         private bool getSync => AlwaysSync || tinysync;
 
         public override RNGResult Generate()
         {
-            Result6 rt = new Result6();
-            rt.Level = Level;
+            // Generate Pokemon before target first
             if (Bank)
                 for (int i = Target; i > 1; i--)
                     Generate_Once();
+
+            Result6 rt = new Result6();
+            rt.Level = Level;
 
             int StartFrame = RNGPool.index;
 
