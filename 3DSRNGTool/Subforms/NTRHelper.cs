@@ -53,6 +53,7 @@ namespace Pk3DSRNGTool
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
+            B_Start.Enabled = B_Stop.Enabled = B_A.Enabled =
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
             Program.mainform.OnConnected_Changed(false);
         }
@@ -65,7 +66,8 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_GetSeed.Enabled = B_Disconnect.Enabled = true;
+            B_Start.Enabled = B_A.Enabled =
+            B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
             Program.mainform.OnConnected_Changed(true);
             Properties.Settings.Default.IP = IP.Text;
         }
@@ -83,7 +85,7 @@ namespace Pk3DSRNGTool
                 if (ntrclient.VersionDetected)
                 {
                     Ver = ntrclient.Gameversion;
-                    B_BreakPoint.Enabled = B_Resume.Enabled = Ver < 4;
+                    B_BreakPoint.Enabled = Ver < 4;
                     ntrclient.VersionDetected = false;
                     if (Ver > 4)
                     {

@@ -257,6 +257,11 @@ B_Disconnect = 断开
 B_Breakpoint = 设置断点
 B_Resume = 继续
 B_GetSeed = 获得初始Seed
+---
+IDBot = ID Bot
+B_Start = 启动
+B_Stop = 停止
+L_Speed = 运行速度
 ! End
 -------------------MTSeedFinder--------------------------------------
 ! Gen6MTSeedFinder = 6代主乱数Seed检索
