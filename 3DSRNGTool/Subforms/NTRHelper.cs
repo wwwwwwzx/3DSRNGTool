@@ -41,7 +41,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void B_Disconnect_Click(object sender, EventArgs e)
+        public void B_Disconnect_Click(object sender, EventArgs e)
         {
             ntrclient.disconnect();
             OnDisconnected();
@@ -190,9 +190,17 @@ namespace Pk3DSRNGTool
 
         private void B_Help_Click(object sender, EventArgs e) => Alert(HElP_STR[Program.mainform.lindex]);
 
+        #region IDBot
         private void B_A_Click(object sender, EventArgs e)
         {
-            try { ntrclient.PressA(); } catch { }
+            if (ModifierKeys == Keys.Control)
+            {
+                B_A.Enabled = B_Start.Enabled = false;
+                B_Stop.Enabled = true;
+                try { MassA(); } catch { }
+            }
+            else
+                try { ntrclient.PressA(); } catch { }
         }
 
         private void B_Start_Click(object sender, EventArgs e)
@@ -200,12 +208,21 @@ namespace Pk3DSRNGTool
             try
             {
                 if (Ver < 2)
+                {
+                    Error("Not implemented yet");
                     return;
+                }
                 if (Ver > 4)
                 {
-                    B_Start.Enabled = false;
-                    B_A.Enabled = B_Stop.Enabled = true;
+                    B_A.Enabled = B_Start.Enabled = false;
+                    B_Stop.Enabled = true;
                     G7IDBot();
+                }
+                if (Ver < 4)
+                {
+                    B_A.Enabled = B_Start.Enabled = false;
+                    B_Stop.Enabled = true;
+                    G6IDBot();
                 }
             }
             catch { }
@@ -222,8 +239,10 @@ namespace Pk3DSRNGTool
         private int Delay1 => 500 + 100 * delaylevel;
         private int Delay2 => 3800 + 200 * delaylevel;
         private int Delay3 => 2000 + 100 * delaylevel;
+        private int Delay4 => 4800 + 200 * delaylevel;
+        private int Delay5 => 1500 + 100 * delaylevel;
 
-        public async void G7IDBot()
+        private async void G7IDBot()
         {
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
@@ -238,5 +257,37 @@ namespace Pk3DSRNGTool
             }
             B_Stop_Click(null, null);
         }
+
+        private async void G6IDBot()
+        {
+            int CurrFrame = (int)StartFrame.Value;
+            while (Botting && CurrFrame < (int)StopFrame.Value)
+            {
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 1";
+                await Task.Delay(Delay1);
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 2";
+                await Task.Delay(Delay1);
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
+                await Task.Delay(Delay5);
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 4";
+                await Task.Delay(Delay1);
+                ntrclient.Confirm(); L_NTRLog.Text = "Input Finished";
+                await Task.Delay(Delay4);
+                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
+                await Task.Delay(Delay5);
+                StartFrame.Value = ++CurrFrame;
+            }
+            B_Stop_Click(null, null);
+        }
+
+        private async void MassA()
+        {
+            while (Botting)
+            {
+                ntrclient.PressA(); L_NTRLog.Text = "Mass-Aing";
+                await Task.Delay(Delay1);
+            }
+        }
+        #endregion
     }
 }

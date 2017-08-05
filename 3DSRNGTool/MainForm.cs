@@ -118,6 +118,7 @@ namespace Pk3DSRNGTool
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
+            ntrhelper?.B_Disconnect_Click(null, null);
         }
 
         private void RefreshPKM()

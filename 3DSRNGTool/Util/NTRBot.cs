@@ -14,17 +14,18 @@ namespace Pk3DSRNGTool
         private const uint touchEnter = 0x01707C70;
         private const uint noTouch = 0x02000000;
 
+        private int Buttondelay => Gameversion < 4 ? 200 : 100;
         public async void QuickButton(ushort key)
         {
             Write(ButtonOff, BitConverter.GetBytes(key), 0x10);
-            await Task.Delay(100);
+            await Task.Delay(Buttondelay);
             Write(ButtonOff, BitConverter.GetBytes(noKey), 0x10);
         }
 
         public async void QuickTouch(uint TouchCoord)
         {
             Write(TouchscrOff, BitConverter.GetBytes(TouchCoord), 0x10);
-            await Task.Delay(100);
+            await Task.Delay(Buttondelay);
             Write(TouchscrOff, BitConverter.GetBytes(noTouch), 0x10);
         }
 
