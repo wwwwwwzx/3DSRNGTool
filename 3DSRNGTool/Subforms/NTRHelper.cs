@@ -236,10 +236,13 @@ namespace Pk3DSRNGTool
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
             {
+                // Input "!"
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay1);
+                // Confirm
                 ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
                 await Task.Delay(Delay2);
+                // Discard
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay3);
                 StartFrame.Value = ++CurrFrame;
@@ -250,21 +253,27 @@ namespace Pk3DSRNGTool
         private async void G6IDBot()
         {
             int CurrFrame = (int)StartFrame.Value;
-            while (Botting && CurrFrame < (int)StopFrame.Value)
+            while (Botting && CurrFrame < (int)StopFrame.Value - 1)
             {
+                // Choose gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 1";
                 await Task.Delay(Delay1);
+                // Confirm gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 2";
-                await Task.Delay(Delay1);
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
-                await Task.Delay(Delay5);
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 4";
-                await Task.Delay(Delay1);
-                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
-                await Task.Delay(Delay4);
-                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay5);
                 StartFrame.Value = ++CurrFrame;
+                // Input "!"
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
+                await Task.Delay(Delay1);
+                // Dialogue-1 
+                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
+                await Task.Delay(Delay4);
+                // Discard
+                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
+                await Task.Delay(Delay5);
+                // Dialogue-2
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
+                await Task.Delay(Delay1);
             }
             B_Stop_Click(null, null);
         }

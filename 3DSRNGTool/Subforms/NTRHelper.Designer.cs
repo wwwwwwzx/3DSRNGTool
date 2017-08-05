@@ -249,11 +249,6 @@
             0,
             0,
             0});
-            this.StopFrame.Minimum = new decimal(new int[] {
-            1012,
-            0,
-            0,
-            0});
             this.StopFrame.Name = "StopFrame";
             this.StopFrame.Size = new System.Drawing.Size(73, 22);
             this.StopFrame.TabIndex = 99;
