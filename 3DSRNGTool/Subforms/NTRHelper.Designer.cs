@@ -187,6 +187,7 @@
             this.B_A.TabIndex = 123;
             this.B_A.Text = "A";
             this.B_A.UseVisualStyleBackColor = true;
+            this.B_A.Click += new System.EventHandler(this.B_A_Click);
             // 
             // L_Speed
             // 
@@ -206,6 +207,7 @@
             this.B_Stop.TabIndex = 124;
             this.B_Stop.Text = "Stop";
             this.B_Stop.UseVisualStyleBackColor = true;
+            this.B_Stop.Click += new System.EventHandler(this.B_Stop_Click);
             // 
             // B_Start
             // 
@@ -216,6 +218,7 @@
             this.B_Start.TabIndex = 123;
             this.B_Start.Text = "Start";
             this.B_Start.UseVisualStyleBackColor = true;
+            this.B_Start.Click += new System.EventHandler(this.B_Start_Click);
             // 
             // label1
             // 
@@ -286,7 +289,7 @@
             this.Speed.Size = new System.Drawing.Size(32, 20);
             this.Speed.TabIndex = 125;
             this.Speed.Value = new decimal(new int[] {
-            5,
+            3,
             0,
             0,
             0});

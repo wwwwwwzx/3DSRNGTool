@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PKHeX.Util;
 
@@ -152,13 +153,7 @@ namespace Pk3DSRNGTool
 
         private void B_Resume_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ntrclient.resume();
-            }
-            catch
-            {
-            }
+            try { ntrclient.resume(); } catch {}
         }
 
         private void B_GetSeed_Click(object sender, EventArgs e)
@@ -194,5 +189,54 @@ namespace Pk3DSRNGTool
         };
 
         private void B_Help_Click(object sender, EventArgs e) => Alert(HElP_STR[Program.mainform.lindex]);
+
+        private void B_A_Click(object sender, EventArgs e)
+        {
+            try { ntrclient.PressA(); } catch { }
+        }
+
+        private void B_Start_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Ver < 2)
+                    return;
+                if (Ver > 4)
+                {
+                    B_Start.Enabled = false;
+                    B_A.Enabled = B_Stop.Enabled = true;
+                    G7IDBot();
+                }
+            }
+            catch { }
+        }
+        
+        private void B_Stop_Click(object sender, EventArgs e)
+        {
+            B_A.Enabled = B_Start.Enabled = true;
+            B_Stop.Enabled = false;
+        }
+
+        private bool Botting => B_Stop.Enabled;
+        private int delaylevel => 5 - (int)Speed.Value;
+        private int Delay1 => 500 + 100 * delaylevel;
+        private int Delay2 => 3800 + 200 * delaylevel;
+        private int Delay3 => 2000 + 100 * delaylevel;
+
+        public async void G7IDBot()
+        {
+            int CurrFrame = (int)StartFrame.Value;
+            while (Botting && CurrFrame < (int)StopFrame.Value)
+            {
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
+                await Task.Delay(Delay1);
+                ntrclient.Confirm(); L_NTRLog.Text = "Input Finished";
+                await Task.Delay(Delay2);
+                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
+                await Task.Delay(Delay3);
+                StartFrame.Value = ++CurrFrame;
+            }
+            B_Stop_Click(null, null);
+        }
     }
 }

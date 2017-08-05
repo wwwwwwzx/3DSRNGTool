@@ -177,6 +177,7 @@
     <Compile Include="Subforms\TinyTimelineTool.Designer.cs">
       <DependentUpon>TinyTimelineTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\NTRBot.cs" />
     <Compile Include="Util\TinySeedFinder.cs" />
     <Compile Include="Util\MTSeedFinder.cs" />
     <Compile Include="Util\FormUtil.cs" />
