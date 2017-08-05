@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
             IP.Text = Properties.Settings.Default.IP;
             ntrclient = new NtrClient();
             ntrclient.Connected += OnConnected;
+            ntrclient.setServer(IP.Text, 8000);
         }
         private void NTRHelper_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -218,7 +219,7 @@ namespace Pk3DSRNGTool
 
         private void B_Stop_Click(object sender, EventArgs e)
         {
-            B_A.Enabled = B_Start.Enabled = true;
+            B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = true;
             B_Stop.Enabled = false;
         }
 
@@ -235,13 +236,13 @@ namespace Pk3DSRNGTool
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
             {
-                StartFrame.Value = CurrFrame++;
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay1);
                 ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
                 await Task.Delay(Delay2);
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay3);
+                StartFrame.Value = ++CurrFrame;
             }
             B_Stop_Click(null, null);
         }
@@ -251,7 +252,6 @@ namespace Pk3DSRNGTool
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
             {
-                StartFrame.Value = CurrFrame++;
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 1";
                 await Task.Delay(Delay1);
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 2";
@@ -264,6 +264,7 @@ namespace Pk3DSRNGTool
                 await Task.Delay(Delay4);
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay5);
+                StartFrame.Value = ++CurrFrame;
             }
             B_Stop_Click(null, null);
         }
