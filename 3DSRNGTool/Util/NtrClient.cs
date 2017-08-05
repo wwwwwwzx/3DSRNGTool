@@ -82,6 +82,7 @@ namespace Pk3DSRNGTool
             try
             {
                 tcp?.Close();
+                socket?.Disconnect(false);
                 if (waitPacketThread)
                     packetRecvThread?.Join();
             }
@@ -90,6 +91,7 @@ namespace Pk3DSRNGTool
                 log(ex.Message);
             }
             tcp = null;
+            socket = null;
         }
 
         public void listprocess() => sendEmptyPacket(5);

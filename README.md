@@ -92,3 +92,15 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 - __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
 - __Starters__: _Having accepted on another, you'll surely be friends for life._
 - __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.
+
+## ID Bot Usage
+- Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) or InputRedirecionNTR.cia
+- Put your target frame and starting frame in ID bot box.
+- Set proper bot speed according to your internet condition.
+- Use `MassA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
+ORAS upper screen:  
+![](https://i.imgur.com/kD9BbAi.png)  
+SuMo lower screen:  
+![](https://i.imgur.com/iPgO8nN.png)
+- Click `Start` button to start botting
+- The bot will stop at CORRECT position for your target TID. (It's normal for ORAS that the bot stops 1 frame before target.)

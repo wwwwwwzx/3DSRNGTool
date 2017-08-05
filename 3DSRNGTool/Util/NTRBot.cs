@@ -31,26 +31,36 @@ namespace Pk3DSRNGTool
 
         private void SendButtonMsg(ushort key)
         {
-            if (socket.Connected)
+            try
             {
-                var data = (byte[])EmptyData.Clone();
-                BitConverter.GetBytes(key).CopyTo(data, 0);
-                socket.Send(data);
-            }
-            else
                 Write(ButtonOff, BitConverter.GetBytes(key), 0x10);
+            }
+            catch
+            {
+                if (socket.Connected)
+                {
+                    var data = (byte[])EmptyData.Clone();
+                    BitConverter.GetBytes(key).CopyTo(data, 0);
+                    socket.Send(data);
+                }
+            }
         }
 
         private void SendTouchMsg(uint TouchCoord)
         {
-            if (socket.Connected)
+            try
             {
-                var data = (byte[])EmptyData.Clone();
-                BitConverter.GetBytes(TouchCoord).CopyTo(data, 4);
-                socket.Send(data);
-            }
-            else
                 Write(TouchscrOff, BitConverter.GetBytes(TouchCoord), 0x10);
+            }
+            catch
+            {
+                if (socket.Connected)
+                {
+                    var data = (byte[])EmptyData.Clone();
+                    BitConverter.GetBytes(TouchCoord).CopyTo(data, 4);
+                    socket.Send(data);
+                }
+            }
         }
 
         public async void QuickButton(ushort key)
