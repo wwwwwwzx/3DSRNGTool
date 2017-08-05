@@ -54,7 +54,7 @@ namespace Pk3DSRNGTool
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
-            B_Start.Enabled = B_Stop.Enabled = B_A.Enabled =
+            B_Start.Enabled = B_Stop.Enabled = B_A.Enabled = B_MassA.Enabled =
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
             Program.mainform.OnConnected_Changed(false);
         }
@@ -67,7 +67,7 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_Start.Enabled = B_A.Enabled =
+            B_Start.Enabled = B_A.Enabled = B_MassA.Enabled =
             B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
             Program.mainform.OnConnected_Changed(true);
             Properties.Settings.Default.IP = IP.Text;
@@ -153,7 +153,7 @@ namespace Pk3DSRNGTool
 
         private void B_Resume_Click(object sender, EventArgs e)
         {
-            try { ntrclient.resume(); } catch {}
+            try { ntrclient.resume(); } catch { }
         }
 
         private void B_GetSeed_Click(object sender, EventArgs e)
@@ -191,43 +191,32 @@ namespace Pk3DSRNGTool
         private void B_Help_Click(object sender, EventArgs e) => Alert(HElP_STR[Program.mainform.lindex]);
 
         #region IDBot
-        private void B_A_Click(object sender, EventArgs e)
+        private void Start()
         {
-            if (ModifierKeys == Keys.Control)
-            {
-                B_A.Enabled = B_Start.Enabled = false;
-                B_Stop.Enabled = true;
-                try { MassA(); } catch { }
-            }
-            else
-                try { ntrclient.PressA(); } catch { }
+            B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = false;
+            B_Stop.Enabled = true;
         }
 
         private void B_Start_Click(object sender, EventArgs e)
         {
             try
             {
+                if (Ver == 4)
+                    return;
                 if (Ver < 2)
                 {
                     Error("Not implemented yet");
                     return;
                 }
+                Start();
                 if (Ver > 4)
-                {
-                    B_A.Enabled = B_Start.Enabled = false;
-                    B_Stop.Enabled = true;
                     G7IDBot();
-                }
                 if (Ver < 4)
-                {
-                    B_A.Enabled = B_Start.Enabled = false;
-                    B_Stop.Enabled = true;
                     G6IDBot();
-                }
             }
             catch { }
         }
-        
+
         private void B_Stop_Click(object sender, EventArgs e)
         {
             B_A.Enabled = B_Start.Enabled = true;
@@ -280,6 +269,14 @@ namespace Pk3DSRNGTool
             B_Stop_Click(null, null);
         }
 
+        private void B_A_Click(object sender, EventArgs e)
+        {
+            try { ntrclient.PressA(); } catch { }
+        }
+        private void B_MassA_Click(object sender, EventArgs e)
+        {
+            try { Start(); MassA(); } catch { }
+        }
         private async void MassA()
         {
             while (Botting)

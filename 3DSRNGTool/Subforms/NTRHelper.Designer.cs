@@ -42,6 +42,7 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.B_Help = new System.Windows.Forms.Button();
             this.IDBot = new System.Windows.Forms.GroupBox();
+            this.B_MassA = new System.Windows.Forms.Button();
             this.B_A = new System.Windows.Forms.Button();
             this.L_Speed = new System.Windows.Forms.Label();
             this.B_Stop = new System.Windows.Forms.Button();
@@ -164,6 +165,7 @@
             // 
             // IDBot
             // 
+            this.IDBot.Controls.Add(this.B_MassA);
             this.IDBot.Controls.Add(this.B_A);
             this.IDBot.Controls.Add(this.L_Speed);
             this.IDBot.Controls.Add(this.B_Stop);
@@ -178,10 +180,21 @@
             this.IDBot.TabStop = false;
             this.IDBot.Text = "ID Bot";
             // 
+            // B_MassA
+            // 
+            this.B_MassA.Enabled = false;
+            this.B_MassA.Location = new System.Drawing.Point(248, 67);
+            this.B_MassA.Name = "B_MassA";
+            this.B_MassA.Size = new System.Drawing.Size(50, 25);
+            this.B_MassA.TabIndex = 125;
+            this.B_MassA.Text = "MassA";
+            this.B_MassA.UseVisualStyleBackColor = true;
+            this.B_MassA.Click += new System.EventHandler(this.B_MassA_Click);
+            // 
             // B_A
             // 
             this.B_A.Enabled = false;
-            this.B_A.Location = new System.Drawing.Point(14, 67);
+            this.B_A.Location = new System.Drawing.Point(207, 67);
             this.B_A.Name = "B_A";
             this.B_A.Size = new System.Drawing.Size(26, 25);
             this.B_A.TabIndex = 123;
@@ -201,7 +214,7 @@
             // B_Stop
             // 
             this.B_Stop.Enabled = false;
-            this.B_Stop.Location = new System.Drawing.Point(144, 67);
+            this.B_Stop.Location = new System.Drawing.Point(115, 67);
             this.B_Stop.Name = "B_Stop";
             this.B_Stop.Size = new System.Drawing.Size(69, 25);
             this.B_Stop.TabIndex = 124;
@@ -212,7 +225,7 @@
             // B_Start
             // 
             this.B_Start.Enabled = false;
-            this.B_Start.Location = new System.Drawing.Point(59, 67);
+            this.B_Start.Location = new System.Drawing.Point(18, 67);
             this.B_Start.Name = "B_Start";
             this.B_Start.Size = new System.Drawing.Size(69, 25);
             this.B_Start.TabIndex = 123;
@@ -348,5 +361,6 @@
         private System.Windows.Forms.Label L_Speed;
         private System.Windows.Forms.Button B_A;
         private System.Windows.Forms.NumericUpDown Speed;
+        private System.Windows.Forms.Button B_MassA;
     }
 }
