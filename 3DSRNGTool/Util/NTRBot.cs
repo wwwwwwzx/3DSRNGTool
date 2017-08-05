@@ -1,10 +1,23 @@
 ﻿using System;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace Pk3DSRNGTool
 {
     public partial class NtrClient
     {
+        // Rosalina InputRedirection
+        public Socket socket;
+        public void CheckSocket()
+        {
+            if (socket == null)
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0);
+            if (!socket.Connected)
+            {
+                socket.Connect(host, 4950);
+            }
+        }
+        private readonly byte[] EmptyData = { 0xFF, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x08, 0x80, 0x00 };
         private const uint ButtonOff = 0x10DF20;
         private const ushort noKey = 0xFFF;
         private const ushort keyA = 0xFFE;
@@ -14,19 +27,44 @@ namespace Pk3DSRNGTool
         private const uint touchEnter = 0x01707C70;
         private const uint noTouch = 0x02000000;
 
-        private int Buttondelay => Gameversion < 4 ? 200 : 100;
+        private int Buttondelay => 200;
+
+        private void SendButtonMsg(ushort key)
+        {
+            if (socket.Connected)
+            {
+                var data = (byte[])EmptyData.Clone();
+                BitConverter.GetBytes(key).CopyTo(data, 0);
+                socket.Send(data);
+            }
+            else
+                Write(ButtonOff, BitConverter.GetBytes(key), 0x10);
+        }
+
+        private void SendTouchMsg(uint TouchCoord)
+        {
+            if (socket.Connected)
+            {
+                var data = (byte[])EmptyData.Clone();
+                BitConverter.GetBytes(TouchCoord).CopyTo(data, 4);
+                socket.Send(data);
+            }
+            else
+                Write(TouchscrOff, BitConverter.GetBytes(TouchCoord), 0x10);
+        }
+
         public async void QuickButton(ushort key)
         {
-            Write(ButtonOff, BitConverter.GetBytes(key), 0x10);
+            SendButtonMsg(key);
             await Task.Delay(Buttondelay);
-            Write(ButtonOff, BitConverter.GetBytes(noKey), 0x10);
+            SendButtonMsg(noKey);
         }
 
         public async void QuickTouch(uint TouchCoord)
         {
-            Write(TouchscrOff, BitConverter.GetBytes(TouchCoord), 0x10);
+            SendTouchMsg(TouchCoord);
             await Task.Delay(Buttondelay);
-            Write(TouchscrOff, BitConverter.GetBytes(noTouch), 0x10);
+            SendTouchMsg(noTouch);
         }
 
         private uint getHexCoord(decimal Xvalue, decimal Yvalue)
