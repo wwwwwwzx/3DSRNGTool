@@ -182,7 +182,6 @@
             // 
             // B_MassA
             // 
-            this.B_MassA.Enabled = false;
             this.B_MassA.Location = new System.Drawing.Point(248, 67);
             this.B_MassA.Name = "B_MassA";
             this.B_MassA.Size = new System.Drawing.Size(50, 25);
@@ -193,7 +192,6 @@
             // 
             // B_A
             // 
-            this.B_A.Enabled = false;
             this.B_A.Location = new System.Drawing.Point(207, 67);
             this.B_A.Name = "B_A";
             this.B_A.Size = new System.Drawing.Size(26, 25);
@@ -224,7 +222,6 @@
             // 
             // B_Start
             // 
-            this.B_Start.Enabled = false;
             this.B_Start.Location = new System.Drawing.Point(18, 67);
             this.B_Start.Name = "B_Start";
             this.B_Start.Size = new System.Drawing.Size(69, 25);
@@ -246,19 +243,9 @@
             // 
             this.StopFrame.AccessibleName = "";
             this.StopFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StopFrame.Increment = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             this.StopFrame.Location = new System.Drawing.Point(115, 28);
             this.StopFrame.Maximum = new decimal(new int[] {
             100000000,
-            0,
-            0,
-            0});
-            this.StopFrame.Minimum = new decimal(new int[] {
-            1012,
             0,
             0,
             0});

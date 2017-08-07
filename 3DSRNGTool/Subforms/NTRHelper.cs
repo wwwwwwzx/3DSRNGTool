@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
             IP.Text = Properties.Settings.Default.IP;
             ntrclient = new NtrClient();
             ntrclient.Connected += OnConnected;
+            ntrclient.setServer(IP.Text, 8000);
         }
         private void NTRHelper_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -54,7 +55,6 @@ namespace Pk3DSRNGTool
             ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
-            B_Start.Enabled = B_Stop.Enabled = B_A.Enabled = B_MassA.Enabled =
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
             Program.mainform.OnConnected_Changed(false);
         }
@@ -67,7 +67,6 @@ namespace Pk3DSRNGTool
                 ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
-            B_Start.Enabled = B_A.Enabled = B_MassA.Enabled =
             B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
             Program.mainform.OnConnected_Changed(true);
             Properties.Settings.Default.IP = IP.Text;
@@ -193,6 +192,7 @@ namespace Pk3DSRNGTool
         #region IDBot
         private void Start()
         {
+            ntrclient.CheckSocket();
             B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = false;
             B_Stop.Enabled = true;
         }
@@ -219,7 +219,7 @@ namespace Pk3DSRNGTool
 
         private void B_Stop_Click(object sender, EventArgs e)
         {
-            B_A.Enabled = B_Start.Enabled = true;
+            B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = true;
             B_Stop.Enabled = false;
         }
 
@@ -227,7 +227,7 @@ namespace Pk3DSRNGTool
         private int delaylevel => 5 - (int)Speed.Value;
         private int Delay1 => 500 + 100 * delaylevel;
         private int Delay2 => 3800 + 200 * delaylevel;
-        private int Delay3 => 2000 + 100 * delaylevel;
+        private int Delay3 => 2200 + 100 * delaylevel;
         private int Delay4 => 4800 + 200 * delaylevel;
         private int Delay5 => 1500 + 100 * delaylevel;
 
@@ -236,10 +236,13 @@ namespace Pk3DSRNGTool
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
             {
+                // Input "!"
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay1);
-                ntrclient.Confirm(); L_NTRLog.Text = "Input Finished";
+                // Confirm
+                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
                 await Task.Delay(Delay2);
+                // Discard
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay3);
                 StartFrame.Value = ++CurrFrame;
@@ -250,28 +253,34 @@ namespace Pk3DSRNGTool
         private async void G6IDBot()
         {
             int CurrFrame = (int)StartFrame.Value;
-            while (Botting && CurrFrame < (int)StopFrame.Value)
+            while (Botting && CurrFrame < (int)StopFrame.Value - 1)
             {
+                // Choose gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 1";
                 await Task.Delay(Delay1);
+                // Confirm gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 2";
-                await Task.Delay(Delay1);
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
-                await Task.Delay(Delay5);
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 4";
-                await Task.Delay(Delay1);
-                ntrclient.Confirm(); L_NTRLog.Text = "Input Finished";
-                await Task.Delay(Delay4);
-                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
                 await Task.Delay(Delay5);
                 StartFrame.Value = ++CurrFrame;
+                // Input "!"
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
+                await Task.Delay(Delay1);
+                // Dialogue-1 
+                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
+                await Task.Delay(Delay4);
+                // Discard
+                ntrclient.PressB(); L_NTRLog.Text = "B pressed";
+                await Task.Delay(Delay5);
+                // Dialogue-2
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
+                await Task.Delay(Delay1);
             }
             B_Stop_Click(null, null);
         }
 
         private void B_A_Click(object sender, EventArgs e)
         {
-            try { ntrclient.PressA(); } catch { }
+            try { ntrclient.CheckSocket(); ntrclient.PressA(); } catch { }
         }
         private void B_MassA_Click(object sender, EventArgs e)
         {
@@ -281,7 +290,7 @@ namespace Pk3DSRNGTool
         {
             while (Botting)
             {
-                ntrclient.PressA(); L_NTRLog.Text = "Mass-Aing";
+                ntrclient.PressA(); L_NTRLog.Text = "A Spamming";
                 await Task.Delay(Delay1);
             }
         }
