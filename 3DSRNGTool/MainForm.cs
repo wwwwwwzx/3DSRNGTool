@@ -853,7 +853,7 @@ namespace Pk3DSRNGTool
 
             Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =
             BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
-            ShinyLocked.Enabled = Fix3v.Enabled = FormPM.Conceptual;
+            ShinyLocked.Enabled = Fix3v.Enabled = FormPM.Conceptual && !IsTransporter;
         }
         #endregion
 
