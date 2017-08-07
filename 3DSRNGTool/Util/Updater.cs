@@ -33,7 +33,10 @@ namespace Pk3DSRNGTool
                 var LatestVersion = new System.Net.WebClient().DownloadString("https://raw.githubusercontent.com/wwwwwwzx/3DSRNGTool/master/version.txt");
                 if (HasNewerVersion(LatestVersion))
                     if (Prompt(MessageBoxButtons.YesNo, "New version detected. Start to download?") == DialogResult.Yes)
+                    {
                         System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/releases/download/" + LatestVersion + "/3DSRNGTool.exe");
+                        Program.mainform.Close();
+                    }
             }
             catch (Exception ex)
             {
