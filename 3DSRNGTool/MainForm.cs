@@ -977,15 +977,17 @@ namespace Pk3DSRNGTool
                 Stationary6 set6 = setting as Stationary6;
                 set6.Bank = true;
                 set6.Target = (int)TargetMon.Value;
-                var tmp = new bool[set6.Target].Select((t) => FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
+                var tmp = "".PadLeft(set6.Target, FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
                 if (IsTransporter)
                 {
                     for (int i = 0; i < tmp.Length - 1 && i < GenderList.Text.Length; i++)
                         tmp[i] = GenderList.Text[i];
                     if (FormPM.Species == 151 || FormPM.Species == 251)
                         tmp[set6.Target - 1] = '2';
+                    GenderList.Text = set6.GenderList = new string(tmp) + (GenderList.Text.Length > set6.Target ? GenderList.Text.Substring(set6.Target, GenderList.Text.Length - set6.Target) : "");
                 }
-                GenderList.Text = set6.GenderList = new string(tmp);
+                else
+                    set6.GenderList = "000";
             }
             // Load from template
             if (!FormPM.Conceptual)
