@@ -909,6 +909,8 @@ namespace Pk3DSRNGTool
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.DelayTime;
+                if (IsTransporter)
+                    buffersize += 2000;
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
@@ -963,7 +965,7 @@ namespace Pk3DSRNGTool
         private StationaryRNG getStaSettings()
         {
             StationaryRNG setting = Gen6 ? new Stationary6() : (StationaryRNG)new Stationary7();
-            setting.Synchro_Stat = (byte)(IsTransporter ? 0 : SyncNature.SelectedIndex - 1);
+            setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
             setting.Level = (byte)Filter_Lv.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -971,7 +973,10 @@ namespace Pk3DSRNGTool
             if (IsPelago)
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
             if (IsBank)
+            {
+                (setting as Stationary6).Bank = true;
                 (setting as Stationary6).Target = (int)TargetMon.Value;
+            }
             // Load from template
             if (!FormPM.Conceptual)
             {
@@ -1192,7 +1197,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
-            dgv_gender.Visible = dgv_nature.Visible = !IsTransporter;
+            dgv_nature.Visible = !IsTransporter;
             dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2 && (Gen7 || Gen6 && gen6timeline);
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;

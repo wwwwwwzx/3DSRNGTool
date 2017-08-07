@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool
             // Generate Pokemon before target first
             if (Bank)
                 for (int i = Target; i > 1; i--)
-                    Generate_Once();
+                    Generate_Once(RandomGender);
 
             Result6 rt = new Result6();
             rt.Level = Level;
@@ -77,7 +77,7 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
-        private void Generate_Once() // For link/Transporter
+        private void Generate_Once(bool HasGender) // For link/Transporter
         {
             if (!IV3) // Johto starters
             {
@@ -95,8 +95,8 @@ namespace Pk3DSRNGTool
                     i--; IV[tmp] = true;
                 }
             }
-            Advance(Synchro_Stat < 25 ? 3 : 4); // Random IVs and Nature
-            // No gender
+            // Random IVs, nature and probably gender
+            Advance(HasGender ? 5 : 4); 
         }
 
         public override void UseTemplate(Pokemon PM)

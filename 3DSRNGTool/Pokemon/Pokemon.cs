@@ -26,7 +26,6 @@ namespace Pk3DSRNGTool
             if (Conceptual) return "-";
             if ((this as PKM6)?.Bank ?? false)
             {
-                if (Species == 150) return "-"; // Mewtwo for transporter template
                 if (Species == 154) return "Johto Starters";
                 if (Species == 377) return "Legendary Titans";
             }
