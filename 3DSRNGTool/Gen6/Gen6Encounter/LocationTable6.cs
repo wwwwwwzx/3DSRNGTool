@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
@@ -11,7 +9,7 @@ namespace Pk3DSRNGTool
 
         public static int[] getLocation(PKMW6 pm, bool IsXY = true)
         {
-            EncounterType type = pm.Type;
+            EncounterType type = pm?.Type ?? EncounterType.SingleSlot;
             switch (type)
             {
                 case EncounterType.Horde:

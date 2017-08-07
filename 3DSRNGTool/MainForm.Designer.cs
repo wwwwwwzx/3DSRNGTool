@@ -293,6 +293,7 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.L_Targetmon = new System.Windows.Forms.Label();
             this.TargetMon = new System.Windows.Forms.NumericUpDown();
             this.B_OpenTool = new System.Windows.Forms.Button();
@@ -381,6 +382,7 @@
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
+            this.L_GenderList = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -3388,6 +3390,8 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.L_GenderList);
+            this.Sta_Setting.Controls.Add(this.GenderList);
             this.Sta_Setting.Controls.Add(this.L_Targetmon);
             this.Sta_Setting.Controls.Add(this.TargetMon);
             this.Sta_Setting.Controls.Add(this.B_OpenTool);
@@ -3404,6 +3408,15 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // GenderList
+            // 
+            this.GenderList.Location = new System.Drawing.Point(225, 185);
+            this.GenderList.Mask = "00000000000000000000";
+            this.GenderList.Name = "GenderList";
+            this.GenderList.Size = new System.Drawing.Size(130, 20);
+            this.GenderList.TabIndex = 104;
+            this.GenderList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // L_Targetmon
             // 
@@ -4533,6 +4546,15 @@
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.RNGMethod.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
+            // L_GenderList
+            // 
+            this.L_GenderList.AutoSize = true;
+            this.L_GenderList.Location = new System.Drawing.Point(6, 188);
+            this.L_GenderList.Name = "L_GenderList";
+            this.L_GenderList.Size = new System.Drawing.Size(190, 13);
+            this.L_GenderList.TabIndex = 105;
+            this.L_GenderList.Text = "性别列表(0:无性别,1:有性别,2:梦幻)";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4999,6 +5021,8 @@
         private System.Windows.Forms.ToolStripMenuItem M_Gen6MainSeedFinder;
         private System.Windows.Forms.Label L_Targetmon;
         private System.Windows.Forms.NumericUpDown TargetMon;
+        private Controls.GenderListBox GenderList;
+        private System.Windows.Forms.Label L_GenderList;
     }
 }
 

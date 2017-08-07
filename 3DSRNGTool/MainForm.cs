@@ -493,7 +493,7 @@ namespace Pk3DSRNGTool
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
-
+            L_GenderList.Visible = GenderList.Visible = IsTransporter;
             byte currentgen = (byte)(Gen6 ? 6 : 7);
             if (currentgen != lastgen)
             {
@@ -974,8 +974,18 @@ namespace Pk3DSRNGTool
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
             if (IsBank)
             {
-                (setting as Stationary6).Bank = true;
-                (setting as Stationary6).Target = (int)TargetMon.Value;
+                Stationary6 set6 = setting as Stationary6;
+                set6.Bank = true;
+                set6.Target = (int)TargetMon.Value;
+                var tmp = new bool[set6.Target].Select((t) => FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
+                if (IsTransporter)
+                {
+                    for (int i = 0; i < tmp.Length - 1 && i < GenderList.Text.Length - 1; i++)
+                        tmp[i] = GenderList.Text[i];
+                    if (FormPM.Species == 151 || FormPM.Species == 251)
+                        tmp[set6.Target - 1] = '2';
+                }
+                GenderList.Text = set6.GenderList = new string(tmp);
             }
             // Load from template
             if (!FormPM.Conceptual)

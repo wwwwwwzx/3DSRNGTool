@@ -55,6 +55,9 @@
     <Compile Include="Controls\Frame_ID.cs" />
     <Compile Include="Controls\Frame_Seed.cs" />
     <Compile Include="Controls\Frame_Tiny.cs" />
+    <Compile Include="Controls\GenderListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Gen6\Egg6.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\RockSmashArea6.cs" />

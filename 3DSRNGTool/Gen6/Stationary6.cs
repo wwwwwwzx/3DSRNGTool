@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
 
         public bool Bank;  // Bank = PokemonLink or Transporter
         public int Target; // Index of target pkm
+        public string GenderList; // Gender list of Bank
         public bool InstantSync; // Call Sync Function once battle starts, otherwise advance (3/4) * number of party pokemon
         private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
         private bool getSync => AlwaysSync || tinysync;
@@ -18,8 +19,8 @@ namespace Pk3DSRNGTool
         {
             // Generate Pokemon before target first
             if (Bank)
-                for (int i = Target; i > 1; i--)
-                    Generate_Once(RandomGender);
+                for (int i = 0; i < Target - 1; i++)
+                    Generate_Once(GenderList[i]);
 
             Result6 rt = new Result6();
             rt.Level = Level;
@@ -77,8 +78,9 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
-        private void Generate_Once(bool HasGender) // For link/Transporter
+        private void Generate_Once(char gendertype) // For link/Transporter
         {
+            // gendertype 0: nogender 1: randomgender 2:mew
             if (!IV3) // Johto starters
             {
                 Advance(10); // EC + PID + IVs + Nature + Gender
@@ -87,7 +89,7 @@ namespace Pk3DSRNGTool
             Advance(2); // Link Legends/Transporter
             // Indefinite advance
             var IV = new bool[6];
-            for (int i = 3; i > 0;)
+            for (int i = gendertype == '2' ? 5 : 3; i > 0;)
             {
                 uint tmp = rand(6);
                 if (!IV[tmp])
@@ -96,7 +98,7 @@ namespace Pk3DSRNGTool
                 }
             }
             // Random IVs, nature and probably gender
-            Advance(HasGender ? 5 : 4); 
+            Advance(gendertype == '1' ? 5 : 4);
         }
 
         public override void UseTemplate(Pokemon PM)
