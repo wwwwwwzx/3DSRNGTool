@@ -78,6 +78,7 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
+        private readonly static byte[] AdvanceTable = { 4, 5, 2 };
         private void Generate_Once(char gendertype) // For link/Transporter
         {
             // gendertype 0: nogender 1: randomgender 2:mew
@@ -98,7 +99,7 @@ namespace Pk3DSRNGTool
                 }
             }
             // Random IVs, nature and probably gender
-            Advance(gendertype == '1' ? 5 : 4);
+            Advance(AdvanceTable[gendertype - '0']); // 0/1/2 => 4/5/2
         }
 
         public override void UseTemplate(Pokemon PM)

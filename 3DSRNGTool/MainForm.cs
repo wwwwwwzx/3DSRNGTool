@@ -980,7 +980,7 @@ namespace Pk3DSRNGTool
                 var tmp = new bool[set6.Target].Select((t) => FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
                 if (IsTransporter)
                 {
-                    for (int i = 0; i < tmp.Length - 1 && i < GenderList.Text.Length - 1; i++)
+                    for (int i = 0; i < tmp.Length - 1 && i < GenderList.Text.Length; i++)
                         tmp[i] = GenderList.Text[i];
                     if (FormPM.Species == 151 || FormPM.Species == 251)
                         tmp[set6.Target - 1] = '2';
