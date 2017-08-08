@@ -51,15 +51,16 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                NTRHelper.ntrclient.connectToServer();
+                if (!NTRHelper.ntrclient.Connected)
+                    NTRHelper.ntrclient.connectToServer();
                 byte[] tiny = NTRHelper.ntrclient.ReadTiny();
                 if (tiny == null) { return; }
                 Gen6Tiny = new[]
                 {
-                BitConverter.ToUInt32(tiny, 0),
-                BitConverter.ToUInt32(tiny, 4),
-                BitConverter.ToUInt32(tiny, 8),
-                BitConverter.ToUInt32(tiny, 12),
+                    BitConverter.ToUInt32(tiny, 0),
+                    BitConverter.ToUInt32(tiny, 4),
+                    BitConverter.ToUInt32(tiny, 8),
+                    BitConverter.ToUInt32(tiny, 12),
                 };
             }
             catch
@@ -113,7 +114,7 @@ namespace Pk3DSRNGTool
             var row = MainDGV.Rows[index];
             if (Method.SelectedIndex == 0 && list[index]._fs > 0)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535/(8200 - 200 * (Double)Parameters.Value)))
+            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
             if (Method.SelectedIndex == 2 && list[index]._sync)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;

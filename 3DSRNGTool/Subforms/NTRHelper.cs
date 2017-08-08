@@ -8,8 +8,6 @@ namespace Pk3DSRNGTool
     public partial class NTRHelper : Form
     {
         public static NtrClient ntrclient;
-        private int timercounter;
-        private ushort lasttableindex;
         private static int Ver { get => Program.mainform.Ver; set => Program.mainform.Ver = value; }
 
         public NTRHelper()
@@ -17,7 +15,7 @@ namespace Pk3DSRNGTool
             InitializeComponent();
             IP.Text = Properties.Settings.Default.IP;
             ntrclient = new NtrClient();
-            ntrclient.Connected += OnConnected;
+            ntrclient.Connect += OnConnected;
             ntrclient.setServer(IP.Text, 8000);
         }
         private void NTRHelper_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,9 +48,8 @@ namespace Pk3DSRNGTool
 
         private void OnDisconnected(bool Success = true)
         {
-            timercounter = 0;
+            Waiting = false;
             NTR_Timer.Enabled = false;
-            ntrclient.phase = 0;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
             B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
@@ -62,78 +59,96 @@ namespace Pk3DSRNGTool
         private void OnConnected(object sender, EventArgs e)
         {
             NTR_Timer.Enabled = true;
-            NTR_Timer.Interval = 1000;
-            if (ntrclient.port == 8000)
-                ntrclient.listprocess();
             L_NTRLog.Text = "Console Connected";
             B_Connect.Enabled = false;
             B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
             Program.mainform.OnConnected_Changed(true);
             Properties.Settings.Default.IP = IP.Text;
+            if (ntrclient.port == 8000)
+            {
+                ntrclient.listprocess();
+                try { UpdateVersion(); } catch { }
+            }
         }
 
+        private bool Waiting; // For connection and parameters
         private void B_OneClick_Click(object sender, EventArgs e)
         {
-            ntrclient.phase = 1;
+            Waiting = true;
             B_Connect_Click(null, null);
+            if (Ver < 4)
+                try { OneClick(); } catch { }
+        }
+
+        private async void OneClick()
+        {
+            while (Waiting)
+                await Task.Delay(100);
+
+            // Breakpoint Set
+
+            // Wait for freeze
+            L_NTRLog.Text = "Waiting..";
+            await Task.Delay(Ver < 2 ? 3000 : 4000);
+            ushort lasttableindex = 0;
+            ushort tableindex = 624;
+            while (lasttableindex != tableindex)
+            {
+                lasttableindex = tableindex;
+                tableindex = BitConverter.ToUInt16(ntrclient.ReadIndex(), 0);
+                await Task.Delay(500);
+            }
+
+            // Resume
+            Program.mainform.B_gettiny_Click(null, null);
+            B_Resume_Click(null, null);
+            Program.mainform.SetTSV(ntrclient.ReadTSV());
+
+            // Wait for freeze
+            await Task.Delay(Ver < 2 ? 4000 : 5000);
+            tableindex = 624;
+            while (lasttableindex != tableindex)
+            {
+                lasttableindex = tableindex;
+                tableindex = BitConverter.ToUInt16(ntrclient.ReadIndex(), 0);
+                await Task.Delay(500);
+            }
+
+            // the console reaches the breakpoint
+            B_GetSeed_Click(null, null);
+            B_Disconnect_Click(null, null);
+        }
+
+        private async void UpdateVersion()
+        {
+            while (!ntrclient.VersionDetected)
+                await Task.Delay(100);
+            Ver = ntrclient.Gameversion;
+            B_BreakPoint.Enabled = Ver < 4;
+            ntrclient.VersionDetected = false;
+            if (Ver > 4)
+            {
+                Program.mainform.SyncGen7EggSeed(null, null);
+                Program.mainform.SetTSV(ntrclient.ReadTSV());
+                B_GetSeed_Click(null, null);
+            }
+            if (Waiting) // One Click Mode
+            {
+                if (Ver < 4)
+                {
+                    B_BreakPoint_Click(null, null);
+                    Waiting = false;
+                }
+                else
+                    B_Disconnect_Click(null, null);
+                return;
+            }
+            Program.mainform.SetTSV(ntrclient.ReadTSV());
         }
 
         private void NTRTick(object sender, EventArgs e)
         {
-            try
-            {
-                if (ntrclient.VersionDetected)
-                {
-                    Ver = ntrclient.Gameversion;
-                    B_BreakPoint.Enabled = Ver < 4;
-                    ntrclient.VersionDetected = false;
-                    if (Ver > 4)
-                    {
-                        Program.mainform.SyncGen7EggSeed(null, null);
-                        B_GetSeed_Click(null, null);
-                        Program.mainform.SetTSV(ntrclient.ReadTSV());
-                    }
-                    if (ntrclient.phase == 1) // One Click mode start
-                    {
-                        if (Ver < 4)
-                        {
-                            B_BreakPoint_Click(null, null);
-                            ntrclient.phase = 2;
-                            timercounter = Ver < 2 ? -3 : -4;
-                        }
-                        else
-                            B_Disconnect_Click(null, null);
-                        return;
-                    }
-                    Program.mainform.SetTSV(ntrclient.ReadTSV());
-                }
-                if (ntrclient.phase > 1 && timercounter++ > 0) // To detect freeze
-                {
-                    L_NTRLog.Text = "Waiting..";
-                    ushort tableindex = BitConverter.ToUInt16(ntrclient.ReadIndex(), 0);
-                    if (lasttableindex != tableindex)
-                        lasttableindex = tableindex;
-                    else
-                    {
-                        if (ntrclient.phase == 3) // the console reaches the breakpoint
-                        {
-                            B_GetSeed_Click(null, null);
-                            B_Disconnect_Click(null, null);
-                        }
-                        if (ntrclient.phase == 2) // the (2nd) freeze after setting breakpoint
-                        {
-                            Program.mainform.B_gettiny_Click(null, null);
-                            B_Resume_Click(null, null);
-                            Program.mainform.SetTSV(ntrclient.ReadTSV());
-                            NTR_Timer.Interval = 500;
-                            ntrclient.phase = 3;
-                            timercounter = Ver < 2 ? -8 : -10;
-                        }
-                    }
-                }
-                ntrclient.sendHeartbeatPacket();
-            }
-            catch { }
+            try { ntrclient.sendHeartbeatPacket(); } catch { }
         }
 
         private void B_BreakPoint_Click(object sender, EventArgs e)
@@ -160,7 +175,7 @@ namespace Pk3DSRNGTool
             byte[] seed_ay = ntrclient.ReadSeed();
             if (seed_ay == null) { Error("Timeout"); return; }
             Program.mainform.globalseed = BitConverter.ToUInt32(seed_ay, 0);
-            ntrclient.resume();
+            if (Ver < 4) ntrclient.resume();
         }
 
         private readonly static string[] HElP_STR =

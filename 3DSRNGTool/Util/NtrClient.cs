@@ -14,16 +14,18 @@ namespace Pk3DSRNGTool
         public Thread packetRecvThread;
         private object syncLock = new object();
         private bool heartbeatSendable;
+        public bool Connected;
 
         uint currentSeq;
         uint lastReadMemSeq;
         public volatile int progress = -1;
 
-        public event EventHandler Connected;
+        public event EventHandler Connect;
 
         protected virtual void OnConnected(EventArgs e)
         {
-            Connected?.Invoke(this, e);
+            Connect?.Invoke(this, e);
+            Connected = true;
         }
 
         public void bpadd(uint addr, string type = "code.once")
@@ -41,6 +43,7 @@ namespace Pk3DSRNGTool
 
         public void resume()
         {
+            DebuggerMode();
             sendEmptyPacket(11, 0, 0, 4);
         }
 
@@ -92,6 +95,7 @@ namespace Pk3DSRNGTool
             }
             tcp = null;
             socket = null;
+            Connected = false;
         }
 
         public void listprocess() => sendEmptyPacket(5);

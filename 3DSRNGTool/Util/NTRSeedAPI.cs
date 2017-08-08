@@ -7,7 +7,7 @@ namespace Pk3DSRNGTool
     public partial class NtrClient
     {
         public byte Gameversion { get; private set; }
-        public byte Pid { get; private set; }
+        public byte Pid { get; private set; } = 0x28;
         public byte[] Data { get; private set; }
         private uint BPOffset;
         private uint MTOffset;
@@ -18,7 +18,6 @@ namespace Pk3DSRNGTool
 
         private bool DataReady;
         public bool VersionDetected;
-        public byte phase;
 
         private bool parseLogMsg(string logmsg)
         {
@@ -37,7 +36,6 @@ namespace Pk3DSRNGTool
             pname = ", pname: " + pname;
             string splitlog = logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 8, logmsg.Length - logmsg.IndexOf(pname, StringComparison.Ordinal));
             Pid = Convert.ToByte("0x" + splitlog.Substring(0, 8), 16);
-            VersionDetected = true;
             switch (Gameversion)
             {
                 case 0:
@@ -51,13 +49,21 @@ namespace Pk3DSRNGTool
                     NfcOffset = 0x3E14C0; // 1.0 offset was 0x3DFFD0
                     WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; IDOffset = 0x330D67D0; break;
             }
+            VersionDetected = true;
             return true;
+        }
+        
+        public void DebuggerMode()
+        {
+            if (5000 < port && port < 8000 && Connected) // Already enabled
+                return;
+            setServer(host, 5000 + Pid);
+            connectToServer();
         }
 
         public void SetBreakPoint()
         {
-            setServer(host, 5000 + Pid);
-            connectToServer();
+            DebuggerMode();
             bpadd(BPOffset, "code"); // Add break point
             resume();
         }

@@ -158,14 +158,16 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                if (!NTRHelper.ntrclient.Connected)
+                    NTRHelper.ntrclient.connectToServer();
                 byte[] tiny = NTRHelper.ntrclient.ReadTiny();
                 if (tiny == null) { return; }
                 Status = new[]
                 {
-                BitConverter.ToUInt32(tiny, 0),
-                BitConverter.ToUInt32(tiny, 4),
-                BitConverter.ToUInt32(tiny, 8),
-                BitConverter.ToUInt32(tiny, 12),
+                    BitConverter.ToUInt32(tiny, 0),
+                    BitConverter.ToUInt32(tiny, 4),
+                    BitConverter.ToUInt32(tiny, 8),
+                    BitConverter.ToUInt32(tiny, 12),
                 };
             }
             catch
