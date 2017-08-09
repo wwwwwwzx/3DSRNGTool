@@ -8,34 +8,40 @@ namespace Pk3DSRNGTool
     {
         public byte Gameversion { get; private set; }
         public byte Pid { get; private set; } = 0x28;
-        public byte[] Data { get; private set; }
         private uint BPOffset;
         private uint MTOffset;
         private uint SFMTOffset;
         private uint TinyOffset;
         private uint IDOffset;
         private uint NfcOffset;
-
         private bool DataReady;
         public bool VersionDetected;
+        public byte[] Data { get; private set; }
 
-        private bool parseLogMsg(string logmsg)
+        public class InfoEventArgs : EventArgs
         {
-            if (getGame(logmsg))
-                return true;
-            return false;
+            public string info;
+        }
+        public event EventHandler<InfoEventArgs> Message;
+        protected virtual void MessageReady(InfoEventArgs e) => Message?.Invoke(this, e);
+        private object MsgLock = new object();
+
+        private void parseLogMsg(string logmsg)
+        {
+            getGame(logmsg);
+            getBP(logmsg);
         }
 
-        private static string[] pnamestr = { "kujira-1", "kujira-2", " sango-1", " sango-2", "----", "niji_loc", "niji_loc" };
+        private static string[] pnamestr = { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc" };
         private bool getGame(string logmsg)
         {
             string pname;
             if (null == (pname = pnamestr.FirstOrDefault(logmsg.Contains)))
                 return false;
             Gameversion = (byte)Array.IndexOf(pnamestr, pname);
-            pname = ", pname: " + pname;
-            string splitlog = logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 8, logmsg.Length - logmsg.IndexOf(pname, StringComparison.Ordinal));
-            Pid = Convert.ToByte("0x" + splitlog.Substring(0, 8), 16);
+            pname = ", pname:" + pname.PadLeft(9);
+            string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 8, 8);
+            Pid = Convert.ToByte(splitlog, 16);
             switch (Gameversion)
             {
                 case 0:
@@ -44,6 +50,8 @@ namespace Pk3DSRNGTool
                 case 2:
                 case 3:
                     BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
+                case 4:
+                    break;
                 case 5:
                 case 6:
                     NfcOffset = 0x3E14C0; // 1.0 offset was 0x3DFFD0
@@ -52,7 +60,18 @@ namespace Pk3DSRNGTool
             VersionDetected = true;
             return true;
         }
-        
+
+        private bool getBP(string logmsg)
+        {
+            if (!(logmsg.Contains("breakpoint ") && logmsg.Contains(" hit")))
+                return false;
+            string bpid = " lr:";
+            string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(bpid, StringComparison.Ordinal) + bpid.Length, 8);
+            var e = new InfoEventArgs { info = "Breakpoint = " + splitlog };
+            lock (MsgLock) { MessageReady(e); }
+            return true;
+        }
+
         public void DebuggerMode()
         {
             if (5000 < port && port < 8000 && Connected) // Already enabled
@@ -90,6 +109,7 @@ namespace Pk3DSRNGTool
         {
             byte[] command = BitConverter.GetBytes(nfcVal);
             Write(NfcOffset, command, Pid);
+            log("NFC Patched!");
         }
 
 #if DEBUG

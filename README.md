@@ -12,8 +12,7 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 
 - [Final Screen](#final-screen) you should wait at and make the final key pressing.
 - [Reddit Gen 6 RNG Megathread](https://www.reddit.com/r/pokemonrng/comments/6fhnb8/gen_6_rng_megathread/)
-- [Gen VI Events Thread](https://projectpokemon.org/forums/forums/topic/39398-gen-vi-event-contribution-thread-2017/)
-- [Gen VII Events Thread](https://projectpokemon.org/forums/forums/topic/39400-gen-vii-events-contribution-thread/)
+- [ProjectPokemon Events Gallery](https://github.com/projectpokemon/EventsGallery)
 
 ## Credit
 
@@ -30,6 +29,10 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 
 Usually it's the last screen before the battle starts, or the special dialogue box.
 
+#### Transporter (Virtual Console)
+
+`Use this game` Button. Calibrate the delay beforehand.
+
 #### Generation 6
 
 - __Pokemon Link__: _Would you like to retrieve data using Pokemon Link? Yes/No_
@@ -38,9 +41,11 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __Horde__: Sweet Scent / Honey Selected. USE/GIVE/DISCARD
 - __Rock Smash__: _Would you like to use Rock Smash? Yes/No_
 - __Mystery Gift__: _xxx received xxx!_
-- __Eggs__ from Day Care: 
-Accepting: _You do want it. don't you? / You'll be wanting it won't you?_  
-Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on to it. Thank you!_
+- __Eggs__ from Day Care:
+
+Accepting => 1st Yes/No Screen: _You do want it. don't you? / You'll be wanting it won't you? / You've gotta want it, right?_
+
+Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!/ Well then, I'll be having this one! Thanks!/ Really really? Well... I'll keep it, then! Thanks!_
 - __ID__ : _xxx... Tres bien! What a fantastic name! / So you're xxx? Yes/No_
 
 ##### XY
@@ -95,8 +100,8 @@ Rejecting: _Well then, I'll hang on to it. Thank you! / Well then, I'll hang on 
 
 ## ID Bot Usage
 - Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) or InputRedirecionNTR.cia
-- Put your target frame and starting frame in ID bot box.
-- Set proper bot speed according to your internet condition.
+- Put your target frame and starting frame in `ID bot` box.
+- Set proper `bot speed` according to your internet condition.
 - Use `MassA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
 ORAS upper screen:  
 ![](https://i.imgur.com/kD9BbAi.png)  

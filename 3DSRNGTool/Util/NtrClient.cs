@@ -156,8 +156,7 @@ namespace Pk3DSRNGTool
                             byte[] dataBuf = new byte[dataLen];
                             readNetworkStream(stream, dataBuf, dataBuf.Length);
                             string logMsg = Encoding.UTF8.GetString(dataBuf);
-                            if (!parseLogMsg(logMsg))
-                                log(logMsg);
+                            log(logMsg);
                         }
                         lock (syncLock)
                         {
@@ -257,6 +256,7 @@ namespace Pk3DSRNGTool
 
         private void log(string msg)
         {
+            parseLogMsg(msg);
             #if DEBUG
             try
             {
