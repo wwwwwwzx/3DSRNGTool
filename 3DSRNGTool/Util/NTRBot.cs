@@ -33,6 +33,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                // Try NTR first
                 Write(ButtonOff, BitConverter.GetBytes(key), 0x10);
             }
             catch
@@ -50,6 +51,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                // Try NTR first
                 Write(TouchscrOff, BitConverter.GetBytes(TouchCoord), 0x10);
             }
             catch

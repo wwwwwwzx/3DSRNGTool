@@ -40,7 +40,7 @@ namespace Pk3DSRNGTool
         public uint[] Gen6Tiny
         {
             get => new[] { tiny0.Value, tiny1.Value, tiny2.Value, tiny3.Value };
-            private set
+            set
             {
                 if (value.Length < 4) return;
                 tiny0.Value = value[0]; tiny1.Value = value[1];
@@ -49,23 +49,9 @@ namespace Pk3DSRNGTool
         }
         private void Update_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!NTRHelper.ntrclient.Connected)
-                    NTRHelper.ntrclient.connectToServer();
-                byte[] tiny = NTRHelper.ntrclient.ReadTiny();
-                if (tiny == null) { return; }
-                Gen6Tiny = new[]
-                {
-                    BitConverter.ToUInt32(tiny, 0),
-                    BitConverter.ToUInt32(tiny, 4),
-                    BitConverter.ToUInt32(tiny, 8),
-                    BitConverter.ToUInt32(tiny, 12),
-                };
-            }
-            catch
-            {
-            }
+            if (!NTRHelper.ntrclient.Connected)
+                NTRHelper.ntrclient.connectToServer();
+            NTRHelper.ntrclient.ReadTiny("TTT");
         }
         #endregion
 

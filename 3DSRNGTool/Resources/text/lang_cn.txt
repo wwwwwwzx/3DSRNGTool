@@ -255,9 +255,6 @@ B_Abort7 = 终止
 B_OneClick = 一键完成
 B_Connect = 连接
 B_Disconnect = 断开
-B_Breakpoint = 设置断点
-B_Resume = 继续
-B_GetSeed = 获得初始Seed
 ---
 IDBot = ID Bot
 B_Start = 启动

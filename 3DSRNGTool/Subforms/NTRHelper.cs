@@ -52,7 +52,7 @@ namespace Pk3DSRNGTool
             NTR_Timer.Enabled = false;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
-            B_BreakPoint.Enabled = B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = false;
+            B_Disconnect.Enabled = false;
             Program.mainform.OnConnected_Changed(false);
         }
 
@@ -63,7 +63,7 @@ namespace Pk3DSRNGTool
                 NTR_Timer.Enabled = true;
                 L_NTRLog.Text = "Console Connected";
                 B_Connect.Enabled = false;
-                B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
+                B_Disconnect.Enabled = true;
                 Program.mainform.OnConnected_Changed(true);
                 Properties.Settings.Default.IP = IP.Text;
                 ntrclient.listprocess();
@@ -74,32 +74,22 @@ namespace Pk3DSRNGTool
         {
             Invoke(new Action(() =>
             {
+                switch (e.info)
+                {
+                    case "Disconnect":
+                        B_Disconnect_Click(null, null);
+                        return;
+                    case null:
+                        L_NTRLog.Text = (string)e.data;
+                        return;
+                }
                 Program.mainform.parseNTRInfo(e.info, e.data);
-                if (e.info == null)
-                    L_NTRLog.Text = (string)e.data;
-                if (e.info == "Version" && (byte)e.data < 4)
-                    B_BreakPoint.Enabled = true;
             }));
         }
 
         private void NTRTick(object sender, EventArgs e)
         {
             try { ntrclient.sendHeartbeatPacket(); } catch { }
-        }
-
-        private void B_BreakPoint_Click(object sender, EventArgs e)
-        {
-            try { ntrclient.SetBreakPoint(); ntrclient.resume(); } catch { }
-        }
-
-        private void B_Resume_Click(object sender, EventArgs e)
-        {
-            try { ntrclient.resume(); } catch { }
-        }
-
-        private void B_GetSeed_Click(object sender, EventArgs e)
-        {
-            try { ntrclient.ReadSeed(); ntrclient.resume(); } catch { }
         }
 
         private readonly static string[] HElP_STR =
@@ -132,7 +122,7 @@ namespace Pk3DSRNGTool
         private void Start()
         {
             ntrclient.CheckSocket();
-            B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = false;
+            B_MashA.Enabled = B_A.Enabled = B_Start.Enabled = false;
             B_Stop.Enabled = true;
         }
 
@@ -159,7 +149,7 @@ namespace Pk3DSRNGTool
 
         private void B_Stop_Click(object sender, EventArgs e)
         {
-            B_MassA.Enabled = B_A.Enabled = B_Start.Enabled = true;
+            B_MashA.Enabled = B_A.Enabled = B_Start.Enabled = true;
             B_Stop.Enabled = false;
         }
 
@@ -168,7 +158,7 @@ namespace Pk3DSRNGTool
         private int Delay1 => 500 + 100 * delaylevel;
         private int Delay2 => 3800 + 200 * delaylevel;
         private int Delay3 => 2200 + 100 * delaylevel;
-        private int Delay4 => 4800 + 200 * delaylevel;
+        private int Delay4 => 5000 + 200 * delaylevel;
         private int Delay5 => 1500 + 100 * delaylevel;
 
         private async void G7IDBot()
@@ -222,15 +212,15 @@ namespace Pk3DSRNGTool
         {
             try { ntrclient.CheckSocket(); ntrclient.PressA(); } catch { }
         }
-        private void B_MassA_Click(object sender, EventArgs e)
+        private void B_MashA_Click(object sender, EventArgs e)
         {
-            try { Start(); MassA(); } catch { }
+            try { Start(); MashA(); } catch { }
         }
-        private async void MassA()
+        private async void MashA()
         {
             while (Botting)
             {
-                ntrclient.PressA(); L_NTRLog.Text = "A Spamming";
+                ntrclient.PressA(); L_NTRLog.Text = "A mashing";
                 await Task.Delay(Delay1);
             }
         }

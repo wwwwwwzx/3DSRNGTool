@@ -63,30 +63,24 @@ namespace Pk3DSRNGTool
             SendMsg(Gameversion, "Version");
             if (Gameversion < 4)
             {
+                ReadTiny("IDSeed");
+                ReadTSV();
                 if (OneClick)
-                {
-                    DebuggerMode();
-                    SetBreakPoint();
-                }
-                else
                     DebuggerMode();
             }
             if (Gameversion == 4)
-                disconnect();
+                SendMsg(null, "Disconnect");
             if (Gameversion > 4)
             {
-                ReadSeed();
                 ReadTiny("EggSeed");
                 ReadTSV();
-            }
-            if (Gameversion < 4)
-            {
-                ReadTiny("IDSeed");
-                ReadTSV();
+                if (OneClick)
+                    SendMsg(null, "Disconnect");
             }
             return true;
         }
 
+        private int BPReached;
         private bool getBP(string logmsg)
         {
             if (!(logmsg.Contains("breakpoint ") && logmsg.Contains(" hit")))
@@ -96,13 +90,18 @@ namespace Pk3DSRNGTool
             uint address = Convert.ToUInt32(splitlog, 16);
             switch (address)
             {
-                case 0:
-                    resume(); break;
-                case 0x07003130: //XY
-                case 0x07003158: //OARS
+                case 0: // Initial BP
+                    BPReached = 0; SetBreakPoint();
+                    break;
+                case 0x07003130: //XY Seeding
+                case 0x07003158: //ORAS Seeding
                     ReadSeed(); resume();
-                    ReadTSV();
-                    ReadTiny("IDSeed");
+                    if (BPReached == 0)
+                    {
+                        ReadTiny("IDSeed");
+                        ReadTSV();
+                    }
+                    BPReached++;
                     break;
                 default:
                     SendMsg(address, "BreakPoint"); break;
@@ -115,14 +114,14 @@ namespace Pk3DSRNGTool
             if (5000 < port && port < 8000 && Connected) // Already enabled
                 return;
             setServer(host, 5000 + Pid);
-            connectToServer();
+            try { connectToServer(); } catch { SendMsg(null, "Disconnect"); }
         }
 
         public void SetBreakPoint()
         {
             bpadd(BPOffset, "code"); // Add break point
-            resume();
             SendMsg("Breakpoint Set");
+            resume();
         }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4)
@@ -176,7 +175,7 @@ namespace Pk3DSRNGTool
         {
             byte[] tiny = ReadTiny();
             if (tiny == null)
-                return; 
+                return;
             uint[] tinyseeds = new[]
             {
                 BitConverter.ToUInt32(tiny, 0),

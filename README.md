@@ -102,7 +102,7 @@ Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!
 - Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) or InputRedirecionNTR.cia
 - Put your target frame and starting frame in `ID bot` box.
 - Set proper `bot speed` according to your internet condition.
-- Use `MassA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
+- Use `MashA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
 ORAS upper screen:  
 ![](https://i.imgur.com/kD9BbAi.png)  
 SuMo lower screen:  

@@ -1364,6 +1364,9 @@ namespace Pk3DSRNGTool
                     ID_Tiny2.Value = tiny[2];
                     ID_Tiny3.Value = tiny[3];
                     return;
+                case "TTT":
+                    TTT.Gen6Tiny = (uint[])data;
+                    return;
             }
         }
         private void M_Gen6SeedFinder_Click(object sender, EventArgs e)

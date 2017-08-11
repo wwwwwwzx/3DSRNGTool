@@ -31,18 +31,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.B_OneClick = new System.Windows.Forms.Button();
-            this.B_BreakPoint = new System.Windows.Forms.Button();
             this.L_NTRLog = new System.Windows.Forms.Label();
-            this.B_Resume = new System.Windows.Forms.Button();
             this.B_Disconnect = new System.Windows.Forms.Button();
             this.B_Connect = new System.Windows.Forms.Button();
-            this.B_GetSeed = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.IP = new System.Windows.Forms.TextBox();
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.B_Help = new System.Windows.Forms.Button();
             this.IDBot = new System.Windows.Forms.GroupBox();
-            this.B_MassA = new System.Windows.Forms.Button();
+            this.B_MashA = new System.Windows.Forms.Button();
             this.B_A = new System.Windows.Forms.Button();
             this.L_Speed = new System.Windows.Forms.Label();
             this.B_Stop = new System.Windows.Forms.Button();
@@ -67,17 +64,6 @@
             this.B_OneClick.UseVisualStyleBackColor = true;
             this.B_OneClick.Click += new System.EventHandler(this.B_Connect_Click);
             // 
-            // B_BreakPoint
-            // 
-            this.B_BreakPoint.Enabled = false;
-            this.B_BreakPoint.Location = new System.Drawing.Point(25, 98);
-            this.B_BreakPoint.Name = "B_BreakPoint";
-            this.B_BreakPoint.Size = new System.Drawing.Size(90, 25);
-            this.B_BreakPoint.TabIndex = 119;
-            this.B_BreakPoint.Text = "Set BreakPoint";
-            this.B_BreakPoint.UseVisualStyleBackColor = true;
-            this.B_BreakPoint.Click += new System.EventHandler(this.B_BreakPoint_Click);
-            // 
             // L_NTRLog
             // 
             this.L_NTRLog.AutoSize = true;
@@ -86,17 +72,6 @@
             this.L_NTRLog.Size = new System.Drawing.Size(38, 13);
             this.L_NTRLog.TabIndex = 116;
             this.L_NTRLog.Text = "Ready";
-            // 
-            // B_Resume
-            // 
-            this.B_Resume.Enabled = false;
-            this.B_Resume.Location = new System.Drawing.Point(133, 98);
-            this.B_Resume.Name = "B_Resume";
-            this.B_Resume.Size = new System.Drawing.Size(69, 25);
-            this.B_Resume.TabIndex = 118;
-            this.B_Resume.Text = "Resume";
-            this.B_Resume.UseVisualStyleBackColor = true;
-            this.B_Resume.Click += new System.EventHandler(this.B_Resume_Click);
             // 
             // B_Disconnect
             // 
@@ -118,17 +93,6 @@
             this.B_Connect.Text = "Connect";
             this.B_Connect.UseVisualStyleBackColor = true;
             this.B_Connect.Click += new System.EventHandler(this.B_Connect_Click);
-            // 
-            // B_GetSeed
-            // 
-            this.B_GetSeed.Enabled = false;
-            this.B_GetSeed.Location = new System.Drawing.Point(223, 98);
-            this.B_GetSeed.Name = "B_GetSeed";
-            this.B_GetSeed.Size = new System.Drawing.Size(102, 25);
-            this.B_GetSeed.TabIndex = 115;
-            this.B_GetSeed.Text = "Get Initial Seed";
-            this.B_GetSeed.UseVisualStyleBackColor = true;
-            this.B_GetSeed.Click += new System.EventHandler(this.B_GetSeed_Click);
             // 
             // label18
             // 
@@ -165,7 +129,7 @@
             // 
             // IDBot
             // 
-            this.IDBot.Controls.Add(this.B_MassA);
+            this.IDBot.Controls.Add(this.B_MashA);
             this.IDBot.Controls.Add(this.B_A);
             this.IDBot.Controls.Add(this.L_Speed);
             this.IDBot.Controls.Add(this.B_Stop);
@@ -173,7 +137,7 @@
             this.IDBot.Controls.Add(this.label1);
             this.IDBot.Controls.Add(this.StopFrame);
             this.IDBot.Controls.Add(this.StartFrame);
-            this.IDBot.Location = new System.Drawing.Point(12, 140);
+            this.IDBot.Location = new System.Drawing.Point(12, 100);
             this.IDBot.Name = "IDBot";
             this.IDBot.Size = new System.Drawing.Size(323, 110);
             this.IDBot.TabIndex = 122;
@@ -182,13 +146,13 @@
             // 
             // B_MassA
             // 
-            this.B_MassA.Location = new System.Drawing.Point(248, 67);
-            this.B_MassA.Name = "B_MassA";
-            this.B_MassA.Size = new System.Drawing.Size(50, 25);
-            this.B_MassA.TabIndex = 125;
-            this.B_MassA.Text = "MassA";
-            this.B_MassA.UseVisualStyleBackColor = true;
-            this.B_MassA.Click += new System.EventHandler(this.B_MassA_Click);
+            this.B_MashA.Location = new System.Drawing.Point(248, 67);
+            this.B_MashA.Name = "B_MashA";
+            this.B_MashA.Size = new System.Drawing.Size(50, 25);
+            this.B_MashA.TabIndex = 125;
+            this.B_MashA.Text = "MashA";
+            this.B_MashA.UseVisualStyleBackColor = true;
+            this.B_MashA.Click += new System.EventHandler(this.B_MashA_Click);
             // 
             // B_A
             // 
@@ -279,7 +243,7 @@
             // 
             // Speed
             // 
-            this.Speed.Location = new System.Drawing.Point(278, 169);
+            this.Speed.Location = new System.Drawing.Point(278, 129);
             this.Speed.Maximum = new decimal(new int[] {
             5,
             0,
@@ -298,21 +262,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 262);
+            this.ClientSize = new System.Drawing.Size(344, 222);
             this.Controls.Add(this.Speed);
             this.Controls.Add(this.IDBot);
             this.Controls.Add(this.B_Help);
             this.Controls.Add(this.B_OneClick);
-            this.Controls.Add(this.B_BreakPoint);
             this.Controls.Add(this.L_NTRLog);
-            this.Controls.Add(this.B_Resume);
             this.Controls.Add(this.B_Disconnect);
             this.Controls.Add(this.B_Connect);
-            this.Controls.Add(this.B_GetSeed);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.IP);
-            this.MaximumSize = new System.Drawing.Size(360, 300);
-            this.MinimumSize = new System.Drawing.Size(360, 300);
+            this.MaximumSize = new System.Drawing.Size(360, 260);
+            this.MinimumSize = new System.Drawing.Size(360, 260);
             this.Name = "NTRHelper";
             this.Text = "NTRHelper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NTRHelper_FormClosing);
@@ -329,12 +290,9 @@
         #endregion
 
         private System.Windows.Forms.Button B_OneClick;
-        private System.Windows.Forms.Button B_BreakPoint;
         private System.Windows.Forms.Label L_NTRLog;
-        private System.Windows.Forms.Button B_Resume;
         private System.Windows.Forms.Button B_Disconnect;
         private System.Windows.Forms.Button B_Connect;
-        private System.Windows.Forms.Button B_GetSeed;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox IP;
         private System.Windows.Forms.Timer NTR_Timer;
@@ -348,6 +306,6 @@
         private System.Windows.Forms.Label L_Speed;
         private System.Windows.Forms.Button B_A;
         private System.Windows.Forms.NumericUpDown Speed;
-        private System.Windows.Forms.Button B_MassA;
+        private System.Windows.Forms.Button B_MashA;
     }
 }

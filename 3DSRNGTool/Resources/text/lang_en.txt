@@ -255,9 +255,6 @@ B_Abort7 = Abort
 B_OneClick = One Click
 B_Connect = Connect
 B_Disconnect = Disconnect
-B_Breakpoint = Set Break Point
-B_Resume = Resume
-B_GetSeed = Get Initial Seed
 ---
 IDBot = ID Bot
 B_Start = Start
