@@ -751,12 +751,7 @@ namespace Pk3DSRNGTool
 
         public void B_gettiny_Click(object sender, EventArgs e)
         {
-            byte[] tiny = NTRHelper.ntrclient.ReadTiny();
-            if (tiny == null) { Error("Timeout"); return; }
-            ID_Tiny0.Value = BitConverter.ToUInt32(tiny, 0);
-            ID_Tiny1.Value = BitConverter.ToUInt32(tiny, 4);
-            ID_Tiny2.Value = BitConverter.ToUInt32(tiny, 8);
-            ID_Tiny3.Value = BitConverter.ToUInt32(tiny, 12);
+            NTRHelper.ntrclient.ReadTiny("IDSeed");
         }
         #endregion
 
@@ -1346,7 +1341,31 @@ namespace Pk3DSRNGTool
         {
             B_GetTiny.Enabled = IsConnected;
         }
-        public void SetTSV(int tsv) => TSV.Value = tsv;
+        public void parseNTRInfo(string name, object data)
+        {
+            switch (name)
+            {
+                case "Version":
+                    Gameversion.SelectedIndex = (byte)data;
+                    return;
+                case "TSV":
+                    TSV.Value = (int)data;
+                    return;
+                case "Seed":
+                    Seed.Value = (uint)data;
+                    return;
+                case "EggSeed":
+                    Status = (uint[])data;
+                    return;
+                case "IDSeed":
+                    var tiny = (uint[])data;
+                    ID_Tiny0.Value = tiny[0];
+                    ID_Tiny1.Value = tiny[1];
+                    ID_Tiny2.Value = tiny[2];
+                    ID_Tiny3.Value = tiny[3];
+                    return;
+            }
+        }
         private void M_Gen6SeedFinder_Click(object sender, EventArgs e)
         {
             var newform = new Gen6MTSeedFinder();

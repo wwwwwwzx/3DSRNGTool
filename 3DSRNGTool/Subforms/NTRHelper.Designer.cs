@@ -65,7 +65,7 @@
             this.B_OneClick.TabIndex = 120;
             this.B_OneClick.Text = "One Click";
             this.B_OneClick.UseVisualStyleBackColor = true;
-            this.B_OneClick.Click += new System.EventHandler(this.B_OneClick_Click);
+            this.B_OneClick.Click += new System.EventHandler(this.B_Connect_Click);
             // 
             // B_BreakPoint
             // 

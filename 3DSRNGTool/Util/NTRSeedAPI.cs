@@ -15,16 +15,19 @@ namespace Pk3DSRNGTool
         private uint IDOffset;
         private uint NfcOffset;
         private bool DataReady;
-        public bool VersionDetected;
         public byte[] Data { get; private set; }
+        public bool OneClick;
 
         public class InfoEventArgs : EventArgs
         {
             public string info;
+            public object data;
         }
         public event EventHandler<InfoEventArgs> Message;
-        protected virtual void MessageReady(InfoEventArgs e) => Message?.Invoke(this, e);
+        protected virtual void SendMsg(InfoEventArgs e) => Message?.Invoke(this, e);
         private object MsgLock = new object();
+        private void SendMsg(object _data, string _info = null)
+            => SendMsg(new InfoEventArgs { info = _info, data = _data });
 
         private void parseLogMsg(string logmsg)
         {
@@ -40,8 +43,8 @@ namespace Pk3DSRNGTool
                 return false;
             Gameversion = (byte)Array.IndexOf(pnamestr, pname);
             pname = ", pname:" + pname.PadLeft(9);
-            string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 8, 8);
-            Pid = Convert.ToByte(splitlog, 16);
+            string pidaddr = logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
+            Pid = Convert.ToByte(pidaddr, 16);
             switch (Gameversion)
             {
                 case 0:
@@ -57,7 +60,30 @@ namespace Pk3DSRNGTool
                     NfcOffset = 0x3E14C0; // 1.0 offset was 0x3DFFD0
                     WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; IDOffset = 0x330D67D0; break;
             }
-            VersionDetected = true;
+            SendMsg(Gameversion, "Version");
+            if (Gameversion < 4)
+            {
+                if (OneClick)
+                {
+                    DebuggerMode();
+                    SetBreakPoint();
+                }
+                else
+                    DebuggerMode();
+            }
+            if (Gameversion == 4)
+                disconnect();
+            if (Gameversion > 4)
+            {
+                ReadSeed();
+                ReadTiny("EggSeed");
+                ReadTSV();
+            }
+            if (Gameversion < 4)
+            {
+                ReadTiny("IDSeed");
+                ReadTSV();
+            }
             return true;
         }
 
@@ -67,8 +93,20 @@ namespace Pk3DSRNGTool
                 return false;
             string bpid = " lr:";
             string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(bpid, StringComparison.Ordinal) + bpid.Length, 8);
-            var e = new InfoEventArgs { info = "Breakpoint = " + splitlog };
-            lock (MsgLock) { MessageReady(e); }
+            uint address = Convert.ToUInt32(splitlog, 16);
+            switch (address)
+            {
+                case 0:
+                    resume(); break;
+                case 0x07003130: //XY
+                case 0x07003158: //OARS
+                    ReadSeed(); resume();
+                    ReadTSV();
+                    ReadTiny("IDSeed");
+                    break;
+                default:
+                    SendMsg(address, "BreakPoint"); break;
+            }
             return true;
         }
 
@@ -82,18 +120,18 @@ namespace Pk3DSRNGTool
 
         public void SetBreakPoint()
         {
-            DebuggerMode();
             bpadd(BPOffset, "code"); // Add break point
             resume();
+            SendMsg("Breakpoint Set");
         }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4)
         {
+            DataReady = false;
             Read(addr, size, Pid);
             int timeout = 10;
             do { Thread.Sleep(100); timeout--; } while (!DataReady && timeout > 0); // Try thread later
             if (timeout == 0) return null;
-            DataReady = false;
             return Data;
         }
 
@@ -109,7 +147,7 @@ namespace Pk3DSRNGTool
         {
             byte[] command = BitConverter.GetBytes(nfcVal);
             Write(NfcOffset, command, Pid);
-            log("NFC Patched!");
+            SendMsg("NFC Patched!");
         }
 
 #if DEBUG
@@ -123,14 +161,40 @@ namespace Pk3DSRNGTool
 #endif
 
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
-        public byte[] ReadSeed() => SingleThreadRead(Gameversion < 5 ? MTOffset + 4 : SFMTOffset, 0x4);  // MT[0]/SFMT
         public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
-        public int ReadTSV()
+
+        public void ReadSeed()
+        {
+            var seed_ay = SingleThreadRead(Gameversion < 5 ? MTOffset + 4 : SFMTOffset, 0x4);// MT[0]/SFMT
+            if (seed_ay == null)
+                return;
+            uint seed = BitConverter.ToUInt32(seed_ay, 0);
+            SendMsg(seed, "Seed");
+        }
+
+        public void ReadTiny(string Name)
+        {
+            byte[] tiny = ReadTiny();
+            if (tiny == null)
+                return; 
+            uint[] tinyseeds = new[]
+            {
+                BitConverter.ToUInt32(tiny, 0),
+                BitConverter.ToUInt32(tiny, 4),
+                BitConverter.ToUInt32(tiny, 8),
+                BitConverter.ToUInt32(tiny, 12),
+             };
+            SendMsg(tinyseeds, Name);
+        }
+
+        public void ReadTSV()
         {
             var FullID = SingleThreadRead(IDOffset, 0x4);
+            if (FullID == null)
+                return;
             var TID = BitConverter.ToUInt16(FullID, 0);
             var SID = BitConverter.ToUInt16(FullID, 2);
-            return (TID ^ SID) >> 4;
+            SendMsg((TID ^ SID) >> 4, "TSV");
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Pk3DSRNGTool
     public partial class NTRHelper : Form
     {
         public static NtrClient ntrclient;
-        private static int Ver { get => Program.mainform.Ver; set => Program.mainform.Ver = value; }
 
         public NTRHelper()
         {
@@ -16,6 +15,7 @@ namespace Pk3DSRNGTool
             IP.Text = Properties.Settings.Default.IP;
             ntrclient = new NtrClient();
             ntrclient.Connect += OnConnected;
+            ntrclient.Message += OnMsgArrival;
             ntrclient.setServer(IP.Text, 8000);
         }
         private void NTRHelper_FormClosing(object sender, FormClosingEventArgs e)
@@ -27,6 +27,7 @@ namespace Pk3DSRNGTool
 
         private void B_Connect_Click(object sender, EventArgs e)
         {
+            ntrclient.OneClick = sender == B_OneClick;
             L_NTRLog.Text = "Connecting...";
             ntrclient.setServer(IP.Text, 8000);
             try
@@ -48,7 +49,6 @@ namespace Pk3DSRNGTool
 
         private void OnDisconnected(bool Success = true)
         {
-            Waiting = false;
             NTR_Timer.Enabled = false;
             B_Connect.Enabled = true;
             L_NTRLog.Text = Success ? "Disconnected" : "No Connection";
@@ -58,92 +58,28 @@ namespace Pk3DSRNGTool
 
         private void OnConnected(object sender, EventArgs e)
         {
-            NTR_Timer.Enabled = true;
-            L_NTRLog.Text = "Console Connected";
-            B_Connect.Enabled = false;
-            B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
-            Program.mainform.OnConnected_Changed(true);
-            Properties.Settings.Default.IP = IP.Text;
             if (ntrclient.port == 8000)
             {
+                NTR_Timer.Enabled = true;
+                L_NTRLog.Text = "Console Connected";
+                B_Connect.Enabled = false;
+                B_Resume.Enabled = B_GetSeed.Enabled = B_Disconnect.Enabled = true;
+                Program.mainform.OnConnected_Changed(true);
+                Properties.Settings.Default.IP = IP.Text;
                 ntrclient.listprocess();
-                try { UpdateVersion(); } catch { }
             }
         }
 
-        private bool Waiting; // For connection and parameters
-        private void B_OneClick_Click(object sender, EventArgs e)
+        private void OnMsgArrival(object sender, NtrClient.InfoEventArgs e)
         {
-            Waiting = true;
-            B_Connect_Click(null, null);
-            if (Ver < 4)
-                try { OneClick(); } catch { }
-        }
-
-        private async void OneClick()
-        {
-            while (Waiting)
-                await Task.Delay(100);
-
-            // Breakpoint Set
-
-            // Wait for freeze
-            L_NTRLog.Text = "Waiting..";
-            await Task.Delay(Ver < 2 ? 3000 : 4000);
-            ushort lasttableindex = 0;
-            ushort tableindex = 624;
-            while (lasttableindex != tableindex)
+            Invoke(new Action(() =>
             {
-                lasttableindex = tableindex;
-                tableindex = BitConverter.ToUInt16(ntrclient.ReadIndex(), 0);
-                await Task.Delay(500);
-            }
-
-            // Resume
-            Program.mainform.B_gettiny_Click(null, null);
-            B_Resume_Click(null, null);
-            Program.mainform.SetTSV(ntrclient.ReadTSV());
-
-            // Wait for freeze
-            await Task.Delay(Ver < 2 ? 4000 : 5000);
-            tableindex = 624;
-            while (lasttableindex != tableindex)
-            {
-                lasttableindex = tableindex;
-                tableindex = BitConverter.ToUInt16(ntrclient.ReadIndex(), 0);
-                await Task.Delay(500);
-            }
-
-            // the console reaches the breakpoint
-            B_GetSeed_Click(null, null);
-            B_Disconnect_Click(null, null);
-        }
-
-        private async void UpdateVersion()
-        {
-            while (!ntrclient.VersionDetected)
-                await Task.Delay(100);
-            Ver = ntrclient.Gameversion;
-            B_BreakPoint.Enabled = Ver < 4;
-            ntrclient.VersionDetected = false;
-            if (Ver > 4)
-            {
-                Program.mainform.SyncGen7EggSeed(null, null);
-                Program.mainform.SetTSV(ntrclient.ReadTSV());
-                B_GetSeed_Click(null, null);
-            }
-            if (Waiting) // One Click Mode
-            {
-                if (Ver < 4)
-                {
-                    B_BreakPoint_Click(null, null);
-                    Waiting = false;
-                }
-                else
-                    B_Disconnect_Click(null, null);
-                return;
-            }
-            Program.mainform.SetTSV(ntrclient.ReadTSV());
+                Program.mainform.parseNTRInfo(e.info, e.data);
+                if (e.info == null)
+                    L_NTRLog.Text = (string)e.data;
+                if (e.info == "Version" && (byte)e.data < 4)
+                    B_BreakPoint.Enabled = true;
+            }));
         }
 
         private void NTRTick(object sender, EventArgs e)
@@ -153,16 +89,7 @@ namespace Pk3DSRNGTool
 
         private void B_BreakPoint_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ntrclient.SetBreakPoint();
-                L_NTRLog.Text = "Break Point Set";
-            }
-            catch
-            {
-                OnDisconnected(false);
-                Error("Unable to connect the console.");
-            }
+            try { ntrclient.SetBreakPoint(); ntrclient.resume(); } catch { }
         }
 
         private void B_Resume_Click(object sender, EventArgs e)
@@ -172,10 +99,7 @@ namespace Pk3DSRNGTool
 
         private void B_GetSeed_Click(object sender, EventArgs e)
         {
-            byte[] seed_ay = ntrclient.ReadSeed();
-            if (seed_ay == null) { Error("Timeout"); return; }
-            Program.mainform.globalseed = BitConverter.ToUInt32(seed_ay, 0);
-            if (Ver < 4) ntrclient.resume();
+            try { ntrclient.ReadSeed(); ntrclient.resume(); } catch { }
         }
 
         private readonly static string[] HElP_STR =
@@ -216,6 +140,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
+                int Ver = Program.mainform.Ver;
                 if (Ver == 4)
                     return;
                 if (Ver < 2)
