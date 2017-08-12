@@ -70,12 +70,14 @@ namespace Pk3DSRNGTool
             Method_Changed();
         }
 
+        private readonly int[] getmethoddelay = { 0, 0, 16, 14, 0 };
+
         public TinyTimeline gettimeline()
         {
             var line = new TinyTimeline()
             {
                 Tinyrng = new TinyMT(Gen6Tiny),
-                Startingframe = (int)Frame1.Value,
+                Startingframe = (int)Frame1.Value + getmethoddelay[Method.SelectedIndex],
                 Maxframe = (int)Frame_max.Value,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
@@ -102,7 +104,7 @@ namespace Pk3DSRNGTool
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
-            if (Method.SelectedIndex == 2 && list[index]._sync)
+            if (2 <= Method.SelectedIndex && Method.SelectedIndex <= 3 && list[index]._sync)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
         }
 
@@ -123,8 +125,8 @@ namespace Pk3DSRNGTool
             tiny_friendsafari.Visible = Method.SelectedIndex == 0;
             tiny_high16bit.Visible = Method.SelectedIndex == 1;
             tiny_slot.Visible = Method.SelectedIndex == 1;
-            tiny_portalsync.Visible = Method.SelectedIndex == 2;
-            tiny_sync.Visible = Method.SelectedIndex != 2;
+            tiny_portalsync.Visible = Method.SelectedIndex == 2 || Method.SelectedIndex == 3;
+            tiny_sync.Visible = Method.SelectedIndex != 2 && Method.SelectedIndex != 3;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -145,6 +147,7 @@ namespace Pk3DSRNGTool
         {
             Parameters.Visible = true;
             TTTToolTip.RemoveAll();
+            Type1.SelectedValue = Method.SelectedIndex == 3 ? 4 : 0;
             switch (Method.SelectedIndex)
             {
                 case 0:
@@ -160,6 +163,7 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
                 case 2:
+                case 3:
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
                     Parameters.Value = 1;

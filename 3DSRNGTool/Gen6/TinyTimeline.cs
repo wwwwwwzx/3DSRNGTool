@@ -104,15 +104,25 @@ namespace Pk3DSRNGTool
             switch (Method)
             {
                 case 0: MarkFS(); break;
-                case 2: MarkSync(); break;
+                case 2: MarkSync(IsSoaring: false); break;
+                case 3: MarkSync(IsSoaring: true); break;
             }
         }
 
         private int PM_Num => Parameter;
         private int SlotNum => Parameter;
 
-        public void MarkSync()
+        public void MarkSync(bool IsSoaring)
         {
+            if (IsSoaring)
+            {
+                int delay = 3 * PM_Num;
+                for (int i = 0; i < results.Count - delay; i++)
+                {
+                    results[i]._sync = results[i + delay].rand2;
+                }
+                return;
+            }
             int delay1 = 3 * PM_Num;
             int delay2 = 4 * PM_Num;
             int max = results.Count - delay2;

@@ -417,7 +417,8 @@
             this.Method.Items.AddRange(new object[] {
             "Friend Safari",
             "PokeRadar",
-            "Portal/Soaring",
+            "Portal",
+            "Soaring",
             "Instant Sync"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
