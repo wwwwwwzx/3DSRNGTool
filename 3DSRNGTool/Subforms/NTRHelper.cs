@@ -102,7 +102,8 @@ namespace Pk3DSRNGTool
             "Gen7: Proceed the game normally, stop at title screen or continue screen. Enable NTR Debugger via NTR menu (Press X+Y) \n"+
             "(4) Click 'One Click' button, the tool will try to connect the console and the game will proceed normally.\n"+
             "(5) If gen7 skip this step. Press A or Select/Start to skip the title screen until you get to the continue screen.\n"+
-            "(6) All done. The tool will help you grab the initial seed (also egg seed for gen7) and wrap up everything. Enjoy!\n\n"+
+            "(6) All done. The tool will help you grab the initial seed (also egg seed and TSV) and wrap up everything. Enjoy!\n\n"+
+            "(7) If you want to reset the inital seed, just press B at continue screen, and go through title sreen again. This tool will get the initial seed seemlessly"+
             "- You can also keep the connection via 'Connect' button, and double click one of the labels of TinyMT status textboxes (in TTT or Egg RNG tab) to sync them.\n"+
             "- Moon version game will be recognized as Sun, it's normal.",
 

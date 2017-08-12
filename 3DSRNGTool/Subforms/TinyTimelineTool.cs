@@ -70,14 +70,12 @@ namespace Pk3DSRNGTool
             Method_Changed();
         }
 
-        private readonly int[] getmethoddelay = { 0, 0, 16, 0 };
-
         public TinyTimeline gettimeline()
         {
             var line = new TinyTimeline()
             {
                 Tinyrng = new TinyMT(Gen6Tiny),
-                Startingframe = (int)Frame1.Value + getmethoddelay[Method.SelectedIndex],
+                Startingframe = (int)Frame1.Value,
                 Maxframe = (int)Frame_max.Value,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);

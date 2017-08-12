@@ -73,7 +73,7 @@ namespace Pk3DSRNGTool
                 newdata.rand = Tinyrng.Nextuint();
                 switch (call.type)
                 {
-                    case 0: // Blink 0x72D9B0
+                    case 0: // Blink 0x72B9D0
                         Status.Addfront(Currentframe, newdata.rand < 0x55555556 ? 1 : 2);
                         break;
                     case 1: // Blink 0x72B9FC

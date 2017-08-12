@@ -3,14 +3,16 @@
 This is an RNG Tool for main 3DS Pokemon games. Some parts should work with [PokeCalcNTR](https://gbatemp.net/threads/pokecalcntr-for-gen-6-the-rng-tool-suite-for-the-3ds.473221/) using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG. including stationary Pokemon(95%), Mystery Gift Pokemon(100%), wild Pokemon(60%), Eggs(100%) and ID(90%).
+- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, wild Pokemon(60%), Eggs and ID(90%).
+- Transporter RNG for transferred Virtual Console Pokemon.
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
-- Nidoran line/Volbeat/Illumise gender prediction and shortest accept/reject path solution for Gen7 Egg RNG.
+- More useful tweaks for Gen7 egg RNG.
 
 ## User Guide and Useful References
 
 - [Final Screen](#final-screen) you should wait at and make the final key pressing.
+- [TinyMT Timeline Setting](https://github.com/wwwwwwzx/3DSRNGTool/wiki/TinyMT-Timeline-Spec-Sheet)
 - [Reddit Gen 6 RNG Megathread](https://www.reddit.com/r/pokemonrng/comments/6fhnb8/gen_6_rng_megathread/)
 - [ProjectPokemon Events Gallery](https://github.com/projectpokemon/EventsGallery)
 
@@ -100,8 +102,8 @@ Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!
 
 ## ID Bot Usage
 - Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) or InputRedirecionNTR.cia
-- Put your target frame and starting frame in `ID bot` box.
-- Set proper `bot speed` according to your internet condition.
+- Put your starting frame and target frame in `ID bot` box.
+- Set proper `Bot speed` according to your internet condition.
 - Use `MashA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
 ORAS upper screen:  
 ![](https://i.imgur.com/kD9BbAi.png)  
