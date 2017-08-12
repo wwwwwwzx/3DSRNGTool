@@ -73,19 +73,19 @@ namespace Pk3DSRNGTool
                 newdata.rand = Tinyrng.Nextuint();
                 switch (call.type)
                 {
-                    case 0:
+                    case 0: // Blink 0x72D9B0
                         Status.Addfront(Currentframe, newdata.rand < 0x55555556 ? 1 : 2);
                         break;
-                    case 1:
+                    case 1: // Blink 0x72B9FC
                         Status.Add(Currentframe + getcooldown2(newdata.rand), 2);
                         break;
-                    case 2:
+                    case 2: // Blink 0x72B9E4
                         Status.Add(Currentframe + getcooldown1(newdata.rand), 0);
                         break;
-                    case 3:
+                    case 3: // Strech 0x70B108
                         Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
                         break;
-                    case 4:
+                    case 4: // Soaring 0x726ED4
                         Status.Add(Currentframe + getcooldown4(newdata.rand), 4);
                         break;
                 }
@@ -104,39 +104,19 @@ namespace Pk3DSRNGTool
             switch (Method)
             {
                 case 0: MarkFS(); break;
-                case 2: MarkSync(IsSoaring: false); break;
-                case 3: MarkSync(IsSoaring: true); break;
+                case 2: MarkSync(); break;
             }
         }
 
         private int PM_Num => Parameter;
         private int SlotNum => Parameter;
 
-        public void MarkSync(bool IsSoaring)
+        public void MarkSync()
         {
-            if (IsSoaring)
+            int delay = 3 * PM_Num;
+            for (int i = 0; i < results.Count - delay; i++)
             {
-                int delay = 3 * PM_Num;
-                for (int i = 0; i < results.Count - delay; i++)
-                {
-                    results[i]._sync = results[i + delay].rand2;
-                }
-                return;
-            }
-            int delay1 = 3 * PM_Num;
-            int delay2 = 4 * PM_Num;
-            int max = results.Count - delay2;
-            for (int i = 0; i < max; i++)
-            {
-                results[i]._sync = true;
-                for (int j = i + delay1; j <= i + delay2; j++)
-                {
-                    if (results[j].rand > 0x7FFFFFFF)
-                    {
-                        results[i]._sync = false;
-                        break;
-                    }
-                }
+                results[i]._sync = results[i + delay].rand2;
             }
         }
 

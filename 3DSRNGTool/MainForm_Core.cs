@@ -85,7 +85,7 @@ namespace Pk3DSRNGTool
                     continue;
                 for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
                 {
-                    RNGPool.tinyframe = line.FindFrame(j + RNGPool.DelayTime);
+                    RNGPool.tinyframe = line.FindFrame(j + 16);
                     RNGResult result = RNGPool.Generate6();
                     if (j < min || !filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
                         continue;
