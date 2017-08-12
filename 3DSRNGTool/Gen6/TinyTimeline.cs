@@ -82,11 +82,13 @@ namespace Pk3DSRNGTool
                     case 2: // Blink 0x72B9E4
                         Status.Add(Currentframe + getcooldown1(newdata.rand), 0);
                         break;
-                    case 3: // Strech 0x70B108
+                    case 3: // Stretch 0x70B108
                         Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
                         break;
                     case 4: // Soaring 0x726ED4
                         Status.Add(Currentframe + getcooldown4(newdata.rand), 4);
+                        break;
+                    case 5: // Cry 0x3F05BC
                         break;
                 }
                 results.Add(newdata);
@@ -114,10 +116,8 @@ namespace Pk3DSRNGTool
         public void MarkSync()
         {
             int delay = 3 * PM_Num;
-            for (int i = 0; i < results.Count - delay; i++)
-            {
-                results[i]._sync = results[i + delay].rand2;
-            }
+            for (int i = 0, j = delay; j < results.Count - 1; i++, j++)
+                results[i].csync = results[j].rand2 && results[j + 1].rand2;
         }
 
         public void MarkFS()

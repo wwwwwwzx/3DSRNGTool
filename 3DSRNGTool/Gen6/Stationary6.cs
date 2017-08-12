@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public int Target; // Index of target pkm
         public string GenderList; // Gender list of Bank
         public bool InstantSync; // Call Sync Function once battle starts, otherwise advance 3 * number of party pokemon, will be affected by pokerus(i.e better without it)
-        private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?._sync) == true;
+        private bool tinysync => (InstantSync ? RNGPool.tinyframe?.rand2 : RNGPool.tinyframe?.csync) == true;
         private bool getSync => AlwaysSync || tinysync;
 
         public override RNGResult Generate()

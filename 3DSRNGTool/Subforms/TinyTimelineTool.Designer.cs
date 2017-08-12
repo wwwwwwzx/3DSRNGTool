@@ -69,7 +69,7 @@
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_friendsafari = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_portalsync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_cutscenesync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -417,7 +417,7 @@
             this.Method.Items.AddRange(new object[] {
             "Friend Safari",
             "PokeRadar",
-            "Portal/Soaring",
+            "Cutscenes Sync",
             "Instant Sync"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
@@ -481,7 +481,7 @@
             this.tiny_index,
             this.tiny_sync,
             this.tiny_friendsafari,
-            this.tiny_portalsync,
+            this.tiny_cutscenesync,
             this.tiny_slot,
             this.tiny_high16bit,
             this.tiny_rand100,
@@ -547,11 +547,11 @@
             // 
             // tiny_portalsync
             // 
-            this.tiny_portalsync.DataPropertyName = "PortalSync";
-            this.tiny_portalsync.HeaderText = "PSync";
-            this.tiny_portalsync.Name = "tiny_portalsync";
-            this.tiny_portalsync.ReadOnly = true;
-            this.tiny_portalsync.Width = 45;
+            this.tiny_cutscenesync.DataPropertyName = "CSync";
+            this.tiny_cutscenesync.HeaderText = "CSync";
+            this.tiny_cutscenesync.Name = "tiny_cutscenesync";
+            this.tiny_cutscenesync.ReadOnly = true;
+            this.tiny_cutscenesync.Width = 45;
             // 
             // tiny_slot
             // 
@@ -667,7 +667,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_friendsafari;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_portalsync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_cutscenesync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;

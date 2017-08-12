@@ -14,8 +14,8 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
-            int[] typelist = { -1, 0, 2, 3, 4 };
-            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", };
+            int[] typelist = { -1, 0, 2, 3, 4, 5 };
+            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Cry" };
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
             Type1.DisplayMember = "Text";
             Type1.ValueMember = "Value";
@@ -102,7 +102,7 @@ namespace Pk3DSRNGTool
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
-            if (Method.SelectedIndex == 2 && list[index]._sync)
+            if (Method.SelectedIndex == 2 && list[index].csync)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
         }
 
@@ -123,8 +123,8 @@ namespace Pk3DSRNGTool
             tiny_friendsafari.Visible = Method.SelectedIndex == 0;
             tiny_high16bit.Visible = Method.SelectedIndex == 1;
             tiny_slot.Visible = Method.SelectedIndex == 1;
-            tiny_portalsync.Visible = Method.SelectedIndex == 2;
-            tiny_sync.Visible = !tiny_portalsync.Visible;
+            tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
+            tiny_sync.Visible = !tiny_cutscenesync.Visible;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
