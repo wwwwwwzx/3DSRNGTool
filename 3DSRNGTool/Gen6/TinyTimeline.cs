@@ -86,7 +86,7 @@ namespace Pk3DSRNGTool
                         Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
                         break;
                     case 4:
-                        Status.Add(Currentframe + 180, 4);
+                        Status.Add(Currentframe + getcooldown4(newdata.rand), 4);
                         break;
                 }
                 results.Add(newdata);
@@ -143,5 +143,6 @@ namespace Pk3DSRNGTool
         private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
         private static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
         private static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
+        private static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
     }
 }
