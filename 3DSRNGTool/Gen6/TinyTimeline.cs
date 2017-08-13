@@ -115,9 +115,18 @@ namespace Pk3DSRNGTool
 
         public void MarkSync()
         {
-            int delay = 3 * PM_Num;
-            for (int i = 0, j = delay; j < results.Count - 1; i++, j++)
-                results[i].csync = results[j].rand2 && results[j + 1].rand2;
+            int delay1 = 3 * PM_Num;
+            int delay2 = 4 * PM_Num;
+            int pos = PM_Num + 1; // Possible advance
+            int weight = pos * pos;
+            int max = results.Count - delay2;
+            for (int i = 0; i < max; i++)
+            {
+                for (int j = pos; j > 0; j--)
+                    if (results[i + delay2 - j + 1].rand2)
+                        results[i].csync += 2 * j - 1;
+                results[i].csync = (byte)((results[i].csync * 100) / weight);
+            }
         }
 
         public void MarkFS()

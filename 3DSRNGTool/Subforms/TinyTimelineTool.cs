@@ -102,7 +102,7 @@ namespace Pk3DSRNGTool
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
-            if (Method.SelectedIndex == 2 && list[index].csync)
+            if (Method.SelectedIndex == 2 && list[index].csync == 100)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
         }
 
