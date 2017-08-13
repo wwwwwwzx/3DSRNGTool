@@ -52,7 +52,7 @@ Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!
 
 ##### XY
 - __Mewtwo__: _Mew!_
-- __Xerneas/Yveltal__: _Xshaa!/Ygaaa!_
+- __Xerneas/Yveltal__: No dialogue.\* Defeat it and rebattle to avoid long delay.
 - __Zygarde__: _Zzzz-dddd-aaaaaa!_
 - __Kanto Legendary Birds__: No dialogue.\* Press arrow key to run to it.
 - __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key to run to it.
