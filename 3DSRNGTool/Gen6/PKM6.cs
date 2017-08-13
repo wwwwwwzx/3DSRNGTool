@@ -9,7 +9,7 @@
 
         public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1;
-        public bool InstantSync => Delay == 0; // To-do
+        public bool InstantSync;
         private bool _ShinyLocked;
 
         public readonly static PokemonList Default = new PokemonList
@@ -32,12 +32,12 @@
                     new PKM6 { Species = 380, Level = 30, Version = GameVersion.AS, Ability = 1, Gift = true, }, // Latias
                     new PKM6 { Species = 381, Level = 30, Version = GameVersion.OR, Ability = 1, Gift = true, }, // Latios
 
-                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, }, // Latios
-                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, }, // Latias
+                    new PKM6 { Species = 381, Level = 30, Version = GameVersion.AS, InstantSync = true, }, // Latios
+                    new PKM6 { Species = 380, Level = 30, Version = GameVersion.OR, InstantSync = true, }, // Latias
 
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300, Unstable= true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300, Unstable= true, }, // Groudon
-                    new PKM6 { Species = 384, Level = 70, ShinyLocked = true, }, // Rayquaza
+                    new PKM6 { Species = 384, Level = 70, ShinyLocked = true, InstantSync = true, }, // Rayquaza
                     new PKM6 { Species = 386, Level = 80, ShinyLocked = true, Delay = 300, }, // Deoxys
 
                     new PKM6 { Species = 377, Level = 40, Delay = 158, }, // Regirock
@@ -123,11 +123,11 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM6 { Species = 352, Level = 30, }, // Kecleon @ Route 120
-                    new PKM6 { Species = 352, Level = 40, Gender = 2,}, // Kecleon @ Lavaridge
-                    new PKM6 { Species = 352, Level = 45, Ability = 4, }, // Kecleon @ Mossdeeps
-                    new PKM6 { Species = 101, Level = 40, Delay = 122, }, // Electrode @ Magma Hideout, Aqua Hideout
-                    new PKM6 { Species = 100, Level = 20, Delay = 120, }, // Voltorb @ Route 119
+                    new PKM6 { Species = 352, Level = 30, InstantSync = true, }, // Kecleon @ Route 120
+                    new PKM6 { Species = 352, Level = 40, Gender = 2, InstantSync = true,}, // Kecleon @ Lavaridge
+                    new PKM6 { Species = 352, Level = 45, Ability = 4, InstantSync = true, }, // Kecleon @ Mossdeeps
+                    new PKM6 { Species = 101, Level = 40, Delay = 122, InstantSync = true, }, // Electrode @ Magma Hideout, Aqua Hideout
+                    new PKM6 { Species = 100, Level = 20, Delay = 120, InstantSync = true, }, // Voltorb @ Route 119
                     new PKM6 { Species = 442, Level = 50, }, // Spiritomb @ Route 120
                     new PKM6 { Species = 265, Level = 03, Delay = 14, ShinyLocked = true, }, // Wurmple
                     new PKM6 { Species = 261, Level = 05, Delay = 8, }, // Poochyena (DexNav)
