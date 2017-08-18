@@ -117,9 +117,9 @@
     <Compile Include="Gen7\PKMW7.cs" />
     <Compile Include="Gen7\ResultE7.cs" />
     <Compile Include="Gen7\ResultW7.cs" />
-    <Compile Include="Gen7\SMEncounter\EncounterArea7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Event7.cs" />
-    <Compile Include="Gen7\SMEncounter\LocationTable7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Gen7\ModelStatus.cs" />
     <Compile Include="Gen7\PKM7.cs" />
     <Compile Include="Gen7\Result7.cs" />
