@@ -1,12 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Collections.Generic;
 using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
-    public class TinyTimeline
+    public class TinyStatus
     {
-        #region subclass
+        private List<TinyCall> list = new List<TinyCall>();
+        public TinyMT Tinyrng;
+        public int Currentframe;
+        public byte csync;
+
+        public TinyStatus(uint[] seed, int Current = 0)
+        {
+            Tinyrng = new TinyMT(seed);
+            Currentframe = Current;
+        }
+
+        public uint Nextuint() => Tinyrng.Nextuint();
+
         private class TinyCall
         {
             public int frame;
@@ -18,48 +30,83 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private class TinyCallList
+        public void Addfront(int f, int t) => list.Add(new TinyCall(f, t));
+        public void Add(int f, int t)
         {
-            private List<TinyCall> list = new List<TinyCall>();
+            if (t < 0) return;
+            list.Add(new TinyCall(f, t));
+            list = list.OrderByDescending(e => e.frame).ToList();
+        }
 
-            public void Addfront(int f, int t) => list.Add(new TinyCall(f, t));
+        public void AdvanceMT(int Delay)
+        {
+            int Target = Currentframe + Delay;
+            while (list.Last().frame < Target)
+                AdvancetoNextCall(out uint dumb);
+            Currentframe = Target;
+        }
 
-            public void Add(int f, int t)
+        public void AdvancetoNextCall(out uint rand)
+        {
+            rand = Tinyrng.Nextuint();
+            if (list.Count == 0)
+                return;
+            Currentframe = list.Last().frame;
+            var calltype = list.Last().type;
+            list.RemoveAt(list.Count - 1);
+            switch (calltype)
             {
-                if (t < 0) return;
-                list.Add(new TinyCall(f, t));
-                list = list.OrderByDescending(e => e.frame).ToList();
-            }
-
-            public TinyCall First()
-            {
-                var tmp = new TinyCall(list.Last().frame, list.Last().type);
-                list.RemoveAt(list.Count - 1);
-                return tmp;
+                case 0: // Blink 0x72B9D0
+                    Addfront(Currentframe, rand < 0x55555556 ? 1 : 2);
+                    break;
+                case 1: // Blink 0x72B9FC
+                    Add(Currentframe + getcooldown2(rand), 2);
+                    break;
+                case 2: // Blink 0x72B9E4
+                    Add(Currentframe + getcooldown1(rand), 0);
+                    break;
+                case 3: // Stretch 0x70B108
+                    Add(Currentframe + getcooldown3(rand), 3);
+                    break;
+                case 4: // Soaring 0x726ED4
+                    Add(Currentframe + getcooldown4(rand), 4);
+                    break;
+                case 5: // Cry 0x3F05BC
+                    break;
+                case 6: // Groudon/Kyogre 0x7BE438
+                    Add(Currentframe + getcooldown5(rand), 6);
+                    break;
             }
         }
-        #endregion
 
+        private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
+        private static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
+        private static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
+        private static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
+        private static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
+    }
+
+    public class TinyTimeline
+    {
         public const int Buffer = 100;
 
         public int Startingframe;
         public int Maxframe;
         public byte Method;
         public int Parameter;
-        private TinyCallList Status = new TinyCallList();
-        public TinyMT Tinyrng;
+        public TinyStatus Status;
+        public void Add(int f, int t) => Status.Add(f, t);
+        public uint getrand => Status.Tinyrng.Nextuint();
+        public int Currentframe { get => Status.Currentframe; set => Status.Currentframe = value; }
+        public uint[] State => (uint[])Status.Tinyrng.status.Clone();
 
         public int TinyLength => results.Count - Buffer;
-        public void Add(int f, int t) => Status.Add(f, t);
-        public uint getrand => Tinyrng.Nextuint();
-        public uint[] State => (uint[])Tinyrng.status.Clone();
-
         public List<Frame_Tiny> results;
         public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
 
         public void Generate()
         {
-            int Currentframe = Startingframe - 2;
+            Currentframe = Startingframe - 2;
             int i = 0;
             results = new List<Frame_Tiny>();
             while (Currentframe <= Maxframe)
@@ -68,29 +115,8 @@ namespace Pk3DSRNGTool
                 newdata.Index = i++;
                 newdata.state = State;
                 newdata.framemin = Currentframe;
-                var call = Status.First();
-                Currentframe = newdata.framemax = call.frame;
-                newdata.rand = Tinyrng.Nextuint();
-                switch (call.type)
-                {
-                    case 0: // Blink 0x72B9D0
-                        Status.Addfront(Currentframe, newdata.rand < 0x55555556 ? 1 : 2);
-                        break;
-                    case 1: // Blink 0x72B9FC
-                        Status.Add(Currentframe + getcooldown2(newdata.rand), 2);
-                        break;
-                    case 2: // Blink 0x72B9E4
-                        Status.Add(Currentframe + getcooldown1(newdata.rand), 0);
-                        break;
-                    case 3: // Stretch 0x70B108
-                        Status.Add(Currentframe + getcooldown3(newdata.rand), 3);
-                        break;
-                    case 4: // Soaring 0x726ED4
-                        Status.Add(Currentframe + getcooldown4(newdata.rand), 4);
-                        break;
-                    case 5: // Cry 0x3F05BC
-                        break;
-                }
+                Status.AdvancetoNextCall(out newdata.rand);
+                newdata.framemax = Currentframe;
                 results.Add(newdata);
             }
             int imax = i + Buffer;
@@ -101,7 +127,7 @@ namespace Pk3DSRNGTool
                     state = State,
                     framemin = Currentframe,
                     framemax = Currentframe,
-                    rand = Tinyrng.Nextuint(),
+                    rand = getrand,
                 });
             switch (Method)
             {
@@ -138,10 +164,5 @@ namespace Pk3DSRNGTool
                     results[i]._fs = (byte)(((results[i + 2].rand * SlotNum) >> 32) + 1);
             }
         }
-
-        private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
-        private static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
-        private static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
-        private static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
     }
 }

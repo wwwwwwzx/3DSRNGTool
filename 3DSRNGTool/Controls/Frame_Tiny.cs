@@ -13,8 +13,7 @@ namespace Pk3DSRNGTool
         public uint rand;
         public int framemin;
         public int framemax;
-        
-        public TinyMT getTiny => new TinyMT(state);
+
         public bool unhitable => framemin == framemax;
         public bool rand2 => rand < 0x80000000;
 

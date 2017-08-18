@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
         {
             var line = new TinyTimeline()
             {
-                Tinyrng = new TinyMT(Gen6Tiny),
+                Status = new TinyStatus(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
                 Maxframe = (int)Frame_max.Value,
             };

@@ -72,20 +72,20 @@ namespace Pk3DSRNGTool
                 rng.Next();
             // Prepare
             getsetting(rng);
-            var line = TTT.gettimeline();
-            line.Maxframe = max;
-            line.Generate();
-            int listlength = line.TinyLength;
+            RNGPool.timeline = TTT.gettimeline();
+            RNGPool.timeline.Maxframe = max;
+            RNGPool.timeline.Generate();
+            int listlength = RNGPool.timeline.TinyLength;
             for (int i = 0; i < listlength; i++)
             {
-                var tinyframe = line.results[i];
+                var tinyframe = RNGPool.timeline.results[i];
                 if (tinyframe.unhitable)
                     continue;
                 if (tinyframe.framemax < min)
                     continue;
                 for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
                 {
-                    RNGPool.tinyframe = line.FindFrame(j + 16);
+                    RNGPool.tinystatus = new TinyStatus(seed: tinyframe.state, Current: j);
                     RNGResult result = RNGPool.Generate6();
                     if (j < min || !filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
                         continue;

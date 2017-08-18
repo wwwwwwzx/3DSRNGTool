@@ -9,20 +9,19 @@ namespace Pk3DSRNGTool
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
-
-        private static TinyMT tiny;
-        private static uint getTinyRand => tiny.Nextuint();
+        
+        private static uint getTinyRand => RNGPool.tinystatus.Nextuint();
         private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
         private static void tiny_Advance(int n)
         {
             for (int i = n; i > 0; i--)
-                tiny.Nextuint();
+                RNGPool.tinystatus.Tinyrng.Next();
         }
 
         private bool getSync => getTinyRand < 0x80000000;
         private void Prepare(ResultW6 rt)
         {
-            if (null == (tiny = RNGPool.tinyframe?.getTiny))
+            if (RNGPool.tinystatus == null)
             {
                 rt.Slot = slot = 1;
                 return;
@@ -80,7 +79,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 5; i++)
                 results[i] = new ResultW6();
             bool Sync = false;
-            if (null != (tiny = RNGPool.tinyframe?.getTiny))
+            if (RNGPool.tinystatus == null)
             {
                 Sync = getSync;
                 MarkHA(results);

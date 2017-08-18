@@ -42,7 +42,8 @@ namespace Pk3DSRNGTool.Core
             RandList = null;
             RandList64 = null;
             RNGStateStr = null;
-            tinyframe = null;
+            tinystatus = null;
+            timeline = null;
         }
 
         public static void CreateBuffer(int buffersize, IRNG rng)
@@ -148,7 +149,8 @@ namespace Pk3DSRNGTool.Core
         }
         #region Gen6 Tiny Timeline
 
-        public static Frame_Tiny tinyframe;
+        public static TinyStatus tinystatus;
+        public static TinyTimeline timeline;
 
         #endregion
 
