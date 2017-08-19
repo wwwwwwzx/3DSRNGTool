@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -14,6 +15,7 @@ namespace Pk3DSRNGTool
         private uint TinyOffset;
         private uint IDOffset;
         private uint NfcOffset;
+        private uint TinyBPOffset;
         private bool DataReady;
         public byte[] Data { get; private set; }
         public bool OneClick;
@@ -49,9 +51,11 @@ namespace Pk3DSRNGTool
             {
                 case 0:
                 case 1:
+                    TinyBPOffset = 0x174DB4;
                     BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x08c52808; IDOffset = 0x08C79C3C; break;
                 case 2:
                 case 3:
+                    TinyBPOffset = 0x175CEC;
                     BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
                 case 4:
                     break;
@@ -73,6 +77,7 @@ namespace Pk3DSRNGTool
             if (Gameversion > 4)
             {
                 ReadTiny("EggSeed");
+                ReadSeed();
                 ReadTSV();
                 if (OneClick)
                     SendMsg(null, "Disconnect");
@@ -119,10 +124,14 @@ namespace Pk3DSRNGTool
 
         public void SetBreakPoint()
         {
+            bpadd(TinyBPOffset, "code"); bpdis(2);
             bpadd(BPOffset, "code"); // Add break point
             SendMsg("Breakpoint Set");
             resume();
         }
+
+        public void EnableBP() => bpena(2);
+        public void DisableBP() { bpdis(2); resume(); }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4)
         {
@@ -148,16 +157,6 @@ namespace Pk3DSRNGTool
             Write(NfcOffset, command, Pid);
             SendMsg("NFC Patched!");
         }
-
-#if DEBUG
-        public void WriteTiny(uint[] tiny)
-        {
-            Write(TinyOffset, BitConverter.GetBytes(tiny[0]), Pid);
-            Write(TinyOffset + 4, BitConverter.GetBytes(tiny[1]), Pid);
-            Write(TinyOffset + 8, BitConverter.GetBytes(tiny[2]), Pid);
-            Write(TinyOffset + 12, BitConverter.GetBytes(tiny[3]), Pid);
-        }
-#endif
 
         public byte[] ReadIndex() => SingleThreadRead(MTOffset, 0x2);
         public byte[] ReadTiny() => SingleThreadRead(TinyOffset, 0x10);
@@ -186,6 +185,20 @@ namespace Pk3DSRNGTool
             SendMsg(tinyseeds, Name);
         }
 
+        public TinyMT ReadTinyRNG()
+        {
+            byte[] tiny = ReadTiny();
+            if (tiny == null)
+                return null;
+            return new TinyMT(new[]
+            {
+                BitConverter.ToUInt32(tiny, 0),
+                BitConverter.ToUInt32(tiny, 4),
+                BitConverter.ToUInt32(tiny, 8),
+                BitConverter.ToUInt32(tiny, 12),
+             });
+        }
+
         public void ReadTSV()
         {
             var FullID = SingleThreadRead(IDOffset, 0x4);
@@ -194,6 +207,32 @@ namespace Pk3DSRNGTool
             var TID = BitConverter.ToUInt16(FullID, 0);
             var SID = BitConverter.ToUInt16(FullID, 2);
             SendMsg((TID ^ SID) >> 4, "TSV");
+        }
+
+        public const int FrameMax = 1000000000;
+        public int getCurrentFrame()
+        {
+            try
+            {
+                MersenneTwister rng = new MersenneTwister(Program.mainform.globalseed);
+                var RAM = SingleThreadRead(MTOffset, 0x8);
+                int Index = BitConverter.ToUInt16(RAM, 0);
+                uint Status = BitConverter.ToUInt32(RAM, 4);
+                var Period = 0;
+                for (int i = 0; i < 624; i++)
+                    rng.Next();
+                while (Status.ToString("X8") != rng.CurrentState().ToString() && Period * 624 < FrameMax)
+                {
+                    for (int i = 0; i < 624; i++)
+                        rng.Next();
+                    Period++;
+                }
+                return Math.Min(Period * 624 + Index - 1, FrameMax);
+            }
+            catch
+            {
+                return FrameMax;
+            }
         }
     }
 }

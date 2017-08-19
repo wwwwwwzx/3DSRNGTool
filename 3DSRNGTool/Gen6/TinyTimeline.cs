@@ -57,13 +57,13 @@ namespace Pk3DSRNGTool
             switch (calltype)
             {
                 case 0: // Blink 0x72B9D0
-                    Addfront(Currentframe, rand < 0x55555556 ? 1 : 2);
+                    Addfront(Currentframe, rand > 0x55555555 ? 1 : 2);
                     break;
-                case 1: // Blink 0x72B9FC
-                    Add(Currentframe + getcooldown2(rand), 2);
-                    break;
-                case 2: // Blink 0x72B9E4
+                case 1: // Blink 0x72B9E4
                     Add(Currentframe + getcooldown1(rand), 0);
+                    break;
+                case 2: // Blink 0x72B9FC
+                    Add(Currentframe + getcooldown2(rand), 1);
                     break;
                 case 3: // Stretch 0x70B108
                     Add(Currentframe + getcooldown3(rand), 3);
@@ -79,11 +79,11 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
-        private static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
-        private static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
-        private static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
-        private static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
+        public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
+        public static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
+        public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
+        public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
+        public static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
     }
 
     public class TinyTimeline

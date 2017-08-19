@@ -40,10 +40,11 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void resume()
-        {
-            sendEmptyPacket(11, 0, 0, 4);
-        }
+        public void resume() => sendEmptyPacket(11, 0, 0, 4);
+
+        private void bpdis(uint id) => sendEmptyPacket(11, id, 0, 3);
+
+        private void bpena(uint id) => sendEmptyPacket(11, id, 0, 2);
 
         public void Read(uint addr, uint size = 4, int pid = -1)
         {
@@ -255,7 +256,7 @@ namespace Pk3DSRNGTool
             // Independent thread..
             var t = new Thread(() => parseLogMsg(msg));
             t.Start();
-            #if DEBUG
+#if DEBUG
             try
             {
                 Console.WriteLine(msg);
@@ -264,7 +265,7 @@ namespace Pk3DSRNGTool
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-            #endif
+#endif
         }
     }
 }

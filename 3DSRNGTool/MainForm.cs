@@ -25,7 +25,7 @@ namespace Pk3DSRNGTool
         private bool Gen6 => Ver < 5;
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;
-        private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT != null && TTT.Gen6Tiny.Any(t => t > 0);
+        private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.Gen6Tiny.Any(t => t > 0);
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2);
         private byte lastgen;
         private EncounterArea ea;
@@ -118,6 +118,8 @@ namespace Pk3DSRNGTool
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
+            if (TTT.B_Stop.Visible)
+                TTT.Calibrate(-1, 0, 0);
             ntrhelper?.B_Disconnect_Click(null, null);
         }
 
@@ -1317,7 +1319,7 @@ namespace Pk3DSRNGTool
 
         // Tools
         private IVRange IVInputer = new IVRange();
-        private TinyTimelineTool TTT;
+        private TinyTimelineTool TTT = new TinyTimelineTool();
         private Gen7MainRNGTool gen7tool;
         private NTRHelper ntrhelper;
 
@@ -1327,9 +1329,9 @@ namespace Pk3DSRNGTool
         //Gen6
         private void OpenTinyTool(object sender, EventArgs e)
         {
-            if (TTT == null) TTT = new TinyTimelineTool();
             TranslateInterface(TTT, curlanguage);
             TTT.Show();
+            TTT.Focus();
         }
         private void M_NTRHelper_Click(object sender, EventArgs e)
         {
@@ -1339,7 +1341,7 @@ namespace Pk3DSRNGTool
         }
         public void OnConnected_Changed(bool IsConnected)
         {
-            B_GetTiny.Enabled = IsConnected;
+            TTT.B_Cali.Enabled = B_GetTiny.Enabled = IsConnected;
         }
         public void parseNTRInfo(string name, object data)
         {
@@ -1366,6 +1368,48 @@ namespace Pk3DSRNGTool
                     return;
                 case "TTT":
                     TTT.Gen6Tiny = (uint[])data;
+                    return;
+                case "BreakPoint":
+                    int CurrentFrame = NTRHelper.ntrclient.getCurrentFrame();
+                    if (CurrentFrame == NtrClient.FrameMax)
+                    {
+                        TTT.Calibrate(-1, 0, 0);
+                        Error("Fail to calibrate! Please check your initial seed!");
+                        return;
+                    }
+                    if (TTT.B_Cali.Visible)
+                        return;
+                    switch ((uint)data)
+                    {
+                        // Blink
+                        case 0x72B9D0:
+                        case 0x6F1324: // rand(3)
+                            TTT.Calibrate(0, CurrentFrame, CurrentFrame);
+                            break;
+                        case 0x72B9E4:
+                        case 0x6F1338: // rand(60)
+                            var delay1 = TinyStatus.getcooldown1(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
+                            TTT.Calibrate(1, CurrentFrame, CurrentFrame + delay1);
+                            break;
+                        case 0x72B9FC:
+                        case 0x6F1350: // rand(3)
+                            var delay2 = TinyStatus.getcooldown2(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
+                            TTT.Calibrate(2, CurrentFrame, CurrentFrame + delay2);
+                            break;
+
+                        // Stretch
+                        case 0x70B108:
+                        case 0x736F64:
+                            var delay3 = TinyStatus.getcooldown3(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
+                            TTT.Calibrate(3, CurrentFrame, CurrentFrame + delay3);
+                            break;
+
+                        default:
+                            TTT.Calibrate(-1, 0, 0);
+                            Error("Unknown Timeline Type");
+                            return;
+                    }
+                    NTRHelper.ntrclient.resume();
                     return;
             }
         }

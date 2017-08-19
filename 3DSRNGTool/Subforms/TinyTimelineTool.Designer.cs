@@ -75,6 +75,8 @@
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B_Cali = new System.Windows.Forms.Button();
+            this.B_Stop = new System.Windows.Forms.Button();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -91,11 +93,12 @@
             // tiny3
             // 
             this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Location = new System.Drawing.Point(75, 25);
+            this.tiny3.Location = new System.Drawing.Point(40, 26);
             this.tiny3.Mask = "AAAAAAAA";
             this.tiny3.Name = "tiny3";
             this.tiny3.Size = new System.Drawing.Size(63, 22);
             this.tiny3.TabIndex = 100;
+            this.tiny3.Text = "00000000";
             this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tiny3.Value = ((uint)(0u));
             // 
@@ -103,7 +106,7 @@
             // 
             this.label0.AutoSize = true;
             this.label0.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label0.Location = new System.Drawing.Point(47, 113);
+            this.label0.Location = new System.Drawing.Point(12, 114);
             this.label0.Name = "label0";
             this.label0.Size = new System.Drawing.Size(28, 14);
             this.label0.TabIndex = 107;
@@ -113,11 +116,12 @@
             // tiny2
             // 
             this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Location = new System.Drawing.Point(75, 53);
+            this.tiny2.Location = new System.Drawing.Point(40, 54);
             this.tiny2.Mask = "AAAAAAAA";
             this.tiny2.Name = "tiny2";
             this.tiny2.Size = new System.Drawing.Size(63, 22);
             this.tiny2.TabIndex = 101;
+            this.tiny2.Text = "00000000";
             this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tiny2.Value = ((uint)(0u));
             // 
@@ -125,7 +129,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label1.Location = new System.Drawing.Point(47, 84);
+            this.label1.Location = new System.Drawing.Point(12, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 14);
             this.label1.TabIndex = 106;
@@ -135,22 +139,24 @@
             // tiny1
             // 
             this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Location = new System.Drawing.Point(75, 81);
+            this.tiny1.Location = new System.Drawing.Point(40, 82);
             this.tiny1.Mask = "AAAAAAAA";
             this.tiny1.Name = "tiny1";
             this.tiny1.Size = new System.Drawing.Size(63, 22);
             this.tiny1.TabIndex = 102;
+            this.tiny1.Text = "00000000";
             this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tiny1.Value = ((uint)(0u));
             // 
             // tiny0
             // 
             this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Location = new System.Drawing.Point(75, 110);
+            this.tiny0.Location = new System.Drawing.Point(40, 111);
             this.tiny0.Mask = "AAAAAAAA";
             this.tiny0.Name = "tiny0";
             this.tiny0.Size = new System.Drawing.Size(63, 22);
             this.tiny0.TabIndex = 103;
+            this.tiny0.Text = "00000000";
             this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tiny0.Value = ((uint)(0u));
             // 
@@ -158,7 +164,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label2.Location = new System.Drawing.Point(47, 55);
+            this.label2.Location = new System.Drawing.Point(12, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 14);
             this.label2.TabIndex = 105;
@@ -169,7 +175,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 9F);
-            this.label3.Location = new System.Drawing.Point(47, 27);
+            this.label3.Location = new System.Drawing.Point(12, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 14);
             this.label3.TabIndex = 104;
@@ -192,7 +198,6 @@
             // 
             // Frame1
             // 
-            this.Frame1.AccessibleName = "";
             this.Frame1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame1.Increment = new decimal(new int[] {
             2,
@@ -237,7 +242,6 @@
             // 
             // Frame_max
             // 
-            this.Frame_max.AccessibleName = "";
             this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_max.Increment = new decimal(new int[] {
             100,
@@ -287,6 +291,8 @@
             this.GB_Cali.Controls.Add(this.label1);
             this.GB_Cali.Controls.Add(this.tiny0);
             this.GB_Cali.Controls.Add(this.tiny1);
+            this.GB_Cali.Controls.Add(this.B_Stop);
+            this.GB_Cali.Controls.Add(this.B_Cali);
             this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
             this.GB_Cali.Size = new System.Drawing.Size(189, 263);
@@ -314,7 +320,6 @@
             // 
             // Frame3
             // 
-            this.Frame3.AccessibleName = "";
             this.Frame3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame3.Increment = new decimal(new int[] {
             2,
@@ -346,7 +351,6 @@
             // 
             // Frame2
             // 
-            this.Frame2.AccessibleName = "";
             this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame2.Increment = new decimal(new int[] {
             2,
@@ -394,7 +398,6 @@
             // 
             // Parameters
             // 
-            this.Parameters.AccessibleName = "";
             this.Parameters.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Parameters.Location = new System.Drawing.Point(142, 26);
             this.Parameters.Name = "Parameters";
@@ -427,7 +430,6 @@
             // 
             // Shift
             // 
-            this.Shift.AccessibleName = "";
             this.Shift.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Shift.Location = new System.Drawing.Point(94, 62);
             this.Shift.Name = "Shift";
@@ -436,7 +438,6 @@
             // 
             // Frame_J
             // 
-            this.Frame_J.AccessibleName = "";
             this.Frame_J.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_J.Increment = new decimal(new int[] {
             100,
@@ -545,7 +546,7 @@
             this.tiny_friendsafari.ReadOnly = true;
             this.tiny_friendsafari.Width = 40;
             // 
-            // tiny_portalsync
+            // tiny_cutscenesync
             // 
             this.tiny_cutscenesync.DataPropertyName = "CSync";
             this.tiny_cutscenesync.HeaderText = "CSync";
@@ -599,6 +600,28 @@
             this.RealTime.Name = "RealTime";
             this.RealTime.ReadOnly = true;
             this.RealTime.Width = 160;
+            // 
+            // B_Cali
+            // 
+            this.B_Cali.Enabled = false;
+            this.B_Cali.Location = new System.Drawing.Point(120, 110);
+            this.B_Cali.Name = "B_Cali";
+            this.B_Cali.Size = new System.Drawing.Size(58, 23);
+            this.B_Cali.TabIndex = 120;
+            this.B_Cali.Text = "Calibrate";
+            this.B_Cali.UseVisualStyleBackColor = true;
+            this.B_Cali.Click += new System.EventHandler(this.B_Cali_Click);
+            // 
+            // B_Stop
+            // 
+            this.B_Stop.Location = new System.Drawing.Point(120, 110);
+            this.B_Stop.Name = "B_Stop";
+            this.B_Stop.Size = new System.Drawing.Size(58, 23);
+            this.B_Stop.TabIndex = 121;
+            this.B_Stop.Text = "Stop";
+            this.B_Stop.UseVisualStyleBackColor = true;
+            this.B_Stop.Visible = false;
+            this.B_Stop.Click += new System.EventHandler(this.B_Stop_Click);
             // 
             // TinyTimelineTool
             // 
@@ -673,5 +696,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
+        public System.Windows.Forms.Button B_Cali;
+        public System.Windows.Forms.Button B_Stop;
     }
 }

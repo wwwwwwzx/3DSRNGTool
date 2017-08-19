@@ -59,7 +59,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Timeline()
         {
-            if (TTT == null || TTT.Gen6Tiny.All(t => t == 0))
+            if (TTT.Gen6Tiny.All(t => t == 0))
             {
                 Error("Please Calibrate Timeline");
                 return;
