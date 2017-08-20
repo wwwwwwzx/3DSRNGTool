@@ -70,7 +70,7 @@ namespace Pk3DSRNGTool
 
             // Item generated after pkm
             rt.Item = TinyRand(100);
-            rt.ItemStr = getitemstr(rt.Item);
+            rt.ItemStr = getitemstr(rt.Item, CompoundEye);
         }
 
         public EncounterType Wildtype;
@@ -108,7 +108,7 @@ namespace Pk3DSRNGTool
                 {
                     results[i].Synchronize = Hrt.Sync;
                     results[i].Item = Hrt.HeldItems[i];
-                    results[i].ItemStr = getitemstr(Hrt.HeldItems[i]);
+                    results[i].ItemStr = getitemstr(Hrt.HeldItems[i], CompoundEye);
                 }
                 if (Hrt.HA != 0)
                     results[Hrt.HA - 1].Ability = 3;
@@ -194,15 +194,15 @@ namespace Pk3DSRNGTool
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
-        private string getitemstr(int rand)
+        public static string getitemstr(int rand, bool compoundeye = false)
         {
-            if (rand < (CompoundEye ? 60 : 50))
+            if (rand < (compoundeye ? 60 : 50))
                 return "50%";
-            if (rand < (CompoundEye ? 80 : 55))
+            if (rand < (compoundeye ? 80 : 55))
                 return "5%";
-            if (rand < (CompoundEye ? 85 : 56))
+            if (rand < (compoundeye ? 85 : 56))
                 return "1%";
-            return "-";
+            return "---";
         }
     }
 }

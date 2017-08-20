@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
             return o;
         }
 
-        public string ItemString => string.Join(",", HeldItems.Select(t => ItemStr(t)));
+        public string ItemString => string.Join(",", HeldItems.Select(t => Wild6.getitemstr(t)));
 
         private static byte HordeSlot(uint rand)
         {
@@ -43,17 +43,6 @@ namespace Pk3DSRNGTool
             if (rand < 95)
                 return 2;
             return 3;
-        }
-
-        private static string ItemStr(uint rand)
-        {
-            if (rand < 50)
-                return "50%";
-            if (rand < 55)
-                return "5%";
-            if (rand < 56)
-                return "1%";
-            return "---";
         }
 
         private static uint Rand(TinyMT rng, ulong n) => (uint)((rng.Nextuint() * n) >> 32);
