@@ -95,29 +95,31 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
-        public ResultW6[] Generate_Horde()
+        public ResultW6[] Generate_Horde(HordeResults Hrt = null)
         {
             var results = new ResultW6[5];
             for (int i = 0; i < 5; i++)
                 results[i] = new ResultW6();
-            bool Sync = false;
-            if (RNGPool.tinystatus == null)
+
+            // Use results from tiny
+            if (Hrt != null)
             {
-                Sync = getSync;
-                MarkHA(results);
+                for (int i = 0; i < 5; i++)
+                {
+                    results[i].Synchronize = Hrt.Sync;
+                    results[i].Item = Hrt.HeldItems[i];
+                    results[i].ItemStr = getitemstr(Hrt.HeldItems[i]);
+                }
+                if (Hrt.HA != 0)
+                    results[Hrt.HA - 1].Ability = 3;
             }
-            // Something Before Generations
-            tiny_Advance(1);
 
             // Something
             Advance(60);
             for (int i = 0; i < 5; i++)
             {
-                results[i].Synchronize = Sync;
                 slot = results[i].Slot = (byte)(i + 1);
                 Generate_Once(results[i]);
-                results[i].Item = TinyRand(100);
-                results[i].ItemStr = getitemstr(results[i].Item);
             }
             return results;
         }
@@ -201,14 +203,6 @@ namespace Pk3DSRNGTool
             if (rand < (CompoundEye ? 85 : 56))
                 return "1%";
             return "-";
-        }
-
-        private void MarkHA(ResultW6[] horde)
-        {
-            int idx = TinyRand(6);
-            if (idx > 4)
-                return;
-            horde[idx].Ability = 3;
         }
     }
 }

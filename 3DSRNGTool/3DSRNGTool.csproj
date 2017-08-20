@@ -61,6 +61,7 @@
     <Compile Include="Gen6\Egg6.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\RockSmashArea6.cs" />
+    <Compile Include="Gen6\HordeResults.cs" />
     <Compile Include="Gen6\ID6.cs" />
     <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />

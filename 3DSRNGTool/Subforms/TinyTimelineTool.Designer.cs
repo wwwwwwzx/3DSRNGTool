@@ -75,6 +75,8 @@
             this.tiny_friendsafari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_cutscenesync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -489,7 +491,8 @@
             "PokeRadar",
             "Cutscenes Sync",
             "Instant Sync",
-            "Rock Smash"});
+            "Rock Smash",
+            "Horde"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);
@@ -531,7 +534,6 @@
             // 
             this.MainDGV.AllowUserToAddRows = false;
             this.MainDGV.AllowUserToDeleteRows = false;
-            this.MainDGV.AllowUserToResizeColumns = false;
             this.MainDGV.AllowUserToResizeRows = false;
             this.MainDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -552,6 +554,8 @@
             this.tiny_friendsafari,
             this.tiny_cutscenesync,
             this.tiny_slot,
+            this.tiny_item,
+            this.tiny_ha,
             this.tiny_high16bit,
             this.tiny_rand100,
             this.tiny_state,
@@ -629,6 +633,22 @@
             this.tiny_slot.Name = "tiny_slot";
             this.tiny_slot.ReadOnly = true;
             this.tiny_slot.Width = 40;
+            // 
+            // tiny_item
+            // 
+            this.tiny_item.DataPropertyName = "Item";
+            this.tiny_item.HeaderText = "Item";
+            this.tiny_item.Name = "tiny_item";
+            this.tiny_item.ReadOnly = true;
+            this.tiny_item.Width = 40;
+            // 
+            // tiny_ha
+            // 
+            this.tiny_ha.DataPropertyName = "HA";
+            this.tiny_ha.HeaderText = "HA";
+            this.tiny_ha.Name = "tiny_ha";
+            this.tiny_ha.ReadOnly = true;
+            this.tiny_ha.Width = 35;
             // 
             // tiny_high16bit
             // 
@@ -733,19 +753,21 @@
         private System.Windows.Forms.NumericUpDown Parameters;
         private System.Windows.Forms.ToolTip TTTToolTip;
         private System.Windows.Forms.DataGridView MainDGV;
+        public System.Windows.Forms.Button B_Cali;
+        public System.Windows.Forms.Button B_Stop;
+        private System.Windows.Forms.Label L_TypeNum;
+        private System.Windows.Forms.NumericUpDown TypeNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_friendsafari;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_cutscenesync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
-        public System.Windows.Forms.Button B_Cali;
-        public System.Windows.Forms.Button B_Stop;
-        private System.Windows.Forms.Label L_TypeNum;
-        private System.Windows.Forms.NumericUpDown TypeNum;
     }
 }

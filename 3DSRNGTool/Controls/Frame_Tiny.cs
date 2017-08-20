@@ -13,17 +13,18 @@ namespace Pk3DSRNGTool
         public int framemin;
         public int framemax;
         public TinyStatus tinystate;
+        public HordeResults horde;
         public byte item;
-        private static readonly string[] ItemStr = { "50%", "5%", "1%", "-" };
 
         public bool unhitable => framemin == framemax;
         public bool rand2 => rand < 0x80000000;
 
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
-        public char Sync => rand < 0x80000000 ? 'O' : 'X';
+        public char Sync => horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
         public string CSync => csync.ToString() + "%";
         public string FS => _fs > 0 ? _fs.ToString() : "X";
-        public string Item => ItemStr[item];
+        public string HA => horde == null || horde.HA == 0 ?  "-" : horde.HA.ToString();
+        public string Item => horde == null ? StringItem.helditemStr[item] : horde.ItemString;
 
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public ushort High16bit => (ushort)(rand >> 16);
@@ -33,6 +34,8 @@ namespace Pk3DSRNGTool
         {
             get
             {
+                if (horde != null)
+                    return horde.Slot;
                 if (rand < 0x1999999A)
                     return 1;
                 if (rand < 0x33333334)

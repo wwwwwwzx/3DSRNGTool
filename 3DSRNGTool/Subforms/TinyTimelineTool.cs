@@ -170,10 +170,13 @@ namespace Pk3DSRNGTool
         private void Method_Changed()
         {
             tiny_friendsafari.Visible = Method.SelectedIndex == 0;
+            tiny_ha.Visible = Method.SelectedIndex == 5;
             tiny_high16bit.Visible = Method.SelectedIndex == 1;
-            tiny_slot.Visible = Method.SelectedIndex == 1;
+            tiny_slot.Visible = Method.SelectedIndex == 1 || Method.SelectedIndex == 5;
             tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
             tiny_sync.Visible = !tiny_cutscenesync.Visible && Method.SelectedIndex != 4;
+            tiny_item.Width = Method.SelectedIndex == 5 ? 160 : 40;
+            tiny_item.Visible = Method.SelectedIndex == 0 || Method.SelectedIndex == 5;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -217,6 +220,12 @@ namespace Pk3DSRNGTool
                 case 4:
                     Parameters.Visible = false;
                     TypeNum.Value = 1;
+                    break;
+                case 5:
+                    Parameters.Maximum = 6;
+                    Parameters.Minimum = 0;
+                    Parameters.Value = 1;
+                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 default:
                     Parameters.Visible = false;

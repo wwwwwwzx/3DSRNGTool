@@ -136,6 +136,7 @@ namespace Pk3DSRNGTool
             {
                 case 0: MarkFS(); break;
                 case 2: MarkSync(); break;
+                case 5: MarkHorde(); break;
             }
         }
 
@@ -167,6 +168,12 @@ namespace Pk3DSRNGTool
                     results[i]._fs = (byte)(((results[i + 2].rand * SlotNum) >> 32) + 1);
                 results[i].item = getItem(results[i + 3].Rand100);
             }
+        }
+
+        public void MarkHorde()
+        {
+            for (int i = 0; i < results.Count; i++)
+                results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num);
         }
 
         private static byte getItem(uint rand)
