@@ -51,12 +51,16 @@
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
+            this.L_TypeNum = new System.Windows.Forms.Label();
+            this.TypeNum = new System.Windows.Forms.NumericUpDown();
             this.L_Type = new System.Windows.Forms.Label();
             this.Type3 = new System.Windows.Forms.ComboBox();
             this.Frame3 = new System.Windows.Forms.NumericUpDown();
             this.Type2 = new System.Windows.Forms.ComboBox();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
+            this.B_Stop = new System.Windows.Forms.Button();
+            this.B_Cali = new System.Windows.Forms.Button();
             this.GB_Adj = new System.Windows.Forms.GroupBox();
             this.Parameters = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
@@ -75,12 +79,11 @@
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B_Cali = new System.Windows.Forms.Button();
-            this.B_Stop = new System.Windows.Forms.Button();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             this.GB_Cali.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
             this.GB_Adj.SuspendLayout();
@@ -204,7 +207,7 @@
             0,
             0,
             0});
-            this.Frame1.Location = new System.Drawing.Point(15, 171);
+            this.Frame1.Location = new System.Drawing.Point(15, 211);
             this.Frame1.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -222,7 +225,7 @@
             // B_Create
             // 
             this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_Create.Location = new System.Drawing.Point(99, 441);
+            this.B_Create.Location = new System.Drawing.Point(99, 466);
             this.B_Create.Name = "B_Create";
             this.B_Create.Size = new System.Drawing.Size(76, 29);
             this.B_Create.TabIndex = 110;
@@ -234,7 +237,7 @@
             // 
             this.L_Mainframe.AutoSize = true;
             this.L_Mainframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Mainframe.Location = new System.Drawing.Point(12, 145);
+            this.L_Mainframe.Location = new System.Drawing.Point(12, 185);
             this.L_Mainframe.Name = "L_Mainframe";
             this.L_Mainframe.Size = new System.Drawing.Size(89, 13);
             this.L_Mainframe.TabIndex = 111;
@@ -275,6 +278,8 @@
             // 
             // GB_Cali
             // 
+            this.GB_Cali.Controls.Add(this.L_TypeNum);
+            this.GB_Cali.Controls.Add(this.TypeNum);
             this.GB_Cali.Controls.Add(this.L_Type);
             this.GB_Cali.Controls.Add(this.Type3);
             this.GB_Cali.Controls.Add(this.Frame3);
@@ -295,38 +300,75 @@
             this.GB_Cali.Controls.Add(this.B_Cali);
             this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(189, 263);
+            this.GB_Cali.Size = new System.Drawing.Size(189, 311);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
+            // 
+            // L_TypeNum
+            // 
+            this.L_TypeNum.AutoSize = true;
+            this.L_TypeNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TypeNum.Location = new System.Drawing.Point(14, 153);
+            this.L_TypeNum.Name = "L_TypeNum";
+            this.L_TypeNum.Size = new System.Drawing.Size(99, 13);
+            this.L_TypeNum.TabIndex = 122;
+            this.L_TypeNum.Text = "# of Advance Type";
+            // 
+            // TypeNum
+            // 
+            this.TypeNum.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TypeNum.Location = new System.Drawing.Point(127, 149);
+            this.TypeNum.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.TypeNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TypeNum.Name = "TypeNum";
+            this.TypeNum.Size = new System.Drawing.Size(43, 22);
+            this.TypeNum.TabIndex = 118;
+            this.TypeNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TypeNum.ValueChanged += new System.EventHandler(this.TypeNum_ValueChanged);
             // 
             // L_Type
             // 
             this.L_Type.AutoSize = true;
             this.L_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Type.Location = new System.Drawing.Point(109, 145);
+            this.L_Type.Location = new System.Drawing.Point(101, 185);
             this.L_Type.Name = "L_Type";
-            this.L_Type.Size = new System.Drawing.Size(31, 13);
+            this.L_Type.Size = new System.Drawing.Size(77, 13);
             this.L_Type.TabIndex = 119;
-            this.L_Type.Text = "Type";
+            this.L_Type.Text = "Advance Type";
             // 
             // Type3
             // 
+            this.Type3.Enabled = false;
             this.Type3.FormattingEnabled = true;
-            this.Type3.Location = new System.Drawing.Point(94, 225);
+            this.Type3.Location = new System.Drawing.Point(101, 265);
             this.Type3.Name = "Type3";
             this.Type3.Size = new System.Drawing.Size(76, 21);
             this.Type3.TabIndex = 118;
+            this.Type3.EnabledChanged += new System.EventHandler(this.Type_EnabledChanged);
             // 
             // Frame3
             // 
+            this.Frame3.Enabled = false;
             this.Frame3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame3.Increment = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.Frame3.Location = new System.Drawing.Point(15, 226);
+            this.Frame3.Location = new System.Drawing.Point(15, 266);
             this.Frame3.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -343,21 +385,24 @@
             // 
             // Type2
             // 
+            this.Type2.Enabled = false;
             this.Type2.FormattingEnabled = true;
-            this.Type2.Location = new System.Drawing.Point(94, 198);
+            this.Type2.Location = new System.Drawing.Point(101, 238);
             this.Type2.Name = "Type2";
             this.Type2.Size = new System.Drawing.Size(76, 21);
             this.Type2.TabIndex = 116;
+            this.Type2.EnabledChanged += new System.EventHandler(this.Type_EnabledChanged);
             // 
             // Frame2
             // 
+            this.Frame2.Enabled = false;
             this.Frame2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame2.Increment = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.Frame2.Location = new System.Drawing.Point(15, 199);
+            this.Frame2.Location = new System.Drawing.Point(15, 239);
             this.Frame2.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -375,10 +420,32 @@
             // Type1
             // 
             this.Type1.FormattingEnabled = true;
-            this.Type1.Location = new System.Drawing.Point(94, 172);
+            this.Type1.Location = new System.Drawing.Point(101, 212);
             this.Type1.Name = "Type1";
             this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
+            // 
+            // B_Stop
+            // 
+            this.B_Stop.Location = new System.Drawing.Point(120, 110);
+            this.B_Stop.Name = "B_Stop";
+            this.B_Stop.Size = new System.Drawing.Size(58, 23);
+            this.B_Stop.TabIndex = 121;
+            this.B_Stop.Text = "Stop";
+            this.B_Stop.UseVisualStyleBackColor = true;
+            this.B_Stop.Visible = false;
+            this.B_Stop.Click += new System.EventHandler(this.B_Stop_Click);
+            // 
+            // B_Cali
+            // 
+            this.B_Cali.Enabled = false;
+            this.B_Cali.Location = new System.Drawing.Point(120, 110);
+            this.B_Cali.Name = "B_Cali";
+            this.B_Cali.Size = new System.Drawing.Size(58, 23);
+            this.B_Cali.TabIndex = 120;
+            this.B_Cali.Text = "Calibrate";
+            this.B_Cali.UseVisualStyleBackColor = true;
+            this.B_Cali.Click += new System.EventHandler(this.B_Cali_Click);
             // 
             // GB_Adj
             // 
@@ -389,9 +456,9 @@
             this.GB_Adj.Controls.Add(this.Frame_J);
             this.GB_Adj.Controls.Add(this.Frame_max);
             this.GB_Adj.Controls.Add(this.L_TargetFrame);
-            this.GB_Adj.Location = new System.Drawing.Point(5, 281);
+            this.GB_Adj.Location = new System.Drawing.Point(5, 329);
             this.GB_Adj.Name = "GB_Adj";
-            this.GB_Adj.Size = new System.Drawing.Size(189, 136);
+            this.GB_Adj.Size = new System.Drawing.Size(189, 131);
             this.GB_Adj.TabIndex = 117;
             this.GB_Adj.TabStop = false;
             this.GB_Adj.Text = "Adjustment";
@@ -421,7 +488,8 @@
             "Friend Safari",
             "PokeRadar",
             "Cutscenes Sync",
-            "Instant Sync"});
+            "Instant Sync",
+            "Rock Smash"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);
@@ -509,7 +577,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.MainDGV.RowHeadersWidth = 18;
-            this.MainDGV.Size = new System.Drawing.Size(572, 458);
+            this.MainDGV.Size = new System.Drawing.Size(575, 483);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
             this.MainDGV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainDGV_MouseDown);
@@ -601,38 +669,16 @@
             this.RealTime.ReadOnly = true;
             this.RealTime.Width = 160;
             // 
-            // B_Cali
-            // 
-            this.B_Cali.Enabled = false;
-            this.B_Cali.Location = new System.Drawing.Point(120, 110);
-            this.B_Cali.Name = "B_Cali";
-            this.B_Cali.Size = new System.Drawing.Size(58, 23);
-            this.B_Cali.TabIndex = 120;
-            this.B_Cali.Text = "Calibrate";
-            this.B_Cali.UseVisualStyleBackColor = true;
-            this.B_Cali.Click += new System.EventHandler(this.B_Cali_Click);
-            // 
-            // B_Stop
-            // 
-            this.B_Stop.Location = new System.Drawing.Point(120, 110);
-            this.B_Stop.Name = "B_Stop";
-            this.B_Stop.Size = new System.Drawing.Size(58, 23);
-            this.B_Stop.TabIndex = 121;
-            this.B_Stop.Text = "Stop";
-            this.B_Stop.UseVisualStyleBackColor = true;
-            this.B_Stop.Visible = false;
-            this.B_Stop.Click += new System.EventHandler(this.B_Stop_Click);
-            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 482);
+            this.ClientSize = new System.Drawing.Size(787, 507);
             this.Controls.Add(this.GB_Adj);
             this.Controls.Add(this.GB_Cali);
             this.Controls.Add(this.B_Create);
             this.Controls.Add(this.MainDGV);
-            this.MinimumSize = new System.Drawing.Size(800, 520);
+            this.MinimumSize = new System.Drawing.Size(800, 545);
             this.Name = "TinyTimelineTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiny Timeline Tool";
@@ -642,6 +688,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Adj.ResumeLayout(false);
@@ -698,5 +745,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
         public System.Windows.Forms.Button B_Cali;
         public System.Windows.Forms.Button B_Stop;
+        private System.Windows.Forms.Label L_TypeNum;
+        private System.Windows.Forms.NumericUpDown TypeNum;
     }
 }

@@ -209,6 +209,7 @@ L_ClkCorrection = 指针修正
 GB_Cali = 校准
 L_Mainframe = 主乱数帧
 L_Type = 消耗类型
+L_TypeNum = 消耗类型数
 GB_Adj = 操作
 L_Method = 类型
 L_TargetFrame = 目标帧数

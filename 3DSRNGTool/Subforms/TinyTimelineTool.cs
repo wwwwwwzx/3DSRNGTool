@@ -13,8 +13,8 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
-            int[] typelist = { -1, 0, 1, 3, 4, 5 };
-            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Cry" };
+            int[] typelist = { -1, 0, 1, 3, 4 };
+            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
             Type1.DisplayMember = "Text";
             Type1.ValueMember = "Value";
@@ -55,7 +55,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == 3 || type < 0 || type > 3)    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || type > 3)    // All used
             {
                 B_Stop_Click(null, null);
                 return;
@@ -70,6 +70,37 @@ namespace Pk3DSRNGTool
                 B_Create_Click(null, null);
             }
             return;
+        }
+
+        private void B_Cali_Click(object sender, EventArgs e)
+        {
+            NTRHelper.ntrclient.ReadTiny("TTT");
+            B_Stop.Visible = true;
+            B_Cali.Visible = false;
+            SkipList.Clear();
+            Type2.SelectedValue = Type3.SelectedValue = -1;
+            NTRHelper.ntrclient.EnableBP();
+        }
+
+        private void B_Stop_Click(object sender, EventArgs e)
+        {
+            B_Stop.Visible = false;
+            B_Cali.Visible = true;
+            NTRHelper.ntrclient.DisableBP();
+            SkipList.Clear();
+        }
+        private void TypeNum_ValueChanged(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= TypeNum.Maximum; i++)
+            {
+                Controls.Find("Frame" + i.ToString(), true).FirstOrDefault().Enabled = i <= TypeNum.Value;
+                Controls.Find("Type" + i.ToString(), true).FirstOrDefault().Enabled = i <= TypeNum.Value;
+            }
+        }
+        private void Type_EnabledChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox type && type.Enabled == false)
+                type.SelectedValue = -1;
         }
         #endregion
 
@@ -142,7 +173,7 @@ namespace Pk3DSRNGTool
             tiny_high16bit.Visible = Method.SelectedIndex == 1;
             tiny_slot.Visible = Method.SelectedIndex == 1;
             tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
-            tiny_sync.Visible = !tiny_cutscenesync.Visible;
+            tiny_sync.Visible = !tiny_cutscenesync.Visible && Method.SelectedIndex != 4;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -183,28 +214,14 @@ namespace Pk3DSRNGTool
                     Parameters.Value = 1;
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
+                case 4:
+                    Parameters.Visible = false;
+                    TypeNum.Value = 1;
+                    break;
                 default:
                     Parameters.Visible = false;
                     break;
             }
-        }
-
-        private void B_Cali_Click(object sender, EventArgs e)
-        {
-            NTRHelper.ntrclient.ReadTiny("TTT");
-            B_Stop.Visible = true;
-            B_Cali.Visible = false;
-            SkipList.Clear();
-            Type2.SelectedValue = Type3.SelectedValue = -1;
-            NTRHelper.ntrclient.EnableBP();
-        }
-
-        private void B_Stop_Click(object sender, EventArgs e)
-        {
-            B_Stop.Visible = false;
-            B_Cali.Visible = true;
-            NTRHelper.ntrclient.DisableBP();
-            SkipList.Clear();
         }
     }
 }
