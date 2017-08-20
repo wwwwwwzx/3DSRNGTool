@@ -9,13 +9,21 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
+        public readonly int[] typelist = { -1, 0, 1, 3, 4 };
+        public readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
         public TinyTimelineTool()
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
-            int[] typelist = { -1, 0, 1, 3, 4 };
-            string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
-            var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t));
+            UpdateTypeComboBox(typelist);
+            Method.SelectedIndex =
+            Type3.SelectedIndex =
+            Type2.SelectedIndex =
+            Type1.SelectedIndex = 0;
+        }
+        public void UpdateTypeComboBox(int[] type)
+        {
+            var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t)).Where(t => type.Contains(t.Value));
             Type1.DisplayMember = "Text";
             Type1.ValueMember = "Value";
             Type1.DataSource = new BindingSource(List.Skip(1), null);
@@ -25,10 +33,6 @@ namespace Pk3DSRNGTool
             Type3.DisplayMember = "Text";
             Type3.ValueMember = "Value";
             Type3.DataSource = new BindingSource(List, null);
-            Method.SelectedIndex =
-            Type3.SelectedIndex =
-            Type2.SelectedIndex =
-            Type1.SelectedIndex = 0;
         }
         private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -204,21 +208,25 @@ namespace Pk3DSRNGTool
                     Parameters.Maximum = 3;
                     Parameters.Minimum = 2;
                     Parameters.Value = 3;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
                     break;
                 case 1:
                     Parameters.Maximum = 40;
                     Parameters.Minimum = 0;
                     Parameters.Value = 40;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
                 case 2:
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
                     Parameters.Value = 1;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 case 4:
+                    UpdateTypeComboBox(new[] { -1, 0, 1 });
                     Parameters.Visible = false;
                     TypeNum.Value = 1;
                     break;
@@ -226,6 +234,7 @@ namespace Pk3DSRNGTool
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 0;
                     Parameters.Value = 1;
+                    UpdateTypeComboBox(new[] { -1, 0, 1 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 default:

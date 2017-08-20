@@ -118,6 +118,12 @@ namespace Pk3DSRNGTool
                 RNGPool.horde = new HordeResults(new TinyMT(TTT.Gen6Tiny), (int)TTT.Parameters.Value);
                 SlotSpecies.SelectedValue = slotspecies[RNGPool.horde.Slot - 1];
             }
+            if (SlotSpecies.SelectedIndex > 0)
+            {
+                var Hordespecies = (ea as HordeArea).getSpecies(Ver, (byte)SlotSpecies.SelectedIndex);
+                L_HordeInfo.Text = "Species: " + string.Join(" \t", Hordespecies.Select(t => StringItem.speciestr[t])) + "\n";
+            }
+            L_HordeInfo.Text += RNGPool.horde?.ToString() ?? "";
             getsetting(rng);
             // Start
             for (int i = min; i <= max; i++, RNGPool.AddNext(rng))

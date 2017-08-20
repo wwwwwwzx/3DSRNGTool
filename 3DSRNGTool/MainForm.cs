@@ -344,6 +344,7 @@ namespace Pk3DSRNGTool
                 Correction.Minimum = 0; Correction.Maximum = 255;
                 Correction.Value = 0;
             }
+            UpdateTTTMethod();
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -540,6 +541,7 @@ namespace Pk3DSRNGTool
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
             B_OpenTool.Visible = gen6timeline_available || IsHorde;
+            L_HordeInfo.Visible = IsHorde;
             B_Search.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
@@ -819,6 +821,7 @@ namespace Pk3DSRNGTool
             L_Targetmon.Visible = TargetMon.Visible = IsBank;
             if (IsBank)
                 TargetMon.Maximum = (FormPM as PKM6).NumOfPkm;
+            UpdateTTTMethod();
             if (Method == 2)
             {
                 RefreshLocation();
@@ -1331,6 +1334,38 @@ namespace Pk3DSRNGTool
             TTT.Show();
             TTT.Focus();
         }
+        private void UpdateTTTMethod()
+        {
+            if (!B_OpenTool.Visible)
+                return;
+            if (Method == 0 && FormPM is PKM6 p)
+            {
+                TTT.Method.SelectedIndex = p.InstantSync ? 3 : 2;
+                TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { -1, 4 } : new[] { -1, 0, 1, 3 });
+            }
+            if (Method == 2 && FormPM is PKMW6 pw)
+            {
+                switch (pw.Type)
+                {
+                    case EncounterType.FriendSafari:
+                        TTT.Method.SelectedIndex = 0;
+                        break;
+                    case EncounterType.PokeRadar:
+                        TTT.Method.SelectedIndex = 1;
+                        break;
+                    case EncounterType.RockSmash:
+                        TTT.Method.SelectedIndex = 4;
+                        break;
+                    case EncounterType.Horde:
+                        TTT.Method.SelectedIndex = 5;
+                        break;
+                    default:
+                        TTT.Method.SelectedIndex = 3;
+                        break;
+                }
+            }
+        }
+        
         private void M_NTRHelper_Click(object sender, EventArgs e)
         {
             if (ntrhelper == null) ntrhelper = new NTRHelper();

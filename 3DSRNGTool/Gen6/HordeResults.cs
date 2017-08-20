@@ -30,8 +30,7 @@ namespace Pk3DSRNGTool
         {
             string o = "Sync: " + (Sync ? "O" : "X") + "  ";
             o += "Encounter Slot: " + Slot.ToString() + "  ";
-            o += "HA Positon: " + (HA == 0 ? "None" : HA.ToString()) + "  ";
-            o += "Held Item: " + ItemString;
+            o += "Hidden Power Positon: " + (HA == 0 ? "None" : HA.ToString()) + "\n";
             return o;
         }
 

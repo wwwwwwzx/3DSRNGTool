@@ -7,6 +7,7 @@
         public override bool ShinyLocked { get => Bank || _ShinyLocked; protected set => _ShinyLocked = value; }
         public override bool AlwaysSync => base.AlwaysSync || Bank;
 
+        public bool IsSoaring => Delay == 88; 
         public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1;
         public bool InstantSync;
