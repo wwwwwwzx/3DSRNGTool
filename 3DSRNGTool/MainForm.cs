@@ -25,8 +25,8 @@ namespace Pk3DSRNGTool
         private bool Gen6 => Ver < 5;
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;
-        private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.Gen6Tiny.Any(t => t > 0);
-        private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2);
+        private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
+        private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2) && !IsHorde;
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
@@ -185,8 +185,9 @@ namespace Pk3DSRNGTool
             int offset = IsLinux ? 0 : 1;
             if (Gen6)
             {
-                for (int i = 0; i < 12; i++)
-                    Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
+                if (!IsHorde)
+                    for (int i = 0; i < 12; i++)
+                        Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
             else
             {
@@ -538,7 +539,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
-            B_OpenTool.Visible = gen6timeline_available;
+            B_OpenTool.Visible = gen6timeline_available || IsHorde;
             B_Search.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
@@ -1090,10 +1091,11 @@ namespace Pk3DSRNGTool
                         case EncounterType.Horde:
                             setting6.SpecForm = new int[6];
                             setting6.SlotLevel = new byte[6];
+                            var hordeslot = (ea as HordeArea).getSpecies(Ver, (byte)SlotSpecies.SelectedIndex);
                             for (int i = 1; i < 6; i++)
                             {
-                                setting6.SpecForm[i] = FormPM.SpecForm;
-                                setting6.SlotLevel[i] = FormPM.Level;
+                                setting6.SpecForm[i] = hordeslot[i - 1];
+                                setting6.SlotLevel[i] = (ea as HordeArea).Level;
                             }
                             break;
                         case EncounterType.PokeRadar:
@@ -1205,7 +1207,7 @@ namespace Pk3DSRNGTool
             }
             dgv_synced.Visible = Method < 3 && FormPM.Syncable && !IsEvent;
             dgv_nature.Visible = !IsTransporter;
-            dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2 && (Gen7 || Gen6 && gen6timeline);
+            dgv_item.Visible = dgv_Lv.Visible = dgv_slot.Visible = Method == 2 && (Gen7 || Gen6 && gen6timeline || IsHorde && TTT.HasSeed && TTT.Method.SelectedIndex == 5);
             dgv_rand.Visible = Gen6 || Gen7 && Method == 3 && !MainRNGEgg.Checked;
             dgv_rand.Visible &= Advanced.Checked;
             dgv_state.Visible = Gen6 && Method < 4;

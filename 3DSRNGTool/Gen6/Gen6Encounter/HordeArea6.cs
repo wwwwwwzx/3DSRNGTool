@@ -9,6 +9,15 @@ namespace Pk3DSRNGTool
         public override int Locationidx => Location + (idx << 9);
         public override int[] Species { get; set; } = new int[3];
         public byte Level;
+        public int[] getSpecies(int ver, byte Slot)
+        {
+            switch (this)
+            {
+                case HordeArea_ORAS oras: return oras.getSpecies(ver == 3, Slot);
+                case HordeArea_XY xy: return xy.getSpecies(ver == 1, Slot);
+                default: return new int[5];
+            }
+        }
     }
 
     public class HordeArea_XY : HordeArea
@@ -48,6 +57,8 @@ namespace Pk3DSRNGTool
         public int[] getSpecies(bool IsY, byte Slot)
         {
             int[] table = new int[5];
+            if (Slot == 0)
+                return table;
             int species = Species[Slot - 1];
             for (int i = 0; i < 5; i++)
                 table[i] = species;
@@ -99,6 +110,8 @@ namespace Pk3DSRNGTool
         public int[] getSpecies(bool IsAS, byte Slot)
         {
             int[] table = new int[5];
+            if (Slot == 0)
+                return table;
             int species = Species[Slot - 1];
             for (int i = 0; i < 5; i++)
                 table[i] = species;

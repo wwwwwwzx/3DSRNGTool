@@ -46,6 +46,7 @@ namespace Pk3DSRNGTool
                 tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
+        public bool HasSeed => Gen6Tiny.Any(t => t != 0);
         private void Update_Click(object sender, EventArgs e)
         {
             if (!NTRHelper.ntrclient.Connected)
@@ -175,7 +176,7 @@ namespace Pk3DSRNGTool
             tiny_slot.Visible = Method.SelectedIndex == 1 || Method.SelectedIndex == 5;
             tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
             tiny_sync.Visible = !tiny_cutscenesync.Visible && Method.SelectedIndex != 4;
-            tiny_item.Width = Method.SelectedIndex == 5 ? 160 : 40;
+            tiny_item.Width = Method.SelectedIndex == 5 ? 125 : 40;
             tiny_item.Visible = Method.SelectedIndex == 0 || Method.SelectedIndex == 5;
         }
 

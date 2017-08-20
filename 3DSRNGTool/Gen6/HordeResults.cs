@@ -6,7 +6,6 @@ namespace Pk3DSRNGTool
     public class HordeResults
     {
         public static bool IsXY => Program.mainform.Ver < 2;
-        public const uint HAThre = 30;
 
         public HordeResults(TinyMT rng, int PKMNUM)
         {
@@ -14,8 +13,8 @@ namespace Pk3DSRNGTool
                 rng.Next();
             Sync = rng.Nextuint() < 0x80000000;
             Slot = HordeSlot(Rand(rng, 100));
-            if (Rand(rng, 100) < HAThre)
-                HA = (byte)(Rand(rng, 5) + 1);
+            if (Rand(rng, 100) < 20) // 78de5c
+                HA = (byte)(Rand(rng, 5) + 1); // 78de70
             for (int i = IsXY ? 1 : 6; i > 0; i--)
                 rng.Next();
             for (int i = 0; i < 5; i++)

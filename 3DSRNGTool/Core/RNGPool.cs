@@ -44,6 +44,7 @@ namespace Pk3DSRNGTool.Core
             RNGStateStr = null;
             tinystatus = null;
             timeline = null;
+            horde = null;
         }
 
         public static void CreateBuffer(int buffersize, IRNG rng)
@@ -100,7 +101,7 @@ namespace Pk3DSRNGTool.Core
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            var results = (igenerator as Wild6).Generate_Horde();
+            var results = (igenerator as Wild6).Generate_Horde(horde);
             foreach (var result in results)
             {
                 result.RandNum = RandList[Head];
@@ -151,6 +152,7 @@ namespace Pk3DSRNGTool.Core
 
         public static TinyStatus tinystatus;
         public static TinyTimeline timeline;
+        public static HordeResults horde;
 
         public static void AdvanceMT(int i) => tinystatus.AdvanceMT(i);
         public static void AdvanceTiny() => tinystatus.Tinyrng.Next();

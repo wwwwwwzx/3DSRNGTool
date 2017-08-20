@@ -747,10 +747,10 @@
         private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
         private System.Windows.Forms.ComboBox Type3;
         private System.Windows.Forms.NumericUpDown Frame3;
-        private System.Windows.Forms.ComboBox Method;
+        public System.Windows.Forms.ComboBox Method;
         private System.Windows.Forms.Label L_Method;
         private System.Windows.Forms.Label L_Type;
-        private System.Windows.Forms.NumericUpDown Parameters;
+        public System.Windows.Forms.NumericUpDown Parameters;
         private System.Windows.Forms.ToolTip TTTToolTip;
         private System.Windows.Forms.DataGridView MainDGV;
         public System.Windows.Forms.Button B_Cali;

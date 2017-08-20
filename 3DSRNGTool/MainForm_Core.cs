@@ -59,7 +59,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Timeline()
         {
-            if (TTT.Gen6Tiny.All(t => t == 0))
+            if (!TTT.HasSeed)
             {
                 Error("Please Calibrate Timeline");
                 return;
@@ -113,6 +113,11 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < min; i++)
                 rng.Next();
             // Prepare
+            if (TTT.HasSeed && TTT.Method.SelectedIndex == 5)
+            { 
+                RNGPool.horde = new HordeResults(new TinyMT(TTT.Gen6Tiny), (int)TTT.Parameters.Value);
+                SlotSpecies.SelectedValue = slotspecies[RNGPool.horde.Slot - 1];
+            }
             getsetting(rng);
             // Start
             for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
