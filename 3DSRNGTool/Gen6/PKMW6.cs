@@ -37,17 +37,6 @@
             },
             new PokemonList
             {
-                Text = "Trash Can",
-                List = new[]
-                {
-                    new PKMW6 { Species = 568, Level = 35, Delay = 18 }, // Trubbish
-                    new PKMW6 { Species = 569, Level = 35, Delay = 18 }, // Garbodor
-                    new PKMW6 { Species = 354, Level = 35, Delay = 18 }, // Banette
-                    new PKMW6 { Species = 479, Level = 38, Delay = 18 }, // Rotom
-                }
-            },
-            new PokemonList
-            {
                 Text = "Poke Radar",
                 List = new[]
                 {

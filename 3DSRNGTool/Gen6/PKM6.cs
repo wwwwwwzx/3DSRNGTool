@@ -291,6 +291,17 @@
                    new PKM6 { Species = 631, Delay = 54 }, // Heatmor
                 }
             },
+            new PokemonList
+            {
+                Text = "Trash Can",
+                List = new[]
+                {
+                    new PKM6 { Species = 568, Delay = 18 }, // Trubbish
+                    new PKM6 { Species = 569, Delay = 18 }, // Garbodor
+                    new PKM6 { Species = 354, Delay = 18 }, // Banette
+                    new PKM6 { Species = 479, Delay = 18 }, // Rotom
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_VC =

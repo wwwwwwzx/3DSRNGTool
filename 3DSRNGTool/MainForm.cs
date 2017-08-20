@@ -1416,7 +1416,7 @@ namespace Pk3DSRNGTool
                     if (CurrentFrame == NtrClient.FrameMax)
                     {
                         TTT.Calibrate(-1, 0, 0);
-                        Error("Fail to calibrate! Please check your initial seed!");
+                        Error("Fail to calibrate! Please check your initial seed! Error code:0x" + ((uint)data).ToString("X8"));
                         return;
                     }
                     Frame_min.Value = CurrentFrame;
