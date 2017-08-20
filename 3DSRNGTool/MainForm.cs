@@ -118,8 +118,6 @@ namespace Pk3DSRNGTool
         private void MainForm_Close(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            if (TTT.B_Stop.Visible)
-                TTT.Calibrate(-1, 0, 0);
             ntrhelper?.B_Disconnect_Click(null, null);
         }
 
@@ -1245,8 +1243,6 @@ namespace Pk3DSRNGTool
                 Error(SETTINGERROR_STR[lindex] + L_D.Text);
             else if (ivmin5.Value > ivmax5.Value)
                 Error(SETTINGERROR_STR[lindex] + L_S.Text);
-            else if (Frame_min.Value > Frame_max.Value)
-                Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
             else
             {
                 if (Gen6)
@@ -1338,6 +1334,7 @@ namespace Pk3DSRNGTool
             if (ntrhelper == null) ntrhelper = new NTRHelper();
             TranslateInterface(ntrhelper, curlanguage);
             ntrhelper.Show();
+            ntrhelper.Focus();
         }
         public void OnConnected_Changed(bool IsConnected)
         {
@@ -1377,6 +1374,8 @@ namespace Pk3DSRNGTool
                         Error("Fail to calibrate! Please check your initial seed!");
                         return;
                     }
+                    Frame_min.Value = CurrentFrame;
+                    CreateTimeline.Checked = CreateTimeline.Visible;
                     if (TTT.B_Cali.Visible)
                         return;
                     switch ((uint)data)

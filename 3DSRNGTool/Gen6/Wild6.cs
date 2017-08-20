@@ -1,6 +1,5 @@
 ﻿using PKHeX.Core;
 using Pk3DSRNGTool.Core;
-using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -9,13 +8,13 @@ namespace Pk3DSRNGTool
         private static uint getrand => RNGPool.getrand;
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static void Advance(int n) => RNGPool.Advance(n);
-        
+
         private static uint getTinyRand => RNGPool.tinystatus.Nextuint();
         private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
         private static void tiny_Advance(int n)
         {
             for (int i = n; i > 0; i--)
-                RNGPool.tinystatus.Tinyrng.Next();
+                RNGPool.AdvanceTiny();
         }
 
         private bool getSync => getTinyRand < 0x80000000;
@@ -26,7 +25,24 @@ namespace Pk3DSRNGTool
                 rt.Slot = slot = 1;
                 return;
             }
+            // Delay
+            switch (Wildtype)
+            {
+                case EncounterType.RockSmash:
+                    RNGPool.AdvanceMT(16);
+                    tiny_Advance(3);
+                    RNGPool.AdvanceMT(RNGPool.DelayTime - 228);
+                    tiny_Advance(1);
+                    RNGPool.AdvanceMT(212);
+                    rt.IsPokemon = TinyRand(100) <= 30;
+                    break;
+                default:
+                    RNGPool.AdvanceMT(RNGPool.DelayTime);
+                    break;
+            }
+            // Sync
             rt.Synchronize = getSync;
+            // Others
             switch (Wildtype)
             {
                 case EncounterType.FriendSafari:

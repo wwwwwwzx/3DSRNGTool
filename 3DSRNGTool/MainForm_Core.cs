@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
             getsetting(rng);
             RNGPool.timeline = TTT.gettimeline();
             RNGPool.timeline.Maxframe = max;
-            RNGPool.timeline.Generate();
+            RNGPool.timeline.Generate(RecordState: true);
             int listlength = RNGPool.timeline.TinyLength;
             for (int i = 0; i < listlength; i++)
             {
@@ -85,9 +85,12 @@ namespace Pk3DSRNGTool
                     continue;
                 for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
                 {
-                    RNGPool.tinystatus = new TinyStatus(seed: tinyframe.state, Current: j);
+                    while (j < min)
+                        j += 2;
+                    RNGPool.tinystatus = (TinyStatus)tinyframe.tinystate.DeepCopy();
+                    RNGPool.tinystatus.Currentframe = j;
                     RNGResult result = RNGPool.Generate6();
-                    if (j < min || !filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
+                    if (!filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
                         continue;
                     Frames.Add(new Frame(result, frame: j, time: j - min));
                     Frames.Last()._tinystate = new PRNGState(tinyframe.state);

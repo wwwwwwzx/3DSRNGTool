@@ -209,7 +209,7 @@ namespace Pk3DSRNGTool
             SendMsg((TID ^ SID) >> 4, "TSV");
         }
 
-        public const int FrameMax = 1000000000;
+        public const int FrameMax = 10000000;
         public int getCurrentFrame()
         {
             try
@@ -227,6 +227,8 @@ namespace Pk3DSRNGTool
                         rng.Next();
                     Period++;
                 }
+                if (Index == 0)
+                    Period++;
                 return Math.Min(Period * 624 + Index - 1, FrameMax);
             }
             catch

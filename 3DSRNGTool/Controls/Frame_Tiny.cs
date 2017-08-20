@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
@@ -13,6 +12,7 @@ namespace Pk3DSRNGTool
         public uint rand;
         public int framemin;
         public int framemax;
+        public TinyStatus tinystate;
 
         public bool unhitable => framemin == framemax;
         public bool rand2 => rand < 0x80000000;

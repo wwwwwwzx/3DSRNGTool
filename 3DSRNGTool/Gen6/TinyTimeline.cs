@@ -1,24 +1,25 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
+    [Serializable()]
     public class TinyStatus
     {
         private List<TinyCall> list = new List<TinyCall>();
         public TinyMT Tinyrng;
         public int Currentframe;
         public byte csync;
-
-        public TinyStatus(uint[] seed, int Current = 0)
+        public TinyStatus (uint[] seed)
         {
             Tinyrng = new TinyMT(seed);
-            Currentframe = Current;
         }
 
         public uint Nextuint() => Tinyrng.Nextuint();
 
+        [Serializable()]
         private class TinyCall
         {
             public int frame;
@@ -104,7 +105,7 @@ namespace Pk3DSRNGTool
         public List<Frame_Tiny> results;
         public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
 
-        public void Generate()
+        public void Generate(bool RecordState = false)
         {
             Currentframe = Startingframe - 2;
             int i = 0;
@@ -115,6 +116,8 @@ namespace Pk3DSRNGTool
                 newdata.Index = i++;
                 newdata.state = State;
                 newdata.framemin = Currentframe;
+                if (RecordState)
+                    newdata.tinystate = (TinyStatus)Status.DeepCopy();
                 Status.AdvancetoNextCall(out newdata.rand);
                 newdata.framemax = Currentframe;
                 results.Add(newdata);

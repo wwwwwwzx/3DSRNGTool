@@ -152,6 +152,9 @@ namespace Pk3DSRNGTool.Core
         public static TinyStatus tinystatus;
         public static TinyTimeline timeline;
 
+        public static void AdvanceMT(int i) => tinystatus.AdvanceMT(i);
+        public static void AdvanceTiny() => tinystatus.Tinyrng.Next();
+
         #endregion
 
         #region Gen7 Time keeping
