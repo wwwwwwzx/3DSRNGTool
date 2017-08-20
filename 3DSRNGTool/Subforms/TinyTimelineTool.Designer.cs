@@ -491,7 +491,7 @@
             "PokeRadar",
             "Cutscenes Sync",
             "Instant Sync",
-            "Rock Smash",
+            "RS/CS",
             "Horde"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
@@ -756,7 +756,7 @@
         public System.Windows.Forms.Button B_Cali;
         public System.Windows.Forms.Button B_Stop;
         private System.Windows.Forms.Label L_TypeNum;
-        private System.Windows.Forms.NumericUpDown TypeNum;
+        public System.Windows.Forms.NumericUpDown TypeNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;

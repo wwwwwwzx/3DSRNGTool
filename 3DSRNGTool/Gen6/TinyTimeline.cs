@@ -82,7 +82,7 @@ namespace Pk3DSRNGTool
 
         public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
         public static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
-        public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 720));
+        public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 780));
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
         public static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
     }

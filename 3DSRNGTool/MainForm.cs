@@ -27,7 +27,7 @@ namespace Pk3DSRNGTool
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
-        private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2) && !IsHorde;
+        private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
@@ -346,6 +346,7 @@ namespace Pk3DSRNGTool
                 Correction.Value = 0;
             }
             UpdateTTTMethod();
+            CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
         }
 
         private void SearchMethod_CheckedChanged(object sender, EventArgs e)
@@ -1355,6 +1356,11 @@ namespace Pk3DSRNGTool
                         TTT.Method.SelectedIndex = 1;
                         break;
                     case EncounterType.RockSmash:
+                        TTT.Method.SelectedIndex = 4;
+                        TTT.UpdateTypeComboBox(new[] { -1, 0, 1 });
+                        TTT.TypeNum.Value = 1;
+                        break;
+                    case EncounterType.CaveShadow:
                         TTT.Method.SelectedIndex = 4;
                         break;
                     case EncounterType.Horde:

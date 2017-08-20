@@ -118,10 +118,10 @@ namespace Pk3DSRNGTool
         private string getitemstr(int rand)
         {
             if (rand < (CompoundEye ? 60 : 50))
-                return "50%";
+                return StringItem.helditemStr[0]; // 50%
             if (rand < (CompoundEye ? 80 : 55))
-                return "5%";
-            return "-";
+                return StringItem.helditemStr[1]; // 5%
+            return StringItem.helditemStr[3]; // None
         }
     }
 }

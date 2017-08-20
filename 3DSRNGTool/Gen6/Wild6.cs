@@ -36,6 +36,11 @@ namespace Pk3DSRNGTool
                     RNGPool.AdvanceMT(212);
                     rt.IsPokemon = TinyRand(100) <= 30;
                     break;
+                case EncounterType.CaveShadow:
+                    RNGPool.AdvanceMT(32);
+                    tiny_Advance(1);
+                    RNGPool.AdvanceMT(46);
+                    break;
                 default:
                     RNGPool.AdvanceMT(RNGPool.DelayTime);
                     break;
@@ -197,12 +202,12 @@ namespace Pk3DSRNGTool
         public static string getitemstr(int rand, bool compoundeye = false)
         {
             if (rand < (compoundeye ? 60 : 50))
-                return "50%";
+                return StringItem.helditemStr[0]; // 50%
             if (rand < (compoundeye ? 80 : 55))
-                return "5%";
+                return StringItem.helditemStr[1]; // 5%
             if (rand < (compoundeye ? 85 : 56))
-                return "1%";
-            return "---";
+                return StringItem.helditemStr[2]; // 1%
+            return StringItem.helditemStr[3]; // None
         }
     }
 }

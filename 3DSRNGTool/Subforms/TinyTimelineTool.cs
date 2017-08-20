@@ -226,9 +226,10 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 case 4:
-                    UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     Parameters.Visible = false;
-                    TypeNum.Value = 1;
+                    TypeNum.Value = 2;
+                    TTTToolTip.SetToolTip(Method, "Rock Smash/Cave Shadow");
                     break;
                 case 5:
                     Parameters.Maximum = 6;
