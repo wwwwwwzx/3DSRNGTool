@@ -3,7 +3,7 @@
 This is an RNG Tool for main 3DS Pokemon games. Some parts should work with [PokeCalcNTR](https://gbatemp.net/threads/pokecalcntr-for-gen-6-the-rng-tool-suite-for-the-3ds.473221/) using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, wild Pokemon(60%), Eggs and ID(90%).
+- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, wild Pokemon(75%), Eggs and ID(90%).
 - Transporter RNG for transferred Virtual Console Pokemon.
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
@@ -33,35 +33,36 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 
 #### Transporter (Virtual Console)
 
-`Use this game` Button. Calibrate the delay beforehand.
+At `Use this game` Button. Calibrate the delay beforehand.
 
 #### Generation 6
 
 - __Pokemon Link__: _Would you like to retrieve data using Pokemon Link? Yes/No_
 - __Fossils__: _This is xxx! Please take good care of it._
 - __Kalos/Hoenn Starters__: _Choose this Pokemon? Yes/No_
-- __Horde__: Sweet Scent / Honey Selected. USE/GIVE/DISCARD
+- __Horde__: Honey Selected. USE/GIVE/DISCARD
 - __Rock Smash__: _Would you like to use Rock Smash? Yes/No_
 - __Mystery Gift__: _xxx received xxx!_
 - __Eggs__ from Day Care:
 
 Accepting => 1st Yes/No Screen: _You do want it. don't you? / You'll be wanting it won't you? / You've gotta want it, right?_
 
-Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!/ Well then, I'll be having this one! Thanks!/ Really really? Well... I'll keep it, then! Thanks!_
+Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!/ Well then, I'll be having this one! Thanks!/ Really really? Well... I'll keep it, then! Thanks!_
 - __ID__ : _xxx... Tres bien! What a fantastic name! / So you're xxx? Yes/No_
 
 ##### XY
 - __Mewtwo__: _Mew!_
 - __Xerneas/Yveltal__: No dialogue.\* Defeat it and rebattle to avoid long delay.
 - __Zygarde__: _Zzzz-dddd-aaaaaa!_
-- __Kanto Legendary Birds__: No dialogue.\* Press arrow key to run to it.
-- __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press arrow key to run to it.
+- __Kanto Legendary Birds__: No dialogue.\* Press the arrow key to trigger the battle.
+- __Pidgey__: No dialogue.\* Wait at the first line of the grass. The encounter will happen at the 2nd row of grass. Press the arrow key to trigger the battle.
 - __Kanto Starters__: _You picked xxx. then! I see. That's simply wonderful!_
 - __Snorlax__: _Snorlax opened its eyes wide!_
 - __Lucario__: _Lucario is staring intently at xxx. Will you take Lucario with you? Yes/No_
 - __Lapras__: _Would you mind taking Lapras with you on your journey? Sure!/I coundn't_
 - __Berry Tree__: _A Pokemon appeared!_
 - __Shaking Trash Can__: No dialogue.\*
+- __Cave Drop/Cave Shadow/Dust Clouds/Rustling Bush__: No dialogue.\* Press the arrow key to trigger the battle.
 
 ##### Omega Ruby and Alpha Sapphire
 - __Portal(Hoopa Ring)__: _Would you like to put your hand deep in the hole? / Would you like to examine it? Yes/No_
@@ -74,7 +75,7 @@ Rejecting => AFTER 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!
 - __Regirock, Regice and Registeel__: No dialogue.\*
 - __Regigigas__: _Zut zutt!_
 - __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
-- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press arrow key to run to it.
+- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press the arrow key to trigger the battle.
 - __DexNav Poochyena__: _xxx! Over here!_
 - __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
 - __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
