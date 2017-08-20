@@ -42,14 +42,13 @@ namespace Pk3DSRNGTool
             }
             // Sync
             rt.Synchronize = getSync;
-            // Others
+
+            // Encounter Slot and Others
             switch (Wildtype)
             {
                 case EncounterType.FriendSafari:
                     rt.IsPokemon = TinyRand(100) < 13;
                     rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
-                    rt.Item = TinyRand(100);
-                    rt.ItemStr = getitemstr(rt.Item);
                     break;
                 case EncounterType.TrashCan:
                     tiny_Advance(2);
@@ -65,6 +64,13 @@ namespace Pk3DSRNGTool
                     rt.Slot = getslot(TinyRand(100));
                     break;
             }
+
+            // Something before generation
+            tiny_Advance(1);
+
+            // Item generated after pkm
+            rt.Item = TinyRand(100);
+            rt.ItemStr = getitemstr(rt.Item);
         }
 
         public EncounterType Wildtype;
@@ -100,12 +106,18 @@ namespace Pk3DSRNGTool
                 Sync = getSync;
                 MarkHA(results);
             }
+            // Something Before Generations
+            tiny_Advance(1);
+
+            // Something
             Advance(60);
             for (int i = 0; i < 5; i++)
             {
                 results[i].Synchronize = Sync;
                 slot = results[i].Slot = (byte)(i + 1);
                 Generate_Once(results[i]);
+                results[i].Item = TinyRand(100);
+                results[i].ItemStr = getitemstr(results[i].Item);
             }
             return results;
         }

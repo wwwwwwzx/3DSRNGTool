@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public TinyMT Tinyrng;
         public int Currentframe;
         public byte csync;
-        public TinyStatus (uint[] seed)
+        public TinyStatus(uint[] seed)
         {
             Tinyrng = new TinyMT(seed);
         }
@@ -160,12 +160,24 @@ namespace Pk3DSRNGTool
 
         public void MarkFS()
         {
-            int max = results.Count - 2;
+            int max = results.Count - 4;
             for (int i = 0; i < max; i++)
             {
                 if (results[i + 1].Rand100 < 13)
                     results[i]._fs = (byte)(((results[i + 2].rand * SlotNum) >> 32) + 1);
+                results[i].item = getItem(results[i + 3].Rand100);
             }
+        }
+
+        private static byte getItem(uint rand)
+        {
+            if (rand < 50)
+                return 0;
+            if (rand < 55)
+                return 1;
+            if (rand < 56)
+                return 2;
+            return 3;
         }
     }
 }

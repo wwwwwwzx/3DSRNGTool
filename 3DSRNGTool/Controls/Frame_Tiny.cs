@@ -13,6 +13,8 @@ namespace Pk3DSRNGTool
         public int framemin;
         public int framemax;
         public TinyStatus tinystate;
+        public byte item;
+        private static readonly string[] ItemStr = { "50%", "5%", "1%", "-" };
 
         public bool unhitable => framemin == framemax;
         public bool rand2 => rand < 0x80000000;
@@ -21,10 +23,12 @@ namespace Pk3DSRNGTool
         public char Sync => rand < 0x80000000 ? 'O' : 'X';
         public string CSync => csync.ToString() + "%";
         public string FS => _fs > 0 ? _fs.ToString() : "X";
+        public string Item => ItemStr[item];
+
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : (framemin + 2).ToString() + " ~ " + framemax.ToString();
-        public string RealTime => framemin == framemax ? "-" : FuncUtil.Convert2timestr((framemin + 2 - Startingframe)/60.0) + " ~ " + FuncUtil.Convert2timestr((framemax - Startingframe)/60.0);
+        public string RealTime => framemin == framemax ? "-" : FuncUtil.Convert2timestr((framemin + 2 - Startingframe) / 60.0) + " ~ " + FuncUtil.Convert2timestr((framemax - Startingframe) / 60.0);
         public byte Slot
         {
             get
