@@ -768,7 +768,7 @@ namespace Pk3DSRNGTool
             var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.SM.getFormeEntry(Species, Forme);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
-            Fix3v.Checked = t.EggGroups[0] == 0x0F; //Undiscovered Group
+            Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); //Undiscovered Group
 
             // Load from Pokemonlist
             if (FormPM == null || IsEvent || skip)

@@ -14,6 +14,5 @@
         public byte Level;
 
         public PKHeX.Core.PersonalInfo info => (GameVersion.Gen6.Contains(Version) ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(Species, Forme);
-        public bool IV3 => info.EggGroups[0] == 0xF;
     }
 }

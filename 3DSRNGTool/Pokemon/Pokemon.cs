@@ -19,6 +19,7 @@ namespace Pk3DSRNGTool
         public bool IsRandomGender => FuncUtil.IsRandomGender(GenderRatio);
         public byte SettingGender => FuncUtil.getGenderRatio(GenderRatio);
         public virtual bool AlwaysSync => Gift || Nature < 25;
+        public bool IV3 => info.EggGroups[0] == 0xF && (Version.Contains(GameVersion.XY) || !BabyMons.Contains(Species));
 
         private static string[] speciestr => StringItem.speciestr;
         public override string ToString()
@@ -122,7 +123,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Formcount correction
-        public static readonly int[] BattleForms =
+        public readonly static int[] BattleForms =
         {
             351, // Castform
             421, // Cherrim
@@ -156,6 +157,15 @@ namespace Pk3DSRNGTool
             647, // Keldeo
             676, // Furfrou
             720, // Hoopa
+        };
+
+        // For undiscovered egg group without 3 perfect ivs
+        public readonly static int[] BabyMons =
+        {
+            030, 031,
+            172, 173, 174, 175, 201, 236, 238, 239, 240,
+            298, 360,
+            406, 433, 438, 439, 440, 446, 447, 458
         };
         #endregion
     }

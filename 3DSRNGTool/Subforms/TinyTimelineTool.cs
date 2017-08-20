@@ -9,8 +9,8 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
-        public readonly int[] typelist = { -1, 0, 1, 3, 4 };
-        public readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
+        public static readonly int[] typelist = { -1, 0, 1, 3, 4 };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
         public TinyTimelineTool()
         {
             InitializeComponent();
