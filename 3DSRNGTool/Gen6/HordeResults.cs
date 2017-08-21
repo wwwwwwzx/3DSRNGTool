@@ -25,6 +25,7 @@ namespace Pk3DSRNGTool
         public byte Slot;
         public byte HA; // 0 for no HA, 1-5 means HA Slot
         public byte[] HeldItems = new byte[5];
+        public string ItemString => string.Join(",", HeldItems.Select(t => Wild6.getitemstr(t)));
 
         public override string ToString()
         {
@@ -33,8 +34,6 @@ namespace Pk3DSRNGTool
             o += "Hidden Power Positon: " + (HA == 0 ? "None" : HA.ToString()) + "\n";
             return o;
         }
-
-        public string ItemString => string.Join(",", HeldItems.Select(t => Wild6.getitemstr(t)));
 
         private static byte HordeSlot(uint rand)
         {

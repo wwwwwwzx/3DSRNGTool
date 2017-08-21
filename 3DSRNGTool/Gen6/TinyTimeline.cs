@@ -20,7 +20,7 @@ namespace Pk3DSRNGTool
         public uint Nextuint() => Tinyrng.Nextuint();
 
         [Serializable()]
-        private class TinyCall
+        private struct TinyCall
         {
             public int frame;
             public int type;

@@ -75,10 +75,10 @@ Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on 
 - __Regirock, Regice and Registeel__: No dialogue.\*
 - __Regigigas__: _Zut zutt!_
 - __Starters(Gen 2/4/5)__: _Yes, that one from the xxx region._
-- __Wrumple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press the arrow key to trigger the battle.
+- __Wurmple__: No dialogue.\* Wait after the second step in grass. The encounter will happen at the 3rd steps in grass. Press the arrow key to trigger the battle.
 - __DexNav Poochyena__: _xxx! Over here!_
 - __Cosplay Pikachu__: _You'll really, really, really stand out if you two go on stage with matching costumes!_
-- __Castform/Sharpedo/Carmerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
+- __Castform/Sharpedo/Camerupt/Gift eggs(Wynaut/Togepi)__: _xxx recieved xxx._
 - __Beldum__: _xxx obtained a Beldum_
 - __Spiritomb__: _Shahhh!_
 - __Kecleon__: _The startled Pokemon attacked!_
