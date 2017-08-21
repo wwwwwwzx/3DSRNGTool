@@ -93,26 +93,22 @@ namespace Pk3DSRNGTool
             string bpid = " lr:";
             string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(bpid, StringComparison.Ordinal) + bpid.Length, 8);
             uint address = Convert.ToUInt32(splitlog, 16);
-            switch (address)
+            if (address == 0)
             {
-                case 0: // Initial BP
-                    BPReached = 0; SetBreakPoint();
-                    break;
-                case 0x07003130: //XY Seeding
-                case 0x070035D4:
-                case 0x07003158: //ORAS Seeding
-                case 0x070035FC:
-                    ReadSeed(); resume();
-                    if (BPReached == 0)
-                    {
-                        ReadTiny("IDSeed");
-                        ReadTSV();
-                    }
-                    BPReached++;
-                    break;
-                default:
-                    SendMsg(address, "BreakPoint"); break;
+                BPReached = 0; SetBreakPoint();
             }
+            else if (0x7002800 < address && address < 0x7003800)
+            {
+                ReadSeed(); resume();
+                if (BPReached == 0)
+                {
+                    ReadTiny("IDSeed");
+                    ReadTSV();
+                }
+                BPReached++;
+            }
+            else
+                SendMsg(address, "BreakPoint");
             return true;
         }
 
