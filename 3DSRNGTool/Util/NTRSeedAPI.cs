@@ -99,7 +99,9 @@ namespace Pk3DSRNGTool
                     BPReached = 0; SetBreakPoint();
                     break;
                 case 0x07003130: //XY Seeding
+                case 0x070035D4:
                 case 0x07003158: //ORAS Seeding
+                case 0x070035FC:
                     ReadSeed(); resume();
                     if (BPReached == 0)
                     {
