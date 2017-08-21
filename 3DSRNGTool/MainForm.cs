@@ -543,7 +543,6 @@ namespace Pk3DSRNGTool
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
             B_OpenTool.Visible = gen6timeline_available || IsHorde;
-            L_HordeInfo.Visible = IsHorde;
             B_Search.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
@@ -1119,10 +1118,6 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new[] { 0, 0, 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
                             break;
-                        case EncounterType.SingleSlot:
-                            setting6.SpecForm = new[] { 0, FormPM.SpecForm };
-                            setting6.SlotLevel = new byte[] { 0, FormPM.Level };
-                            break;
                         case EncounterType.RockSmash:
                             var RS_area = ea as RockSmashArea6;
                             setting6.SpecForm = new int[6];
@@ -1347,6 +1342,7 @@ namespace Pk3DSRNGTool
             }
             if (Method == 2 && FormPM is PKMW6 pw)
             {
+                L_HordeInfo.Visible = IsHorde;
                 switch (pw.Type)
                 {
                     case EncounterType.FriendSafari:

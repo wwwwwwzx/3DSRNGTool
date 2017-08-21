@@ -55,15 +55,8 @@ namespace Pk3DSRNGTool
                     rt.IsPokemon = TinyRand(100) < 13;
                     rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
                     break;
-                case EncounterType.TrashCan:
-                    tiny_Advance(2);
-                    rt.Slot = getslot(TinyRand(100));
-                    break;
                 case EncounterType.PokeRadar:
                     rt.Slot = IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
-                    break;
-                case EncounterType.SingleSlot:
-                    rt.Slot = slot = 1;
                     break;
                 default:
                     rt.Slot = getslot(TinyRand(100));

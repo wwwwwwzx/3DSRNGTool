@@ -296,10 +296,10 @@
                 Text = "Trash Can",
                 List = new[]
                 {
-                    new PKM6 { Species = 568, Delay = 18 }, // Trubbish
-                    new PKM6 { Species = 569, Delay = 18 }, // Garbodor
-                    new PKM6 { Species = 354, Delay = 18 }, // Banette
-                    new PKM6 { Species = 479, Delay = 18 }, // Rotom
+                    new PKM6 { Species = 568, Delay = 18, Unstable = true, }, // Trubbish
+                    new PKM6 { Species = 569, Delay = 18, Unstable = true, }, // Garbodor
+                    new PKM6 { Species = 354, Delay = 18, Unstable = true, }, // Banette
+                    new PKM6 { Species = 479, Delay = 18, Unstable = true, }, // Rotom
                 }
             },
         };

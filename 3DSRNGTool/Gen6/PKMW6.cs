@@ -2,10 +2,8 @@
 {
     public enum EncounterType
     {
-        SingleSlot,
         Horde,
         RockSmash,
-        TrashCan,
         PokeRadar,
         FriendSafari,
         CaveShadow,
@@ -15,7 +13,7 @@
     public class PKMW6 : Pokemon
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
-        public EncounterType Type { get; private set; } = EncounterType.SingleSlot;
+        public EncounterType Type { get; private set; }
 
         public readonly static PokemonList[] Species_XY =
         {
@@ -24,7 +22,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Horde, Delay = 352 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Horde, Delay = 174 },
                 }
             },
             new PokemonList
@@ -32,7 +30,7 @@
                 Text = "Rock Smash",
                 List = new[]
                 {
-                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.RockSmash, Delay = 284 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.RockSmash, Delay = 280 },
                 }
             },
             new PokemonList
@@ -40,7 +38,7 @@
                 Text = "Poke Radar",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
                 }
             },
             new PokemonList
@@ -48,7 +46,7 @@
                 Text = "Friend Safari",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.FriendSafari, Delay = 6 },
                 }
             },
             new PokemonList
@@ -56,7 +54,7 @@
                 Text = "Cave Shadows",
                 List = new[]
                 {
-                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.CaveShadow, Delay = 78, },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.CaveShadow, Delay = 78, },
                 }
             },
             new PokemonList
@@ -64,7 +62,7 @@
                 Text = "Trap",
                 List = new[]
                 {
-                    new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Trap, Delay = 32, },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Trap, Delay = 32, },
                 }
             }
         };
@@ -76,7 +74,7 @@
                 Text = "Horde",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.Horde, Delay = 352 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Horde, Delay = 174 },
                 }
             },
             new PokemonList
@@ -84,7 +82,7 @@
                 Text = "Rock Smash",
                 List = new[]
                 {
-                   new PKMW6 { Species = 000, Conceptual = true, Type = EncounterType.RockSmash, Delay = 280 },
+                    new PKMW6 { Conceptual = true, Type = EncounterType.RockSmash, Delay = 280 },
                 }
             },
         };

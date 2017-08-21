@@ -9,7 +9,7 @@ namespace Pk3DSRNGTool
 
         public static int[] getLocation(PKMW6 pm, bool IsXY = true)
         {
-            EncounterType type = pm?.Type ?? EncounterType.SingleSlot;
+            EncounterType? type = pm?.Type;
             switch (type)
             {
                 case EncounterType.Horde:
