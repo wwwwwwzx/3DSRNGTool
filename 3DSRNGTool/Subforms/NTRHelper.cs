@@ -25,6 +25,11 @@ namespace Pk3DSRNGTool
             e.Cancel = true;
         }
 
+        public void Connect(bool OneClick)
+        {
+            B_Connect_Click(OneClick ? B_OneClick : null, null);
+        }
+
         private void B_Connect_Click(object sender, EventArgs e)
         {
             ntrclient.OneClick = sender == B_OneClick;

@@ -440,7 +440,6 @@
             // 
             // B_Cali
             // 
-            this.B_Cali.Enabled = false;
             this.B_Cali.Location = new System.Drawing.Point(120, 110);
             this.B_Cali.Name = "B_Cali";
             this.B_Cali.Size = new System.Drawing.Size(58, 23);

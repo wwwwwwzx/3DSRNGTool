@@ -114,7 +114,7 @@ namespace Pk3DSRNGTool
 
         public void DebuggerMode()
         {
-            if (5000 < port && port < 8000 && Connected) // Already enabled
+            if (DebuggerEnabled) // Already enabled
                 return;
             setServer(host, 5000 + Pid);
             try { connectToServer(); } catch { SendMsg(null, "Disconnect"); }

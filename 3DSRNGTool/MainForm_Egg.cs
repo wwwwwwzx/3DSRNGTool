@@ -158,8 +158,11 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                if (!NTRHelper.ntrclient.Connected)
-                    NTRHelper.ntrclient.connectToServer();
+                if (!NTRHelper.ntrclient?.Connected ?? true)
+                {
+                    Program.mainform.TryToConnectNTR(false);
+                    return;
+                }
                 NTRHelper.ntrclient.ReadTiny("EggSeed");
             }
             catch

@@ -1358,6 +1358,7 @@ namespace Pk3DSRNGTool
                         break;
                     case EncounterType.CaveShadow:
                         TTT.Method.SelectedIndex = 4;
+                        TTT.TypeNum.Value = 2;
                         break;
                     case EncounterType.Horde:
                         TTT.Method.SelectedIndex = 5;
@@ -1369,7 +1370,24 @@ namespace Pk3DSRNGTool
                 }
             }
         }
-        
+
+        public void TryToConnectNTR(bool Oneclick = false)
+        {
+            if (ntrhelper == null)
+            {
+                ntrhelper = new NTRHelper();
+                ntrhelper.Show(); ntrhelper.Hide();
+            }
+            try
+            {
+                ntrhelper.Connect(Oneclick);
+            }
+            catch
+            {
+                if (Oneclick) Error("Unable to connect to debugger");
+            }
+        }
+
         private void M_NTRHelper_Click(object sender, EventArgs e)
         {
             if (ntrhelper == null) ntrhelper = new NTRHelper();
@@ -1379,7 +1397,7 @@ namespace Pk3DSRNGTool
         }
         public void OnConnected_Changed(bool IsConnected)
         {
-            TTT.B_Cali.Enabled = B_GetTiny.Enabled = IsConnected;
+            B_GetTiny.Enabled = IsConnected;
         }
         public void parseNTRInfo(string name, object data)
         {

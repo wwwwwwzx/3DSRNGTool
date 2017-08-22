@@ -15,6 +15,7 @@ namespace Pk3DSRNGTool
         private object syncLock = new object();
         private bool heartbeatSendable;
         public bool Connected => tcp?.Connected ?? false;
+        public bool DebuggerEnabled => 5000 < port && port < 8000 && Connected;
 
         uint currentSeq;
         uint lastReadMemSeq;

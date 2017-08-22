@@ -53,8 +53,11 @@ namespace Pk3DSRNGTool
         public bool HasSeed => Gen6Tiny.Any(t => t != 0);
         private void Update_Click(object sender, EventArgs e)
         {
-            if (!NTRHelper.ntrclient.Connected)
-                NTRHelper.ntrclient.connectToServer();
+            if (!NTRHelper.ntrclient?.Connected ?? true)
+            {
+                Program.mainform.TryToConnectNTR(false);
+                return;
+            }
             NTRHelper.ntrclient.ReadTiny("TTT");
         }
         public List<int> SkipList = new List<int>();
@@ -79,6 +82,12 @@ namespace Pk3DSRNGTool
 
         private void B_Cali_Click(object sender, EventArgs e)
         {
+            if (!NTRHelper.ntrclient?.DebuggerEnabled ?? true)
+            {
+                Program.mainform.TryToConnectNTR(true);
+                PKHeX.Util.Error("Please use One Click function.");
+                return;
+            }
             NTRHelper.ntrclient.ReadTiny("TTT");
             B_Stop.Visible = true;
             B_Cali.Visible = false;
@@ -201,6 +210,7 @@ namespace Pk3DSRNGTool
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
             Parameters.Visible = true;
+            TypeNum.Value = 1;
             TTTToolTip.RemoveAll();
             switch (Method.SelectedIndex)
             {
