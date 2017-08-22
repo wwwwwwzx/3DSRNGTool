@@ -242,6 +242,7 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Method, "Rock Smash/Cave Shadow");
                     break;
                 case 5:
+                case 6:
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 0;
                     Parameters.Value = 1;

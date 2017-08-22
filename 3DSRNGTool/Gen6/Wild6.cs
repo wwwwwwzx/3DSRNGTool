@@ -17,6 +17,8 @@ namespace Pk3DSRNGTool
                 RNGPool.AdvanceTiny();
         }
 
+        public byte PartyPKM; // For fishing
+
         private bool getSync => getTinyRand < 0x80000000;
         private void Prepare(ResultW6 rt)
         {
@@ -41,6 +43,15 @@ namespace Pk3DSRNGTool
                     tiny_Advance(1);
                     RNGPool.AdvanceMT(46);
                     break;
+                case EncounterType.Fishing:
+                    RNGPool.AdvanceMT(RNGPool.DelayTime);
+                    tiny_Advance(3 * PartyPKM);
+                    RNGPool.AdvanceMT(132);
+                    Advance(132);
+                    var fishingdelay = TinyRand(7) * 30 + 60;
+                    RNGPool.AdvanceMT(fishingdelay);
+                    Advance(fishingdelay);
+                    break;
                 default:
                     RNGPool.AdvanceMT(RNGPool.DelayTime);
                     break;
@@ -54,6 +65,10 @@ namespace Pk3DSRNGTool
                 case EncounterType.FriendSafari:
                     rt.IsPokemon = TinyRand(100) < 13;
                     rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
+                    break;
+                case EncounterType.Fishing:
+                    rt.IsPokemon = TinyRand(100) < 30; // To-do
+                    rt.Slot = slot = getslot(TinyRand(100));
                     break;
                 case EncounterType.PokeRadar:
                     rt.Slot = IsShinyLocked ? slot = 1 : getslot(TinyRand(100));

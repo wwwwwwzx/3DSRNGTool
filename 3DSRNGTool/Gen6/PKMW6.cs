@@ -8,6 +8,7 @@
         FriendSafari,
         CaveShadow,
         Trap,
+        Fishing,
     }
 
     public class PKMW6 : Pokemon
@@ -39,6 +40,14 @@
                 List = new[]
                 {
                     new PKMW6 { Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
+                }
+            },
+            new PokemonList
+            {
+                Text = "Fishing",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Fishing, Delay = 14 },
                 }
             },
             new PokemonList
@@ -83,6 +92,14 @@
                 List = new[]
                 {
                     new PKMW6 { Conceptual = true, Type = EncounterType.RockSmash, Delay = 280 },
+                }
+            },
+            new PokemonList
+            {
+                Text = "Fishing",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Fishing, Delay = 14 },
                 }
             },
         };

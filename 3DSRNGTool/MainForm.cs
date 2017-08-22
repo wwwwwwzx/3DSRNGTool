@@ -911,6 +911,8 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.DelayTime;
                 if (IsTransporter)
                     buffersize += 2000;
+                if (FormPM is PKMW6 pmw6 && pmw6.Type == EncounterType.Fishing)
+                    buffersize += 400; // 132 +240
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(buffersize, rng);
@@ -1117,6 +1119,12 @@ namespace Pk3DSRNGTool
                             setting6.HA = CB_HAUnlocked.Checked;
                             setting6.SpecForm = new[] { 0, 0, 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
+                            break;
+                        case EncounterType.Fishing:
+                            setting6.SpecForm = new int[4];
+                            setting6.SlotLevel = new byte[4];
+                            setting6.PartyPKM = (byte)TTT.Parameters.Value;
+                            slottype = 3;
                             break;
                         case EncounterType.RockSmash:
                             var RS_area = ea as RockSmashArea6;
@@ -1363,6 +1371,9 @@ namespace Pk3DSRNGTool
                     case EncounterType.Horde:
                         TTT.Method.SelectedIndex = 5;
                         CompoundEyes.Enabled = true;
+                        break;
+                    case EncounterType.Fishing:
+                        TTT.Method.SelectedIndex = 6;
                         break;
                     default:
                         TTT.Method.SelectedIndex = 3;

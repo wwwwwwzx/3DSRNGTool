@@ -491,7 +491,8 @@
             "Cutscenes Sync",
             "Instant Sync",
             "RS/CS",
-            "Horde"});
+            "Horde",
+            "Fishing"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);

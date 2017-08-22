@@ -37,12 +37,13 @@ At `Use this game` Button. Calibrate the delay beforehand.
 
 #### Generation 6
 
+- __Mystery Gift__: _xxx received xxx!_
 - __Pokemon Link__: _Would you like to retrieve data using Pokemon Link? Yes/No_
 - __Fossils__: _This is xxx! Please take good care of it._
 - __Kalos/Hoenn Starters__: _Choose this Pokemon? Yes/No_
 - __Horde__: Honey Selected. USE/GIVE/DISCARD
 - __Rock Smash__: _Would you like to use Rock Smash? Yes/No_
-- __Mystery Gift__: _xxx received xxx!_
+- __Fishing__: Register at least two key items to Y menu. Wait at Y shortcut menu. Press arrow key to use the fish rod. TTT calibration required.
 - __Eggs__ from Day Care:
 
 Accepting => 1st Yes/No Screen: _You do want it. don't you? / You'll be wanting it won't you? / You've gotta want it, right?_
