@@ -39,7 +39,7 @@ namespace Pk3DSRNGTool
             list = list.OrderByDescending(e => e.frame).ToList();
         }
 
-        public void AdvanceMT(int Delay)
+        public void time_elapse(int Delay)
         {
             int Target = Currentframe + Delay;
             while (list.Last().frame < Target)

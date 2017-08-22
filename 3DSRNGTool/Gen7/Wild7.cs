@@ -7,7 +7,7 @@ namespace Pk3DSRNGTool
     public class Wild7 : WildRNG
     {
         private static ulong getrand => RNGPool.getrand64;
-        private static void time_elapse(int n) => RNGPool.time_elapse(n);
+        private static void time_elapse(int n) => RNGPool.time_elapse7(n);
         private static void Advance(int n) => RNGPool.Advance(n);
 
         public byte SpecialEnctr; // !=0 means there is ub/qr present
@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
-        public override void Delay() => RNGPool.WildDelay();
+        public override void Delay() => RNGPool.WildDelay7();
         public override RNGResult Generate()
         {
             ResultW7 rt = new ResultW7();

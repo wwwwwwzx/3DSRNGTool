@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
         {
             if (NoDex || YourID && !IsEgg)
                 Generate();
-            RNGPool.NormalDelay();
+            RNGPool.NormalDelay7();
         }
 
         public override RNGResult Generate()

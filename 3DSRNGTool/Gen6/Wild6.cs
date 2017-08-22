@@ -31,29 +31,29 @@ namespace Pk3DSRNGTool
             switch (Wildtype)
             {
                 case EncounterType.RockSmash:
-                    RNGPool.AdvanceMT(16);
+                    RNGPool.time_elapse6(16);
                     tiny_Advance(3);
-                    RNGPool.AdvanceMT(RNGPool.DelayTime - 228);
+                    RNGPool.time_elapse6(RNGPool.DelayTime - 228);
                     tiny_Advance(1);
-                    RNGPool.AdvanceMT(212);
+                    RNGPool.time_elapse6(212);
                     rt.IsPokemon = TinyRand(100) <= 30;
                     break;
                 case EncounterType.CaveShadow:
-                    RNGPool.AdvanceMT(32);
+                    RNGPool.time_elapse6(32);
                     tiny_Advance(1);
-                    RNGPool.AdvanceMT(46);
+                    RNGPool.time_elapse6(46);
                     break;
                 case EncounterType.Fishing:
-                    RNGPool.AdvanceMT(RNGPool.DelayTime);
+                    RNGPool.time_elapse6(RNGPool.DelayTime);
                     tiny_Advance(3 * PartyPKM);
-                    RNGPool.AdvanceMT(132);
+                    RNGPool.time_elapse6(132);
                     Advance(132);
                     var fishingdelay = TinyRand(7) * 30 + 60;
-                    RNGPool.AdvanceMT(fishingdelay);
+                    RNGPool.time_elapse6(fishingdelay);
                     Advance(fishingdelay);
                     break;
                 default:
-                    RNGPool.AdvanceMT(RNGPool.DelayTime);
+                    RNGPool.time_elapse6(RNGPool.DelayTime);
                     break;
             }
             // Sync

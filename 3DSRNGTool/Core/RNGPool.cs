@@ -154,7 +154,7 @@ namespace Pk3DSRNGTool.Core
         public static TinyTimeline timeline;
         public static HordeResults horde;
 
-        public static void AdvanceMT(int i) => tinystatus.AdvanceMT(i);
+        public static void time_elapse6(int i) => tinystatus.time_elapse(i); // Only Tiny Advance according to timeline. i.e. MT not advance
         public static void AdvanceTiny() => tinystatus.Tinyrng.Next();
 
         #endregion
@@ -181,7 +181,7 @@ namespace Pk3DSRNGTool.Core
             phase = st.phase;
         }
 
-        public static void time_elapse(int n)
+        public static void time_elapse7(int n)
         {
             for (int totalframe = 0; totalframe < n; totalframe++)
             {
@@ -224,47 +224,47 @@ namespace Pk3DSRNGTool.Core
             remain_frame[0] = tmp;
         }
         
-        public static void NormalDelay() => time_elapse(DelayTime);
+        public static void NormalDelay7() => time_elapse7(DelayTime);
 
-        public static void StationaryDelay()
+        public static void StationaryDelay7()
         {
             if (IsSolgaleo || IsLunala)
             {
                 int crydelay = IsSolgaleo ? 79 : 76;
-                time_elapse(DelayTime - crydelay - 19);
+                time_elapse7(DelayTime - crydelay - 19);
                 if (modelnumber == 7) SolLunaRearrange();
-                time_elapse(19);
+                time_elapse7(19);
                 Advance(1);     //Cry Inside Time Delay
-                time_elapse(crydelay);
+                time_elapse7(crydelay);
                 return;
             }
             if (IsExeggutor)
             {
-                time_elapse(1);
+                time_elapse7(1);
                 if (modelnumber == 1) ExeggutorRearrange();
-                time_elapse(42);
+                time_elapse7(42);
                 Advance(1);    //Cry Inside Time Delay
-                time_elapse(DelayTime - 43);
+                time_elapse7(DelayTime - 43);
                 return;
             }
-            NormalDelay();
+            NormalDelay7();
         }
 
-        public static void WildDelay()
+        public static void WildDelay7()
         {
-            NormalDelay();
+            NormalDelay7();
             ResetModelStatus();
             if (raining) Advance(2);
-            time_elapse(1);              //Blink process also occurs when loading map
+            time_elapse7(1);              //Blink process also occurs when loading map
             Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
-            time_elapse(93);
+            time_elapse7(93);
         }
 
         private static int getframeshift()
         {
             if (Considerdelay)
             {
-                time_elapse(2); // Button pressing delay
+                time_elapse7(2); // Button pressing delay
                 igenerator.Delay();
             }
             else
