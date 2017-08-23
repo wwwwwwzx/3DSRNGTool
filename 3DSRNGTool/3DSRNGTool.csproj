@@ -59,6 +59,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Gen6\Egg6.cs" />
+    <Compile Include="Gen6\Gen6Encounter\FishingArea.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\RockSmashArea6.cs" />
     <Compile Include="Gen6\HordeResults.cs" />

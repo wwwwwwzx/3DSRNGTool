@@ -43,7 +43,9 @@ namespace Pk3DSRNGTool
                     tiny_Advance(1);
                     RNGPool.time_elapse6(46);
                     break;
-                case EncounterType.Fishing:
+                case EncounterType.OldRod:
+                case EncounterType.GoodRod:
+                case EncounterType.SuperRod:
                     RNGPool.time_elapse6(RNGPool.DelayTime);
                     tiny_Advance(3 * PartyPKM);
                     RNGPool.time_elapse6(132);
@@ -66,7 +68,9 @@ namespace Pk3DSRNGTool
                     rt.IsPokemon = TinyRand(100) < 13;
                     rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
                     break;
-                case EncounterType.Fishing:
+                case EncounterType.OldRod:
+                case EncounterType.GoodRod:
+                case EncounterType.SuperRod:
                     rt.IsPokemon = TinyRand(100) < 30; // To-do
                     rt.Slot = slot = getslot(TinyRand(100));
                     break;

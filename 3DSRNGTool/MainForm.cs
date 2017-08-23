@@ -651,6 +651,8 @@ namespace Pk3DSRNGTool
             else if (Gen6)
             {
                 ea = LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+                if (FormPM is PKMW6 pm && pm.IsFishing)
+                    ea = (ea as FishingArea6).GetRodArea(pm.Type);
             }
 
             RefreshWildSpecies();
@@ -911,7 +913,7 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.DelayTime;
                 if (IsTransporter)
                     buffersize += 2000;
-                if (FormPM is PKMW6 pmw6 && pmw6.Type == EncounterType.Fishing)
+                if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
                     buffersize += 400; // 132 +240
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
@@ -945,7 +947,7 @@ namespace Pk3DSRNGTool
             PerfectIVs = (byte)PerfectIVs.Value,
 
             Level = (byte)Filter_Lv.Value,
-            Slot = new bool[IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => e.Checked)).ToArray(),
+            Slot = new bool[IsLinux ? 1 : 0].Concat(Slot.CheckBoxItems.Select(e => Gen6 && !CreateTimeline.Checked ? false : e.Checked)).ToArray(),
             SpecialOnly = SpecialOnly.Checked,
 
             Ball = (byte)Ball.SelectedIndex,
@@ -1120,11 +1122,19 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new[] { 0, 0, 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
                             break;
-                        case EncounterType.Fishing:
+                        case EncounterType.OldRod:
+                        case EncounterType.GoodRod:
+                        case EncounterType.SuperRod:
+                            var Rod_area = ea as RodArea;
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[4];
                             setting6.PartyPKM = (byte)TTT.Parameters.Value;
                             slottype = 3;
+                            for (int i = 1; i < 4; i++)
+                            {
+                                setting6.SpecForm[i] = slotspecies[i - 1];
+                                setting6.SlotLevel[i] = Rod_area.Level[i - 1];
+                            }
                             break;
                         case EncounterType.RockSmash:
                             var RS_area = ea as RockSmashArea6;
@@ -1372,7 +1382,9 @@ namespace Pk3DSRNGTool
                         TTT.Method.SelectedIndex = 5;
                         CompoundEyes.Enabled = true;
                         break;
-                    case EncounterType.Fishing:
+                    case EncounterType.OldRod:
+                    case EncounterType.GoodRod:
+                    case EncounterType.SuperRod:
                         TTT.Method.SelectedIndex = 6;
                         break;
                     default:
