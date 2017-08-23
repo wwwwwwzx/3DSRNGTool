@@ -147,6 +147,7 @@ Wild_Setting = Wild Encounter Setting
 L_Location = Location
 L_Slots = Slots
 L_WildIVsCnt = Guaranteed IVs #
+L_ChainLength = Chain Length
 FirstEncounter = First Encounter
 CB_HAUnlocked = HA Unlocked
 CB_3rdSlotUnlocked = 3rd Slot Unlocked

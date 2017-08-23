@@ -800,6 +800,8 @@ namespace Pk3DSRNGTool
             {
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
+                ChainLength.Visible = L_ChainLength.Visible = pmw6.IsFishing;
+                L_Rate.Visible = Special_th.Visible = pmw6.IsFishing;
             }
             else
             {
@@ -834,7 +836,15 @@ namespace Pk3DSRNGTool
                     Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
                 }
                 else if (FormPM is PKMW6 pmw6)
-                    Special_th.Value = 0;
+                {
+                    if (pmw6.IsFishing)
+                    {
+                        ChainLength.Maximum = 20;
+                        Special_th.Value = FishingArea6.getEncounterRate(pmw6.Type);
+                    }
+                    else
+                        Special_th.Value = 0;
+                }
                 return;
             }
             switch (specform)
@@ -1129,7 +1139,9 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[4];
                             setting6.PartyPKM = (byte)TTT.Parameters.Value;
+                            setting6.EncounterRate = (byte)Special_th.Value;
                             slottype = 3;
+                            setting6._PIDroll_count = 2 * (int)ChainLength.Value;
                             for (int i = 1; i < 4; i++)
                             {
                                 setting6.SpecForm[i] = slotspecies[i - 1];

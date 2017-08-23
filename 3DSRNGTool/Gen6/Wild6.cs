@@ -16,8 +16,21 @@ namespace Pk3DSRNGTool
             for (int i = n; i > 0; i--)
                 RNGPool.AdvanceTiny();
         }
+        
+        public EncounterType Wildtype;
+        public bool HA;
+        public bool IsShinyLocked;
+        public int _PIDroll_count;
+        protected override int PIDroll_count => _PIDroll_count;
+        public int _ivcnt = -1;
+        protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
+        public int BlankGenderRatio;
+        public byte SlotNum;
 
+        public byte[] SlotLevel;
+        public bool CompoundEye;
         public byte PartyPKM; // For fishing
+        public byte EncounterRate;
 
         private bool getSync => getTinyRand < 0x80000000;
         private void Prepare(ResultW6 rt)
@@ -71,7 +84,7 @@ namespace Pk3DSRNGTool
                 case EncounterType.OldRod:
                 case EncounterType.GoodRod:
                 case EncounterType.SuperRod:
-                    rt.IsPokemon = TinyRand(100) < 30; // To-do
+                    rt.IsPokemon = TinyRand(100) < EncounterRate;
                     rt.Slot = slot = getslot(TinyRand(100));
                     break;
                 case EncounterType.PokeRadar:
@@ -89,19 +102,6 @@ namespace Pk3DSRNGTool
             rt.Item = TinyRand(100);
             rt.ItemStr = getitemstr(rt.Item, CompoundEye);
         }
-
-        public EncounterType Wildtype;
-        public bool HA;
-        public bool IsShinyLocked;
-        public int _PIDroll_count;
-        protected override int PIDroll_count => _PIDroll_count;
-        public int _ivcnt = -1;
-        protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
-        public int BlankGenderRatio;
-        public byte SlotNum;
-
-        public byte[] SlotLevel;
-        public bool CompoundEye;
 
         public override RNGResult Generate()
         {

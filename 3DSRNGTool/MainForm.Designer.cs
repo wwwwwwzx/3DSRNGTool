@@ -199,6 +199,7 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.L_ChainLength = new System.Windows.Forms.Label();
             this.L_HordeInfo = new System.Windows.Forms.Label();
             this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.CB_HAUnlocked = new System.Windows.Forms.CheckBox();
@@ -384,6 +385,7 @@
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ChainLength = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -474,6 +476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
             this.RNGMethod.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             this.SuspendLayout();
             // 
             // Lang
@@ -2188,6 +2191,8 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.L_ChainLength);
+            this.Wild_Setting.Controls.Add(this.ChainLength);
             this.Wild_Setting.Controls.Add(this.L_HordeInfo);
             this.Wild_Setting.Controls.Add(this.CB_3rdSlotUnlocked);
             this.Wild_Setting.Controls.Add(this.CB_HAUnlocked);
@@ -2213,6 +2218,16 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // L_ChainLength
+            // 
+            this.L_ChainLength.AutoSize = true;
+            this.L_ChainLength.Location = new System.Drawing.Point(11, 159);
+            this.L_ChainLength.Name = "L_ChainLength";
+            this.L_ChainLength.Size = new System.Drawing.Size(43, 13);
+            this.L_ChainLength.TabIndex = 99;
+            this.L_ChainLength.Text = "连锁数";
+            this.L_ChainLength.Visible = false;
             // 
             // L_HordeInfo
             // 
@@ -4572,6 +4587,16 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // ChainLength
+            // 
+            this.ChainLength.AccessibleName = "";
+            this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChainLength.Location = new System.Drawing.Point(93, 155);
+            this.ChainLength.Name = "ChainLength";
+            this.ChainLength.Size = new System.Drawing.Size(44, 22);
+            this.ChainLength.TabIndex = 98;
+            this.ChainLength.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4705,6 +4730,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
             this.RNGMethod.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5041,6 +5067,8 @@
         private Controls.GenderListBox GenderList;
         private System.Windows.Forms.Label L_GenderList;
         private System.Windows.Forms.Label L_HordeInfo;
+        private System.Windows.Forms.Label L_ChainLength;
+        private System.Windows.Forms.NumericUpDown ChainLength;
     }
 }
 
