@@ -200,6 +200,7 @@
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
+            this.ChainLength = new System.Windows.Forms.NumericUpDown();
             this.L_HordeInfo = new System.Windows.Forms.Label();
             this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.CB_HAUnlocked = new System.Windows.Forms.CheckBox();
@@ -385,7 +386,7 @@
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.ChainLength = new System.Windows.Forms.NumericUpDown();
+            this.SuctionCups = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -414,6 +415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).BeginInit();
@@ -476,7 +478,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
             this.RNGMethod.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             this.SuspendLayout();
             // 
             // Lang
@@ -2191,6 +2192,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.SuctionCups);
             this.Wild_Setting.Controls.Add(this.L_ChainLength);
             this.Wild_Setting.Controls.Add(this.ChainLength);
             this.Wild_Setting.Controls.Add(this.L_HordeInfo);
@@ -2228,6 +2230,16 @@
             this.L_ChainLength.TabIndex = 99;
             this.L_ChainLength.Text = "连锁数";
             this.L_ChainLength.Visible = false;
+            // 
+            // ChainLength
+            // 
+            this.ChainLength.AccessibleName = "";
+            this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChainLength.Location = new System.Drawing.Point(93, 155);
+            this.ChainLength.Name = "ChainLength";
+            this.ChainLength.Size = new System.Drawing.Size(44, 22);
+            this.ChainLength.TabIndex = 98;
+            this.ChainLength.Visible = false;
             // 
             // L_HordeInfo
             // 
@@ -2308,6 +2320,17 @@
             this.CompoundEyes.TabIndex = 92;
             this.CompoundEyes.Text = "复眼";
             this.CompoundEyes.UseVisualStyleBackColor = true;
+            // 
+            // SuctionCups
+            // 
+            this.SuctionCups.AutoSize = true;
+            this.SuctionCups.Location = new System.Drawing.Point(125, 196);
+            this.SuctionCups.Name = "SuctionCups";
+            this.SuctionCups.Size = new System.Drawing.Size(50, 17);
+            this.SuctionCups.TabIndex = 100;
+            this.SuctionCups.Text = "吸盘";
+            this.SuctionCups.UseVisualStyleBackColor = true;
+            this.SuctionCups.CheckedChanged += new System.EventHandler(this.SuctionCups_CheckedChanged);
             // 
             // L_Rate
             // 
@@ -4587,16 +4610,6 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // ChainLength
-            // 
-            this.ChainLength.AccessibleName = "";
-            this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChainLength.Location = new System.Drawing.Point(93, 155);
-            this.ChainLength.Name = "ChainLength";
-            this.ChainLength.Size = new System.Drawing.Size(44, 22);
-            this.ChainLength.TabIndex = 98;
-            this.ChainLength.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4658,6 +4671,7 @@
             this.TP_WildRNG.ResumeLayout(false);
             this.Wild_Setting.ResumeLayout(false);
             this.Wild_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).EndInit();
@@ -4730,7 +4744,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).EndInit();
             this.RNGMethod.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5069,6 +5082,7 @@
         private System.Windows.Forms.Label L_HordeInfo;
         private System.Windows.Forms.Label L_ChainLength;
         private System.Windows.Forms.NumericUpDown ChainLength;
+        private System.Windows.Forms.CheckBox SuctionCups;
     }
 }
 

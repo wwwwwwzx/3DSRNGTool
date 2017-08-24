@@ -360,11 +360,11 @@ namespace Pk3DSRNGTool
         {
             if (SyncNature.SelectedIndex > 0)
             {
-                CompoundEyes.Checked = false;
+                SuctionCups.Checked = CompoundEyes.Checked = false;
                 if (AlwaysSynced.Checked)
                     Nature.ClearSelection();
             }
-            CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
+            SuctionCups.Enabled = CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
         }
 
         private void Fix3v_CheckedChanged(object sender, EventArgs e)
@@ -652,7 +652,11 @@ namespace Pk3DSRNGTool
             {
                 ea = LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
                 if (FormPM is PKMW6 pm && pm.IsFishing)
+                {
+                    ChainLength.Maximum = 20;
+                    Special_th.Value = SuctionCups.Checked ? 98 : 49;
                     ea = (ea as FishingArea6).GetRodArea(pm.Type);
+                }
             }
 
             RefreshWildSpecies();
@@ -674,6 +678,11 @@ namespace Pk3DSRNGTool
         {
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
+        }
+
+        private void SuctionCups_CheckedChanged(object sender, EventArgs e)
+        {
+            Special_th.Value = SuctionCups.Checked ? 98 : 49;
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -800,11 +809,11 @@ namespace Pk3DSRNGTool
             {
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
-                ChainLength.Visible = L_ChainLength.Visible = pmw6.IsFishing;
-                L_Rate.Visible = Special_th.Visible = pmw6.IsFishing;
+                ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible = pmw6.IsFishing;
             }
             else
             {
+                ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
             }
@@ -837,13 +846,8 @@ namespace Pk3DSRNGTool
                 }
                 else if (FormPM is PKMW6 pmw6)
                 {
-                    if (pmw6.IsFishing)
-                    {
-                        ChainLength.Maximum = 20;
-                        Special_th.Value = FishingArea6.getEncounterRate(pmw6.Type);
-                    }
-                    else
-                        Special_th.Value = 0;
+                    Special_th.Enabled = true;
+                    Special_th.Value = pmw6.IsFishing ? 49 : 0;
                 }
                 return;
             }

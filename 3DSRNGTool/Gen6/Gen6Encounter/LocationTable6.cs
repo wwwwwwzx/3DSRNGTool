@@ -681,229 +681,229 @@ namespace Pk3DSRNGTool
             new FishingArea6
             {
                 Location = 174, // Dewford Town
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 182, // Pacifidlog Town
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 184,// Petalburg City
-		        Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 341, },
+                Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 341, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 186, // Slateport City
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 194, // Lilycove City
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 196, // Mossdeep City
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 25, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 198, // Sootopolis City
-		        Species = new[] { 129, 129, 129, 129, 129, 129, 129, 129, 130, },
+                Species = new[] { 129, 129, 129, 129, 129, 129, 129, 129, 130, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 200, // Ever Grande City
-		        Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 222, },
+                Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 222, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 206, // Route 102
-		        Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 341, },
+                Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 341, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 208, // Route 103
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 210, // Route 104
-		        Species = new[] { 129, 129, 129, 129, 129, 129, 129, 129, 129, },
+                Species = new[] { 129, 129, 129, 129, 129, 129, 129, 129, 129, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 212, // Route 105
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 214, // Route 106
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 216, // Route 107
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 218, // Route 108
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 220, // Route 109
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 222, // Route 110
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 224, // Route 111
-		        Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
+                Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 230, // Route 114
-		        Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
+                Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 232, // Route 115
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 236, // Route 117
-		        Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 342, },
+                Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 342, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 238, // Route 118
-		        Species = new[] { 129, 72, 129, 129, 72, 318, 318, 318, 319, },
+                Species = new[] { 129, 72, 129, 129, 72, 318, 318, 318, 319, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 240, // Route 119
-		        Species = new[] { 129, 72, 349, 129, 318, 349, 318, 319, 349, },
+                Species = new[] { 129, 72, 349, 129, 318, 349, 318, 319, 349, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 40, 35, },
             },
             new FishingArea6
             {
                 Location = 242, // Route 120
-		        Species = new[] { 129, 72, 129, 129, 72, 339, 339, 339, 339, },
+                Species = new[] { 129, 72, 129, 129, 72, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 246, // Route 122
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 248, // Route 123
-		        Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 342, },
+                Species = new[] { 129, 118, 129, 129, 118, 341, 341, 341, 342, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 250, // Route 124
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 252, // Route 125
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 254, // Route 126
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 256, // Route 127
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 258, // Route 128
-		        Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 222, },
+                Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 222, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 260, // Route 129
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 262, // Route 130
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 264, // Route 131
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 266, // Route 132
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 268, // Route 133
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 270, // Route 134
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 117, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 272, idx = 1, // Meteor Falls
-		        Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
+                Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
@@ -915,73 +915,73 @@ namespace Pk3DSRNGTool
             new FishingArea6
             {
                 Location = 292, // Team Aqua Hideout
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 294, idx = 1, // Seafloor Cavern
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 10, 5, 30, 30, 30, 30, 35, 40, },
             },
             new FishingArea6
             {
                 Location = 294, idx = 2, // Seafloor Cavern
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 10, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 298, idx = 1, // Victory Road
-		        Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 370, 320, 370, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 298, idx = 2, // Victory Road
-		        Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
+                Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 300, // Shoal Cave
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 304, // Sea Mauville
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 320, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 310, // Sealed Chamber
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 116, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 116, 116, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 312, // Scorched Slab
-		        Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
+                Species = new[] { 129, 118, 129, 129, 118, 339, 339, 339, 339, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 314, // Team Magma Hideout
-		        Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
+                Species = new[] { 129, 72, 129, 129, 72, 320, 320, 320, 120, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 318, // Battle Resort
-		        Species = new[] { 129, 72, 129, 129, 72, 223, 223, 223, 224, },
+                Species = new[] { 129, 72, 129, 129, 72, 223, 223, 223, 224, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
             new FishingArea6
             {
                 Location = 324, // Safari Zone
-		        Species = new[] { 129, 118, 129, 129, 118, 129, 119, 119, 119, },
+                Species = new[] { 129, 118, 129, 129, 118, 129, 119, 119, 119, },
                 Level = new byte[] { 10, 5, 15, 25, 25, 25, 35, 30, 40, },
             },
         };

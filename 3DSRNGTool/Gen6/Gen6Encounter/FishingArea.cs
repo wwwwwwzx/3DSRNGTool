@@ -61,15 +61,5 @@ namespace Pk3DSRNGTool
                 Level = lvl,
             };
         }
-        public static byte getEncounterRate(EncounterType type, bool SuctionCup = false)
-        {
-            switch (type)
-            {
-                case EncounterType.OldRod: return 30;
-                case EncounterType.GoodRod: return 30;
-                case EncounterType.SuperRod: return 30;
-                default: return 30;
-            }
-        }
     }
 }

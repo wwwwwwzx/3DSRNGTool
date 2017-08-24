@@ -39,20 +39,20 @@
             },
             new PokemonList
             {
-                Text = "Poke Radar",
-                List = new[]
-                {
-                    new PKMW6 { Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
-                }
-            },
-            new PokemonList
-            {
                 Text = "Fishing",
                 List = new[]
                 {
                     new PKMW6 { Conceptual = true, Type = EncounterType.OldRod, Delay = 14 },
                     new PKMW6 { Conceptual = true, Type = EncounterType.GoodRod, Delay = 14 },
                     new PKMW6 { Conceptual = true, Type = EncounterType.SuperRod, Delay = 14 },
+                }
+            },
+            new PokemonList
+            {
+                Text = "Poke Radar",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.PokeRadar, Delay = 14 },
                 }
             },
             new PokemonList

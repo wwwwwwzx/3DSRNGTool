@@ -154,6 +154,7 @@ CB_3rdSlotUnlocked = 3rd Slot Unlocked
 Day = Day
 Night = Night
 CompoundEyes = Compound Eyes
+SuctionCups = Suction Cups
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Current Status
 B_Load = Load...
