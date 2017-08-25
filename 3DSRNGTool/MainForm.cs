@@ -1373,10 +1373,13 @@ namespace Pk3DSRNGTool
             {
                 TTT.Method.SelectedIndex = p.InstantSync ? 3 : 2;
                 TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { -1, 4 } : new[] { -1, 0, 1, 3 });
+                TTT.Delay.Value = Timedelay.Value;
+                if (p.IsSoaring) TTT.Delay.Value = 14;
             }
             if (Method == 2 && FormPM is PKMW6 pw)
             {
                 L_HordeInfo.Visible = IsHorde;
+                TTT.Delay.Value = Timedelay.Value;
                 switch (pw.Type)
                 {
                     case EncounterType.FriendSafari:

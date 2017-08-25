@@ -35,12 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label0 = new System.Windows.Forms.Label();
-            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -62,16 +58,22 @@
             this.B_Stop = new System.Windows.Forms.Button();
             this.B_Cali = new System.Windows.Forms.Button();
             this.GB_Adj = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Delay = new System.Windows.Forms.NumericUpDown();
+            this.ConsiderDelay = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Parameters = new System.Windows.Forms.NumericUpDown();
+            this.Cry = new System.Windows.Forms.CheckBox();
+            this.CryFrame = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
             this.Method = new System.Windows.Forms.ComboBox();
-            this.Shift = new System.Windows.Forms.NumericUpDown();
-            this.Frame_J = new System.Windows.Forms.NumericUpDown();
             this.TTTToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainDGV = new System.Windows.Forms.DataGridView();
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_hitidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_fishing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_friendsafari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_cutscenesync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +83,10 @@
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -89,23 +95,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
             this.GB_Adj.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Parameters)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Shift)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CryFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tiny3
-            // 
-            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Location = new System.Drawing.Point(40, 26);
-            this.tiny3.Mask = "AAAAAAAA";
-            this.tiny3.Name = "tiny3";
-            this.tiny3.Size = new System.Drawing.Size(63, 22);
-            this.tiny3.TabIndex = 100;
-            this.tiny3.Text = "00000000";
-            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny3.Value = ((uint)(0u));
             // 
             // label0
             // 
@@ -118,18 +112,6 @@
             this.label0.Text = "[0]";
             this.label0.DoubleClick += new System.EventHandler(this.Update_Click);
             // 
-            // tiny2
-            // 
-            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Location = new System.Drawing.Point(40, 54);
-            this.tiny2.Mask = "AAAAAAAA";
-            this.tiny2.Name = "tiny2";
-            this.tiny2.Size = new System.Drawing.Size(63, 22);
-            this.tiny2.TabIndex = 101;
-            this.tiny2.Text = "00000000";
-            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny2.Value = ((uint)(0u));
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,30 +122,6 @@
             this.label1.TabIndex = 106;
             this.label1.Text = "[1]";
             this.label1.DoubleClick += new System.EventHandler(this.Update_Click);
-            // 
-            // tiny1
-            // 
-            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Location = new System.Drawing.Point(40, 82);
-            this.tiny1.Mask = "AAAAAAAA";
-            this.tiny1.Name = "tiny1";
-            this.tiny1.Size = new System.Drawing.Size(63, 22);
-            this.tiny1.TabIndex = 102;
-            this.tiny1.Text = "00000000";
-            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny1.Value = ((uint)(0u));
-            // 
-            // tiny0
-            // 
-            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Location = new System.Drawing.Point(40, 111);
-            this.tiny0.Mask = "AAAAAAAA";
-            this.tiny0.Name = "tiny0";
-            this.tiny0.Size = new System.Drawing.Size(63, 22);
-            this.tiny0.TabIndex = 103;
-            this.tiny0.Text = "00000000";
-            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny0.Value = ((uint)(0u));
             // 
             // label2
             // 
@@ -209,7 +167,7 @@
             0,
             0,
             0});
-            this.Frame1.Location = new System.Drawing.Point(15, 211);
+            this.Frame1.Location = new System.Drawing.Point(15, 210);
             this.Frame1.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -219,7 +177,7 @@
             this.Frame1.Size = new System.Drawing.Size(73, 22);
             this.Frame1.TabIndex = 109;
             this.Frame1.Value = new decimal(new int[] {
-            5000,
+            500,
             0,
             0,
             0});
@@ -227,7 +185,7 @@
             // B_Create
             // 
             this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_Create.Location = new System.Drawing.Point(99, 466);
+            this.B_Create.Location = new System.Drawing.Point(99, 498);
             this.B_Create.Name = "B_Create";
             this.B_Create.Size = new System.Drawing.Size(76, 29);
             this.B_Create.TabIndex = 110;
@@ -239,7 +197,7 @@
             // 
             this.L_Mainframe.AutoSize = true;
             this.L_Mainframe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Mainframe.Location = new System.Drawing.Point(12, 185);
+            this.L_Mainframe.Location = new System.Drawing.Point(12, 184);
             this.L_Mainframe.Name = "L_Mainframe";
             this.L_Mainframe.Size = new System.Drawing.Size(89, 13);
             this.L_Mainframe.TabIndex = 111;
@@ -253,7 +211,7 @@
             0,
             0,
             0});
-            this.Frame_max.Location = new System.Drawing.Point(95, 101);
+            this.Frame_max.Location = new System.Drawing.Point(95, 62);
             this.Frame_max.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -263,7 +221,7 @@
             this.Frame_max.Size = new System.Drawing.Size(88, 22);
             this.Frame_max.TabIndex = 112;
             this.Frame_max.Value = new decimal(new int[] {
-            1000000,
+            5000,
             0,
             0,
             0});
@@ -272,7 +230,7 @@
             // 
             this.L_TargetFrame.AutoSize = true;
             this.L_TargetFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_TargetFrame.Location = new System.Drawing.Point(10, 105);
+            this.L_TargetFrame.Location = new System.Drawing.Point(10, 66);
             this.L_TargetFrame.Name = "L_TargetFrame";
             this.L_TargetFrame.Size = new System.Drawing.Size(70, 13);
             this.L_TargetFrame.TabIndex = 114;
@@ -302,7 +260,7 @@
             this.GB_Cali.Controls.Add(this.B_Cali);
             this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(189, 311);
+            this.GB_Cali.Size = new System.Drawing.Size(189, 300);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
@@ -345,7 +303,7 @@
             // 
             this.L_Type.AutoSize = true;
             this.L_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Type.Location = new System.Drawing.Point(101, 185);
+            this.L_Type.Location = new System.Drawing.Point(101, 184);
             this.L_Type.Name = "L_Type";
             this.L_Type.Size = new System.Drawing.Size(77, 13);
             this.L_Type.TabIndex = 119;
@@ -355,7 +313,7 @@
             // 
             this.Type3.Enabled = false;
             this.Type3.FormattingEnabled = true;
-            this.Type3.Location = new System.Drawing.Point(101, 265);
+            this.Type3.Location = new System.Drawing.Point(101, 264);
             this.Type3.Name = "Type3";
             this.Type3.Size = new System.Drawing.Size(76, 21);
             this.Type3.TabIndex = 118;
@@ -370,7 +328,7 @@
             0,
             0,
             0});
-            this.Frame3.Location = new System.Drawing.Point(15, 266);
+            this.Frame3.Location = new System.Drawing.Point(15, 265);
             this.Frame3.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -380,7 +338,7 @@
             this.Frame3.Size = new System.Drawing.Size(73, 22);
             this.Frame3.TabIndex = 117;
             this.Frame3.Value = new decimal(new int[] {
-            5000,
+            500,
             0,
             0,
             0});
@@ -389,7 +347,7 @@
             // 
             this.Type2.Enabled = false;
             this.Type2.FormattingEnabled = true;
-            this.Type2.Location = new System.Drawing.Point(101, 238);
+            this.Type2.Location = new System.Drawing.Point(101, 237);
             this.Type2.Name = "Type2";
             this.Type2.Size = new System.Drawing.Size(76, 21);
             this.Type2.TabIndex = 116;
@@ -404,7 +362,7 @@
             0,
             0,
             0});
-            this.Frame2.Location = new System.Drawing.Point(15, 239);
+            this.Frame2.Location = new System.Drawing.Point(15, 238);
             this.Frame2.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -414,7 +372,7 @@
             this.Frame2.Size = new System.Drawing.Size(73, 22);
             this.Frame2.TabIndex = 112;
             this.Frame2.Value = new decimal(new int[] {
-            5000,
+            500,
             0,
             0,
             0});
@@ -422,7 +380,7 @@
             // Type1
             // 
             this.Type1.FormattingEnabled = true;
-            this.Type1.Location = new System.Drawing.Point(101, 212);
+            this.Type1.Location = new System.Drawing.Point(101, 211);
             this.Type1.Name = "Type1";
             this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
@@ -450,19 +408,69 @@
             // 
             // GB_Adj
             // 
+            this.GB_Adj.Controls.Add(this.label5);
+            this.GB_Adj.Controls.Add(this.Delay);
+            this.GB_Adj.Controls.Add(this.ConsiderDelay);
+            this.GB_Adj.Controls.Add(this.label4);
             this.GB_Adj.Controls.Add(this.Parameters);
+            this.GB_Adj.Controls.Add(this.Cry);
+            this.GB_Adj.Controls.Add(this.CryFrame);
             this.GB_Adj.Controls.Add(this.L_Method);
             this.GB_Adj.Controls.Add(this.Method);
-            this.GB_Adj.Controls.Add(this.Shift);
-            this.GB_Adj.Controls.Add(this.Frame_J);
             this.GB_Adj.Controls.Add(this.Frame_max);
             this.GB_Adj.Controls.Add(this.L_TargetFrame);
-            this.GB_Adj.Location = new System.Drawing.Point(5, 329);
+            this.GB_Adj.Location = new System.Drawing.Point(5, 318);
             this.GB_Adj.Name = "GB_Adj";
-            this.GB_Adj.Size = new System.Drawing.Size(189, 131);
+            this.GB_Adj.Size = new System.Drawing.Size(189, 164);
             this.GB_Adj.TabIndex = 117;
             this.GB_Adj.TabStop = false;
             this.GB_Adj.Text = "Adjustment";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(162, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 127;
+            this.label5.Text = "F";
+            // 
+            // Delay
+            // 
+            this.Delay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delay.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.Delay.Location = new System.Drawing.Point(113, 94);
+            this.Delay.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.Delay.Name = "Delay";
+            this.Delay.Size = new System.Drawing.Size(43, 22);
+            this.Delay.TabIndex = 126;
+            // 
+            // ConsiderDelay
+            // 
+            this.ConsiderDelay.AutoSize = true;
+            this.ConsiderDelay.Location = new System.Drawing.Point(15, 97);
+            this.ConsiderDelay.Name = "ConsiderDelay";
+            this.ConsiderDelay.Size = new System.Drawing.Size(95, 17);
+            this.ConsiderDelay.TabIndex = 125;
+            this.ConsiderDelay.Text = "Consider delay";
+            this.ConsiderDelay.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(162, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 124;
+            this.label4.Text = "F";
             // 
             // Parameters
             // 
@@ -471,6 +479,25 @@
             this.Parameters.Name = "Parameters";
             this.Parameters.Size = new System.Drawing.Size(43, 22);
             this.Parameters.TabIndex = 117;
+            // 
+            // Cry
+            // 
+            this.Cry.AutoSize = true;
+            this.Cry.Location = new System.Drawing.Point(15, 130);
+            this.Cry.Name = "Cry";
+            this.Cry.Size = new System.Drawing.Size(96, 17);
+            this.Cry.TabIndex = 118;
+            this.Cry.Text = "Cry at Target +";
+            this.Cry.UseVisualStyleBackColor = true;
+            this.Cry.EnabledChanged += new System.EventHandler(this.Cry_EnabledChanged);
+            // 
+            // CryFrame
+            // 
+            this.CryFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CryFrame.Location = new System.Drawing.Point(113, 127);
+            this.CryFrame.Name = "CryFrame";
+            this.CryFrame.Size = new System.Drawing.Size(43, 22);
+            this.CryFrame.TabIndex = 123;
             // 
             // L_Method
             // 
@@ -499,37 +526,6 @@
             this.Method.TabIndex = 115;
             this.Method.SelectedIndexChanged += new System.EventHandler(this.Method_SelectedIndexChanged);
             // 
-            // Shift
-            // 
-            this.Shift.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Shift.Location = new System.Drawing.Point(94, 62);
-            this.Shift.Name = "Shift";
-            this.Shift.Size = new System.Drawing.Size(43, 22);
-            this.Shift.TabIndex = 112;
-            // 
-            // Frame_J
-            // 
-            this.Frame_J.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame_J.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.Frame_J.Location = new System.Drawing.Point(12, 62);
-            this.Frame_J.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.Frame_J.Name = "Frame_J";
-            this.Frame_J.Size = new System.Drawing.Size(76, 22);
-            this.Frame_J.TabIndex = 109;
-            this.Frame_J.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            // 
             // MainDGV
             // 
             this.MainDGV.AllowUserToAddRows = false;
@@ -550,7 +546,9 @@
             this.MainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tiny_MTFRange,
             this.tiny_index,
+            this.tiny_hitidx,
             this.tiny_sync,
+            this.tiny_fishing,
             this.tiny_friendsafari,
             this.tiny_cutscenesync,
             this.tiny_slot,
@@ -581,7 +579,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.MainDGV.RowHeadersWidth = 18;
-            this.MainDGV.Size = new System.Drawing.Size(575, 483);
+            this.MainDGV.Size = new System.Drawing.Size(574, 515);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
             this.MainDGV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainDGV_MouseDown);
@@ -600,7 +598,15 @@
             this.tiny_index.HeaderText = "Index";
             this.tiny_index.Name = "tiny_index";
             this.tiny_index.ReadOnly = true;
-            this.tiny_index.Width = 50;
+            this.tiny_index.Width = 40;
+            // 
+            // tiny_hitidx
+            // 
+            this.tiny_hitidx.DataPropertyName = "HitIndex";
+            this.tiny_hitidx.HeaderText = "Hit";
+            this.tiny_hitidx.Name = "tiny_hitidx";
+            this.tiny_hitidx.ReadOnly = true;
+            this.tiny_hitidx.Width = 30;
             // 
             // tiny_sync
             // 
@@ -609,6 +615,14 @@
             this.tiny_sync.Name = "tiny_sync";
             this.tiny_sync.ReadOnly = true;
             this.tiny_sync.Width = 40;
+            // 
+            // tiny_fishing
+            // 
+            this.tiny_fishing.DataPropertyName = "Fishing";
+            this.tiny_fishing.HeaderText = "Fishing";
+            this.tiny_fishing.Name = "tiny_fishing";
+            this.tiny_fishing.ReadOnly = true;
+            this.tiny_fishing.Width = 50;
             // 
             // tiny_friendsafari
             // 
@@ -689,11 +703,59 @@
             this.RealTime.ReadOnly = true;
             this.RealTime.Width = 160;
             // 
+            // tiny3
+            // 
+            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny3.Location = new System.Drawing.Point(40, 26);
+            this.tiny3.Mask = "AAAAAAAA";
+            this.tiny3.Name = "tiny3";
+            this.tiny3.Size = new System.Drawing.Size(63, 22);
+            this.tiny3.TabIndex = 100;
+            this.tiny3.Text = "00000000";
+            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny3.Value = ((uint)(0u));
+            // 
+            // tiny2
+            // 
+            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny2.Location = new System.Drawing.Point(40, 54);
+            this.tiny2.Mask = "AAAAAAAA";
+            this.tiny2.Name = "tiny2";
+            this.tiny2.Size = new System.Drawing.Size(63, 22);
+            this.tiny2.TabIndex = 101;
+            this.tiny2.Text = "00000000";
+            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny2.Value = ((uint)(0u));
+            // 
+            // tiny0
+            // 
+            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny0.Location = new System.Drawing.Point(40, 111);
+            this.tiny0.Mask = "AAAAAAAA";
+            this.tiny0.Name = "tiny0";
+            this.tiny0.Size = new System.Drawing.Size(63, 22);
+            this.tiny0.TabIndex = 103;
+            this.tiny0.Text = "00000000";
+            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny0.Value = ((uint)(0u));
+            // 
+            // tiny1
+            // 
+            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny1.Location = new System.Drawing.Point(40, 82);
+            this.tiny1.Mask = "AAAAAAAA";
+            this.tiny1.Name = "tiny1";
+            this.tiny1.Size = new System.Drawing.Size(63, 22);
+            this.tiny1.TabIndex = 102;
+            this.tiny1.Text = "00000000";
+            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny1.Value = ((uint)(0u));
+            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 507);
+            this.ClientSize = new System.Drawing.Size(786, 539);
             this.Controls.Add(this.GB_Adj);
             this.Controls.Add(this.GB_Cali);
             this.Controls.Add(this.B_Create);
@@ -713,17 +775,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Adj.ResumeLayout(false);
             this.GB_Adj.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Parameters)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Shift)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame_J)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CryFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Controls.HexMaskedTextBox tiny3;
         private System.Windows.Forms.Label label0;
         private Controls.HexMaskedTextBox tiny2;
         private System.Windows.Forms.Label label1;
@@ -741,8 +801,6 @@
         private System.Windows.Forms.NumericUpDown Frame2;
         private System.Windows.Forms.ComboBox Type1;
         private System.Windows.Forms.GroupBox GB_Adj;
-        private System.Windows.Forms.NumericUpDown Shift;
-        private System.Windows.Forms.NumericUpDown Frame_J;
         private System.Windows.Forms.ContextMenuStrip CMS;
         private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
         private System.Windows.Forms.ComboBox Type3;
@@ -757,9 +815,17 @@
         public System.Windows.Forms.Button B_Stop;
         private System.Windows.Forms.Label L_TypeNum;
         public System.Windows.Forms.NumericUpDown TypeNum;
+        public System.Windows.Forms.CheckBox Cry;
+        public System.Windows.Forms.NumericUpDown CryFrame;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.NumericUpDown Delay;
+        public System.Windows.Forms.CheckBox ConsiderDelay;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_hitidx;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_fishing;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_friendsafari;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_cutscenesync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
@@ -769,5 +835,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
+        private Controls.HexMaskedTextBox tiny3;
     }
 }

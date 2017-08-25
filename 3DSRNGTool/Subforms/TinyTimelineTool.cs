@@ -95,7 +95,10 @@ namespace Pk3DSRNGTool
             Type2.SelectedValue = Type3.SelectedValue = -1;
             NTRHelper.ntrclient.EnableBP();
         }
-
+        private void Cry_EnabledChanged(object sender, EventArgs e)
+        {
+            Cry.Checked &= Cry.Enabled;
+        }
         private void B_Stop_Click(object sender, EventArgs e)
         {
             B_Stop.Visible = false;
@@ -126,7 +129,7 @@ namespace Pk3DSRNGTool
             list = new List<Frame_Tiny>();
             Frame_Tiny.Startingframe = (int)Frame1.Value;
             var state = gettimeline();
-            state.Generate();
+            state.Generate(ConsiderDelay.Checked);
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
@@ -140,6 +143,8 @@ namespace Pk3DSRNGTool
                 Status = new TinyStatus(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
                 Maxframe = (int)Frame_max.Value,
+                CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,
+                Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
             if (Frame2.Value > Frame1.Value)
@@ -148,8 +153,6 @@ namespace Pk3DSRNGTool
                 if (Frame3.Value > Frame2.Value)
                     line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
             }
-            for (int i = (int)Shift.Value; i > 0; i--)
-                line.Add((int)Frame_J.Value, 5);
             line.Method = (byte)Method.SelectedIndex;
             line.Parameter = (int)Parameters.Value;
             return line;
@@ -184,13 +187,16 @@ namespace Pk3DSRNGTool
         private void Method_Changed()
         {
             tiny_friendsafari.Visible = Method.SelectedIndex == 0;
-            tiny_ha.Visible = Method.SelectedIndex == 5;
             tiny_high16bit.Visible = Method.SelectedIndex == 1;
-            tiny_slot.Visible = Method.SelectedIndex == 1 || Method.SelectedIndex == 5;
+            tiny_ha.Visible = Method.SelectedIndex == 5;
+            tiny_fishing.Visible = Method.SelectedIndex == 6;
+            tiny_slot.Visible = Method.SelectedIndex == 1 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
             tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
             tiny_sync.Visible = !tiny_cutscenesync.Visible && Method.SelectedIndex != 4;
             tiny_item.Width = Method.SelectedIndex == 5 ? 125 : 40;
-            tiny_item.Visible = Method.SelectedIndex == 0 || Method.SelectedIndex == 5;
+            tiny_item.Visible = Method.SelectedIndex == 0 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
+            tiny_rand100.Visible = !ConsiderDelay.Checked;
+            //tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -210,43 +216,64 @@ namespace Pk3DSRNGTool
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
             Parameters.Visible = true;
+            Cry.Enabled = CryFrame.Enabled =  false;
             TypeNum.Value = 1;
             TTTToolTip.RemoveAll();
+            ConsiderDelay.Enabled = Delay.Enabled = true;
             switch (Method.SelectedIndex)
             {
-                case 0:
+                case 0: // FS
                     Parameters.Maximum = 3;
                     Parameters.Minimum = 2;
                     Parameters.Value = 3;
+                    Delay.Value = 6;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
                     break;
-                case 1:
+                case 1: // Pokeradar
                     Parameters.Maximum = 40;
                     Parameters.Minimum = 0;
                     Parameters.Value = 40;
+                    Delay.Value = 14;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
-                case 2:
+                case 2: // Portal/soaring
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
                     Parameters.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
+                    Cry.Enabled = CryFrame.Enabled = true;
                     break;
-                case 4:
+                case 3: // Instant Sync
+                    Cry.Enabled = CryFrame.Enabled = true;
+                    break;
+                case 4: // RS/CS
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     Parameters.Visible = false;
                     TypeNum.Value = 2;
                     TTTToolTip.SetToolTip(Method, "Rock Smash/Cave Shadow");
+                    Cry.Enabled = CryFrame.Enabled = true;
                     break;
-                case 5:
-                case 6:
+                case 5: // Horde
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 0;
                     Parameters.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
+                    ConsiderDelay.Enabled = Delay.Enabled = false;
+                    ConsiderDelay.Checked = false;
+                    Delay.Value = 0;
+                    break;
+                case 6: // Fishing
+                    Parameters.Maximum = 6;
+                    Parameters.Minimum = 1;
+                    Parameters.Value = 1;
+                    UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    ConsiderDelay.Enabled = Delay.Enabled = false;
+                    ConsiderDelay.Checked = true;
+                    Delay.Value = 14;
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 default:

@@ -19,9 +19,9 @@ namespace Pk3DSRNGTool
                 if (RNGPool.tinystatus == null)
                     return false;
                 if (InstantSync)
-                    return RNGPool.tinystatus.Nextuint() < 0x80000000;
+                    return RNGPool.timeline.FindFrame(RNGPool.tinystatus.Currentframe)?.sync ?? false;
                 else
-                    return RNGPool.timeline.FindFrame(RNGPool.tinystatus.Currentframe + 16)?.csync == 100;
+                    return RNGPool.timeline.FindFrame(RNGPool.tinystatus.Currentframe)?.csync == 100;
             }
         }
         private bool getSync => AlwaysSync || tinysync;

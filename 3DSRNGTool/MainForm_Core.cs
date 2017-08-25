@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
             getsetting(rng);
             RNGPool.timeline = TTT.gettimeline();
             RNGPool.timeline.Maxframe = max;
-            RNGPool.timeline.Generate(RecordState: true);
+            RNGPool.timeline.Generate(Method == 0); // Consider Stationary delay
             int listlength = RNGPool.timeline.TinyLength;
             for (int i = 0; i < listlength; i++)
             {

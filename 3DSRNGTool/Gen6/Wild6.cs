@@ -10,7 +10,7 @@ namespace Pk3DSRNGTool
         private static void Advance(int n) => RNGPool.Advance(n);
 
         private static uint getTinyRand => RNGPool.tinystatus.Nextuint();
-        private static byte TinyRand(int n) => (byte)(getTinyRand * (ulong)n >> 32);
+        private static byte TinyRand(int n) => RNGPool.tinystatus.Rand(n);
         private static void tiny_Advance(int n)
         {
             for (int i = n; i > 0; i--)
@@ -25,11 +25,11 @@ namespace Pk3DSRNGTool
         public int _ivcnt = -1;
         protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
         public int BlankGenderRatio;
-        public byte SlotNum;
+        public byte SlotNum;        // For friend safari
 
         public byte[] SlotLevel;
-        public bool CompoundEye;
-        public byte PartyPKM; // For fishing
+        public bool CompoundEye;    // For held item
+        public byte PartyPKM;       // For fishing
         public byte EncounterRate;
 
         private bool getSync => getTinyRand < 0x80000000;
