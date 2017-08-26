@@ -9,7 +9,8 @@
 
         public bool IsSoaring => Delay == 88; 
         public bool Bank; // Bank = PokemonLink or Transporter
-        public byte NumOfPkm = 1;
+        public byte NumOfPkm = 1; // number of Pokemon Generated
+        public byte Cry = 0xFF; // Cry delay
         public bool InstantSync;
         private bool _ShinyLocked;
 
@@ -39,11 +40,11 @@
                     new PKM6 { Species = 382, Level = 45, ShinyLocked = true, Version = GameVersion.AS, Delay = 3300, Unstable= true, }, // Kyogre
                     new PKM6 { Species = 383, Level = 45, ShinyLocked = true, Version = GameVersion.OR, Delay = 3300, Unstable= true, }, // Groudon
                     new PKM6 { Species = 384, Level = 70, ShinyLocked = true, InstantSync = true, }, // Rayquaza
-                    new PKM6 { Species = 386, Level = 80, ShinyLocked = true, Delay = 300, }, // Deoxys
+                    new PKM6 { Species = 386, Level = 80, ShinyLocked = true, Delay = 300, Cry = 0, }, // Deoxys
 
-                    new PKM6 { Species = 377, Level = 40, Delay = 158, }, // Regirock
-                    new PKM6 { Species = 378, Level = 40, Delay = 154, }, // Regice
-                    new PKM6 { Species = 379, Level = 40, Delay = 164, }, // Registeel
+                    new PKM6 { Species = 377, Level = 40, Delay = 158, Cry = 8, }, // Regirock
+                    new PKM6 { Species = 378, Level = 40, Delay = 154, Cry = 8, }, // Regice
+                    new PKM6 { Species = 379, Level = 40, Delay = 164, Cry = 8, }, // Registeel
                 }
             },
             new PokemonList
@@ -184,8 +185,8 @@
                 Text = "Legendary",
                 List = new[]
                 {
-                    new PKM6 { Species = 716, Level = 50, Ability = 1, ShinyLocked = true, Delay = 158, Version = GameVersion.X, }, // Xerneas
-                    new PKM6 { Species = 717, Level = 50, Ability = 1, ShinyLocked = true, Delay = 208, Version = GameVersion.Y, }, // Yveltal
+                    new PKM6 { Species = 716, Level = 50, Ability = 1, ShinyLocked = true, Delay = 158, Version = GameVersion.X, Cry = 0, }, // Xerneas
+                    new PKM6 { Species = 717, Level = 50, Ability = 1, ShinyLocked = true, Delay = 208, Version = GameVersion.Y, Cry = 0, }, // Yveltal
                     new PKM6 { Species = 718, Level = 70, Ability = 1, ShinyLocked = true }, // Zygarde
 
                     new PKM6 { Species = 150, Level = 70, Ability = 1, ShinyLocked = true, Delay = 2, }, // Mewtwo

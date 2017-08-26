@@ -68,6 +68,7 @@ namespace Pk3DSRNGTool
             new [] { "Rock Smash", "碎岩" },
             new [] { "Horde", "群战" },
             new [] { "Poke Radar", "宝可雷达" },
+            new [] { "Fishing", "钓鱼" },
             new [] { "None", "无" },
         };
 

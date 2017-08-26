@@ -1375,6 +1375,7 @@ namespace Pk3DSRNGTool
                 TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { -1, 4 } : new[] { -1, 0, 1, 3 });
                 TTT.Delay.Value = Timedelay.Value;
                 if (p.IsSoaring) TTT.Delay.Value = 14;
+                if (TTT.Cry.Checked = p.Cry != 255) TTT.CryFrame.Value = 8;
             }
             if (Method == 2 && FormPM is PKMW6 pw)
             {
