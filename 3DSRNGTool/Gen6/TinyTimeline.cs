@@ -175,12 +175,14 @@ namespace Pk3DSRNGTool
             }
             switch (Method)
             {
-                case 0: MarkFS(); break;
-                case 1: MarkRadar(); break;
-                case 2: MarkSync(false); break;
-                case 3: MarkSync(true); break;
-                case 5: MarkHorde(); break;
-                case 6: if (splittimeline) MarkFishing(); break;
+                case 0: MarkSync(true); break;
+                case 1: MarkSync(false); break;
+                case 2: MarkHorde(); break;
+                case 3: MarkFS(); break;
+                case 4: MarkNormalWild(); break;
+                case 5: if (splittimeline) MarkFishing(); break;
+                case 6:
+                case 7: MarkNormalWild(); break;
             }
         }
 
@@ -203,11 +205,18 @@ namespace Pk3DSRNGTool
             // More method here
             switch (Method)
             {
-                case 6:
+                case 5:
                     for (int i = 3 * PM_Num; i > 0; i--)
                         st.Next();
                     st.time_elapse(132);
                     st.time_elapse(st.Rand(7) * 30 + 60);
+                    break;
+                case 6:
+                    for (int i = 3; i > 0; i--)
+                        st.Next();
+                    st.time_elapse(52);
+                    st.Next();
+                    st.time_elapse(212);
                     break;
             }
 
@@ -288,13 +297,13 @@ namespace Pk3DSRNGTool
                     break;
                 }
                 results[i].sync = ReferenceList[j++].Rand2;
-                if (ReferenceList[j++].Rand(100) < 13)
-                    results[i]._fs = (byte)(((ReferenceList[j++].rand * SlotNum) >> 32) + 1);
+                results[i].enctr = ReferenceList[j++].Rand(100);
+                results[i].slot = (byte)(((ReferenceList[j++].rand * SlotNum) >> 32) + 1);
                 results[i].item = getItem(ReferenceList[++j].Rand(100));
             }
         }
 
-        private void MarkRadar()
+        private void MarkNormalWild()
         {
             int max = results.Count;
             int idxmax = ReferenceList.Count - 3;
@@ -333,7 +342,7 @@ namespace Pk3DSRNGTool
                     break;
                 }
                 results[i].sync = ReferenceList[j++].Rand2;
-                results[i]._fishing = ReferenceList[j++].Rand(100);
+                results[i].enctr = ReferenceList[j++].Rand(100);
                 results[i].slot = getfishingslot(ReferenceList[j++].Rand(100));
                 results[i].item = getItem(ReferenceList[++j].Rand(100));
             }

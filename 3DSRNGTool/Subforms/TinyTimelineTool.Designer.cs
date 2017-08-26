@@ -55,6 +55,10 @@
             this.Type2 = new System.Windows.Forms.ComboBox();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
+            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Stop = new System.Windows.Forms.Button();
             this.B_Cali = new System.Windows.Forms.Button();
             this.GB_Adj = new System.Windows.Forms.GroupBox();
@@ -72,9 +76,8 @@
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_hitidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_enctr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_fishing = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_friendsafari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_cutscenesync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,10 +86,6 @@
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -385,6 +384,54 @@
             this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
             // 
+            // tiny3
+            // 
+            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny3.Location = new System.Drawing.Point(40, 26);
+            this.tiny3.Mask = "AAAAAAAA";
+            this.tiny3.Name = "tiny3";
+            this.tiny3.Size = new System.Drawing.Size(63, 22);
+            this.tiny3.TabIndex = 100;
+            this.tiny3.Text = "00000000";
+            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny3.Value = ((uint)(0u));
+            // 
+            // tiny2
+            // 
+            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny2.Location = new System.Drawing.Point(40, 54);
+            this.tiny2.Mask = "AAAAAAAA";
+            this.tiny2.Name = "tiny2";
+            this.tiny2.Size = new System.Drawing.Size(63, 22);
+            this.tiny2.TabIndex = 101;
+            this.tiny2.Text = "00000000";
+            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny2.Value = ((uint)(0u));
+            // 
+            // tiny0
+            // 
+            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny0.Location = new System.Drawing.Point(40, 111);
+            this.tiny0.Mask = "AAAAAAAA";
+            this.tiny0.Name = "tiny0";
+            this.tiny0.Size = new System.Drawing.Size(63, 22);
+            this.tiny0.TabIndex = 103;
+            this.tiny0.Text = "00000000";
+            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny0.Value = ((uint)(0u));
+            // 
+            // tiny1
+            // 
+            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny1.Location = new System.Drawing.Point(40, 82);
+            this.tiny1.Mask = "AAAAAAAA";
+            this.tiny1.Name = "tiny1";
+            this.tiny1.Size = new System.Drawing.Size(63, 22);
+            this.tiny1.TabIndex = 102;
+            this.tiny1.Text = "00000000";
+            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny1.Value = ((uint)(0u));
+            // 
             // B_Stop
             // 
             this.B_Stop.Location = new System.Drawing.Point(120, 110);
@@ -513,13 +560,14 @@
             // 
             this.Method.FormattingEnabled = true;
             this.Method.Items.AddRange(new object[] {
+            "Instant Sync",
+            "Cutscenes Sync",
+            "Horde",
             "Friend Safari",
             "PokeRadar",
-            "Cutscenes Sync",
-            "Instant Sync",
-            "RS/CS",
-            "Horde",
-            "Fishing"});
+            "Fishing",
+            "Rock Smash",
+            "Cave Shadow"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);
@@ -547,9 +595,8 @@
             this.tiny_MTFRange,
             this.tiny_index,
             this.tiny_hitidx,
+            this.tiny_enctr,
             this.tiny_sync,
-            this.tiny_fishing,
-            this.tiny_friendsafari,
             this.tiny_cutscenesync,
             this.tiny_slot,
             this.tiny_item,
@@ -598,7 +645,7 @@
             this.tiny_index.HeaderText = "Index";
             this.tiny_index.Name = "tiny_index";
             this.tiny_index.ReadOnly = true;
-            this.tiny_index.Width = 40;
+            this.tiny_index.Width = 35;
             // 
             // tiny_hitidx
             // 
@@ -606,7 +653,15 @@
             this.tiny_hitidx.HeaderText = "Hit";
             this.tiny_hitidx.Name = "tiny_hitidx";
             this.tiny_hitidx.ReadOnly = true;
-            this.tiny_hitidx.Width = 30;
+            this.tiny_hitidx.Width = 35;
+            // 
+            // tiny_enctr
+            // 
+            this.tiny_enctr.DataPropertyName = "Encounter";
+            this.tiny_enctr.HeaderText = "Enctr?";
+            this.tiny_enctr.Name = "tiny_enctr";
+            this.tiny_enctr.ReadOnly = true;
+            this.tiny_enctr.Width = 45;
             // 
             // tiny_sync
             // 
@@ -615,22 +670,6 @@
             this.tiny_sync.Name = "tiny_sync";
             this.tiny_sync.ReadOnly = true;
             this.tiny_sync.Width = 40;
-            // 
-            // tiny_fishing
-            // 
-            this.tiny_fishing.DataPropertyName = "Fishing";
-            this.tiny_fishing.HeaderText = "Fishing";
-            this.tiny_fishing.Name = "tiny_fishing";
-            this.tiny_fishing.ReadOnly = true;
-            this.tiny_fishing.Width = 50;
-            // 
-            // tiny_friendsafari
-            // 
-            this.tiny_friendsafari.DataPropertyName = "FS";
-            this.tiny_friendsafari.HeaderText = "FS";
-            this.tiny_friendsafari.Name = "tiny_friendsafari";
-            this.tiny_friendsafari.ReadOnly = true;
-            this.tiny_friendsafari.Width = 40;
             // 
             // tiny_cutscenesync
             // 
@@ -703,54 +742,6 @@
             this.RealTime.ReadOnly = true;
             this.RealTime.Width = 160;
             // 
-            // tiny3
-            // 
-            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Location = new System.Drawing.Point(40, 26);
-            this.tiny3.Mask = "AAAAAAAA";
-            this.tiny3.Name = "tiny3";
-            this.tiny3.Size = new System.Drawing.Size(63, 22);
-            this.tiny3.TabIndex = 100;
-            this.tiny3.Text = "00000000";
-            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny3.Value = ((uint)(0u));
-            // 
-            // tiny2
-            // 
-            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Location = new System.Drawing.Point(40, 54);
-            this.tiny2.Mask = "AAAAAAAA";
-            this.tiny2.Name = "tiny2";
-            this.tiny2.Size = new System.Drawing.Size(63, 22);
-            this.tiny2.TabIndex = 101;
-            this.tiny2.Text = "00000000";
-            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny2.Value = ((uint)(0u));
-            // 
-            // tiny0
-            // 
-            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Location = new System.Drawing.Point(40, 111);
-            this.tiny0.Mask = "AAAAAAAA";
-            this.tiny0.Name = "tiny0";
-            this.tiny0.Size = new System.Drawing.Size(63, 22);
-            this.tiny0.TabIndex = 103;
-            this.tiny0.Text = "00000000";
-            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny0.Value = ((uint)(0u));
-            // 
-            // tiny1
-            // 
-            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Location = new System.Drawing.Point(40, 82);
-            this.tiny1.Mask = "AAAAAAAA";
-            this.tiny1.Name = "tiny1";
-            this.tiny1.Size = new System.Drawing.Size(63, 22);
-            this.tiny1.TabIndex = 102;
-            this.tiny1.Text = "00000000";
-            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny1.Value = ((uint)(0u));
-            // 
             // TinyTimelineTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,12 +812,12 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.NumericUpDown Delay;
         public System.Windows.Forms.CheckBox ConsiderDelay;
+        private Controls.HexMaskedTextBox tiny3;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_hitidx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_enctr;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_fishing;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_friendsafari;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_cutscenesync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_item;
@@ -835,6 +826,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
-        private Controls.HexMaskedTextBox tiny3;
     }
 }

@@ -1371,7 +1371,7 @@ namespace Pk3DSRNGTool
                 return;
             if (Method == 0 && FormPM is PKM6 p)
             {
-                TTT.Method.SelectedIndex = p.InstantSync ? 3 : 2;
+                TTT.Method.SelectedIndex = p.InstantSync ? 0 : 1;
                 TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { -1, 4 } : new[] { -1, 0, 1, 3 });
                 TTT.Delay.Value = Timedelay.Value;
                 if (p.IsSoaring) TTT.Delay.Value = 14;
@@ -1383,32 +1383,29 @@ namespace Pk3DSRNGTool
                 TTT.Delay.Value = Timedelay.Value;
                 switch (pw.Type)
                 {
+                    case EncounterType.Horde:
+                        TTT.Method.SelectedIndex = 2;
+                        CompoundEyes.Enabled = true;
+                        break;
                     case EncounterType.FriendSafari:
-                        TTT.Method.SelectedIndex = 0;
+                        TTT.Method.SelectedIndex = 3;
                         break;
                     case EncounterType.PokeRadar:
-                        TTT.Method.SelectedIndex = 1;
-                        break;
-                    case EncounterType.RockSmash:
                         TTT.Method.SelectedIndex = 4;
-                        TTT.UpdateTypeComboBox(new[] { -1, 0, 1 });
-                        TTT.TypeNum.Value = 1;
-                        break;
-                    case EncounterType.CaveShadow:
-                        TTT.Method.SelectedIndex = 4;
-                        TTT.TypeNum.Value = 2;
-                        break;
-                    case EncounterType.Horde:
-                        TTT.Method.SelectedIndex = 5;
-                        CompoundEyes.Enabled = true;
                         break;
                     case EncounterType.OldRod:
                     case EncounterType.GoodRod:
                     case EncounterType.SuperRod:
+                        TTT.Method.SelectedIndex = 5;
+                        break;
+                    case EncounterType.RockSmash:
                         TTT.Method.SelectedIndex = 6;
                         break;
+                    case EncounterType.CaveShadow:
+                        TTT.Method.SelectedIndex = 7;
+                        break;
                     default:
-                        TTT.Method.SelectedIndex = 3;
+                        TTT.Method.SelectedIndex = 0;
                         break;
                 }
             }

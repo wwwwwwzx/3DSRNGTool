@@ -164,12 +164,12 @@ namespace Pk3DSRNGTool
             if (list.Count <= index)
                 return;
             var row = MainDGV.Rows[index];
-            if (Method.SelectedIndex == 0 && list[index]._fs > 0)
+            if (Method.SelectedIndex == 1 && list[index].csync == 100)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            if (Method.SelectedIndex == 1 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
+            if (Method.SelectedIndex == 3 && list[index].enctr < 13)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            if (Method.SelectedIndex == 4 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
-            if (Method.SelectedIndex == 2 && list[index].csync == 100)
-                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
         }
 
         private void copyStatusToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,15 +186,14 @@ namespace Pk3DSRNGTool
 
         private void Method_Changed()
         {
-            tiny_friendsafari.Visible = Method.SelectedIndex == 0;
-            tiny_high16bit.Visible = Method.SelectedIndex == 1;
-            tiny_ha.Visible = Method.SelectedIndex == 5;
-            tiny_fishing.Visible = Method.SelectedIndex == 6;
-            tiny_slot.Visible = Method.SelectedIndex == 1 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
-            tiny_cutscenesync.Visible = Method.SelectedIndex == 2;
-            tiny_sync.Visible = !tiny_cutscenesync.Visible && Method.SelectedIndex != 4;
-            tiny_item.Width = Method.SelectedIndex == 5 ? 125 : 40;
-            tiny_item.Visible = Method.SelectedIndex == 0 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
+            tiny_ha.Visible = Method.SelectedIndex == 2;
+            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5;
+            tiny_high16bit.Visible = Method.SelectedIndex == 4;
+            tiny_slot.Visible = Method.SelectedIndex > 1;
+            tiny_cutscenesync.Visible = Method.SelectedIndex == 1;
+            tiny_sync.Visible = !tiny_cutscenesync.Visible;
+            tiny_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
+            tiny_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
             //tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
@@ -216,29 +215,19 @@ namespace Pk3DSRNGTool
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
             Parameters.Visible = true;
+            ConsiderDelay.Enabled = Delay.Enabled = true;
             Cry.Enabled = CryFrame.Enabled =  false;
+            Cry.Checked = false;
+            CryFrame.Value = 0;
             TypeNum.Value = 1;
             TTTToolTip.RemoveAll();
-            ConsiderDelay.Enabled = Delay.Enabled = true;
             switch (Method.SelectedIndex)
             {
-                case 0: // FS
-                    Parameters.Maximum = 3;
-                    Parameters.Minimum = 2;
-                    Parameters.Value = 3;
-                    Delay.Value = 6;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
-                    TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
+                case 0: // Instant Sync
+                    Cry.Enabled = CryFrame.Enabled = true;
+                    Parameters.Visible = false;
                     break;
-                case 1: // Pokeradar
-                    Parameters.Maximum = 40;
-                    Parameters.Minimum = 0;
-                    Parameters.Value = 40;
-                    Delay.Value = 14;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
-                    TTTToolTip.SetToolTip(Parameters, "Chain Length");
-                    break;
-                case 2: // Portal/soaring
+                case 1: // Portal/soaring
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
                     Parameters.Value = 1;
@@ -246,17 +235,7 @@ namespace Pk3DSRNGTool
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
-                case 3: // Instant Sync
-                    Cry.Enabled = CryFrame.Enabled = true;
-                    break;
-                case 4: // RS/CS
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
-                    Parameters.Visible = false;
-                    TypeNum.Value = 2;
-                    TTTToolTip.SetToolTip(Method, "Rock Smash/Cave Shadow");
-                    Cry.Enabled = CryFrame.Enabled = true;
-                    break;
-                case 5: // Horde
+                case 2: // Horde
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 0;
                     Parameters.Value = 1;
@@ -266,15 +245,47 @@ namespace Pk3DSRNGTool
                     ConsiderDelay.Checked = false;
                     Delay.Value = 0;
                     break;
-                case 6: // Fishing
+                case 3: // FS
+                    Parameters.Maximum = 3;
+                    Parameters.Minimum = 2;
+                    Parameters.Value = 3;
+                    Delay.Value = 6;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
+                    TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
+                    Frame_Tiny.thershold = 13;
+                    break;
+                case 4: // Pokeradar
+                    Parameters.Maximum = 40;
+                    Parameters.Minimum = 0;
+                    Parameters.Value = 40;
+                    Delay.Value = 14;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
+                    TTTToolTip.SetToolTip(Parameters, "Chain Length");
+                    break;
+                case 5: // Fishing
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
                     Parameters.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
-                    ConsiderDelay.Enabled = Delay.Enabled = false;
+                    Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
                     Delay.Value = 14;
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
+                    Frame_Tiny.thershold = 98;
+                    break;
+                case 6: // Rock Smash
+                    UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    Parameters.Visible = false;
+                    Delay.Value = 14;
+                    break;
+                case 7: // Cave Shadow
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
+                    Parameters.Visible = false;
+                    TypeNum.Value = 2;
+                    Delay.Enabled = false;
+                    Delay.Value = 78;
+                    Cry.Checked = true;
+                    CryFrame.Value = 32;
                     break;
                 default:
                     Parameters.Visible = false;
