@@ -133,6 +133,9 @@ namespace Pk3DSRNGTool
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
+            int targetframeindex = list.FindIndex(t => t.framemin < state.Maxframe && state.Maxframe <= t.framemax);
+            MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
+            MainDGV.Rows[targetframeindex].Selected = true;
             Method_Changed();
         }
 
@@ -195,7 +198,7 @@ namespace Pk3DSRNGTool
             tiny_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             tiny_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
-            //tiny_hitidx.Visible = ConsiderDelay.Checked;
+            tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -216,11 +219,12 @@ namespace Pk3DSRNGTool
         {
             Parameters.Visible = true;
             ConsiderDelay.Enabled = Delay.Enabled = true;
-            Cry.Enabled = CryFrame.Enabled =  false;
+            Cry.Enabled = CryFrame.Enabled = false;
             Cry.Checked = false;
             CryFrame.Value = 0;
             TypeNum.Value = 1;
             TTTToolTip.RemoveAll();
+            UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
             switch (Method.SelectedIndex)
             {
                 case 0: // Instant Sync
@@ -239,7 +243,6 @@ namespace Pk3DSRNGTool
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 0;
                     Parameters.Value = 1;
-                    UpdateTypeComboBox(new[] { -1, 0, 1 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     ConsiderDelay.Enabled = Delay.Enabled = false;
                     ConsiderDelay.Checked = false;
@@ -250,7 +253,6 @@ namespace Pk3DSRNGTool
                     Parameters.Minimum = 2;
                     Parameters.Value = 3;
                     Delay.Value = 6;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
                     Frame_Tiny.thershold = 13;
                     break;
@@ -259,7 +261,6 @@ namespace Pk3DSRNGTool
                     Parameters.Minimum = 0;
                     Parameters.Value = 40;
                     Delay.Value = 14;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
                 case 5: // Fishing
@@ -279,7 +280,6 @@ namespace Pk3DSRNGTool
                     Delay.Value = 14;
                     break;
                 case 7: // Cave Shadow
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
                     Parameters.Visible = false;
                     TypeNum.Value = 2;
                     Delay.Enabled = false;
