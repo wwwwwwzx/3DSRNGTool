@@ -220,7 +220,7 @@
             this.Frame_max.Size = new System.Drawing.Size(88, 22);
             this.Frame_max.TabIndex = 112;
             this.Frame_max.Value = new decimal(new int[] {
-            5000,
+            100000,
             0,
             0,
             0});
@@ -654,6 +654,7 @@
             this.tiny_hitidx.Name = "tiny_hitidx";
             this.tiny_hitidx.ReadOnly = true;
             this.tiny_hitidx.Width = 35;
+            this.tiny_hitidx.Visible = false;
             // 
             // tiny_enctr
             // 

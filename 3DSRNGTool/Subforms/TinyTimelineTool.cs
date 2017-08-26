@@ -133,9 +133,12 @@ namespace Pk3DSRNGTool
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
-            int targetframeindex = list.FindIndex(t => t.framemin < state.Maxframe && state.Maxframe <= t.framemax);
-            MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
-            MainDGV.Rows[targetframeindex].Selected = true;
+            if (ConsiderDelay.Checked)
+            {
+                int targetframeindex = list.FindIndex(t => t.framemin < state.Maxframe && state.Maxframe <= t.framemax);
+                MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
+                MainDGV.Rows[targetframeindex].Selected = true;
+            }
             Method_Changed();
         }
 
@@ -198,7 +201,6 @@ namespace Pk3DSRNGTool
             tiny_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             tiny_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
-            tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
