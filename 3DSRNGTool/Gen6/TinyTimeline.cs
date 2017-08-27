@@ -169,10 +169,7 @@ namespace Pk3DSRNGTool
             if (splittimeline)
                 SplitTimeline(); // Consider delay effect
             else
-            {
                 results = ReferenceList.Select(t => t.Clone()).ToList();
-                results.Select(t => t.HitIndex = t.Index); // Copy index
-            }
             switch (Method)
             {
                 case 0: MarkSync(true); break;
@@ -250,19 +247,19 @@ namespace Pk3DSRNGTool
                     if (CurrTinyF.framemin > Maxframe)
                         return;
                 }
-                CurrHitidx = getidxAfterDelay(CurrTinyF.tinystate, CurrMTF, CurrTinyF.Index);
+                // Check if it's new CurrTiny
+                CurrHitidx = CurrMTF == CurrTinyF.framemin + 2 ? getidxAfterDelay(CurrTinyF.tinystate, CurrMTF, CurrTinyF.Index) : Hitidx;
                 var newdata = CurrTinyF.Clone();
                 newdata.framemin = CurrMTF - 2;
+                newdata.HitIndex = CurrHitidx;
                 do
                 {
                     CurrMTF += 2;
                     Hitidx = getidxAfterDelay(CurrTinyF.tinystate, CurrMTF, CurrTinyF.Index);
                 }
-                while (CurrMTF <= CurrTinyF.framemax && CurrHitidx == Hitidx); // Still inside one frame
+                while (CurrMTF <= CurrTinyF.framemax && CurrHitidx == Hitidx); // Still inside one frame, loop until new result
                 newdata.framemax = CurrMTF - 2;
-                newdata.HitIndex = CurrHitidx;
                 results.Add(newdata);
-                CurrHitidx = Hitidx;
             }
         }
 
