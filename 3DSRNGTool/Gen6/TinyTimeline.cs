@@ -84,7 +84,7 @@ namespace Pk3DSRNGTool
         }
 
         public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
-        public static int getcooldown2(uint rand) => rand < 0x55555556 ? 20 : 12;
+        public static int getcooldown2(uint rand) => rand > 0x55555555 ? 12 : 20;
         public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 780));
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
         public static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
@@ -211,7 +211,7 @@ namespace Pk3DSRNGTool
                 case 6:
                     for (int i = 3; i > 0; i--)
                         st.Next();
-                    st.time_elapse(52);
+                    st.time_elapse(52); // To-do
                     st.Next();
                     st.time_elapse(212);
                     break;
@@ -283,6 +283,7 @@ namespace Pk3DSRNGTool
 
         private void MarkFS()
         {
+            Frame_Tiny.thershold = 13;
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
             for (int i = 0; i < max; i++)
@@ -328,6 +329,7 @@ namespace Pk3DSRNGTool
 
         public void MarkFishing()
         {
+            Frame_Tiny.thershold = 98;
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
             for (int i = 0; i < max; i++)

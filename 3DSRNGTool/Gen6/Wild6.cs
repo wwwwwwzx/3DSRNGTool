@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime - 228);
                     tiny_Advance(1);
                     RNGPool.time_elapse6(212);
-                    rt.IsPokemon = TinyRand(100) <= 30;
+                    rt.IsPokemon = TinyRand(100) <= 30; // To-do
                     break;
                 case EncounterType.CaveShadow:
                     RNGPool.time_elapse6(32);

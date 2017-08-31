@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
             Pre = new int[Maxdist + 1];
             W = new int[Maxdist + 1];
             for (int i = 1; i <= Maxdist; i++)
-                W[i] = 0x7FFFFFFF; // Max int32
+                W[i] = int.MaxValue; // Max int32
             // Calc
             for (int i = 0; i <= Maxdist; i++)
             {

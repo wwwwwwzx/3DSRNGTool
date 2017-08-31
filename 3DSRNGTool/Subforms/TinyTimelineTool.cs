@@ -256,7 +256,6 @@ namespace Pk3DSRNGTool
                     Parameters.Value = 3;
                     Delay.Value = 6;
                     TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
-                    Frame_Tiny.thershold = 13;
                     break;
                 case 4: // Pokeradar
                     Parameters.Maximum = 40;
@@ -274,7 +273,6 @@ namespace Pk3DSRNGTool
                     ConsiderDelay.Checked = true;
                     Delay.Value = 14;
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
-                    Frame_Tiny.thershold = 98;
                     break;
                 case 6: // Rock Smash
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
