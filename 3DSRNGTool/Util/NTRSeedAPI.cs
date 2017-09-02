@@ -97,7 +97,7 @@ namespace Pk3DSRNGTool
             {
                 BPReached = 0; SetBreakPoint();
             }
-            else if (address > 0x7000000)
+            else if (address > 0x7000000 || address == BPOffset)
             {
                 ReadSeed(); resume();
                 if (BPReached == 0)
