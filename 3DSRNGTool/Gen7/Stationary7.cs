@@ -12,6 +12,7 @@ namespace Pk3DSRNGTool
         public bool blinkwhensync;
         private bool IsPelago;
         public byte PelagoShift;
+        public bool Trade;
 
         private bool blink_process()
         {
@@ -26,6 +27,9 @@ namespace Pk3DSRNGTool
         {
             Result7 rt = new Result7();
             rt.Level = Level;
+
+            if (Trade)
+                return GenerateTrade(rt);
 
             //Synchronize
             if (AlwaysSync)
@@ -87,6 +91,27 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
+        private Result7 GenerateTrade(Result7 rt)
+        {
+            rt.IVs = (int[])IVs.Clone();
+            for (int i = 0; i < 6; i++)
+                if (rt.IVs[i] < 0)
+                    rt.IVs[i] = (int)(getrand & 0x1F);
+
+            // All fixed for now
+            rt.Ability = Ability;
+            rt.Nature = Synchro_Stat;
+            rt.Gender = Gender;
+
+            rt.EC = (uint)getrand;
+            rt.PID = (uint)getrand;
+            if (rt.PSV == TSV)
+                rt.PID ^= 0x10000000;
+
+            return rt;
+        }
+
+
         public override void UseTemplate(Pokemon PM)
         {
             base.UseTemplate(PM);
@@ -94,6 +119,11 @@ namespace Pk3DSRNGTool
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             if (pm7.IsPelago)
                 IsPelago = true;
+            if (pm7.OTTSV != null)
+            {
+                TSV = (int)pm7.OTTSV;
+                Trade = true;
+            }
         }
     }
 

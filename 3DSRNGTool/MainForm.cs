@@ -800,6 +800,7 @@ namespace Pk3DSRNGTool
             {
                 NPC.Value = pm7.NPC;
                 BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
+                ShinyLocked.Checked |= pm7.OTTSV != null;
                 return;
             }
             if (FormPM is PKM6 pm6)
