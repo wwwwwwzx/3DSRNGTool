@@ -74,12 +74,12 @@
                 Text = "In-game Trade",
                 List = new[]
                 {
-                    new PKM7 { Species = 066, Level = 09, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, Delay = 4, }, // Machop
-                    new PKM7 { Species = 761, Level = 16, Ability = 1, OTTSV = 1292, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 2, Nature = 03, Delay = 4, }, // Bounsweet
-                    new PKM7 { Species = 061, Level = 22, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 2, Nature = 04, Delay = 4, }, // Poliwhirl
-                    new PKM7 { Species = 440, Level = 27, Ability = 2, OTTSV = 0982, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 2, Nature = 20, Delay = 4, }, // Happiny
-                    new PKM7 { Species = 076, Level = 32, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 08, Delay = 4, Forme = 1, }, // Graveler-1 * evloved
-                    new PKM7 { Species = 762, Level = 43, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 2, Nature = 23, Delay = 4, }, // Steenee
+                    new PKM7 { Species = 066, Level = 09, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, Delay = 4, NPC = 7, }, // Machop
+                    new PKM7 { Species = 761, Level = 16, Ability = 1, OTTSV = 1292, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 2, Nature = 03, Delay = 4, NPC = 6, }, // Bounsweet
+                    new PKM7 { Species = 061, Level = 22, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 2, Nature = 04, Delay = 4, NPC = 6, }, // Poliwhirl
+                    new PKM7 { Species = 440, Level = 27, Ability = 2, OTTSV = 0982, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 2, Nature = 20, Delay = 4, NPC = 6, }, // Happiny
+                    new PKM7 { Species = 076, Level = 32, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 08, Delay = 4, NPC = 7, Forme = 1, }, // Graveler-1 * evloved
+                    new PKM7 { Species = 762, Level = 43, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 2, Nature = 23, Delay = 4, NPC = 4, }, // Steenee
                     new PKM7 { Species = 663, Level = 59, Ability = 4, OTTSV = 3545, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 13, Delay = 4, NPC = 3, }, // Talonflame
                 }
             },
