@@ -45,6 +45,7 @@ namespace Pk3DSRNGTool
             new [] { "Legendary", "定点传说" },
             new [] { "Starters", "御三家" },
             new [] { "In-Game Gift", "礼物" },
+            new [] { "In-Game Trade", "游戏内交换" },
             new [] { "Pokemon Link", "宝可梦连接" },
             new [] { "Poke Transporter", "宝可虚拟传送" },
             new [] { "Normal Stationary","普通定点" },

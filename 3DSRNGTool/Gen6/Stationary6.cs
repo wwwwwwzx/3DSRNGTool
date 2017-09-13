@@ -121,6 +121,8 @@ namespace Pk3DSRNGTool
             Bank = pm6.Bank;
             if (pm6.Bank && (pm6.Species == 151 || pm6.Species == 251 && pm6.Ability == 4))
                 PerfectIVCount = 5;
+            if (pm6.OTTSV != null)
+                TSV = (int)pm6.OTTSV;
         }
     }
 }

@@ -71,7 +71,7 @@
             },
             new PokemonList
             {
-                Text = "In-game Trade",
+                Text = "In-Game Trade",
                 List = new[]
                 {
                     new PKM7 { Species = 066, Level = 09, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, Delay = 4, NPC = 7, }, // Machop

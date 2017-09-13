@@ -4,7 +4,7 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
         public override bool Syncable => !Bank && (!Gift || IV3 && !Egg); // Stationary encounter or undiscovered egg group non-egg gift
-        public override bool ShinyLocked { get => Bank || _ShinyLocked; protected set => _ShinyLocked = value; }
+        public override bool ShinyLocked { get => Bank || _ShinyLocked || OTTSV != null; protected set => _ShinyLocked = value; }
         public override bool AlwaysSync => base.AlwaysSync || Bank;
 
         public bool IsSoaring => Delay == 88; 
@@ -13,6 +13,8 @@
         public byte Cry = 0xFF; // Cry delay
         public bool InstantSync;
         private bool _ShinyLocked;
+
+        public ushort? OTTSV; // In-game trade
 
         public readonly static PokemonList Default = new PokemonList
         {
@@ -118,6 +120,16 @@
                     new PKM6 { Species = 319, Level = 40, Nature = 03, Ability = 1, Gift = true, Gender = 2, }, // Sharpedo
                     new PKM6 { Species = 323, Level = 40, Nature = 17, Ability = 1, Gift = true, Gender = 2, }, // Camerupt
                     new PKM6 { Species = 025, Level = 20, Forme = 1, Ability = 4, Gender = 2, Gift = true, ShinyLocked = true }, // Pikachu
+                }
+            },
+            new PokemonList
+            {
+                Text = "In-Game Trade",
+                List = new[]
+                {
+                    new PKM6 { Species = 296, Level = 09, Ability = 2, Gender = 0, OTTSV = 1920, Nature = 02, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Makuhita
+                    new PKM6 { Species = 300, Level = 30, Ability = 1, Gender = 1, OTTSV = 0202, Nature = 04, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Skitty
+                    new PKM6 { Species = 222, Level = 50, Ability = 4, Gender = 1, OTTSV = 0020, Nature = 20, IVs = new[] {31, -1, -1, -1, 31, -1}, }, // Corsola
                 }
             },
             new PokemonList
@@ -254,6 +266,26 @@
                     new PKM6 { Gift = true, Species = 566, Level = 20, Delay = 80, }, // Archen
                     new PKM6 { Gift = true, Species = 696, Level = 20, Delay = 80, }, // Tyrunt
                     new PKM6 { Gift = true, Species = 698, Level = 20, Delay = 80, }, // Amaura
+                }
+            },
+            new PokemonList
+            {
+                Text = "In-Game Trade",
+                List = new[]
+                {
+                    new PKM6 { Species = 129, Level = 05, Ability = 1, Gender = 0, OTTSV = 2767, Nature = 03, }, // Magikarp
+                    new PKM6 { Species = 133, Level = 05, Ability = 1, Gender = 1, OTTSV = 1830, Nature = 06, }, // Eevee
+
+                    new PKM6 { Species = 083, Level = 10, Ability = 1, Gender = 0, OTTSV = 0011, Nature = 13, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Farfetch'd
+                    new PKM6 { Species = 208, Level = 20, Ability = 1, Gender = 1, OTTSV = 1203, Nature = 08, IVs = new[] {-1, -1, 31, -1, -1, -1}, }, // Steelix
+                    new PKM6 { Species = 625, Level = 50, Ability = 1, Gender = 0, OTTSV = 0215, Nature = 03, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Bisharp
+
+                    // Starters from Shauna and Ralts have nothing to RNG
+                    new PKM6 { Species = 656, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 13, IVs = new[] {20, 20, 20, 20, 20, 31}, }, // Froakie
+                    new PKM6 { Species = 650, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 03, IVs = new[] {20, 31, 20, 20, 20, 20}, }, // Chespin
+                    new PKM6 { Species = 653, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 20}, }, // Fennekin
+
+                    new PKM6 { Species = 280, Level = 5, Ability = 1, Gender = 1, OTTSV = 2319, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 31}, }, // Ralts
                 }
             },
             new PokemonList
