@@ -127,9 +127,9 @@
                 Text = "In-Game Trade",
                 List = new[]
                 {
-                    new PKM6 { Species = 296, Level = 09, Ability = 2, Gender = 0, OTTSV = 1920, Nature = 02, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Makuhita
-                    new PKM6 { Species = 300, Level = 30, Ability = 1, Gender = 1, OTTSV = 0202, Nature = 04, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Skitty
-                    new PKM6 { Species = 222, Level = 50, Ability = 4, Gender = 1, OTTSV = 0020, Nature = 20, IVs = new[] {31, -1, -1, -1, 31, -1}, }, // Corsola
+                    new PKM6 { Species = 296, Level = 09, Ability = 2, Gender = 1, OTTSV = 1920, Nature = 02, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Makuhita
+                    new PKM6 { Species = 300, Level = 30, Ability = 1, Gender = 2, OTTSV = 0202, Nature = 04, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Skitty
+                    new PKM6 { Species = 222, Level = 50, Ability = 4, Gender = 2, OTTSV = 0020, Nature = 20, IVs = new[] {31, -1, -1, -1, 31, -1}, }, // Corsola
                 }
             },
             new PokemonList
@@ -273,19 +273,19 @@
                 Text = "In-Game Trade",
                 List = new[]
                 {
-                    new PKM6 { Species = 129, Level = 05, Ability = 1, Gender = 0, OTTSV = 2767, Nature = 03, }, // Magikarp
-                    new PKM6 { Species = 133, Level = 05, Ability = 1, Gender = 1, OTTSV = 1830, Nature = 06, }, // Eevee
+                    new PKM6 { Species = 129, Level = 05, Ability = 1, Gender = 1, OTTSV = 2767, Nature = 03, }, // Magikarp
+                    new PKM6 { Species = 133, Level = 05, Ability = 1, Gender = 2, OTTSV = 1830, Nature = 06, }, // Eevee
 
-                    new PKM6 { Species = 083, Level = 10, Ability = 1, Gender = 0, OTTSV = 0011, Nature = 13, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Farfetch'd
-                    new PKM6 { Species = 208, Level = 20, Ability = 1, Gender = 1, OTTSV = 1203, Nature = 08, IVs = new[] {-1, -1, 31, -1, -1, -1}, }, // Steelix
-                    new PKM6 { Species = 625, Level = 50, Ability = 1, Gender = 0, OTTSV = 0215, Nature = 03, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Bisharp
+                    new PKM6 { Species = 083, Level = 10, Ability = 1, Gender = 1, OTTSV = 0011, Nature = 13, IVs = new[] {-1, -1, -1, -1, -1, 31}, }, // Farfetch'd
+                    new PKM6 { Species = 208, Level = 20, Ability = 1, Gender = 2, OTTSV = 1203, Nature = 08, IVs = new[] {-1, -1, 31, -1, -1, -1}, }, // Steelix
+                    new PKM6 { Species = 625, Level = 50, Ability = 1, Gender = 1, OTTSV = 0215, Nature = 03, IVs = new[] {-1, 31, -1, -1, -1, -1}, }, // Bisharp
 
                     // Starters from Shauna and Ralts have nothing to RNG
-                    new PKM6 { Species = 656, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 13, IVs = new[] {20, 20, 20, 20, 20, 31}, }, // Froakie
-                    new PKM6 { Species = 650, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 03, IVs = new[] {20, 31, 20, 20, 20, 20}, }, // Chespin
-                    new PKM6 { Species = 653, Level = 5, Ability = 1, Gender = 0, OTTSV = 0002, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 20}, }, // Fennekin
+                    new PKM6 { Species = 656, Level = 5, Ability = 1, Gender = 1, OTTSV = 0002, Nature = 13, IVs = new[] {20, 20, 20, 20, 20, 31}, }, // Froakie
+                    new PKM6 { Species = 650, Level = 5, Ability = 1, Gender = 1, OTTSV = 0002, Nature = 03, IVs = new[] {20, 31, 20, 20, 20, 20}, }, // Chespin
+                    new PKM6 { Species = 653, Level = 5, Ability = 1, Gender = 1, OTTSV = 0002, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 20}, }, // Fennekin
 
-                    new PKM6 { Species = 280, Level = 5, Ability = 1, Gender = 1, OTTSV = 2319, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 31}, }, // Ralts
+                    new PKM6 { Species = 280, Level = 5, Ability = 1, Gender = 2, OTTSV = 2319, Nature = 15, IVs = new[] {20, 20, 20, 31, 20, 31}, }, // Ralts
                 }
             },
             new PokemonList
