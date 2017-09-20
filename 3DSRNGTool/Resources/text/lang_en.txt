@@ -42,6 +42,7 @@ Wild = Wild
 Stationary = Stationary
 AlwaysSynced = Always Synced
 Fix3v = 3IVs
+AssumeSynced = Assume Synced
 L_Category = Category
 L_GenderRatio = Gender Ratio
 L_SyncNature = Sync Nature

@@ -199,6 +199,7 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.SuctionCups = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
             this.ChainLength = new System.Windows.Forms.NumericUpDown();
             this.L_HordeInfo = new System.Windows.Forms.Label();
@@ -295,6 +296,7 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.AssumeSynced = new System.Windows.Forms.CheckBox();
             this.L_GenderList = new System.Windows.Forms.Label();
             this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.L_Targetmon = new System.Windows.Forms.Label();
@@ -386,7 +388,6 @@
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.SuctionCups = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -2221,6 +2222,17 @@
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
             // 
+            // SuctionCups
+            // 
+            this.SuctionCups.AutoSize = true;
+            this.SuctionCups.Location = new System.Drawing.Point(125, 196);
+            this.SuctionCups.Name = "SuctionCups";
+            this.SuctionCups.Size = new System.Drawing.Size(50, 17);
+            this.SuctionCups.TabIndex = 100;
+            this.SuctionCups.Text = "吸盘";
+            this.SuctionCups.UseVisualStyleBackColor = true;
+            this.SuctionCups.CheckedChanged += new System.EventHandler(this.SuctionCups_CheckedChanged);
+            // 
             // L_ChainLength
             // 
             this.L_ChainLength.AutoSize = true;
@@ -2320,17 +2332,6 @@
             this.CompoundEyes.TabIndex = 92;
             this.CompoundEyes.Text = "复眼";
             this.CompoundEyes.UseVisualStyleBackColor = true;
-            // 
-            // SuctionCups
-            // 
-            this.SuctionCups.AutoSize = true;
-            this.SuctionCups.Location = new System.Drawing.Point(125, 196);
-            this.SuctionCups.Name = "SuctionCups";
-            this.SuctionCups.Size = new System.Drawing.Size(50, 17);
-            this.SuctionCups.TabIndex = 100;
-            this.SuctionCups.Text = "吸盘";
-            this.SuctionCups.UseVisualStyleBackColor = true;
-            this.SuctionCups.CheckedChanged += new System.EventHandler(this.SuctionCups_CheckedChanged);
             // 
             // L_Rate
             // 
@@ -3431,6 +3432,7 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.AssumeSynced);
             this.Sta_Setting.Controls.Add(this.L_GenderList);
             this.Sta_Setting.Controls.Add(this.GenderList);
             this.Sta_Setting.Controls.Add(this.L_Targetmon);
@@ -3449,6 +3451,17 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // AssumeSynced
+            // 
+            this.AssumeSynced.AutoSize = true;
+            this.AssumeSynced.Location = new System.Drawing.Point(172, 240);
+            this.AssumeSynced.Name = "AssumeSynced";
+            this.AssumeSynced.Size = new System.Drawing.Size(74, 17);
+            this.AssumeSynced.TabIndex = 106;
+            this.AssumeSynced.Text = "假定同步";
+            this.AssumeSynced.UseVisualStyleBackColor = true;
+            this.AssumeSynced.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // L_GenderList
             // 
@@ -5083,6 +5096,7 @@
         private System.Windows.Forms.Label L_ChainLength;
         private System.Windows.Forms.NumericUpDown ChainLength;
         private System.Windows.Forms.CheckBox SuctionCups;
+        private System.Windows.Forms.CheckBox AssumeSynced;
     }
 }
 

@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
             get
             {
                 if (RNGPool.tinystatus == null)
-                    return false;
+                    return RNGPool.AssumeSynced;
                 if (InstantSync)
                     return RNGPool.timeline.FindFrame(RNGPool.tinystatus.Currentframe)?.sync ?? false;
                 else

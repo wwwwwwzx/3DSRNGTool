@@ -42,6 +42,7 @@ Wild = 野生
 Stationary = 定点
 AlwaysSynced = 必定同步
 Fix3v = 固定3V
+AssumeSynced = 假定同步成功
 L_Category = 分类
 L_GenderRatio = 性别比
 L_SyncNature = 同步性格

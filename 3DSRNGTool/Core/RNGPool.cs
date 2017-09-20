@@ -150,6 +150,9 @@ namespace Pk3DSRNGTool.Core
         }
         #region Gen6 Tiny Timeline
 
+        // Without timeline input
+        public static bool AssumeSynced;
+
         public static TinyStatus tinystatus;
         public static TinyTimeline timeline;
         public static HordeResults horde;

@@ -542,7 +542,6 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
-            B_OpenTool.Visible = gen6timeline_available || IsHorde;
             B_Search.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
@@ -561,6 +560,9 @@ namespace Pk3DSRNGTool
                 else if (Poke.Items.Count > 0 && sender != AlwaysSynced)
                     Poke_SelectedIndexChanged(null, null);
             }
+
+            AssumeSynced.Visible =
+            B_OpenTool.Visible = gen6timeline_available || IsHorde;
 
             if (MainRNGEgg.Checked)
             {
@@ -593,9 +595,9 @@ namespace Pk3DSRNGTool
 
             switch (Method)
             {
-                case 0: Sta_Setting.Controls.Add(EnctrPanel); Sta_Setting.Controls.Add(B_OpenTool); return;
+                case 0: Sta_Setting.Controls.Add(EnctrPanel); Sta_Setting.Controls.Add(B_OpenTool); Sta_Setting.Controls.Add(AssumeSynced); return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
-                case 2: Wild_Setting.Controls.Add(EnctrPanel); Wild_Setting.Controls.Add(B_OpenTool); return;
+                case 2: Wild_Setting.Controls.Add(EnctrPanel); Wild_Setting.Controls.Add(B_OpenTool); Wild_Setting.Controls.Add(AssumeSynced); return;
                 case 3: ByIVs.Checked = true; break;
                 case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
@@ -609,7 +611,10 @@ namespace Pk3DSRNGTool
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
+            {
                 CB_3rdSlotUnlocked.Enabled = CompoundEyes.Enabled = CreateTimeline.Checked;
+                AssumeSynced.Checked &= AssumeSynced.Enabled = !CreateTimeline.Checked && B_OpenTool.Visible;
+            }
             else
                 CompoundEyes.Enabled = true;
             NPC_ValueChanged(null, null);
@@ -918,6 +923,7 @@ namespace Pk3DSRNGTool
             }
             if (Gen6)
             {
+                RNGPool.AssumeSynced = AssumeSynced.Checked;
                 switch (Method)
                 {
                     case 1: buffersize = 80; break;
