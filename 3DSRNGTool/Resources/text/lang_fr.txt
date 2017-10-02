@@ -1,0 +1,289 @@
+! Interface Customization File
+! lang_en.txt = English
+! lang_jp.txt = Japanese
+! lang_fr.txt = French
+! lang_de.txt = German
+! lang_es.txt = Spanish
+! lang_it.txt = Italian
+! lang_ko.txt = Korean
+! lang_cn.txt = Simplified Chinese
+! lang_zh.txt = Traditional Chinese
+! lang_pt.txt = Portuguese
+! Make sure that each edit has a ' = ' between Control name and new Text!
+! -----------------------------------------------------
+- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
+! MainForm = 3DS RNG Tool
+- Change stuff below this line, not above.
+---------------------Global Setting------------------------
+L_Seed = Seed
+L_TSV = TSV
+L_GameVersion = Version
+ShinyCharm = Charme Chroma
+Advanced = Avancé
+TP_StationaryRNG = RNG Fixe
+TP_EventRNG = RNG Event
+TP_WildRNG = RNG Sauvage
+TP_EggRNG = RNG Oeuf
+TP_IDRNG = RNG ID
+----
+M_File = Fichier
+M_Exit = Quitter 
+M_Tool = Outils
+M_Gen7MainRNGTool = Outil de RNG principal (Gen 7)
+M_Gen7EggSeedFinder = Seed Finder pour Oeufs (Gen 7)
+M_NTRHelper = NTR Helper
+M_Gen6MainSeedFinder = Outil de RNG principal (Gen 6)
+---------------------TabPage1----------------------------------
+---
+Sta_Setting = Options Fixe
+L_Poke = Pokemon
+ShinyLocked = Shiny Locké
+Wild = Sauvage
+Stationary = Fixe
+AlwaysSynced = Synchro garanti
+Fix3v = 3IVs
+AssumeSynced = Syncrho supposé
+L_Category = Catégorie
+L_GenderRatio = Ratio Sexe
+L_SyncNature = Nature du Syncrho
+L_Rate = Ratio
+L_Lv = Fourchette de niveaux
+L_Targetmon = Index du Pokémon ciblé
+BlinkWhenSync = Blink quand Synchro
+Sta_AbilityLocked = Capacité Spéciale définie
+B_OpenTool = Tiny Timeline Tool
+L_GenderList = Liste des sexes (0:Assexué 1:Aléatoire 2:Mew):
+---
+Filters = Filtres
+L_H = PV
+L_A = Attaque
+L_B = Defense
+L_C = Atq Spé
+L_D = Def Spé
+L_S = Vitesse
+ByIVs = En utilisant les IVs
+ByStats = En utilisant les Stats
+L_IVRange = # d'IVs parfaits
+L_Stats = Statistiques
+L_BS = Base Stat
+L_nature = Nature
+L_gender = Sexe
+L_HP = Puissance Cachée
+L_Ability = Capacité Spéciale
+L_Lv_S = Niveau
+L_Slot = Slot de Rencontre
+L_Ball = Ball
+DisableFilters = Désactiver les filtres
+SpecialOnly = UC/QR uniquement
+ShinyOnly = Shiny uniquement
+SafeFOnly = Frames sûres uniquement
+BlinkFOnly = Blink Frames uniquement
+ShowStats = Montrer les statistiques
+Reset = Reset
+B_LoadFilter = Charger
+B_SaveFilter = Sauvegarder
+---
+RNGInfo = RNG Info
+B_Search = Calculer
+L_NPC = # de NPCs
+AroundTarget = ±100 Frames
+RB_FrameRange = Frame Min/Max
+B_ResetFrame = Par défaut
+L_StartingPoint = <-- Frame de départ
+CreateTimeline = Créer une chronologie
+---
+ConsiderDelay = Considérer un délai
+L_Correction = Correction
+---
+SetStartFrame = Choisir comme Frame de base
+SetTargetFrame = Choisir comme Frame ciblée
+dgv_Frame = Frame
+dgv_mark = Marque
+dgv_shift = Shift/F
+dgv_H = PV
+dgv_A = Attaque
+dgv_B = Defense
+dgv_C = Atq Spé
+dgv_D = Def Spé
+dgv_S = Vitesse
+dgv_nature = Nature
+dgv_synced = Synchro?
+dgv_hiddenpower = Type du PC
+dgv_psv = PSV
+dgv_delay = Delai
+dgv_slot = Slot
+dgv_lv = Niveau
+dgv_gender = Sexe
+dgv_ability = Capacité Spéciale
+dgv_item = Objet
+dgv_encounter = Sauvage?
+dgv_rand = Aléa#
+dgv_rand64 = Nombre aléatoire
+dgv_PID = PID
+dgv_EC = EC
+dgv_time = Temps Réel
+---------------------TabPage2----------------------------------
+EventSetting = Paramètres Event
+Event_IV_Fix0 = PV
+Event_IV_Fix1 = Attaque
+Event_IV_Fix2 = Défense
+Event_IV_Fix3 = Atq Spé
+Event_IV_Fix4 = Def Spé
+Event_IV_Fix5 = Vitesse
+L_IVsCount = # de 31 IVs aléatoires
+L_IVLock = IV Bloqués
+L_Event_PID = Type de PID
+YourID = Votre ID
+IsEgg = Oeuf
+AbilityLocked = Capacité spéciale définie
+NatureLocked = Nature définie
+GenderLocked = Sexe défini
+B_Open = Importer
+OtherInfo = Autres informations
+L_Species = Pokémon
+L_Forme = Forme
+NoDex = Pas présent dans le Pokédex
+---------------------TabPage3----------------------------------
+Wild_Setting = Paramètres pour Pokémon sauvages
+L_Location = Lieu
+L_Slots = Slot
+L_WildIVsCnt = #  de IVs garantis
+L_ChainLength = Longueur de la chaîne 
+FirstEncounter = Première rencontre
+CB_HAUnlocked = DW débloqué
+CB_3rdSlotUnlocked = 3ieme Pokémon débloqué
+Day = Jour
+Night = Nuit
+CompoundEyes = Oeil composé
+SuctionCups = Ventouse
+---------------------TabPage4----------------------------------
+TinyMT_Status = Statut actuel
+B_Load = Charger...
+B_Backup = Faire une copie
+---
+Parents_Info = Données des parents
+L_Egg_H = PV
+L_Egg_A = Attaque
+L_Egg_B = Défense
+L_Egg_C = Atq Spé
+L_Egg_D = Def Spé
+L_Egg_S = Vitesse
+L_EggAbility = Capacité spéciale
+L_Ditto = Métamorph?
+L_Items = Objet
+M_Ditto = Mâle 
+F_Ditto = Femelle
+MM = Méthode Masuda
+ConsiderOtherTSV = Prendre en compte les autres TSV
+B_TSVList = Editer la liste de TSV
+MainRNGEgg = RNG d'oeuf par PID
+RB_Accept = Nombre à accepter
+RB_Reject = Nombre à refuser
+Homogeneity = Même # dans le Pokédex
+NidoType = Type de Nidoran
+EggNumber = Min/Max d'oeufs
+RB_EggShortest = Manière la plus courte
+L_TargetFrame = Frame ciblée
+B_EggReset = Reset
+B_Fast = Mode rapide
+B_Template = Modèle
+dgv_adv = Adv.
+dgv_state = State
+dgv_tinystate = Tiny State
+dgv_ball = Ball
+dgv_eggnum = Numéro de l'oeuf
+SetAsCurrent = Définir comme Statut actuel
+SetAsTarget = Définir comme la Frame ciblée
+SetAsAfter = Définir comme Statut actuel après avoir obtenu l'oeuf
+SetAsStarting = Définir comme Frame de base
+---------------------TabPage5----------------------------------
+ID_RE = Expression régulière
+ID_Disable = Désactiver les filtres
+L_CurrentSeed = Seed actuelle
+dgv_IDframe = Frame
+dgv_gen7ID = G7TID
+dgv_ID_rand = Aléa#
+dgv_ID_rand64 = Nombre aléatoire
+dgv_ID_state = Tiny State
+L_ClkCorrection = Correction de l'horloge
+! End
+----------------------TTT------------------------------------
+! TinyTimelineTool = Tiny Timeline Tool
+GB_Cali = Calibration
+L_Mainframe = Frames principales
+L_Type = Type d'avancement
+L_TypeNum = # d'avancement type
+GB_Adj = Ajustement
+L_Method = Méthode
+L_TargetFrame = Frame ciblée
+B_Create = Créer
+tiny_MTFRange = Frames principales
+tiny_index = Index
+tiny_sync = Synchro
+tiny_portalsync = PSynchro
+tiny_slot = Slot
+tiny_state = Tiny State
+! End
+-------------------Gen7MainRNGTool----------------------------
+! Gen7MainRNGTool = Outil de RNG principal (Gen 7)
+InputBox = InputBox
+Back = Précédent
+Clear = Supprimer
+StartClockInput = Position initiale
+EndClockInput = Position finale
+RB_SaveScreen = Trouver la Seed initiale grâce à l'horloge
+RB_ID = RNG de l'ID
+RB_QR = Trouver la frame actuelle via QR
+L_clocklist = Liste des avancements
+Search = Recherche
+L_SeedResult = Résultats
+L_StartingFrame = Frame de base
+L_TargetFrame = Frame ciblée
+TimeCalculator = Calcul de temps
+B_Calc = Calculer
+Startup = Ouvrir au lancement
+! End
+-------------------Gen7EggSeedFinder----------------------------
+! Gen7EggSeedFinder = Seed Finder pour Oeufs (Gen 7)
+B_EggSeed127 = Go!
+Magikarp = Calcul des 127 Magicarpe
+L_Magikarp = Mâle=0, Femelle=1. Les espaces et les lignes brisées seront ignorées.
+GB_TinyFinder = Calcul de 8 oeufs si nouvelle sauvegarde
+L_NatureList = Liste des natures
+B_DelNature = Supprimer
+B_TinySearch = Chercher
+B_Abort7 = Annuler
+! End
+-------------------NTRHelper--------------------------------------
+! NTRHelper = NTR Helper
+B_OneClick = One Click
+B_Connect = Conecter
+B_Disconnect = Déconnecter
+---
+IDBot = ID Bot
+B_Start = Start
+B_Stop = Stop
+L_Speed = Vitesse du bot
+! End
+-------------------MTSeedFinder--------------------------------------
+! Gen6MTSeedFinder = Seed Finder pour Oeufs (Gen 6)
+B_Abort6 = Annuler
+B_MTSearch = Chercher
+L_WildFrameRange = Frame Min/Max
+L_IV = IVs
+L_Wild1 = Sauvage1
+L_Wild2 = Sauvage2
+RB_1Wild = En utilisant les infos du Pokémon sauvage
+RB_2Wild = En utilisant les IVs du Pokémon sauvage
+L_SeedRange = Echelle de recherche des seeds
+L_WildFrameRange2 = Echelle de recherche de la frame de rencontre
+L_WildLower = Inférieur
+L_WildUpper = Supérieur
+L_WildIVRange = Echelle des IVs
+L_WildNature = Nature
+dgv_Seed_frame1 = Frame1
+dgv_Seed_Nature1 = Nature1
+dgv_Seed_frame2 = Frame2
+dgv_Seed_nature2 = Nature2
+dgv_Seed_gender = Sexe
+! End
