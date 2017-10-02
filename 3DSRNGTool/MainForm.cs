@@ -203,7 +203,7 @@ namespace Pk3DSRNGTool
 
         #region Translation
         private string curlanguage;
-        private static readonly string[] langlist = { "en", "cn" };
+        private static readonly string[] langlist = { "en", "es", "cn" };
         public int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
         private void ChangeLanguage(object sender, EventArgs e)
         {
