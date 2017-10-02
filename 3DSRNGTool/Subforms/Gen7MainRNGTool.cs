@@ -153,7 +153,9 @@ namespace Pk3DSRNGTool
                         switch (lindex)
                         {
                             case 0: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
-                            case 1: ListResults.Items.Add($"最后的指针在 {i + Clk_List.Length - 1} 帧，退出QR后在 {i + Clk_List.Length + 1} 帧"); break;
+                            case 1: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
+                            case 2: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
+                            case 3: ListResults.Items.Add($"最后的指针在 {i + Clk_List.Length - 1} 帧，退出QR后在 {i + Clk_List.Length + 1} 帧"); break;
                         }
                         tmp = i + Clk_List.Length + 1;
                     }
@@ -176,7 +178,9 @@ namespace Pk3DSRNGTool
             switch (lindex)
             {
                 case 0: str = "Set Eontimer for" + str; break;
-                case 1: str = "计时器设置为" + str; break;
+                case 1: str = "Set Eontimer for" + str; break;
+                case 2: str = "Set Eontimer for" + str; break;
+                case 3: str = "计时器设置为" + str; break;
             }
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
