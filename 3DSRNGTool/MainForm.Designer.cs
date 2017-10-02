@@ -488,6 +488,7 @@
             this.Lang.FormattingEnabled = true;
             this.Lang.Items.AddRange(new object[] {
             "English",
+            "French",
             "Spanish",
             "简体中文"});
             this.Lang.Location = new System.Drawing.Point(500, 13);
@@ -512,7 +513,7 @@
             // 
             this.ShinyCharm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShinyCharm.AutoSize = true;
-            this.ShinyCharm.Location = new System.Drawing.Point(931, 15);
+            this.ShinyCharm.Location = new System.Drawing.Point(936, 15);
             this.ShinyCharm.Name = "ShinyCharm";
             this.ShinyCharm.Size = new System.Drawing.Size(74, 17);
             this.ShinyCharm.TabIndex = 85;
@@ -3724,7 +3725,7 @@
             // 
             this.B_LoadFilter.Location = new System.Drawing.Point(265, 17);
             this.B_LoadFilter.Name = "B_LoadFilter";
-            this.B_LoadFilter.Size = new System.Drawing.Size(54, 25);
+            this.B_LoadFilter.Size = new System.Drawing.Size(58, 25);
             this.B_LoadFilter.TabIndex = 99;
             this.B_LoadFilter.Text = "Load";
             this.B_LoadFilter.UseVisualStyleBackColor = true;
@@ -3734,7 +3735,7 @@
             // 
             this.B_SaveFilter.Location = new System.Drawing.Point(196, 17);
             this.B_SaveFilter.Name = "B_SaveFilter";
-            this.B_SaveFilter.Size = new System.Drawing.Size(54, 25);
+            this.B_SaveFilter.Size = new System.Drawing.Size(58, 25);
             this.B_SaveFilter.TabIndex = 96;
             this.B_SaveFilter.Text = "Save";
             this.B_SaveFilter.UseVisualStyleBackColor = true;
@@ -3866,7 +3867,7 @@
             // 
             this.Reset.Location = new System.Drawing.Point(334, 17);
             this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(54, 25);
+            this.Reset.Size = new System.Drawing.Size(58, 25);
             this.Reset.TabIndex = 73;
             this.Reset.Text = "Reset";
             this.Reset.UseVisualStyleBackColor = true;
@@ -3918,7 +3919,7 @@
             // 
             this.Filter_Lv.AccessibleName = "";
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Filter_Lv.Location = new System.Drawing.Point(311, 59);
+            this.Filter_Lv.Location = new System.Drawing.Point(326, 59);
             this.Filter_Lv.Name = "Filter_Lv";
             this.Filter_Lv.Size = new System.Drawing.Size(44, 22);
             this.Filter_Lv.TabIndex = 67;

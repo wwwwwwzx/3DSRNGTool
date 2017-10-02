@@ -249,30 +249,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\text\lang_cn.txt" />
+    <None Include="Resources\text\lang_fr.txt" />
     <None Include="Resources\text\lang_en.txt" />
     <None Include="Resources\text\lang_es.txt" />
     <None Include="Resources\bytes\personal_ao" />
     <None Include="Resources\bytes\personal_sm" />
     <None Include="Resources\text\text_Genderratio_en.txt" />
+    <None Include="Resources\text\text_Genderratio_fr.txt" />
     <None Include="Resources\text\text_Genderratio_cn.txt" />
     <None Include="Resources\text\text_Genderratio_es.txt" />
     <None Include="Resources\text\text_Natures_cn.txt" />
     <None Include="Resources\text\text_Natures_en.txt" />
+    <None Include="Resources\text\text_Natures_fr.txt" />
     <None Include="Resources\text\text_Natures_es.txt" />
     <None Include="Resources\text\text_Species_cn.txt" />
     <None Include="Resources\text\text_Species_en.txt" />
+    <None Include="Resources\text\text_Species_fr.txt" />
     <None Include="Resources\text\text_Species_es.txt" />
     <None Include="Resources\text\text_Types_cn.txt" />
     <None Include="Resources\text\text_Types_en.txt" />
+    <None Include="Resources\text\text_Types_fr.txt" />
     <None Include="Resources\text\text_Types_es.txt" />
     <None Include="Resources\text\text_Location_sm_cn.txt" />
     <None Include="Resources\text\text_Location_sm_en.txt" />
+    <None Include="Resources\text\text_Location_sm_fr.txt" />
     <None Include="Resources\text\text_Location_sm_es.txt" />
     <None Include="Resources\text\text_Items_cn.txt" />
     <None Include="Resources\text\text_Items_en.txt" />
+    <None Include="Resources\text\text_Items_fr.txt" />
     <None Include="Resources\text\text_Items_es.txt" />
     <None Include="Resources\FollowmeTogetic.ico" />
     <None Include="Resources\text\text_Location_xy_es.txt" />
+    <None Include="Resources\text\text_Location_xy_fr.txt" />
     <None Include="Resources\text\text_Location_xy_en.txt" />
     <None Include="Resources\text\text_Location_xy_cn.txt" />
   </ItemGroup>
