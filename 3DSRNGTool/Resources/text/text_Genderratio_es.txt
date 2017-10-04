@@ -1,8 +1,8 @@
-﻿Genderless
+Sin Género
 ♂1：♀1
 ♂7：♀1
 ♂3：♀1
 ♂1：♀3
 ♂1：♀7
-♂ Only
-♀ Only
+Solo ♂
+Solo ♀
