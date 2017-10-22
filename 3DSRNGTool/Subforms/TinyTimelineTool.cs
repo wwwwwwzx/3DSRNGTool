@@ -58,6 +58,8 @@ namespace Pk3DSRNGTool
                 Program.mainform.TryToConnectNTR(false);
                 return;
             }
+            if (B_Stop.Visible)
+                return;
             NTRHelper.ntrclient.ReadTiny("TTT");
         }
         public List<int> SkipList = new List<int>();
