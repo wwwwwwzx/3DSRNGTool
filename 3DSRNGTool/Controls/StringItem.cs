@@ -36,7 +36,7 @@ namespace Pk3DSRNGTool
             if (ver < 4)
                 return gen6location[locationidx & 0x1FF] + LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == locationidx).mark;
             else if (4 < ver && ver < 9)
-                return smlocation[locationidx & 0xFF] + LocationTable7.Table.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+                return smlocation[locationidx & 0xFF] + LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == locationidx).mark;
             return "-";
         }
 

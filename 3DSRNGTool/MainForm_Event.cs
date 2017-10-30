@@ -168,7 +168,7 @@ namespace Pk3DSRNGTool
                 RNGMethod.SelectedIndex = 1;
                 SetPersonalInfo(species);
                 IVsCount.Value = Fix3v.Checked ? 3 : 0;
-                int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(species, 0).FormeCount;
+                int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.USUM).getFormeEntry(species, 0).FormeCount;
                 if (Pokemon.BattleForms.Contains(species))
                     formcount = 1;
                 L_Forme.Visible = Event_Forme.Visible = formcount > 1;

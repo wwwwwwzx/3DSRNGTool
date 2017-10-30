@@ -13,6 +13,6 @@
         public int[] IVs;
         public byte Level;
 
-        public PKHeX.Core.PersonalInfo info => (GameVersion.Gen6.Contains(Version) ? PersonalTable.ORAS : PersonalTable.SM).getFormeEntry(Species, Forme);
+        public PKHeX.Core.PersonalInfo info => (GameVersion.Gen6.Contains(Version) ? PersonalTable.ORAS : PersonalTable.USUM).getFormeEntry(Species, Forme);
     }
 }

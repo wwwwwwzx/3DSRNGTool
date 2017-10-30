@@ -933,7 +933,9 @@
             "AS",
             "Transporter",
             "Sun",
-            "Moon"});
+            "Moon",
+            "Ultra Sun",
+            "Ultra Moon"});
             this.Gameversion.Location = new System.Drawing.Point(646, 13);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(78, 21);

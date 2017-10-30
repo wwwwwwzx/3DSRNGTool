@@ -97,6 +97,9 @@ namespace Pk3DSRNGTool
                 case 5:
                 case 6:
                     return method == 0 ? PKM7.Species_SM : PKMW7.Species_SM;
+                case 7:
+                case 8:
+                    return method == 0 ? PKM7.Species_USUM : PKMW7.Species_USUM;
                 default: return NotImpled;
             }
         }

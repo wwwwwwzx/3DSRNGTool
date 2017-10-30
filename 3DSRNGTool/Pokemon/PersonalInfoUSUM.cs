@@ -1,9 +1,9 @@
 ﻿namespace PKHeX.Core
 {
-    public class PersonalInfoSM : PersonalInfoORAS
+    public class PersonalInfoUSUM : PersonalInfoORAS
     {
         public new const int SIZE = 0x54;
-        public PersonalInfoSM(byte[] data)
+        public PersonalInfoUSUM(byte[] data)
         {
             if (data.Length != SIZE)
                 return;

@@ -1,10 +1,24 @@
 ﻿using System.Linq;
+using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
     public static class LocationTable7
     {
-        public readonly static EncounterArea7[] Table =
+        public static EncounterArea[] TableNow;
+
+        public static int[] getLocation(int category = 0, bool IsUltra = false)
+        {
+            TableNow = IsUltra ? SMTable : SMTable; // Todo
+            switch (category)
+            {
+                case 1: return UBLocationList;
+                case 2: return QRLocationList;
+                default: return SMLocationList;
+            }
+        }
+
+        public readonly static EncounterArea7[] SMTable =
         {
             #region MeleMele
             new EncounterArea7
@@ -635,20 +649,16 @@ namespace Pk3DSRNGTool
             #endregion
         };
 
-        public readonly static int[] SMLocationList = Table.Select(t => t.Locationidx).ToArray();
+        public readonly static EncounterArea7[] USUMTable =
+        {
+        };
+
+        public readonly static int[] SMLocationList = SMTable.Select(t => t.Locationidx).ToArray();
 
         public readonly static int[] UBLocationList = PKMW7.Species_SM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
 
         public readonly static int[] QRLocationList = PKMW7.Species_SM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
 
-        public static int[] getSMLocation(int category = 0)
-        {
-            switch (category)
-            {
-                case 1: return UBLocationList;
-                case 2: return QRLocationList;
-                default: return SMLocationList;
-            }
-        }
+
     }
 }

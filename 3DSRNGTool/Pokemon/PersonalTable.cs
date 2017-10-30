@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
     public class PersonalTable
     {
         public static readonly PersonalTable ORAS = new PersonalTable(Properties.Resources.personal_ao, GameVersion.ORAS);
-        public static readonly PersonalTable SM = new PersonalTable(Properties.Resources.personal_sm, GameVersion.SM);
+        public static readonly PersonalTable USUM = new PersonalTable(Properties.Resources.personal_sm, GameVersion.USUM);
 
         private PersonalTable(byte[] data, GameVersion ver)
         {
@@ -14,7 +14,7 @@ namespace Pk3DSRNGTool
             switch (ver)
             {
                 case GameVersion.ORAS: size = PersonalInfoORAS.SIZE; break;
-                case GameVersion.SM: size = PersonalInfoSM.SIZE; break;
+                case GameVersion.USUM: size = PersonalInfoUSUM.SIZE; break;
             }
             byte[][] entries = splitBytes(data, size);
             PersonalInfo[] d = new PersonalInfo[data.Length / size];
@@ -24,9 +24,9 @@ namespace Pk3DSRNGTool
                     for (int i = 0; i < d.Length; i++)
                         d[i] = new PersonalInfoORAS(entries[i]);
                     break;
-                case GameVersion.SM:
+                case GameVersion.USUM:
                     for (int i = 0; i < d.Length; i++)
-                        d[i] = new PersonalInfoSM(entries[i]);
+                        d[i] = new PersonalInfoUSUM(entries[i]);
                     break;
             }
             Table = d;

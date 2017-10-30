@@ -79,5 +79,17 @@
                 },
             },
         };
+
+        public readonly static PokemonList[] Species_USUM =
+        {
+            new PokemonList
+            {
+                Text = "Normal Wild",
+                List = new[]
+                {
+                   new PKMW7 { Species = 000, Conceptual = true },
+                }
+            },
+        };
     }
 }

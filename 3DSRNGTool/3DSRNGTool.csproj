@@ -150,7 +150,7 @@
     <Compile Include="Pokemon\GameVersion.cs" />
     <Compile Include="Pokemon\PersonalInfo.cs" />
     <Compile Include="Pokemon\PersonalInfoORAS.cs" />
-    <Compile Include="Pokemon\PersonalInfoSM.cs" />
+    <Compile Include="Pokemon\PersonalInfoUSUM.cs" />
     <Compile Include="Pokemon\PersonalTable.cs" />
     <Compile Include="Subforms\Gen6MTSeedFinder.cs">
       <SubType>Form</SubType>

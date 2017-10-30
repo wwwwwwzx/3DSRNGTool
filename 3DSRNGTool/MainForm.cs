@@ -149,7 +149,7 @@ namespace Pk3DSRNGTool
             if (Gen6)
                 locationlist = LocationTable6.getLocation(FormPM as PKMW6, Ver < 2);
             else if (Gen7)
-                locationlist = FormPM.Conceptual ? LocationTable7.getSMLocation(CB_Category.SelectedIndex) : (FormPM as PKMW7)?.Location;
+                locationlist = FormPM.Conceptual ? LocationTable7.getLocation(CB_Category.SelectedIndex, Ver > 6) : (FormPM as PKMW7)?.Location;
 
             MetLocation.Visible = SlotSpecies.Visible = L_Location.Visible = L_Slots.Visible = locationlist != null;
             if (locationlist == null)
@@ -645,7 +645,7 @@ namespace Pk3DSRNGTool
         {
             if (Gen7)
             {
-                ea = LocationTable7.Table.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+                ea = LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
                 var tmp = ea as EncounterArea7;
                 NPC.Value = tmp.NPC;
                 Correction.Value = tmp.Correction;
@@ -781,7 +781,7 @@ namespace Pk3DSRNGTool
             SyncNature.Enabled = !(FormPM?.Nature < 25) && FormPM.Syncable;
 
             // Load from personal table
-            var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.SM.getFormeEntry(Species, Forme);
+            var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.USUM.getFormeEntry(Species, Forme);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); //Undiscovered Group

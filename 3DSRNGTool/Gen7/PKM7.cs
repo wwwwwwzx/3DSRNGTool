@@ -141,5 +141,9 @@
             },
         };
 
+        public readonly static PokemonList[] Species_USUM =
+        {
+            Default,
+        };
     }
 }

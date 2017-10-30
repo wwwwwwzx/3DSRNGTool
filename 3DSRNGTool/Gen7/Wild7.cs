@@ -106,7 +106,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < SpecForm.Length; i++)
             {
                 if (SpecForm[i] == 0) continue;
-                PersonalInfo info = PersonalTable.SM.getFormeEntry(SpecForm[i] & 0x7FF, SpecForm[i] >> 11);
+                PersonalInfo info = PersonalTable.USUM.getFormeEntry(SpecForm[i] & 0x7FF, SpecForm[i] >> 11);
                 byte genderratio = (byte)info.Gender;
                 IV3[i] = info.EggGroups[0] == 0xF && !Pokemon.BabyMons.Contains(SpecForm[i] & 0x7FF);
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
