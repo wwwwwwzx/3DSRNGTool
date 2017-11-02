@@ -17,6 +17,98 @@
                 new PKM7 { Conceptual = true, Species= 000, Level = 50, },
             }
         };
+        
+        public readonly static PokemonList[] Species_USUM =
+        {
+            Default,
+            new PokemonList
+            {
+                Text = "Kanto Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 144, Level = 60, }, // Articuno
+                    new PKM7 { Species = 145, Level = 60, }, // Zapdos
+                    new PKM7 { Species = 146, Level = 60, }, // Moltres
+                    new PKM7 { Species = 150, Level = 60, }, // Mewtwo
+                }
+            },
+            new PokemonList
+            {
+                Text = "Johto Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 243, Level = 60, Version = GameVersion.US, }, // Raikou
+                    new PKM7 { Species = 244, Level = 60, Version = GameVersion.UM, }, // Entei
+                    new PKM7 { Species = 245, Level = 60, }, // Suicune
+
+                    new PKM7 { Species = 249, Level = 60, Version = GameVersion.UM, }, // Lugia
+                    new PKM7 { Species = 250, Level = 60, Version = GameVersion.US, }, // Ho-oh
+                }
+            },
+            new PokemonList
+            {
+                Text = "Hoenn Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 377, Level = 60, }, // Regirock
+                    new PKM7 { Species = 378, Level = 60, }, // Regice
+                    new PKM7 { Species = 379, Level = 60, }, // Registeel
+
+                    new PKM7 { Species = 380, Level = 60, Version = GameVersion.UM, }, // Latias
+                    new PKM7 { Species = 381, Level = 60, Version = GameVersion.US, }, // Latios
+
+                    new PKM7 { Species = 382, Level = 60, Version = GameVersion.UM, }, // Kyogre
+                    new PKM7 { Species = 383, Level = 60, Version = GameVersion.US, }, // Groudon
+                    new PKM7 { Species = 384, Level = 60, }, // Rayquaza
+                }
+            },
+            new PokemonList
+            {
+                Text = "Sinnoh Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 480, Level = 60, }, // Uxie
+                    new PKM7 { Species = 481, Level = 60, }, // Mesprit
+                    new PKM7 { Species = 482, Level = 60, }, // Azelf
+            
+                    new PKM7 { Species = 483, Level = 60, Version = GameVersion.US, }, // Dialga
+                    new PKM7 { Species = 484, Level = 60, Version = GameVersion.UM, }, // Palkia
+                    
+                    new PKM7 { Species = 485, Level = 60, Version = GameVersion.US, }, // Heatran
+                    new PKM7 { Species = 486, Level = 60, Version = GameVersion.UM, }, // Regigigas
+                    new PKM7 { Species = 487, Level = 60, }, // Giratina
+                    new PKM7 { Species = 488, Level = 60, }, // Cresselia
+                }
+            },
+            new PokemonList
+            {
+                Text = "Unova Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 638, Level = 60, }, // Cobalion
+                    new PKM7 { Species = 639, Level = 60, }, // Terrakion
+                    new PKM7 { Species = 640, Level = 60, }, // Virizion
+
+                    new PKM7 { Species = 641, Level = 60, Version = GameVersion.US, }, // Tornadus
+                    new PKM7 { Species = 642, Level = 60, Version = GameVersion.UM, }, // Thundurus
+                    new PKM7 { Species = 645, Level = 60, }, // Landorus
+            
+                    new PKM7 { Species = 643, Level = 60, Version = GameVersion.US, }, // Reshiram
+                    new PKM7 { Species = 644, Level = 60, Version = GameVersion.UM, }, // Zekrom
+                    new PKM7 { Species = 646, Level = 60, }, // Kyurem
+                }
+            },
+            new PokemonList
+            {
+                Text = "Kalos Legendary",
+                List = new[]
+                {
+                    new PKM7 { Species = 716, Level = 60, Version = GameVersion.US, }, // Xerneas
+                    new PKM7 { Species = 717, Level = 60, Version = GameVersion.UM, }, // Yveltal
+                    new PKM7 { Species = 718, Level = 60, }, // Zygarde
+                }
+            },
+        };
 
         public readonly static PokemonList[] Species_SM =
         {
@@ -139,11 +231,6 @@
                     new PKM7 { Gift = true, Species = 698, Level = 15, NPC = 1, Delay = 40, }, // Amaura
                 }
             },
-        };
-
-        public readonly static PokemonList[] Species_USUM =
-        {
-            Default,
         };
     }
 }
