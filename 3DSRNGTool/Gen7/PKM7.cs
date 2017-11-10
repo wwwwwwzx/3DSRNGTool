@@ -7,6 +7,7 @@
         public byte NPC;
         public bool NoBlink;
         public bool IsPelago;
+        public bool iv3; // For ultra space wilds and totem gifts
         public ushort? OTTSV;
 
         public readonly static PokemonList Default = new PokemonList

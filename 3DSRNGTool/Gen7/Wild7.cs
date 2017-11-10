@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool
         private bool IsSpecial;
         private bool IsMinior => SpecForm[slot] == 774;
         private bool IsUB => UB && IsSpecial;
-        private bool IsShinyLocked => IsUB;
+        private bool IsShinyLocked => IsUB && SpecForm[0] < 800; // Not USUM UB
         private bool NormalSlot => !IsSpecial;
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;

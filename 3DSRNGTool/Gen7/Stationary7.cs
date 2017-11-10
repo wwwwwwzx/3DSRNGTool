@@ -125,6 +125,8 @@ namespace Pk3DSRNGTool
                 TSV = (int)pm7.OTTSV;
                 Trade = true;
             }
+            if (pm7.iv3)
+                PerfectIVCount = 3;
         }
     }
 
