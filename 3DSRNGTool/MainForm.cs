@@ -622,10 +622,7 @@ namespace Pk3DSRNGTool
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
         {
-            if (Gen7)
-                Frame_min.Value = Method < 3 || MainRNGEgg.Checked ? 418 : Method == 4 ? 1012 : 0;
-            else
-                Frame_min.Value = 0;
+            Frame_min.Value = FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method);
             TargetFrame.Value = 5000;
             Frame_max.Value = 50000;
             if (0 == Method || Method == 2)

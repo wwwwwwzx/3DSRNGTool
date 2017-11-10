@@ -23,6 +23,8 @@ namespace Pk3DSRNGTool
 
         private static int lindex => Program.mainform.lindex;
         private static uint Seed { set => Program.mainform.globalseed = value; }
+        private int MinFrame => FuncUtil.getstartingframe(Program.mainform.Ver, RB_ID.Checked ? 4 : 0);
+        private static bool IsUltra => Program.mainform.Ver > 6;
 
         #region Controls
         private void Clear_Click(object sender, EventArgs e)
@@ -45,9 +47,9 @@ namespace Pk3DSRNGTool
         {
             string str = ((Button)sender).Name;
             string n = str.Remove(0, 6);
-
+            int offset = IsUltra ? 13 : 14;
             if (Clock_List.Text != "") Clock_List.Text += ",";
-            Clock_List.Text += !EndClockInput.Checked || RB_QR.Checked ? n : ((Convert.ToInt32(n) + 13) % 17).ToString();
+            Clock_List.Text += !EndClockInput.Checked || RB_QR.Checked ? n : ((Convert.ToInt32(n) + offset) % 17).ToString();
 
             Search_Click(null, null);
         }
@@ -82,6 +84,7 @@ namespace Pk3DSRNGTool
         #region Search
         private void SearchSeed()
         {
+            L_Gameversion.Text = IsUltra ? "USUM" : "SuMo";
             if (Clock_List.Text.Count(c => c == ',') < 7)
             {
                 SeedResults.Text = "";
@@ -100,7 +103,7 @@ namespace Pk3DSRNGTool
                     if (results.Count() == 1)
                     {
                         if (RB_SaveScreen.Checked)
-                            Program.mainform.Framemin = Time_min.Value = 418 + Clock_List.Text.Count(c => c == ',');
+                            Program.mainform.Framemin = Time_min.Value = MinFrame + Clock_List.Text.Count(c => c == ',');
                         else
                             Program.mainform.IDCorrection = results.FirstOrDefault().add;
                         if (uint.TryParse(text, System.Globalization.NumberStyles.HexNumber, null, out uint s0))

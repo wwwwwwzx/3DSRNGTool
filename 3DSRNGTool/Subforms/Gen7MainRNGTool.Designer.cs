@@ -72,6 +72,7 @@
             this.B_Calc = new System.Windows.Forms.Button();
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.L_NPC = new System.Windows.Forms.Label();
+            this.L_Gameversion = new System.Windows.Forms.Label();
             this.InputBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
             this.SearchSeedBox.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // InputBox
             // 
+            this.InputBox.Controls.Add(this.L_Gameversion);
             this.InputBox.Controls.Add(this.Startup);
             this.InputBox.Controls.Add(this.button16);
             this.InputBox.Controls.Add(this.EndClockInput);
@@ -637,6 +639,14 @@
             this.L_NPC.TabIndex = 105;
             this.L_NPC.Text = "NPC";
             // 
+            // L_Gameversion
+            // 
+            this.L_Gameversion.AutoSize = true;
+            this.L_Gameversion.Location = new System.Drawing.Point(724, 99);
+            this.L_Gameversion.Name = "L_Gameversion";
+            this.L_Gameversion.Size = new System.Drawing.Size(0, 13);
+            this.L_Gameversion.TabIndex = 106;
+            // 
             // Gen7MainRNGTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,5 +722,6 @@
         private System.Windows.Forms.Button B_Calc;
         private System.Windows.Forms.Label L_TargetFrame;
         public System.Windows.Forms.CheckBox Startup;
+        private System.Windows.Forms.Label L_Gameversion;
     }
 }

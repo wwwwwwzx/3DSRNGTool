@@ -219,6 +219,15 @@ namespace Pk3DSRNGTool
                 return 11;
             return 12; //99
         }
+
+        public static int getstartingframe(int gameversion, int method)
+        {
+            if (gameversion < 5 || method == 3) // Gen6 or egg
+                return 0;
+            if (gameversion < 7) // SuMo
+                return method == 4 ? 1012 : 418;
+            return method == 4 ? 1072 : 478; // To-Do
+        }
         #endregion
     }
 }
