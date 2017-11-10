@@ -94,7 +94,7 @@ namespace Pk3DSRNGTool
             try
             {
                 SeedResults.Text = WAIT_STR[lindex];
-                var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked);
+                var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked, IsUltra);
                 if (!results?.Any() ?? true)
                     text = NORESULT_STR[lindex];
                 else

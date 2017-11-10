@@ -8,11 +8,12 @@ namespace Pk3DSRNGTool
 {
     public static class SFMTSeedAPI
     {
-        public static List<Result> request(string needle, bool IsID)
+        public static List<Result> request(string needle, bool IsID, bool IsUltra)
         {
             Root root;
-            var url = IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 
-                           : $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}";
+            var url = IsUltra ? $"https://rng-api.poyo.club/usm/sfmt/seed?needle={needle}" :
+               ( IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 
+                           : $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}");
             string jsonStr;
             using (var webClient = new WebClient())
             {
