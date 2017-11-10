@@ -253,7 +253,7 @@
     <None Include="Resources\text\lang_en.txt" />
     <None Include="Resources\text\lang_es.txt" />
     <None Include="Resources\bytes\personal_ao" />
-    <None Include="Resources\bytes\personal_sm" />
+    <None Include="Resources\bytes\personal_uu" />
     <None Include="Resources\text\text_Genderratio_en.txt" />
     <None Include="Resources\text\text_Genderratio_fr.txt" />
     <None Include="Resources\text\text_Genderratio_cn.txt" />

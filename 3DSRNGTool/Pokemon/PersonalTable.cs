@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
     public class PersonalTable
     {
         public static readonly PersonalTable ORAS = new PersonalTable(Properties.Resources.personal_ao, GameVersion.ORAS);
-        public static readonly PersonalTable USUM = new PersonalTable(Properties.Resources.personal_sm, GameVersion.USUM);
+        public static readonly PersonalTable USUM = new PersonalTable(Properties.Resources.personal_uu, GameVersion.USUM);
 
         private PersonalTable(byte[] data, GameVersion ver)
         {

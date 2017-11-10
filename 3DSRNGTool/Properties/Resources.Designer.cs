@@ -335,9 +335,9 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] personal_sm {
+        internal static byte[] personal_uu {
             get {
-                object obj = ResourceManager.GetObject("personal_sm", resourceCulture);
+                object obj = ResourceManager.GetObject("personal_uu", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -375,14 +375,14 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Genderless
+        ///   Looks up a localized string similar to Sin Género
         ///♂1：♀1
         ///♂7：♀1
         ///♂3：♀1
         ///♂1：♀3
         ///♂1：♀7
-        ///♂ Only
-        ///♀ Only.
+        ///Solo ♂
+        ///Solo ♀.
         /// </summary>
         internal static string text_Genderratio_es {
             get {
@@ -441,15 +441,15 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Item
-        ///Everstone
-        ///Destiny Knot
-        ///Power Weight
-        ///Power Bracer
-        ///Power Belt
-        ///Power Lens
-        ///Power Band
-        ///Power Anklet.
+        ///   Looks up a localized string similar to Ning煤n Objeto
+        ///Piedra Eterna
+        ///Lazo Destino
+        ///Pesa Recia
+        ///Brazal Recio
+        ///Cinto Recio
+        ///Lente Recia
+        ///Banda Recia
+        ///Franja Recia.
         /// </summary>
         internal static string text_Items_es {
             get {
@@ -458,15 +458,15 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Item
-        ///Everstone
-        ///Destiny Knot
-        ///Power Weight
-        ///Power Bracer
-        ///Power Belt
-        ///Power Lens
-        ///Power Band
-        ///Power Anklet.
+        ///   Looks up a localized string similar to Aucun
+        ///Pierre Stase
+        ///Nœud Destin
+        ///Poids Pouvoir
+        ///Poignée Pouvoir
+        ///Ceinture Pouvoir
+        ///Lentille Pouvoir
+        ///Bandeau Pouvoir
+        ///Chaîne Pouvoir.
         /// </summary>
         internal static string text_Items_fr {
             get {

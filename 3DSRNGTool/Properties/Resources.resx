@@ -184,8 +184,8 @@
   <data name="personal_ao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bytes\personal_ao;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="personal_sm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bytes\personal_sm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="personal_uu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bytes\personal_uu;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="text_Genderratio_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Genderratio_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
