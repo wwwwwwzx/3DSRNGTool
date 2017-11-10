@@ -23,16 +23,6 @@
             Default,
             new PokemonList
             {
-                Text = "Starters",
-                List = new[]
-                {
-                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Rowlet
-                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Litten
-                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Popplio
-                }
-            },
-            new PokemonList
-            {
                 Text = "Kanto Legendary",
                 List = new[]
                 {
@@ -116,6 +106,24 @@
                     new PKM7 { Species = 716, Level = 60, Version = GameVersion.US, }, // Xerneas
                     new PKM7 { Species = 717, Level = 60, Version = GameVersion.UM, }, // Yveltal
                     new PKM7 { Species = 718, Level = 60, }, // Zygarde
+                }
+            },
+            new PokemonList
+            {
+                Text = "Starters",
+                List = new[]
+                {
+                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Rowlet
+                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Litten
+                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Popplio
+                }
+            },
+            new PokemonList
+            {
+                Text = "In-Game Gift",
+                List = new[]
+                {
+                    new PKM7 { Species = 133, Level = 01, NPC = 6, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
                 }
             },
             new PokemonList

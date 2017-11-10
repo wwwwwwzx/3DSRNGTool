@@ -12,8 +12,8 @@ namespace Pk3DSRNGTool
             TableNow = IsUltra ? SMTable : SMTable; // Todo
             switch (category)
             {
-                case 1: return UBLocationList;
-                case 2: return QRLocationList;
+                case 1: return IsUltra ? UBLocationList2 : UBLocationList;
+                case 2: return IsUltra ? QRLocationList2 : QRLocationList;
                 default: return SMLocationList;
             }
         }
@@ -657,8 +657,10 @@ namespace Pk3DSRNGTool
 
         public readonly static int[] UBLocationList = PKMW7.Species_SM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
 
+        public readonly static int[] UBLocationList2 = PKMW7.Species_USUM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
+
         public readonly static int[] QRLocationList = PKMW7.Species_SM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
 
-
+        public readonly static int[] QRLocationList2 = PKMW7.Species_USUM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
     }
 }

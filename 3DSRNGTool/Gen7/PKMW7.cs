@@ -90,6 +90,61 @@
                    new PKMW7 { Species = 000, Conceptual = true },
                 }
             },
+            new PokemonList
+            {
+                Text = "UB",
+                List = new[]
+                {
+                    new PKMW7 { Species = 000, Level = 60, Conceptual = true, Rate = new byte[] { 30 } },
+
+                    new PKMW7 { Species = 805, Level = 60, Location = new []{164}, Rate = new byte[]{30},},    // Stakataka
+                    new PKMW7 { Species = 806, Level = 60, Location = new []{164}, Rate = new byte[]{30},},    // Blacephalon
+                }
+            },
+            new PokemonList
+            {
+                Text = "Island Scan",
+                List = new[]
+                {
+                    new PKMW7 { Species = 000, Level = 12, Conceptual = true },
+                    
+                    // Melemele Island
+                    new PKMW7 { Species = 004, Level = 12, Location = new[] {266, 522}, }, // Charmander @ Route 3
+                    new PKMW7 { Species = 007, Level = 12, Location = new[] {298}, }, // Squirtle @ Seaward Cave
+                    new PKMW7 { Species = 095, Level = 14, Location = new[] {290}, }, // Onix @ Ten Carat Hill
+                    new PKMW7 { Species = 116, Level = 18, Location = new[] {526}, }, // Horsea @ Kala'e Bay
+                    new PKMW7 { Species = 664, Level = 09, Location = new[] {021}, }, // Scatterbug @ Hau'oli City
+                    new PKMW7 { Species = 001, Level = 10, Location = new[] {268,524}, }, // Bulbasaur @ Route 2
+                    new PKMW7 { Species = 607, Level = 09, Location = new[] {038}, }, // Litwick @ Hau'oli Cemetery
+			
+                    // Akala Island
+                    new PKMW7 { Species = 280, Level = 17, Location = new[] {310,566}, }, // Ralts @ Route 6
+                    new PKMW7 { Species = 363, Level = 19, Location = new[] {056}, }, // Spheal @ Route 7
+                    new PKMW7 { Species = 256, Level = 20, Location = new[] {314}, }, // Combusken @ Route 8
+                    new PKMW7 { Species = 679, Level = 24, Location = new[] {094}, }, // Honedge @ Akala Outskirts
+                    new PKMW7 { Species = 015, Level = 14, Location = new[] {050}, }, // Beedrill @ Route 4
+                    new PKMW7 { Species = 253, Level = 16, Location = new[] {308,564}, }, // Grovyle @ Route 5
+                    new PKMW7 { Species = 259, Level = 17, Location = new[] {342,344}, }, // Marshtomp @ Brooklet Hill
+			
+                    // Ula'ula Island
+                    new PKMW7 { Species = 111, Level = 32, Location = new[] {394,650}, }, // Rhyhorn @ Blush Mountain
+                    new PKMW7 { Species = 220, Level = 33, Location = new[] {114}, }, // Swinub @ Tapu Village
+                    new PKMW7 { Species = 394, Level = 35, Location = new[] {118}, }, // Prinplup @ Route 16
+                    new PKMW7 { Species = 388, Level = 36, Location = new[] {128}, }, // Grotle @ Ula'ula Meadow
+                    new PKMW7 { Species = 018, Level = 29, Location = new[] {106}, }, // Pidgeot @ Route 10
+                    new PKMW7 { Species = 391, Level = 29, Location = new[] {108}, }, // Monferno @ Route 11
+                    new PKMW7 { Species = 610, Level = 30, Location = new[] {136}, }, // Axew @ Mount Hokulani
+			
+                    // Poni Island
+                    new PKMW7 { Species = 604, Level = 55, Location = new[] {164}, }, // Eelektross @ Poni Grove
+                    new PKMW7 { Species = 306, Level = 57, Location = new[] {422, 678, 934, 1190}, }, // Aggron @ Poni Plains
+                    new PKMW7 { Species = 479, Level = 61, Location = new[] {170}, }, // Rotom @ Poni Gauntlet
+                    new PKMW7 { Species = 542, Level = 57, Location = new[] {156}, }, // Leavanny @ Poni Meadow
+                    new PKMW7 { Species = 652, Level = 45, Location = new[] {184}, }, // Chesnaught @ Exeggutor Island
+                    new PKMW7 { Species = 658, Level = 44, Location = new[] {414}, }, // Greninja @ Poni Wilds
+                    new PKMW7 { Species = 655, Level = 44, Location = new[] {160}, }, // Delphox @ Ancient Poni Path
+                }
+            },
         };
     }
 }
