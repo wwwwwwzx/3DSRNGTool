@@ -47,7 +47,7 @@ namespace Pk3DSRNGTool
         {
             string str = ((Button)sender).Name;
             string n = str.Remove(0, 6);
-            int offset = IsUltra ? 13 : 14;
+            int offset = IsUltra ? 14 : 13;
             if (Clock_List.Text != "") Clock_List.Text += ",";
             Clock_List.Text += !EndClockInput.Checked || RB_QR.Checked ? n : ((Convert.ToInt32(n) + offset) % 17).ToString();
 
