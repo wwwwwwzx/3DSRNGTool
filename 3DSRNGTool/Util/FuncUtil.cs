@@ -226,7 +226,7 @@ namespace Pk3DSRNGTool
                 return 0;
             if (gameversion < 7) // SuMo
                 return method == 4 ? 1012 : 418;
-            return method == 4 ? 1072 : 478; // To-Do
+            return method == 4 ? 1132 : 478; // USUM
         }
         #endregion
     }

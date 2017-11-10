@@ -23,6 +23,16 @@
             Default,
             new PokemonList
             {
+                Text = "Starters",
+                List = new[]
+                {
+                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Rowlet
+                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Litten
+                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Popplio
+                }
+            },
+            new PokemonList
+            {
                 Text = "Kanto Legendary",
                 List = new[]
                 {
@@ -106,6 +116,24 @@
                     new PKM7 { Species = 716, Level = 60, Version = GameVersion.US, }, // Xerneas
                     new PKM7 { Species = 717, Level = 60, Version = GameVersion.UM, }, // Yveltal
                     new PKM7 { Species = 718, Level = 60, }, // Zygarde
+                }
+            },
+            new PokemonList
+            {
+                Text = "Fossils",
+                List = new[]
+                {
+                    new PKM7 { Gift = true, Species = 408, Level = 15, NPC = 1, Delay = 26, }, // Cranidos
+                    new PKM7 { Gift = true, Species = 410, Level = 15, NPC = 1, Delay = 26, }, // Shieldon
+                    new PKM7 { Gift = true, Species = 564, Level = 15, NPC = 1, Delay = 26, }, // Tirtouga
+                    new PKM7 { Gift = true, Species = 566, Level = 15, NPC = 1, Delay = 26, }, // Archen
+                    new PKM7 { Gift = true, Species = 138, Level = 15, NPC = 1, Delay = 26, }, // Omanyte
+                    new PKM7 { Gift = true, Species = 140, Level = 15, NPC = 1, Delay = 26, }, // Kabuto
+                    new PKM7 { Gift = true, Species = 142, Level = 15, NPC = 1, Delay = 26, }, // Aerodactyl
+                    new PKM7 { Gift = true, Species = 345, Level = 15, NPC = 1, Delay = 26, }, // Lileep
+                    new PKM7 { Gift = true, Species = 347, Level = 15, NPC = 1, Delay = 26, }, // Anorith
+                    new PKM7 { Gift = true, Species = 696, Level = 15, NPC = 1, Delay = 26, }, // Tyrunt
+                    new PKM7 { Gift = true, Species = 698, Level = 15, NPC = 1, Delay = 26, }, // Amaura
                 }
             },
         };

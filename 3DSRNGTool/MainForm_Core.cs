@@ -199,7 +199,7 @@ namespace Pk3DSRNGTool
         #region Gen7 Search
         private void Search7()
         {
-            Frame_min.Value = FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method);
+            Frame_min.Value = Math.Max(Frame_min.Value , FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method));
             // ID
             if (Method == 4)
             {

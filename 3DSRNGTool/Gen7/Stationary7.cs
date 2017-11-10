@@ -80,7 +80,7 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability
-            rt.Ability = (byte)(blinkwhensync ? 1 : (getrand & 1) + 1);
+            rt.Ability = (byte)(Ability > 0 ? Ability : (getrand & 1) + 1);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : getrand % 25);
@@ -117,6 +117,7 @@ namespace Pk3DSRNGTool
             base.UseTemplate(PM);
             var pm7 = PM as PKM7;
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
+            Ability = Ability == 0 && blinkwhensync ? (byte)1 : Ability;
             if (pm7.IsPelago)
                 IsPelago = true;
             if (pm7.OTTSV != null)
