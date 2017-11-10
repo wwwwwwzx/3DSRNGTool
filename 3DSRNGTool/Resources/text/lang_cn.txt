@@ -51,6 +51,7 @@ L_Lv = 等级范围
 L_Targetmon = 目标宝可梦序号
 BlinkWhenSync = 同步时眨眼
 Sta_AbilityLocked = 固定特性
+Raining = 下雨
 B_OpenTool = TinyMT 时间线工具
 L_GenderList = 性别列表(0:无性别,1:有性别,2:梦幻)
 ---

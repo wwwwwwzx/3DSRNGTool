@@ -7,6 +7,7 @@
         public byte NPC;
         public bool NoBlink;
         public bool IsPelago;
+        public bool Raining;
         public bool iv3; // For ultra space wilds and totem gifts
         public ushort? OTTSV;
 
@@ -117,6 +118,15 @@
                     new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Rowlet
                     new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Litten
                     new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 1, Delay = 20, }, // Popplio
+                }
+            },
+            new PokemonList
+            {
+                Text = "Normal Stationary",
+                List = new[]
+                {
+                    new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
+                    new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true},  // Pinsir
                 }
             },
             new PokemonList

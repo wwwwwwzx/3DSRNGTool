@@ -51,6 +51,7 @@ L_Lv = Level Range
 L_Targetmon = Index of Target Pkm
 BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
+Raining = Raining
 B_OpenTool = Tiny Timeline Tool
 L_GenderList = GenderList (0:Nogender 1:Random 2:Mew):
 ---

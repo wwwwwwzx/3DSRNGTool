@@ -579,9 +579,9 @@ namespace Pk3DSRNGTool
             NoDex.Visible = Gen7 && Method == 1;
 
             MT_SeedKey.Visible =
-            Sta_AbilityLocked.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
+            Raining.Visible =
             L_NPC.Visible = NPC.Visible =
             Day.Visible = Night.Visible =
             TinyMT_Status.Visible = Homogeneity.Visible =
@@ -595,9 +595,14 @@ namespace Pk3DSRNGTool
 
             switch (Method)
             {
-                case 0: Sta_Setting.Controls.Add(EnctrPanel); Sta_Setting.Controls.Add(B_OpenTool); Sta_Setting.Controls.Add(AssumeSynced); return;
+                case 0:
+                    Sta_Setting.Controls.Add(EnctrPanel);Sta_Setting.Controls.Add(Raining);
+                    Sta_Setting.Controls.Add(B_OpenTool);Sta_Setting.Controls.Add(AssumeSynced);
+                    return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
-                case 2: Wild_Setting.Controls.Add(EnctrPanel); Wild_Setting.Controls.Add(B_OpenTool); Wild_Setting.Controls.Add(AssumeSynced); return;
+                case 2:
+                    Wild_Setting.Controls.Add(EnctrPanel); Wild_Setting.Controls.Add(Raining);
+                    Wild_Setting.Controls.Add(B_OpenTool); Wild_Setting.Controls.Add(AssumeSynced); return;
                 case 3: ByIVs.Checked = true; break;
                 case 4: (Gen7 ? Filter_G7TID : Filter_TID).Checked = true; break;
             }
@@ -646,7 +651,7 @@ namespace Pk3DSRNGTool
                 var tmp = ea as EncounterArea7;
                 NPC.Value = tmp.NPC;
                 Correction.Value = tmp.Correction;
-
+                Raining.Checked = tmp.Location == 120;
                 Lv_min.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMinMoon : tmp.LevelMin;
                 Lv_max.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
@@ -803,11 +808,12 @@ namespace Pk3DSRNGTool
                 NPC.Value = pm7.NPC;
                 BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
                 ShinyLocked.Checked |= pm7.OTTSV != null;
+                Fix3v.Checked |= pm7.iv3;
+                Raining.Checked = Raining.Enabled = pm7.Raining;
                 return;
             }
-            if (FormPM is PKM6 pm6)
-                if (Sta_AbilityLocked.Checked = pm6.Ability > 0)
-                    Sta_Ability.SelectedIndex = pm6.Ability >> 1; // 1/2/4 -> 0/1/2
+            if (Sta_AbilityLocked.Checked = FormPM.Ability > 0 || BlinkWhenSync.Checked)
+                Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
             if (FormPM is PKMW6 pmw6)
             {
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
@@ -898,7 +904,7 @@ namespace Pk3DSRNGTool
                 RNGPool.IsLunala = Method == 0 && FormPM.Species == 792;
                 RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
-                RNGPool.raining = ModelStatus.raining = Method == 2 && ea.Location == 120;
+                RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
 
                 if (Method == 2)
@@ -1026,12 +1032,11 @@ namespace Pk3DSRNGTool
             setting.AlwaysSync = AlwaysSynced.Checked;
             setting.IsShinyLocked = ShinyLocked.Checked;
             setting.IVs = new int[] { -1, -1, -1, -1, -1, -1 };
+            setting.Ability = (byte)(Sta_AbilityLocked.Checked ? Sta_Ability.SelectedIndex + 1 : 0);
             setting.SetValue();
 
             if (setting is Stationary7 setting7)
                 setting7.blinkwhensync = BlinkWhenSync.Checked;
-            if (setting is Stationary6 setting6)
-                setting6.Ability = (byte)(Sta_AbilityLocked.Checked ? Sta_Ability.SelectedIndex + 1 : 0);
             return setting;
         }
 

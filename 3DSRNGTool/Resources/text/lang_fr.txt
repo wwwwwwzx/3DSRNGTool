@@ -51,6 +51,7 @@ L_Lv = Fourchette de niveaux
 L_Targetmon = Index du Pokémon ciblé
 BlinkWhenSync = Blink quand Synchro
 Sta_AbilityLocked = Capacité Spéciale définie
+Raining = Raining
 B_OpenTool = Tiny Timeline Tool
 L_GenderList = Liste des sexes (0:Assexué 1:Aléatoire 2:Mew):
 ---
