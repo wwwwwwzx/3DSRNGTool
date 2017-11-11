@@ -4,6 +4,7 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
         public override short Delay { get; protected set; }
+        public byte DelayType;
         public byte NPC;
         public bool NoBlink;
         public bool IsPelago;
@@ -247,8 +248,8 @@
                    new PKM7 { Species = 786, Level = 60, ShinyLocked = true },              // Tapu Lele
                    new PKM7 { Species = 787, Level = 60, ShinyLocked = true },              // Tapu Bulu
                    new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
-                   new PKM7 { Species = 791, Level = 55, ShinyLocked = true, NPC = 6, Delay = 288, Version = GameVersion.SN, Unstable = true, },   // Solgaleo
-                   new PKM7 { Species = 792, Level = 55, ShinyLocked = true, NPC = 6, Delay = 282, Version = GameVersion.MN, Unstable = true, },   // Lunala
+                   new PKM7 { Species = 791, Level = 55, ShinyLocked = true, NPC = 6, Delay = 288, Version = GameVersion.SN, Unstable = true, DelayType = 1, },   // Solgaleo
+                   new PKM7 { Species = 792, Level = 55, ShinyLocked = true, NPC = 6, Delay = 282, Version = GameVersion.MN, Unstable = true, DelayType = 2, },   // Lunala
                    new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 34, Gift = true},    // Cosmog
                    new PKM7 { Species = 772, Level = 40, NPC = 8, Delay = 34, Gift = true,},    // Type:Null
                    new PKM7 { Species = 801, Level = 50, ShinyLocked = true, NPC = 6, Delay = 34, Gift = true,},    // Magearna
@@ -273,7 +274,7 @@
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     new PKM7 { Species = 731, Level = 03, NPC = 1, Delay = 16, ShinyLocked = true, IVs = new[] { -1, -1, -1, -1, -1, 1 }, }, // Pikipek
-                    new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, },  // Exeggutor
+                    new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, DelayType = 3, },  // Exeggutor
                 }
             },
             new PokemonList

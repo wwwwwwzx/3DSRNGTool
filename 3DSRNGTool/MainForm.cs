@@ -566,8 +566,8 @@ namespace Pk3DSRNGTool
 
             if (MainRNGEgg.Checked)
             {
-                DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 4-6");
-                DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 4-6");
+                DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 4-8");
+                DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 4-8");
             }
 
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
@@ -893,6 +893,7 @@ namespace Pk3DSRNGTool
             DGV.CellFormatting -= new DataGridViewCellFormattingEventHandler(DGV_CellFormatting); //Stop Freshing
             Frames.Clear();
             Frames = new List<Frame>();
+            RNGPool.DelayType = 0;
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
@@ -905,9 +906,6 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 RNGPool.modelnumber = Modelnum;
-                RNGPool.IsSolgaleo = Method == 0 && FormPM.Species == 791 && Ver < 7;
-                RNGPool.IsLunala = Method == 0 && FormPM.Species == 792 && Ver < 7;
-                RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103 && Ver < 7;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;

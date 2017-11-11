@@ -168,7 +168,7 @@ namespace Pk3DSRNGTool.Core
         public static byte modelnumber;
         public static int[] remain_frame;
         
-        public static bool IsSolgaleo, IsLunala, IsExeggutor;
+        public static byte DelayType;
         public static int PreHoneyCorrection;
 
         public static void ResetModelStatus()
@@ -231,26 +231,28 @@ namespace Pk3DSRNGTool.Core
 
         public static void StationaryDelay7()
         {
-            if (IsSolgaleo || IsLunala)
-            {
-                int crydelay = IsSolgaleo ? 79 : 76;
-                time_elapse7(DelayTime - crydelay - 19);
-                if (modelnumber == 7) SolLunaRearrange();
-                time_elapse7(19);
-                Advance(1);     //Cry Inside Time Delay
-                time_elapse7(crydelay);
-                return;
+            switch (DelayType)
+            { 
+                case 1: // SuMo Sol/Luna
+                case 2:
+                    int crydelay = DelayType == 1 ? 79 : 76;
+                    time_elapse7(DelayTime - crydelay - 19);
+                    if (modelnumber == 7) SolLunaRearrange();
+                    time_elapse7(19);
+                    Advance(1);     //Cry Inside Time Delay
+                    time_elapse7(crydelay);
+                    break;
+                case 3: // SuMo Exeggutor
+                    time_elapse7(1);
+                    if (modelnumber == 1) ExeggutorRearrange();
+                    time_elapse7(42);
+                    Advance(1);     //Cry Inside Time Delay
+                    time_elapse7(DelayTime - 43);
+                    break;
+                default:
+                    NormalDelay7();
+                    break;
             }
-            if (IsExeggutor)
-            {
-                time_elapse7(1);
-                if (modelnumber == 1) ExeggutorRearrange();
-                time_elapse7(42);
-                Advance(1);    //Cry Inside Time Delay
-                time_elapse7(DelayTime - 43);
-                return;
-            }
-            NormalDelay7();
         }
 
         public static void WildDelay7()

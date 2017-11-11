@@ -129,6 +129,7 @@ namespace Pk3DSRNGTool
             }
             if (pm7.iv3)
                 PerfectIVCount = 3;
+            RNGPool.DelayType = pm7.DelayType;
         }
     }
 
