@@ -170,6 +170,7 @@ namespace Pk3DSRNGTool.Core
         
         public static byte DelayType;
         public static int PreHoneyCorrection;
+        public static int HoneyDelay; // SuMo 93 / USUM 63
 
         public static void ResetModelStatus()
         {
@@ -226,7 +227,7 @@ namespace Pk3DSRNGTool.Core
             remain_frame = new int[2];
             remain_frame[0] = tmp;
         }
-        
+
         public static void NormalDelay7() => time_elapse7(DelayTime);
 
         public static void StationaryDelay7()
@@ -262,7 +263,7 @@ namespace Pk3DSRNGTool.Core
             if (raining) Advance(2);
             time_elapse7(1);              //Blink process also occurs when loading map
             Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
-            time_elapse7(93);
+            time_elapse7(HoneyDelay);
         }
 
         private static int getframeshift()

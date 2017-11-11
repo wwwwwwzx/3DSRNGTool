@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
         private bool Gen6 => Ver < 5;
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;
+        private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private byte lastgen;
@@ -909,6 +910,7 @@ namespace Pk3DSRNGTool
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
+                RNGPool.HoneyDelay = IsUltra ? 63 : 93;
 
                 if (Method == 2)
                 {
