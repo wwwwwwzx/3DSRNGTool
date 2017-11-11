@@ -803,6 +803,8 @@ namespace Pk3DSRNGTool
             Fix3v.Checked &= !FormPM.Egg;
             Timedelay.Value = FormPM.Delay;
 
+            if (Sta_AbilityLocked.Checked = 0 < FormPM.Ability && FormPM.Ability < 5)
+                Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
             if (FormPM is PKM7 pm7)
             {
                 NPC.Value = pm7.NPC;
@@ -810,10 +812,13 @@ namespace Pk3DSRNGTool
                 ShinyLocked.Checked |= pm7.OTTSV != null;
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
+                if (BlinkWhenSync.Checked && FormPM.Ability == 0)
+                {
+                    Sta_AbilityLocked.Checked = true;
+                    Sta_Ability.SelectedIndex = 0;
+                }
                 return;
             }
-            if (Sta_AbilityLocked.Checked = FormPM.Ability > 0 || BlinkWhenSync.Checked)
-                Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
             if (FormPM is PKMW6 pmw6)
             {
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
@@ -900,9 +905,9 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 RNGPool.modelnumber = Modelnum;
-                RNGPool.IsSolgaleo = Method == 0 && FormPM.Species == 791;
-                RNGPool.IsLunala = Method == 0 && FormPM.Species == 792;
-                RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103;
+                RNGPool.IsSolgaleo = Method == 0 && FormPM.Species == 791 && Ver < 7;
+                RNGPool.IsLunala = Method == 0 && FormPM.Species == 792 && Ver < 7;
+                RNGPool.IsExeggutor = Method == 0 && FormPM.Species == 103 && Ver < 7;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2;
                 RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;

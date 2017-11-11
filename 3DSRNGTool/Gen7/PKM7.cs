@@ -8,7 +8,8 @@
         public bool NoBlink;
         public bool IsPelago;
         public bool Raining;
-        public bool iv3; // For ultra space wilds and totem gifts
+        public bool Totem, UltraWormhole;
+        public bool iv3 => Totem || UltraWormhole;
         public ushort? OTTSV;
 
         public readonly static PokemonList Default = new PokemonList
@@ -19,10 +20,38 @@
                 new PKM7 { Conceptual = true, Species= 000, Level = 50, },
             }
         };
-        
+
         public readonly static PokemonList[] Species_USUM =
         {
             Default,
+            new PokemonList
+            {
+                Text = "Alola Legendary",
+                List = new[]
+                {
+                   new PKM7 { Species = 785, Level = 60, ShinyLocked = true },              // Tapu Koko
+                   new PKM7 { Species = 786, Level = 60, ShinyLocked = true },              // Tapu Lele
+                   new PKM7 { Species = 787, Level = 60, ShinyLocked = true },              // Tapu Bulu
+                   new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
+                   new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 20, Gift = true, },    // Cosmog
+                   
+                   new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, Version = GameVersion.US, Unstable = true, },   // Solgaleo
+                   new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, Version = GameVersion.UM, Unstable = true, },   // Lunala
+                   new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
+
+                   new PKM7 { Species = 793, Level = 60, },    // Nihilego
+                   new PKM7 { Species = 794, Level = 60, Version = GameVersion.US,},    // Buzzwole
+                   new PKM7 { Species = 795, Level = 60, Version = GameVersion.UM,},    // Pheromosa
+                   new PKM7 { Species = 796, Level = 60, },    // Xurkitree
+                   new PKM7 { Species = 797, Level = 60, Version = GameVersion.UM,},    // Celesteela
+                   new PKM7 { Species = 798, Level = 60, Version = GameVersion.US,},    // Kartana
+                   new PKM7 { Species = 799, Level = 60, },    // Guzzlord
+                   
+                   new PKM7 { Species = 772, Level = 60, NPC = 3, Delay = 20, Gift = true,},    // Type:Null
+                   new PKM7 { Species = 801, Level = 50, NPC = 6, Delay = 20, Gift = true, ShinyLocked = true, },    // Magearna
+                   new PKM7 { Species = 803, Level = 40, NPC = 5, Delay = 20, Gift = true,}, // Poipole
+                }
+            },
             new PokemonList
             {
                 Text = "Kanto Legendary",
@@ -107,7 +136,53 @@
                 {
                     new PKM7 { Species = 716, Level = 60, Version = GameVersion.US, }, // Xerneas
                     new PKM7 { Species = 717, Level = 60, Version = GameVersion.UM, }, // Yveltal
-                    new PKM7 { Species = 718, Level = 60, }, // Zygarde
+                    new PKM7 { Species = 718, Level = 60, ShinyLocked = true, }, // Zygarde
+                    new PKM7 { Species = 718, Level = 63, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
+                }
+            },
+            new PokemonList
+            {
+                Text = "Ultra Space Wilds",
+                List = new[]
+                {
+                    new PKM7 { Species = 334, Level = 60, UltraWormhole = true, }, // Altaria
+                    new PKM7 { Species = 469, Level = 60, UltraWormhole = true, }, // Yanmega
+                    new PKM7 { Species = 561, Level = 60, UltraWormhole = true, }, // Sigilyph
+                    new PKM7 { Species = 581, Level = 60, UltraWormhole = true, }, // Swanna
+                    new PKM7 { Species = 277, Level = 60, UltraWormhole = true, }, // Swellow
+                    new PKM7 { Species = 452, Level = 60, UltraWormhole = true, }, // Drapion
+                    new PKM7 { Species = 531, Level = 60, UltraWormhole = true, }, // Audino
+                    new PKM7 { Species = 695, Level = 60, UltraWormhole = true, }, // Heliolisk
+                    new PKM7 { Species = 274, Level = 60, UltraWormhole = true, }, // Nuzleaf
+                    new PKM7 { Species = 326, Level = 60, UltraWormhole = true, }, // Grumpig
+                    new PKM7 { Species = 460, Level = 60, UltraWormhole = true, }, // Abomasnow
+                    new PKM7 { Species = 308, Level = 60, UltraWormhole = true, }, // Medicham
+                    new PKM7 { Species = 450, Level = 60, UltraWormhole = true, }, // Hippowdon
+                    new PKM7 { Species = 558, Level = 60, UltraWormhole = true, }, // Crustle
+                    new PKM7 { Species = 219, Level = 60, UltraWormhole = true, }, // Magcargo
+                    new PKM7 { Species = 689, Level = 60, UltraWormhole = true, }, // Barbaracle
+                    new PKM7 { Species = 271, Level = 60, UltraWormhole = true, }, // Lombre
+                    new PKM7 { Species = 618, Level = 60, UltraWormhole = true, }, // Stunfisk
+                    new PKM7 { Species = 419, Level = 60, UltraWormhole = true, }, // Floatzel
+                    new PKM7 { Species = 195, Level = 60, UltraWormhole = true, }, // Quagsire
+                }
+            },
+            new PokemonList
+            {
+                Text = "Totem", // Totem-Sized Gifts @ Heahea Beach
+                List = new[]
+                {
+                    new PKM7 { Gift = true, Species = 735, Level = 20, Ability = 4, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.US }, // Gumshoos
+                    new PKM7 { Gift = true, Species = 020, Level = 20, Ability = 4, Forme = 2, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.UM }, // Raticate
+                    new PKM7 { Gift = true, Species = 105, Level = 25, Ability = 4, Forme = 2, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.US }, // Marowak
+                    new PKM7 { Gift = true, Species = 752, Level = 25, Ability = 1, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.UM }, // Araquanid
+                    new PKM7 { Gift = true, Species = 754, Level = 30, Ability = 2, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.US }, // Lurantis
+                    new PKM7 { Gift = true, Species = 758, Level = 30, Ability = 1, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.UM }, // Salazzle
+                    new PKM7 { Gift = true, Species = 738, Level = 35, Ability = 1, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.US }, // Vikavolt
+                    new PKM7 { Gift = true, Species = 777, Level = 35, Ability = 4, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.UM }, // Togedemaru
+                    new PKM7 { Gift = true, Species = 778, Level = 40, Ability = 1, Forme = 2, Totem = true, NPC = 7, Delay = 20, },                          // Mimikyu
+                    new PKM7 { Gift = true, Species = 743, Level = 50, Ability = 4, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.US }, // Ribombee
+                    new PKM7 { Gift = true, Species = 784, Level = 50, Ability = 4, Forme = 1, Totem = true, NPC = 7, Delay = 20, Version = GameVersion.UM }, // Kommo-o
                 }
             },
             new PokemonList
@@ -126,7 +201,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
-                    new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true},  // Pinsir
+                    new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
                 }
             },
             new PokemonList
@@ -134,7 +209,10 @@
                 Text = "In-Game Gift",
                 List = new[]
                 {
-                    new PKM7 { Species = 133, Level = 01, NPC = 6, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
+                    new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, ShinyLocked = true, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
+                    new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
+                    new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
+                    new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
                 }
             },
             new PokemonList

@@ -118,12 +118,14 @@ namespace Pk3DSRNGTool
             var pm7 = PM as PKM7;
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             Ability = Ability == 0 && blinkwhensync ? (byte)1 : Ability;
+            if (pm7.Ability == 0xFF) // Outlier
+                Ability = 0;
             if (pm7.IsPelago)
                 IsPelago = true;
             if (pm7.OTTSV != null)
             {
                 TSV = (int)pm7.OTTSV;
-                Trade = true;
+                Trade = !pm7.Gift;
             }
             if (pm7.iv3)
                 PerfectIVCount = 3;

@@ -229,6 +229,8 @@ namespace Pk3DSRNGTool
             SFMT sfmt = new SFMT(Seed.Value);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
+            if (min > max)
+                return;
             if (AroundTarget.Checked)
             {
                 min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
