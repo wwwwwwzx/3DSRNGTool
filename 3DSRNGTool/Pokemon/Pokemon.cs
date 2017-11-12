@@ -24,9 +24,9 @@ namespace Pk3DSRNGTool
         private static string[] speciestr => StringItem.speciestr;
         public override string ToString()
         {
-            if (this is PKMW6 pm6 && pm6.IsFishing)
+            if (this is PKMW6 pmw6 && pmw6.IsFishing)
             {
-                switch (pm6.Type)
+                switch (pmw6.Type)
                 {
                     case EncounterType.OldRod: return "Old Rod";
                     case EncounterType.GoodRod: return "Good Rod";
@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
                 }
             }
             if (Conceptual) return "-";
-            if ((this as PKM6)?.Bank ?? false)
+            if (this is PKM6 pm6 && pm6.Bank)
             {
                 if (Species == 154) return "Johto Starters";
                 if (Species == 377) return "Legendary Titans";
@@ -43,7 +43,12 @@ namespace Pk3DSRNGTool
             if (Unstable) return speciestr[Species] + " (?)";
             switch (Species)
             {
-                case 718: return speciestr[718] + (Forme == 1 ? "-10%" : "-50%");
+                case 025 when this is PKM7 pm7 && pm7.Gift:
+                    return speciestr[025] + (pm7.OTTSV == null ? " (Surf)" : " (Movie)");
+                case 718 when Forme == 1 || Forme == 2:
+                    return speciestr[718] + "-10%";
+                case 718 when Forme == 3:
+                    return speciestr[718] + "-50%";
                 default: return speciestr[Species];
             }
         }
