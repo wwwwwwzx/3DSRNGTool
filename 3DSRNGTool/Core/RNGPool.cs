@@ -228,6 +228,14 @@ namespace Pk3DSRNGTool.Core
             remain_frame[0] = tmp;
         }
 
+        private static void AddNPC(int n = 1)
+        {
+            int[] tmp = new int[modelnumber + n];
+            remain_frame.CopyTo(tmp, 0);
+            remain_frame = (int[])tmp.Clone();
+            modelnumber = (byte)(modelnumber + n);
+        }
+
         public static void NormalDelay7() => time_elapse7(DelayTime);
 
         public static void StationaryDelay7()

@@ -137,8 +137,8 @@
                 {
                     new PKM7 { Species = 716, Level = 60, NPC = 1, Delay = 158, DelayType = 4, Version = GameVersion.US, }, // Xerneas
                     new PKM7 { Species = 717, Level = 60, NPC = 1, Delay = 158, DelayType = 4, Version = GameVersion.UM, }, // Yveltal
-                    new PKM7 { Species = 718, Level = 60, ShinyLocked = true, }, // Zygarde
-                    new PKM7 { Species = 718, Level = 63, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
+                    new PKM7 { Species = 718, Level = 60, NPC = 1, ShinyLocked = true, }, // Zygarde
+                    new PKM7 { Species = 718, Level = 63, NPC = 7, Delay = 020, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
                 }
             },
             new PokemonList
@@ -203,14 +203,15 @@
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     // Fixed Nature 05 13 03 15 10
+                    new PKM7 { Species = 097, Level = 29, NPC = 04, Delay = 102, ShinyLocked = true, Ability = 0xFF }, // Hypno @ Hau'oli City
                     new PKM7 { Species = 132, Level = 29, NPC = 02, IVs = new[] {-1,-1,31,30,-1,00}, Ability = 2, }, // Ditto @ Route 9
                     new PKM7 { Species = 132, Level = 29, NPC = 03, IVs = new[] {-1,-1,30,30,-1,31}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 08, IVs = new[] {-1,00,-1,31,30,-1}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 01, IVs = new[] {-1,30,-1,-1,30,31}, Ability = 2, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Gender = 2, Delay = -2, }, // Frillish @ Route 14
+                    new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Sandygast @ Route 15
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
-                    new PKM7 { Species = 769, Level = 30, ShinyLocked = true, }, // Sandygast @ Route 15
-                    new PKM7 { Species = 592, Level = 34, ShinyLocked = true, Gender = 1, }, // Frillish @ Route 14
                     new PKM7 { Species = 101, Level = 60, ShinyLocked = true, }, // Electrode @ Team Rocket's Castle
                 }
             },
@@ -221,6 +222,7 @@
                 {
                     new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, },    // Surf Pikachu (Totem flag for iv3)
                     new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, ShinyLocked = true, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
+                    new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
                     new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
                 }
