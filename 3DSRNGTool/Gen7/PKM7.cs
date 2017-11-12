@@ -4,6 +4,8 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
         public override short Delay { get; protected set; }
+        public override bool ShinyLocked { get => _ShinyLocked ?? Totem || UltraWormhole; protected set => _ShinyLocked = value; }
+        private bool? _ShinyLocked;
         public byte DelayType;
         public byte NPC;
         public bool NoBlink;
@@ -146,26 +148,26 @@
                 Text = "Ultra Space Wilds",
                 List = new[]
                 {
-                    new PKM7 { Species = 334, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Altaria
-                    new PKM7 { Species = 469, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Yanmega
-                    new PKM7 { Species = 561, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Sigilyph
-                    new PKM7 { Species = 581, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Swanna
-                    new PKM7 { Species = 277, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Swellow
-                    new PKM7 { Species = 452, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Drapion
-                    new PKM7 { Species = 531, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Audino
-                    new PKM7 { Species = 695, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Heliolisk
-                    new PKM7 { Species = 274, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Nuzleaf
-                    new PKM7 { Species = 326, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Grumpig
-                    new PKM7 { Species = 460, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Abomasnow
-                    new PKM7 { Species = 308, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Medicham
-                    new PKM7 { Species = 450, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Hippowdon
-                    new PKM7 { Species = 558, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Crustle
-                    new PKM7 { Species = 219, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Magcargo
-                    new PKM7 { Species = 689, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Barbaracle
-                    new PKM7 { Species = 271, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Lombre
-                    new PKM7 { Species = 618, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Stunfisk
-                    new PKM7 { Species = 419, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Floatzel
-                    new PKM7 { Species = 195, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, }, // Quagsire
+                    new PKM7 { Species = 334, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Altaria
+                    new PKM7 { Species = 469, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Yanmega
+                    new PKM7 { Species = 561, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Sigilyph
+                    new PKM7 { Species = 581, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Swanna
+                    new PKM7 { Species = 277, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Swellow
+                    new PKM7 { Species = 452, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Drapion
+                    new PKM7 { Species = 531, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Audino
+                    new PKM7 { Species = 695, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Heliolisk
+                    new PKM7 { Species = 274, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Nuzleaf
+                    new PKM7 { Species = 326, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Grumpig
+                    new PKM7 { Species = 460, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Abomasnow
+                    new PKM7 { Species = 308, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Medicham
+                    new PKM7 { Species = 450, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Hippowdon
+                    new PKM7 { Species = 558, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Crustle
+                    new PKM7 { Species = 219, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Magcargo
+                    new PKM7 { Species = 689, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Barbaracle
+                    new PKM7 { Species = 271, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Lombre
+                    new PKM7 { Species = 618, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Stunfisk
+                    new PKM7 { Species = 419, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Floatzel
+                    new PKM7 { Species = 195, Level = 60, UltraWormhole = true, NPC = 1, Delay = 96, DelayType = 4, Ability = 0xFF }, // Quagsire
                 }
             },
             new PokemonList
@@ -220,7 +222,7 @@
                 Text = "In-Game Gift",
                 List = new[]
                 {
-                    new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, },    // Surf Pikachu (Totem flag for iv3)
+                    new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, ShinyLocked = false, },    // Surf Pikachu (Totem flag for iv3)
                     new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, ShinyLocked = true, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
                     new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
@@ -250,13 +252,13 @@
                 Text = "In-Game Trade",
                 List = new[]
                 {
-                    new PKM7 { Species = 701, Level = 08, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 0, Nature = 02, }, // Hawlucha
-                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 15, }, // Noibat
-                    new PKM7 { Species = 339, Level = 21, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 1, Nature = 04, }, // Barboach
-                    new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 08, }, // Arbok
-                    new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 0, Nature = 20, }, // Phantump EvolveOnTrade
-                    new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 17, }, // Shellos
-                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 0, Nature = 13, }, // Tauros
+                    new PKM7 { Species = 701, Level = 08, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, }, // Hawlucha
+                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 2, Nature = 15, }, // Noibat
+                    new PKM7 { Species = 339, Level = 21, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 2, Nature = 04, }, // Barboach
+                    new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 08, }, // Arbok
+                    new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 20, }, // Phantump EvolveOnTrade
+                    new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 17, }, // Shellos
+                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 1, Nature = 13, }, // Tauros
                 }
             }
         };
