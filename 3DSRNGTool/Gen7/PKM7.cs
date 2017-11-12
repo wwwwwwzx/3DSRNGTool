@@ -202,7 +202,15 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
+                    new PKM7 { Species = 132, Level = 29, NPC = 02, IVs = new[] {-1,-1,31,30,-1,00}, Ability = 2, }, // Ditto @ Route 9
+                    new PKM7 { Species = 132, Level = 29, NPC = 03, IVs = new[] {-1,-1,30,30,-1,31}, Ability = 2, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 2, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 08, IVs = new[] {-1,00,-1,31,30,-1}, Ability = 2, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 01, IVs = new[] {-1,30,-1,-1,30,31}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
+                    new PKM7 { Species = 769, Level = 30, ShinyLocked = true, }, // Sandygast @ Route 15
+                    new PKM7 { Species = 592, Level = 34, ShinyLocked = true, Gender = 1, }, // Frillish @ Route 14
+                    new PKM7 { Species = 101, Level = 60, ShinyLocked = true, }, // Electrode @ Team Rocket's Castle
                 }
             },
             new PokemonList
@@ -212,7 +220,7 @@
                 {
                     new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, ShinyLocked = true, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
-                    new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
+                    new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, },    // Surf Pikachu (Totem flag for iv3)
                     new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
                 }
             },
@@ -234,6 +242,20 @@
                     new PKM7 { Gift = true, Species = 698, Level = 15, NPC = 1, Delay = 26, }, // Amaura
                 }
             },
+            new PokemonList
+            {
+                Text = "In-Game Trade",
+                List = new[]
+                {
+                    new PKM7 { Species = 701, Level = 08, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 0, Nature = 02, }, // Hawlucha
+                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 15, }, // Noibat
+                    new PKM7 { Species = 339, Level = 21, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 1, Nature = 04, }, // Barboach
+                    new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 08, }, // Arbok
+                    new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 0, Nature = 20, }, // Phantump EvolveOnTrade
+                    new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 1, Nature = 17, }, // Shellos
+                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 0, Nature = 13, }, // Tauros
+                }
+            }
         };
 
         public readonly static PokemonList[] Species_SM =
