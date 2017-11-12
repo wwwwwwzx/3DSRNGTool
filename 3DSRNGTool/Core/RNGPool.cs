@@ -250,6 +250,11 @@ namespace Pk3DSRNGTool.Core
                     Advance(1);     // Cry Inside Time Delay
                     time_elapse7(DelayTime - 43);
                     break;
+                case 4:
+                    time_elapse7(DelayTime - 2);
+                    modelnumber = 1;
+                    time_elapse7(2);
+                    break;
                 default:
                     NormalDelay7();
                     break;
