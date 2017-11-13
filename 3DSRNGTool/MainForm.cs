@@ -810,7 +810,6 @@ namespace Pk3DSRNGTool
             {
                 NPC.Value = pm7.NPC;
                 BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
-                ShinyLocked.Checked |= pm7.OTTSV != null;
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)

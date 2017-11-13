@@ -4,7 +4,7 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen7;
         public override short Delay { get; protected set; }
-        public override bool ShinyLocked { get => _ShinyLocked ?? Totem || UltraWormhole; protected set => _ShinyLocked = value; }
+        public override bool ShinyLocked { get => _ShinyLocked ?? Totem || UltraWormhole || OTTSV != null; protected set => _ShinyLocked = value; }
         private bool? _ShinyLocked;
         public byte DelayType;
         public byte NPC;
@@ -45,7 +45,7 @@
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 0702, },    // Nihilego
                    new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 13, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
-                   new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 14, },    // Xurkitree
+                   new PKM7 { Species = 796, Level = 60, NPC = 2, DelayType = 14, },    // Xurkitree
                    new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
                    new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 16, Version = GameVersion.US,},    // Kartana
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 0968, },    // Guzzlord
@@ -214,7 +214,7 @@
                     new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Gender = 2, Delay = -2, }, // Frillish @ Route 14
                     new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Sandygast @ Route 15
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
-                    new PKM7 { Species = 101, Level = 60, ShinyLocked = true, }, // Electrode @ Team Rocket's Castle
+                    new PKM7 { Species = 101, Level = 60, NPC = 01, Delay = 120, ShinyLocked = true, Unstable = true }, // Electrode @ Team Rocket's Castle
                 }
             },
             new PokemonList
@@ -223,7 +223,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, ShinyLocked = false, },    // Surf Pikachu (Totem flag for iv3)
-                    new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, ShinyLocked = true, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
+                    new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
                     new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
                     new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
