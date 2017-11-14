@@ -38,14 +38,14 @@
                    new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
                    new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 20, Gift = true, },    // Cosmog
                    
-                   new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, Version = GameVersion.US, Unstable = true, },   // Solgaleo
-                   new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, Version = GameVersion.UM, Unstable = true, },   // Lunala
+                   new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 09, Version = GameVersion.US, Unstable = true, },   // Solgaleo
+                   new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
                    new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
 
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 0702, },    // Nihilego
                    new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 13, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
-                   new PKM7 { Species = 796, Level = 60, NPC = 2, DelayType = 14, },    // Xurkitree
+                   new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 14, },    // Xurkitree
                    new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
                    new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 16, Version = GameVersion.US,},    // Kartana
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 0968, },    // Guzzlord
@@ -140,7 +140,9 @@
                     new PKM7 { Species = 716, Level = 60, NPC = 1, Delay = 158, DelayType = 4, Version = GameVersion.US, }, // Xerneas
                     new PKM7 { Species = 717, Level = 60, NPC = 1, Delay = 158, DelayType = 4, Version = GameVersion.UM, }, // Yveltal
                     new PKM7 { Species = 718, Level = 60, NPC = 1, ShinyLocked = true, }, // Zygarde
-                    new PKM7 { Species = 718, Level = 63, NPC = 7, Delay = 020, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
+                    new PKM7 { Species = 718, Level = 63, NPC = 7, Delay = 020, ShinyLocked = true, Gift = true, Forme = 2,},    // Zygarde-10%
+                    new PKM7 { Species = 718, Level = 50, NPC = 5, Delay = 020, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
+                    new PKM7 { Species = 718, Level = 50, NPC = 5, Delay = 020, ShinyLocked = true, Gift = true, Forme = 3,},    // Zygarde-50%
                 }
             },
             new PokemonList
@@ -204,8 +206,11 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
-                    // Fixed Nature 05 13 03 15 10
+                    new PKM7 { Species = 092, Level = 19, ShinyLocked = true, }, // Gastly @ Route 1 Trainer School
+                    new PKM7 { Species = 425, Level = 19, ShinyLocked = true, }, // Drifloon @ Route 1 Trainer School
+                    new PKM7 { Species = 760, Level = 28, NPC = 10, ShinyLocked = true, Ability = 0xFF }, // Bewear @ Hau'oli City
                     new PKM7 { Species = 097, Level = 29, NPC = 04, Delay = 102, ShinyLocked = true, Ability = 0xFF }, // Hypno @ Hau'oli City
+                    // Ditto 5 Fixed Nature 05 13 03 15 10
                     new PKM7 { Species = 132, Level = 29, NPC = 02, IVs = new[] {-1,-1,31,30,-1,00}, Ability = 2, }, // Ditto @ Route 9
                     new PKM7 { Species = 132, Level = 29, NPC = 03, IVs = new[] {-1,-1,30,30,-1,31}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 2, }, // Ditto @ Konikoni City
