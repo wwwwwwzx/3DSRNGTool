@@ -52,7 +52,7 @@
                    
                    new PKM7 { Species = 772, Level = 60, NPC = 3, Delay = 20, Gift = true,},    // Type:Null
                    new PKM7 { Species = 801, Level = 50, NPC = 6, Delay = 20, Gift = true, ShinyLocked = true, },    // Magearna
-                   new PKM7 { Species = 803, Level = 40, NPC = 5, Delay = 20, Gift = true,}, // Poipole
+                   new PKM7 { Species = 803, Level = 40, NPC = 5, Delay = 20, Gift = true,},    // Poipole
                 }
             },
             new PokemonList
@@ -206,8 +206,8 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
-                    new PKM7 { Species = 092, Level = 19, ShinyLocked = true, }, // Gastly @ Route 1 Trainer School
-                    new PKM7 { Species = 425, Level = 19, ShinyLocked = true, }, // Drifloon @ Route 1 Trainer School
+                    new PKM7 { Species = 092, Level = 19, ShinyLocked = true, Ability = 0xFF }, // Gastly @ Route 1 Trainers' School
+                    new PKM7 { Species = 425, Level = 19, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Drifloon @ Route 1 Trainers' School
                     new PKM7 { Species = 760, Level = 28, NPC = 10, ShinyLocked = true, Ability = 0xFF }, // Bewear @ Hau'oli City
                     new PKM7 { Species = 097, Level = 29, NPC = 04, Delay = 102, ShinyLocked = true, Ability = 0xFF }, // Hypno @ Hau'oli City
                     // Ditto 5 Fixed Nature 05 13 03 15 10
