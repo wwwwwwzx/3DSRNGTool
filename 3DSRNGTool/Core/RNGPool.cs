@@ -253,11 +253,11 @@ namespace Pk3DSRNGTool.Core
                     time_elapse7(crydelay);
                     break;
                 case 3: // SuMo Exeggutor
-                    time_elapse7(1);
+                    time_elapse7(3);
                     ChangeModelNumber(2);
                     time_elapse7(42);
                     Advance(1);     // Cry Inside Time Delay
-                    time_elapse7(DelayTime - 43);
+                    time_elapse7(DelayTime - 45);
                     break;
                 case 4:
                     time_elapse7(DelayTime - 2);
@@ -283,10 +283,7 @@ namespace Pk3DSRNGTool.Core
         private static int getframeshift()
         {
             if (Considerdelay)
-            {
-                time_elapse7(2); // Button pressing delay
                 igenerator.Delay();
-            }
             else
                 ResetModelStatus();
             return index;

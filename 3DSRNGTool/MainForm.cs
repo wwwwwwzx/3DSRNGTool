@@ -802,6 +802,7 @@ namespace Pk3DSRNGTool
             if (FormPM.Nature < 25)
                 SyncNature.SelectedIndex = FormPM.Nature + 1;
             Fix3v.Checked &= !FormPM.Egg;
+            Timedelay.Minimum = Math.Min((int)FormPM.Delay, 0);
             Timedelay.Value = FormPM.Delay;
 
             if (Sta_AbilityLocked.Checked = 0 < FormPM.Ability && FormPM.Ability < 5)
@@ -906,7 +907,7 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 RNGPool.modelnumber = Modelnum;
-                RNGPool.DelayTime = (int)Timedelay.Value / 2;
+                RNGPool.DelayTime = (int)Timedelay.Value / 2 + 2;
                 RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
                 RNGPool.HoneyDelay = IsUltra ? 63 : 93;
