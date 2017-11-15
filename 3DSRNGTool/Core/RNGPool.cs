@@ -167,7 +167,7 @@ namespace Pk3DSRNGTool.Core
         public static bool raining, phase;
         public static byte modelnumber;
         public static int[] remain_frame;
-        
+
         public static byte DelayType;
         public static int PreHoneyCorrection;
         public static int HoneyDelay; // SuMo 93 / USUM 63
@@ -219,21 +219,22 @@ namespace Pk3DSRNGTool.Core
                 remain_frame[i] = remain_frame[order[i]];
         }
 
-        //Another type of change (Lillie)
-        private static void ExeggutorRearrange()
+        private static void ChangeModelNumber(byte N)
         {
-            modelnumber = 2;
-            int tmp = remain_frame[0];
-            remain_frame = new int[2];
-            remain_frame[0] = tmp;
-        }
-
-        private static void AddNPC(int n = 1)
-        {
-            int[] tmp = new int[modelnumber + n];
-            remain_frame.CopyTo(tmp, 0);
-            remain_frame = (int[])tmp.Clone();
-            modelnumber = (byte)(modelnumber + n);
+            if (N == modelnumber)
+                return;
+            modelnumber = N;
+            if (N > remain_frame.Length)
+            {
+                int[] tmp = new int[N];
+                remain_frame.CopyTo(tmp, 0);
+                remain_frame = (int[])tmp.Clone();
+            }
+            else if (N < remain_frame.Length)
+            {
+               // for (int i = N; i < remain_frame.Length; i++)
+               //      remain_frame[i] = 0;
+            }
         }
 
         public static void NormalDelay7() => time_elapse7(DelayTime);
@@ -241,7 +242,7 @@ namespace Pk3DSRNGTool.Core
         public static void StationaryDelay7()
         {
             switch (DelayType)
-            { 
+            {
                 case 1: // SuMo Sol/Luna
                 case 2:
                     int crydelay = DelayType == 1 ? 79 : 76;
@@ -253,7 +254,7 @@ namespace Pk3DSRNGTool.Core
                     break;
                 case 3: // SuMo Exeggutor
                     time_elapse7(1);
-                    if (modelnumber == 1) ExeggutorRearrange();
+                    ChangeModelNumber(2);
                     time_elapse7(42);
                     Advance(1);     // Cry Inside Time Delay
                     time_elapse7(DelayTime - 43);

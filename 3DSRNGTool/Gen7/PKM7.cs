@@ -42,13 +42,13 @@
                    new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
                    new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
 
-                   new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 0702, },    // Nihilego
-                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Version = GameVersion.US,},    // Buzzwole
-                   new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 13, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
-                   new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 14, },    // Xurkitree
-                   new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
-                   new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 16, Version = GameVersion.US,},    // Kartana
-                   new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 0968, },    // Guzzlord
+                   new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 132, },    // Nihilego
+                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Delay = 178, Version = GameVersion.US,},    // Buzzwole
+                   new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 13, Delay = 150, Version = GameVersion.UM,},    // Pheromosa
+                   new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 14, Delay = 134, },    // Xurkitree
+                   new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 000, Version = GameVersion.UM,},    // Celesteela
+                   new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 16, Delay = 130, Version = GameVersion.US,},    // Kartana
+                   new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 124, },    // Guzzlord
                    
                    new PKM7 { Species = 772, Level = 60, NPC = 3, Delay = 20, Gift = true,},    // Type:Null
                    new PKM7 { Species = 801, Level = 50, NPC = 6, Delay = 20, Gift = true, ShinyLocked = true, },    // Magearna
@@ -258,12 +258,25 @@
                 List = new[]
                 {
                     new PKM7 { Species = 701, Level = 08, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, }, // Hawlucha
-                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 2, Nature = 15, }, // Noibat
+                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 15, }, // Noibat
                     new PKM7 { Species = 339, Level = 21, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 2, Nature = 04, }, // Barboach
                     new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 08, }, // Arbok
                     new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 20, }, // Phantump EvolveOnTrade
                     new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 17, }, // Shellos
                     new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 1, Nature = 13, }, // Tauros
+                }
+            },
+            new PokemonList
+            {
+                Text = "UB (First Encounter)",
+                List = new[]
+                {
+                   new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 21, Delay = 0702, },    // Nihilego
+                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 0000, Version = GameVersion.US,},    // Buzzwole
+                   new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 23, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
+                   new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 25, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
+                   new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 26, Delay = 0000, Version = GameVersion.US,},    // Kartana
+                   new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 27, Delay = 0968, },    // Guzzlord
                 }
             }
         };
