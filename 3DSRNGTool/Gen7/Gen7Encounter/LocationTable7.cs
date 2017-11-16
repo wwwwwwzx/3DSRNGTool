@@ -23,28 +23,28 @@ namespace Pk3DSRNGTool
             #region MeleMele
             new EncounterArea7
             {
-                Location = 006, idx = 1,
+                Location = 008, idx = 1,
                 Correction = 15,
                 LevelMin = 02, LevelMax = 03,
                 Species = new[] {0,734,731,010,165},
             },
             new EncounterArea7
             {
-                Location = 006, idx = 2,
+                Location = 008, idx = 2,
                 Correction = 15,
                 LevelMin = 03, LevelMax = 05,
                 Species = new[] {1,734,731,736,010,011,165,172},
             },
             new EncounterArea7
             {
-                Location = 006, idx = 3,
+                Location = 008, idx = 3,
                 Correction = 15, NPC = 2,
                 LevelMin = 10,
                 Species = new[] {2,734,731,438,010,011,165,446},
             },
             new EncounterArea7
             {
-                Location = 007, // Outskirts
+                Location = 006, // Outskirts
                 Correction = 23, NPC = 1,
                 LevelMin = 05, LevelMax = 07,
                 Species = new[] {0,734,278,278,079},
@@ -107,14 +107,14 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea7
             {
-                Location = 019,
+                Location = 018,
                 Correction = 17, NPC = 1,
                 LevelMin = 15,
                 Species = new[] {15,072,278,456},
             },
             new EncounterArea7
             {
-                Location = 021,
+                Location = 020,
                 Correction = 27,
                 LevelMin = 05,
                 Species = new[] {20,734,278,063,088,081,052,172},
@@ -254,21 +254,21 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea7
             {
-                Location = 088, idx = 1, mark = "Grass2",//Brooklet Hill
+                Location = 086, idx = 3, mark = "Grass2",//Brooklet Hill
                 Correction = 05, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {25,751,060,054,278},
             },
             new EncounterArea7
             {
-                Location = 088, idx = 2, mark = "Water2",//Brooklet Hill
+                Location = 086, idx = 4, mark = "Water2",//Brooklet Hill
                 Correction = 06, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {22,060,751,060,751,054},
             },
             new EncounterArea7
             {
-                Location = 089, mark = "Water", //Brooklet Hill
+                Location = 088, // Brooklet Hill (Totems' Den)
                 Correction = 03, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {15,072,278,456},
@@ -653,28 +653,28 @@ namespace Pk3DSRNGTool
             #region MeleMele
             new EncounterArea7
             {
-                Location = 006, idx = 1,
+                Location = 008, idx = 1,
                 Correction = 15,
                 LevelMin = 02, LevelMax = 03,
                 Species = new[] {0,734,731,010,165},
             },
             new EncounterArea7
             {
-                Location = 006, idx = 2,
+                Location = 008, idx = 2,
                 Correction = 15,
                 LevelMin = 03, LevelMax = 05,
                 Species = new[] {1,734,731,736,010,011,165,172},
             },
             new EncounterArea7
             {
-                Location = 006, idx = 3,
+                Location = 008, idx = 3,
                 Correction = 15, NPC = 2,
                 LevelMin = 10,
                 Species = new[] {2,734,731,438,010,011,165,446},
             },
             new EncounterArea7
             {
-                Location = 007, // Outskirts
+                Location = 006, // Outskirts
                 Correction = 23, NPC = 1,
                 LevelMin = 05, LevelMax = 07,
                 Species = new[] {0,734,278,278,079},
@@ -737,14 +737,14 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea7
             {
-                Location = 019,
+                Location = 018,
                 Correction = 17, NPC = 1,
                 LevelMin = 15,
                 Species = new[] {15,072,278,456},
             },
             new EncounterArea7
             {
-                Location = 021,
+                Location = 020,
                 Correction = 27,
                 LevelMin = 05,
                 Species = new[] {20,734,278,063,088,081,052,172},
@@ -884,21 +884,21 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea7
             {
-                Location = 088, idx = 1, mark = "Grass2",//Brooklet Hill
+                Location = 086, idx = 3, mark = "Grass2",//Brooklet Hill
                 Correction = 05, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {25,751,060,054,278},
             },
             new EncounterArea7
             {
-                Location = 088, idx = 2, mark = "Water2",//Brooklet Hill
+                Location = 086, idx = 4, mark = "Water2",//Brooklet Hill
                 Correction = 06, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {22,060,751,060,751,054},
             },
             new EncounterArea7
             {
-                Location = 089, mark = "Water", //Brooklet Hill
+                Location = 088, // Brooklet Hill(Totem's Den)
                 Correction = 03, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {15,072,278,456},

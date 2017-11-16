@@ -230,6 +230,18 @@ namespace Pk3DSRNGTool
             smlocation = getStringList("Location_sm", curlanguage);
             gen6location = getStringList("Location_xy", curlanguage);
 
+            // Merge SM Strings
+            var metSM_00000_good = (string[])smlocation.Clone();
+            for (int i = 0; i < smlocation.Length; i += 2)
+            {
+                var nextLoc = smlocation[i + 1];
+                if (!string.IsNullOrWhiteSpace(nextLoc) && nextLoc[0] != '[')
+                    metSM_00000_good[i] += $" ({nextLoc})";
+                if (i > 0 && !string.IsNullOrWhiteSpace(metSM_00000_good[i]) && metSM_00000_good.Take(i - 1).Contains(metSM_00000_good[i]))
+                    metSM_00000_good[i] += $" ({metSM_00000_good.Take(i - 1).Count(s => s == metSM_00000_good[i]) + 1})";
+            }
+            metSM_00000_good.CopyTo(smlocation, 0);
+
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
 

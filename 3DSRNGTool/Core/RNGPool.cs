@@ -230,11 +230,7 @@ namespace Pk3DSRNGTool.Core
                 remain_frame.CopyTo(tmp, 0);
                 remain_frame = (int[])tmp.Clone();
             }
-            else if (N < remain_frame.Length)
-            {
-               // for (int i = N; i < remain_frame.Length; i++)
-               //      remain_frame[i] = 0;
-            }
+            // DO NOT reset status when inactive
         }
 
         public static void NormalDelay7() => time_elapse7(DelayTime);

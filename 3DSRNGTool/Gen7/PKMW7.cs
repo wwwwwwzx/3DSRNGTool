@@ -46,7 +46,7 @@
                     new PKMW7 { Species = 158, Level = 12, Location = new[]{ 298 }, }, // Totodile @ Seaward Cave
                     new PKMW7 { Species = 633, Level = 13, Location = new[]{ 290 }, }, // Deino @ Ten Carat Hill
                     new PKMW7 { Species = 116, Level = 18, Location = new[]{ 526 }, }, // Horsea @ Kala'e Bay
-                    new PKMW7 { Species = 599, Level = 08, Location = new[]{ 021 }, }, // Klink @ Hau'oli City
+                    new PKMW7 { Species = 599, Level = 08, Location = new[]{ 020 }, }, // Klink @ Hau'oli City
                     new PKMW7 { Species = 152, Level = 10, Location = new[]{ 268, 524 }, }, // Chikorita @ Route 2
                     new PKMW7 { Species = 607, Level = 10, Location = new[]{ 038 }, }, // Litwick @ Hau'oli Cemetery
                                                                                                                        
@@ -57,7 +57,7 @@
                     new PKMW7 { Species = 679, Level = 23, Location = new[]{ 094 }, }, // Honedge @ Akala Outskirts
                     new PKMW7 { Species = 543, Level = 14, Location = new[]{ 050 }, }, // Venipede @ Route 4
                     new PKMW7 { Species = 069, Level = 16, Location = new[]{ 308, 564 }, }, // Bellsprout @ Route 5
-                    new PKMW7 { Species = 183, Level = 17, Location = new[]{ 342, 344 }, }, // Marill @ Brooklet Hill
+                    new PKMW7 { Species = 183, Level = 17, Location = new[]{ 342, 854 }, }, // Marill @ Brooklet Hill
                                                                                                                        
                     // Ula'ula Island                                                                                          
                     new PKMW7 { Species = 111, Level = 30, Location = new[]{ 394, 650 }, }, // Rhyhorn @ Blush Mountain
@@ -113,7 +113,7 @@
                     new PKMW7 { Species = 007, Level = 12, Location = new[] {298}, }, // Squirtle @ Seaward Cave
                     new PKMW7 { Species = 095, Level = 14, Location = new[] {290}, }, // Onix @ Ten Carat Hill
                     new PKMW7 { Species = 116, Level = 18, Location = new[] {526}, }, // Horsea @ Kala'e Bay
-                    new PKMW7 { Species = 664, Level = 09, Location = new[] {021}, }, // Scatterbug @ Hau'oli City
+                    new PKMW7 { Species = 664, Level = 09, Location = new[] {020}, }, // Scatterbug @ Hau'oli City
                     new PKMW7 { Species = 001, Level = 10, Location = new[] {268,524}, }, // Bulbasaur @ Route 2
                     new PKMW7 { Species = 607, Level = 09, Location = new[] {038}, }, // Litwick @ Hau'oli Cemetery
 			
@@ -124,7 +124,7 @@
                     new PKMW7 { Species = 679, Level = 24, Location = new[] {094}, }, // Honedge @ Akala Outskirts
                     new PKMW7 { Species = 015, Level = 14, Location = new[] {050}, }, // Beedrill @ Route 4
                     new PKMW7 { Species = 253, Level = 16, Location = new[] {308,564}, }, // Grovyle @ Route 5
-                    new PKMW7 { Species = 259, Level = 17, Location = new[] {342,344}, }, // Marshtomp @ Brooklet Hill
+                    new PKMW7 { Species = 259, Level = 17, Location = new[] {342,854}, }, // Marshtomp @ Brooklet Hill
 			
                     // Ula'ula Island
                     new PKMW7 { Species = 111, Level = 32, Location = new[] {394,650}, }, // Rhyhorn @ Blush Mountain

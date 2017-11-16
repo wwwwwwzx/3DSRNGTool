@@ -42,11 +42,11 @@
                    new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
                    new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
 
-                   new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 132, },    // Nihilego
+                   new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 134, },    // Nihilego
                    new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Delay = 178, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 13, Delay = 150, Version = GameVersion.UM,},    // Pheromosa
                    new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 14, Delay = 134, },    // Xurkitree
-                   new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 000, Version = GameVersion.UM,},    // Celesteela
+                   new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 15, Delay = 186, Version = GameVersion.UM,},    // Celesteela
                    new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 16, Delay = 130, Version = GameVersion.US,},    // Kartana
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 124, },    // Guzzlord
                    
@@ -216,8 +216,8 @@
                     new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 08, IVs = new[] {-1,00,-1,31,30,-1}, Ability = 2, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 132, Level = 29, NPC = 01, IVs = new[] {-1,30,-1,-1,30,31}, Ability = 2, }, // Ditto @ Konikoni City
-                    new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Gender = 2, Delay = -4, }, // Frillish @ Route 14
-                    new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Sandygast @ Route 15
+                    new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Ability = 0xFF, Gender = 2, Delay = -4, }, // Frillish @ Route 14
+                    new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF, }, // Sandygast @ Route 15
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
                     new PKM7 { Species = 101, Level = 60, NPC = 01, Delay = 120, ShinyLocked = true, Unstable = true }, // Electrode @ Team Rocket's Castle
                 }
