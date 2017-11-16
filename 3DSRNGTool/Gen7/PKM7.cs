@@ -275,7 +275,7 @@
                    new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 0000, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 23, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
                    new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 25, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
-                   new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 26, Delay = 0000, Version = GameVersion.US,},    // Kartana
+                   new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 26, Delay = 1618, Version = GameVersion.US,},    // Kartana
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 27, Delay = 0968, },    // Guzzlord
                 }
             }

@@ -931,6 +931,8 @@ namespace Pk3DSRNGTool
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
+                if (FormPM is PKM7 pm7 && pm7.DelayType > 0)
+                    buffersize += 3 * RNGPool.DelayTime;
                 if (IsPelago)
                     buffersize += 256;
                 if (Method == 3 && !MainRNGEgg.Checked)
