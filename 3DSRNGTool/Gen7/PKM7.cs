@@ -38,8 +38,8 @@
                    new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
                    new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 20, Gift = true, },    // Cosmog
                    
-                   new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 09, Version = GameVersion.US, Unstable = true, },   // Solgaleo
-                   new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
+                   new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, Delay = 166, DelayType = 09, Version = GameVersion.US, Unstable = true, },   // Solgaleo
+                   new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, Delay = 160, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
                    new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
 
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 134, },    // Nihilego

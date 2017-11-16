@@ -210,13 +210,12 @@ namespace Pk3DSRNGTool.Core
             }
         }
 
-        //model # changes when screen turns black
-        private readonly static int[] order = { 0, 1, 2, 5, 6 };
-        private static void SolLunaRearrange()
+        //model # changes
+        private static void SolLunaRearrange(int[] NPC)
         {
-            modelnumber = 5;//2 guys offline...
-            for (int i = 0; i < 5; i++)
-                remain_frame[i] = remain_frame[order[i]];
+            modelnumber = (byte)NPC.Length;
+            for (int i = 0; i < modelnumber; i++)
+                remain_frame[i] = remain_frame[NPC[i]];
         }
 
         private static void ChangeModelNumber(byte N)
@@ -233,7 +232,36 @@ namespace Pk3DSRNGTool.Core
             // DO NOT reset status when inactive
         }
 
+        // Cry advance frame inside npc blinking
+        private static void Cry(int idx)
+        {
+            for (int i = 0; i < modelnumber; i++)
+            {
+                if (i == idx) // Inline delay
+                    Advance(1);
+                if (remain_frame[i] > 1)
+                {
+                    remain_frame[i]--;
+                    continue;
+                }
+                if (remain_frame[i] < 0)
+                {
+                    if (++remain_frame[i] == 0)
+                        remain_frame[i] = (int)(getrand64 % 3) == 0 ? 36 : 30;
+                    continue;
+                }
+                if ((int)(getrand64 & 0x7F) == 0)
+                    remain_frame[i] = -5;
+            }
+        }
+
         public static void NormalDelay7() => time_elapse7(DelayTime);
+        public static void SplittedDelay(int totaldelay, int crydelay)
+        {
+            time_elapse7(totaldelay - crydelay);
+            Advance(1);
+            time_elapse7(crydelay);
+        }
 
         public static void StationaryDelay7()
         {
@@ -243,17 +271,13 @@ namespace Pk3DSRNGTool.Core
                 case 2:
                     int crydelay = DelayType == 1 ? 79 : 76;
                     time_elapse7(DelayTime - crydelay - 19); // 48(-2)
-                    if (modelnumber == 7) SolLunaRearrange();
-                    time_elapse7(19);
-                    Advance(1);     // Cry Inside Time Delay
-                    time_elapse7(crydelay);
+                    if (modelnumber == 7) SolLunaRearrange(new[]{ 0, 1, 2, 5, 6 });
+                    SplittedDelay(19 + crydelay, crydelay);
                     break;
                 case 3: // SuMo Exeggutor
                     time_elapse7(3);
                     ChangeModelNumber(2);
-                    time_elapse7(42);
-                    Advance(1);     // Cry Inside Time Delay
-                    time_elapse7(DelayTime - 45);
+                    SplittedDelay(DelayTime - 3, DelayTime - 45);
                     break;
                 case 4:
                     time_elapse7(DelayTime - 2);
