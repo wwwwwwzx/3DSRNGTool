@@ -11,9 +11,11 @@ namespace Pk3DSRNGTool
         public static List<Result> request(string needle, bool IsID, bool IsUltra)
         {
             Root root;
-            var url = IsUltra ? $"https://rng-api.poyo.club/usm/sfmt/seed?needle={needle}" :
-               ( IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 
-                           : $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}");
+            var url = IsUltra
+                ? (IsID ? $"https://rng-api.poyo.club/usm/sfmt/seed/id?needle={needle}"
+                        : $"https://rng-api.poyo.club/usm/sfmt/seed?needle={needle}" )
+                : (IsID ? $"http://49.212.217.137:19937/gen7/sfmt/seed/id?needle={needle}" 
+                        : $"http://49.212.217.137:19937/gen7/sfmt/seed?needle={needle}");
             string jsonStr;
             using (var webClient = new WebClient())
             {
