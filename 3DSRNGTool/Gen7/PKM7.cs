@@ -206,6 +206,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
+                    new PKM7 { Species = 736, Level = 04, NPC = 01, ShinyLocked = true, Delay = 12, }, // Grubbin
                     new PKM7 { Species = 092, Level = 19, ShinyLocked = true, Ability = 0xFF }, // Gastly @ Route 1 Trainers' School
                     new PKM7 { Species = 425, Level = 19, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Drifloon @ Route 1 Trainers' School
                     new PKM7 { Species = 760, Level = 28, NPC = 10, ShinyLocked = true, Ability = 0xFF }, // Bewear @ Hau'oli City
@@ -272,7 +273,7 @@
                 List = new[]
                 {
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 21, Delay = 0702, },    // Nihilego
-                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 0000, Version = GameVersion.US,},    // Buzzwole
+                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 1678, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 23, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
                    new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 25, Delay = 1136, Version = GameVersion.UM,},    // Celesteela
                    new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 26, Delay = 1618, Version = GameVersion.US,},    // Kartana
