@@ -17,11 +17,12 @@ namespace Pk3DSRNGTool
         public byte LevelMaxMoon => (byte)(LevelMax + lvldiff);
 
         public bool Reverse; // true if moon/night have more species
+        public bool Raining;
 
         public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 6 || ver == 8, IsNight);
 
-        protected virtual Dictionary<int, int> Day2Night => null;
-        protected virtual Dictionary<int, int> Sun2Moon => null;
+        protected virtual Dictionary<int, int> Day2Night { get; }
+        protected virtual Dictionary<int, int> Sun2Moon { get; }
 
         public override bool VersionDifference => Species.Skip(1).Any(i => Sun2Moon.ContainsKey(i));
         public override bool DayNightDifference => Species.Skip(1).Any(i => Day2Night.ContainsKey(i));
@@ -83,68 +84,83 @@ namespace Pk3DSRNGTool
             new byte[]{1,1,2,2,3,3,4,4,4,4}, //34
             new byte[]{1,2,3,4,5,6,7,8,8,8}, //35
             new byte[]{1,2,1,2,3,3,3,1,2,2}, //36
-            new byte[]{1,2,3,4,3,3,5,6,6,7}, //37
+            new byte[]{1,2,3,4,5,5,6,7,7,8}, //37
             new byte[]{1,2,3,3,4,5,6,7,1,1}, //38
             new byte[]{1,2,3,3,4,4,5,6,6,7}, //39
             new byte[]{1,2,3,2,4,4,4,5,4,4}, //40
+            new byte[]{1,2,3,4,5,6,7,6,8,8}, //41
+            new byte[]{1,2,3,3,4,4,5,6,7,7}, //42
+            new byte[]{1,2,3,4,3,4,5,6,6,7}, //43
+            new byte[]{1,2,3,4,5,6,7,8,9,10}, //44 oops
+            new byte[]{1,2,1,2,3,4,5,5,6,6}, //45
+            new byte[]{1,2,3,4,5,5,6,6,7,7}, //46
         };
     }
 
     public class EncounterArea_SM : EncounterArea7
     {
-        protected override Dictionary<int, int> Day2Night => day2night;
-        protected override Dictionary<int, int> Sun2Moon => sun2moon;
-        private readonly static Dictionary<int, int> day2night = new Dictionary<int, int>
+        protected override Dictionary<int, int> Day2Night => new Dictionary<int, int>
         {
-            {734, 019}, {735, 020},
-            {165, 167}, {166, 168},
-            {046, 755},
-            {751, 283}, {752, 284},
-            {425, 200},
-            {745,2793},
-            {174, 731},
+            {734, 019}, {735, 020},  // Yungoos -> Rattata
+            {165, 167}, {166, 168},  // Ledyba -> Spinarak
+            {046, 755},              // Paras -> Morelull
+            {751, 283}, {752, 284},  // Dewplder -> Surskit
+            {425, 200},              // Drifloon -> Misdreavus
+            {745,2793},              // Lycanroc(day -> night)
+            {174, 731},              // Igglybuff -> Pikipek
             // Reverse from here
-            {173, 022},
+            {173, 022},              // Cleff -> Fearow
         };
 
-        private readonly static Dictionary<int, int> sun2moon = new Dictionary<int, int>
+        protected override Dictionary<int, int> Sun2Moon => new Dictionary<int, int>
         {
-            {546, 548},
-            {766, 765},
-            {776, 324},
-            {037, 027},
+            {546, 548}, // Cottonee -> Petill
+            {766, 765}, // Passimian -> Oranguru
+            {776, 324}, // Turtonator -> Torkoal
+            {037, 027}, // Vulpix -> Sandshrew
             // Reverse from here
-            {780, 359},
+            {780, 359}, // Drampa -> Absol
         };
     }
 
     public class EncounterArea_USUM : EncounterArea7
     {
-        protected override Dictionary<int, int> Day2Night => day2night;
-        protected override Dictionary<int, int> Sun2Moon => sun2moon;
-        private readonly static Dictionary<int, int> day2night = new Dictionary<int, int>
+        protected override Dictionary<int, int> Day2Night => new Dictionary<int, int>
         {
-            {734, 019}, {735, 020},
-            {165, 167}, {166, 168},
-            {046, 755},
-            {751, 283}, {752, 284},
-            {425, 198},
-            {745,2793},
-            {174, 731},
-            {296, 096}, {096, 296},
-            {447, 427},
-            // Reverse from here
-            {173, 022},
+            {734, 019}, {735, 020}, // Yungoos -> Rattata
+            {165, 167}, {166, 168}, // Ledyba -> Spinarak
+            {046, 755},             // Paras -> Morelull
+            {751, 283}, {752, 284}, // Dewplder -> Surskit
+            {425, 198},             // Drifloon -> Murkrow
+            {745,2793},             // Lycanroc(day -> night)
+            {296, 096}, {096, 296}, // Drowzee <-> Makuhita
+            {447, 427},             // Riolu -> Buneary
         };
 
-        private readonly static Dictionary<int, int> sun2moon = new Dictionary<int, int>
+        protected override Dictionary<int, int> Sun2Moon => new Dictionary<int, int>
         {
-            {546, 548},
-            {766, 765},
-            {776, 324},
-            {037, 027},
+            {546, 548}, // Cottonee -> Petill
+            {766, 765}, // Passimian -> Oranguru
+            {776, 324}, // Turtonator -> Torkoal
+            {037, 027}, // Vulpix -> Sandshrew
             // Reverse from here
-            {780, 359},
+            {780, 359}, // Drampa -> Absol
         };
+        
+        protected override int[] getSpecies(bool IsMoon, bool IsNight)
+        {
+            var table = base.getSpecies(IsMoon, IsNight);
+            IsNight ^= Reverse;
+            IsMoon ^= Reverse;
+            for (int i = 1; i < table.Length; i++)
+                if (IsNight)
+                {
+                    if (table[i] == 173) // Cleff -> Minior/Elgyem
+                        table[i] = i == 7 ? 774 : 605;
+                    if (table[i] == 174) // Igglybuff -> Pikipek/Lillpup
+                        table[i] = i == 7 ? 731 : 506;
+                }
+            return table;
+        }
     }
 }

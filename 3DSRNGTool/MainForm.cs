@@ -664,9 +664,9 @@ namespace Pk3DSRNGTool
                 var tmp = ea as EncounterArea7;
                 NPC.Value = tmp.NPC;
                 Correction.Value = tmp.Correction;
-                Raining.Checked = tmp.Location == 120;
-                Lv_min.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMinMoon : tmp.LevelMin;
-                Lv_max.Value = ea.VersionDifference && Ver == 6 ? tmp.LevelMaxMoon : tmp.LevelMax;
+                Raining.Checked = Raining.Enabled = tmp.Raining;
+                Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
+                Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
             else if (Gen6)
             {

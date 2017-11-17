@@ -124,7 +124,7 @@
                     new PKMW7 { Species = 679, Level = 24, Location = new[] {094}, }, // Honedge @ Akala Outskirts
                     new PKMW7 { Species = 015, Level = 14, Location = new[] {050}, }, // Beedrill @ Route 4
                     new PKMW7 { Species = 253, Level = 16, Location = new[] {308,564}, }, // Grovyle @ Route 5
-                    new PKMW7 { Species = 259, Level = 17, Location = new[] {342,854}, }, // Marshtomp @ Brooklet Hill
+                    new PKMW7 { Species = 259, Level = 17, Location = new[] {342}, }, // Marshtomp @ Brooklet Hill
 			
                     // Ula'ula Island
                     new PKMW7 { Species = 111, Level = 32, Location = new[] {394,650}, }, // Rhyhorn @ Blush Mountain

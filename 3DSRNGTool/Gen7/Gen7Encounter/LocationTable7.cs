@@ -474,14 +474,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 120, idx = 1, //17
-                Correction = 10,
+                Correction = 10, Raining = true,
                 LevelMin = 31,
                 Species = new[] {22,735,022,674,674,166},
             },
             new EncounterArea_SM
             {
                 Location = 120, idx = 2, //17
-                Correction = 10,
+                Correction = 10, Raining = true,
                 LevelMin = 31,
                 Species = new[] {21,735,022,674,075,075,227},
             },
@@ -740,7 +740,7 @@ namespace Pk3DSRNGTool
                 Location = 010, idx = 2,
                 Correction = 15, NPC = 1,
                 LevelMin = 09,
-                Species = new[] {37,742,021,056,701,742,021,371},
+                Species = new[] {37,742,021,056,701,056,742,021,371},
             },
             new EncounterArea_USUM
             {
@@ -824,140 +824,126 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 050, //4
-                Correction = 06, NPC = 1,
+                Correction = 08, NPC = 1,
                 LevelMin = 11,
-                Species = new[] {23,506,749,736,734,731,174,133},
+                Species = new[] {41,506,749,736,174,734,731,174,133},
             },
             new EncounterArea_USUM
             {
                 Location = 078,
-                Correction = 23, NPC = 2,
+                Correction = 24, NPC = 2,
                 LevelMin = 12,
-                Species = new[] {24,506,749,128,241},
+                Species = new[] {42,179,749,506,749,179,128,241},
             },
             new EncounterArea_USUM
             {
                 Location = 052, idx = 1, //5
-                Correction = 21,
+                Correction = 25,
                 LevelMin = 13,
-                Species = new[] {3,506,731,753,736,010,011,012},
+                Species = new[] {43,506,731,736,753,010,011,012},
             },
             new EncounterArea_USUM
             {
                 Location = 052, idx = 2, //5
-                Correction = 21, NPC = 1,
+                Correction = 25, NPC = 1,
                 LevelMin = 18,
-                Species = new[] {4,753,732,438,736,010,011,012},
+                Species = new[] {37,753,732,438,753,736,010,011,012},
             },
             new EncounterArea_USUM
             {
-                Location = 090, idx = 1, mark = "S",//Lush Jungle - S
-                Correction = 07,
-                LevelMin = 18,
-                Species = new[] {9,753,732,438,010,011,046,766,764},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 090, idx = 2, mark = "W",//Lush Jungle - W
-                Correction = 02,
-                LevelMin = 18,
-                Species = new[] {10,753,732,761,046,766,764},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 090, idx = 3, mark = "N",//Lush Jungle - N
-                Correction = 02,
-                LevelMin = 18,
-                Species = new[] {11,753,732,046,127,764,766},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 090, idx = 4, mark = "Cave", //Lush Jungle - Cave
-                Correction = 02,
-                LevelMin = 18,
-                Species = new[] {0,041,050,041,041},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 086, idx = 1, mark = "Grass1", //Brooklet Hill
-                Correction = 07, NPC = 1,
+                Location = 086, idx = 1, mark = "Grass", //Brooklet Hill
+                Correction = 08, NPC = 1, Raining = true,
                 LevelMin = 14,
-                Species = new[] {6,506,054,751,060,278,046},
+                Species = new[] {39,751,060,054,278,046,046,046},
             },
             new EncounterArea_USUM
             {
-                Location = 086, idx = 2, mark = "Water1",//Brooklet Hill
-                Correction = 08, NPC = 1,
-                LevelMin = 14,
-                Species = new[] {22,060,751,060,751,054},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 086, idx = 3, mark = "Grass2",//Brooklet Hill
-                Correction = 05, NPC = 1,
-                LevelMin = 14,
-                Species = new[] {25,751,060,054,278},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 086, idx = 4, mark = "Water2",//Brooklet Hill
-                Correction = 06, NPC = 1,
+                Location = 086, idx = 2, mark = "Water",//Brooklet Hill
+                Correction = 07, NPC = 1, Raining = true,
                 LevelMin = 14,
                 Species = new[] {22,060,751,060,751,054},
             },
             new EncounterArea_USUM
             {
                 Location = 088, // Brooklet Hill(Totem's Den)
-                Correction = 03, NPC = 1,
+                Correction = 03, NPC = 1, Raining = true,
                 LevelMin = 14,
                 Species = new[] {15,072,278,456},
             },
             new EncounterArea_USUM
             {
+                Location = 090, idx = 1, mark = "S",//Lush Jungle - S
+                Correction = 10,
+                LevelMin = 19,
+                Species = new[] {44,753,732,438,011,762,046,764,766,127,732},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 090, idx = 2, mark = "W",//Lush Jungle - W
+                Correction = 04, NPC = 3,
+                LevelMin = 19,
+                Species = new[] {44,753,732,761,761,761,761,046,766,764,764},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 090, idx = 3, mark = "N",//Lush Jungle - N
+                Correction = 09,
+                LevelMin = 19,
+                Species = new[] {44,753,732,438,011,762,046,764,766,127,732},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 090, idx = 4, mark = "Cave", //Lush Jungle - Cave
+                Correction = 02,
+                LevelMin = 41,
+                Species = new[] {37,042,051,042,051,757,757,042,636},
+            },
+            new EncounterArea_USUM
+            {
                 Location = 054, idx = 1, //6
-                Correction = 11, NPC = 2,
+                Correction = 12, NPC = 3,
                 LevelMin = 14,
-                Species = new[] {23,506,749,736,734,731,174,133},
+                Species = new[] {41,506,749,174,736,734,731,174,133},
             },
             new EncounterArea_USUM
             {
                 Location = 054, idx = 2, //6
-                Correction = 11, NPC = 2,
+                Correction = 12, NPC = 1,
                 LevelMin = 14,
-                Species = new[] {23,506,741,736,734,731,174,133},
+                Species = new[] {41,506,741,174,736,734,731,174,133},
             },
             new EncounterArea_USUM
             {
                 Location = 056, //7
-                Correction = 11, NPC = 1,
+                Correction = 13, NPC = 1,
                 LevelMin = 16,
                 Species = new[] {26,072,456,278,771},
             },
             new EncounterArea_USUM
             {
                 Location = 058, idx = 1, mark = "Grass",//8
-                Correction = 15,
+                Correction = 25,
                 LevelMin = 17,
-                Species = new[] {27,734,732,757,662,759},
+                Species = new[] {45,734,732,757,759,661,757},
             },
             new EncounterArea_USUM
             {
                 Location = 058, idx = 2, mark = "Water",//8
-                Correction = 16, NPC = 3,
+                Correction = 26, NPC = 2,
                 LevelMin = 17,
-                Species = new[] {15,072,278,456},
+                Species = new[] {34,072,278,456,458},
             },
             new EncounterArea_USUM
             {
                 Location = 064,
-                Correction = 24, NPC = 1,
+                Correction = 27, NPC = 1,
                 LevelMin = 21,
-                Species = new[] {26,072,456,278,771},
+                Species = new[] {35,072,456,278,771,072,456,771,771},
             },
             new EncounterArea_USUM
             {
                 Location = 082, //Wela Volcano
-                Correction = 09,
+                Correction = 11,
                 LevelMin = 16,
                 Species = new[] {8,757,661,104,240,115},
             },
@@ -965,22 +951,22 @@ namespace Pk3DSRNGTool
             {
                 Location = 100, //Diglett's Tunnel
                 Correction = 13,
-                LevelMin = 19,
-                Species = new[] {0,041,050,041,041},
+                LevelMin = 20,
+                Species = new[] {21,041,050,041,041,041,246},
             },
             new EncounterArea_USUM
             {
                 Location = 076, //Memorial Hill
                 Correction = 12, NPC = 1,
-                LevelMin = 20,
+                LevelMin = 21,
                 Species = new[] {0,092,708,092,041},
             },
             new EncounterArea_USUM
             {
                 Location = 094,
-                Correction = 07, NPC = 2,
-                LevelMin = 20,
-                Species = new[] {27,735,278,278,299,759},
+                Correction = 10, NPC = 3,
+                LevelMin = 21,
+                Species = new[] {46,735,177,759,278,278,299,759},
             },
             #endregion
             #region Ula'ula
@@ -1113,14 +1099,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 120, idx = 1, //17
-                Correction = 10,
+                Correction = 10, Raining = true,
                 LevelMin = 31,
                 Species = new[] {22,735,022,674,674,166},
             },
             new EncounterArea_USUM
             {
                 Location = 120, idx = 2, //17
-                Correction = 10,
+                Correction = 10, Raining = true,
                 LevelMin = 31,
                 Species = new[] {21,735,022,674,075,075,227},
             },
