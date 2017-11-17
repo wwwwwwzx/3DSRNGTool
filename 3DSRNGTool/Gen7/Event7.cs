@@ -11,9 +11,10 @@ namespace Pk3DSRNGTool
 
         public override void Delay()
         {
+            RNGPool.time_elapse7(2);
             if (NoDex || YourID && !IsEgg)
                 Generate();
-            RNGPool.NormalDelay7();
+            RNGPool.time_elapse7(RNGPool.DelayTime - 2);
         }
 
         public override RNGResult Generate()

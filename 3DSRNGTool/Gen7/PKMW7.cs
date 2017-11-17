@@ -97,8 +97,8 @@
                 {
                     new PKMW7 { Species = 000, Level = 60, Conceptual = true, Rate = new byte[] { 30 } },
 
-                    new PKMW7 { Species = 805, Level = 60, Location = new []{164}, Rate = new byte[]{80}, Version = GameVersion.US,},    // Stakataka
-                    new PKMW7 { Species = 806, Level = 60, Location = new []{164}, Rate = new byte[]{80}, Version = GameVersion.UM,},    // Blacephalon
+                    new PKMW7 { Species = 805, Level = 60, Location = new []{164}, Rate = new byte[]{80}, Version = GameVersion.UM,},    // Stakataka
+                    new PKMW7 { Species = 806, Level = 60, Location = new []{164}, Rate = new byte[]{80}, Version = GameVersion.US,},    // Blacephalon
                 }
             },
             new PokemonList
