@@ -172,6 +172,8 @@ namespace Pk3DSRNGTool.Core
         public static int PreHoneyCorrection;
         public static int HoneyDelay; // SuMo 93 / USUM 63
 
+        public static bool ultrawild;
+
         public static void ResetModelStatus()
         {
             remain_frame = new int[modelnumber];
@@ -294,8 +296,9 @@ namespace Pk3DSRNGTool.Core
         {
             NormalDelay7();
             ResetModelStatus();
+            if (ultrawild) Advance(1);    // Caused by using the item?
             if (raining) Advance(2);
-            time_elapse7(1);              //Blink process also occurs when loading map
+            time_elapse7(1);              // Blink process also occurs when loading map
             Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
             time_elapse7(HoneyDelay);
         }

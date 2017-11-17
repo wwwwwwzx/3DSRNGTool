@@ -923,6 +923,7 @@ namespace Pk3DSRNGTool
                 RNGPool.raining = ModelStatus.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
                 RNGPool.HoneyDelay = IsUltra ? 63 : 93;
+                RNGPool.ultrawild = IsUltra && Method == 2;
 
                 if (Method == 2)
                 {

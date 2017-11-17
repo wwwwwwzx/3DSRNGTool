@@ -139,7 +139,7 @@ namespace Pk3DSRNGTool
         }
         #endregion
 
-        #region Formcount correction
+        #region Enums
         public readonly static int[] BattleForms =
         {
             351, // Castform
@@ -184,6 +184,8 @@ namespace Pk3DSRNGTool
             298, 360,
             406, 433, 438, 439, 440, 446, 447, 458
         };
+
+        public readonly static int[] AlolanForms = { 019, 020, 027, 037, 050, 051, 052, 074, 075, 088, 103, };
         #endregion
     }
 }

@@ -1,5 +1,5 @@
-﻿using System;
-using Pk3DSRNGTool.Core;
+﻿using Pk3DSRNGTool.Core;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pk3DSRNGTool
@@ -10,7 +10,7 @@ namespace Pk3DSRNGTool
         public byte NPC, Correction = 1;
 
         public byte LevelMin;
-        private byte _LevelMax;
+        protected byte _LevelMax;
         public byte LevelMax { get { return _LevelMax > 0 ? _LevelMax : (byte)(LevelMin + 3); } set { _LevelMax = value; } }
         public short lvldiff; // Sun moon encounter area levels difference (Moon - Sun)
         public byte LevelMinMoon => (byte)(LevelMin + lvldiff);
@@ -18,39 +18,28 @@ namespace Pk3DSRNGTool
 
         public bool Reverse; // true if moon/night have more species
 
-        private readonly static int[] DayList = { 734, 735, 165, 166, 046, 751, 752, 425, 745, 174, /* Reversed from here */  173, };
-        private readonly static int[] NightList = { 019, 020, 167, 168, 755, 283, 284, 200, 2793, 731,/* Reversed from here */ 022, };
-        private readonly static int[] SunList = { 546, 766, 776, 037, /* Reversed from here */ 780, };
-        private readonly static int[] MoonList = { 548, 765, 324, 027, /* Reversed from here */ 359, };
-        private readonly static int[] AlolanForms = { 019, 020, 027, 037, 050, 051, 052, 074, 075, 088, 103,};
-
-        public override bool VersionDifference => Species.Any(i => SunList.Contains(i));
-        public override bool DayNightDifference => Species.Any(i => DayList.Contains(i));
         public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 6 || ver == 8, IsNight);
 
-        private int[] getSpecies(bool IsMoon, bool IsNight)
+        protected virtual Dictionary<int, int> Day2Night => null;
+        protected virtual Dictionary<int, int> Sun2Moon => null;
+
+        public override bool VersionDifference => Species.Skip(1).Any(i => Sun2Moon.ContainsKey(i));
+        public override bool DayNightDifference => Species.Skip(1).Any(i => Day2Night.ContainsKey(i));
+
+        protected virtual int[] getSpecies(bool IsMoon, bool IsNight)
         {
             IsNight ^= Reverse;
             IsMoon ^= Reverse;
             int[] table = (int[])Species.Clone();
-            if (IsNight && DayNightDifference) // Replace Day/Night species
-                for (int i = 1; i < table.Length; i++)
-                {
-                    int idx = Array.IndexOf(DayList, table[i]);
-                    if (idx > -1)
-                        table[i] = NightList[idx];
-                }
-            if (IsMoon && VersionDifference)  // Replace Sun/Moon species
-                for (int i = 1; i < table.Length; i++)
-                {
-                    int idx = Array.IndexOf(SunList, table[i]);
-                    if (idx > -1)
-                        table[i] = MoonList[idx];
-                }
-            if (table.Any(i => AlolanForms.Contains(i))) // Replace with alolan form
-                for (int i = 1; i < table.Length; i++)
-                    if (AlolanForms.Contains(table[i]))
-                        table[i] += 2048;
+            for (int i = 1; i < table.Length; i++)
+            {
+                if (IsNight)
+                    table[i] = Day2Night.TryGetValue(table[i], out int specform) ? specform : table[i];
+                if (IsMoon)
+                    table[i] = Sun2Moon.TryGetValue(table[i], out int specform) ? specform : table[i];
+                if (Pokemon.AlolanForms.Contains(table[i]))
+                    table[i] += 2048;
+            }
             return table;
         }
 
@@ -88,7 +77,74 @@ namespace Pk3DSRNGTool
             new byte[]{1,2,3,2,3,3,4,3,3,3}, //29
             new byte[]{1,2,3,3,4,4,1,4,5,5}, //30
             new byte[]{1,2,3,4,5,6,7,5,5,5}, //31
+            // USUM
             new byte[]{1,2,3,4,4,2,5,6,6,6}, //32
+            new byte[]{1,2,3,4,4,5,6,5,7,7}, //33
+            new byte[]{1,1,2,2,3,3,4,4,4,4}, //34
+            new byte[]{1,2,3,4,5,6,7,8,8,8}, //35
+            new byte[]{1,2,1,2,3,3,3,1,2,2}, //36
+            new byte[]{1,2,3,4,3,3,5,6,6,7}, //37
+            new byte[]{1,2,3,3,4,5,6,7,1,1}, //38
+            new byte[]{1,2,3,3,4,4,5,6,6,7}, //39
+            new byte[]{1,2,3,2,4,4,4,5,4,4}, //40
+        };
+    }
+
+    public class EncounterArea_SM : EncounterArea7
+    {
+        protected override Dictionary<int, int> Day2Night => day2night;
+        protected override Dictionary<int, int> Sun2Moon => sun2moon;
+        private readonly static Dictionary<int, int> day2night = new Dictionary<int, int>
+        {
+            {734, 019}, {735, 020},
+            {165, 167}, {166, 168},
+            {046, 755},
+            {751, 283}, {752, 284},
+            {425, 200},
+            {745,2793},
+            {174, 731},
+            // Reverse from here
+            {173, 022},
+        };
+
+        private readonly static Dictionary<int, int> sun2moon = new Dictionary<int, int>
+        {
+            {546, 548},
+            {766, 765},
+            {776, 324},
+            {037, 027},
+            // Reverse from here
+            {780, 359},
+        };
+    }
+
+    public class EncounterArea_USUM : EncounterArea7
+    {
+        protected override Dictionary<int, int> Day2Night => day2night;
+        protected override Dictionary<int, int> Sun2Moon => sun2moon;
+        private readonly static Dictionary<int, int> day2night = new Dictionary<int, int>
+        {
+            {734, 019}, {735, 020},
+            {165, 167}, {166, 168},
+            {046, 755},
+            {751, 283}, {752, 284},
+            {425, 198},
+            {745,2793},
+            {174, 731},
+            {296, 096}, {096, 296},
+            {447, 427},
+            // Reverse from here
+            {173, 022},
+        };
+
+        private readonly static Dictionary<int, int> sun2moon = new Dictionary<int, int>
+        {
+            {546, 548},
+            {766, 765},
+            {776, 324},
+            {037, 027},
+            // Reverse from here
+            {780, 359},
         };
     }
 }
