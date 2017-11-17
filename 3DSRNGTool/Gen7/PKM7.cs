@@ -259,12 +259,12 @@
                 List = new[]
                 {
                     new PKM7 { Species = 701, Level = 08, Ability = 2, OTTSV = 0025, IVs = new[] {-1,31,-1,-1,-1,-1}, Gender = 1, Nature = 02, }, // Hawlucha
-                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 15, }, // Noibat
+                    new PKM7 { Species = 714, Level = 19, Ability = 1, OTTSV = 1292, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 1, Nature = 15, }, // Noibat
                     new PKM7 { Species = 339, Level = 21, Ability = 2, OTTSV = 0068, IVs = new[] {31,-1,-1,-1,-1,-1}, Gender = 2, Nature = 04, }, // Barboach
                     new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 08, }, // Arbok
-                    new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 20, }, // Phantump EvolveOnTrade
+                    new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 20, }, // Phantump EvolveOnTrade
                     new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 17, }, // Shellos
-                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,31,-1,-1}, Gender = 1, Nature = 13, }, // Tauros
+                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 13, }, // Tauros
                 }
             },
             new PokemonList
