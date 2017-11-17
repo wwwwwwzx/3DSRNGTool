@@ -94,6 +94,7 @@ namespace Pk3DSRNGTool
             new byte[]{1,2,3,4,5,6,7,8,9,10}, //44 oops
             new byte[]{1,2,1,2,3,4,5,5,6,6}, //45
             new byte[]{1,2,3,4,5,5,6,6,7,7}, //46
+            new byte[]{1,2,3,3,4,5,5,6,7,7}, //47
         };
     }
 
@@ -143,10 +144,12 @@ namespace Pk3DSRNGTool
             {766, 765}, // Passimian -> Oranguru
             {776, 324}, // Turtonator -> Torkoal
             {037, 027}, // Vulpix -> Sandshrew
+            {229, 310}, // Hondooom -> Manectric
             // Reverse from here
             {780, 359}, // Drampa -> Absol
         };
         
+        public override bool DayNightDifference => Species.Skip(1).Any(i => Day2Night.ContainsKey(i) || i == 173);
         protected override int[] getSpecies(bool IsMoon, bool IsNight)
         {
             var table = base.getSpecies(IsMoon, IsNight);
@@ -155,8 +158,10 @@ namespace Pk3DSRNGTool
             for (int i = 1; i < table.Length; i++)
                 if (IsNight)
                 {
-                    if (table[i] == 173) // Cleff -> Minior/Elgyem
-                        table[i] = i == 7 ? 774 : 605;
+                    if (table[i] == 173) // Cleff -> Minior/Elgyem/Fearow
+                        table[i] = i == 6 ? 774 
+                                 : i == 4 ? 605
+                                 : 022;
                     if (table[i] == 174) // Igglybuff -> Pikipek/Lillpup
                         table[i] = i == 7 ? 731 : 506;
                 }

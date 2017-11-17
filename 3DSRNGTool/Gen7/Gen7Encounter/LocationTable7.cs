@@ -974,160 +974,172 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 132, //Malie City
-                Correction = 09, NPC = 4,
-                LevelMin = 24,
-                Species = new[] {13,568,088,735,081},
+                Correction = 10, NPC = 3,
+                LevelMin = 25,
+                Species = new[] {13,568,088,572,081},
             },
             new EncounterArea_USUM
             {
                 Location = 134, //Malie Garden
-                Correction = 26,
+                Correction = 32,
                 LevelMin = 24,
-                Species = new[] {12,060,052,546,054,752,166},
+                Species = new[] {12,061,052,546,054,752,166},
             },
             new EncounterArea_USUM
             {
                 Location = 106, //10
                 Correction = 19, NPC = 2,
-                LevelMin = 24,
+                LevelMin = 26,
                 Species = new[] {22,735,022,674,227,166},
             },
             new EncounterArea_USUM
             {
-                Location = 136, // Ditto
-                Correction = 16,
-                LevelMin = 25,
-                Species = new[] {21,022,774,374,227,173,132},
+                Location = 136, idx = 1, // Hokulani
+                Correction = 27,
+                LevelMin = 27,
+                Species = new[] {37,605,774,774,173,374,173,132,132},
+                Reverse = true, // Cleffa at night
+            },
+            new EncounterArea_USUM
+            {
+                Location = 136, idx = 2, // Hokulani
+                Correction = 27,
+                LevelMin = 27,
+                Species = new[] {35,605,173,022,774,374,227,239,132},
                 Reverse = true, // Cleffa at night
             },
             new EncounterArea_USUM
             {
                 Location = 108, //11
-                Correction = 10,
-                LevelMin = 24,
-                Species = new[] {12,735,732,046,775,674,166},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 122, idx = 1,//12
-                Correction = 11,
+                Correction = 12,
                 LevelMin = 26,
-                Species = new[] {21,074,749,324,324,074,239},
+                Species = new[] {12,735,732,047,775,674,166},
             },
             new EncounterArea_USUM
             {
-                Location = 122, idx = 2,//12
-                Correction = 11, NPC = 1,
-                LevelMin = 25,
-                Species = new[] {21,074,749,324,324,074,239},
+                Location = 122, //12
+                Correction = 13,
+                LevelMin = 29,
+                Species = new[] {21,074,749,324,324,229,229},
             },
             new EncounterArea_USUM
             {
-                Location = 110,
-                Correction = 12, NPC = 1,
-                LevelMin = 27,
-                Species = new[] {15,072,279,456},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 138, idx = 1,
-                Correction = 3, NPC = 1,
-                LevelMin = 27, lvldiff = -1,
-                Species = new[] {7,074,749,737,324,776,777,239},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 138, idx = 2,
-                Correction = 3, NPC = 1,
-                LevelMin = 27, lvldiff = -1,
-                Species = new[] {7,074,749,737,324,776,777,239},
+                Location = 138,
+                Correction = 6, NPC = 1,
+                LevelMin = 29,
+                Species = new[] {35,075,749,702,737,324,776,777,239},
             },
             new EncounterArea_USUM
             {
                 Location = 124, //Haina Desert
-                LevelMin = 28,
-                Species = new[] {0,551,051,551,551},
+                LevelMin = 32,
+                Species = new[] {0,552,051,552,552},
             },
             new EncounterArea_USUM
             {
                 Location = 114, //Tapu Village
-                Correction = 11,
-                LevelMin = 28,
+                Correction = 17,
+                LevelMin = 30,
                 Species = new[] {22,735,279,359,037,361},
             },
             new EncounterArea_USUM
             {
                 Location = 126, //14
-                Correction = 12, NPC = 1,
-                LevelMin = 28,
-                Species = new[] {15,072,279,456},
+                Correction = 22, NPC = 1,
+                LevelMin = 30,
+                Species = new[] {35,073,592,279,279,073,456,456,456},
             },
             new EncounterArea_USUM
             {
                 Location = 150, //Megamart
-                LevelMin = 29,
-                Species = new[] {28,093,042,707,778},
+                Correction = 02, NPC = 1,
+                LevelMin = 31,
+                Species = new[] {46,093,042,093,353,353,707,778},
             },
             new EncounterArea_USUM
             {
                 Location = 116, idx = 1, mark = "Grass", //15
-                Correction = 20, NPC = 1,
+                Correction = 26, NPC = 1,
                 LevelMin = 30,
                 Species = new[] {22,735,279,279,279,079},
             },
             new EncounterArea_USUM
             {
                 Location = 116, idx = 2, mark = "Water", //15
-                Correction = 21, NPC = 1,
-                LevelMin = 30,
-                Species = new[] {15,072,279,456},
+                Correction = 27, NPC = 1,
+                LevelMin = 32,
+                Species = new[] {15,073,279,456},
             },
             new EncounterArea_USUM
             {
                 Location = 118, //16
-                Correction = 10,
-                LevelMin = 30,
-                Species = new[] {22,735,279,279,279,079},
+                Correction = 12,
+                LevelMin = 32,
+                Species = new[] {32,735,559,279,279,079,079},
             },
             new EncounterArea_USUM
             {
                 Location = 128, //Meadow
-                Correction = 08,
-                LevelMin = 31,
-                Species = new[] {22,734,546,741,741,166},
+                Correction = 10, NPC = 1,
+                LevelMin = 33,
+                Species = new[] {39,743,546,670,741,166,166,166},
             },
             new EncounterArea_USUM
             {
                 Location = 120, idx = 1, //17
-                Correction = 10, Raining = true,
-                LevelMin = 31,
-                Species = new[] {22,735,022,674,674,166},
+                Correction = 09, Raining = true,
+                LevelMin = 33,
+                Species = new[] {10,735,022,559,166,166,166},
             },
             new EncounterArea_USUM
             {
                 Location = 120, idx = 2, //17
                 Correction = 10, Raining = true,
-                LevelMin = 31,
-                Species = new[] {21,735,022,674,075,075,227},
+                LevelMin = 33,
+                Species = new[] {47,735,022,559,227,075,227,625},
             },
             new EncounterArea_USUM
             {
-                Location = 146, idx = 1,
-                LevelMin = 42,
-                Species = new[] {22,037,361,359,359,215},
+                Location = 146, idx = 1, mark = "Base",
+                Correction = 07, NPC = 5,
+                LevelMin = 30,
+                Species = new[] {35,037,361,735,735,359,037,361,359},
             },
             new EncounterArea_USUM
             {
-                Location = 146, idx = 2,
-                LevelMin = 42,
-                Species = new[] {22,042,361,359,780,215},
+                Location = 146, idx = 2, mark = "Mt Side",
+                Correction = 02,
+                LevelMin = 47,
+                Species = new[] {22,037,362,359,359,215},
                 Reverse = true,
             },
             new EncounterArea_USUM
             {
-                Location = 146, idx = 3,
-                LevelMin = 45, lvldiff = -3,
-                Species = new[] {22,037,361,359,359,215},
+                Location = 146, idx = 3, mark = "West Room",
+                Correction = 08,
+                LevelMin = 47,
+                Species = new[] {22,042,362,359,359,215},
+                Reverse = true,
+            },
+            new EncounterArea_USUM
+            {
+                Location = 146, idx = 4, mark = "Outside",
+                Correction = 05, NPC = 3,
+                LevelMin = 47,
+                Species = new[] {22,037,362,359,780,215},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 146, idx = 5, mark = "Cave",
+                Correction = 07, NPC = 2,
+                LevelMin = 48,
+                Species = new[] {22,042,362,359,780,215},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 146, idx = 6, mark = "Mid-Point",
+                LevelMin = 48,
+                Species = new[] {22,037,362,359,780,215},
             },
             #endregion
             #region Poni
