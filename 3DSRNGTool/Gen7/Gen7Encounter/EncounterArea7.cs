@@ -95,6 +95,8 @@ namespace Pk3DSRNGTool
             new byte[]{1,2,1,2,3,4,5,5,6,6}, //45
             new byte[]{1,2,3,4,5,5,6,6,7,7}, //46
             new byte[]{1,2,3,3,4,5,5,6,7,7}, //47
+            new byte[]{1,2,3,4,5,6,7,7,8,8}, //48
+            new byte[]{1,2,1,2,1,3,4,3,4,4}, //49
         };
     }
 
@@ -135,7 +137,10 @@ namespace Pk3DSRNGTool
             {425, 198},             // Drifloon -> Murkrow
             {745,2793},             // Lycanroc(day -> night)
             {296, 096}, {096, 296}, // Drowzee <-> Makuhita
+            {297, 097}, {097, 297},
             {447, 427},             // Riolu -> Buneary
+            // Reverse from here
+            {200, 743},             // Misdreavus -> Ribombee
         };
 
         protected override Dictionary<int, int> Sun2Moon => new Dictionary<int, int>

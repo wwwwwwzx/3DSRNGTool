@@ -264,7 +264,7 @@
                     new PKM7 { Species = 024, Level = 22, Ability = 1, OTTSV = 0682, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 08, Delay = 4, NPC = 9, }, // Arbok
                     new PKM7 { Species = 709, Level = 33, Ability = 1, OTTSV = 1298, IVs = new[] {-1,-1,-1,-1,31,-1}, Gender = 1, Nature = 20, Delay = 4, NPC = 8, }, // Phantump EvolveOnTrade
                     new PKM7 { Species = 422, Level = 44, Ability = 2, OTTSV = 1292, IVs = new[] {-1,-1,31,-1,-1,-1}, Gender = 2, Nature = 17, Delay = 4, NPC = 1, }, // Shellos
-                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 13, Delay = 4, NPC = 3, }, // Tauros
+                    new PKM7 { Species = 128, Level = 59, Ability = 1, OTTSV = 3545, IVs = new[] {-1,-1,-1,-1,-1,31}, Gender = 1, Nature = 13, Delay = 4, NPC = 4, }, // Tauros
                 }
             },
             new PokemonList

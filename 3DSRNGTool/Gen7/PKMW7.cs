@@ -141,7 +141,7 @@
                     new PKMW7 { Species = 479, Level = 61, Location = new[] {170}, }, // Rotom @ Poni Gauntlet
                     new PKMW7 { Species = 542, Level = 57, Location = new[] {156}, }, // Leavanny @ Poni Meadow
                     new PKMW7 { Species = 652, Level = 45, Location = new[] {184}, }, // Chesnaught @ Exeggutor Island
-                    new PKMW7 { Species = 658, Level = 44, Location = new[] {414}, }, // Greninja @ Poni Wilds
+                    new PKMW7 { Species = 658, Level = 44, Location = new[] {158}, }, // Greninja @ Poni Wilds
                     new PKMW7 { Species = 655, Level = 44, Location = new[] {160}, }, // Delphox @ Ancient Poni Path
                 }
             },

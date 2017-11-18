@@ -1147,77 +1147,70 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 184, // Exeggutor Island
-                Correction = 03,
-                LevelMin = 40,
-                Species = new[] {29,103,279,102,423},
+                Correction = 09, NPC = 5,
+                LevelMin = 42,
+                Species = new[] {35,103,279,102,357,357,127,423,102},
             },
             new EncounterArea_USUM
             {
-                Location = 158, idx = 1, mark = "Grass", // Poni Wilds
-                Correction = 09,
-                LevelMin = 40,
-                Species = new[] {5,735,279,210,423,102,102},
-            },
-            new EncounterArea_USUM
-            {
-                Location = 158, idx = 2, mark = "Water", // Poni Wilds
-                Correction = 10, NPC = 1,
-                LevelMin = 40,
-                Species = new[] {30,073,423,279,457,131},
+                Location = 158, // Poni Wilds
+                Correction = 13,
+                LevelMin = 41,
+                Species = new[] {37,676,279,686,279,210,423,686,686},
             },
             new EncounterArea_USUM
             {
                 Location = 160,
-                Correction = 20, NPC = 3,
-                LevelMin = 40,
-                Species = new[] {5,735,279,210,423,102,102},
+                Correction = 19, NPC = 5,
+                LevelMin = 41,
+                Species = new[] {37,676,279,686,279,210,423,686,686},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 1, mark = "Inside",
                 Correction = 6, NPC = 1,
-                LevelMin = 41,
+                LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 2, mark = "Top",
-                LevelMin = 41,
-                Species = new[] {1,067,745,227,525,198,703,782},
+                LevelMin = 42,
+                Species = new[] {48,067,745,619,227,525,619,703,782},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 3, mark = "2F",
-                Correction = 4,
-                LevelMin = 41,
+                Correction = 4, NPC = 1,
+                LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 4, mark = "3F",
                 Correction = 8,
-                LevelMin = 41,
+                LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 5, mark = "Under Tree",
-                Correction = 15,
-                LevelMin = 41,
-                Species = new[] {1,067,745,227,525,198,703,782},
+                Correction = 20, NPC = 1,
+                LevelMin = 42,
+                Species = new[] {48,067,745,619,227,525,619,703,782},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 6, mark = "B1F-C",
                 Correction = 8,
-                LevelMin = 41,
+                LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 7, mark = "B1F-W",
                 Correction = 9, NPC = 1,
-                LevelMin = 41,
+                LevelMin = 42,
                 Species = new[] {14,042,055,042,042,042},
             },
             new EncounterArea_USUM
@@ -1246,7 +1239,7 @@ namespace Pk3DSRNGTool
                 Location = 166, idx = 3, // Poni Plains
                 Correction = 5, NPC = 1,
                 LevelMin = 54,
-                Species = new[] {7,735,097,732,546,128,241,546},
+                Species = new[] {7,735,297,732,546,128,241,097},
             },
             new EncounterArea_USUM
             {
@@ -1258,29 +1251,31 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 156, // Meadow
-                Correction = 5,
+                Correction = 6,
                 LevelMin = 54,
-                Species = new[] {0,743,546,741,546},
+                Species = new[] {39,743,546,670,741,200,166,166},
+                Reverse = true,
             },
             new EncounterArea_USUM
             {
                 Location = 182, idx = 1, mark = "1F", //Resolution Cave
-                Correction = 3,
-                LevelMin = 54,
-                Species = new[] {0,042,051,042,042},
+                Correction = 4,
+                LevelMin = 56,
+                Species = new[] {49,042,051,715,621},
             },
             new EncounterArea_USUM
             {
                 Location = 182, idx = 2, mark = "B1F", //Resolution Cave
-                LevelMin = 54,
-                Species = new[] {0,042,051,042,042},
+                Correction = 2,
+                LevelMin = 56,
+                Species = new[] {39,715,051,042,715,621,621,621},
             },
             new EncounterArea_USUM
             {
                 Location = 170, // Poni Gauntlet
                 Correction = 11, NPC = 4,
-                LevelMin = 56,
-                Species = new[] {27,735,279,210,055,760},
+                LevelMin = 58,
+                Species = new[] {44,108,279,686,760,210,210,055,279,686,686},
             },
             #endregion
         };
