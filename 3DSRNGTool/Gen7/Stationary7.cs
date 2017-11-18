@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool
         private bool IsPelago;
         public byte PelagoShift;
         public bool Trade;
+        private bool PostNatureLock;
 
         private bool blink_process()
         {
@@ -37,6 +38,7 @@ namespace Pk3DSRNGTool
             else
             {
                 rt.Synchronize = blink_process();
+                rt.Synchronize |= PostNatureLock;
                 Advance(60);
             }
 
@@ -116,6 +118,11 @@ namespace Pk3DSRNGTool
         {
             base.UseTemplate(PM);
             var pm7 = PM as PKM7;
+            if (pm7.Species == 132 && pm7.Nature < 25) // Ditto five
+            {
+                PostNatureLock = true;
+                AlwaysSync = false;
+            }
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             Ability = Ability == 0 && blinkwhensync ? (byte)1 : Ability;
             if (pm7.Ability == 0xFF) // Outlier
