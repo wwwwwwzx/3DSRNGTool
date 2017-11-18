@@ -278,7 +278,45 @@
                    new PKM7 { Species = 798, Level = 60, NPC = 1, DelayType = 26, Delay = 1618, Version = GameVersion.US,},    // Kartana
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 27, Delay = 0968, },    // Guzzlord
                 }
-            }
+            },
+            new PokemonList
+            {
+                Text = "Poke Pelago",
+                List = new[]
+                {
+                    new PKM7 { Gift = true, IsPelago = true, Species = 731, Syncable = false, Delay = 8, }, // Pikipek
+                    new PKM7 { Gift = true, IsPelago = true, Species = 278, Syncable = false, Delay = 8, }, // Wingull
+                    new PKM7 { Gift = true, IsPelago = true, Species = 041, Syncable = false, Delay = 8, }, // Zubat
+                    new PKM7 { Gift = true, IsPelago = true, Species = 742, Syncable = false, Delay = 8, }, // Cutiefly
+                    new PKM7 { Gift = true, IsPelago = true, Species = 086, Syncable = false, Delay = 8, }, // Seel
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 079, Syncable = false, Delay = 8, }, // Slowpoke
+                    new PKM7 { Gift = true, IsPelago = true, Species = 120, Syncable = false, Delay = 8, }, // Staryu
+                    new PKM7 { Gift = true, IsPelago = true, Species = 222, Syncable = false, Delay = 8, }, // Corsola
+                    new PKM7 { Gift = true, IsPelago = true, Species = 122, Syncable = false, Delay = 8, }, // Mr. Mime
+                    new PKM7 { Gift = true, IsPelago = true, Species = 180, Syncable = false, Delay = 8, }, // Flaaffy
+                    new PKM7 { Gift = true, IsPelago = true, Species = 124, Syncable = false, Delay = 8, }, // Jynx
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 127, Syncable = false, Delay = 8, }, // Pinsir
+                    new PKM7 { Gift = true, IsPelago = true, Species = 177, Syncable = false, Delay = 8, }, // Natu
+                    new PKM7 { Gift = true, IsPelago = true, Species = 764, Syncable = false, Delay = 8, }, // Comfey
+                    new PKM7 { Gift = true, IsPelago = true, Species = 163, Syncable = false, Delay = 8, }, // Hoothoot
+                    new PKM7 { Gift = true, IsPelago = true, Species = 771, Syncable = false, Delay = 8, }, // Pyukumuku
+                    new PKM7 { Gift = true, IsPelago = true, Species = 701, Syncable = false, Delay = 8, }, // Hawlucha
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 131, Syncable = false, Delay = 8, }, // Lapras
+                    new PKM7 { Gift = true, IsPelago = true, Species = 354, Syncable = false, Delay = 8, }, // Banette
+                    new PKM7 { Gift = true, IsPelago = true, Species = 200, Syncable = false, Delay = 8, }, // Misdreavus
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 209, Syncable = false, Delay = 8, }, // Snubbull
+                    new PKM7 { Gift = true, IsPelago = true, Species = 667, Syncable = false, Delay = 8, }, // Litleo
+                    new PKM7 { Gift = true, IsPelago = true, Species = 357, Syncable = false, Delay = 8, }, // Tropius
+                    new PKM7 { Gift = true, IsPelago = true, Species = 430, Syncable = false, Delay = 8, }, // Honchkrow
+
+                    new PKM7 { Gift = true, IsPelago = true, Species = 228, Syncable = false, Delay = 8, Version = GameVersion.US, }, // Ruffle
+                    new PKM7 { Gift = true, IsPelago = true, Species = 309, Syncable = false, Delay = 8, Version = GameVersion.UM, }, // Vullaby
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_SM =
