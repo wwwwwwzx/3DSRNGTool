@@ -255,6 +255,8 @@ namespace Pk3DSRNGTool.Core
                 if ((int)(getrand64 & 0x7F) == 0)
                     remain_frame[i] = -5;
             }
+            if (idx >= modelnumber)
+                Advance(1);
         }
 
         public static void NormalDelay7() => time_elapse7(DelayTime);
@@ -271,10 +273,12 @@ namespace Pk3DSRNGTool.Core
             {
                 case 1: // SuMo Sol/Luna
                 case 2:
-                    int crydelay = DelayType == 1 ? 79 : 76;
-                    time_elapse7(DelayTime - crydelay - 19); // 48(-2)
+                    int crydelay = DelayType == 1 ? 78 : 75;
+                    time_elapse7(DelayTime - crydelay - 20); // 48
                     if (modelnumber == 7) SolLunaRearrange(new[]{ 0, 1, 2, 5, 6 });
-                    SplittedDelay(19 + crydelay, crydelay);
+                    time_elapse7(19);
+                    Cry(3);
+                    time_elapse7(crydelay);
                     break;
                 case 3: // SuMo Exeggutor
                     time_elapse7(3);
