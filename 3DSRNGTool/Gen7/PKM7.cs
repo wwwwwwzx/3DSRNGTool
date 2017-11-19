@@ -141,8 +141,8 @@
                     new PKM7 { Species = 717, Level = 60, NPC = 1, Delay = 158, DelayType = 4, Version = GameVersion.UM, }, // Yveltal
                     new PKM7 { Species = 718, Level = 60, NPC = 1, ShinyLocked = true, }, // Zygarde
                     new PKM7 { Species = 718, Level = 63, NPC = 7, Delay = 020, ShinyLocked = true, Gift = true, Forme = 2,},    // Zygarde-10%
-                    new PKM7 { Species = 718, Level = 50, NPC = 5, Delay = 020, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
-                    new PKM7 { Species = 718, Level = 50, NPC = 5, Delay = 020, ShinyLocked = true, Gift = true, Forme = 3,},    // Zygarde-50%
+                    new PKM7 { Species = 718, Level = 50, NPC = 7, Delay = 022, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
+                    new PKM7 { Species = 718, Level = 50, NPC = 7, Delay = 022, ShinyLocked = true, Gift = true, Forme = 3,},    // Zygarde-50%
                 }
             },
             new PokemonList
@@ -227,7 +227,7 @@
                 Text = "In-Game Gift",
                 List = new[]
                 {
-                    new PKM7 { Species = 025, Level = 40, NPC = 20, Delay = 20, Gift = true, Totem = true, ShinyLocked = false, },    // Surf Pikachu (Totem flag for iv3)
+                    new PKM7 { Species = 025, Level = 40, NPC = 02, Delay = 20, Gift = true, Totem = true, ShinyLocked = false, },    // Surf Pikachu (Totem flag for iv3)
                     new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
                     new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
