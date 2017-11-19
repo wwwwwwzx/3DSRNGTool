@@ -675,7 +675,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 006, // Outskirts
-                Correction = 18, NPC = 1,
+                Correction = 18,
                 LevelMin = 04,
                 Species = new[] {0,686,278,278,079},
             },

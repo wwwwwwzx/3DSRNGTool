@@ -127,13 +127,13 @@
                     new PKMW7 { Species = 259, Level = 17, Location = new[] {342}, }, // Marshtomp @ Brooklet Hill
 			
                     // Ula'ula Island
-                    new PKMW7 { Species = 111, Level = 32, Location = new[] {394,650}, }, // Rhyhorn @ Blush Mountain
+                    new PKMW7 { Species = 111, Level = 32, Location = new[] {138}, }, // Rhyhorn @ Blush Mountain
                     new PKMW7 { Species = 220, Level = 33, Location = new[] {114}, }, // Swinub @ Tapu Village
                     new PKMW7 { Species = 394, Level = 35, Location = new[] {118}, }, // Prinplup @ Route 16
                     new PKMW7 { Species = 388, Level = 36, Location = new[] {128}, }, // Grotle @ Ula'ula Meadow
                     new PKMW7 { Species = 018, Level = 29, Location = new[] {106}, }, // Pidgeot @ Route 10
                     new PKMW7 { Species = 391, Level = 29, Location = new[] {108}, }, // Monferno @ Route 11
-                    new PKMW7 { Species = 610, Level = 30, Location = new[] {136}, }, // Axew @ Mount Hokulani
+                    new PKMW7 { Species = 610, Level = 30, Location = new[] {392,648}, }, // Axew @ Mount Hokulani
 			
                     // Poni Island
                     new PKMW7 { Species = 604, Level = 55, Location = new[] {164}, }, // Eelektross @ Poni Grove
