@@ -36,7 +36,7 @@
                    new PKM7 { Species = 786, Level = 60, ShinyLocked = true },              // Tapu Lele
                    new PKM7 { Species = 787, Level = 60, ShinyLocked = true },              // Tapu Bulu
                    new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
-                   new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 20, Gift = true, },    // Cosmog
+                   new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 20, Gift = true, Ability = 2, },    // Cosmog
                    
                    new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, Delay = 166, DelayType = 09, Version = GameVersion.US, Unstable = true, },   // Solgaleo
                    new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, Delay = 160, DelayType = 10, Version = GameVersion.UM, Unstable = true, },   // Lunala
@@ -51,7 +51,7 @@
                    new PKM7 { Species = 799, Level = 60, NPC = 1, DelayType = 17, Delay = 124, },    // Guzzlord
                    
                    new PKM7 { Species = 772, Level = 60, NPC = 3, Delay = 20, Gift = true,},    // Type:Null
-                   new PKM7 { Species = 801, Level = 50, NPC = 6, Delay = 20, Gift = true, ShinyLocked = true, },    // Magearna
+                   new PKM7 { Species = 801, Level = 50, NPC = 6, Delay = 20, Gift = true, ShinyLocked = true, Ability = 2, },    // Magearna
                    new PKM7 { Species = 803, Level = 40, NPC = 5, Delay = 20, Gift = true,},    // Poipole
                 }
             },
@@ -333,9 +333,9 @@
                    new PKM7 { Species = 788, Level = 60, ShinyLocked = true, NPC = 1, },    // Tapu Fini
                    new PKM7 { Species = 791, Level = 55, ShinyLocked = true, NPC = 6, Delay = 288, Version = GameVersion.SN, Unstable = true, DelayType = 1, },   // Solgaleo
                    new PKM7 { Species = 792, Level = 55, ShinyLocked = true, NPC = 6, Delay = 282, Version = GameVersion.MN, Unstable = true, DelayType = 2, },   // Lunala
-                   new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 34, Gift = true},    // Cosmog
+                   new PKM7 { Species = 789, Level = 05, ShinyLocked = true, NPC = 3, Delay = 34, Gift = true, Ability = 2, },    // Cosmog
                    new PKM7 { Species = 772, Level = 40, NPC = 8, Delay = 34, Gift = true,},    // Type:Null
-                   new PKM7 { Species = 801, Level = 50, ShinyLocked = true, NPC = 6, Delay = 34, Gift = true,},    // Magearna
+                   new PKM7 { Species = 801, Level = 50, ShinyLocked = true, NPC = 6, Delay = 34, Gift = true, Ability = 2, },    // Magearna
                    new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Forme = 1,},    // Zygarde-10%
                    new PKM7 { Species = 718, Level = 50, ShinyLocked = true, NPC = 3, Delay = 32, Gift = true, Forme = 3,},    // Zygarde-50%
                 }
