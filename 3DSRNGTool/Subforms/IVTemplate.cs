@@ -73,7 +73,7 @@ namespace Pk3DSRNGTool
         {
             string output = "";
             for (int i = 0; i < IVSpread.Items.Count; i++)
-                output += IVSpread.Items[i].ToString() + (i == 0 ? "" : ";");
+                output += IVSpread.Items[i].ToString() + ";";
             Properties.Settings.Default.Ivspread = output;
             Properties.Settings.Default.Save();
         }
