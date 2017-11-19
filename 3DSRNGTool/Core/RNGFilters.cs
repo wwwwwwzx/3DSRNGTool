@@ -19,6 +19,7 @@ namespace Pk3DSRNGTool.Core
         public bool SpecialOnly;
 
         public byte Ball;
+        public byte NatureInheritance;
 
         private bool CheckIVs(RNGResult result)
         {
@@ -67,8 +68,10 @@ namespace Pk3DSRNGTool.Core
                 if (BS != null) result.Stats = Pokemon.getStats(result.IVs, result.Nature, result.Level, BS);
                 return true;
             }
-            if (result is EggResult egg && Ball != 0 && Ball != egg.Ball)
-                return false;
+            if (result is EggResult egg)
+                 if (Ball != 0 && Ball != egg.Ball || 
+                    NatureInheritance != 0 && (egg.BE_InheritParents == true ? 1 : 2) != NatureInheritance)
+                    return false;
             if (ShinyOnly && !result.Shiny)
                 return false;
             if (BS == null ? !CheckIVs(result) : !CheckStats(result))

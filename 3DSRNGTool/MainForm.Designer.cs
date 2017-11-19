@@ -189,6 +189,7 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.Raining = new System.Windows.Forms.CheckBox();
             this.SuctionCups = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
             this.ChainLength = new System.Windows.Forms.NumericUpDown();
@@ -371,7 +372,7 @@
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
-            this.Raining = new System.Windows.Forms.CheckBox();
+            this.ParentNature = new System.Windows.Forms.ComboBox();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
@@ -2039,6 +2040,7 @@
             this.F_Items.Name = "F_Items";
             this.F_Items.Size = new System.Drawing.Size(93, 21);
             this.F_Items.TabIndex = 18;
+            this.F_Items.SelectedIndexChanged += new System.EventHandler(this.DoubleEverstone);
             // 
             // M_Items
             // 
@@ -2058,6 +2060,7 @@
             this.M_Items.Name = "M_Items";
             this.M_Items.Size = new System.Drawing.Size(93, 21);
             this.M_Items.TabIndex = 10;
+            this.M_Items.SelectedIndexChanged += new System.EventHandler(this.DoubleEverstone);
             // 
             // TP_WildRNG
             // 
@@ -2101,6 +2104,16 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // Raining
+            // 
+            this.Raining.AutoSize = true;
+            this.Raining.Location = new System.Drawing.Point(330, 158);
+            this.Raining.Name = "Raining";
+            this.Raining.Size = new System.Drawing.Size(50, 17);
+            this.Raining.TabIndex = 108;
+            this.Raining.Text = "下雨";
+            this.Raining.UseVisualStyleBackColor = true;
             // 
             // SuctionCups
             // 
@@ -3523,6 +3536,7 @@
             // 
             // Filters
             // 
+            this.Filters.Controls.Add(this.ParentNature);
             this.Filters.Controls.Add(this.B_LoadFilter);
             this.Filters.Controls.Add(this.B_SaveFilter);
             this.Filters.Controls.Add(this.B_IVInput);
@@ -4401,15 +4415,14 @@
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.RNGMethod.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
-            // Raining
+            // ParentNature
             // 
-            this.Raining.AutoSize = true;
-            this.Raining.Location = new System.Drawing.Point(330, 158);
-            this.Raining.Name = "Raining";
-            this.Raining.Size = new System.Drawing.Size(50, 17);
-            this.Raining.TabIndex = 108;
-            this.Raining.Text = "下雨";
-            this.Raining.UseVisualStyleBackColor = true;
+            this.ParentNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ParentNature.Location = new System.Drawing.Point(288, 163);
+            this.ParentNature.Name = "ParentNature";
+            this.ParentNature.Size = new System.Drawing.Size(91, 21);
+            this.ParentNature.TabIndex = 100;
+            this.ParentNature.Visible = false;
             // 
             // Seed
             // 
@@ -5114,6 +5127,7 @@
         private System.Windows.Forms.CheckBox SuctionCups;
         private System.Windows.Forms.CheckBox AssumeSynced;
         private System.Windows.Forms.CheckBox Raining;
+        private System.Windows.Forms.ComboBox ParentNature;
     }
 }
 

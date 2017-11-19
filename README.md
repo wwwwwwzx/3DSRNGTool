@@ -103,13 +103,15 @@ Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on 
 - __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.
 
 ## ID Bot Usage
-- Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) or InputRedirecionNTR.cia
-- Put your starting frame and target frame in `ID bot` box.
+- Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) you will see the Console's IP upper-right.
+- Open this RNG Tool, click `Tool`-`NTR Helper`
+- Put your starting frame and target frame in `ID bot` box. Put IP in the text box there.
 - Set proper `Bot speed` according to your internet condition.
+- If you use Rosalina menu, DO NOT press `connect`, press `A` button in the ID bot to check the connection.
 - Use `MashA` or press A manually to get to the starting screen as following, which will also be the screen when the bot stops:  
 ORAS upper screen:  
 ![](https://i.imgur.com/kD9BbAi.png)  
-SuMo lower screen:  
+SuMo/USUM lower screen:  
 ![](https://i.imgur.com/iPgO8nN.png)
 - Click `Start` button to start botting
 - The bot will stop at CORRECT position for your target TID. (It's normal for ORAS that the bot stops 1 frame before target.)

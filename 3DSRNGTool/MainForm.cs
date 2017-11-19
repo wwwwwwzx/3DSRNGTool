@@ -79,6 +79,7 @@ namespace Pk3DSRNGTool
 
             Gender.Items.AddRange(genderstr);
             Ball.Items.AddRange(genderstr);
+            ParentNature.Items.AddRange(genderstr);
             Event_Gender.Items.AddRange(genderstr);
             Event_Nature.Items.AddRange(naturestr);
             for (int i = 0; i <= naturestr.Length; i++)
@@ -246,7 +247,7 @@ namespace Pk3DSRNGTool
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
 
             for (int i = 0; i < 3; i++)
-                Ball.Items[i] = PARENTS_STR[lindex, i];
+                ParentNature.Items[i] = Ball.Items[i] = PARENTS_STR[lindex, i];
 
             for (int i = 0; i < Gameversion.Items.Count; i++)
                 Gameversion.Items[i] = GAMEVERSION_STR[lindex, i];
@@ -605,6 +606,7 @@ namespace Pk3DSRNGTool
 
             MM_CheckedChanged(null, null);
             CreateTimeline_CheckedChanged(null, null);
+            DoubleEverstone(null, null);
 
             switch (Method)
             {
@@ -995,6 +997,7 @@ namespace Pk3DSRNGTool
             SpecialOnly = SpecialOnly.Checked,
 
             Ball = (byte)Ball.SelectedIndex,
+            NatureInheritance = (byte)ParentNature.SelectedIndex,
         };
 
         private IDFilters getIDFilter()

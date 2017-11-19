@@ -40,6 +40,15 @@ namespace Pk3DSRNGTool
                 Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked || (int)Egg_GenderRatio.SelectedValue == 254);
         }
 
+        private void DoubleEverstone(object sender, EventArgs e)
+        {
+            ParentNature.Visible = Method == 3 && (M_Items.SelectedIndex == 1 || F_Items.SelectedIndex == 1);
+            if (ParentNature.Visible)
+                Nature.ClearSelection();
+            else
+                ParentNature.SelectedIndex = 0;
+        }
+
         private void NidoType_CheckedChanged(object sender, EventArgs e)
         {
             Homogeneity.Enabled = !(NidoType.Checked || M_ditto.Checked || F_ditto.Checked);
