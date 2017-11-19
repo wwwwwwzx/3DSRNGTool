@@ -1474,7 +1474,10 @@ namespace Pk3DSRNGTool
             switch (name)
             {
                 case "Version":
-                    Gameversion.SelectedIndex = (byte)data;
+                    var newver = (byte)data;
+                    if (Ver == newver || Ver == 8 && newver == 7 || Ver == 6 && newver == 5)
+                        return;
+                    Gameversion.SelectedIndex = newver;
                     return;
                 case "TSV":
                     TSV.Value = (int)data;

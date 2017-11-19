@@ -313,8 +313,8 @@
                     new PKM7 { Gift = true, IsPelago = true, Species = 357, Syncable = false, Delay = 8, }, // Tropius
                     new PKM7 { Gift = true, IsPelago = true, Species = 430, Syncable = false, Delay = 8, }, // Honchkrow
 
-                    new PKM7 { Gift = true, IsPelago = true, Species = 228, Syncable = false, Delay = 8, Version = GameVersion.US, }, // Ruffle
-                    new PKM7 { Gift = true, IsPelago = true, Species = 309, Syncable = false, Delay = 8, Version = GameVersion.UM, }, // Vullaby
+                    new PKM7 { Gift = true, IsPelago = true, Species = 228, Syncable = false, Delay = 8, Version = GameVersion.US, }, // Houndour
+                    new PKM7 { Gift = true, IsPelago = true, Species = 309, Syncable = false, Delay = 8, Version = GameVersion.UM, }, // Electrike
                 }
             },
         };
