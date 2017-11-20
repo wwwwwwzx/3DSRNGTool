@@ -290,6 +290,17 @@ namespace Pk3DSRNGTool.Core
                     modelnumber = 1;
                     time_elapse7(2);
                     break;
+                    
+                case 09: // US Sol
+                    time_elapse7(DelayTime - 77);  // 8
+                    Cry(8);
+                    time_elapse7(76);
+                    break;
+                case 10: // UM Luna
+                    time_elapse7(DelayTime - 74);  // 8
+                    if (modelnumber == 9) SolLunaRearrange(new[] { 0, 1, 2, 6, 7, 8 });
+                    SplittedDelay(74, 73);
+                    break;
 
                 // Rebattle
                 case 11: // Nihilego
