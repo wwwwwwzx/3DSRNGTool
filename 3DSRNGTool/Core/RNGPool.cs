@@ -316,6 +316,47 @@ namespace Pk3DSRNGTool.Core
                     SplittedDelay(DelayTime, 40); // 24|40
                     break;
 
+                // First Encounter
+                case 21: // Nihilego 
+                    goto case 11; // 317|36
+                case 22: // Buzzwole
+                    time_elapse7(DelayTime - 378); // 463
+                    ChangeModelNumber(1);
+                    time_elapse7(214);
+                    ChangeModelNumber(2);
+                    SplittedDelay(164, 51); // 113|51
+                    break;
+                case 23: // Pheromosa
+                    goto case 13; // 29(2)|14|34(3)
+                case 25: // Celesteela
+                    time_elapse7(DelayTime - 322); // 248(2)|77(1)|195|50(2)
+                    ChangeModelNumber(1);
+                    time_elapse7(77);
+                    ChangeModelNumber(2);
+                    SplittedDelay(245, 50);
+                    break;
+                case 26: // Kartana
+                    time_elapse7(DelayTime - 734); // 77(2)|34(1)|91(2)|61(3)|369(2)|71(4)|65|43(2)
+                    ChangeModelNumber(1);
+                    time_elapse7(34);
+                    ChangeModelNumber(2);
+                    time_elapse7(91);
+                    ChangeModelNumber(3);
+                    time_elapse7(61);
+                    ChangeModelNumber(2);
+                    time_elapse7(369);
+                    ChangeModelNumber(4);
+                    time_elapse7(71);
+                    ChangeModelNumber(2);
+                    SplittedDelay(108, 43);
+                    break;
+                case 27: // Guzzlord
+                    time_elapse7(DelayTime - 290); // 196(2)|101(1)|149|40(2)
+                    ChangeModelNumber(1);
+                    time_elapse7(101);
+                    ChangeModelNumber(2);
+                    SplittedDelay(189, 40);
+                    break;
                 default:
                     NormalDelay7();
                     break;
