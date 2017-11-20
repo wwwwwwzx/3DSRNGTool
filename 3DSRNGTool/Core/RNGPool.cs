@@ -290,6 +290,32 @@ namespace Pk3DSRNGTool.Core
                     modelnumber = 1;
                     time_elapse7(2);
                     break;
+
+                // Rebattle
+                case 11: // Nihilego
+                    SplittedDelay(DelayTime, 36); // 33|36
+                    break;
+                case 12: // US Buzzwole
+                    SplittedDelay(DelayTime, 51); // 40|51
+                    break;
+                case 13: // UM Pheromosa
+                    time_elapse7(DelayTime - 48); // 29(2)|14|34(3)
+                    ChangeModelNumber(3);
+                    SplittedDelay(48, 34);
+                    break;
+                case 14: // Xurkitree
+                    SplittedDelay(DelayTime, 35); // 34|35
+                    break;
+                case 15: // UM Celesteela
+                    SplittedDelay(DelayTime, 50); // 45|50
+                    break;
+                case 16: // US Kartana
+                    SplittedDelay(DelayTime, 43); // 24|43
+                    break;
+                case 17: // Guzzlord
+                    SplittedDelay(DelayTime, 40); // 24|40
+                    break;
+
                 default:
                     NormalDelay7();
                     break;
