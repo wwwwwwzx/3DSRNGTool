@@ -84,7 +84,9 @@ namespace Pk3DSRNGTool
         #region Search
         private void SearchSeed()
         {
-            L_Gameversion.Text = IsUltra ? "USUM" : "SuMo";
+            if (Program.mainform.Ver < 5)
+                Program.mainform.Ver = 5;
+            L_Gameversion.Text = Program.mainform.VersionStr;
             if (Clock_List.Text.Count(c => c == ',') < 7)
             {
                 SeedResults.Text = "";

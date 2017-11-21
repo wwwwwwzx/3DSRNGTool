@@ -859,21 +859,21 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 086, idx = 1, mark = "Grass", //Brooklet Hill
-                Correction = 08, NPC = 1, Raining = true,
+                Correction = 08, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {39,751,060,054,278,046,046,046},
             },
             new EncounterArea_USUM
             {
                 Location = 086, idx = 2, mark = "Water",//Brooklet Hill
-                Correction = 07, NPC = 1, Raining = true,
+                Correction = 07, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {22,060,751,060,751,054},
             },
             new EncounterArea_USUM
             {
                 Location = 088, // Brooklet Hill(Totem's Den)
-                Correction = 03, NPC = 1, Raining = true,
+                Correction = 03, NPC = 1,
                 LevelMin = 14,
                 Species = new[] {15,072,278,456},
             },

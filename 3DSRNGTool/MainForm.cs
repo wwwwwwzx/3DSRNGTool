@@ -15,6 +15,7 @@ namespace Pk3DSRNGTool
     {
         #region global variables
         public int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
+        public string VersionStr => L_GameVersion.Text + ": " + Gameversion.SelectedItem.ToString();
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
         private byte Method => (byte)RNGMethod.SelectedIndex;
@@ -666,7 +667,8 @@ namespace Pk3DSRNGTool
                 var tmp = ea as EncounterArea7;
                 NPC.Value = tmp.NPC;
                 Correction.Value = tmp.Correction;
-                Raining.Checked = Raining.Enabled = tmp.Raining;
+                Raining.Enabled = true;
+                Raining.Checked = tmp.Raining;
                 Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
                 Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
             }

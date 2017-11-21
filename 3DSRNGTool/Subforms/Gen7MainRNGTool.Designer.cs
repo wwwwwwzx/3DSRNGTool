@@ -30,6 +30,7 @@
         {
             this.RB_SaveScreen = new System.Windows.Forms.RadioButton();
             this.InputBox = new System.Windows.Forms.GroupBox();
+            this.L_Gameversion = new System.Windows.Forms.Label();
             this.Startup = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
             this.EndClockInput = new System.Windows.Forms.RadioButton();
@@ -72,7 +73,6 @@
             this.B_Calc = new System.Windows.Forms.Button();
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.L_NPC = new System.Windows.Forms.Label();
-            this.L_Gameversion = new System.Windows.Forms.Label();
             this.InputBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
             this.SearchSeedBox.SuspendLayout();
@@ -129,6 +129,14 @@
             this.InputBox.TabIndex = 39;
             this.InputBox.TabStop = false;
             this.InputBox.Text = "输入工具";
+            // 
+            // L_Gameversion
+            // 
+            this.L_Gameversion.AutoSize = true;
+            this.L_Gameversion.Location = new System.Drawing.Point(332, 2);
+            this.L_Gameversion.Name = "L_Gameversion";
+            this.L_Gameversion.Size = new System.Drawing.Size(0, 13);
+            this.L_Gameversion.TabIndex = 106;
             // 
             // Startup
             // 
@@ -638,14 +646,6 @@
             this.L_NPC.Size = new System.Drawing.Size(29, 13);
             this.L_NPC.TabIndex = 105;
             this.L_NPC.Text = "NPC";
-            // 
-            // L_Gameversion
-            // 
-            this.L_Gameversion.AutoSize = true;
-            this.L_Gameversion.Location = new System.Drawing.Point(724, 99);
-            this.L_Gameversion.Name = "L_Gameversion";
-            this.L_Gameversion.Size = new System.Drawing.Size(0, 13);
-            this.L_Gameversion.TabIndex = 106;
             // 
             // Gen7MainRNGTool
             // 
