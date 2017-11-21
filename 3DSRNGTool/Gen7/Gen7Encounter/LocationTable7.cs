@@ -751,7 +751,14 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea_USUM
             {
-                Location = 020,
+                Location = 021, idx = 1,
+                Correction = 30,
+                LevelMin = 05,
+                Species = new[] {44,278,278,063,439,676,081,052,088,676,676},
+            },
+            new EncounterArea_USUM
+            {
+                Location = 021, idx = 2,
                 Correction = 30,
                 LevelMin = 05,
                 Species = new[] {38,676,063,439,088,081,052,278},

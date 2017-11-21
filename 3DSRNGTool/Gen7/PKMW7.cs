@@ -109,11 +109,11 @@
                     new PKMW7 { Species = 000, Level = 12, Conceptual = true },
                     
                     // Melemele Island
-                    new PKMW7 { Species = 004, Level = 12, Location = new[] {266, 522}, }, // Charmander @ Route 3
+                    new PKMW7 { Species = 004, Level = 12, Location = new[] {266,522}, }, // Charmander @ Route 3
                     new PKMW7 { Species = 007, Level = 12, Location = new[] {298}, }, // Squirtle @ Seaward Cave
                     new PKMW7 { Species = 095, Level = 14, Location = new[] {290}, }, // Onix @ Ten Carat Hill
                     new PKMW7 { Species = 116, Level = 18, Location = new[] {526}, }, // Horsea @ Kala'e Bay
-                    new PKMW7 { Species = 664, Level = 09, Location = new[] {020}, }, // Scatterbug @ Hau'oli City
+                    new PKMW7 { Species = 664, Level = 09, Location = new[] {277,533}, }, // Scatterbug @ Hau'oli City
                     new PKMW7 { Species = 001, Level = 10, Location = new[] {268,524}, }, // Bulbasaur @ Route 2
                     new PKMW7 { Species = 607, Level = 09, Location = new[] {038}, }, // Litwick @ Hau'oli Cemetery
 			
