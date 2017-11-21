@@ -172,6 +172,9 @@
   <data name="lang_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\lang_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="lang_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\lang_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="lang_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\lang_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -190,6 +193,9 @@
   <data name="text_Genderratio_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Genderratio_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="text_Genderratio_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Genderratio_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="text_Genderratio_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Genderratio_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -201,6 +207,9 @@
   </data>
   <data name="text_Items_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Items_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Items_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Items_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
   <data name="text_Items_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Items_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
@@ -214,6 +223,9 @@
   <data name="text_Location_sm_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_sm_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="text_Location_sm_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Location_sm_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="text_Location_sm_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_sm_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -225,6 +237,9 @@
   </data>
   <data name="text_Location_xy_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_xy_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Location_xy_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Location_xy_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Location_xy_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_xy_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -238,6 +253,9 @@
   <data name="text_Natures_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Natures_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="text_Natures_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Natures_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="text_Natures_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Natures_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
@@ -250,6 +268,9 @@
   <data name="text_Species_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Species_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="text_Species_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Species_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="text_Species_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Species_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -261,6 +282,9 @@
   </data>
   <data name="text_Types_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Types_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Types_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Types_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Types_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Types_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>

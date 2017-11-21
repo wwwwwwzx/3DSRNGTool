@@ -490,8 +490,9 @@
             this.Lang.FormattingEnabled = true;
             this.Lang.Items.AddRange(new object[] {
             "English",
-            "French",
-            "Spanish",
+            "Français",
+            "Deutsch",
+            "Español",
             "简体中文"});
             this.Lang.Location = new System.Drawing.Point(500, 13);
             this.Lang.Name = "Lang";

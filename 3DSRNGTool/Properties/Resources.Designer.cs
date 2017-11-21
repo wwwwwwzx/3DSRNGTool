@@ -268,6 +268,30 @@ namespace Pk3DSRNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
+        ///! MainForm = 3DS RNG Tool
+        ///- Chang [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string lang_de {
+            get {
+                return ResourceManager.GetString("lang_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ! Interface Customization File
+        ///! lang_en.txt = English
+        ///! lang_jp.txt = Japanese
+        ///! lang_fr.txt = French
+        ///! lang_de.txt = German
+        ///! lang_es.txt = Spanish
+        ///! lang_it.txt = Italian
+        ///! lang_ko.txt = Korean
+        ///! lang_cn.txt = Simplified Chinese
+        ///! lang_zh.txt = Traditional Chinese
+        ///! lang_pt.txt = Portuguese
+        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
+        ///! -----------------------------------------------------
+        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
         ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
@@ -359,6 +383,22 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neutral
+        ///♂1：♀1
+        ///♂7：♀1
+        ///♂3：♀1
+        ///♂1：♀3
+        ///♂1：♀7
+        ///♂ Nur
+        ///♀ Nur.
+        /// </summary>
+        internal static string text_Genderratio_de {
+            get {
+                return ResourceManager.GetString("text_Genderratio_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Genderless
         ///♂1：♀1
         ///♂7：♀1
@@ -420,6 +460,23 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Items_cn {
             get {
                 return ResourceManager.GetString("text_Items_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kein Item
+        ///Ewigstein
+        ///Fatumknoten
+        ///Machtgewicht
+        ///Machtreif
+        ///Machtgurt
+        ///Machtlinse
+        ///Machtband
+        ///Machtkette.
+        /// </summary>
+        internal static string text_Items_de {
+            get {
+                return ResourceManager.GetString("text_Items_de", resourceCulture);
             }
         }
         
@@ -584,6 +641,63 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Location_sm_cn {
             get {
                 return ResourceManager.GetString("text_Location_sm_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///
+        ///Mysteriöser Ort
+        ///
+        ///Ferner Ort
+        ///
+        ///Route 1
+        ///Hauholi-Stadtrand
+        ///Route 1
+        ///
+        ///Route 3
+        ///
+        ///Route 2
+        ///
+        ///Kala’e-Bucht
+        ///
+        ///Meer von Mele-Mele
+        ///
+        ///Hauholi City
+        ///Strandpromenade
+        ///Hauholi City
+        ///Einkaufsviertel
+        ///Hauholi City
+        ///Hafen
+        ///Lili’i
+        ///
+        ///Mahalo-Bergpfad
+        ///
+        ///Mahalo-Bergpfad
+        ///Hängebrücke
+        ///Ruinen des Krieges
+        ///
+        ///Ruinen des Krieges
+        ///[~ 33]
+        ///Tenkarat-Hügel
+        ///
+        ///Tenkarat-Hügel
+        ///Zentraler Felskessel
+        ///Hauholi-Friedhof
+        ///
+        ///Mele-Mele-Blumenmeer
+        ///
+        ///Meereshöhle
+        ///
+        ///Beerenfelder
+        ///
+        ///Vegetationshöhle
+        ///Prüfungsbereich
+        ///Vegetati [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_sm_de {
+            get {
+                return ResourceManager.GetString("text_Location_sm_de", resourceCulture);
             }
         }
         
@@ -873,6 +987,67 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///
+        ///Mysteriöser Ort
+        ///
+        ///Entfernter Ort
+        ///
+        ///Escissia
+        ///
+        ///Route 1
+        ///Escissia-Pfad
+        ///Aquarellia
+        ///
+        ///Route 2
+        ///Progrès-Weg
+        ///Nouvaria-Wald
+        ///
+        ///Route 3
+        ///Ouvert-Weg
+        ///Nouvaria City
+        ///
+        ///Route 4
+        ///Parterre-Weg
+        ///Illumina City
+        ///
+        ///Prismaturm
+        ///
+        ///Labor von Flordelis
+        ///
+        ///Route 5
+        ///Coteau-Weg
+        ///Vanitéa
+        ///
+        ///Château Tristesse
+        ///
+        ///Route 6
+        ///Palais-Allee
+        ///Magnum-Opus-Palast
+        ///
+        ///Route 7
+        ///Rivière-Promenade
+        ///Relievera City
+        ///
+        ///Route 8
+        ///Muraille-Küstenpfad
+        ///Petrophia
+        ///
+        ///Route 9
+        ///Rihorn-Pass
+        ///Kampfschloss
+        ///
+        ///Route 10
+        ///Menhir-Weg
+        ///Cromlexia        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_xy_de {
+            get {
+                return ResourceManager.GetString("text_Location_xy_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ——————
         ///
         ///Mystery Zone
@@ -1077,6 +1252,39 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Natures_cn {
             get {
                 return ResourceManager.GetString("text_Natures_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robust
+        ///Solo
+        ///Mutig
+        ///Hart
+        ///Frech
+        ///Kühn
+        ///Sanft
+        ///Locker
+        ///Pfiffig
+        ///Lasch
+        ///Scheu
+        ///Hastig
+        ///Ernst
+        ///Froh
+        ///Naiv
+        ///Mäßig
+        ///Mild
+        ///Ruhig
+        ///Zaghaft
+        ///Hitzig
+        ///Still
+        ///Zart
+        ///Forsch
+        ///Sacht
+        ///Kauzig.
+        /// </summary>
+        internal static string text_Natures_de {
+            get {
+                return ResourceManager.GetString("text_Natures_de", resourceCulture);
             }
         }
         
@@ -1293,6 +1501,74 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ei
+        ///Bisasam
+        ///Bisaknosp
+        ///Bisaflor
+        ///Glumanda
+        ///Glutexo
+        ///Glurak
+        ///Schiggy
+        ///Schillok
+        ///Turtok
+        ///Raupy
+        ///Safcon
+        ///Smettbo
+        ///Hornliu
+        ///Kokuna
+        ///Bibor
+        ///Taubsi
+        ///Tauboga
+        ///Tauboss
+        ///Rattfratz
+        ///Rattikarl
+        ///Habitak
+        ///Ibitak
+        ///Rettan
+        ///Arbok
+        ///Pikachu
+        ///Raichu
+        ///Sandan
+        ///Sandamer
+        ///Nidoran♀
+        ///Nidorina
+        ///Nidoqueen
+        ///Nidoran♂
+        ///Nidorino
+        ///Nidoking
+        ///Piepi
+        ///Pixi
+        ///Vulpix
+        ///Vulnona
+        ///Pummeluff
+        ///Knuddeluff
+        ///Zubat
+        ///Golbat
+        ///Myrapla
+        ///Duflor
+        ///Giflor
+        ///Paras
+        ///Parasek
+        ///Bluzuk
+        ///Omot
+        ///Digda
+        ///Digdri
+        ///Mauzi
+        ///Snobilikat
+        ///Enton
+        ///Entoron
+        ///Menki
+        ///Rasaff
+        ///Fukano
+        ///Arka [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Species_de {
+            get {
+                return ResourceManager.GetString("text_Species_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Egg
         ///Bulbasaur
         ///Ivysaur
@@ -1499,6 +1775,32 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Types_cn {
             get {
                 return ResourceManager.GetString("text_Types_cn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal
+        ///Kampf
+        ///Flug
+        ///Gift
+        ///Boden
+        ///Gestein
+        ///Käfer
+        ///Geist
+        ///Stahl
+        ///Feuer
+        ///Wasser
+        ///Pflanze
+        ///Elektro
+        ///Psycho
+        ///Eis
+        ///Drache
+        ///Unlicht
+        ///Fee.
+        /// </summary>
+        internal static string text_Types_de {
+            get {
+                return ResourceManager.GetString("text_Types_de", resourceCulture);
             }
         }
         
