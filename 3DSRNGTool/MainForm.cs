@@ -829,6 +829,7 @@ namespace Pk3DSRNGTool
                 BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
+                Raining.Enabled |= pm7.Conceptual;
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
@@ -1354,7 +1355,7 @@ namespace Pk3DSRNGTool
             if (ivsflag != null)
             {
                 if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 1])
-                    row.DefaultCellStyle.BackColor = Color.LightYellow;
+                    row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
 
                 for (int k = 0; k < 6; k++)
                 {

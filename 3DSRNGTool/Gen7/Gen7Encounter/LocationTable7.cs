@@ -1027,7 +1027,7 @@ namespace Pk3DSRNGTool
                 Location = 122, //12
                 Correction = 13,
                 LevelMin = 29,
-                Species = new[] {21,074,749,324,324,229,229},
+                Species = new[] {21,075,749,324,324,229,229},
             },
             new EncounterArea_USUM
             {
