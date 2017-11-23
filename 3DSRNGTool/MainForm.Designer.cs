@@ -3346,7 +3346,7 @@
             // Girl
             // 
             this.Girl.AutoSize = true;
-            this.Girl.Location = new System.Drawing.Point(167, 214);
+            this.Girl.Location = new System.Drawing.Point(172, 214);
             this.Girl.Name = "Girl";
             this.Girl.Size = new System.Drawing.Size(49, 17);
             this.Girl.TabIndex = 109;
@@ -3358,7 +3358,7 @@
             // 
             this.Boy.AutoSize = true;
             this.Boy.Checked = true;
-            this.Boy.Location = new System.Drawing.Point(167, 189);
+            this.Boy.Location = new System.Drawing.Point(172, 189);
             this.Boy.Name = "Boy";
             this.Boy.Size = new System.Drawing.Size(49, 17);
             this.Boy.TabIndex = 108;
@@ -3383,7 +3383,7 @@
             // 
             this.JumpFrame.AccessibleName = "";
             this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JumpFrame.Location = new System.Drawing.Point(76, 199);
+            this.JumpFrame.Location = new System.Drawing.Point(85, 199);
             this.JumpFrame.Maximum = new decimal(new int[] {
             100000000,
             0,

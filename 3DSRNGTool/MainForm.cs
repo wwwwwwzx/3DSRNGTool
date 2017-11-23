@@ -855,13 +855,13 @@ namespace Pk3DSRNGTool
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
+                ShinyMark.Visible = pm7.UltraWormhole;
                 Fidget.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
                     Sta_Ability.SelectedIndex = 0;
                 }
-                ShinyMark.Visible = pm7.UltraWormhole;
                 return;
             }
             if (FormPM is PKMW6 pmw6)
@@ -870,8 +870,9 @@ namespace Pk3DSRNGTool
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
                 ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible = pmw6.IsFishing;
             }
-            else
+            else // Fall through
             {
+                Fidget.Visible = Raining.Visible =
                 ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
