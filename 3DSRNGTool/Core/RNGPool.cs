@@ -286,6 +286,7 @@ namespace Pk3DSRNGTool.Core
                     SplittedDelay(DelayTime - 3, DelayTime - 45);
                     break;
                 case 4:
+                    Advance(2); // Step
                     time_elapse7(DelayTime - 2);
                     modelnumber = 1;
                     time_elapse7(2);
