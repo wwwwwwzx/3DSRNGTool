@@ -30,6 +30,7 @@
         {
             this.RB_SaveScreen = new System.Windows.Forms.RadioButton();
             this.InputBox = new System.Windows.Forms.GroupBox();
+            this.Offset = new System.Windows.Forms.NumericUpDown();
             this.L_Gameversion = new System.Windows.Forms.Label();
             this.Startup = new System.Windows.Forms.CheckBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.L_NPC = new System.Windows.Forms.Label();
             this.InputBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Offset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
             this.SearchSeedBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -98,6 +100,7 @@
             // 
             // InputBox
             // 
+            this.InputBox.Controls.Add(this.Offset);
             this.InputBox.Controls.Add(this.L_Gameversion);
             this.InputBox.Controls.Add(this.Startup);
             this.InputBox.Controls.Add(this.button16);
@@ -129,6 +132,25 @@
             this.InputBox.TabIndex = 39;
             this.InputBox.TabStop = false;
             this.InputBox.Text = "输入工具";
+            // 
+            // Offset
+            // 
+            this.Offset.AccessibleName = "";
+            this.Offset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Offset.Location = new System.Drawing.Point(110, 107);
+            this.Offset.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.Offset.Name = "Offset";
+            this.Offset.Size = new System.Drawing.Size(33, 22);
+            this.Offset.TabIndex = 107;
+            this.Offset.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // L_Gameversion
             // 
@@ -245,7 +267,7 @@
             // 
             // Back
             // 
-            this.Back.Location = new System.Drawing.Point(144, 96);
+            this.Back.Location = new System.Drawing.Point(166, 96);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(72, 27);
             this.Back.TabIndex = 7;
@@ -663,6 +685,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Gen7MainRNGTool_FormClosing);
             this.InputBox.ResumeLayout(false);
             this.InputBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Offset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).EndInit();
             this.SearchSeedBox.ResumeLayout(false);
             this.SearchSeedBox.PerformLayout();
@@ -723,5 +746,6 @@
         private System.Windows.Forms.Label L_TargetFrame;
         public System.Windows.Forms.CheckBox Startup;
         private System.Windows.Forms.Label L_Gameversion;
+        private System.Windows.Forms.NumericUpDown Offset;
     }
 }

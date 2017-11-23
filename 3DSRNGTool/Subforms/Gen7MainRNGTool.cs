@@ -47,7 +47,7 @@ namespace Pk3DSRNGTool
         {
             string str = ((Button)sender).Name;
             string n = str.Remove(0, 6);
-            int offset = IsUltra ? 14 : 13;
+            int offset = 17 - (int)Offset.Value;
             if (Clock_List.Text != "") Clock_List.Text += ",";
             Clock_List.Text += !EndClockInput.Checked || RB_QR.Checked ? n : ((Convert.ToInt32(n) + offset) % 17).ToString();
 
@@ -55,7 +55,7 @@ namespace Pk3DSRNGTool
         }
         private void RB_CheckedChanged(object sender, EventArgs e)
         {
-            StartClockInput.Enabled = EndClockInput.Enabled = RB_SaveScreen.Checked;
+            Offset.Enabled = StartClockInput.Enabled = EndClockInput.Enabled = RB_SaveScreen.Checked;
             (StartClockInput.Enabled ? EndClockInput : StartClockInput).Checked = true;
         }
         private void Search_Click(object sender, EventArgs e)
