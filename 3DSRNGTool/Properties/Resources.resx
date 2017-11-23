@@ -295,4 +295,10 @@
   <data name="text_Types_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Types_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Shiny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pic\Shiny.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NonShiny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pic\NonShiny.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

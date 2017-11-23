@@ -131,6 +131,14 @@ namespace Pk3DSRNGTool
             { "Siempre Sincronizado", "Can not be Synced" },
             { "必定同步", "不能同步" },
         };
+        public static readonly string[,] SHINY_STR =
+        {
+            { "Shiny Locked", "Forced Shiny" },
+            { "Shiny Locké", "Forced Shiny" },
+            { "Shiny Sperre", "Forced Shiny" },
+            { "Bloqueo Variocolor", "Forced Shiny" },
+            { "必定不闪", "必定闪" },
+        };
         public static readonly string[,] EGGACCEPT_STR =
         {
             { "Accept", "Reject" },

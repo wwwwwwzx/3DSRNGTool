@@ -387,6 +387,25 @@ namespace Pk3DSRNGTool
             PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
         }
 
+        private bool Isforcedshiny;
+        private void SwitchLock(object sender, EventArgs e)
+        {
+            if (Isforcedshiny)
+                ShinyMark_Clear(null, null);
+            else
+            {
+                ShinyMark.Image = Properties.Resources.Shiny;
+                Isforcedshiny = true;
+                ShinyLocked.Text = SHINY_STR[lindex, 1];
+            }
+        }
+        private void ShinyMark_Clear(object sender, EventArgs e)
+        {
+            ShinyMark.Image = Properties.Resources.NonShiny;
+            Isforcedshiny = false;
+            ShinyLocked.Text = SHINY_STR[lindex, 0];
+        }
+
         private void Reset_Click(object sender, EventArgs e)
         {
             PerfectIVs.Value = Method == 0 && Fix3v.Checked ? 3 : 0;
@@ -842,6 +861,7 @@ namespace Pk3DSRNGTool
                     Sta_AbilityLocked.Checked = true;
                     Sta_Ability.SelectedIndex = 0;
                 }
+                ShinyMark.Visible = pm7.UltraWormhole;
                 return;
             }
             if (FormPM is PKMW6 pmw6)
@@ -855,6 +875,7 @@ namespace Pk3DSRNGTool
                 ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
+                ShinyMark.Visible = IsBank;
             }
         }
 
@@ -1031,6 +1052,8 @@ namespace Pk3DSRNGTool
             setting.Level = (byte)Filter_Lv.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
+            if (ShinyLocked.Checked && ShinyMark.Visible && Isforcedshiny)
+                setting.IsForcedShiny = true;
             if (IsPelago)
                 (setting as Stationary7).PelagoShift = (byte)Correction.Value;
             if (IsBank)

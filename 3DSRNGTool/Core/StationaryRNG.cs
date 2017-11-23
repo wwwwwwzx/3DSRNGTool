@@ -8,6 +8,7 @@
         public bool IV3;
         public int TSV;
         public bool IsShinyLocked;
+        public bool IsForcedShiny;
         public bool ShinyCharm;
 
         public byte Level;

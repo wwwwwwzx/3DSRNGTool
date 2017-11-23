@@ -268,8 +268,7 @@ namespace Pk3DSRNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RNG Tool
-        ///- Chang [rest of string was truncated]&quot;;.
+        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_de {
             get {
@@ -347,6 +346,16 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NonShiny {
+            get {
+                object obj = ResourceManager.GetObject("NonShiny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] personal_ao {
@@ -363,6 +372,16 @@ namespace Pk3DSRNGTool.Properties {
             get {
                 object obj = ResourceManager.GetObject("personal_uu", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Shiny {
+            get {
+                object obj = ResourceManager.GetObject("Shiny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

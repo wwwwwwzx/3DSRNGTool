@@ -58,6 +58,11 @@ namespace Pk3DSRNGTool
                         rt.Shiny = true;
                     break;
                 }
+                else if (IsForcedShiny)
+                {
+                    rt.Shiny = true;
+                    rt.PID = (uint)((((TSV << 4) ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF)); // Not accurate
+                }
             }
 
             //IV

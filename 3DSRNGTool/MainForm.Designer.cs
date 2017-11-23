@@ -285,6 +285,7 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.ShinyMark = new System.Windows.Forms.PictureBox();
             this.Girl = new System.Windows.Forms.RadioButton();
             this.Boy = new System.Windows.Forms.RadioButton();
             this.Fidget = new System.Windows.Forms.CheckBox();
@@ -453,6 +454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
             this.EnctrPanel.SuspendLayout();
@@ -3305,6 +3307,7 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.ShinyMark);
             this.Sta_Setting.Controls.Add(this.Girl);
             this.Sta_Setting.Controls.Add(this.Boy);
             this.Sta_Setting.Controls.Add(this.Fidget);
@@ -3328,6 +3331,17 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // ShinyMark
+            // 
+            this.ShinyMark.Image = Properties.Resources.NonShiny;
+            this.ShinyMark.Location = new System.Drawing.Point(378, 119);
+            this.ShinyMark.Name = "ShinyMark";
+            this.ShinyMark.Size = new System.Drawing.Size(10, 10);
+            this.ShinyMark.TabIndex = 110;
+            this.ShinyMark.TabStop = false;
+            this.ShinyMark.Click += new System.EventHandler(this.SwitchLock);
+            this.ShinyMark.VisibleChanged += new System.EventHandler(this.ShinyMark_Clear);
             // 
             // Girl
             // 
@@ -3360,7 +3374,7 @@
             this.Fidget.Name = "Fidget";
             this.Fidget.Size = new System.Drawing.Size(50, 17);
             this.Fidget.TabIndex = 107;
-            this.Fidget.Text = "跳跃";
+            this.Fidget.Text = "Fidget";
             this.Fidget.UseVisualStyleBackColor = true;
             this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
             this.Fidget.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
@@ -4811,6 +4825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
             this.EnctrPanel.ResumeLayout(false);
@@ -5194,6 +5209,7 @@
         private System.Windows.Forms.CheckBox Fidget;
         private System.Windows.Forms.RadioButton Boy;
         private System.Windows.Forms.RadioButton Girl;
+        private System.Windows.Forms.PictureBox ShinyMark;
     }
 }
 

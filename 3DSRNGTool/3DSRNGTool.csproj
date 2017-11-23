@@ -310,6 +310,8 @@
     <None Include="Resources\pic\Clock_14.jpg" />
     <None Include="Resources\pic\Clock_15.jpg" />
     <None Include="Resources\pic\Clock_16.jpg" />
+    <None Include="Resources\pic\Shiny.png" />
+    <None Include="Resources\pic\NonShiny.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
