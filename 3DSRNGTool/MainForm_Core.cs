@@ -296,10 +296,15 @@ namespace Pk3DSRNGTool
                 sfmt.Next();
             // Prepare
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            status.IsBoy = Boy.Checked;
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
+            int JumpPosition = -1;
+            int FirstJumpFrame = (int)JumpFrame.Value;
+            FirstJumpFrame = FirstJumpFrame >= start_frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
+            byte Jumpflag;
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -309,7 +314,20 @@ namespace Pk3DSRNGTool
 
                 var result = RNGPool.Generate7() as Result7;
 
-                frameadvance = status.NextState();
+                frameadvance = 0;
+                Jumpflag = 0;
+                if (frame >= FirstJumpFrame) // Find the first call
+                {
+                    JumpPosition = i;
+                    FirstJumpFrame = int.MaxValue; // Disable this part
+                }
+                if (JumpPosition == i)
+                {
+                    JumpPosition += status.Jump(); // Get the next call
+                    frameadvance = 2;
+                    Jumpflag = 1;
+                }
+                frameadvance += status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
                     RNGPool.AddNext(sfmt);
@@ -317,7 +335,7 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
 
-                Frames.Add(new Frame(result, frame: Currentframe, time: i * 2));
+                Frames.Add(new Frame(result, frame: Currentframe, time: i * 2, blink: Jumpflag));
 
                 if (Frames.Count > 100000)
                     break;

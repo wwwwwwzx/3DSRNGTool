@@ -52,6 +52,9 @@ L_Targetmon = Index des Ziel Pkm
 BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Fähigkeit Sperre
 Raining = Regen
+Fidget = Fidget
+Boy = Boy
+Girl = Girl
 B_OpenTool = Tiny Timeline Tool
 L_GenderList = Geschlecht (0:Neutral 1:Zufaellig 2:Mew):
 ---

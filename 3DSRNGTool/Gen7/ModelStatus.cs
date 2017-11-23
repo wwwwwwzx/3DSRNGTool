@@ -12,6 +12,8 @@ namespace Pk3DSRNGTool
         public int[] remain_frame;
         public bool phase;
 
+        public bool IsBoy;
+
         public static bool raining;
 
         public ModelStatus(byte n, SFMT st)
@@ -46,6 +48,15 @@ namespace Pk3DSRNGTool
                 cnt += 2;
             }
             return cnt;
+        }
+
+        private int[] Delay_M = new[] { 407, 412 };
+        private int[] Delay_F = new[] { 402, 407 };
+        public int Jump() // For more precise timeline
+        {
+            int delay1 = (int)(getrand % 90); // Random delay
+            int delay2 = IsBoy ? Delay_M[getrand & 1] : Delay_F[getrand & 1]; // Decide movement type non-jump/jump
+            return delay1 + delay2;
         }
 
         public void frameshift(int n)

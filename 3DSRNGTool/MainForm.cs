@@ -628,6 +628,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
+            Fidget.Checked = Fidget.Visible && CreateTimeline.Checked;
 
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
@@ -719,6 +720,11 @@ namespace Pk3DSRNGTool
             {
                 Error(NOSELECTION_STR[lindex]);
             }
+        }
+
+        private void Fidget_CheckedChanged(object sender, EventArgs e)
+        {
+            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
@@ -830,6 +836,7 @@ namespace Pk3DSRNGTool
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
+                Fidget.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;

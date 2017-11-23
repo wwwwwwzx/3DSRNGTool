@@ -285,6 +285,10 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.Girl = new System.Windows.Forms.RadioButton();
+            this.Boy = new System.Windows.Forms.RadioButton();
+            this.Fidget = new System.Windows.Forms.CheckBox();
+            this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.AssumeSynced = new System.Windows.Forms.CheckBox();
             this.L_GenderList = new System.Windows.Forms.Label();
             this.L_Targetmon = new System.Windows.Forms.Label();
@@ -306,6 +310,7 @@
             this.AlwaysSynced = new System.Windows.Forms.CheckBox();
             this.Fix3v = new System.Windows.Forms.CheckBox();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.ParentNature = new System.Windows.Forms.ComboBox();
             this.B_LoadFilter = new System.Windows.Forms.Button();
             this.B_SaveFilter = new System.Windows.Forms.Button();
             this.B_IVInput = new System.Windows.Forms.Button();
@@ -372,7 +377,6 @@
             this.BS_0 = new System.Windows.Forms.NumericUpDown();
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
-            this.ParentNature = new System.Windows.Forms.ComboBox();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
@@ -449,6 +453,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
             this.EnctrPanel.SuspendLayout();
             this.Filters.SuspendLayout();
@@ -3300,6 +3305,10 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.Girl);
+            this.Sta_Setting.Controls.Add(this.Boy);
+            this.Sta_Setting.Controls.Add(this.Fidget);
+            this.Sta_Setting.Controls.Add(this.JumpFrame);
             this.Sta_Setting.Controls.Add(this.AssumeSynced);
             this.Sta_Setting.Controls.Add(this.L_GenderList);
             this.Sta_Setting.Controls.Add(this.GenderList);
@@ -3319,6 +3328,57 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // Girl
+            // 
+            this.Girl.AutoSize = true;
+            this.Girl.Location = new System.Drawing.Point(167, 214);
+            this.Girl.Name = "Girl";
+            this.Girl.Size = new System.Drawing.Size(49, 17);
+            this.Girl.TabIndex = 109;
+            this.Girl.Text = "女孩";
+            this.Girl.UseVisualStyleBackColor = true;
+            this.Girl.Visible = false;
+            // 
+            // Boy
+            // 
+            this.Boy.AutoSize = true;
+            this.Boy.Checked = true;
+            this.Boy.Location = new System.Drawing.Point(167, 189);
+            this.Boy.Name = "Boy";
+            this.Boy.Size = new System.Drawing.Size(49, 17);
+            this.Boy.TabIndex = 108;
+            this.Boy.TabStop = true;
+            this.Boy.Text = "男孩";
+            this.Boy.UseVisualStyleBackColor = true;
+            this.Boy.Visible = false;
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(11, 202);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(50, 17);
+            this.Fidget.TabIndex = 107;
+            this.Fidget.Text = "跳跃";
+            this.Fidget.UseVisualStyleBackColor = true;
+            this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            this.Fidget.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
+            // 
+            // JumpFrame
+            // 
+            this.JumpFrame.AccessibleName = "";
+            this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JumpFrame.Location = new System.Drawing.Point(76, 199);
+            this.JumpFrame.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.JumpFrame.Name = "JumpFrame";
+            this.JumpFrame.Size = new System.Drawing.Size(75, 22);
+            this.JumpFrame.TabIndex = 102;
+            this.JumpFrame.Visible = false;
             // 
             // AssumeSynced
             // 
@@ -3578,6 +3638,15 @@
             this.Filters.TabIndex = 4;
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
+            // 
+            // ParentNature
+            // 
+            this.ParentNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ParentNature.Location = new System.Drawing.Point(288, 163);
+            this.ParentNature.Name = "ParentNature";
+            this.ParentNature.Size = new System.Drawing.Size(91, 21);
+            this.ParentNature.TabIndex = 100;
+            this.ParentNature.Visible = false;
             // 
             // B_LoadFilter
             // 
@@ -4416,15 +4485,6 @@
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.RNGMethod.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
-            // ParentNature
-            // 
-            this.ParentNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ParentNature.Location = new System.Drawing.Point(288, 163);
-            this.ParentNature.Name = "ParentNature";
-            this.ParentNature.Size = new System.Drawing.Size(91, 21);
-            this.ParentNature.TabIndex = 100;
-            this.ParentNature.Visible = false;
-            // 
             // Seed
             // 
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4751,6 +4811,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
             this.EnctrPanel.ResumeLayout(false);
             this.EnctrPanel.PerformLayout();
@@ -5129,6 +5190,10 @@
         private System.Windows.Forms.CheckBox AssumeSynced;
         private System.Windows.Forms.CheckBox Raining;
         private System.Windows.Forms.ComboBox ParentNature;
+        private System.Windows.Forms.NumericUpDown JumpFrame;
+        private System.Windows.Forms.CheckBox Fidget;
+        private System.Windows.Forms.RadioButton Boy;
+        private System.Windows.Forms.RadioButton Girl;
     }
 }
 
