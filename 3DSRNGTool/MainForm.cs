@@ -403,7 +403,7 @@ namespace Pk3DSRNGTool
         {
             ShinyMark.Image = Properties.Resources.NonShiny;
             Isforcedshiny = false;
-            ShinyLocked.Text = SHINY_STR[lindex, 0];
+            ShinyLocked.Text = SHINY_STR[Math.Max(lindex, 0), 0];
         }
 
         private void Reset_Click(object sender, EventArgs e)
@@ -631,8 +631,8 @@ namespace Pk3DSRNGTool
             switch (Method)
             {
                 case 0:
-                    Sta_Setting.Controls.Add(EnctrPanel);Sta_Setting.Controls.Add(Raining);
-                    Sta_Setting.Controls.Add(B_OpenTool);Sta_Setting.Controls.Add(AssumeSynced);
+                    Sta_Setting.Controls.Add(EnctrPanel); Sta_Setting.Controls.Add(Raining);
+                    Sta_Setting.Controls.Add(B_OpenTool); Sta_Setting.Controls.Add(AssumeSynced);
                     return;
                 case 1: NPC.Value = 4; Event_CheckedChanged(null, null); return;
                 case 2:
