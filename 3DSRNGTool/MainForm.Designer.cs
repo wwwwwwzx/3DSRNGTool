@@ -395,6 +395,7 @@
             this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.SetAsFidget = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -900,9 +901,10 @@
             this.SetAsTarget,
             this.SetAsCurrent,
             this.SetAsAfter,
-            this.SetAsStarting});
+            this.SetAsStarting,
+            this.SetAsFidget});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(263, 92);
+            this.DGVMS.Size = new System.Drawing.Size(263, 136);
             // 
             // SetAsTarget
             // 
@@ -3334,14 +3336,14 @@
             // 
             // ShinyMark
             // 
-            this.ShinyMark.Image = Properties.Resources.NonShiny;
+            this.ShinyMark.Image = global::Pk3DSRNGTool.Properties.Resources.NonShiny;
             this.ShinyMark.Location = new System.Drawing.Point(378, 119);
             this.ShinyMark.Name = "ShinyMark";
             this.ShinyMark.Size = new System.Drawing.Size(10, 10);
             this.ShinyMark.TabIndex = 110;
             this.ShinyMark.TabStop = false;
-            this.ShinyMark.Click += new System.EventHandler(this.SwitchLock);
             this.ShinyMark.VisibleChanged += new System.EventHandler(this.ShinyMark_Clear);
+            this.ShinyMark.Click += new System.EventHandler(this.SwitchLock);
             // 
             // Girl
             // 
@@ -3372,7 +3374,7 @@
             this.Fidget.AutoSize = true;
             this.Fidget.Location = new System.Drawing.Point(11, 202);
             this.Fidget.Name = "Fidget";
-            this.Fidget.Size = new System.Drawing.Size(50, 17);
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
             this.Fidget.TabIndex = 107;
             this.Fidget.Text = "Fidget";
             this.Fidget.UseVisualStyleBackColor = true;
@@ -4727,6 +4729,13 @@
             this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ID_Tiny1.Value = ((uint)(0u));
             // 
+            // SetAsFidget
+            // 
+            this.SetAsFidget.Name = "SetAsFidget";
+            this.SetAsFidget.Size = new System.Drawing.Size(262, 22);
+            this.SetAsFidget.Text = "Set as Fidget";
+            this.SetAsFidget.Click += new System.EventHandler(this.SetAsFidget_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5210,6 +5219,7 @@
         private System.Windows.Forms.RadioButton Boy;
         private System.Windows.Forms.RadioButton Girl;
         private System.Windows.Forms.PictureBox ShinyMark;
+        private System.Windows.Forms.ToolStripMenuItem SetAsFidget;
     }
 }
 

@@ -200,6 +200,7 @@ SetAsCurrent = Als aktueller Status festlegen
 SetAsTarget = Als Zielrahmen festlegen
 SetAsAfter = Setze den Status, nachdem du dieses Ei erhalten hast
 SetAsStarting = Als Startrahmen festlegen
+SetAsFidget = Set as Fidget Frame
 ---------------------TabPage5----------------------------------
 ID_RE = Regulärer Ausdruck
 ID_Disable = Filter deaktivieren

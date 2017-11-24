@@ -200,6 +200,7 @@ SetAsCurrent = Définir comme Statut actuel
 SetAsTarget = Définir comme la Frame ciblée
 SetAsAfter = Définir comme Statut actuel après avoir obtenu l'oeuf
 SetAsStarting = Définir comme Frame de base
+SetAsFidget = Set as Fidget Frame
 ---------------------TabPage5----------------------------------
 ID_RE = Expression régulière
 ID_Disable = Désactiver les filtres

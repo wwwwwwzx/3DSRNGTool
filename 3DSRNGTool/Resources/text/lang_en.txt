@@ -200,6 +200,7 @@ SetAsCurrent = Set as Current Status
 SetAsTarget = Set as Target Frame
 SetAsAfter = Set the Status after receiving this Egg as Current
 SetAsStarting = Set as Starting Frame
+SetAsFidget = Set as Fidget Frame
 ---------------------TabPage5----------------------------------
 ID_RE = Regular Expression
 ID_Disable = Disable Filters

@@ -200,6 +200,7 @@ SetAsCurrent = Establecer como actual
 SetAsTarget = Establecer como Fotograma Objetivo
 SetAsAfter = Establecer el Estado luego de recibir este Huevo como Actual
 SetAsStarting = Establecer como Fotograma de Inicio
+SetAsFidget = Set as Fidget Frame
 ---------------------TabPage5----------------------------------
 ID_RE = Expresión Regular
 ID_Disable = Desactivar Filtros

@@ -436,6 +436,17 @@ namespace Pk3DSRNGTool
             catch { }
         }
 
+        private void SetAsFidget_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var f = (int)DGV.CurrentRow.Cells["dgv_Frame"].Value;
+                JumpFrame.Value = f;
+            }
+            catch { }
+        }
+
+
         private void IVs_Click(object sender, EventArgs e)
         {
             switch (ModifierKeys)
@@ -1316,6 +1327,7 @@ namespace Pk3DSRNGTool
             dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
+            SetAsFidget.Visible = JumpFrame.Visible;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank;
