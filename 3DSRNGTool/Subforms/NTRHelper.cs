@@ -175,8 +175,11 @@ namespace Pk3DSRNGTool
                 // Input "!"
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay1);
+                // Press Start
+                ntrclient.PressStart(); L_NTRLog.Text = "Start pressed";
+                await Task.Delay(Delay1);
                 // Confirm
-                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
+                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay2);
                 // Discard
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
