@@ -40,7 +40,7 @@
                    
                    new PKM7 { Species = 791, Level = 60, ShinyLocked = true, NPC = 8, Delay = 166, DelayType = 09, Version = GameVersion.US, },   // Solgaleo
                    new PKM7 { Species = 792, Level = 60, ShinyLocked = true, NPC = 8, Delay = 160, DelayType = 10, Version = GameVersion.UM, },   // Lunala
-                   new PKM7 { Species = 800, Level = 60, ShinyLocked = true, NPC = 2, },        // Necrozma
+                   new PKM7 { Species = 800, Level = 65, ShinyLocked = true, NPC = 2, },        // Necrozma
 
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 11, Delay = 134, },    // Nihilego
                    new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 12, Delay = 178, Version = GameVersion.US,},    // Buzzwole
