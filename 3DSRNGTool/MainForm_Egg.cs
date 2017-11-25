@@ -276,11 +276,12 @@ namespace Pk3DSRNGTool
                 using (StreamWriter acceptedeggs = new StreamWriter(dumpfile))
                 {
                     acceptedeggs.WriteLine($"{dgv_eggnum.HeaderText}, {dgv_gender.HeaderText}, {dgv_nature.HeaderText}, {dgv_ability.HeaderText}, HP.Atk.Def.SpA.SpD.Spe, {dgv_hiddenpower.HeaderText}, ESV");
+                    int eggnum = 1;
                     foreach (Frame egg in Frames)
                     {
                         if (egg.FrameUsed == EGGACCEPT_STR[lindex, 0])
                         {
-                            string eggline = $"{egg.EggNum},  ".PadLeft(7);
+                            string eggline = $"{eggnum++},  ".PadLeft(7);
                             eggline += $"{egg.GenderStr}, ";
                             eggline += $"{egg.NatureStr.PadLeft(8)}, ";
                             eggline += $"{egg.AbilityStr}, ";
