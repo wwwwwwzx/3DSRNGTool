@@ -1328,6 +1328,7 @@ namespace Pk3DSRNGTool
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsFidget.Visible = JumpFrame.Visible;
+            DumpAcceptList.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked && RB_EggShortest.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank;
@@ -1397,8 +1398,10 @@ namespace Pk3DSRNGTool
             const int ivstart = 5;
             if (ivsflag != null)
             {
+                if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 0])
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
                 if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 1])
-                    row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
 
                 for (int k = 0; k < 6; k++)
                 {
