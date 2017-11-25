@@ -231,7 +231,7 @@
                     new PKM7 { Species = 025, Level = 21, NPC = 15, Delay = 20, Gift = true, OTTSV = 1009, Nature = 0, Ability = 1, Gender = 1, }, // Moive Pikachu (forme omitted for correct ivs)
                     new PKM7 { Species = 137, Level = 30, NPC = 04, Delay = 20, Gift = true,},    // Porygon
                     new PKM7 { Species = 142, Level = 40, NPC = 03, Delay = 20, Gift = true,},    // Aerodactyl
-                    new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 04, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
+                    new PKM7 { Species = 133, Level = 01, NPC = 06, Delay = 20, Gift = true, Syncable = false, Egg = true,},    // Gift Eevee Egg
                 }
             },
             new PokemonList

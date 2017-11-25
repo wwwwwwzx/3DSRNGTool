@@ -201,6 +201,7 @@ SetAsTarget = 将该帧设为目标
 SetAsAfter = 将领取该蛋后的状态设为当前状态
 SetAsStarting = 将该帧设为起点
 SetAsFidget = 将该帧设为动作
+DumpAcceptList = 导出取蛋列表
 ---------------------TabPage5----------------------------------
 ID_RE = 正则表达式
 ID_Disable = 取消筛选

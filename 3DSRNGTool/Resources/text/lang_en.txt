@@ -195,12 +195,13 @@ dgv_adv = Adv.
 dgv_state = State
 dgv_tinystate = Tiny State
 dgv_ball = Ball
-dgv_eggnum = Egg Number
+dgv_eggnum = Egg#
 SetAsCurrent = Set as Current Status
 SetAsTarget = Set as Target Frame
 SetAsAfter = Set the Status after receiving this Egg as Current
 SetAsStarting = Set as Starting Frame
 SetAsFidget = Set as Fidget Frame
+DumpAcceptList = Dump Accept Egg List
 ---------------------TabPage5----------------------------------
 ID_RE = Regular Expression
 ID_Disable = Disable Filters

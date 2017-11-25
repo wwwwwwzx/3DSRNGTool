@@ -275,22 +275,20 @@ namespace Pk3DSRNGTool
 
                 using (StreamWriter acceptedeggs = new StreamWriter(dumpfile))
                 {
-                    int eggnum = 1;
-                    acceptedeggs.WriteLine("Egg#, Gender, Nature, Ability, HP.Atk.Def.SpA.SpD.Spe, Hidden Power, ESV");
+                    acceptedeggs.WriteLine($"{dgv_eggnum.HeaderText}, {dgv_gender.HeaderText}, {dgv_nature.HeaderText}, {dgv_ability.HeaderText}, HP.Atk.Def.SpA.SpD.Spe, {dgv_hiddenpower.HeaderText}, ESV");
                     foreach (Frame egg in Frames)
                     {
                         if (egg.FrameUsed == EGGACCEPT_STR[lindex, 0])
                         {
-                            string eggline = $"{eggnum}, ";
+                            string eggline = $"{egg.EggNum},  ".PadLeft(7);
                             eggline += $"{egg.GenderStr}, ";
-                            eggline += $"{egg.NatureStr}, ";
+                            eggline += $"{egg.NatureStr.PadLeft(8)}, ";
                             eggline += $"{egg.AbilityStr}, ";
-                            eggline += $"{egg.HP}.{egg.Atk}.{egg.Def}.{egg.SpA}.{egg.SpD}.{egg.Spe}, ";
-                            eggline += $"{egg.HiddenPower}, ";
-                            eggline += $"{egg.PSV}";
+                            eggline += String.Format("{0:D2}.{1:D2}.{2:D2}.{3:D2}.{4:D2}.{5:D2}, ", egg.HP, egg.Atk, egg.Def, egg.SpA, egg.SpD, egg.Spe);
+                            eggline += $"{egg.HiddenPower.PadLeft(8)}, ";
+                            eggline += $"{egg.PSV.ToString("D4")}";
                             acceptedeggs.WriteLine(eggline);
                         }
-                        eggnum++;
                     }
                 }
 
