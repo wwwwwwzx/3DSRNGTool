@@ -267,6 +267,39 @@ namespace Pk3DSRNGTool
             { }
         }
 
+        private void DumpAcceptList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string dumpfile = "AcceptedEggs_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
+
+                using (StreamWriter acceptedeggs = new StreamWriter(dumpfile))
+                {
+                    int eggnum = 1;
+                    acceptedeggs.WriteLine("Egg#, Gender, Nature, Ability, HP.Atk.Def.SpA.SpD.Spe, Hidden Power, ESV");
+                    foreach (Frame egg in Frames)
+                    {
+                        if (egg.FrameUsed == EGGACCEPT_STR[lindex, 0])
+                        {
+                            string eggline = $"{eggnum}, ";
+                            eggline += $"{egg.GenderStr}, ";
+                            eggline += $"{egg.NatureStr}, ";
+                            eggline += $"{egg.AbilityStr}, ";
+                            eggline += $"{egg.HP}.{egg.Atk}.{egg.Def}.{egg.SpA}.{egg.SpD}.{egg.Spe}, ";
+                            eggline += $"{egg.HiddenPower}, ";
+                            eggline += $"{egg.PSV}";
+                            acceptedeggs.WriteLine(eggline);
+                        }
+                        eggnum++;
+                    }
+                }
+
+                Alert(dumpfile + " saved");
+            }
+            catch
+            { }
+        }
+
         private void B_Template_Click(object sender, EventArgs e)
         {
             IVTemplate newform = new IVTemplate();

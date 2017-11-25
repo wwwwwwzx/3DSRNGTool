@@ -1328,6 +1328,7 @@ namespace Pk3DSRNGTool
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
             SetAsFidget.Visible = JumpFrame.Visible;
+            DumpAcceptList.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked && RB_EggShortest.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank;
