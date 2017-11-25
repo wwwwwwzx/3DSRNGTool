@@ -289,8 +289,9 @@ namespace Pk3DSRNGTool
                             eggline += $"{egg.HiddenPower}, ";
                             eggline += $"{egg.PSV}";
                             acceptedeggs.WriteLine(eggline);
+
+                            eggnum++;
                         }
-                        eggnum++;
                     }
                 }
 
