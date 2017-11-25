@@ -883,7 +883,7 @@ namespace Pk3DSRNGTool
             }
             else // Fall through
             {
-                Fidget.Visible = Raining.Visible =
+                Fidget.Visible = 
                 ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
