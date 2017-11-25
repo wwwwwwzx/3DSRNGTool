@@ -1397,8 +1397,10 @@ namespace Pk3DSRNGTool
             const int ivstart = 5;
             if (ivsflag != null)
             {
+                if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 0])
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
                 if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 1])
-                    row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
 
                 for (int k = 0; k < 6; k++)
                 {
