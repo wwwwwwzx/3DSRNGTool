@@ -499,6 +499,7 @@
             this.Lang.FormattingEnabled = true;
             this.Lang.Items.AddRange(new object[] {
             "English",
+            "日本語",
             "Français",
             "Deutsch",
             "Español",

@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -346,6 +346,29 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ! Interface Customization File
+        ///! lang_en.txt = English
+        ///! lang_jp.txt = Japanese
+        ///! lang_fr.txt = French
+        ///! lang_de.txt = German
+        ///! lang_es.txt = Spanish
+        ///! lang_it.txt = Italian
+        ///! lang_ko.txt = Korean
+        ///! lang_cn.txt = Simplified Chinese
+        ///! lang_zh.txt = Traditional Chinese
+        ///! lang_pt.txt = Portuguese
+        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
+        ///! -----------------------------------------------------
+        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
+        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string lang_ja {
+            get {
+                return ResourceManager.GetString("lang_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NonShiny {
@@ -466,6 +489,22 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 無性別
+        ///♂1：♀1
+        ///♂7：♀1
+        ///♂3：♀1
+        ///♂1：♀3
+        ///♂1：♀7
+        ///♂のみ
+        ///♀のみ.
+        /// </summary>
+        internal static string text_Genderratio_ja {
+            get {
+                return ResourceManager.GetString("text_Genderratio_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 无道具
         ///不变之石
         ///红线
@@ -547,6 +586,23 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Items_fr {
             get {
                 return ResourceManager.GetString("text_Items_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 指定なし
+        ///変わらず
+        ///赤い糸
+        ///パワーウエイト
+        ///パワーリスト
+        ///パワーベルト
+        ///パワーレンズ
+        ///パワーバンド
+        ///パワーアンクル.
+        /// </summary>
+        internal static string text_Items_ja {
+            get {
+                return ResourceManager.GetString("text_Items_ja", resourceCulture);
             }
         }
         
@@ -892,6 +948,97 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Location_sm_fr {
             get {
                 return ResourceManager.GetString("text_Location_sm_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///
+        ///なぞのばしょ
+        ///
+        ///とおいばしょ
+        ///
+        ///１ばんどうろ
+        ///ハウオリシティはずれ
+        ///１ばんどうろ
+        ///
+        ///３ばんどうろ
+        ///
+        ///２ばんどうろ
+        ///
+        ///カーラエわん
+        ///
+        ///メレメレかい
+        ///
+        ///ハウオリシティ
+        ///ビーチサイドエリア
+        ///ハウオリシティ
+        ///ショッピングエリア
+        ///ハウオリシティ
+        ///ポートエリア
+        ///リリィタウン
+        ///
+        ///マハロさんどう
+        ///
+        ///マハロさんどう
+        ///つりばし
+        ///いくさのいせき
+        ///
+        ///いくさのいせき
+        ///[~ 33]
+        ///テンカラットヒル
+        ///
+        ///テンカラットヒル
+        ///さいおうくうどう
+        ///ハウオリれいえん
+        ///
+        ///メレメレのはなぞの
+        ///
+        ///うみつなぎのどうけつ
+        ///
+        ///きのみばたけ
+        ///
+        ///しげみのどうくつ
+        ///しれんのま
+        ///しげみのどうくつ
+        ///ぬしのま
+        ///４ばんどうろ
+        ///
+        ///５ばんどうろ
+        ///
+        ///６ばんどうろ
+        ///
+        ///７ばんどうろ
+        ///
+        ///８ばんどうろ
+        ///
+        ///９ばんどうろ
+        ///
+        ///ハノハノリゾート
+        ///
+        ///ハノハノビーチ
+        ///
+        ///アーカラのはなぞの
+        ///
+        ///オハナタウン
+        ///
+        ///カンタイシティ
+        ///
+        ///コニコシティ
+        ///
+        ///ロイヤルアベニュー
+        ///
+        ///メモリアルヒル
+        ///
+        ///オハナぼくじょう
+        ///
+        ///[~ 80]
+        ///
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_sm_ja {
+            get {
+                return ResourceManager.GetString("text_Location_sm_ja", resourceCulture);
             }
         }
         
@@ -1242,6 +1389,89 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///
+        ///なぞのばしょ
+        ///
+        ///とおいばしょ
+        ///
+        ///アサメタウン
+        ///
+        ///１ばんどうろ
+        ///アサメのこみち
+        ///メイスイタウン
+        ///
+        ///２ばんどうろ
+        ///アバンセどおり
+        ///ハクダンのもり
+        ///
+        ///３ばんどうろ
+        ///ウベールどおり
+        ///ハクダンシティ
+        ///
+        ///４ばんどうろ
+        ///パルテールかいどう
+        ///ミアレシティ
+        ///
+        ///プリズムタワー
+        ///
+        ///フラダリラボ
+        ///
+        ///５ばんどうろ
+        ///ベルサンどおり
+        ///コボクタウン
+        ///
+        ///ショボンヌじょう
+        ///
+        ///６ばんどうろ
+        ///パレのなみきみち
+        ///パルファムきゅうでん
+        ///
+        ///７ばんどうろ
+        ///リビエールライン
+        ///ショウヨウシティ
+        ///
+        ///８ばんどうろ
+        ///ミュライユかいがん
+        ///コウジンタウン
+        ///
+        ///９ばんどうろ
+        ///トゲトゲさんどう
+        ///バトルシャトー
+        ///
+        ///１０ばんどうろ
+        ///メンヒルロード
+        ///セキタイタウン
+        ///
+        ///１１ばんどうろ
+        ///ミロワールどおり
+        ///うつしみのどうくつ
+        ///
+        ///シャラシティ
+        ///
+        ///マスタータワー
+        ///
+        ///１２ばんどうろ
+        ///フラージュどおり
+        ///ヒヨクシティ
+        ///
+        ///１３ばんどうろ
+        ///ミアレのこうや
+        ///１４ばんどうろ
+        ///クノエのりんどう
+        ///クノエシティ
+        ///
+        ///ボールこうじょう
+        ///
+        ///１５ばん [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Location_xy_ja {
+            get {
+                return ResourceManager.GetString("text_Location_xy_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 勤奋
         ///怕寂寞
         ///勇敢
@@ -1403,6 +1633,39 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Natures_fr {
             get {
                 return ResourceManager.GetString("text_Natures_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to がんばりや
+        ///さみしがり
+        ///ゆうかん
+        ///いじっぱり
+        ///やんちゃ
+        ///ずぶとい
+        ///すなお
+        ///のんき
+        ///わんぱく
+        ///のうてんき
+        ///おくびょう
+        ///せっかち
+        ///まじめ
+        ///ようき
+        ///むじゃき
+        ///ひかえめ
+        ///おっとり
+        ///れいせい
+        ///てれや
+        ///うっかりや
+        ///おだやか
+        ///おとなしい
+        ///なまいき
+        ///しんちょう
+        ///きまぐれ.
+        /// </summary>
+        internal static string text_Natures_ja {
+            get {
+                return ResourceManager.GetString("text_Natures_ja", resourceCulture);
             }
         }
         
@@ -1772,6 +2035,94 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to タマゴ
+        ///フシギダネ
+        ///フシギソウ
+        ///フシギバナ
+        ///ヒトカゲ
+        ///リザード
+        ///リザードン
+        ///ゼニガメ
+        ///カメール
+        ///カメックス
+        ///キャタピー
+        ///トランセル
+        ///バタフリー
+        ///ビードル
+        ///コクーン
+        ///スピアー
+        ///ポッポ
+        ///ピジョン
+        ///ピジョット
+        ///コラッタ
+        ///ラッタ
+        ///オニスズメ
+        ///オニドリル
+        ///アーボ
+        ///アーボック
+        ///ピカチュウ
+        ///ライチュウ
+        ///サンド
+        ///サンドパン
+        ///ニドラン♀
+        ///ニドリーナ
+        ///ニドクイン
+        ///ニドラン♂
+        ///ニドリーノ
+        ///ニドキング
+        ///ピッピ
+        ///ピクシー
+        ///ロコン
+        ///キュウコン
+        ///プリン
+        ///プクリン
+        ///ズバット
+        ///ゴルバット
+        ///ナゾノクサ
+        ///クサイハナ
+        ///ラフレシア
+        ///パラス
+        ///パラセクト
+        ///コンパン
+        ///モルフォン
+        ///ディグダ
+        ///ダグトリオ
+        ///ニャース
+        ///ペルシアン
+        ///コダック
+        ///ゴルダック
+        ///マンキー
+        ///オコリザル
+        ///ガーディ
+        ///ウインディ
+        ///ニョロモ
+        ///ニョロゾ
+        ///ニョロボン
+        ///ケーシィ
+        ///ユンゲラー
+        ///フーディン
+        ///ワンリキー
+        ///ゴーリキー
+        ///カイリキー
+        ///マダツボミ
+        ///ウツドン
+        ///ウツボット
+        ///メノクラゲ
+        ///ドククラゲ
+        ///イシツブテ
+        ///ゴローン
+        ///ゴローニャ
+        ///ポニータ
+        ///ギャロップ
+        ///ヤ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Species_ja {
+            get {
+                return ResourceManager.GetString("text_Species_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 一般
         ///格斗
         ///飞行
@@ -1898,6 +2249,32 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Types_fr {
             get {
                 return ResourceManager.GetString("text_Types_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ノーマル
+        ///かくとう
+        ///ひこう
+        ///どく
+        ///じめん
+        ///いわ
+        ///むし
+        ///ゴースト
+        ///はがね
+        ///ほのお
+        ///みず
+        ///くさ
+        ///でんき
+        ///エスパー
+        ///こおり
+        ///ドラゴン
+        ///あく
+        ///フェアリー.
+        /// </summary>
+        internal static string text_Types_ja {
+            get {
+                return ResourceManager.GetString("text_Types_ja", resourceCulture);
             }
         }
     }

@@ -187,29 +187,32 @@ namespace Pk3DSRNGTool
                 switch (lindex)
                 {
                     case 0: return "Egg number is too small";
-                    case 1: return "Egg number is too small";
+                    case 1: return "目標消費を小さく設定して下さい。";
                     case 2: return "Egg number is too small";
                     case 3: return "Egg number is too small";
-                    case 4: return "蛋数范围太小";
+                    case 4: return "Egg number is too small";
+                    case 5: return "蛋数范围太小";
                 }
             }
             switch (lindex)
             {
                 case 0: tmp += $"Accept {eggnum} eggs"; break;
-                case 1: tmp += $"Accept {eggnum} eggs"; break;
+                case 1: tmp += $"{eggnum} 回受け取り"; break;
                 case 2: tmp += $"Accept {eggnum} eggs"; break;
                 case 3: tmp += $"Accept {eggnum} eggs"; break;
-                case 4: tmp += $"接受 {eggnum} 个蛋"; break;
+                case 4: tmp += $"Accept {eggnum} eggs"; break;
+                case 5: tmp += $"接受 {eggnum} 个蛋"; break;
             }
             if (rejectnum == 0)
                 return tmp;
             switch (lindex)
             {
                 case 0: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
-                case 1: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
+                case 1: tmp += $".\n{rejectnum} 回拒否する"; break;
                 case 2: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
                 case 3: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
-                case 4: tmp += path ? $",\n拒绝 {rejectnum} 次" : $",\n然后拒绝 {rejectnum} 次"; break;
+                case 4: tmp += path ? $".\nReject {rejectnum} times" : $",\nand then reject {rejectnum} times"; break;
+                case 5: tmp += path ? $",\n拒绝 {rejectnum} 次" : $",\n然后拒绝 {rejectnum} 次"; break;
             }
             return tmp;
         }

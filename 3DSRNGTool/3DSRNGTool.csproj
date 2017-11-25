@@ -253,6 +253,7 @@
     <None Include="Resources\text\lang_fr.txt" />
     <None Include="Resources\text\lang_de.txt" />
     <None Include="Resources\text\lang_es.txt" />
+    <None Include="Resources\text\lang_ja.txt" />
     <None Include="Resources\bytes\personal_ao" />
     <None Include="Resources\bytes\personal_uu" />
     <None Include="Resources\text\text_Genderratio_cn.txt" />
@@ -260,36 +261,43 @@
     <None Include="Resources\text\text_Genderratio_fr.txt" />
     <None Include="Resources\text\text_Genderratio_de.txt" />
     <None Include="Resources\text\text_Genderratio_es.txt" />
+    <None Include="Resources\text\text_Genderratio_ja.txt" />
     <None Include="Resources\text\text_Natures_cn.txt" />
     <None Include="Resources\text\text_Natures_en.txt" />
     <None Include="Resources\text\text_Natures_fr.txt" />
     <None Include="Resources\text\text_Natures_de.txt" />
     <None Include="Resources\text\text_Natures_es.txt" />
+    <None Include="Resources\text\text_Natures_ja.txt" />
     <None Include="Resources\text\text_Species_cn.txt" />
     <None Include="Resources\text\text_Species_en.txt" />
     <None Include="Resources\text\text_Species_fr.txt" />
     <None Include="Resources\text\text_Species_de.txt" />
     <None Include="Resources\text\text_Species_es.txt" />
+    <None Include="Resources\text\text_Species_ja.txt" />
     <None Include="Resources\text\text_Types_cn.txt" />
     <None Include="Resources\text\text_Types_en.txt" />
     <None Include="Resources\text\text_Types_fr.txt" />
     <None Include="Resources\text\text_Types_de.txt" />
     <None Include="Resources\text\text_Types_es.txt" />
+    <None Include="Resources\text\text_Types_ja.txt" />
     <None Include="Resources\text\text_Location_sm_cn.txt" />
     <None Include="Resources\text\text_Location_sm_en.txt" />
     <None Include="Resources\text\text_Location_sm_fr.txt" />
     <None Include="Resources\text\text_Location_sm_de.txt" />
     <None Include="Resources\text\text_Location_sm_es.txt" />
+    <None Include="Resources\text\text_Location_sm_ja.txt" />
     <None Include="Resources\text\text_Items_cn.txt" />
     <None Include="Resources\text\text_Items_en.txt" />
     <None Include="Resources\text\text_Items_fr.txt" />
     <None Include="Resources\text\text_Items_de.txt" />
     <None Include="Resources\text\text_Items_es.txt" />
+    <None Include="Resources\text\text_Items_ja.txt" />
     <None Include="Resources\text\text_Location_xy_cn.txt" />
     <None Include="Resources\text\text_Location_xy_en.txt" />
     <None Include="Resources\text\text_Location_xy_fr.txt" />
     <None Include="Resources\text\text_Location_xy_de.txt" />
     <None Include="Resources\text\text_Location_xy_es.txt" />
+    <None Include="Resources\text\text_Location_xy_ja.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FollowmeTogetic.ico" />
@@ -312,6 +320,9 @@
     <None Include="Resources\pic\Clock_16.jpg" />
     <None Include="Resources\pic\Shiny.png" />
     <None Include="Resources\pic\NonShiny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\AcceptedEggs_171124_211002.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
