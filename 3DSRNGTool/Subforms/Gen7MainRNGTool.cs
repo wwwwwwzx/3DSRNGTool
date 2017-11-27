@@ -183,9 +183,11 @@ namespace Pk3DSRNGTool
             switch (lindex)
             {
                 case 0: str = "Set Eontimer for" + str; break;
-                case 1: str = "Set Eontimer for" + str; break;
+                case 1: str = "設定するFrame(EmTimer)" + str; break;
                 case 2: str = "Set Eontimer for" + str; break;
-                case 3: str = "计时器设置为" + str; break;
+                case 3: str = "Set Eontimer for" + str; break;
+                case 4: str = "Set Eontimer for" + str; break;
+                case 5: str = "计时器设置为" + str; break;
             }
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

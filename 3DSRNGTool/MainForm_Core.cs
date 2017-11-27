@@ -265,7 +265,7 @@ namespace Pk3DSRNGTool
 
                     frameadvance--;
                     i++;
-                    if (i <= min || i > max + 1)
+                    if (i > max + 1)
                         continue;
                     byte blinkflag = FuncUtil.blinkflaglist[i - min - 1];
                     if (BlinkFOnly.Checked && blinkflag < 4)
@@ -290,6 +290,7 @@ namespace Pk3DSRNGTool
         {
             SFMT sfmt = new SFMT(Seed.Value);
             int start_frame = (int)Frame_min.Value;
+            int targetframe = (int)TargetFrame.Value;
             FuncUtil.getblinkflaglist(start_frame, start_frame, sfmt, Modelnum);
             // Advance
             for (int i = 0; i < start_frame; i++)
@@ -322,6 +323,8 @@ namespace Pk3DSRNGTool
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
                     RNGPool.AddNext(sfmt);
+                if (Currentframe <= targetframe && targetframe < frame)
+                    Frame.standard = i * 2;
 
                 if (!filter.CheckResult(result))
                     continue;

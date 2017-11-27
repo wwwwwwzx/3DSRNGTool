@@ -592,7 +592,6 @@
             // TargetFrame
             // 
             this.TargetFrame.AccessibleName = "";
-            this.TargetFrame.Enabled = false;
             this.TargetFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TargetFrame.Increment = new decimal(new int[] {
             100,
@@ -647,7 +646,6 @@
             // NPC
             // 
             this.NPC.AccessibleName = "";
-            this.NPC.Enabled = false;
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NPC.Location = new System.Drawing.Point(81, 119);
             this.NPC.Maximum = new decimal(new int[] {

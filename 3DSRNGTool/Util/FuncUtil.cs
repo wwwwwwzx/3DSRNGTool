@@ -116,17 +116,26 @@ namespace Pk3DSRNGTool
 
             //total_frame[0] Start; total_frame[1] Duration
             int[] total_frame = new int[2];
-            int n_count = 0;
+            int frameadvance = 0;
+            int frametime = 0;
             int timer = 0;
             ModelStatus status = new ModelStatus(ModelNumber, sfmt);
-
-            while (min + n_count <= max)
+            
+            for (int i = min; i <= max;)
             {
-                n_count += status.NextState();
-                total_frame[timer]++;
-                if (min + n_count == max)
+                do
+                {
+                    frameadvance = status.NextState();
+                    total_frame[timer]++;
+                }
+                while (frameadvance == 0);
+                i += frameadvance;
+                if (i == max)
                     timer = 1;
+                if (i <= max)
+                    frametime = total_frame[0];
             }
+            total_frame[0] = frametime;
             return total_frame;
         }
 
