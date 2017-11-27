@@ -1223,6 +1223,13 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea_USUM
             {
+                Location = 162,
+                Correction = 09, NPC = 1,
+                LevelMin = 41,
+                Species = new[] {41,073,423,279,279,457,457,073,131},
+            },
+            new EncounterArea_USUM
+            {
                 Location = 164, // Poni Grove
                 Correction = 9, NPC = 1,
                 LevelMin = 52,
