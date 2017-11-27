@@ -753,14 +753,14 @@ namespace Pk3DSRNGTool
             {
                 Location = 021, idx = 1,
                 Correction = 30,
-                LevelMin = 05,
+                LevelMin = 06,
                 Species = new[] {44,278,278,063,439,676,081,052,088,676,676},
             },
             new EncounterArea_USUM
             {
                 Location = 021, idx = 2,
                 Correction = 30,
-                LevelMin = 05,
+                LevelMin = 06,
                 Species = new[] {38,676,063,439,088,081,052,278},
             },
             new EncounterArea_USUM
@@ -1118,7 +1118,6 @@ namespace Pk3DSRNGTool
                 Correction = 02,
                 LevelMin = 47,
                 Species = new[] {22,037,362,359,359,215},
-                Reverse = true,
             },
             new EncounterArea_USUM
             {
@@ -1126,7 +1125,6 @@ namespace Pk3DSRNGTool
                 Correction = 08,
                 LevelMin = 47,
                 Species = new[] {22,042,362,359,359,215},
-                Reverse = true,
             },
             new EncounterArea_USUM
             {
@@ -1134,6 +1132,7 @@ namespace Pk3DSRNGTool
                 Correction = 05, NPC = 3,
                 LevelMin = 47,
                 Species = new[] {22,037,362,359,780,215},
+                Reverse = true,
             },
             new EncounterArea_USUM
             {
@@ -1141,12 +1140,14 @@ namespace Pk3DSRNGTool
                 Correction = 07, NPC = 2,
                 LevelMin = 48,
                 Species = new[] {22,042,362,359,780,215},
+                Reverse = true,
             },
             new EncounterArea_USUM
             {
                 Location = 146, idx = 6, mark = "Mid-Point",
                 LevelMin = 48,
                 Species = new[] {22,037,362,359,780,215},
+                Reverse = true,
             },
             #endregion
             #region Poni
