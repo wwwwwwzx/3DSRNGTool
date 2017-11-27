@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool
         public bool phase;
 
         public bool IsBoy;
+        public int fidget_cd = -1; // fidget cooldown. -1 to ignore fidget
 
         public static bool raining;
 
@@ -26,6 +27,8 @@ namespace Pk3DSRNGTool
         public int NextState()
         {
             cnt = 0;
+            if (fidget_cd > 0 && --fidget_cd == 0)
+                fidget_cd = fidget();
             for (int i = 0; i < Modelnumber; i++)
             {
                 if (remain_frame[i] > 1)                       //Cooldown 2nd part
@@ -49,7 +52,7 @@ namespace Pk3DSRNGTool
 
         private int[] Delay_M = new[] { 407, 412 };
         private int[] Delay_F = new[] { 402, 407 };
-        public int Jump() // For more precise timeline
+        private int fidget() // For more precise timeline
         {
             int delay1 = (int)(getrand % 90); // Random delay
             int delay2 = IsBoy ? Delay_M[getrand & 1] : Delay_F[getrand & 1]; // Decide movement type non-jump/jump

@@ -301,10 +301,8 @@ namespace Pk3DSRNGTool
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
-            int JumpPosition = -1;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= start_frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
-            byte Jumpflag;
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -313,21 +311,14 @@ namespace Pk3DSRNGTool
                 RNGPool.CopyStatus(status);
 
                 var result = RNGPool.Generate7() as Result7;
-
-                frameadvance = 0;
-                Jumpflag = 0;
+                
                 if (frame >= FirstJumpFrame) // Find the first call
                 {
-                    JumpPosition = i;
+                    status.fidget_cd = 1;
                     FirstJumpFrame = int.MaxValue; // Disable this part
                 }
-                if (JumpPosition == i)
-                {
-                    JumpPosition += status.Jump(); // Get the next call
-                    frameadvance = 2;
-                    Jumpflag = 1;
-                }
-                frameadvance += status.NextState();
+                byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
+                frameadvance = status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
                     RNGPool.AddNext(sfmt);
