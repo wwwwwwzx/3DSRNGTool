@@ -120,7 +120,7 @@ namespace Pk3DSRNGTool
             int frametime = 0;
             int timer = 0;
             ModelStatus status = new ModelStatus(ModelNumber, sfmt);
-            
+
             for (int i = min; i <= max;)
             {
                 do

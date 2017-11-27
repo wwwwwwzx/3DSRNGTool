@@ -658,7 +658,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            Fidget.Checked = Fidget.Visible && CreateTimeline.Checked;
+            Fidget.Enabled = Fidget.Checked = Fidget.Visible && CreateTimeline.Checked;
 
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
