@@ -254,6 +254,7 @@ Magikarp = 127 Magikarp Calculator
 L_Magikarp = Male=0, Female=1. Spaces and line breaks will be ignored.
 GB_TinyFinder = 8 Eggs Calculator for new save
 L_NatureList = 性格リスト
+ShinyCharm = 光るお守り
 B_DelNature = 1つ戻る
 B_TinySearch = 計算
 B_Abort7 = Abort

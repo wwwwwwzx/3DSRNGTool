@@ -256,6 +256,7 @@ Magikarp = 127 Karpador Rechner
 L_Magikarp = Männl.=0, Weibl.=1. Leerzeichen und Zeilenumbrüche werden ignoriert.
 GB_TinyFinder = 8 Eier Eierrechner für neues speichern
 L_NatureList = Wesen Liste
+ShinyCharm = Schillerpin
 B_DelNature = Löschen
 B_TinySearch = Suchen
 B_Abort7 = Abbruch

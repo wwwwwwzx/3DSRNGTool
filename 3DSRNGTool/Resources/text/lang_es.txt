@@ -256,6 +256,7 @@ Magikarp = Calculadora de 127 Magikarp
 L_Magikarp = Macho=0, Hembra=1. Espacios y saltos de línea serán ignorados.
 GB_TinyFinder = Calculadora de 8 Huevos para una nueva partida
 L_NatureList = Lista de Naturalezas
+ShinyCharm = Amuleto Iris
 B_DelNature = Suprimir
 B_TinySearch = Buscar
 B_Abort7 = Abortar

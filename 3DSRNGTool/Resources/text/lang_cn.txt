@@ -256,6 +256,7 @@ Magikarp = 127鲤鱼王计算器
 L_Magikarp = （公记为0, 母记为1）（空格及换行软件将自动忽略）
 GB_TinyFinder = 8蛋性格法  (只适用于新存档)
 L_NatureList = 性格序列
+ShinyCharm = 闪耀护符
 B_DelNature = 删去
 B_TinySearch = 检索
 B_Abort7 = 终止

@@ -33,6 +33,7 @@
             this.RTB_EggSeed = new System.Windows.Forms.RichTextBox();
             this.B_EggSeed127 = new System.Windows.Forms.Button();
             this.GB_TinyFinder = new System.Windows.Forms.GroupBox();
+            this.ShinyCharm = new System.Windows.Forms.CheckBox();
             this.B_DelNature = new System.Windows.Forms.Button();
             this.NatureInput = new System.Windows.Forms.ComboBox();
             this.L_Progress7 = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@
             // 
             // GB_TinyFinder
             // 
+            this.GB_TinyFinder.Controls.Add(this.ShinyCharm);
             this.GB_TinyFinder.Controls.Add(this.B_DelNature);
             this.GB_TinyFinder.Controls.Add(this.NatureInput);
             this.GB_TinyFinder.Controls.Add(this.L_Progress7);
@@ -101,9 +103,19 @@
             this.GB_TinyFinder.TabIndex = 106;
             this.GB_TinyFinder.TabStop = false;
             // 
+            // checkBox1
+            // 
+            this.ShinyCharm.AutoSize = true;
+            this.ShinyCharm.Location = new System.Drawing.Point(212, 72);
+            this.ShinyCharm.Name = "ShinyCharm";
+            this.ShinyCharm.Size = new System.Drawing.Size(82, 17);
+            this.ShinyCharm.TabIndex = 119;
+            this.ShinyCharm.Text = "ShinyCharm";
+            this.ShinyCharm.UseVisualStyleBackColor = true;
+            // 
             // B_DelNature
             // 
-            this.B_DelNature.Location = new System.Drawing.Point(163, 68);
+            this.B_DelNature.Location = new System.Drawing.Point(125, 67);
             this.B_DelNature.Name = "B_DelNature";
             this.B_DelNature.Size = new System.Drawing.Size(61, 25);
             this.B_DelNature.TabIndex = 118;
@@ -123,7 +135,7 @@
             // L_Progress7
             // 
             this.L_Progress7.AutoSize = true;
-            this.L_Progress7.Location = new System.Drawing.Point(260, 108);
+            this.L_Progress7.Location = new System.Drawing.Point(160, 110);
             this.L_Progress7.Name = "L_Progress7";
             this.L_Progress7.Size = new System.Drawing.Size(36, 13);
             this.L_Progress7.TabIndex = 116;
@@ -133,7 +145,7 @@
             // 
             this.Gen7PBar.Location = new System.Drawing.Point(9, 105);
             this.Gen7PBar.Name = "Gen7PBar";
-            this.Gen7PBar.Size = new System.Drawing.Size(240, 18);
+            this.Gen7PBar.Size = new System.Drawing.Size(136, 18);
             this.Gen7PBar.TabIndex = 98;
             // 
             // EggSeedList
@@ -158,12 +170,12 @@
             this.NatureList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NatureList.Location = new System.Drawing.Point(82, 32);
             this.NatureList.Name = "NatureList";
-            this.NatureList.Size = new System.Drawing.Size(210, 22);
+            this.NatureList.Size = new System.Drawing.Size(212, 22);
             this.NatureList.TabIndex = 24;
             // 
             // B_Abort7
             // 
-            this.B_Abort7.Location = new System.Drawing.Point(233, 68);
+            this.B_Abort7.Location = new System.Drawing.Point(233, 101);
             this.B_Abort7.Name = "B_Abort7";
             this.B_Abort7.Size = new System.Drawing.Size(61, 25);
             this.B_Abort7.TabIndex = 99;
@@ -174,7 +186,7 @@
             // 
             // B_TinySearch
             // 
-            this.B_TinySearch.Location = new System.Drawing.Point(233, 68);
+            this.B_TinySearch.Location = new System.Drawing.Point(233, 101);
             this.B_TinySearch.Name = "B_TinySearch";
             this.B_TinySearch.Size = new System.Drawing.Size(61, 25);
             this.B_TinySearch.TabIndex = 26;
@@ -218,5 +230,6 @@
         private System.Windows.Forms.Button B_TinySearch;
         private System.Windows.Forms.Button B_Abort7;
         private System.Windows.Forms.Label L_Magikarp;
+        private System.Windows.Forms.CheckBox ShinyCharm;
     }
 }

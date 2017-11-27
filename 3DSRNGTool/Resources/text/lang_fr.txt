@@ -256,6 +256,7 @@ Magikarp = Calcul des 127 Magicarpe
 L_Magikarp = Mâle=0, Femelle=1. Les espaces et les lignes brisées seront ignorées.
 GB_TinyFinder = Calcul de 8 oeufs si nouvelle sauvegarde
 L_NatureList = Liste des natures
+ShinyCharm = Charme Chroma
 B_DelNature = Supprimer
 B_TinySearch = Chercher
 B_Abort7 = Annuler

@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
             L_Progress7.Text = "0.00%";
             EggSeedList.Items.Clear();
             tinyfinder.Clear();
-            tinyfinder.SetFinder(nature, Properties.Settings.Default.ShinyCharm);
+            tinyfinder.SetFinder(nature, ShinyCharm.Checked);
             tinyfinder.Search();
             B_TinySearch.Visible = false;
             B_Abort7.Visible = true;
