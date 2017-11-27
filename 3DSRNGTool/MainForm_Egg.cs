@@ -94,9 +94,16 @@ namespace Pk3DSRNGTool
 
         private void B_Backup_Click(object sender, EventArgs e)
         {
-            string backupfile = "Backup_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
-            File.WriteAllLines(backupfile, new[] { St3.Text, St2.Text, St1.Text, St0.Text, });
-            Alert(backupfile + " saved");
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog()
+            {
+                Filter = "txt files (*.txt)|*.txt",
+                RestoreDirectory = true
+            };
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string backupfile = saveFileDialog1.FileName;
+                File.WriteAllLines(backupfile, new[] { St3.Text, St2.Text, St1.Text, St0.Text, });
+            }
         }
 
         private void B_Load_Click(object sender, EventArgs e)
