@@ -169,6 +169,8 @@ namespace Pk3DSRNGTool
                                  : 022;
                     if (table[i] == 174) // Igglybuff -> Pikipek/Lillpup
                         table[i] = i == 7 ? 731 : 506;
+                    if (Location == 90 && table[0] == 44) // Lush Jungle Grass
+                        table[2] = 163; // Hoothoot
                 }
             return table;
         }

@@ -889,7 +889,7 @@ namespace Pk3DSRNGTool
                 Location = 090, idx = 2, mark = "W",//Lush Jungle - W
                 Correction = 04, NPC = 3,
                 LevelMin = 19,
-                Species = new[] {44,753,732,761,761,761,761,046,766,764,764},
+                Species = new[] {44,753,732,438,011,762,046,764,766,127,732},
             },
             new EncounterArea_USUM
             {
