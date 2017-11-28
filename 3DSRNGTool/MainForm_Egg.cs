@@ -96,7 +96,7 @@ namespace Pk3DSRNGTool
         {
             if (sender == null)
             {
-                string backupfile = "FisrtEggSeeds_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
+                string backupfile = "FirstEggSeeds_" + DateTime.Now.ToString("yyMMdd_HHmmss") + ".txt";
                 File.WriteAllLines(backupfile, new[] { St3.Text, St2.Text, St1.Text, St0.Text, });
                 Alert(backupfile + " saved");
                 return;
