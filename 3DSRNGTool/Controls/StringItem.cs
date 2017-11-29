@@ -106,7 +106,7 @@ namespace Pk3DSRNGTool
         public static readonly string[] NOSELECTION_STR = { "Please Select", "Please Select", "Please Select", "Please Select", "Please Select", "请选择" };
         public static readonly string[] FILEERRORSTR = { "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "文件格式不正确" };
         public static readonly string[] NORESULT_STR = { "No Result", "No Result", "No Result", "No Result", "No Result", "没有结果" };
-        public static readonly string[] WAIT_STR = { "Please Wait...", "Please Wait...", "Please Wait...", "Please Wait...", "Please Wait...", "请稍后..." };
+        public static readonly string[] WAIT_STR = { "Please Wait...", "お待ちください...", "Please Wait...", "Please Wait...", "Please Wait...", "请稍后..." };
         public static readonly string[] INVALID_STR = { "Invalid Input", "不正な値が含まれています", "Invalid Input", "Invalid Input", "Invalid Input", "输入格式不正确" };
         public static readonly string[,] PIDTYPE_STR =
         {
@@ -165,7 +165,7 @@ namespace Pk3DSRNGTool
         public static readonly string[][] IVJUDGE_STR =
         {
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
-            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
+            new string[] { "さいこう", "すばらしい", "すごくいい", "かなりいい", "まあまあ", "ダメかも" },
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
@@ -179,6 +179,51 @@ namespace Pk3DSRNGTool
             new string[] { "Random Number", "Egg Seed", "Tiny State"},
             new string[] { "Número Aleatorio", "Egg Seed", "Tiny State"},
             new string[] { "随机数", "蛋乱数种子","Tiny 状态" },
+        };
+        public static readonly string[] QR_STR =
+        {
+            "The last clock is at {0}F, you're at {1}F after quiting QR",
+            "末尾の針の位置は {0} 番目, 次は {1} ",
+            "The last clock is at {0}F, you're at {1}F after quiting QR",
+            "The last clock is at {0}F, you're at {1}F after quiting QR",
+            "The last clock is at {0}F, you're at {1}F after quiting QR",
+            "最后的指针在 {0} 帧，退出QR后在 {1} 帧",
+        };
+        public static readonly string[] TIMER_STR =
+        {
+            "Set Eontimer for {0}",
+            "設定するFrame(EmTimer) {0}",
+            "Set Eontimer for {0}",
+            "Set Eontimer for {0}",
+            "Set Eontimer for {0}",
+            "计时器设置为 {0}"
+        };
+        public static readonly string[] LOWEGGNUM_STR =
+        {
+            "Egg number is too small",
+            "目標消費を小さく設定して下さい。",
+            "Egg number is too small",
+            "Egg number is too small",
+            "Egg number is too small",
+            "蛋数范围太小",
+        };
+        public static readonly string[] ACCEPTEGGNUM_STR =
+        {
+            "Accept {0} eggs",
+            "{0} 回受け取り",
+            "Accept {0} eggs",
+            "Accept {0} eggs",
+            "Accept {0} eggs",
+            "接受 {0} 个蛋",
+        };
+        public static readonly string[,] REJECTEGGNUM_STR =
+        {
+            {".\nReject {0} times",",\nand then reject {0} times" },
+            {".\n{0} 回拒否する", ",\n{0} 回拒否する"},
+            {".\nReject {0} times",",\nand then reject {0} times" },
+            {".\nReject {0} times",",\nand then reject {0} times" },
+            {".\nReject {0} times",",\nand then reject {0} times" },
+            { ",\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
         };
     }
 }

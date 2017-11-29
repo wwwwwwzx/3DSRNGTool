@@ -155,13 +155,7 @@ namespace Pk3DSRNGTool
 
                     if (temp_List.SequenceEqual(Clk_List))
                     {
-                        switch (lindex)
-                        {
-                            case 0: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
-                            case 1: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
-                            case 2: ListResults.Items.Add($"The last clock is at {i + Clk_List.Length - 1}F, you're at {i + Clk_List.Length + 1}F after quiting QR"); break;
-                            case 3: ListResults.Items.Add($"最后的指针在 {i + Clk_List.Length - 1} 帧，退出QR后在 {i + Clk_List.Length + 1} 帧"); break;
-                        }
+                        ListResults.Items.Add(string.Format(QR_STR[lindex], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
                         tmp = i + Clk_List.Length + 1;
                     }
                 }
@@ -175,20 +169,12 @@ namespace Pk3DSRNGTool
         }
         #endregion
         #region TimerCalculateFunction
-        private void CalcTime_Output(int min, int max)
+        private void CalcTime_Output(int min, int max, bool fidget)
         {
-            int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1));
+            int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget);
             double realtime = totaltime[0] / 30.0;
             string str = $" {totaltime[0] * 2}F ({realtime.ToString("F")}s) <{totaltime[1] * 2}F>. ";
-            switch (lindex)
-            {
-                case 0: str = "Set Eontimer for" + str; break;
-                case 1: str = "設定するFrame(EmTimer)" + str; break;
-                case 2: str = "Set Eontimer for" + str; break;
-                case 3: str = "Set Eontimer for" + str; break;
-                case 4: str = "Set Eontimer for" + str; break;
-                case 5: str = "计时器设置为" + str; break;
-            }
+            str = string.Format(TIMER_STR[lindex], str);
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -196,7 +182,8 @@ namespace Pk3DSRNGTool
         {
             int min = (int)Time_min.Value;
             int max = (int)TargetFrame.Value;
-            CalcTime_Output(min, max);
+            bool fidget = false;
+            CalcTime_Output(min, max, fidget);
         }
         #endregion
     }

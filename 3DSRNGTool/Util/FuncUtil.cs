@@ -104,10 +104,10 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Misc
-        public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber = 1)
+        public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber, bool fidget = false)
         {
             if (min > max)
-                return CalcFrame(seed, max, min).Select(t => -t).ToArray();
+                return CalcFrame(seed, max, min, ModelNumber, fidget).Select(t => -t).ToArray();
 
             SFMT sfmt = new SFMT(seed);
 
