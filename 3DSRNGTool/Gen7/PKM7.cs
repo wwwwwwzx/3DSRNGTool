@@ -219,7 +219,7 @@
                     new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Ability = 0xFF, Gender = 2, Delay = -4, }, // Frillish @ Route 14
                     new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF, }, // Sandygast @ Route 15
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
-                    new PKM7 { Species = 101, Level = 60, NPC = 01, Delay = 120, ShinyLocked = true, Unstable = true }, // Electrode @ Team Rocket's Castle
+                    new PKM7 { Species = 101, Level = 60, Delay = 120, ShinyLocked = true, Unstable = true }, // Electrode @ Team Rocket's Castle
                 }
             },
             new PokemonList

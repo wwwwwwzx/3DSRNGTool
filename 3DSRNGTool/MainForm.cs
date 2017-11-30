@@ -679,6 +679,7 @@ namespace Pk3DSRNGTool
             Frame_max.Value = 50000;
             if (0 == Method || Method == 2)
                 Poke_SelectedIndexChanged(null, null);
+            JumpFrame.Value = 0;
         }
 
         private void NPC_ValueChanged(object sender, EventArgs e)
