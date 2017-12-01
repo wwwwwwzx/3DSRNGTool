@@ -2260,6 +2260,7 @@
             this.Raining.TabIndex = 108;
             this.Raining.Text = "下雨";
             this.Raining.UseVisualStyleBackColor = true;
+            this.Raining.CheckedChanged += new System.EventHandler(this.Raining_CheckedChanged);
             // 
             // SuctionCups
             // 

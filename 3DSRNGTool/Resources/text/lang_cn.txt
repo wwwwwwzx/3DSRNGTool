@@ -52,7 +52,7 @@ L_Targetmon = 目标宝可梦序号
 BlinkWhenSync = 同步时眨眼
 Sta_AbilityLocked = 固定特性
 Raining = 下雨
-Fidget = 主角动作
+Fidget = 待机动作
 Boy = 男孩
 Girl = 女孩
 B_OpenTool = TinyMT 时间线工具
@@ -248,6 +248,8 @@ L_StartingFrame = 计时起点帧
 L_TargetFrame = 目标帧
 B_Calc = 计算
 Startup = 自动打开
+Raining = 下雨
+Fidget = 待机动作
 ! End
 -------------------Gen7EggSeedFinder----------------------------
 ! Gen7EggSeedFinder = 7代孵蛋乱数Seed检索

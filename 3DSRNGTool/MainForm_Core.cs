@@ -243,6 +243,7 @@ namespace Pk3DSRNGTool
             // Prepare
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
             ModelStatus stmp = new ModelStatus(Modelnum, sfmt);
+            status.raining = stmp.raining = Raining.Checked;
             getsetting(sfmt);
             int frameadvance;
             int realtime = 0;
@@ -298,6 +299,7 @@ namespace Pk3DSRNGTool
             // Prepare
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
             status.IsBoy = Boy.Checked;
+            status.raining = Raining.Checked;
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;

@@ -69,12 +69,14 @@ namespace Pk3DSRNGTool
             }
             SearchSeed();
         }
-        public void UpdatePara(decimal npc = -1, decimal target = -1)
+        public void UpdatePara(decimal npc = -1, decimal target = -1, bool? raining = null)
         {
             if (npc >= 0)
                 NPC.Value = npc;
             if (target >= 0)
                 TargetFrame.Value = target;
+            if (raining != null)
+                Raining.Checked = raining ?? false;
         }
         private void Startup_CheckedChanged(object sender, EventArgs e)
         {
@@ -169,9 +171,9 @@ namespace Pk3DSRNGTool
         }
         #endregion
         #region TimerCalculateFunction
-        private void CalcTime_Output(int min, int max, bool fidget)
+        private void CalcTime_Output(int min, int max, bool fidget, bool raining)
         {
-            int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget);
+            int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget, raining);
             double realtime = totaltime[0] / 30.0;
             string str = $" {totaltime[0] * 2}F ({realtime.ToString("F")}s) <{totaltime[1] * 2}F>. ";
             str = string.Format(TIMER_STR[lindex], str);
@@ -182,8 +184,9 @@ namespace Pk3DSRNGTool
         {
             int min = (int)Time_min.Value;
             int max = (int)TargetFrame.Value;
-            bool fidget = false;
-            CalcTime_Output(min, max, fidget);
+            bool fidget = Fidget.Checked;
+            bool raining = Raining.Checked;
+            CalcTime_Output(min, max, fidget, raining);
         }
         #endregion
     }

@@ -248,6 +248,8 @@ L_TargetFrame = Fotograma Objetivo
 TimeCalculator = Calculadora de Tiempo
 B_Calc = Calcular
 Startup = Abrir al iniciar
+Raining = Raining
+Fidget = Fidget
 ! End
 -------------------Gen7EggSeedFinder----------------------------
 ! Gen7EggSeedFinder = Gen7 Buscador de Semilla de Huevos

@@ -104,10 +104,10 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Misc
-        public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber, bool fidget = false)
+        public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber, bool fidget = false, bool raining = false)
         {
             if (min > max)
-                return CalcFrame(seed, max, min, ModelNumber, fidget).Select(t => -t).ToArray();
+                return CalcFrame(seed, max, min, ModelNumber, fidget, raining).Select(t => -t).ToArray();
 
             SFMT sfmt = new SFMT(seed);
 
@@ -119,10 +119,18 @@ namespace Pk3DSRNGTool
             int frameadvance = 0;
             int frametime = 0;
             int timer = 0;
+            int fidget_cnt = -1;
+            const int fidget_cd = 452; // Average
             ModelStatus status = new ModelStatus(ModelNumber, sfmt);
+            status.raining = raining;
 
             for (int i = min; i <= max;)
             {
+                if (fidget && frametime / fidget_cd > fidget_cnt)
+                {
+                    status.frameshift(2); i += 2;
+                    fidget_cnt = frametime / fidget_cd;
+                }
                 do
                 {
                     frameadvance = status.NextState();

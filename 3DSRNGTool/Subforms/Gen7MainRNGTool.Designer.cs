@@ -74,6 +74,8 @@
             this.B_Calc = new System.Windows.Forms.Button();
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.L_NPC = new System.Windows.Forms.Label();
+            this.Fidget = new System.Windows.Forms.CheckBox();
+            this.Raining = new System.Windows.Forms.CheckBox();
             this.InputBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Offset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
@@ -421,7 +423,7 @@
             // L_StartingFrame
             // 
             this.L_StartingFrame.AutoSize = true;
-            this.L_StartingFrame.Location = new System.Drawing.Point(21, 35);
+            this.L_StartingFrame.Location = new System.Drawing.Point(9, 35);
             this.L_StartingFrame.Name = "L_StartingFrame";
             this.L_StartingFrame.Size = new System.Drawing.Size(43, 13);
             this.L_StartingFrame.TabIndex = 98;
@@ -431,7 +433,7 @@
             // 
             this.Time_min.AccessibleName = "";
             this.Time_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time_min.Location = new System.Drawing.Point(113, 33);
+            this.Time_min.Location = new System.Drawing.Point(90, 33);
             this.Time_min.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -598,7 +600,7 @@
             0,
             0,
             0});
-            this.TargetFrame.Location = new System.Drawing.Point(113, 76);
+            this.TargetFrame.Location = new System.Drawing.Point(90, 76);
             this.TargetFrame.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -610,6 +612,8 @@
             // 
             // TimeCalculator
             // 
+            this.TimeCalculator.Controls.Add(this.Raining);
+            this.TimeCalculator.Controls.Add(this.Fidget);
             this.TimeCalculator.Controls.Add(this.L_TargetFrame);
             this.TimeCalculator.Controls.Add(this.B_Calc);
             this.TimeCalculator.Controls.Add(this.NPC);
@@ -617,9 +621,9 @@
             this.TimeCalculator.Controls.Add(this.L_StartingFrame);
             this.TimeCalculator.Controls.Add(this.TargetFrame);
             this.TimeCalculator.Controls.Add(this.Time_min);
-            this.TimeCalculator.Location = new System.Drawing.Point(565, 155);
+            this.TimeCalculator.Location = new System.Drawing.Point(553, 155);
             this.TimeCalculator.Name = "TimeCalculator";
-            this.TimeCalculator.Size = new System.Drawing.Size(250, 165);
+            this.TimeCalculator.Size = new System.Drawing.Size(259, 165);
             this.TimeCalculator.TabIndex = 104;
             this.TimeCalculator.TabStop = false;
             this.TimeCalculator.Text = "Time Calculator";
@@ -627,7 +631,7 @@
             // L_TargetFrame
             // 
             this.L_TargetFrame.AutoSize = true;
-            this.L_TargetFrame.Location = new System.Drawing.Point(21, 80);
+            this.L_TargetFrame.Location = new System.Drawing.Point(9, 80);
             this.L_TargetFrame.Name = "L_TargetFrame";
             this.L_TargetFrame.Size = new System.Drawing.Size(43, 13);
             this.L_TargetFrame.TabIndex = 106;
@@ -661,11 +665,31 @@
             // L_NPC
             // 
             this.L_NPC.AutoSize = true;
-            this.L_NPC.Location = new System.Drawing.Point(21, 125);
+            this.L_NPC.Location = new System.Drawing.Point(9, 125);
             this.L_NPC.Name = "L_NPC";
             this.L_NPC.Size = new System.Drawing.Size(29, 13);
             this.L_NPC.TabIndex = 105;
             this.L_NPC.Text = "NPC";
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(179, 35);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
+            this.Fidget.TabIndex = 107;
+            this.Fidget.Text = "Fidget";
+            this.Fidget.UseVisualStyleBackColor = true;
+            // 
+            // Raining
+            // 
+            this.Raining.AutoSize = true;
+            this.Raining.Location = new System.Drawing.Point(179, 77);
+            this.Raining.Name = "Raining";
+            this.Raining.Size = new System.Drawing.Size(62, 17);
+            this.Raining.TabIndex = 108;
+            this.Raining.Text = "Raining";
+            this.Raining.UseVisualStyleBackColor = true;
             // 
             // Gen7MainRNGTool
             // 
@@ -745,5 +769,7 @@
         public System.Windows.Forms.CheckBox Startup;
         private System.Windows.Forms.Label L_Gameversion;
         private System.Windows.Forms.NumericUpDown Offset;
+        private System.Windows.Forms.CheckBox Raining;
+        private System.Windows.Forms.CheckBox Fidget;
     }
 }

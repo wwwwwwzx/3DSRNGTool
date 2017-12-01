@@ -248,6 +248,8 @@ L_TargetFrame = Target Frame
 TimeCalculator = Time Calculator
 B_Calc = Calculate
 Startup = Open on startup
+Raining = Raining
+Fidget = Fidget
 ! End
 -------------------Gen7EggSeedFinder----------------------------
 ! Gen7EggSeedFinder = Gen7 Egg Seed Finder

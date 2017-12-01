@@ -49,8 +49,8 @@ L_Lv = Lv範囲
 L_Targetmon = Index of Target Pkm
 BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
-Raining = Raining
-Fidget = Fidget
+Raining = 雨
+Fidget = 主人公の動き
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
@@ -246,6 +246,8 @@ L_TargetFrame = 目標Frame
 TimeCalculator = 待機Frame計算
 B_Calc = 計算
 Startup = Open on startup
+Raining = 雨
+Fidget = 主人公の動き
 ! End
 -------------------Gen7EggSeedFinder----------------------------
 ! Gen7EggSeedFinder = Gen7 Egg Seed Finder

@@ -689,6 +689,11 @@ namespace Pk3DSRNGTool
                 (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
             gen7tool?.UpdatePara(npc: NPC.Value);
         }
+        
+        private void Raining_CheckedChanged(object sender, EventArgs e)
+        {
+            gen7tool?.UpdatePara(raining: Raining.Checked);
+        }
 
         // Wild RNG
         private void MetLocation_SelectedIndexChanged(object sender, EventArgs e)
@@ -966,7 +971,7 @@ namespace Pk3DSRNGTool
             {
                 RNGPool.modelnumber = Modelnum;
                 RNGPool.DelayTime = (int)Timedelay.Value / 2 + 2;
-                RNGPool.raining = ModelStatus.raining = Raining.Checked;
+                RNGPool.raining = Raining.Checked;
                 RNGPool.PreHoneyCorrection = (int)Correction.Value;
                 RNGPool.HoneyDelay = IsUltra ? 63 : 93;
                 RNGPool.ultrawild = IsUltra && Method == 2;

@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool
         public bool IsBoy;
         public int fidget_cd = -1; // fidget cooldown. -1 to ignore fidget
 
-        public static bool raining;
+        public bool raining;
 
         public ModelStatus(byte n, SFMT st)
         {
