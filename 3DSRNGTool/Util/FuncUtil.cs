@@ -126,11 +126,11 @@ namespace Pk3DSRNGTool
 
             for (int i = min; i <= max;)
             {
-                if (fidget && frametime / fidget_cd > fidget_cnt)
-                {
-                    status.frameshift(2); i += 2;
-                    fidget_cnt = frametime / fidget_cd;
-                }
+                if (fidget)
+                    for (; fidget_cnt < frametime / fidget_cd; fidget_cnt++)
+                    {
+                        status.frameshift(2); i += 2;
+                    }
                 do
                 {
                     frameadvance = status.NextState();

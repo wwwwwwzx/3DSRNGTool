@@ -993,7 +993,9 @@ namespace Pk3DSRNGTool
                     Frame.standard = FuncUtil.CalcFrame(seed: Seed.Value,
                         min: (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value),
                         max: (int)TargetFrame.Value,
-                        ModelNumber: Modelnum)[0] * 2;
+                        ModelNumber: Modelnum,
+                        raining: Raining.Checked,
+                        fidget: Fidget.Checked)[0] * 2;
             }
             if (Gen6)
             {
