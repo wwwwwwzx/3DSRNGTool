@@ -723,6 +723,13 @@ namespace Pk3DSRNGTool
             },
             new EncounterArea_USUM
             {
+                Location = 200,
+                Correction = 2,
+                LevelMin = 06,
+                Species = new[] {0,054,041,041,041},
+            },
+            new EncounterArea_USUM
+            {
                 Location = 046, // Verdant Cavern
                 Correction = 09,
                 LevelMin = 08,
