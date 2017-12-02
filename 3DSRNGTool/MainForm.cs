@@ -920,7 +920,7 @@ namespace Pk3DSRNGTool
                 if (FormPM is PKMW7 pmw7) // For UB
                 {
                     Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
-                    Correction.Enabled = Special_th.Enabled = pmw7.Conceptual;
+                    Special_th.Enabled = pmw7.Conceptual;
                 }
                 else if (FormPM is PKMW6 pmw6)
                 {
