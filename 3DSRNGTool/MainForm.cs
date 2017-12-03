@@ -302,6 +302,12 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Basic UI
+        private void M_ProfileManager_Click(object sender, EventArgs e)
+        {
+            new Subforms.ProfileManager().ShowDialog();
+            new Subforms.ProfileView().ShowDialog();
+        }
+
         private void VisibleTrigger(object sender, EventArgs e)
         {
             if ((sender as Control).Visible == false)
