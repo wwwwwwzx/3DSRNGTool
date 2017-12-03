@@ -31,6 +31,28 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 
 Usually it's the last screen before the battle starts, or the special dialogue box.
 
+
+#### Generation 7
+
+- __In-game gifts/Fossils/Cosmog/Mystery Gift__: _You received xxx!_
+- __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
+- __Solgaleo/Lunala__: No dialogue.
+- __Wild UBs, Island Scan & wild Pokemon__: Press A and thus enter the bag from X menu.
+- __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
+- __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.
+- __Assembled Zygarde__: _Zygarde has gone into a Poke Ball!_
+- __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
+
+##### Sun and Moon
+- __Pikipek__: No dialogue. Before the fourth step in grass.
+- __Exeggutor__: _Ahhh! What is that, xxx?!_
+- __Starters__: _Having accepted on another, you'll surely be friends for life._
+
+##### Ultra Sun and Ultra Moon
+- __Grubbin__: No dialogue. Before the fourth step in grass.
+- __Ultra Wormholes Past-gen Legends/Non-legends__: No dialogue. Save as close as possible, make a step to trigger the battle.
+- __Ultra Wormholes UBs__: No dialogue. Press A to trigger the battle.
+
 #### Transporter (Virtual Console)
 
 At `Use this game` Button. Calibrate the delay beforehand.
@@ -87,20 +109,6 @@ Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on 
 
 ##### Tip: 
  \* For consistent delay, use D-pad (arrow keys) to move along grid.  
-
-#### Generation 7
-##### Sun and Moon
-- __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
-- __Solgaleo/Lunala__: No dialogue.
-- __Zygarde__: _Zygarde has gone into a Poke Ball!_
-- __UBs, Island Scan & wild Pokemon__: Press A and thus enter the bag from X menu.
-- __Type:Null/Cosmog/Porygon/Aerodactyl/Magearna/Fossils/Gift Eevee egg and Mystery Gift__: _You received xxx!_
-- __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
-- __Pikipek__: No dialogue. Before the fourth step in grass.
-- __Exeggutor__: _Ahhh! What is that, xxx?!_
-- __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
-- __Starters__: _Having accepted on another, you'll surely be friends for life._
-- __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.
 
 ## ID Bot Usage
 - Enable Input Redirection feature via Rosalina menu (L+Down+Select => Miscellaneous options... => Start InputRedirecion) you will see the Console's IP upper-right.
