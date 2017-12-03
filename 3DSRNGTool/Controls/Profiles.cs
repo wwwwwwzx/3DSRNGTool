@@ -154,7 +154,7 @@ namespace Pk3DSRNGTool
             {
                 try
                 {
-                    XmlSerializer xmlDeserializer = new XmlSerializer(typeof(ObservableCollection<Profile>));
+                    XmlSerializer xmlDeserializer = new XmlSerializer(typeof(BindingList<Profile>));
                     using (TextReader txtReader = new StreamReader(file))
                     {
                         GameProfiles = (BindingList<Profile>)xmlDeserializer.Deserialize(txtReader);
