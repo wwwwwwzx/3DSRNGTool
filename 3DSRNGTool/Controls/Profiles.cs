@@ -5,16 +5,69 @@ using System.Xml.Serialization;
 
 namespace Pk3DSRNGTool
 {
-    public class Profiles
+    public static class Profiles
     {
-        public ObservableCollection<Profile> GameProfiles = new ObservableCollection<Profile>();
+        public static ObservableCollection<Profile> GameProfiles = new ObservableCollection<Profile>();
 
         public class Profile
         {
+            public string Description { get; set; }
+
+            [System.ComponentModel.Browsable(false)]
             public int GameVersion { get; set; }
+
+            [System.ComponentModel.DisplayName("Game")]
+            public string ShowGameVersion
+            {
+                get
+                {
+                    switch (GameVersion)
+                    {
+                        case 0:
+                            return "X";
+                        case 1:
+                            return "Y";
+                        case 2:
+                            return "OR";
+                        case 3:
+                            return "AS";
+                        case 4:
+                            return "Transporter";
+                        case 5:
+                            return "Sun";
+                        case 6:
+                            return "Moon";
+                        case 7:
+                            return "Ultra Sun";
+                        case 8:
+                        default:
+                            return "Ultra Moon";
+                    }
+                }
+            }
+
             public short TSV { get; set; }
-            public bool ShinyChar { get; set; }
+
+            [System.ComponentModel.DisplayName("Shiny Charm?")]
+            public bool ShinyCharm { get; set; }
+
+            [System.ComponentModel.Browsable(false)]
             public EggSeeds Seeds { get; set; }
+
+            [System.ComponentModel.DisplayName("Egg Seeds")]
+            public string ShowSeeds
+            {
+                get
+                {
+                    string seeds = string.Empty;
+                    seeds += (Seeds.Key0 != 0 ? Seeds.Key0.ToString() + " - " : ""); //Improve :)
+                    seeds += (Seeds.Key1 != 0 ? Seeds.Key1.ToString() + " - " : "");
+                    seeds += (Seeds.Key2 != 0 ? Seeds.Key2.ToString() + " - " : "");
+                    seeds += (Seeds.Key3 != 0 ? Seeds.Key3.ToString() : "");
+
+                    return seeds;
+                }
+            }
 
         }
 
@@ -26,7 +79,7 @@ namespace Pk3DSRNGTool
             public uint Key0 { get; set; }
         }
 
-        public void ReadProfiles()
+        public static void ReadProfiles()
         {
             string file = Environment.CurrentDirectory + @"\profiles.xml";
 
@@ -47,11 +100,13 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public void WriteProfiles()
+        public static void WriteProfiles()
         {
             string file = Environment.CurrentDirectory + @"\profiles.xml";
 
-            //GameProfiles.Add(new Profile() { GameVersion = 0, Seeds = new EggSeeds() { Key0 = 0, Key1 = 1, Key2 = 2, Key3 = 3 }, ShinyChar = true, TSV = 1234 });
+
+
+            GameProfiles.Add(new Profile() { Description = "Testing", GameVersion = 0, Seeds = new EggSeeds() { Key0 = 0, Key1 = 1, Key2 = 2, Key3 = 3 }, ShinyCharm = true, TSV = 1234 });
 
             try
             {

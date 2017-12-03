@@ -117,6 +117,8 @@ namespace Pk3DSRNGTool
 
             if (Properties.Settings.Default.OpenGen7Tool)
                 M_Gen7MainRNGTool_Click(null, null);
+
+            Profiles.ReadProfiles(); // Read all profiles
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -305,7 +307,6 @@ namespace Pk3DSRNGTool
         private void M_ProfileManager_Click(object sender, EventArgs e)
         {
             new Subforms.ProfileManager().ShowDialog();
-            new Subforms.ProfileView().ShowDialog();
         }
 
         private void VisibleTrigger(object sender, EventArgs e)

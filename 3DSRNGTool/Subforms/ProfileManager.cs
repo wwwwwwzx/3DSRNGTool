@@ -16,12 +16,25 @@ namespace Pk3DSRNGTool.Subforms
         {
             InitializeComponent();
 
-            var t = new Profiles();
-            t.WriteProfiles();
-            t.ReadProfiles();
+            D_Profiles.DataSource = new BindingSource { DataSource = Profiles.GameProfiles };
+        }
 
-            D_Profiles.DataSource = new BindingSource { DataSource = t.GameProfiles };
+        private void M_Add_Click(object sender, EventArgs e)
+        {
+            new ProfileView().ShowDialog();
+        }
 
+        private void M_Edit_Click(object sender, EventArgs e)
+        {
+            new ProfileView(true).ShowDialog();
+        }
+
+        private void M_Remove_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Remove profile?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                // Remove :)
+            }
         }
     }
 }
