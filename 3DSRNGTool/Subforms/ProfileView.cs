@@ -8,19 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Pk3DSRNGTool.Subforms
 {
     public partial class ProfileView : Form
     {
         private bool Edit { get; set; }
+        private Profiles.Profile Profile { get; set; }
 
-        public ProfileView(bool _Edit = false)
+        public ProfileView(bool _Edit = false, Profiles.Profile _Profile = null)
         {
             InitializeComponent();
 
             Edit = _Edit;
+            Profile = _Profile;
 
-            Gameversion.SelectedIndex = 0;
+            if (Edit)
+            {
+                Description.Text = Profile.Description;
+                Gameversion.SelectedIndex = Profile.GameVersion;
+                TSV.Value = Profile.TSV;
+                ShinyCharm.Checked = Profile.ShinyCharm;
+                Key3.Value = Profile.Seeds.Key3;
+                Key2.Value = Profile.Seeds.Key2;
+                Key1.Value = Profile.Seeds.Key1;
+                Key0.Value = Profile.Seeds.Key0;
+            }
+            else
+            { Gameversion.SelectedIndex = 0; }
         }
 
         private void Gameversion_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,7 +64,7 @@ namespace Pk3DSRNGTool.Subforms
                 return;
             }
 
-            Profiles.GameProfiles.Add(new Profiles.Profile()
+            var newProfile = new Profiles.Profile()
             {
                 Description = Description.Text,
                 GameVersion = Gameversion.SelectedIndex,
@@ -62,7 +77,18 @@ namespace Pk3DSRNGTool.Subforms
                     Key2 = Key2.Value,
                     Key3 = Key3.Value
                 }
-            });
+            };
+
+            if (Edit)
+            {
+                int i = Profiles.GameProfiles.IndexOf(Profile);
+                Profiles.GameProfiles[i] = newProfile;
+            }
+            else
+            {
+                Profiles.GameProfiles.Add(newProfile);
+
+            }
 
             Profiles.WriteProfiles();
             MessageBox.Show("Profiles updated!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
