@@ -275,7 +275,7 @@ namespace Pk3DSRNGTool.Core
                 case 2:
                     int crydelay = DelayType == 1 ? 78 : 75;
                     time_elapse7(DelayTime - crydelay - 20); // 48
-                    if (modelnumber == 7) SolLunaRearrange(new[]{ 0, 1, 2, 5, 6 });
+                    if (modelnumber == 7) SolLunaRearrange(new[] { 0, 1, 2, 5, 6 });
                     time_elapse7(19);
                     Cry(3);
                     time_elapse7(crydelay);
@@ -291,7 +291,7 @@ namespace Pk3DSRNGTool.Core
                     modelnumber = 1;
                     time_elapse7(2);
                     break;
-                    
+
                 case 09: // US Sol
                     time_elapse7(DelayTime - 77);  // 8
                     Cry(8);
@@ -340,6 +340,15 @@ namespace Pk3DSRNGTool.Core
                     break;
                 case 23: // Pheromosa
                     goto case 13; // 29(2)|14|34(3)
+                case 24: // Xurkitree
+                    time_elapse7(DelayTime - 412); // 69(?)|42(2)|93(1)|242|35(2)
+                    ChangeModelNumber(2);
+                    time_elapse7(42);
+                    ChangeModelNumber(1);
+                    time_elapse7(93);
+                    ChangeModelNumber(2);
+                    SplittedDelay(277, 35);
+                    break;
                 case 25: // Celesteela
                     time_elapse7(DelayTime - 322); // 248(2)|77(1)|195|50(2)
                     ChangeModelNumber(1);
