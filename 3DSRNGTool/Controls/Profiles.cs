@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -7,16 +8,40 @@ namespace Pk3DSRNGTool
 {
     public static class Profiles
     {
-        public static ObservableCollection<Profile> GameProfiles = new ObservableCollection<Profile>();
+        public static BindingList<Profile> GameProfiles = new BindingList<Profile>();
 
-        public class Profile
+        public class Profile : INotifyPropertyChanged
         {
-            public string Description { get; set; }
+            private string _Description;
+            public string Description
+            {
+                get { return _Description; }
+                set
+                {
+                    if (_Description != value)
+                    {
+                        _Description = value;
+                        NotifyChanged("Description");
+                    }
+                }
+            }
 
-            [System.ComponentModel.Browsable(false)]
-            public int GameVersion { get; set; }
+            private int _GameVersion;
+            [Browsable(false)]
+            public int GameVersion
+            {
+                get { return _GameVersion; }
+                set
+                {
+                    if (_GameVersion != value)
+                    {
+                        _GameVersion = value;
+                        NotifyChanged("GameVersion");
+                    }
+                }
+            }
 
-            [System.ComponentModel.DisplayName("Game")]
+            [DisplayName("Game")]
             public string ShowGameVersion
             {
                 get
@@ -46,15 +71,51 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            public short TSV { get; set; }
+            private short _TSV;
+            public short TSV
+            {
+                get { return _TSV; }
+                set
+                {
+                    if (_TSV != value)
+                    {
+                        _TSV = value;
+                        NotifyChanged("TSV");
+                    }
+                }
+            }
 
-            [System.ComponentModel.DisplayName("Shiny Charm?")]
-            public bool ShinyCharm { get; set; }
+            private bool _ShinyCharm;
+            [DisplayName("Shiny Charm?")]
+            public bool ShinyCharm
+            {
+                get { return _ShinyCharm; }
+                set
+                {
+                    if (_ShinyCharm != value)
+                    {
+                        _ShinyCharm = value;
+                        NotifyChanged("ShinyCharm");
+                    }
+                }
+            }
 
-            [System.ComponentModel.Browsable(false)]
-            public EggSeeds Seeds { get; set; }
+            private EggSeeds _Seeds;
+            [Browsable(false)]
+            public EggSeeds Seeds
+            {
+                get { return _Seeds; }
+                set
+                {
+                    if (_Seeds != value)
+                    {
+                        _Seeds = value;
+                        NotifyChanged("Seeds");
+                    }
+                }
+            }
 
-            [System.ComponentModel.DisplayName("Egg Seeds")]
+            [DisplayName("Egg Seeds")]
             public string ShowSeeds
             {
                 get
@@ -69,6 +130,12 @@ namespace Pk3DSRNGTool
                 }
             }
 
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private void NotifyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public class EggSeeds
@@ -90,7 +157,7 @@ namespace Pk3DSRNGTool
                     XmlSerializer xmlDeserializer = new XmlSerializer(typeof(ObservableCollection<Profile>));
                     using (TextReader txtReader = new StreamReader(file))
                     {
-                        GameProfiles = (ObservableCollection<Profile>)xmlDeserializer.Deserialize(txtReader);
+                        GameProfiles = (BindingList<Profile>)xmlDeserializer.Deserialize(txtReader);
                     }
                 }
                 catch (Exception ex)
@@ -104,13 +171,9 @@ namespace Pk3DSRNGTool
         {
             string file = Environment.CurrentDirectory + @"\profiles.xml";
 
-
-
-            GameProfiles.Add(new Profile() { Description = "Testing", GameVersion = 0, Seeds = new EggSeeds() { Key0 = 0, Key1 = 1, Key2 = 2, Key3 = 3 }, ShinyCharm = true, TSV = 1234 });
-
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ObservableCollection<Profile>));
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(BindingList<Profile>));
                 using (TextWriter txtWriter = new StreamWriter(file))
                 {
                     xmlSerializer.Serialize(txtWriter, GameProfiles);
