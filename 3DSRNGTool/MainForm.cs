@@ -946,10 +946,12 @@ namespace Pk3DSRNGTool
                 case 382 when Gen6:
                 case 383 when Gen6: // Grondon / Kyogre
                     UpdateTip("The delay varies from 2700-4000, depends on save and console"); break;
+                case 772 when IsUltra: // Type:Null
+                    UpdateTip("NPC number = 1 at Aether Paradise"); break;
                 case 791 when Gen7 && !IsUltra:
                 case 792 when Gen7 && !IsUltra: // SolLuna
                     UpdateTip("NPC can be 2 or 6, it depends on save"); break;
-                case 796 when IsUltra:
+                case 796 when IsUltra: // Xurkitree
                     UpdateTip("NPC can be 1 or 2. Depends on the walking Xurkitree in the background"); break;
                 case 801:  // Magearna
                     UpdateTip("NPC can be 6 or 7. Depends on the person walking by"); break;
