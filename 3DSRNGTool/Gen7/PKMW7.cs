@@ -31,7 +31,7 @@
                     new PKMW7 { Species = 797, Level = 65, Location = new []{134,124}, Rate = new byte[]{30,30}, Version = GameVersion.MN,},    // Celesteela
                     new PKMW7 { Species = 798, Level = 60, Location = new []{134,376,632}, Rate = new byte[]{30,30,30}, Version = GameVersion.SN,},    // Kartana
                     new PKMW7 { Species = 799, Level = 70, Location = new []{694}, Rate = new byte[]{80},},    // Guzzlord
-                    new PKMW7 { Species = 800, Level = 75, Location = new []{548}, Rate = new byte[]{05},},    // Necrozma
+                    new PKMW7 { Species = 800, Level = 75, Location = new []{546}, Rate = new byte[]{05},},    // Necrozma
                 }
             },
             new PokemonList

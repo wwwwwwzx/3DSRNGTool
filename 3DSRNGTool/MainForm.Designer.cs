@@ -97,6 +97,7 @@
             this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsStarting = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsFidget = new System.Windows.Forms.ToolStripMenuItem();
+            this.DumpAcceptList = new System.Windows.Forms.ToolStripMenuItem();
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.DGV_ID = new System.Windows.Forms.DataGridView();
@@ -396,7 +397,7 @@
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.DumpAcceptList = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tip = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -907,7 +908,7 @@
             this.SetAsFidget,
             this.DumpAcceptList});
             this.DGVMS.Name = "DGVMS";
-            this.DGVMS.Size = new System.Drawing.Size(263, 158);
+            this.DGVMS.Size = new System.Drawing.Size(263, 136);
             // 
             // SetAsTarget
             // 
@@ -943,6 +944,13 @@
             this.SetAsFidget.Size = new System.Drawing.Size(262, 22);
             this.SetAsFidget.Text = "Set as Fidget";
             this.SetAsFidget.Click += new System.EventHandler(this.SetAsFidget_Click);
+            // 
+            // DumpAcceptList
+            // 
+            this.DumpAcceptList.Name = "DumpAcceptList";
+            this.DumpAcceptList.Size = new System.Drawing.Size(262, 22);
+            this.DumpAcceptList.Text = "Dump Accept Egg List";
+            this.DumpAcceptList.Click += new System.EventHandler(this.DumpAcceptList_Click);
             // 
             // Gameversion
             // 
@@ -1091,7 +1099,7 @@
             this.M_Tool});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(92, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(93, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1119,7 +1127,7 @@
             this.M_NTRHelper,
             this.M_Gen6MainSeedFinder});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(47, 20);
+            this.M_Tool.Size = new System.Drawing.Size(48, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -3034,6 +3042,7 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.Tip);
             this.RNGInfo.Controls.Add(this.TargetFrame);
             this.RNGInfo.Controls.Add(this.RB_EggShortest);
             this.RNGInfo.Controls.Add(this.B_ResetFrame);
@@ -4740,12 +4749,15 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // DumpAcceptList
+            // Tip
             // 
-            this.DumpAcceptList.Name = "DumpAcceptList";
-            this.DumpAcceptList.Size = new System.Drawing.Size(262, 22);
-            this.DumpAcceptList.Text = "Dump Accept Egg List";
-            this.DumpAcceptList.Click += new System.EventHandler(this.DumpAcceptList_Click);
+            this.Tip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tip.AutoSize = true;
+            this.Tip.Location = new System.Drawing.Point(231, 0);
+            this.Tip.Name = "Tip";
+            this.Tip.Size = new System.Drawing.Size(13, 13);
+            this.Tip.TabIndex = 94;
+            this.Tip.Text = "?";
             // 
             // MainForm
             // 
@@ -5232,6 +5244,7 @@
         private System.Windows.Forms.PictureBox ShinyMark;
         private System.Windows.Forms.ToolStripMenuItem SetAsFidget;
         private System.Windows.Forms.ToolStripMenuItem DumpAcceptList;
+        private System.Windows.Forms.Label Tip;
     }
 }
 

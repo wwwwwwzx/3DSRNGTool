@@ -349,6 +349,17 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Save();
         }
 
+        private void UpdateTip(string msg)
+        {
+            if (Tip.Visible = msg != null)
+            {
+                DGVToolTip.SetToolTip(RNGInfo, "Tip: " + msg);
+                DGVToolTip.SetToolTip(Tip, "Tip: " + msg);
+            }
+            else
+                DGVToolTip.RemoveAll();
+        }
+
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
@@ -567,7 +578,7 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.Method = Method;
 
-            DGVToolTip.RemoveAll();
+            UpdateTip(null);
 
             DGV.Visible = Method < 4;
             DGV_ID.Visible = Method == 4;
@@ -610,10 +621,7 @@ namespace Pk3DSRNGTool
             B_OpenTool.Visible = gen6timeline_available || IsHorde;
 
             if (MainRNGEgg.Checked)
-            {
-                DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 4-8");
-                DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 4-8");
-            }
+                UpdateTip("NPC can be 4-8");
 
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
@@ -689,7 +697,7 @@ namespace Pk3DSRNGTool
                 (NPC.Value == 0 ? BlinkFOnly : SafeFOnly).Visible = true;
             gen7tool?.UpdatePara(npc: NPC.Value);
         }
-        
+
         private void Raining_CheckedChanged(object sender, EventArgs e)
         {
             gen7tool?.UpdatePara(raining: Raining.Checked);
@@ -706,6 +714,10 @@ namespace Pk3DSRNGTool
                 Correction.Value = tmp.Correction;
                 Raining.Enabled = true;
                 Raining.Checked = tmp.Raining;
+                if (LocationTable7.RustlingSpots.Contains(tmp.Location))
+                    UpdateTip("Correction and NPC might be different from default setting when there are rustling spots");
+                else
+                    UpdateTip(null);
                 Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
                 Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
             }
@@ -889,7 +901,7 @@ namespace Pk3DSRNGTool
             }
             else // Fall through
             {
-                Fidget.Visible = 
+                Fidget.Visible =
                 ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
@@ -931,18 +943,16 @@ namespace Pk3DSRNGTool
             }
             switch (specform)
             {
-                case 382:
-                case 383:
-                    DGVToolTip.SetToolTip(Timedelay, "Tips: The delay varies from 2700-4000, depends on save and console");
-                    DGVToolTip.SetToolTip(ConsiderDelay, "Tips: The delay varies from 2700-4000, depends on save and console"); break; // Grondon / Kyogre
-                case 791:
-                case 792:
-                    DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 2 or 6, it depends on save");
-                    DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 2 or 6, it depends on save"); break; // SolLuna
-                case 801:
-                    DGVToolTip.SetToolTip(L_NPC, "Tips: NPC can be 6 or 7. Depends on the person walking by");
-                    DGVToolTip.SetToolTip(NPC, "Tips: NPC can be 6 or 7. Depends on the person walking by"); break; // Magearna
-                default: DGVToolTip.RemoveAll(); break;
+                case 382 when Gen6:
+                case 383 when Gen6: // Grondon / Kyogre
+                    UpdateTip("The delay varies from 2700-4000, depends on save and console"); break;
+                case 791 when Gen7 && !IsUltra:
+                case 792 when Gen7 && !IsUltra: // SolLuna
+                    UpdateTip("NPC can be 2 or 6, it depends on save"); break;
+                case 801:  // Magearna
+                    UpdateTip("NPC can be 6 or 7. Depends on the person walking by"); break;
+                default:
+                    UpdateTip(null); break;
             }
 
             Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =

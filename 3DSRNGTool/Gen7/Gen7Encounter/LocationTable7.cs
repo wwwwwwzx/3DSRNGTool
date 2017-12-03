@@ -12,8 +12,10 @@ namespace Pk3DSRNGTool
             TableNow = IsUltra ? USUMTable : SMTable;
             switch (category)
             {
-                case 1: return IsUltra ? UBLocationList2 : UBLocationList;
-                case 2: return IsUltra ? QRLocationList2 : QRLocationList;
+                case 1:
+                case 2:
+                    return (IsUltra ? PKMW7.Species_USUM : PKMW7.Species_SM)[category].List
+                           .Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }
         }
@@ -1302,12 +1304,6 @@ namespace Pk3DSRNGTool
             #endregion
         };
 
-        public readonly static int[] UBLocationList = PKMW7.Species_SM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
-
-        public readonly static int[] UBLocationList2 = PKMW7.Species_USUM[1].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
-
-        public readonly static int[] QRLocationList = PKMW7.Species_SM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
-
-        public readonly static int[] QRLocationList2 = PKMW7.Species_USUM[2].List.Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
+        public readonly static int[] RustlingSpots = { 046, 052, 058, 064, 158, 166 };
     }
 }
