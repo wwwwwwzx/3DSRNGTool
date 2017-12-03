@@ -103,7 +103,7 @@ namespace Pk3DSRNGTool
         public static readonly string[] ANY_STR = { "Any", "指定なし", "Any", "Any", "Any", "任意" };
         public static readonly string[] NONE_STR = { "None", "なし", "None", "None", "None", "无" };
         public static readonly string[] SETTINGERROR_STR = { "Error at ", "Error at ", "Error at ", "Error at ", "Error at ", "出错啦0.0 发生在" };
-        public static readonly string[] NOSELECTION_STR = { "Please Select", "Please Select", "Please Select", "Please Select", "Please Select", "请选择" };
+        public static readonly string[] NOSELECTION_STR = { "Please Select", "選択されていません", "Please Select", "Please Select", "Please Select", "请选择" };
         public static readonly string[] FILEERRORSTR = { "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "文件格式不正确" };
         public static readonly string[] NORESULT_STR = { "No Result", "No Result", "No Result", "No Result", "No Result", "没有结果" };
         public static readonly string[] WAIT_STR = { "Please Wait...", "お待ちください...", "Please Wait...", "Please Wait...", "Please Wait...", "请稍后..." };
@@ -210,7 +210,7 @@ namespace Pk3DSRNGTool
         public static readonly string[] ACCEPTEGGNUM_STR =
         {
             "Accept {0} eggs",
-            "{0} 回受け取り",
+            "消費：{0} 回受け取り",
             "Accept {0} eggs",
             "Accept {0} eggs",
             "Accept {0} eggs",
