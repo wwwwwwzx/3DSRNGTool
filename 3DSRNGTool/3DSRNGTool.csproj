@@ -58,6 +58,7 @@
     <Compile Include="Controls\GenderListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Profiles.cs" />
     <Compile Include="Gen6\Egg6.cs" />
     <Compile Include="Gen6\Gen6Encounter\FishingArea.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
@@ -176,6 +177,18 @@
     <Compile Include="Subforms\NTRHelper.Designer.cs">
       <DependentUpon>NTRHelper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\ProfileManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\ProfileManager.Designer.cs">
+      <DependentUpon>ProfileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\ProfileView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\ProfileView.Designer.cs">
+      <DependentUpon>ProfileView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\TinyTimelineTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +243,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Subforms\ProfileManager.resx">
+      <DependentUpon>ProfileManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\ProfileView.resx">
+      <DependentUpon>ProfileView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
