@@ -236,7 +236,8 @@ namespace Pk3DSRNGTool
                 if (Gen7)
                 {
                     Status = FuncUtil.SeedStr2Array(seed) ?? Status;
-                    TargetFrame.Value = Math.Max(0, TargetFrame.Value - (int)DGV.CurrentRow.Cells["dgv_Frame"].Value);
+                    var newtarget = TargetFrame.Value - (int)DGV.CurrentRow.Cells["dgv_Frame"].Value;
+                    TargetFrame.Value = newtarget > 0 ? newtarget : TargetFrame.Value;
                 }
             }
             catch (NullReferenceException)
@@ -256,9 +257,13 @@ namespace Pk3DSRNGTool
                 for (int i = adv; i > 0; i--)
                     tmt.Next();
                 Status = tmt.status;
+                var newtarget = TargetFrame.Value - (int)DGV.CurrentRow.Cells["dgv_Frame"].Value - adv;
+                TargetFrame.Value = newtarget > 0 ? newtarget : TargetFrame.Value;
             }
-            catch
-            { }
+            catch (NullReferenceException)
+            {
+                Error(NOSELECTION_STR[lindex]);
+            }
         }
 
         private void DumpAcceptList_Click(object sender, EventArgs e)

@@ -360,8 +360,9 @@ namespace Pk3DSRNGTool
         {
             if (Tip.Visible = msg != null)
             {
-                DGVToolTip.SetToolTip(RNGInfo, "Tip: " + msg);
-                DGVToolTip.SetToolTip(Tip, "Tip: " + msg);
+                DGVToolTip.ToolTipTitle = "Tip";
+                DGVToolTip.SetToolTip(RNGInfo, msg);
+                DGVToolTip.SetToolTip(Tip, msg);
             }
             else
                 DGVToolTip.RemoveAll();

@@ -15,13 +15,11 @@ namespace Pk3DSRNGTool
         {
             switch (Method)
             {
-                case 0:
-                    if (CreateTimeline.Checked) { Search6_Timeline(); return; }
-                    goto default;
-                case 2:
-                    if (IsHorde) { Search6_Horde(); return; }
-                    if (CreateTimeline.Checked) { Search6_Timeline(); return; }
-                    goto default;
+                case 0 when CreateTimeline.Checked:
+                case 2 when CreateTimeline.Checked:
+                    Search6_Timeline(); return;
+                case 2 when IsHorde:
+                    Search6_Horde(); return;
                 case 3:
                     Search6_Egg(); return;
                 case 4:
@@ -114,7 +112,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
             // Prepare
             if (FullInfoHorde)
-            { 
+            {
                 RNGPool.horde = new HordeResults(new TinyMT(TTT.Gen6Tiny), (int)TTT.Parameters.Value);
                 SlotSpecies.SelectedValue = slotspecies[RNGPool.horde.Slot - 1];
             }
@@ -178,7 +176,7 @@ namespace Pk3DSRNGTool
         private void Search6_ID()
         {
             var rng = new TinyMT(new uint[] { ID_Tiny0.Value, ID_Tiny1.Value, ID_Tiny2.Value, ID_Tiny3.Value });
-            int min = Advanced.Checked ? 0 : (int)Frame_min.Value;
+            int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             IDFrames.Clear();
             IDFrames = new List<Frame_ID>();
@@ -199,7 +197,7 @@ namespace Pk3DSRNGTool
         #region Gen7 Search
         private void Search7()
         {
-            Frame_min.Value = Math.Max(Frame_min.Value , FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method));
+            Frame_min.Value = Math.Max(Frame_min.Value, FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method));
             // ID
             if (Method == 4)
             {
@@ -314,7 +312,7 @@ namespace Pk3DSRNGTool
                 RNGPool.CopyStatus(status);
 
                 var result = RNGPool.Generate7() as Result7;
-                
+
                 if (frame >= FirstJumpFrame) // Find the first call
                 {
                     status.fidget_cd = 1;
