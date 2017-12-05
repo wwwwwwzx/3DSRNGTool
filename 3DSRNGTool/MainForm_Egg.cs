@@ -198,7 +198,7 @@ namespace Pk3DSRNGTool
             string tmp = "";
             if (eggnum < 0)
                 return LOWEGGNUM_STR[lindex];
-            tmp += string.Format(ACCEPTEGGNUM_STR[lindex],eggnum);
+            tmp += string.Format(ACCEPTEGGNUM_STR[lindex], eggnum);
             if (rejectnum == 0)
                 return tmp;
             tmp += string.Format(REJECTEGGNUM_STR[lindex, path ? 0 : 1], rejectnum);
@@ -234,7 +234,10 @@ namespace Pk3DSRNGTool
                 }
                 var seed = (string)DGV.CurrentRow.Cells["dgv_tinystate"].Value;
                 if (Gen7)
+                {
                     Status = FuncUtil.SeedStr2Array(seed) ?? Status;
+                    TargetFrame.Value = Math.Max(0, TargetFrame.Value - (int)DGV.CurrentRow.Cells["dgv_Frame"].Value);
+                }
             }
             catch (NullReferenceException)
             {

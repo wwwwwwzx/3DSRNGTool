@@ -1356,6 +1356,7 @@ namespace Pk3DSRNGTool
             dgv_tinystate.HeaderText = COLUMN_STR[lindex][Gen7 ? 1 : 2];
             SetAsAfter.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked;
             SetAsCurrent.Visible = Method == 3 && !MainRNGEgg.Checked;
+            SetAsStarting.Visible = Method != 3 || MainRNGEgg.Checked;
             SetAsFidget.Visible = JumpFrame.Visible;
             DumpAcceptList.Visible = RB_EggShortest.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
