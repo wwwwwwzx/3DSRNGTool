@@ -46,15 +46,16 @@
             this.L_TSV = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.TextBox();
+            this.B_Current = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_Save
             // 
-            this.B_Save.Location = new System.Drawing.Point(39, 248);
+            this.B_Save.Location = new System.Drawing.Point(81, 248);
             this.B_Save.Name = "B_Save";
-            this.B_Save.Size = new System.Drawing.Size(75, 23);
+            this.B_Save.Size = new System.Drawing.Size(64, 23);
             this.B_Save.TabIndex = 0;
             this.B_Save.Text = "Save";
             this.B_Save.UseVisualStyleBackColor = true;
@@ -62,9 +63,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(120, 248);
+            this.button2.Location = new System.Drawing.Point(154, 248);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(64, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -243,11 +244,22 @@
             this.Description.Size = new System.Drawing.Size(121, 20);
             this.Description.TabIndex = 14;
             // 
+            // B_Current
+            // 
+            this.B_Current.Location = new System.Drawing.Point(11, 248);
+            this.B_Current.Name = "B_Current";
+            this.B_Current.Size = new System.Drawing.Size(64, 23);
+            this.B_Current.TabIndex = 15;
+            this.B_Current.Text = "Current";
+            this.B_Current.UseVisualStyleBackColor = true;
+            this.B_Current.Click += new System.EventHandler(this.B_Current_Click);
+            // 
             // ProfileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 281);
+            this.Controls.Add(this.B_Current);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.L_TSV);
@@ -289,5 +301,6 @@
         private System.Windows.Forms.Label L_TSV;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox Description;
+        private System.Windows.Forms.Button B_Current;
     }
 }

@@ -94,5 +94,23 @@ namespace Pk3DSRNGTool.Subforms
         {
             Close();
         }
+
+        private void B_Current_Click(object sender, EventArgs e)
+        {
+            TSV.Value = Properties.Settings.Default.TSV;
+            ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
+            if ((Gameversion.SelectedIndex = Program.mainform.Ver) > 4)
+            {
+                Key3.Value = Properties.Settings.Default.ST3;
+                Key2.Value = Properties.Settings.Default.ST2;
+                Key1.Value = Properties.Settings.Default.ST1;
+                Key0.Value = Properties.Settings.Default.ST0;
+            }
+            else
+            {
+                Key1.Value = (uint)(Properties.Settings.Default.Key >> 32);
+                Key0.Value = (uint)Properties.Settings.Default.Key;
+            }
+        }
     }
 }

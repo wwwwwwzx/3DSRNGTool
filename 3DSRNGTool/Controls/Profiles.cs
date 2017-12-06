@@ -87,7 +87,7 @@ namespace Pk3DSRNGTool
                 get { return _Seeds; }
                 set
                 {
-                    if (_Seeds.SequenceEqual(value))
+                    if (!_Seeds.SequenceEqual(value))
                     {
                         _Seeds = (uint[])value.Clone();
                         NotifyChanged("Seeds");
@@ -100,7 +100,7 @@ namespace Pk3DSRNGTool
             {
                 get
                 {
-                    return GameVersion > 5 ? string.Join(",", Seeds.Select(v => v.ToString("X8")).Reverse())
+                    return GameVersion > 4 ? string.Join(",", Seeds.Select(v => v.ToString("X8")).Reverse())
                         : string.Join(",", Seeds.Take(2).Select(v => v.ToString("X8")).Reverse());
                 }
             }
