@@ -722,6 +722,8 @@ namespace Pk3DSRNGTool
                 Correction.Value = tmp.Correction;
                 Raining.Enabled = true;
                 Raining.Checked = tmp.Raining;
+                if (CB_Category.SelectedIndex == 1 && FormPM is PKMW7 pmw7 && !pmw7.Conceptual)
+                    Special_th.Value = pmw7.Rate[MetLocation.SelectedIndex];
                 if (LocationTable7.RustlingSpots.Contains(tmp.Location))
                     UpdateTip("Correction and NPC might be different from default setting when there are rustling spots");
                 else
