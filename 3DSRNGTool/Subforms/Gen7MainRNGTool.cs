@@ -21,7 +21,6 @@ namespace Pk3DSRNGTool
             e.Cancel = true;
         }
 
-        private static int lindex => Program.mainform.lindex;
         private static uint Seed { set => Program.mainform.globalseed = value; }
         private int MinFrame => FuncUtil.getstartingframe(Program.mainform.Ver, RB_ID.Checked ? 4 : 0);
         private static bool IsUltra => Program.mainform.Ver > 6;
@@ -97,10 +96,10 @@ namespace Pk3DSRNGTool
             var text = "";
             try
             {
-                SeedResults.Text = WAIT_STR[lindex];
+                SeedResults.Text = WAIT_STR[language];
                 var results = SFMTSeedAPI.request(Clock_List.Text, RB_ID.Checked, IsUltra);
                 if (!results?.Any() ?? true)
-                    text = NORESULT_STR[lindex];
+                    text = NORESULT_STR[language];
                 else
                 {
                     text = string.Join(" ", results.Select(r => r.seed));
@@ -157,7 +156,7 @@ namespace Pk3DSRNGTool
 
                     if (temp_List.SequenceEqual(Clk_List))
                     {
-                        ListResults.Items.Add(string.Format(QR_STR[lindex], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
+                        ListResults.Items.Add(string.Format(QR_STR[language], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
                         tmp = i + Clk_List.Length + 1;
                     }
                 }
@@ -166,7 +165,7 @@ namespace Pk3DSRNGTool
             }
             catch
             {
-                Error(INVALID_STR[lindex]);
+                Error(INVALID_STR[language]);
             }
         }
         #endregion
@@ -176,7 +175,7 @@ namespace Pk3DSRNGTool
             int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget, raining);
             double realtime = totaltime[0] / 30.0;
             string str = $" {totaltime[0] * 2}F ({realtime.ToString("F")}s) <{totaltime[1] * 2}F>. ";
-            str = string.Format(TIMER_STR[lindex], str);
+            str = string.Format(TIMER_STR[language], str);
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

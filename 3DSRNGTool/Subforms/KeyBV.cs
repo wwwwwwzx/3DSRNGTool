@@ -13,14 +13,13 @@ namespace Pk3DSRNGTool
         {
             InitializeComponent();
         }
-        private static int lindex => Program.mainform.lindex;
 
         private void B_Dump_Click(object sender, EventArgs e)
         {
             var dumper = new BVBreaker(Video1.Text, Video2.Text);
             if (dumper.gen == -1)
             {
-                Alert(FILEERRORSTR[lindex]);
+                Alert(FILEERRORSTR[language]);
                 return;
             }
 

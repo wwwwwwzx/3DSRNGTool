@@ -131,7 +131,7 @@ namespace Pk3DSRNGTool
         {
             if (Method != 0 && Method != 2) return;
             Pokemonlist = Pokemon.getSpecFormList(Ver, CB_Category.SelectedIndex, Method);
-            var List = Pokemonlist.Select(s => new ComboItem(Translate(s.ToString(), lindex), s.SpecForm)).ToList();
+            var List = Pokemonlist.Select(s => new ComboItem(Translate(s.ToString()), s.SpecForm)).ToList();
             Poke.DisplayMember = "Text";
             Poke.ValueMember = "Value";
             Poke.DataSource = new BindingSource(List, null);
@@ -142,7 +142,7 @@ namespace Pk3DSRNGTool
         {
             Ver = Math.Max(Ver, 0);
             CB_Category.Items.Clear();
-            var Category = Pokemon.getCategoryList(Ver, Method).Select(t => Translate(t.ToString(), lindex)).ToArray();
+            var Category = Pokemon.getCategoryList(Ver, Method).Select(t => Translate(t.ToString())).ToArray();
             CB_Category.Items.AddRange(Category);
             CB_Category.SelectedIndex = 0;
             RefreshPKM();
@@ -583,6 +583,13 @@ namespace Pk3DSRNGTool
                     return;
                 TSV.Value = profile.TSV;
                 ShinyCharm.Checked = profile.ShinyCharm;
+                if (Gen7)
+                    Status = profile.Seeds;
+                else
+                {
+                    Key0.Value = profile.Seeds[0];
+                    Key1.Value = profile.Seeds[1];
+                }
             }
         }
 

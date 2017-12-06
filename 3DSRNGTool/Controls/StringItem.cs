@@ -5,6 +5,7 @@ namespace Pk3DSRNGTool
 {
     internal static class StringItem
     {
+        public static int language => Program.mainform.lindex;
         public static string[] naturestr = new bool[25].Select(i => "").ToArray();
         public static string[] hpstr = new bool[18].Select(i => "").ToArray();
         public static string[] genderratio = new bool[7].Select(i => "").ToArray();
@@ -80,7 +81,7 @@ namespace Pk3DSRNGTool
             new [] { "None",                "None",             "None",             "None",             "None",             "无" },
         };
 
-        public static string Translate(string input, int language)
+        public static string Translate(string input)
         {
             if (0 >= language || language >= Translation_Table[1].Length)
                 return input;

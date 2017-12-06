@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool.Subforms
 {
@@ -29,13 +22,15 @@ namespace Pk3DSRNGTool.Subforms
                 Gameversion.SelectedIndex = Profile.GameVersion;
                 TSV.Value = Profile.TSV;
                 ShinyCharm.Checked = Profile.ShinyCharm;
-                Key3.Value = Profile.Seeds.Key3;
-                Key2.Value = Profile.Seeds.Key2;
-                Key1.Value = Profile.Seeds.Key1;
-                Key0.Value = Profile.Seeds.Key0;
+                Key3.Value = Profile.Seeds[3];
+                Key2.Value = Profile.Seeds[2];
+                Key1.Value = Profile.Seeds[1];
+                Key0.Value = Profile.Seeds[0];
             }
             else
             { Gameversion.SelectedIndex = 0; }
+            for (int i = 0; i < Gameversion.Items.Count; i++)
+                Gameversion.Items[i] = GAMEVERSION_STR[language, i];
         }
 
         private void Gameversion_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,12 +65,12 @@ namespace Pk3DSRNGTool.Subforms
                 GameVersion = Gameversion.SelectedIndex,
                 TSV = (ushort)TSV.Value,
                 ShinyCharm = ShinyCharm.Checked,
-                Seeds = new Profiles.EggSeeds()
+                Seeds = new uint[]
                 {
-                    Key0 = Key0.Value,
-                    Key1 = Key1.Value,
-                    Key2 = Key2.Value,
-                    Key3 = Key3.Value
+                    Key0.Value,
+                    Key1.Value,
+                    Key2.Value,
+                    Key3.Value,
                 }
             };
 

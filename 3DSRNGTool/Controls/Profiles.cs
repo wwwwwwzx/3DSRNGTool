@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
+using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
 {
@@ -45,28 +47,7 @@ namespace Pk3DSRNGTool
             {
                 get
                 {
-                    switch (GameVersion)
-                    {
-                        case 0:
-                            return "X";
-                        case 1:
-                            return "Y";
-                        case 2:
-                            return "OR";
-                        case 3:
-                            return "AS";
-                        case 4:
-                            return "Transporter";
-                        case 5:
-                            return "Sun";
-                        case 6:
-                            return "Moon";
-                        case 7:
-                            return "Ultra Sun";
-                        case 8:
-                        default:
-                            return "Ultra Moon";
-                    }
+                    return GAMEVERSION_STR[language, GameVersion];
                 }
             }
 
@@ -99,16 +80,16 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            private EggSeeds _Seeds;
+            private uint[] _Seeds = new uint[4];
             [Browsable(false)]
-            public EggSeeds Seeds
+            public uint[] Seeds
             {
                 get { return _Seeds; }
                 set
                 {
-                    if (_Seeds != value)
+                    if (_Seeds.SequenceEqual(value))
                     {
-                        _Seeds = value;
+                        _Seeds = (uint[])value.Clone();
                         NotifyChanged("Seeds");
                     }
                 }
@@ -119,13 +100,8 @@ namespace Pk3DSRNGTool
             {
                 get
                 {
-                    string seeds = string.Empty;
-                    seeds += (Seeds.Key0 != 0 ? Seeds.Key0.ToString() + " - " : ""); //Improve :)
-                    seeds += (Seeds.Key1 != 0 ? Seeds.Key1.ToString() + " - " : "");
-                    seeds += (Seeds.Key2 != 0 ? Seeds.Key2.ToString() + " - " : "");
-                    seeds += (Seeds.Key3 != 0 ? Seeds.Key3.ToString() : "");
-
-                    return seeds;
+                    return GameVersion > 5 ? string.Join(",", Seeds.Select(v => v.ToString("X8")).Reverse())
+                        : string.Join(",", Seeds.Take(2).Select(v => v.ToString("X8")).Reverse());
                 }
             }
 
@@ -135,14 +111,6 @@ namespace Pk3DSRNGTool
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        public class EggSeeds
-        {
-            public uint Key3 { get; set; }
-            public uint Key2 { get; set; }
-            public uint Key1 { get; set; }
-            public uint Key0 { get; set; }
         }
 
         public static void ReadProfiles()
