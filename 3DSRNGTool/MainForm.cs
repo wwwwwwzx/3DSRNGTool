@@ -575,6 +575,15 @@ namespace Pk3DSRNGTool
             }
 
             RNGMethod_Changed(null, null);
+
+            if (sender == Gameversion)
+            {
+                var profile = Profiles.GameProfiles.FirstOrDefault(t => t.GameVersion == Gameversion.SelectedIndex);
+                if (profile == null) // Not found
+                    return;
+                TSV.Value = profile.TSV;
+                ShinyCharm.Checked = profile.ShinyCharm;
+            }
         }
 
         private void RNGMethod_Changed(object sender, EventArgs e)

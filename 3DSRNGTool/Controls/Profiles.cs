@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Xml.Serialization;
@@ -71,8 +70,8 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            private short _TSV;
-            public short TSV
+            private ushort _TSV;
+            public ushort TSV
             {
                 get { return _TSV; }
                 set

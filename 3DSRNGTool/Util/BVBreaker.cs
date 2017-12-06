@@ -25,25 +25,13 @@ namespace Pk3DSRNGTool
             }
             catch { gen = -1; }
         }
-        public BVBreaker(byte[] v1, byte[] v2)
-        {
-            video1 = (byte[])v1.Clone();
-            video2 = (byte[])v2.Clone();
-            checkvideo();
-        }
         private void checkvideo()
         {
             var l1 = video1.Length;
-            gen = Array.IndexOf(videosize, l1);
-            var l2 = video2.Length;
-            if (l1 != l2)
-                gen = -1;
+            gen = l1 == video2.Length ? Array.IndexOf(videosize, l1) : -1;
         }
 
-        public byte[] TryGetPKM(int slot)
-        {
-            return getslot(video2, slot);
-        }
+        public byte[] TryGetPKM(int slot) => getslot(video2, slot);
 
         // get TSV from pkx bytes
         public static ushort getTSV(byte[] pkx)

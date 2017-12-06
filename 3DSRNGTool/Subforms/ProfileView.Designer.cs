@@ -38,12 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.L_GameVersion = new System.Windows.Forms.Label();
-            this.L_TSV = new System.Windows.Forms.Label();
             this.Key3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Key0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Key2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Key1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.L_GameVersion = new System.Windows.Forms.Label();
+            this.L_TSV = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
@@ -103,6 +103,11 @@
             // TSV
             // 
             this.TSV.Location = new System.Drawing.Point(91, 63);
+            this.TSV.Maximum = new decimal(new int[] {
+            4095,
+            0,
+            0,
+            0});
             this.TSV.Name = "TSV";
             this.TSV.Size = new System.Drawing.Size(54, 20);
             this.TSV.TabIndex = 9;
@@ -160,24 +165,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "[3]";
             // 
-            // L_GameVersion
-            // 
-            this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(47, 39);
-            this.L_GameVersion.Name = "L_GameVersion";
-            this.L_GameVersion.Size = new System.Drawing.Size(38, 13);
-            this.L_GameVersion.TabIndex = 11;
-            this.L_GameVersion.Text = "Game:";
-            // 
-            // L_TSV
-            // 
-            this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(54, 65);
-            this.L_TSV.Name = "L_TSV";
-            this.L_TSV.Size = new System.Drawing.Size(31, 13);
-            this.L_TSV.TabIndex = 12;
-            this.L_TSV.Text = "TSV:";
-            // 
             // Key3
             // 
             this.Key3.Location = new System.Drawing.Point(36, 16);
@@ -221,6 +208,24 @@
             this.Key1.Text = "00000000";
             this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Key1.Value = ((uint)(0u));
+            // 
+            // L_GameVersion
+            // 
+            this.L_GameVersion.AutoSize = true;
+            this.L_GameVersion.Location = new System.Drawing.Point(47, 39);
+            this.L_GameVersion.Name = "L_GameVersion";
+            this.L_GameVersion.Size = new System.Drawing.Size(38, 13);
+            this.L_GameVersion.TabIndex = 11;
+            this.L_GameVersion.Text = "Game:";
+            // 
+            // L_TSV
+            // 
+            this.L_TSV.AutoSize = true;
+            this.L_TSV.Location = new System.Drawing.Point(54, 65);
+            this.L_TSV.Name = "L_TSV";
+            this.L_TSV.Size = new System.Drawing.Size(31, 13);
+            this.L_TSV.TabIndex = 12;
+            this.L_TSV.Text = "TSV:";
             // 
             // label5
             // 

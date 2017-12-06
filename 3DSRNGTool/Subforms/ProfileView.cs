@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool.Subforms
             {
                 Description = Description.Text,
                 GameVersion = Gameversion.SelectedIndex,
-                TSV = (short)TSV.Value,
+                TSV = (ushort)TSV.Value,
                 ShinyCharm = ShinyCharm.Checked,
                 Seeds = new Profiles.EggSeeds()
                 {
