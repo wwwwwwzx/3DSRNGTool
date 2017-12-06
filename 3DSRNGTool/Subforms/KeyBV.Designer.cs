@@ -130,7 +130,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(173, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "2 Pokemon: 2nd PKM from Video 1";
+            this.label2.Text = "At least 2 PKM, 2nd PKM from Video 1";
             // 
             // KeyBV
             // 

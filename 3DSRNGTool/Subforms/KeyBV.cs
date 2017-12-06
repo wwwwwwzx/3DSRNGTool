@@ -29,13 +29,13 @@ namespace Pk3DSRNGTool
             // Try to get the tsv
             byte[] pkx;
             int species;
-            if (null != (pkx = dumper.TryGetPKM(0)) && (species = BitConverter.ToUInt16(pkx, 0x8)) != 0)
-            {
-                string output = speciestr[species] + " TSV: " + BVBreaker.getTSV(pkx).ToString("D4");
-                if (null != (pkx = dumper.TryGetPKM(1)) && (species = BitConverter.ToUInt16(pkx, 0x8)) != 0)
-                    output += '\n' + speciestr[species] + " TSV: " + BVBreaker.getTSV(pkx).ToString("D4");
+            int slot = 0;
+            string output = string.Empty;
+            while (slot < 6 && null != (pkx = dumper.TryGetPKM(slot++)) && (species = BitConverter.ToUInt16(pkx, 0x8)) != 0)
+                output += (slot == 1 ? string.Empty : Environment.NewLine)
+                    + speciestr[species] + "\tTSV: " + BVBreaker.getTSV(pkx).ToString("D4");
+            if (output.Length > 0)
                 MessageBox.Show(output, "Successful Dump!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else
                 Alert("Dump failed! Please check your battle video files are correct");
         }
