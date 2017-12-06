@@ -145,7 +145,7 @@ namespace Pk3DSRNGTool
             int length = Clk_List.Length;
             if (length < 2)
                 return;
-            
+
             // Skip frames
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
@@ -157,7 +157,7 @@ namespace Pk3DSRNGTool
             int[] temp_List = new int[length];
             for (int i = 0; i < length; i++)
                 temp_List[i] = (int)(sfmt.Nextulong() % 17);
-            
+
             // Search
             for (int i = min, head = 0; i <= max; i++)
             {
@@ -184,7 +184,9 @@ namespace Pk3DSRNGTool
         {
             int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget, raining);
             double realtime = totaltime[0] / 30.0;
-            string str = $" {totaltime[0] * 2}F ({realtime.ToString("F")}s) <{totaltime[1] * 2}F>. ";
+            string str = $"{totaltime[0] * 2}F. ({realtime.ToString("F")}s)";
+            if (totaltime[1] > 1)
+                str += $" <{totaltime[1] * 2}F>";
             str = string.Format(TIMER_STR[language], str);
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
