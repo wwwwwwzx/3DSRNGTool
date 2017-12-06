@@ -304,11 +304,6 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Basic UI
-        private void M_ProfileManager_Click(object sender, EventArgs e)
-        {
-            new Subforms.ProfileManager().ShowDialog();
-        }
-
         private void VisibleTrigger(object sender, EventArgs e)
         {
             if ((sender as Control).Visible == false)
@@ -1630,10 +1625,7 @@ namespace Pk3DSRNGTool
             }
         }
         private void M_Gen6SeedFinder_Click(object sender, EventArgs e)
-        {
-            var newform = new Gen6MTSeedFinder();
-            newform.ShowDialog();
-        }
+            => new Gen6MTSeedFinder().ShowDialog();
 
         //Gen7
         private void M_Gen7MainRNGTool_Click(object sender, EventArgs e)
@@ -1652,16 +1644,17 @@ namespace Pk3DSRNGTool
         public decimal Framemin { set => Frame_min.Value = value; }
 
         private void M_Gen7EggSeedFinder_Click(object sender, EventArgs e)
-        {
-            var newform = new Gen7EggSeedFinder();
-            newform.ShowDialog();
-        }
+            => new Gen7EggSeedFinder().ShowDialog();
         public void SetNewEggSeed(string seed)
         {
             RNGMethod.SelectedIndex = 3;
             Status = FuncUtil.SeedStr2Array(seed);
             B_Backup_Click(null, null);
         }
+        private void M_ProfileManager_Click(object sender, EventArgs e)
+            => new Subforms.ProfileManager().ShowDialog();
+        private void M_keyBVTool_Click(object sender, EventArgs e)
+            => new KeyBV().ShowDialog();
         #endregion
     }
 }

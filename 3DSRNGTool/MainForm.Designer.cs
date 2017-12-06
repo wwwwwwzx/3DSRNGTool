@@ -400,6 +400,7 @@
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -1101,7 +1102,7 @@
             this.M_Tool});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(184, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(185, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1129,9 +1130,10 @@
             this.M_NTRHelper,
             this.M_Gen6MainSeedFinder,
             this.toolStripSeparator2,
-            this.M_ProfileManager});
+            this.M_ProfileManager,
+            this.M_KeyBV});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(47, 20);
+            this.M_Tool.Size = new System.Drawing.Size(48, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -2512,7 +2514,7 @@
             this.L_Slots.AutoSize = true;
             this.L_Slots.Location = new System.Drawing.Point(203, 116);
             this.L_Slots.Name = "L_Slots";
-            this.L_Slots.Size = new System.Drawing.Size(28, 13);
+            this.L_Slots.Size = new System.Drawing.Size(31, 13);
             this.L_Slots.TabIndex = 66;
             this.L_Slots.Text = "种类";
             // 
@@ -2812,7 +2814,7 @@
             this.GenderLocked.AutoSize = true;
             this.GenderLocked.Location = new System.Drawing.Point(126, 245);
             this.GenderLocked.Name = "GenderLocked";
-            this.GenderLocked.Size = new System.Drawing.Size(71, 17);
+            this.GenderLocked.Size = new System.Drawing.Size(74, 17);
             this.GenderLocked.TabIndex = 44;
             this.GenderLocked.Text = "固定性别";
             this.GenderLocked.UseVisualStyleBackColor = true;
@@ -3020,7 +3022,7 @@
             this.L_Species.AutoSize = true;
             this.L_Species.Location = new System.Drawing.Point(12, 27);
             this.L_Species.Name = "L_Species";
-            this.L_Species.Size = new System.Drawing.Size(28, 13);
+            this.L_Species.Size = new System.Drawing.Size(31, 13);
             this.L_Species.TabIndex = 74;
             this.L_Species.Text = "种类";
             // 
@@ -3610,7 +3612,7 @@
             this.L_GenderList.AutoSize = true;
             this.L_GenderList.Location = new System.Drawing.Point(6, 202);
             this.L_GenderList.Name = "L_GenderList";
-            this.L_GenderList.Size = new System.Drawing.Size(181, 13);
+            this.L_GenderList.Size = new System.Drawing.Size(190, 13);
             this.L_GenderList.TabIndex = 105;
             this.L_GenderList.Text = "性别列表(0:无性别,1:有性别,2:梦幻)";
             // 
@@ -3764,7 +3766,7 @@
             this.L_Category.AutoSize = true;
             this.L_Category.Location = new System.Drawing.Point(7, 15);
             this.L_Category.Name = "L_Category";
-            this.L_Category.Size = new System.Drawing.Size(28, 13);
+            this.L_Category.Size = new System.Drawing.Size(31, 13);
             this.L_Category.TabIndex = 74;
             this.L_Category.Text = "分类";
             // 
@@ -3782,7 +3784,7 @@
             this.L_GenderRatio.AutoSize = true;
             this.L_GenderRatio.Location = new System.Drawing.Point(187, 54);
             this.L_GenderRatio.Name = "L_GenderRatio";
-            this.L_GenderRatio.Size = new System.Drawing.Size(40, 13);
+            this.L_GenderRatio.Size = new System.Drawing.Size(43, 13);
             this.L_GenderRatio.TabIndex = 72;
             this.L_GenderRatio.Text = "性别比";
             // 
@@ -4358,7 +4360,7 @@
             this.L_Slot.AutoSize = true;
             this.L_Slot.Location = new System.Drawing.Point(193, 55);
             this.L_Slot.Name = "L_Slot";
-            this.L_Slot.Size = new System.Drawing.Size(28, 13);
+            this.L_Slot.Size = new System.Drawing.Size(31, 13);
             this.L_Slot.TabIndex = 82;
             this.L_Slot.Text = "种类";
             // 
@@ -4482,7 +4484,7 @@
             this.L_gender.AutoSize = true;
             this.L_gender.Location = new System.Drawing.Point(193, 108);
             this.L_gender.Name = "L_gender";
-            this.L_gender.Size = new System.Drawing.Size(28, 13);
+            this.L_gender.Size = new System.Drawing.Size(31, 13);
             this.L_gender.TabIndex = 39;
             this.L_gender.Text = "性别";
             // 
@@ -4774,6 +4776,13 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // keyBVToolStripMenuItem
+            // 
+            this.M_KeyBV.Name = "keyBVToolStripMenuItem";
+            this.M_KeyBV.Size = new System.Drawing.Size(195, 22);
+            this.M_KeyBV.Text = "KeyBV";
+            this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
             // 
             // MainForm
             // 
@@ -5263,6 +5272,7 @@
         private System.Windows.Forms.Label Tip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem M_ProfileManager;
+        private System.Windows.Forms.ToolStripMenuItem M_KeyBV;
     }
 }
 
