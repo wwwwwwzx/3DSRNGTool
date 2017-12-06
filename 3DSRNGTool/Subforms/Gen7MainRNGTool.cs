@@ -126,8 +126,6 @@ namespace Pk3DSRNGTool
 
         private void QRSearch()
         {
-            if (Clock_List.Text.Count(c => c == ',') < 3)
-                return;
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
             if (Clock_List.Text == "")
@@ -136,29 +134,34 @@ namespace Pk3DSRNGTool
             try
             {
                 int[] Clk_List = str.Select(s => int.Parse(s)).ToArray();
-                int[] temp_List = new int[Clk_List.Length];
+                int length = Clk_List.Length;
+                int[] temp_List = new int[length];
 
                 SFMT sfmt = new SFMT(Program.mainform.globalseed);
-                SFMT seed = (SFMT)sfmt.DeepCopy();
 
                 ListResults.Items.Clear();
 
                 for (int i = 0; i < min; i++)
                     sfmt.Next();
 
+                for (int i = 0; i < length; i++)
+                    temp_List[i] = (int)(sfmt.Nextulong() % 17);
+
+                int head = 0;
                 int tmp = 0;
-                for (int i = min; i <= max; i++, sfmt.Next())
+                for (int i = min; i <= max; i++)
                 {
-                    seed = (SFMT)sfmt.DeepCopy();
-
-                    for (int j = 0; j < Clk_List.Length; j++)
-                        temp_List[j] = (int)(seed.Nextulong() % 17);
-
-                    if (temp_List.SequenceEqual(Clk_List))
+                    int j = 0;
+                    for (; j < length; j++)
+                        if (temp_List[(j + head) % length] != Clk_List[j])
+                            break;
+                    if (j == length) // Pass compare
                     {
                         ListResults.Items.Add(string.Format(QR_STR[language], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
                         tmp = i + Clk_List.Length + 1;
                     }
+                    temp_List[head++] = (int)(sfmt.Nextulong() % 17);
+                    head = head == length ? 0 : head;
                 }
                 if (ListResults.Items.Count == 1)
                     Program.mainform.Framemin = Time_min.Value = tmp;
