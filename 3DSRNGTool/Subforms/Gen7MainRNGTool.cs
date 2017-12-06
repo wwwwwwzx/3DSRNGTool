@@ -126,49 +126,56 @@ namespace Pk3DSRNGTool
 
         private void QRSearch()
         {
-            int min = (int)Frame_min.Value;
-            int max = (int)Frame_max.Value;
+            ListResults.Items.Clear();
+
+            // Validate
             if (Clock_List.Text == "")
                 return;
-            string[] str = Clock_List.Text.Split(',');
+            int[] Clk_List;
             try
             {
-                int[] Clk_List = str.Select(s => int.Parse(s)).ToArray();
-                int length = Clk_List.Length;
-                int[] temp_List = new int[length];
-
-                SFMT sfmt = new SFMT(Program.mainform.globalseed);
-
-                ListResults.Items.Clear();
-
-                for (int i = 0; i < min; i++)
-                    sfmt.Next();
-
-                for (int i = 0; i < length; i++)
-                    temp_List[i] = (int)(sfmt.Nextulong() % 17);
-
-                int head = 0;
-                int tmp = 0;
-                for (int i = min; i <= max; i++)
-                {
-                    int j = 0;
-                    for (; j < length; j++)
-                        if (temp_List[(j + head) % length] != Clk_List[j])
-                            break;
-                    if (j == length) // Pass compare
-                    {
-                        ListResults.Items.Add(string.Format(QR_STR[language], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
-                        tmp = i + Clk_List.Length + 1;
-                    }
-                    temp_List[head++] = (int)(sfmt.Nextulong() % 17);
-                    head = head == length ? 0 : head;
-                }
-                if (ListResults.Items.Count == 1)
-                    Program.mainform.Framemin = Time_min.Value = tmp;
+                string[] str = Clock_List.Text.Split(',');
+                Clk_List = str.Select(s => int.Parse(s)).ToArray();
             }
             catch
             {
                 Error(INVALID_STR[language]);
+                return;
+            }
+            int length = Clk_List.Length;
+            if (length < 2)
+                return;
+            
+            // Skip frames
+            int min = (int)Frame_min.Value;
+            int max = (int)Frame_max.Value;
+            SFMT sfmt = new SFMT(Program.mainform.globalseed);
+            for (int i = 0; i < min; i++)
+                sfmt.Next();
+
+            // Create buffer
+            int[] temp_List = new int[length];
+            for (int i = 0; i < length; i++)
+                temp_List[i] = (int)(sfmt.Nextulong() % 17);
+            
+            // Search
+            for (int i = min, head = 0; i <= max; i++)
+            {
+                int j = 0;
+                for (; j < length; j++)
+                    if (temp_List[(j + head) % length] != Clk_List[j])
+                        break;
+                if (j == length) // Pass compare
+                    ListResults.Items.Add(string.Format(QR_STR[language], i + Clk_List.Length - 1, i + Clk_List.Length + 1));
+                temp_List[head++] = (int)(sfmt.Nextulong() % 17);
+                head = head == length ? 0 : head;
+            }
+
+            // Auto-setting
+            if (ListResults.Items.Count == 1)
+            {
+                string tmp = System.Text.RegularExpressions.Regex.Match(ListResults.Items[0].ToString(), @"\d+").Value;
+                Program.mainform.Framemin = Time_min.Value = int.Parse(tmp) + 2;
             }
         }
         #endregion
