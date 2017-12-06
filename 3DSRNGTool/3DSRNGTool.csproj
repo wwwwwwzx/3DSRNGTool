@@ -146,6 +146,7 @@
     <Compile Include="MainForm_Core.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pokemon\PKX.cs" />
     <Compile Include="Pokemon\Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
     <Compile Include="Pokemon\GameVersion.cs" />

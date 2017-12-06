@@ -27,13 +27,12 @@ namespace Pk3DSRNGTool
             dumper.Break();
 
             // Try to get the tsv
-            byte[] pkx;
-            int species;
+            PKX pkx;
             int slot = 0;
             string output = string.Empty;
-            while (slot < 6 && null != (pkx = dumper.TryGetPKM(slot++)) && (species = BitConverter.ToUInt16(pkx, 0x8)) != 0)
+            while (slot < 6 && null != (pkx = dumper.TryGetPKM(slot++)) && pkx.species != 0)
                 output += (slot == 1 ? string.Empty : Environment.NewLine)
-                    + speciestr[species] + "\tTSV: " + BVBreaker.getTSV(pkx).ToString("D4");
+                    + speciestr[pkx.species] + "\tTSV: " + pkx.TSV.ToString("D4");
             if (output.Length > 0)
                 MessageBox.Show(output, "Successful Dump!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else

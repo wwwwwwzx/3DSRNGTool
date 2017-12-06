@@ -10,7 +10,7 @@ namespace Pk3DSRNGTool
         public int gen;  // -1 for invalid input
         public byte[] breakstream = new Byte[pkxsize * 6];
 
-        public const int pkxsize = 0x104; // pk6 == pk7 in party
+        public const int pkxsize = PKX.partysize; // pk6 == pk7 in party
         public static readonly int[] partyoffset = { 0x4E18, 0x4E41 };
         public static readonly int[] videosize = { 0x6E60, 0x6BC0 };
         public static bool checkvideosize(int size) => Array.IndexOf(videosize, size) > -1;
@@ -31,114 +31,10 @@ namespace Pk3DSRNGTool
             gen = l1 == video2.Length ? Array.IndexOf(videosize, l1) : -1;
         }
 
-        public byte[] TryGetPKM(int slot) => getslot(video2, slot);
-
-        // get TSV from pkx bytes
-        public static ushort getTSV(byte[] pkx)
-        {
-            ushort TID = BitConverter.ToUInt16(pkx, 0x0C);
-            ushort SID = BitConverter.ToUInt16(pkx, 0x0E);
-            return (ushort)((TID ^ SID) >> 4);
-        }
-
-        #region Encryption Workings (from PKX.cs of PKHeX.Core)
-        // LCRNG
-        private static uint LCRNG(uint seed) => seed * 0x41C64E6D + 0x00006073;
-        private static uint LCRNG(ref uint seed) => seed = LCRNG(seed);
-
-        // Checksum
-        private static ushort GetCHK(byte[] data)
-        {
-            ushort chk = 0;
-            for (int i = 8; i < 232; i += 2) // Loop through the entire PKX
-                chk += BitConverter.ToUInt16(data, i);
-            return chk;
-        }
-
-        // Shuffle
-        private static readonly byte[][] blockPosition =
-        {
-            new byte[] {0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3},
-            new byte[] {1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2},
-            new byte[] {2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1},
-            new byte[] {3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0},
-        };
-        private static readonly byte[] blockPositionInvert =
-        {
-            0, 1, 2, 4, 3, 5, 6, 7, 12, 18, 13, 19, 8, 10, 14, 20, 16, 22, 9, 11, 15, 21, 17, 23
-        };
-        private static byte[] ShuffleArray(byte[] data, uint sv)
-        {
-            byte[] sdata = new byte[data.Length];
-            Array.Copy(data, sdata, 8); // Copy unshuffled bytes
-
-            // Shuffle Away!
-            for (int block = 0; block < 4; block++)
-                Array.Copy(data, 8 + 56 * blockPosition[block][sv], sdata, 8 + 56 * block, 56);
-
-            // Fill the Battle Stats back
-            if (data.Length > 232)
-                Array.Copy(data, 232, sdata, 232, 28);
-
-            return sdata;
-        }
-
-        // Encrypt/Decrypt
-        public static byte[] DecryptArray(byte[] ekx)
-        {
-            byte[] pkx = (byte[])ekx.Clone();
-
-            uint pv = BitConverter.ToUInt32(pkx, 0);
-            uint sv = (pv >> 0xD & 0x1F) % 24;
-
-            uint seed = pv;
-
-            // Decrypt Blocks with RNG Seed
-            for (int i = 8; i < 232; i += 2)
-                BitConverter.GetBytes((ushort)(BitConverter.ToUInt16(pkx, i) ^ LCRNG(ref seed) >> 16)).CopyTo(pkx, i);
-
-            // Deshuffle
-            pkx = ShuffleArray(pkx, sv);
-
-            // Decrypt the Party Stats
-            seed = pv;
-            if (pkx.Length <= 232) return pkx;
-            for (int i = 232; i < 260; i += 2)
-                BitConverter.GetBytes((ushort)(BitConverter.ToUInt16(pkx, i) ^ LCRNG(ref seed) >> 16)).CopyTo(pkx, i);
-
-            return pkx;
-        }
-        public static byte[] EncryptArray(byte[] pkx)
-        {
-            // Shuffle
-            uint pv = BitConverter.ToUInt32(pkx, 0);
-            uint sv = (pv >> 0xD & 0x1F) % 24;
-
-            byte[] ekx = (byte[])pkx.Clone();
-
-            ekx = ShuffleArray(ekx, blockPositionInvert[sv]);
-
-            uint seed = pv;
-
-            // Encrypt Blocks with RNG Seed
-            for (int i = 8; i < 232; i += 2)
-                BitConverter.GetBytes((ushort)(BitConverter.ToUInt16(ekx, i) ^ LCRNG(ref seed) >> 16)).CopyTo(ekx, i);
-
-            // If no party stats, return.
-            if (ekx.Length <= 232) return ekx;
-
-            // Encrypt the Party Stats
-            seed = pv;
-            for (int i = 232; i < 260; i += 2)
-                BitConverter.GetBytes((ushort)(BitConverter.ToUInt16(ekx, i) ^ LCRNG(ref seed) >> 16)).CopyTo(ekx, i);
-
-            // Done
-            return ekx;
-        }
-
+        public PKX TryGetPKM(int slot) => getPKM(video2, slot);
+        
         // Encrypted Zeroes
-        private static byte[] ezeros = EncryptArray(new Byte[pkxsize]);
-        #endregion
+        private static readonly byte[] ezeros = new PKX(new Byte[pkxsize]).Encrypt;
 
         public void Break()
         {
@@ -175,7 +71,7 @@ namespace Pk3DSRNGTool
             catch { }
         }
 
-        public byte[] getslot(byte[] video, int slot = 0)
+        public PKX getPKM(byte[] video, int slot = 0)
         {
             int slotoff = slot * pkxsize;
             int offset = partyoffset[gen] + slotoff;
@@ -184,19 +80,15 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < pkxsize; i++)
                 sekx[i] ^= breakstream[i + slotoff];
 
-            byte[] pkx = DecryptArray(sekx);
+            PKX pkx = new PKX(PKX.DecryptArray(sekx));
 
             // Corruption Check
-            uint checksum = GetCHK(pkx);
-            uint actualsum = BitConverter.ToUInt16(pkx, 0x06);
-
-            if (checksum != actualsum)
+            if (pkx.IsCorrupted)
             {
                 for (int i = 0; i < pkxsize; i++)
-                    pkx[i] ^= ezeros[i];
+                    pkx.Data[i] ^= ezeros[i];
 
-                checksum = GetCHK(pkx);
-                if (checksum != actualsum)
+                if (pkx.IsCorrupted)
                     return null;
                 else
                 {
@@ -205,7 +97,6 @@ namespace Pk3DSRNGTool
                     SaveKeyStream();
                 }
             }
-
             return pkx;
         }
     }
