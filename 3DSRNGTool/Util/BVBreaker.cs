@@ -34,20 +34,15 @@ namespace Pk3DSRNGTool
         private void checkvideo()
         {
             var l1 = video1.Length;
+            gen = Array.IndexOf(videosize, l1);
             var l2 = video2.Length;
             if (l1 != l2)
                 gen = -1;
-            gen = Array.IndexOf(videosize, l1);
         }
 
-        public byte[] TryGetPKM()
+        public byte[] TryGetPKM(int slot)
         {
-            if (gen == -1)
-                return null;
-
-            Break();
-
-            return getslot(video1, 0);
+            return getslot(video2, slot);
         }
 
         // get TSV from pkx bytes
@@ -60,14 +55,7 @@ namespace Pk3DSRNGTool
 
         #region Encryption Workings (from PKX.cs of PKHeX.Core)
         // LCRNG
-        private static uint LCRNG(uint seed)
-        {
-            uint a = 0x41C64E6D;
-            uint c = 0x00006073;
-
-            seed = (seed * a + c) & 0xFFFFFFFF;
-            return seed;
-        }
+        private static uint LCRNG(uint seed) => seed * 0x41C64E6D + 0x00006073;
         private static uint LCRNG(ref uint seed) => seed = LCRNG(seed);
 
         // Checksum
@@ -76,7 +64,6 @@ namespace Pk3DSRNGTool
             ushort chk = 0;
             for (int i = 8; i < 232; i += 2) // Loop through the entire PKX
                 chk += BitConverter.ToUInt16(data, i);
-
             return chk;
         }
 
@@ -202,11 +189,12 @@ namespace Pk3DSRNGTool
 
         public byte[] getslot(byte[] video, int slot = 0)
         {
-            int offset = partyoffset[gen] + slot * pkxsize;
+            int slotoff = slot * pkxsize;
+            int offset = partyoffset[gen] + slotoff;
             byte[] sekx = new byte[pkxsize];
-            Array.Copy(video1, offset, sekx, 0, pkxsize);
+            Array.Copy(video, offset, sekx, 0, pkxsize);
             for (int i = 0; i < pkxsize; i++)
-                sekx[i] ^= breakstream[i];
+                sekx[i] ^= breakstream[i + slotoff];
 
             byte[] pkx = DecryptArray(sekx);
 
@@ -225,7 +213,7 @@ namespace Pk3DSRNGTool
                 else
                 {
                     for (int i = 0; i < pkxsize; i++)
-                        breakstream[i] ^= ezeros[i];
+                        breakstream[i + slotoff] ^= ezeros[i];
                     SaveKeyStream();
                 }
             }
