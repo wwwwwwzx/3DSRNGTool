@@ -18,6 +18,7 @@
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = Spiel Version
+L_Profile = Profile
 ShinyCharm = Schillerpin
 Advanced = Erweitert
 TP_StationaryRNG = Stationaer RNG
@@ -26,13 +27,15 @@ TP_WildRNG = Wilde RNG
 TP_EggRNG = Ei RNG
 TP_IDRNG = ID RNG
 ----
-M_File = Datei
-M_Exit = Ende
 M_Tool = Werkzeuge
 M_Gen7MainRNGTool = Gen7 Haupt RNG Tool
 M_Gen7EggSeedFinder = Gen7 Ei Seed Finder
 M_NTRHelper = NTR Helfer
 M_Gen6MainSeedFinder = Gen6 Haupt Seed Finder
+M_Option = Optionen
+M_Language = Optionen
+M_Profile = Profile Manager
+M_Exit = Ende
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationäre Einstellung

@@ -54,7 +54,6 @@
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties3 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.Lang = new System.Windows.Forms.ComboBox();
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
             this.L_TSV = new System.Windows.Forms.Label();
@@ -112,16 +111,20 @@
             this.dgv_ID_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MS_Toolkit = new System.Windows.Forms.MenuStrip();
-            this.M_File = new System.Windows.Forms.ToolStripMenuItem();
-            this.M_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Tool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Gen7MainRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Gen7EggSeedFinder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.M_NTRHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Gen6MainSeedFinder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.M_ProfileManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_NTRHelper = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_Option = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_Profile = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_Language = new System.Windows.Forms.ToolStripMenuItem();
+            this.Lang = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.M_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.TP_IDRNG = new System.Windows.Forms.TabPage();
             this.GB_RNGGEN7ID = new System.Windows.Forms.GroupBox();
             this.Clk_Correction = new System.Windows.Forms.NumericUpDown();
@@ -129,13 +132,9 @@
             this.RNGPanel = new System.Windows.Forms.GroupBox();
             this.B_GetTiny = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
             this.Filter_G7TID = new System.Windows.Forms.RadioButton();
@@ -151,9 +150,7 @@
             this.Parents_Info = new System.Windows.Forms.GroupBox();
             this.MT_SeedKey = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.Key0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.Key1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Template = new System.Windows.Forms.Button();
             this.NidoType = new System.Windows.Forms.CheckBox();
             this.ConsiderOtherTSV = new System.Windows.Forms.CheckBox();
@@ -161,14 +158,10 @@
             this.B_Fast = new System.Windows.Forms.Button();
             this.MainRNGEgg = new System.Windows.Forms.CheckBox();
             this.TinyMT_Status = new System.Windows.Forms.GroupBox();
-            this.St3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.B_Load = new System.Windows.Forms.Button();
-            this.St2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Backup = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.St1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.St0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.L_Egg_S = new System.Windows.Forms.Label();
@@ -236,8 +229,6 @@
             this.EventIV5 = new System.Windows.Forms.NumericUpDown();
             this.B_Open = new System.Windows.Forms.Button();
             this.Event_Forme = new System.Windows.Forms.ComboBox();
-            this.Event_PID = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.Event_EC = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Event_Species = new System.Windows.Forms.ComboBox();
             this.Event_SID = new System.Windows.Forms.NumericUpDown();
             this.AbilityLocked = new System.Windows.Forms.CheckBox();
@@ -309,7 +300,6 @@
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.AssumeSynced = new System.Windows.Forms.CheckBox();
             this.L_GenderList = new System.Windows.Forms.Label();
-            this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.L_Targetmon = new System.Windows.Forms.Label();
             this.TargetMon = new System.Windows.Forms.NumericUpDown();
             this.B_OpenTool = new System.Windows.Forms.Button();
@@ -365,11 +355,8 @@
             this.B_IVInput = new System.Windows.Forms.Button();
             this.L_Ball = new System.Windows.Forms.Label();
             this.Ball = new System.Windows.Forms.ComboBox();
-            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.L_Slot = new System.Windows.Forms.Label();
             this.SpecialOnly = new System.Windows.Forms.CheckBox();
-            this.HiddenPower = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
-            this.Nature = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.ShowStats = new System.Windows.Forms.CheckBox();
             this.Reset = new System.Windows.Forms.Button();
             this.ByIVs = new System.Windows.Forms.RadioButton();
@@ -399,8 +386,25 @@
             this.BlinkFOnly = new System.Windows.Forms.CheckBox();
             this.SafeFOnly = new System.Windows.Forms.CheckBox();
             this.RNGMethod = new System.Windows.Forms.TabControl();
+            this.CB_Profile = new System.Windows.Forms.ComboBox();
+            this.L_Profile = new System.Windows.Forms.Label();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
+            this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
+            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.HiddenPower = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.Nature = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
+            this.Event_PID = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.Event_EC = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.Key0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.Key1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.St3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.St2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.St1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.St0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ID_Tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ID_Tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ID_Tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -495,24 +499,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BS_0)).BeginInit();
             this.RNGMethod.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Lang
-            // 
-            this.Lang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Lang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Lang.FormattingEnabled = true;
-            this.Lang.Items.AddRange(new object[] {
-            "English",
-            "日本語",
-            "Français",
-            "Deutsch",
-            "Español",
-            "简体中文"});
-            this.Lang.Location = new System.Drawing.Point(500, 13);
-            this.Lang.Name = "Lang";
-            this.Lang.Size = new System.Drawing.Size(73, 21);
-            this.Lang.TabIndex = 87;
-            this.Lang.SelectedIndexChanged += new System.EventHandler(this.ChangeLanguage);
             // 
             // Advanced
             // 
@@ -1098,28 +1084,13 @@
             // 
             this.MS_Toolkit.Dock = System.Windows.Forms.DockStyle.None;
             this.MS_Toolkit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.M_File,
-            this.M_Tool});
+            this.M_Tool,
+            this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(185, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
-            // 
-            // M_File
-            // 
-            this.M_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.M_Exit});
-            this.M_File.Name = "M_File";
-            this.M_File.Size = new System.Drawing.Size(37, 20);
-            this.M_File.Text = "File";
-            // 
-            // M_Exit
-            // 
-            this.M_Exit.Name = "M_Exit";
-            this.M_Exit.Size = new System.Drawing.Size(108, 22);
-            this.M_Exit.Text = "M_Exit";
-            this.M_Exit.Click += new System.EventHandler(this.M_Exit_Click);
             // 
             // M_Tool
             // 
@@ -1127,10 +1098,9 @@
             this.M_Gen7MainRNGTool,
             this.M_Gen7EggSeedFinder,
             this.toolStripSeparator1,
-            this.M_NTRHelper,
             this.M_Gen6MainSeedFinder,
             this.toolStripSeparator2,
-            this.M_ProfileManager,
+            this.M_NTRHelper,
             this.M_KeyBV});
             this.M_Tool.Name = "M_Tool";
             this.M_Tool.Size = new System.Drawing.Size(48, 20);
@@ -1155,13 +1125,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
-            // M_NTRHelper
-            // 
-            this.M_NTRHelper.Name = "M_NTRHelper";
-            this.M_NTRHelper.Size = new System.Drawing.Size(195, 22);
-            this.M_NTRHelper.Text = "NTR Helper";
-            this.M_NTRHelper.Click += new System.EventHandler(this.M_NTRHelper_Click);
-            // 
             // M_Gen6MainSeedFinder
             // 
             this.M_Gen6MainSeedFinder.Name = "M_Gen6MainSeedFinder";
@@ -1174,12 +1137,71 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(192, 6);
             // 
-            // M_ProfileManager
+            // M_NTRHelper
             // 
-            this.M_ProfileManager.Name = "M_ProfileManager";
-            this.M_ProfileManager.Size = new System.Drawing.Size(195, 22);
-            this.M_ProfileManager.Text = "Profile manager";
-            this.M_ProfileManager.Click += new System.EventHandler(this.M_ProfileManager_Click);
+            this.M_NTRHelper.Name = "M_NTRHelper";
+            this.M_NTRHelper.Size = new System.Drawing.Size(195, 22);
+            this.M_NTRHelper.Text = "NTR Helper";
+            this.M_NTRHelper.Click += new System.EventHandler(this.M_NTRHelper_Click);
+            // 
+            // M_KeyBV
+            // 
+            this.M_KeyBV.Name = "M_KeyBV";
+            this.M_KeyBV.Size = new System.Drawing.Size(195, 22);
+            this.M_KeyBV.Text = "KeyBV";
+            this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
+            // 
+            // M_Option
+            // 
+            this.M_Option.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.M_Profile,
+            this.M_Language,
+            this.toolStripSeparator3,
+            this.M_Exit});
+            this.M_Option.Name = "M_Option";
+            this.M_Option.Size = new System.Drawing.Size(61, 20);
+            this.M_Option.Text = "Options";
+            // 
+            // M_Profile
+            // 
+            this.M_Profile.Name = "M_Profile";
+            this.M_Profile.Size = new System.Drawing.Size(158, 22);
+            this.M_Profile.Text = "Profile Manager";
+            this.M_Profile.Click += new System.EventHandler(this.M_ProfileManager_Click);
+            // 
+            // M_Language
+            // 
+            this.M_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Lang});
+            this.M_Language.Name = "M_Language";
+            this.M_Language.Size = new System.Drawing.Size(158, 22);
+            this.M_Language.Text = "Language";
+            // 
+            // Lang
+            // 
+            this.Lang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Lang.Items.AddRange(new object[] {
+            "English",
+            "日本語",
+            "Français",
+            "Deutsch",
+            "Español",
+            "简体中文"});
+            this.Lang.Name = "Lang";
+            this.Lang.Size = new System.Drawing.Size(121, 23);
+            this.Lang.SelectedIndexChanged += new System.EventHandler(this.ChangeLanguage);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(155, 6);
+            // 
+            // M_Exit
+            // 
+            this.M_Exit.Name = "M_Exit";
+            this.M_Exit.Size = new System.Drawing.Size(158, 22);
+            this.M_Exit.Text = "Exit";
+            this.M_Exit.Click += new System.EventHandler(this.M_Exit_Click);
             // 
             // TP_IDRNG
             // 
@@ -1266,18 +1288,6 @@
             this.label23.TabIndex = 109;
             this.label23.Text = "[2]";
             // 
-            // ID_Tiny2
-            // 
-            this.ID_Tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny2.Location = new System.Drawing.Point(60, 52);
-            this.ID_Tiny2.Mask = "AAAAAAAA";
-            this.ID_Tiny2.Name = "ID_Tiny2";
-            this.ID_Tiny2.Size = new System.Drawing.Size(64, 22);
-            this.ID_Tiny2.TabIndex = 106;
-            this.ID_Tiny2.Text = "00000000";
-            this.ID_Tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ID_Tiny2.Value = ((uint)(0u));
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -1287,18 +1297,6 @@
             this.label24.Size = new System.Drawing.Size(28, 14);
             this.label24.TabIndex = 108;
             this.label24.Text = "[3]";
-            // 
-            // ID_Tiny3
-            // 
-            this.ID_Tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny3.Location = new System.Drawing.Point(60, 22);
-            this.ID_Tiny3.Mask = "AAAAAAAA";
-            this.ID_Tiny3.Name = "ID_Tiny3";
-            this.ID_Tiny3.Size = new System.Drawing.Size(64, 22);
-            this.ID_Tiny3.TabIndex = 107;
-            this.ID_Tiny3.Text = "00000000";
-            this.ID_Tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ID_Tiny3.Value = ((uint)(0u));
             // 
             // label21
             // 
@@ -1310,18 +1308,6 @@
             this.label21.TabIndex = 105;
             this.label21.Text = "[0]";
             // 
-            // ID_Tiny0
-            // 
-            this.ID_Tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny0.Location = new System.Drawing.Point(60, 112);
-            this.ID_Tiny0.Mask = "AAAAAAAA";
-            this.ID_Tiny0.Name = "ID_Tiny0";
-            this.ID_Tiny0.Size = new System.Drawing.Size(64, 22);
-            this.ID_Tiny0.TabIndex = 102;
-            this.ID_Tiny0.Text = "00000000";
-            this.ID_Tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ID_Tiny0.Value = ((uint)(0u));
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -1331,18 +1317,6 @@
             this.label22.Size = new System.Drawing.Size(28, 14);
             this.label22.TabIndex = 104;
             this.label22.Text = "[1]";
-            // 
-            // ID_Tiny1
-            // 
-            this.ID_Tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID_Tiny1.Location = new System.Drawing.Point(60, 82);
-            this.ID_Tiny1.Mask = "AAAAAAAA";
-            this.ID_Tiny1.Name = "ID_Tiny1";
-            this.ID_Tiny1.Size = new System.Drawing.Size(64, 22);
-            this.ID_Tiny1.TabIndex = 103;
-            this.ID_Tiny1.Text = "00000000";
-            this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ID_Tiny1.Value = ((uint)(0u));
             // 
             // Filter_ID
             // 
@@ -1546,19 +1520,6 @@
             this.label19.TabIndex = 101;
             this.label19.Text = "[0]";
             // 
-            // Key0
-            // 
-            this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key0.Location = new System.Drawing.Point(47, 63);
-            this.Key0.Mask = "AAAAAAAA";
-            this.Key0.Name = "Key0";
-            this.Key0.Size = new System.Drawing.Size(64, 22);
-            this.Key0.TabIndex = 95;
-            this.Key0.Text = "00000000";
-            this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Key0.Value = ((uint)(0u));
-            this.Key0.TextChanged += new System.EventHandler(this.Key_ValueChanged);
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -1568,19 +1529,6 @@
             this.label20.Size = new System.Drawing.Size(28, 14);
             this.label20.TabIndex = 100;
             this.label20.Text = "[1]";
-            // 
-            // Key1
-            // 
-            this.Key1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Key1.Location = new System.Drawing.Point(47, 33);
-            this.Key1.Mask = "AAAAAAAA";
-            this.Key1.Name = "Key1";
-            this.Key1.Size = new System.Drawing.Size(64, 22);
-            this.Key1.TabIndex = 94;
-            this.Key1.Text = "00000000";
-            this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Key1.Value = ((uint)(0u));
-            this.Key1.TextChanged += new System.EventHandler(this.Key_ValueChanged);
             // 
             // B_Template
             // 
@@ -1666,19 +1614,6 @@
             this.TinyMT_Status.TabStop = false;
             this.TinyMT_Status.Text = "Status";
             // 
-            // St3
-            // 
-            this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St3.Location = new System.Drawing.Point(50, 25);
-            this.St3.Mask = "AAAAAAAA";
-            this.St3.Name = "St3";
-            this.St3.Size = new System.Drawing.Size(64, 22);
-            this.St3.TabIndex = 92;
-            this.St3.Text = "00000000";
-            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St3.Value = ((uint)(0u));
-            this.St3.TextChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1700,19 +1635,6 @@
             this.B_Load.UseVisualStyleBackColor = true;
             this.B_Load.Click += new System.EventHandler(this.B_Load_Click);
             // 
-            // St2
-            // 
-            this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St2.Location = new System.Drawing.Point(50, 53);
-            this.St2.Mask = "AAAAAAAA";
-            this.St2.Name = "St2";
-            this.St2.Size = new System.Drawing.Size(64, 22);
-            this.St2.TabIndex = 93;
-            this.St2.Text = "00000000";
-            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St2.Value = ((uint)(0u));
-            this.St2.TextChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
             // B_Backup
             // 
             this.B_Backup.Location = new System.Drawing.Point(70, 145);
@@ -1733,32 +1655,6 @@
             this.label11.TabIndex = 98;
             this.label11.Text = "[1]";
             this.label11.DoubleClick += new System.EventHandler(this.SyncGen7EggSeed);
-            // 
-            // St1
-            // 
-            this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St1.Location = new System.Drawing.Point(50, 81);
-            this.St1.Mask = "AAAAAAAA";
-            this.St1.Name = "St1";
-            this.St1.Size = new System.Drawing.Size(64, 22);
-            this.St1.TabIndex = 94;
-            this.St1.Text = "00000000";
-            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St1.Value = ((uint)(0u));
-            this.St1.TextChanged += new System.EventHandler(this.Status_ValueChanged);
-            // 
-            // St0
-            // 
-            this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.St0.Location = new System.Drawing.Point(50, 110);
-            this.St0.Mask = "AAAAAAAA";
-            this.St0.Name = "St0";
-            this.St0.Size = new System.Drawing.Size(64, 22);
-            this.St0.TabIndex = 95;
-            this.St0.Text = "00000000";
-            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.St0.Value = ((uint)(0u));
-            this.St0.TextChanged += new System.EventHandler(this.Status_ValueChanged);
             // 
             // label8
             // 
@@ -2696,32 +2592,6 @@
             this.Event_Forme.TabIndex = 96;
             this.Event_Forme.Visible = false;
             // 
-            // Event_PID
-            // 
-            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_PID.Location = new System.Drawing.Point(327, 203);
-            this.Event_PID.Mask = "AAAAAAAA";
-            this.Event_PID.Name = "Event_PID";
-            this.Event_PID.Size = new System.Drawing.Size(64, 22);
-            this.Event_PID.TabIndex = 92;
-            this.Event_PID.Text = "00000000";
-            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_PID.Value = ((uint)(0u));
-            this.Event_PID.Visible = false;
-            // 
-            // Event_EC
-            // 
-            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Event_EC.Location = new System.Drawing.Point(327, 241);
-            this.Event_EC.Mask = "AAAAAAAA";
-            this.Event_EC.Name = "Event_EC";
-            this.Event_EC.Size = new System.Drawing.Size(64, 22);
-            this.Event_EC.TabIndex = 93;
-            this.Event_EC.Text = "00000000";
-            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Event_EC.Value = ((uint)(0u));
-            this.Event_EC.Visible = false;
-            // 
             // Event_Species
             // 
             this.Event_Species.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3616,15 +3486,6 @@
             this.L_GenderList.TabIndex = 105;
             this.L_GenderList.Text = "性别列表(0:无性别,1:有性别,2:梦幻)";
             // 
-            // GenderList
-            // 
-            this.GenderList.Location = new System.Drawing.Point(225, 199);
-            this.GenderList.Mask = "00000000000000000000";
-            this.GenderList.Name = "GenderList";
-            this.GenderList.Size = new System.Drawing.Size(130, 20);
-            this.GenderList.TabIndex = 104;
-            this.GenderList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // L_Targetmon
             // 
             this.L_Targetmon.AutoSize = true;
@@ -4330,31 +4191,6 @@
             this.Ball.Size = new System.Drawing.Size(74, 21);
             this.Ball.TabIndex = 93;
             // 
-            // Slot
-            // 
-            this.Slot.BlankText = null;
-            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Slot.CheckBoxProperties = checkBoxProperties1;
-            this.Slot.DisplayMemberSingleItem = "";
-            this.Slot.DropDownHeight = 260;
-            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Slot.FormattingEnabled = true;
-            this.Slot.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Slot.Location = new System.Drawing.Point(193, 78);
-            this.Slot.Name = "Slot";
-            this.Slot.Size = new System.Drawing.Size(74, 21);
-            this.Slot.TabIndex = 92;
-            // 
             // L_Slot
             // 
             this.L_Slot.AutoSize = true;
@@ -4375,34 +4211,6 @@
             this.SpecialOnly.UseVisualStyleBackColor = true;
             this.SpecialOnly.Visible = false;
             this.SpecialOnly.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
-            // 
-            // HiddenPower
-            // 
-            this.HiddenPower.BlankText = null;
-            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HiddenPower.CheckBoxProperties = checkBoxProperties2;
-            this.HiddenPower.DisplayMemberSingleItem = "";
-            this.HiddenPower.DropDownHeight = 400;
-            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HiddenPower.FormattingEnabled = true;
-            this.HiddenPower.Location = new System.Drawing.Point(288, 112);
-            this.HiddenPower.Name = "HiddenPower";
-            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
-            this.HiddenPower.TabIndex = 78;
-            // 
-            // Nature
-            // 
-            this.Nature.BlankText = "Any";
-            checkBoxProperties3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Nature.CheckBoxProperties = checkBoxProperties3;
-            this.Nature.DisplayMemberSingleItem = "";
-            this.Nature.DropDownHeight = 400;
-            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Nature.FormattingEnabled = true;
-            this.Nature.Location = new System.Drawing.Point(288, 163);
-            this.Nature.Name = "Nature";
-            this.Nature.Size = new System.Drawing.Size(91, 21);
-            this.Nature.TabIndex = 77;
             // 
             // ShowStats
             // 
@@ -4763,6 +4571,37 @@
             this.RNGMethod.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropWC);
             this.RNGMethod.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropEnter);
             // 
+            // CB_Profile
+            // 
+            this.CB_Profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_Profile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Profile.Items.AddRange(new object[] {
+            "X",
+            "Y",
+            "OR",
+            "AS",
+            "Transporter",
+            "Sun",
+            "Moon",
+            "Ultra Sun",
+            "Ultra Moon"});
+            this.CB_Profile.Location = new System.Drawing.Point(473, 13);
+            this.CB_Profile.Name = "CB_Profile";
+            this.CB_Profile.Size = new System.Drawing.Size(95, 21);
+            this.CB_Profile.TabIndex = 95;
+            this.CB_Profile.SelectedIndexChanged += new System.EventHandler(this.CB_Profile_SelectedIndexChanged);
+            // 
+            // L_Profile
+            // 
+            this.L_Profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Profile.AutoSize = true;
+            this.L_Profile.Location = new System.Drawing.Point(422, 17);
+            this.L_Profile.Name = "L_Profile";
+            this.L_Profile.Size = new System.Drawing.Size(31, 13);
+            this.L_Profile.TabIndex = 94;
+            this.L_Profile.Text = "存档";
+            this.L_Profile.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Seed
             // 
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4777,24 +4616,231 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // keyBVToolStripMenuItem
+            // GenderList
             // 
-            this.M_KeyBV.Name = "keyBVToolStripMenuItem";
-            this.M_KeyBV.Size = new System.Drawing.Size(195, 22);
-            this.M_KeyBV.Text = "KeyBV";
-            this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
+            this.GenderList.Location = new System.Drawing.Point(225, 199);
+            this.GenderList.Mask = "00000000000000000000";
+            this.GenderList.Name = "GenderList";
+            this.GenderList.Size = new System.Drawing.Size(130, 20);
+            this.GenderList.TabIndex = 104;
+            this.GenderList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Slot
+            // 
+            this.Slot.BlankText = null;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Slot.CheckBoxProperties = checkBoxProperties1;
+            this.Slot.DisplayMemberSingleItem = "";
+            this.Slot.DropDownHeight = 260;
+            this.Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Slot.FormattingEnabled = true;
+            this.Slot.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.Slot.Location = new System.Drawing.Point(193, 78);
+            this.Slot.Name = "Slot";
+            this.Slot.Size = new System.Drawing.Size(74, 21);
+            this.Slot.TabIndex = 92;
+            // 
+            // HiddenPower
+            // 
+            this.HiddenPower.BlankText = null;
+            checkBoxProperties2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HiddenPower.CheckBoxProperties = checkBoxProperties2;
+            this.HiddenPower.DisplayMemberSingleItem = "";
+            this.HiddenPower.DropDownHeight = 400;
+            this.HiddenPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HiddenPower.FormattingEnabled = true;
+            this.HiddenPower.Location = new System.Drawing.Point(288, 112);
+            this.HiddenPower.Name = "HiddenPower";
+            this.HiddenPower.Size = new System.Drawing.Size(91, 21);
+            this.HiddenPower.TabIndex = 78;
+            // 
+            // Nature
+            // 
+            this.Nature.BlankText = "Any";
+            checkBoxProperties3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Nature.CheckBoxProperties = checkBoxProperties3;
+            this.Nature.DisplayMemberSingleItem = "";
+            this.Nature.DropDownHeight = 400;
+            this.Nature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Nature.FormattingEnabled = true;
+            this.Nature.Location = new System.Drawing.Point(288, 163);
+            this.Nature.Name = "Nature";
+            this.Nature.Size = new System.Drawing.Size(91, 21);
+            this.Nature.TabIndex = 77;
+            // 
+            // Event_PID
+            // 
+            this.Event_PID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_PID.Location = new System.Drawing.Point(327, 203);
+            this.Event_PID.Mask = "AAAAAAAA";
+            this.Event_PID.Name = "Event_PID";
+            this.Event_PID.Size = new System.Drawing.Size(64, 22);
+            this.Event_PID.TabIndex = 92;
+            this.Event_PID.Text = "00000000";
+            this.Event_PID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_PID.Value = ((uint)(0u));
+            this.Event_PID.Visible = false;
+            // 
+            // Event_EC
+            // 
+            this.Event_EC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Event_EC.Location = new System.Drawing.Point(327, 241);
+            this.Event_EC.Mask = "AAAAAAAA";
+            this.Event_EC.Name = "Event_EC";
+            this.Event_EC.Size = new System.Drawing.Size(64, 22);
+            this.Event_EC.TabIndex = 93;
+            this.Event_EC.Text = "00000000";
+            this.Event_EC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Event_EC.Value = ((uint)(0u));
+            this.Event_EC.Visible = false;
+            // 
+            // Key0
+            // 
+            this.Key0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Key0.Location = new System.Drawing.Point(47, 63);
+            this.Key0.Mask = "AAAAAAAA";
+            this.Key0.Name = "Key0";
+            this.Key0.Size = new System.Drawing.Size(64, 22);
+            this.Key0.TabIndex = 95;
+            this.Key0.Text = "00000000";
+            this.Key0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key0.Value = ((uint)(0u));
+            this.Key0.TextChanged += new System.EventHandler(this.Key_ValueChanged);
+            // 
+            // Key1
+            // 
+            this.Key1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Key1.Location = new System.Drawing.Point(47, 33);
+            this.Key1.Mask = "AAAAAAAA";
+            this.Key1.Name = "Key1";
+            this.Key1.Size = new System.Drawing.Size(64, 22);
+            this.Key1.TabIndex = 94;
+            this.Key1.Text = "00000000";
+            this.Key1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Key1.Value = ((uint)(0u));
+            this.Key1.TextChanged += new System.EventHandler(this.Key_ValueChanged);
+            // 
+            // St3
+            // 
+            this.St3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St3.Location = new System.Drawing.Point(50, 25);
+            this.St3.Mask = "AAAAAAAA";
+            this.St3.Name = "St3";
+            this.St3.Size = new System.Drawing.Size(64, 22);
+            this.St3.TabIndex = 92;
+            this.St3.Text = "00000000";
+            this.St3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St3.Value = ((uint)(0u));
+            this.St3.TextChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St2
+            // 
+            this.St2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St2.Location = new System.Drawing.Point(50, 53);
+            this.St2.Mask = "AAAAAAAA";
+            this.St2.Name = "St2";
+            this.St2.Size = new System.Drawing.Size(64, 22);
+            this.St2.TabIndex = 93;
+            this.St2.Text = "00000000";
+            this.St2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St2.Value = ((uint)(0u));
+            this.St2.TextChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St1
+            // 
+            this.St1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St1.Location = new System.Drawing.Point(50, 81);
+            this.St1.Mask = "AAAAAAAA";
+            this.St1.Name = "St1";
+            this.St1.Size = new System.Drawing.Size(64, 22);
+            this.St1.TabIndex = 94;
+            this.St1.Text = "00000000";
+            this.St1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St1.Value = ((uint)(0u));
+            this.St1.TextChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // St0
+            // 
+            this.St0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.St0.Location = new System.Drawing.Point(50, 110);
+            this.St0.Mask = "AAAAAAAA";
+            this.St0.Name = "St0";
+            this.St0.Size = new System.Drawing.Size(64, 22);
+            this.St0.TabIndex = 95;
+            this.St0.Text = "00000000";
+            this.St0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.St0.Value = ((uint)(0u));
+            this.St0.TextChanged += new System.EventHandler(this.Status_ValueChanged);
+            // 
+            // ID_Tiny2
+            // 
+            this.ID_Tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny2.Location = new System.Drawing.Point(60, 52);
+            this.ID_Tiny2.Mask = "AAAAAAAA";
+            this.ID_Tiny2.Name = "ID_Tiny2";
+            this.ID_Tiny2.Size = new System.Drawing.Size(64, 22);
+            this.ID_Tiny2.TabIndex = 106;
+            this.ID_Tiny2.Text = "00000000";
+            this.ID_Tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny2.Value = ((uint)(0u));
+            // 
+            // ID_Tiny3
+            // 
+            this.ID_Tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny3.Location = new System.Drawing.Point(60, 22);
+            this.ID_Tiny3.Mask = "AAAAAAAA";
+            this.ID_Tiny3.Name = "ID_Tiny3";
+            this.ID_Tiny3.Size = new System.Drawing.Size(64, 22);
+            this.ID_Tiny3.TabIndex = 107;
+            this.ID_Tiny3.Text = "00000000";
+            this.ID_Tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny3.Value = ((uint)(0u));
+            // 
+            // ID_Tiny0
+            // 
+            this.ID_Tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny0.Location = new System.Drawing.Point(60, 112);
+            this.ID_Tiny0.Mask = "AAAAAAAA";
+            this.ID_Tiny0.Name = "ID_Tiny0";
+            this.ID_Tiny0.Size = new System.Drawing.Size(64, 22);
+            this.ID_Tiny0.TabIndex = 102;
+            this.ID_Tiny0.Text = "00000000";
+            this.ID_Tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny0.Value = ((uint)(0u));
+            // 
+            // ID_Tiny1
+            // 
+            this.ID_Tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID_Tiny1.Location = new System.Drawing.Point(60, 82);
+            this.ID_Tiny1.Mask = "AAAAAAAA";
+            this.ID_Tiny1.Name = "ID_Tiny1";
+            this.ID_Tiny1.Size = new System.Drawing.Size(64, 22);
+            this.ID_Tiny1.TabIndex = 103;
+            this.ID_Tiny1.Text = "00000000";
+            this.ID_Tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ID_Tiny1.Value = ((uint)(0u));
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 612);
+            this.Controls.Add(this.CB_Profile);
             this.Controls.Add(this.MS_Toolkit);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.Seed);
             this.Controls.Add(this.Gameversion);
             this.Controls.Add(this.L_GameVersion);
-            this.Controls.Add(this.Lang);
             this.Controls.Add(this.Advanced);
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.L_TSV);
@@ -4802,6 +4848,7 @@
             this.Controls.Add(this.DGV_ID);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
+            this.Controls.Add(this.L_Profile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MS_Toolkit;
             this.MinimumSize = new System.Drawing.Size(1120, 648);
@@ -4926,7 +4973,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox Lang;
         private System.Windows.Forms.CheckBox Advanced;
         private System.Windows.Forms.CheckBox ShinyCharm;
         private System.Windows.Forms.Label L_TSV;
@@ -4983,7 +5029,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_tinystate;
         private System.Windows.Forms.MenuStrip MS_Toolkit;
-        private System.Windows.Forms.ToolStripMenuItem M_File;
         private System.Windows.Forms.ToolStripMenuItem M_Tool;
         private System.Windows.Forms.ToolStripMenuItem M_Gen7MainRNGTool;
         private System.Windows.Forms.TabPage TP_IDRNG;
@@ -5247,7 +5292,6 @@
         private System.Windows.Forms.CheckBox SafeFOnly;
         private System.Windows.Forms.TabControl RNGMethod;
         private System.Windows.Forms.ToolStripMenuItem M_Gen7EggSeedFinder;
-        private System.Windows.Forms.ToolStripMenuItem M_Exit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem M_NTRHelper;
         private System.Windows.Forms.ToolStripMenuItem M_Gen6MainSeedFinder;
@@ -5271,8 +5315,15 @@
         private System.Windows.Forms.ToolStripMenuItem DumpAcceptList;
         private System.Windows.Forms.Label Tip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem M_ProfileManager;
         private System.Windows.Forms.ToolStripMenuItem M_KeyBV;
+        private System.Windows.Forms.ToolStripMenuItem M_Option;
+        private System.Windows.Forms.ToolStripMenuItem M_Profile;
+        private System.Windows.Forms.ToolStripMenuItem M_Language;
+        private System.Windows.Forms.ToolStripComboBox Lang;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem M_Exit;
+        private System.Windows.Forms.ComboBox CB_Profile;
+        private System.Windows.Forms.Label L_Profile;
     }
 }
 

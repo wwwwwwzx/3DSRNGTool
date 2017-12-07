@@ -17,7 +17,8 @@
 ---------------------Global Setting------------------------
 L_Seed = Seed
 L_TSV = TSV
-L_GameVersion = GameVersion
+L_GameVersion = バージョン
+L_Profile = Profile
 ShinyCharm = 光るお守り
 Advanced = Advanced
 TP_StationaryRNG = 固定乱数
@@ -26,13 +27,15 @@ TP_WildRNG = 野生乱数
 TP_EggRNG = 孵化乱数
 TP_IDRNG = ID調整
 ----
-M_File = ファイル
-M_Exit = 閉じる
 M_Tool = ツール
 M_Gen7MainRNGTool = Gen7 Main RNG Tool
 M_Gen7EggSeedFinder = Gen7 Egg Seed Finder
 M_NTRHelper = NTR Helper
 M_Gen6MainSeedFinder = Gen6 Main Seed Finder
+M_Option = 設定
+M_Profile = Profile Manager
+M_Language = 言語
+M_Exit = 閉じる
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting

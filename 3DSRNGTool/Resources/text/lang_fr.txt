@@ -18,6 +18,7 @@
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = Version
+L_Profile = Profile
 ShinyCharm = Charme Chroma
 Advanced = Avancé
 TP_StationaryRNG = RNG Fixe
@@ -26,13 +27,15 @@ TP_WildRNG = RNG Sauvage
 TP_EggRNG = RNG Oeuf
 TP_IDRNG = RNG ID
 ----
-M_File = Fichier
-M_Exit = Quitter 
 M_Tool = Outils
 M_Gen7MainRNGTool = Outil de RNG principal (Gen 7)
 M_Gen7EggSeedFinder = Seed Finder pour Oeufs (Gen 7)
 M_NTRHelper = NTR Helper
 M_Gen6MainSeedFinder = Outil de RNG principal (Gen 6)
+M_Option = Options
+M_Profile = Profile Manager
+M_Language = Langue
+M_Exit = Quitter
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Options Fixe

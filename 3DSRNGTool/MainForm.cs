@@ -119,6 +119,7 @@ namespace Pk3DSRNGTool
                 M_Gen7MainRNGTool_Click(null, null);
 
             Profiles.ReadProfiles(); // Read all profiles
+            RefreshProfile();
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -127,6 +128,15 @@ namespace Pk3DSRNGTool
             ntrhelper?.B_Disconnect_Click(null, null);
         }
 
+        private void RefreshProfile()
+        {
+            CB_Profile.Items.Clear();
+            L_Profile.Visible = CB_Profile.Visible = Profiles.GameProfiles.Count > 0;
+            var ProfileList = Profiles.GameProfiles.Select(p => p.Description).ToArray();
+            CB_Profile.Items.AddRange(ProfileList);
+            CB_Profile.Items.Insert(0,"- - - - - - -");
+            CB_Profile.SelectedIndex = 0;
+        }
         private void RefreshPKM()
         {
             if (Method != 0 && Method != 2) return;
@@ -212,6 +222,7 @@ namespace Pk3DSRNGTool
         public int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
         private void ChangeLanguage(object sender, EventArgs e)
         {
+            M_Option.DropDown.Close();
             string lang = langlist[lindex];
 
             if (lang == curlanguage)
@@ -553,6 +564,23 @@ namespace Pk3DSRNGTool
             }
         }
 
+        private void CB_Profile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CB_Profile.SelectedIndex <= 0 || Profiles.GameProfiles.Count < CB_Profile.SelectedIndex)
+                return;
+            var profile = Profiles.GameProfiles[CB_Profile.SelectedIndex - 1];
+            Gameversion.SelectedIndex = profile.GameVersion;
+            TSV.Value = profile.TSV;
+            ShinyCharm.Checked = profile.ShinyCharm;
+            if (Gen7)
+                Status = profile.Seeds;
+            else
+            {
+                Key0.Value = profile.Seeds[0];
+                Key1.Value = profile.Seeds[1];
+            }
+        }
+
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
@@ -575,22 +603,6 @@ namespace Pk3DSRNGTool
             }
 
             RNGMethod_Changed(null, null);
-
-            if (sender == Gameversion)
-            {
-                var profile = Profiles.GameProfiles.FirstOrDefault(t => t.GameVersion == Gameversion.SelectedIndex);
-                if (profile == null) // Not found
-                    return;
-                TSV.Value = profile.TSV;
-                ShinyCharm.Checked = profile.ShinyCharm;
-                if (Gen7)
-                    Status = profile.Seeds;
-                else
-                {
-                    Key0.Value = profile.Seeds[0];
-                    Key1.Value = profile.Seeds[1];
-                }
-            }
         }
 
         private void RNGMethod_Changed(object sender, EventArgs e)
@@ -1668,7 +1680,10 @@ namespace Pk3DSRNGTool
             B_Backup_Click(null, null);
         }
         private void M_ProfileManager_Click(object sender, EventArgs e)
-            => new Subforms.ProfileManager().ShowDialog();
+        {
+            new Subforms.ProfileManager().ShowDialog();
+            RefreshProfile();
+        }
         private void M_keyBVTool_Click(object sender, EventArgs e)
             => new KeyBV().ShowDialog();
         #endregion
