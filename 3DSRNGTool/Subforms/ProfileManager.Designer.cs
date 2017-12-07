@@ -42,12 +42,14 @@
             // 
             this.D_Profiles.AllowUserToAddRows = false;
             this.D_Profiles.AllowUserToDeleteRows = false;
+            this.D_Profiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.D_Profiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.D_Profiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.D_Profiles.Location = new System.Drawing.Point(0, 24);
             this.D_Profiles.MultiSelect = false;
             this.D_Profiles.Name = "D_Profiles";
             this.D_Profiles.ReadOnly = true;
+            this.D_Profiles.RowHeadersWidth = 18;
             this.D_Profiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.D_Profiles.Size = new System.Drawing.Size(560, 237);
             this.D_Profiles.TabIndex = 0;
