@@ -348,6 +348,15 @@
     <None Include="Resources\pic\Shiny.png" />
     <None Include="Resources\pic\NonShiny.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pic\Buttons\Save.png" />
+    <None Include="Resources\pic\Buttons\Edit.png" />
+    <None Include="Resources\pic\Buttons\Delete.png" />
+    <None Include="Resources\pic\Buttons\Add.png" />
+    <None Include="Resources\pic\Buttons\Info.png" />
+    <None Include="Resources\pic\Buttons\Arrow_down.png" />
+    <None Include="Resources\pic\Buttons\Arrow_up.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

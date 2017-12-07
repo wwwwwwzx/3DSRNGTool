@@ -9,11 +9,12 @@ namespace Pk3DSRNGTool.Subforms
         private bool Edit { get; set; }
         private Profiles.Profile Profile { get; set; }
 
-        public ProfileView(bool _Edit = false, Profiles.Profile _Profile = null)
+        public ProfileView(Profiles.Profile _Profile = null, bool Sync = false)
         {
             InitializeComponent();
+            Translate();
 
-            Edit = _Edit;
+            Edit = _Profile != null;
             Profile = _Profile;
 
             if (Edit)
@@ -28,7 +29,15 @@ namespace Pk3DSRNGTool.Subforms
                 Key0.Value = Profile.Seeds[0];
             }
             else
-            { Gameversion.SelectedIndex = 0; }
+                Gameversion.SelectedIndex = 0;
+
+            // Sync from mainwindow
+            if (Sync)
+                B_Current_Click(null, null);
+        }
+
+        private void Translate()
+        {
             for (int i = 0; i < Gameversion.Items.Count; i++)
                 Gameversion.Items[i] = GAMEVERSION_STR[language, i];
         }
@@ -82,7 +91,6 @@ namespace Pk3DSRNGTool.Subforms
             else
             {
                 Profiles.GameProfiles.Add(newProfile);
-
             }
 
             Profiles.WriteProfiles();

@@ -134,7 +134,7 @@ namespace Pk3DSRNGTool
             L_Profile.Visible = CB_Profile.Visible = Profiles.GameProfiles.Count > 0;
             var ProfileList = Profiles.GameProfiles.Select(p => p.Description).ToArray();
             CB_Profile.Items.AddRange(ProfileList);
-            CB_Profile.Items.Insert(0,"- - - - - - -");
+            CB_Profile.Items.Insert(0, "- - - - - - -");
             CB_Profile.SelectedIndex = 0;
         }
         private void RefreshPKM()
@@ -1686,6 +1686,12 @@ namespace Pk3DSRNGTool
         }
         private void M_keyBVTool_Click(object sender, EventArgs e)
             => new KeyBV().ShowDialog();
+
+        private void B_AddProfile_Click(object sender, EventArgs e)
+        {
+            new Subforms.ProfileView(null, true).ShowDialog();
+            RefreshProfile();
+        }
         #endregion
     }
 }

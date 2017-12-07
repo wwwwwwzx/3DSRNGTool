@@ -388,6 +388,7 @@
             this.RNGMethod = new System.Windows.Forms.TabControl();
             this.CB_Profile = new System.Windows.Forms.ComboBox();
             this.L_Profile = new System.Windows.Forms.Label();
+            this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
             this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
@@ -965,7 +966,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(577, 17);
+            this.L_GameVersion.Location = new System.Drawing.Point(573, 17);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -4585,7 +4586,7 @@
             "Moon",
             "Ultra Sun",
             "Ultra Moon"});
-            this.CB_Profile.Location = new System.Drawing.Point(473, 13);
+            this.CB_Profile.Location = new System.Drawing.Point(443, 13);
             this.CB_Profile.Name = "CB_Profile";
             this.CB_Profile.Size = new System.Drawing.Size(95, 21);
             this.CB_Profile.TabIndex = 95;
@@ -4595,12 +4596,22 @@
             // 
             this.L_Profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Profile.AutoSize = true;
-            this.L_Profile.Location = new System.Drawing.Point(422, 17);
+            this.L_Profile.Location = new System.Drawing.Point(392, 17);
             this.L_Profile.Name = "L_Profile";
             this.L_Profile.Size = new System.Drawing.Size(31, 13);
             this.L_Profile.TabIndex = 94;
             this.L_Profile.Text = "存档";
             this.L_Profile.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // B_AddProfile
+            // 
+            this.B_AddProfile.Location = new System.Drawing.Point(544, 13);
+            this.B_AddProfile.Name = "B_AddProfile";
+            this.B_AddProfile.Size = new System.Drawing.Size(20, 21);
+            this.B_AddProfile.TabIndex = 96;
+            this.B_AddProfile.Text = "+";
+            this.B_AddProfile.UseVisualStyleBackColor = true;
+            this.B_AddProfile.Click += new System.EventHandler(this.B_AddProfile_Click);
             // 
             // Seed
             // 
@@ -4835,6 +4846,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 612);
+            this.Controls.Add(this.B_AddProfile);
             this.Controls.Add(this.CB_Profile);
             this.Controls.Add(this.MS_Toolkit);
             this.Controls.Add(this.TSV);
@@ -5324,6 +5336,7 @@
         private System.Windows.Forms.ToolStripMenuItem M_Exit;
         private System.Windows.Forms.ComboBox CB_Profile;
         private System.Windows.Forms.Label L_Profile;
+        private System.Windows.Forms.Button B_AddProfile;
     }
 }
 
