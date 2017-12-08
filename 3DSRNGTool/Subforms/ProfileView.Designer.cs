@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.B_Save = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.B_Cancel = new System.Windows.Forms.Button();
             this.Gameversion = new System.Windows.Forms.ComboBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
             this.TSV = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GB_EggSeed = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,32 +44,32 @@
             this.Key1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.L_GameVersion = new System.Windows.Forms.Label();
             this.L_TSV = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.L_Description = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.TextBox();
             this.B_Current = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.GB_EggSeed.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_Save
             // 
+            this.B_Save.Image = global::Pk3DSRNGTool.Properties.Resources.Save;
             this.B_Save.Location = new System.Drawing.Point(81, 248);
             this.B_Save.Name = "B_Save";
-            this.B_Save.Size = new System.Drawing.Size(64, 23);
+            this.B_Save.Size = new System.Drawing.Size(64, 33);
             this.B_Save.TabIndex = 0;
-            this.B_Save.Text = "Save";
             this.B_Save.UseVisualStyleBackColor = true;
             this.B_Save.Click += new System.EventHandler(this.B_Save_Click);
             // 
-            // button2
+            // B_Cancel
             // 
-            this.button2.Location = new System.Drawing.Point(154, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.B_Close_Click);
+            this.B_Cancel.Image = global::Pk3DSRNGTool.Properties.Resources.Cancel;
+            this.B_Cancel.Location = new System.Drawing.Point(154, 248);
+            this.B_Cancel.Name = "B_Cancel";
+            this.B_Cancel.Size = new System.Drawing.Size(64, 33);
+            this.B_Cancel.TabIndex = 1;
+            this.B_Cancel.UseVisualStyleBackColor = true;
+            this.B_Cancel.Click += new System.EventHandler(this.B_Close_Click);
             // 
             // Gameversion
             // 
@@ -113,22 +113,22 @@
             this.TSV.Size = new System.Drawing.Size(54, 20);
             this.TSV.TabIndex = 9;
             // 
-            // groupBox1
+            // GB_EggSeed
             // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.Key3);
-            this.groupBox1.Controls.Add(this.Key0);
-            this.groupBox1.Controls.Add(this.Key2);
-            this.groupBox1.Controls.Add(this.Key1);
-            this.groupBox1.Location = new System.Drawing.Point(62, 112);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(110, 130);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Egg Seeds";
+            this.GB_EggSeed.Controls.Add(this.label4);
+            this.GB_EggSeed.Controls.Add(this.label3);
+            this.GB_EggSeed.Controls.Add(this.label2);
+            this.GB_EggSeed.Controls.Add(this.label1);
+            this.GB_EggSeed.Controls.Add(this.Key3);
+            this.GB_EggSeed.Controls.Add(this.Key0);
+            this.GB_EggSeed.Controls.Add(this.Key2);
+            this.GB_EggSeed.Controls.Add(this.Key1);
+            this.GB_EggSeed.Location = new System.Drawing.Point(62, 112);
+            this.GB_EggSeed.Name = "GB_EggSeed";
+            this.GB_EggSeed.Size = new System.Drawing.Size(110, 130);
+            this.GB_EggSeed.TabIndex = 10;
+            this.GB_EggSeed.TabStop = false;
+            this.GB_EggSeed.Text = "Egg Seeds";
             // 
             // label4
             // 
@@ -212,30 +212,30 @@
             // 
             // L_GameVersion
             // 
-            this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(47, 39);
+            this.L_GameVersion.Location = new System.Drawing.Point(22, 39);
             this.L_GameVersion.Name = "L_GameVersion";
-            this.L_GameVersion.Size = new System.Drawing.Size(38, 13);
+            this.L_GameVersion.Size = new System.Drawing.Size(63, 13);
             this.L_GameVersion.TabIndex = 11;
             this.L_GameVersion.Text = "Game:";
+            this.L_GameVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // L_TSV
             // 
-            this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(54, 65);
+            this.L_TSV.Location = new System.Drawing.Point(22, 65);
             this.L_TSV.Name = "L_TSV";
-            this.L_TSV.Size = new System.Drawing.Size(31, 13);
+            this.L_TSV.Size = new System.Drawing.Size(63, 13);
             this.L_TSV.TabIndex = 12;
             this.L_TSV.Text = "TSV:";
+            this.L_TSV.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label5
+            // L_Description
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Description:";
+            this.L_Description.Location = new System.Drawing.Point(22, 13);
+            this.L_Description.Name = "L_Description";
+            this.L_Description.Size = new System.Drawing.Size(63, 13);
+            this.L_Description.TabIndex = 13;
+            this.L_Description.Text = "Description:";
+            this.L_Description.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Description
             // 
@@ -246,11 +246,11 @@
             // 
             // B_Current
             // 
+            this.B_Current.Image = global::Pk3DSRNGTool.Properties.Resources.Sync;
             this.B_Current.Location = new System.Drawing.Point(11, 248);
             this.B_Current.Name = "B_Current";
-            this.B_Current.Size = new System.Drawing.Size(64, 23);
+            this.B_Current.Size = new System.Drawing.Size(64, 33);
             this.B_Current.TabIndex = 15;
-            this.B_Current.Text = "Current";
             this.B_Current.UseVisualStyleBackColor = true;
             this.B_Current.Click += new System.EventHandler(this.B_Current_Click);
             // 
@@ -258,24 +258,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 281);
+            this.ClientSize = new System.Drawing.Size(235, 293);
             this.Controls.Add(this.B_Current);
             this.Controls.Add(this.Description);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.L_Description);
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_GameVersion);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.GB_EggSeed);
             this.Controls.Add(this.TSV);
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.Gameversion);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.B_Cancel);
             this.Controls.Add(this.B_Save);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProfileView";
             this.Text = "Profile view";
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GB_EggSeed.ResumeLayout(false);
+            this.GB_EggSeed.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +284,7 @@
         #endregion
 
         private System.Windows.Forms.Button B_Save;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button B_Cancel;
         private System.Windows.Forms.ComboBox Gameversion;
         private System.Windows.Forms.CheckBox ShinyCharm;
         private Controls.HexMaskedTextBox Key3;
@@ -292,14 +292,14 @@
         private Controls.HexMaskedTextBox Key1;
         private Controls.HexMaskedTextBox Key2;
         private System.Windows.Forms.NumericUpDown TSV;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox GB_EggSeed;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label L_GameVersion;
         private System.Windows.Forms.Label L_TSV;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label L_Description;
         private System.Windows.Forms.TextBox Description;
         private System.Windows.Forms.Button B_Current;
     }

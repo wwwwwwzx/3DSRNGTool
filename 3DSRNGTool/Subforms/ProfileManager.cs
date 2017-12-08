@@ -75,7 +75,6 @@ namespace Pk3DSRNGTool.Subforms
                     {
                         Profiles.GameProfiles.Remove(selected);
                         Profiles.GameProfiles.Insert(idx - 1, selected);
-                        D_Profiles.Rows[idx - 1].Selected = true;
                         D_Profiles.CurrentCell = D_Profiles.Rows[idx - 1].Cells[0];
                     }
                 }
@@ -101,7 +100,6 @@ namespace Pk3DSRNGTool.Subforms
                     {
                         Profiles.GameProfiles.Remove(selected);
                         Profiles.GameProfiles.Insert(idx + 1, selected);
-                        D_Profiles.Rows[idx + 1].Selected = true;
                         D_Profiles.CurrentCell = D_Profiles.Rows[idx + 1].Cells[0];
                     }
                 }

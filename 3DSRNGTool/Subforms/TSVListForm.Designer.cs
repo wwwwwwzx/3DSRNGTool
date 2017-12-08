@@ -47,11 +47,11 @@
             // B_Save
             // 
             this.B_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_Save.Image = global::Pk3DSRNGTool.Properties.Resources.Save;
             this.B_Save.Location = new System.Drawing.Point(97, 226);
             this.B_Save.Name = "B_Save";
-            this.B_Save.Size = new System.Drawing.Size(75, 23);
+            this.B_Save.Size = new System.Drawing.Size(75, 26);
             this.B_Save.TabIndex = 1;
-            this.B_Save.Text = "Save";
             this.B_Save.UseVisualStyleBackColor = true;
             this.B_Save.Click += new System.EventHandler(this.B_Save_Click);
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static PKHeX.Util;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool.Subforms
@@ -38,6 +39,7 @@ namespace Pk3DSRNGTool.Subforms
 
         private void Translate()
         {
+            TranslateInterface(this, Properties.Settings.Default.Language);
             for (int i = 0; i < Gameversion.Items.Count; i++)
                 Gameversion.Items[i] = GAMEVERSION_STR[language, i];
         }

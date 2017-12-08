@@ -76,6 +76,7 @@ namespace Pk3DSRNGTool
                 output += IVSpread.Items[i].ToString() + ";";
             Properties.Settings.Default.Ivspread = output;
             Properties.Settings.Default.Save();
+            MessageBox.Show("Templates saved!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

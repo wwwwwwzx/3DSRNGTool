@@ -18,7 +18,7 @@
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = 游戏版本
-L_Profile = 存档
+L_Profile = 存档信息
 ShinyCharm = 闪耀护符
 Advanced = 高级模式
 TP_StationaryRNG = 定点乱数
@@ -298,4 +298,11 @@ dgv_Seed_Nature1 = 性格1
 dgv_Seed_frame2 = 帧2
 dgv_Seed_nature2 = 性格2
 dgv_Seed_gender = 性别
+! End
+-------------------Profile View--------------------------------------
+! ProfileView = 存档信息
+L_Description = 存档名称:
+L_GameVersion = 版本:
+ShinyCharm = 闪耀护符
+GB_EggSeed = 孵蛋Seed
 ! End

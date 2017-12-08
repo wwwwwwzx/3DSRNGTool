@@ -297,3 +297,10 @@ dgv_Seed_frame2 = 消費2
 dgv_Seed_nature2 = 性格2
 dgv_Seed_gender = 性別
 ! End
+-------------------Profile View--------------------------------------
+! ProfileView = Profile View
+L_Description = Description:
+L_GameVersion = バージョン:
+ShinyCharm = 光るお守り
+GB_EggSeed = 孵化用Seed
+! End

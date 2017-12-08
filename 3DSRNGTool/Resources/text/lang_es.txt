@@ -299,3 +299,10 @@ dgv_Seed_frame2 = Fotograma2
 dgv_Seed_nature2 = Naturaleza2
 dgv_Seed_gender = Género
 ! End
+-------------------Profile View--------------------------------------
+! ProfileView = Profile View
+L_Description = Description:
+L_GameVersion = Versión:
+ShinyCharm = Amuleto Iris
+GB_EggSeed = Huevos Seeds
+! End

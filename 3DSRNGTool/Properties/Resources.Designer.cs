@@ -93,6 +93,16 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel {
+            get {
+                object obj = ResourceManager.GetObject("Cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Clock_00 {
             get {
                 object obj = ResourceManager.GetObject("Clock_00", resourceCulture);
@@ -474,6 +484,16 @@ namespace Pk3DSRNGTool.Properties {
         internal static System.Drawing.Bitmap Shiny {
             get {
                 object obj = ResourceManager.GetObject("Shiny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sync {
+            get {
+                object obj = ResourceManager.GetObject("Sync", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1275,8 +1295,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///Route 10
         ///Menhir-Weg
-        ///Cromlexia
-        /// [rest of string was truncated]&quot;;.
+        ///Cromlexia        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Location_xy_de {
             get {

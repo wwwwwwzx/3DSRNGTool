@@ -356,6 +356,8 @@
     <None Include="Resources\pic\Buttons\Info.png" />
     <None Include="Resources\pic\Buttons\Arrow_down.png" />
     <None Include="Resources\pic\Buttons\Arrow_up.png" />
+    <None Include="Resources\pic\Buttons\Cancel.png" />
+    <None Include="Resources\pic\Buttons\Sync.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

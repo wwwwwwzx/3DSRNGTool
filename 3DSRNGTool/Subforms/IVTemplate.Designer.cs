@@ -55,21 +55,21 @@
             // 
             // B_Add
             // 
-            this.B_Add.Location = new System.Drawing.Point(35, 59);
+            this.B_Add.Image = global::Pk3DSRNGTool.Properties.Resources.Add;
+            this.B_Add.Location = new System.Drawing.Point(138, 59);
             this.B_Add.Name = "B_Add";
-            this.B_Add.Size = new System.Drawing.Size(56, 23);
+            this.B_Add.Size = new System.Drawing.Size(26, 26);
             this.B_Add.TabIndex = 2;
-            this.B_Add.Text = "Add";
             this.B_Add.UseVisualStyleBackColor = true;
             this.B_Add.Click += new System.EventHandler(this.B_Add_Click);
             // 
             // B_Remove
             // 
-            this.B_Remove.Location = new System.Drawing.Point(107, 59);
+            this.B_Remove.Image = global::Pk3DSRNGTool.Properties.Resources.Delete;
+            this.B_Remove.Location = new System.Drawing.Point(170, 59);
             this.B_Remove.Name = "B_Remove";
-            this.B_Remove.Size = new System.Drawing.Size(56, 23);
+            this.B_Remove.Size = new System.Drawing.Size(26, 26);
             this.B_Remove.TabIndex = 3;
-            this.B_Remove.Text = "Remove";
             this.B_Remove.UseVisualStyleBackColor = true;
             this.B_Remove.Click += new System.EventHandler(this.B_Remove_Click);
             // 
@@ -95,11 +95,11 @@
             // 
             // B_Save
             // 
-            this.B_Save.Location = new System.Drawing.Point(178, 59);
+            this.B_Save.Image = global::Pk3DSRNGTool.Properties.Resources.Save;
+            this.B_Save.Location = new System.Drawing.Point(202, 59);
             this.B_Save.Name = "B_Save";
-            this.B_Save.Size = new System.Drawing.Size(56, 23);
+            this.B_Save.Size = new System.Drawing.Size(26, 26);
             this.B_Save.TabIndex = 6;
-            this.B_Save.Text = "Save";
             this.B_Save.UseVisualStyleBackColor = true;
             this.B_Save.Click += new System.EventHandler(this.B_Save_Click);
             // 

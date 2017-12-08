@@ -299,3 +299,10 @@ dgv_Seed_frame2 = Frame2
 dgv_Seed_nature2 = Wesen2
 dgv_Seed_gender = Geschlecht
 ! End
+-------------------Profile View--------------------------------------
+! ProfileView = Profile View
+L_Description = Description:
+L_GameVersion = Spiel:
+ShinyCharm = Schillerpin
+GB_EggSeed = Ei Seeds
+! End

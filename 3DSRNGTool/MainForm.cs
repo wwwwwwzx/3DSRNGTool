@@ -134,9 +134,8 @@ namespace Pk3DSRNGTool
             L_Profile.Visible = CB_Profile.Visible = Profiles.GameProfiles.Count > 0;
             var ProfileList = Profiles.GameProfiles.Select(p => p.Description).ToArray();
             CB_Profile.Items.AddRange(ProfileList);
-            CB_Profile.Items.Insert(0, "- - - - - - -");
-            CB_Profile.SelectedIndex = 0;
         }
+
         private void RefreshPKM()
         {
             if (Method != 0 && Method != 2) return;
@@ -218,7 +217,6 @@ namespace Pk3DSRNGTool
 
         #region Translation
         private string curlanguage;
-        private static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "cn" };
         public int lindex { get => Lang.SelectedIndex; set => Lang.SelectedIndex = value; }
         private void ChangeLanguage(object sender, EventArgs e)
         {
@@ -566,9 +564,9 @@ namespace Pk3DSRNGTool
 
         private void CB_Profile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CB_Profile.SelectedIndex <= 0 || Profiles.GameProfiles.Count < CB_Profile.SelectedIndex)
+            if (CB_Profile.SelectedIndex < 0 || Profiles.GameProfiles.Count <= CB_Profile.SelectedIndex)
                 return;
-            var profile = Profiles.GameProfiles[CB_Profile.SelectedIndex - 1];
+            var profile = Profiles.GameProfiles[CB_Profile.SelectedIndex];
             Gameversion.SelectedIndex = profile.GameVersion;
             TSV.Value = profile.TSV;
             ShinyCharm.Checked = profile.ShinyCharm;
