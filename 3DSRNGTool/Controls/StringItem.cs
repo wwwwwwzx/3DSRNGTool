@@ -46,39 +46,39 @@ namespace Pk3DSRNGTool
         {
             // Translation for category
             // en ja fr de es zh
-            new [] { "Legendary",           "Legendary",        "Legendary",        "Legendary",        "Legendary",        "定点传说" },
+            new [] { "Legendary",           "Legendary",        "Légendaires",        "Legendary",        "Legendary",        "定点传说" },
             new [] { "Starters",            "Starters",         "Starters",         "Starters",         "Starters",         "御三家" },
-            new [] { "In-Game Gift",        "In-Game Gift",     "In-Game Gift",     "In-Game Gift",     "In-Game Gift",     "礼物" },
-            new [] { "In-Game Trade",       "In-Game Trade",    "In-Game Trade",    "In-Game Trade",    "In-Game Trade",    "游戏内交换" },
+            new [] { "In-Game Gift",        "In-Game Gift",     "Cadeaux",     "In-Game Gift",     "In-Game Gift",     "礼物" },
+            new [] { "In-Game Trade",       "In-Game Trade",    "Echanges en jeu",    "In-Game Trade",    "In-Game Trade",    "游戏内交换" },
             new [] { "Pokemon Link",        "Pokemon Link",     "Pokemon Link",     "Pokemon Link",     "Pokemon Link",     "宝可梦连接" },
-            new [] { "Poke Transporter",    "Poke Transporter", "Poke Transporter", "Poke Transporter", "Poke Transporter", "宝可虚拟传送" },
-            new [] { "Normal Stationary",   "Normal Stationary", "Normal Stationary", "Normal Stationary", "Normal Stationary", "普通定点" },
-            new [] { "Fossils",             "Fossils",          "Fossils",          "Fossils",          "Fossils", "复原化石" },
-            new [] { "Kanto Legendary",     "Kanto Legendary",  "Kanto Legendary",  "Kanto Legendary",  "Kanto Legendary",  "关都传说" },
-            new [] { "Johto Legendary",     "Johto Legendary",  "Johto Legendary",  "Johto Legendary",  "Johto Legendary",  "城都传说" },
-            new [] { "Hoenn Legendary",     "Hoenn Legendary",  "Hoenn Legendary",  "Hoenn Legendary",  "Hoenn Legendary",  "丰缘传说" },
-            new [] { "Sinnoh Legendary",    "Sinnoh Legendary", "Sinnoh Legendary", "Sinnoh Legendary", "Sinnoh Legendary", "神奥传说" },
-            new [] { "Unova Legendary",     "Unova Legendary",  "Unova Legendary",  "Unova Legendary",  "Unova Legendary",  "合众传说" },
-            new [] { "Kalos Legendary",     "Kalos Legendary",  "Kalos Legendary",  "Kalos Legendary",  "Kalos Legendary",  "卡洛斯传说" },
-            new [] { "Alola Legendary",     "Alola Legendary",  "Alola Legendary",  "Alola Legendary",  "Alola Legendary",  "阿罗拉传说" },
-            new [] { "Ultra Space Wilds",   "Ultra Space Wilds", "Ultra Space Wilds", "Ultra Space Wilds", "Ultra Space Wilds", "究极之洞" },
-            new [] { "Totem",               "Totem",            "Totem",            "Totem",            "Totem",            "霸主" },
-            new [] { "Island Scan",         "Island Scan",      "Island Scan",      "Island Scan",      "Island Scan",      "岛屿搜索" },
-            new [] { "Normal Wild",         "Normal Wild",      "Normal Wild",      "Normal Wild",      "Normal Wild",      "普通野外" },
-            new [] { "Berry Tree",          "Berry Tree",       "Berry Tree",       "Berry Tree",       "Berry Tree",       "果树" },
-            new [] { "Cave Drop",           "Cave Drop",        "Cave Drop",        "Cave Drop",        "Cave Drop",        "洞窟坠物" },
-            new [] { "Rustling Bush",       "Rustling Bush",    "Rustling Bush",    "Rustling Bush",    "Rustling Bush",    "晃动树影" },
-            new [] { "Friend Safari",       "Friend Safari",    "Friend Safari",    "Friend Safari",    "Friend Safari",    "朋友狩猎区" },
-            new [] { "Cave Shadows",        "Cave Shadows",     "Cave Shadows",     "Cave Shadows",     "Cave Shadows",     "洞窟阴影" },
-            new [] { "Trap",                "Trap",             "Trap",             "Trap",             "Trap",             "沙尘" },
-            new [] { "Poke Pelago",         "Poke Pelago",      "Poke Pelago",      "Poke Pelago",      "Poke Pelago",      "宝可度假地" },
+            new [] { "Poke Transporter",    "Poke Transporter", "Poke Transfert", "Poke Transporter", "Poke Transporter", "宝可虚拟传送" },
+            new [] { "Normal Stationary",   "Normal Stationary", "Fixes", "Normal Stationary", "Normal Stationary", "普通定点" },
+            new [] { "Fossils",             "Fossils",          "Fossiles",          "Fossils",          "Fossils", "复原化石" },
+            new [] { "Kanto Legendary",     "Kanto Legendary",  "Kanto Légendaires",  "Kanto Legendary",  "Kanto Legendary",  "关都传说" },
+            new [] { "Johto Legendary",     "Johto Legendary",  "Johto Légendaires",  "Johto Legendary",  "Johto Legendary",  "城都传说" },
+            new [] { "Hoenn Legendary",     "Hoenn Legendary",  "Hoenn Légendaires",  "Hoenn Legendary",  "Hoenn Legendary",  "丰缘传说" },
+            new [] { "Sinnoh Legendary",    "Sinnoh Legendary", "Sinnoh Légendaires", "Sinnoh Legendary", "Sinnoh Legendary", "神奥传说" },
+            new [] { "Unova Legendary",     "Unova Legendary",  "Unova Légendaires",  "Unova Legendary",  "Unova Legendary",  "合众传说" },
+            new [] { "Kalos Legendary",     "Kalos Legendary",  "Kalos Légendaires",  "Kalos Legendary",  "Kalos Legendary",  "卡洛斯传说" },
+            new [] { "Alola Legendary",     "Alola Legendary",  "Alola Légendaires",  "Alola Legendary",  "Alola Legendary",  "阿罗拉传说" },
+            new [] { "Ultra Space Wilds",   "Ultra Space Wilds", "Ultra-Dimension Sauvages", "Ultra Space Wilds", "Ultra Space Wilds", "究极之洞" },
+            new [] { "Totem",               "Totem",            "Dominants",            "Totem",            "Totem",            "霸主" },
+            new [] { "Island Scan",         "Island Scan",      "Scanner des îles",      "Island Scan",      "Island Scan",      "岛屿搜索" },
+            new [] { "Normal Wild",         "Normal Wild",      "Normal Sauvage",      "Normal Wild",      "Normal Wild",      "普通野外" },
+            new [] { "Berry Tree",          "Berry Tree",       "Arbre à baies",       "Berry Tree",       "Berry Tree",       "果树" },
+            new [] { "Cave Drop",           "Cave Drop",        "Chutes (Grottes)",        "Cave Drop",        "Cave Drop",        "洞窟坠物" },
+            new [] { "Rustling Bush",       "Rustling Bush",    "Buisson",    "Rustling Bush",    "Rustling Bush",    "晃动树影" },
+            new [] { "Friend Safari",       "Friend Safari",    "Safari des amis",    "Friend Safari",    "Friend Safari",    "朋友狩猎区" },
+            new [] { "Cave Shadows",        "Cave Shadows",     "Ombres (Grottes)",     "Cave Shadows",     "Cave Shadows",     "洞窟阴影" },
+            new [] { "Trap",                "Trap",             "Poussières",             "Trap",             "Trap",             "沙尘" },
+            new [] { "Poke Pelago",         "Poke Pelago",      "Poké Loisir",      "Poke Pelago",      "Poke Pelago",      "宝可度假地" },
             new [] { "Johto Starters",      "Johto Starters",   "Johto Starters",   "Johto Starters",   "Johto Starters",   "城都御三家" },
-            new [] { "Legendary Titans",    "Legendary Titans", "Legendary Titans", "Legendary Titans", "Legendary Titans", "三神柱" },
-            new [] { "Trash Can",           "Trash Can",        "Trash Can",        "Trash Can",        "Trash Can",        "垃圾桶" },
-            new [] { "Rock Smash",          "Rock Smash",       "Rock Smash",       "Rock Smash",       "Rock Smash",       "碎岩" },
+            new [] { "Legendary Titans",    "Legendary Titans", "Regis", "Legendary Titans", "Legendary Titans", "三神柱" },
+            new [] { "Trash Can",           "Trash Can",        "Poubelles",        "Trash Can",        "Trash Can",        "垃圾桶" },
+            new [] { "Rock Smash",          "Rock Smash",       "Eclat'roc",       "Rock Smash",       "Rock Smash",       "碎岩" },
             new [] { "Horde",               "Horde",            "Horde",            "Horde",            "Horde",            "群战" },
             new [] { "Poke Radar",          "Poke Radar",       "Poke Radar",       "Poke Radar",       "Poke Radar",       "宝可雷达" },
-            new [] { "Fishing",             "Fishing",          "Fishing",          "Fishing",          "Fishing",          "钓鱼" },
+            new [] { "Fishing",             "Fishing",          "Pêche",          "Fishing",          "Fishing",          "钓鱼" },
             new [] { "None",                "None",             "None",             "None",             "None",             "无" },
         };
 
@@ -102,19 +102,19 @@ namespace Pk3DSRNGTool
             { "X", "Y", "红宝石", "蓝宝石", "虚拟传送", "太阳", "月亮", "究极之日", "究极之月" },
         };
 
-        public static readonly string[] ANY_STR = { "Any", "指定なし", "Any", "Any", "Any", "任意" };
-        public static readonly string[] NONE_STR = { "None", "なし", "None", "None", "None", "无" };
-        public static readonly string[] SETTINGERROR_STR = { "Error at ", "Error at ", "Error at ", "Error at ", "Error at ", "出错啦0.0 发生在" };
-        public static readonly string[] NOSELECTION_STR = { "Please Select", "選択されていません", "Please Select", "Please Select", "Please Select", "请选择" };
-        public static readonly string[] FILEERRORSTR = { "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "Invalid file!", "文件格式不正确" };
-        public static readonly string[] NORESULT_STR = { "No Result", "No Result", "No Result", "No Result", "No Result", "没有结果" };
-        public static readonly string[] WAIT_STR = { "Please Wait...", "お待ちください...", "Please Wait...", "Please Wait...", "Please Wait...", "请稍后..." };
-        public static readonly string[] INVALID_STR = { "Invalid Input", "不正な値が含まれています", "Invalid Input", "Invalid Input", "Invalid Input", "输入格式不正确" };
+        public static readonly string[] ANY_STR = { "Any", "指定なし", "N'importe", "Any", "Any", "任意" };
+        public static readonly string[] NONE_STR = { "None", "なし", "Aucun", "None", "None", "无" };
+        public static readonly string[] SETTINGERROR_STR = { "Error at ", "Error at ", "Erreur", "Error at ", "Error at ", "出错啦0.0 发生在" };
+        public static readonly string[] NOSELECTION_STR = { "Please Select", "選択されていません", "Choisissez", "Please Select", "Please Select", "请选择" };
+        public static readonly string[] FILEERRORSTR = { "Invalid file!", "Invalid file!", "Fichier invalide", "Invalid file!", "Invalid file!", "文件格式不正确" };
+        public static readonly string[] NORESULT_STR = { "No Result", "No Result", "Aucun résultat", "No Result", "No Result", "没有结果" };
+        public static readonly string[] WAIT_STR = { "Please Wait...", "お待ちください...", "Patientez...", "Please Wait...", "Please Wait...", "请稍后..." };
+        public static readonly string[] INVALID_STR = { "Invalid Input", "不正な値が含まれています", "Input invalide", "Invalid Input", "Invalid Input", "输入格式不正确" };
         public static readonly string[,] PIDTYPE_STR =
         {
             { "Random", "Nonshiny", "Shiny", "Specified"},
             { "Random", "Nonshiny", "Shiny", "Specified"},
-            { "Random", "Nonshiny", "Shiny", "Specified"},
+            { "Hasard", "Non-shiny", "Shiny", "Spécifié"},
             { "Random", "Nonshiny", "Shiny", "Specified"},
             { "Random", "Nonshiny", "Shiny", "Specified"},
             { "随机", "必不闪", "必闪", "特定"},
@@ -132,7 +132,7 @@ namespace Pk3DSRNGTool
         {
             { "Always Synced", "Can not be Synced" },
             { "Always Synced", "Can not be Synced" },
-            { "Synchro garanti", "Can not be Synced" },
+            { "Synchro garanti", "Ne peut être Synchro" },
             { "Immer Synchro", "Can not be Synced" },
             { "Siempre Sincronizado", "Can not be Synced" },
             { "必定同步", "不能同步" },
@@ -141,7 +141,7 @@ namespace Pk3DSRNGTool
         {
             { "Shiny Locked", "Forced Shiny" },
             { "Shiny Locked", "Forced Shiny" },
-            { "Shiny Locké", "Forced Shiny" },
+            { "Shiny Locké", "Shiny Forcé" },
             { "Shiny Sperre", "Forced Shiny" },
             { "Bloqueo Variocolor", "Forced Shiny" },
             { "必定不闪", "必定闪" },
@@ -150,7 +150,7 @@ namespace Pk3DSRNGTool
         {
             { "Accept", "Reject" },
             { "受取", "拒否" },
-            { "Accept", "Reject" },
+            { "Accepter", "Rejeter" },
             { "Accept", "Reject" },
             { "Accept", "Reject" },
             { "接受", "拒绝" },
@@ -168,7 +168,7 @@ namespace Pk3DSRNGTool
         {
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "さいこう", "すばらしい", "すごくいい", "かなりいい", "まあまあ", "ダメかも" },
-            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
+            new string[] { "Exceptionnel", "Fantastique", "Très bon", "Bon", "Passable", "Pas top" },
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
@@ -186,7 +186,7 @@ namespace Pk3DSRNGTool
         {
             "The last clock is at {0}F, you're at {1}F after quiting QR",
             "末尾の針の位置は {0} 番目, 次は {1} ",
-            "The last clock is at {0}F, you're at {1}F after quiting QR",
+            "La dernière horloge est à {0}F, vous êtes à {1}F après avoir fermé le QR",
             "The last clock is at {0}F, you're at {1}F after quiting QR",
             "The last clock is at {0}F, you're at {1}F after quiting QR",
             "最后的指针在 {0} 帧，退出QR后在 {1} 帧",
@@ -195,7 +195,7 @@ namespace Pk3DSRNGTool
         {
             "Set Eontimer for {0}",
             "設定するFrame(EmTimer) {0}",
-            "Set Eontimer for {0}",
+            "Régler Eontimer pour {0}",
             "Set Eontimer for {0}",
             "Set Eontimer for {0}",
             "计时器设置为 {0}"
@@ -204,7 +204,7 @@ namespace Pk3DSRNGTool
         {
             "Egg number is too small",
             "目標消費を小さく設定して下さい。",
-            "Egg number is too small",
+            "Le nombre d'oeuf est trop petit",
             "Egg number is too small",
             "Egg number is too small",
             "蛋数范围太小",
@@ -213,7 +213,7 @@ namespace Pk3DSRNGTool
         {
             "Accept {0} eggs",
             "消費：{0} 回受け取り",
-            "Accept {0} eggs",
+            "Acceptez {0} oeufs",
             "Accept {0} eggs",
             "Accept {0} eggs",
             "接受 {0} 个蛋",
@@ -222,7 +222,7 @@ namespace Pk3DSRNGTool
         {
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\n{0} 回拒否する", ",\n{0} 回拒否する"},
-            {".\nReject {0} times",",\nand then reject {0} times" },
+            {".\nRejetez {0} fois",",\nand puis rejetez {0} fois" },
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\nReject {0} times",",\nand then reject {0} times" },
             { ",\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
