@@ -227,6 +227,8 @@ namespace Pk3DSRNGTool
                 return;
 
             curlanguage = lang;
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(curlanguage);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture;
             TranslateInterface(this, curlanguage); // Translate the UI to language.
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();

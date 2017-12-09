@@ -169,8 +169,8 @@
   <data name="Clock_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pic\Clock_16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lang_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\lang_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="lang_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\lang_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="lang_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\lang_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -190,8 +190,8 @@
   <data name="personal_uu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bytes\personal_uu;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="text_Genderratio_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Genderratio_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Genderratio_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Genderratio_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Genderratio_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Genderratio_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -205,8 +205,8 @@
   <data name="text_Genderratio_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Genderratio_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="text_Items_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Items_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Items_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Items_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Items_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Items_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
@@ -220,8 +220,8 @@
   <data name="text_Items_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Items_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
-  <data name="text_Location_sm_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Location_sm_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Location_sm_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Location_sm_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Location_sm_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_sm_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -235,8 +235,8 @@
   <data name="text_Location_sm_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_sm_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="text_Location_xy_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Location_xy_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Location_xy_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Location_xy_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Location_xy_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_xy_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -250,8 +250,8 @@
   <data name="text_Location_xy_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Location_xy_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="text_Natures_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Natures_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Natures_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Natures_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Natures_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Natures_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -265,8 +265,8 @@
   <data name="text_Natures_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Natures_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="text_Species_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Species_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Species_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Species_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Species_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Species_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -280,8 +280,8 @@
   <data name="text_Species_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Species_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="text_Types_cn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text\text_Types_cn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="text_Types_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Types_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="text_Types_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text\text_Types_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

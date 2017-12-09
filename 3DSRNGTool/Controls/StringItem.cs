@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
     internal static class StringItem
     {
         public static int language => Program.mainform.lindex;
-        public static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "cn" };
+        public static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "zh" };
         public static string[] naturestr = new bool[25].Select(i => "").ToArray();
         public static string[] hpstr = new bool[18].Select(i => "").ToArray();
         public static string[] genderratio = new bool[7].Select(i => "").ToArray();

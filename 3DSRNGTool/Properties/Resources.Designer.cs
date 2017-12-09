@@ -315,29 +315,6 @@ namespace Pk3DSRNGTool.Properties {
         ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
         ///! -----------------------------------------------------
         ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS乱数工 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string lang_cn {
-            get {
-                return ResourceManager.GetString("lang_cn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
         ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_de {
@@ -439,6 +416,29 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ! Interface Customization File
+        ///! lang_en.txt = English
+        ///! lang_jp.txt = Japanese
+        ///! lang_fr.txt = French
+        ///! lang_de.txt = German
+        ///! lang_es.txt = Spanish
+        ///! lang_it.txt = Italian
+        ///! lang_ko.txt = Korean
+        ///! lang_cn.txt = Simplified Chinese
+        ///! lang_zh.txt = Traditional Chinese
+        ///! lang_pt.txt = Portuguese
+        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
+        ///! -----------------------------------------------------
+        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
+        ///! MainForm = 3DS乱数工 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string lang_zh {
+            get {
+                return ResourceManager.GetString("lang_zh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NonShiny {
@@ -495,22 +495,6 @@ namespace Pk3DSRNGTool.Properties {
             get {
                 object obj = ResourceManager.GetObject("Sync", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 无性别
-        ///♂1：♀1
-        ///♂7：♀1
-        ///♂3：♀1
-        ///♂1：♀3
-        ///♂1：♀7
-        ///只有♂
-        ///只有♀.
-        /// </summary>
-        internal static string text_Genderratio_cn {
-            get {
-                return ResourceManager.GetString("text_Genderratio_cn", resourceCulture);
             }
         }
         
@@ -595,19 +579,18 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 无道具
-        ///不变之石
-        ///红线
-        ///力量负重-H
-        ///力量护腕-A
-        ///力量腰带-B
-        ///力量镜-C
-        ///力量束带-D
-        ///力量护踝-S.
+        ///   Looks up a localized string similar to 无性别
+        ///♂1：♀1
+        ///♂7：♀1
+        ///♂3：♀1
+        ///♂1：♀3
+        ///♂1：♀7
+        ///只有♂
+        ///只有♀.
         /// </summary>
-        internal static string text_Items_cn {
+        internal static string text_Genderratio_zh {
             get {
-                return ResourceManager.GetString("text_Items_cn", resourceCulture);
+                return ResourceManager.GetString("text_Genderratio_zh", resourceCulture);
             }
         }
         
@@ -697,115 +680,19 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to －－－－－－－－－－
-        ///
-        ///神秘的地方
-        ///
-        ///遥远的地方
-        ///
-        ///１号道路
-        ///好奥乐市郊
-        ///１号道路
-        ///
-        ///３号道路
-        ///
-        ///２号道路
-        ///
-        ///卡拉蔚湾
-        ///
-        ///美乐美乐海
-        ///
-        ///好奥乐市
-        ///海滩区
-        ///好奥乐市
-        ///商业区
-        ///好奥乐市
-        ///港口区
-        ///利利小镇
-        ///
-        ///马哈罗山路
-        ///
-        ///马哈罗山路
-        ///吊桥
-        ///战争遗迹
-        ///
-        ///战争遗迹
-        ///[~ 33]
-        ///十克拉山丘
-        ///
-        ///十克拉山丘
-        ///最深处的空洞
-        ///好奥乐墓园
-        ///
-        ///美乐美乐花园
-        ///
-        ///通海洞穴
-        ///
-        ///树果园
-        ///
-        ///葱郁洞窟
-        ///考验之地
-        ///葱郁洞窟
-        ///霸主居处
-        ///４号道路
-        ///
-        ///５号道路
-        ///
-        ///６号道路
-        ///
-        ///７号道路
-        ///
-        ///８号道路
-        ///
-        ///９号道路
-        ///
-        ///豪诺豪诺度假地
-        ///
-        ///豪诺豪诺海滩
-        ///
-        ///阿卡拉花园
-        ///
-        ///欧哈纳镇
-        ///
-        ///慷待市
-        ///
-        ///可霓可市
-        ///
-        ///皇家大道
-        ///
-        ///回忆之丘
-        ///
-        ///欧哈纳牧场
-        ///
-        ///[~ 80]
-        ///
-        ///维拉火山公园
-        ///
-        ///维拉火山公园
-        ///霸主居处
-        ///潺潺之丘
-        ///
-        ///潺潺之丘
-        ///霸主居处
-        ///树荫丛林
-        ///
-        ///生命遗迹
-        ///
-        ///阿卡拉岛郊外
-        ///
-        ///[~ 96]
-        ///[~ 97]
-        ///[~ 98]
-        ///[~ 99]
-        ///地鼠隧道
-        ///
-        ///豪诺豪诺度假地
-        ///
-        ///皇家巨蛋 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 无道具
+        ///不变之石
+        ///红线
+        ///力量负重-H
+        ///力量护腕-A
+        ///力量腰带-B
+        ///力量镜-C
+        ///力量束带-D
+        ///力量护踝-S.
         /// </summary>
-        internal static string text_Location_sm_cn {
+        internal static string text_Items_zh {
             get {
-                return ResourceManager.GetString("text_Location_sm_cn", resourceCulture);
+                return ResourceManager.GetString("text_Items_zh", resourceCulture);
             }
         }
         
@@ -1133,112 +1020,115 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ----------
+        ///   Looks up a localized string similar to －－－－－－－－－－
         ///
         ///神秘的地方
         ///
         ///遥远的地方
         ///
-        ///朝香镇
+        ///１号道路
+        ///好奥乐市郊
+        ///１号道路
         ///
-        ///1号道路
-        ///卡洛斯
-        ///美川镇
+        ///３号道路
         ///
-        ///2号道路
-        ///前进通道
-        ///白檀森林
+        ///２号道路
         ///
-        ///3号道路
-        ///开展通道
-        ///白檀市
+        ///卡拉蔚湾
         ///
-        ///4号道路
-        ///花坛街道
-        ///密阿雷市
+        ///美乐美乐海
         ///
-        ///密阿雷道馆
+        ///好奥乐市
+        ///海滩区
+        ///好奥乐市
+        ///商业区
+        ///好奥乐市
+        ///港口区
+        ///利利小镇
         ///
-        ///弗拉达利实验室
+        ///马哈罗山路
         ///
-        ///5号道路
-        ///斜坡通道
-        ///古木镇
+        ///马哈罗山路
+        ///吊桥
+        ///战争遗迹
         ///
-        ///休波努城堡
+        ///战争遗迹
+        ///[~ 33]
+        ///十克拉山丘
         ///
-        ///6号道路
-        ///宫殿林荫道
-        ///香水宫殿
+        ///十克拉山丘
+        ///最深处的空洞
+        ///好奥乐墓园
         ///
-        ///7号道路
-        ///河川直路
-        ///遥香市
+        ///美乐美乐花园
         ///
-        ///8号道路
-        ///城墙海岸
-        ///古香镇
+        ///通海洞穴
         ///
-        ///9号道路
-        ///刺刺山道
-        ///对战古堡
+        ///树果园
         ///
-        ///10号道路
-        ///石柱之路
-        ///石林镇
+        ///葱郁洞窟
+        ///考验之地
+        ///葱郁洞窟
+        ///霸主居处
+        ///４号道路
         ///
-        ///11号道路
-        ///明镜通道
-        ///映身洞窟
+        ///５号道路
         ///
-        ///娑罗市
+        ///６号道路
         ///
-        ///精通塔
+        ///７号道路
         ///
-        ///12号道路
-        ///牧草通道
-        ///海翼市
+        ///８号道路
         ///
-        ///13号道路
-        ///密阿雷荒野
-        ///14号道路
-        ///香薰林道
-        ///香薰市
+        ///９号道路
         ///
-        ///宝贝球工厂
+        ///豪诺豪诺度假地
         ///
-        ///15号道路
-        ///褐棕通道
-        ///雪风镇
+        ///豪诺豪诺海滩
         ///
-        ///16号道路
-        ///忧郁通道
+        ///阿卡拉花园
+        ///
+        ///欧哈纳镇
+        ///
+        ///慷待市
+        ///
+        ///可霓可市
+        ///
+        ///皇家大道
+        ///
+        ///回忆之丘
+        ///
+        ///欧哈纳牧场
+        ///
         ///[~ 80]
-        ///[~ 81]
-        ///冰霜洞穴
         ///
-        ///17号道路
-        ///象牙猪路
-        ///百刻市
+        ///维拉火山公园
         ///
-        ///18号道路
-        ///狭谷通道
-        ///水涟镇
+        ///维拉火山公园
+        ///霸主居处
+        ///潺潺之丘
         ///
-        ///19号道路
-        ///巨谷通道
-        ///映雪市
+        ///潺潺之丘
+        ///霸主居处
+        ///树荫丛林
         ///
-        ///20号道路
-        ///迷幻森林
-        ///神奇宝贝村庄
+        ///生命遗迹
         ///
-        ///21号道路
-        ///最后通道 [rest of string was truncated]&quot;;.
+        ///阿卡拉岛郊外
+        ///
+        ///[~ 96]
+        ///[~ 97]
+        ///[~ 98]
+        ///[~ 99]
+        ///地鼠隧道
+        ///
+        ///豪诺豪诺度假地
+        ///
+        ///皇家巨蛋 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string text_Location_xy_cn {
+        internal static string text_Location_sm_zh {
             get {
-                return ResourceManager.GetString("text_Location_xy_cn", resourceCulture);
+                return ResourceManager.GetString("text_Location_sm_zh", resourceCulture);
             }
         }
         
@@ -1562,35 +1452,112 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 勤奋
-        ///怕寂寞
-        ///勇敢
-        ///固执
-        ///顽皮
-        ///大胆
-        ///坦率
-        ///悠闲
-        ///淘气
-        ///乐天
-        ///胆小
-        ///急躁
-        ///认真
-        ///爽朗
-        ///天真
-        ///内敛
-        ///慢吞吞
-        ///冷静
-        ///害羞
-        ///马虎
-        ///温和
-        ///温顺
-        ///自大
-        ///慎重
-        ///浮躁.
+        ///   Looks up a localized string similar to ----------
+        ///
+        ///神秘的地方
+        ///
+        ///遥远的地方
+        ///
+        ///朝香镇
+        ///
+        ///1号道路
+        ///卡洛斯
+        ///美川镇
+        ///
+        ///2号道路
+        ///前进通道
+        ///白檀森林
+        ///
+        ///3号道路
+        ///开展通道
+        ///白檀市
+        ///
+        ///4号道路
+        ///花坛街道
+        ///密阿雷市
+        ///
+        ///密阿雷道馆
+        ///
+        ///弗拉达利实验室
+        ///
+        ///5号道路
+        ///斜坡通道
+        ///古木镇
+        ///
+        ///休波努城堡
+        ///
+        ///6号道路
+        ///宫殿林荫道
+        ///香水宫殿
+        ///
+        ///7号道路
+        ///河川直路
+        ///遥香市
+        ///
+        ///8号道路
+        ///城墙海岸
+        ///古香镇
+        ///
+        ///9号道路
+        ///刺刺山道
+        ///对战古堡
+        ///
+        ///10号道路
+        ///石柱之路
+        ///石林镇
+        ///
+        ///11号道路
+        ///明镜通道
+        ///映身洞窟
+        ///
+        ///娑罗市
+        ///
+        ///精通塔
+        ///
+        ///12号道路
+        ///牧草通道
+        ///海翼市
+        ///
+        ///13号道路
+        ///密阿雷荒野
+        ///14号道路
+        ///香薰林道
+        ///香薰市
+        ///
+        ///宝贝球工厂
+        ///
+        ///15号道路
+        ///褐棕通道
+        ///雪风镇
+        ///
+        ///16号道路
+        ///忧郁通道
+        ///[~ 80]
+        ///[~ 81]
+        ///冰霜洞穴
+        ///
+        ///17号道路
+        ///象牙猪路
+        ///百刻市
+        ///
+        ///18号道路
+        ///狭谷通道
+        ///水涟镇
+        ///
+        ///19号道路
+        ///巨谷通道
+        ///映雪市
+        ///
+        ///20号道路
+        ///迷幻森林
+        ///神奇宝贝村庄
+        ///
+        ///21号道路
+        ///最后通道 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string text_Natures_cn {
+        internal static string text_Location_xy_zh {
             get {
-                return ResourceManager.GetString("text_Natures_cn", resourceCulture);
+                return ResourceManager.GetString("text_Location_xy_zh", resourceCulture);
             }
         }
         
@@ -1760,115 +1727,35 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 蛋
-        ///妙蛙种子
-        ///妙蛙草
-        ///妙蛙花
-        ///小火龙
-        ///火恐龙
-        ///喷火龙
-        ///杰尼龟
-        ///卡咪龟
-        ///水箭龟
-        ///绿毛虫
-        ///铁甲蛹
-        ///巴大蝶
-        ///独角虫
-        ///铁壳蛹
-        ///大针蜂
-        ///波波
-        ///比比鸟
-        ///大比鸟
-        ///小拉达
-        ///拉达
-        ///烈雀
-        ///大嘴雀
-        ///阿柏蛇
-        ///阿柏怪
-        ///皮卡丘
-        ///雷丘
-        ///穿山鼠
-        ///穿山王
-        ///尼多兰
-        ///尼多娜
-        ///尼多后
-        ///尼多朗
-        ///尼多力诺
-        ///尼多王
-        ///皮皮
-        ///皮可西
-        ///六尾
-        ///九尾
-        ///胖丁
-        ///胖可丁
-        ///超音蝠
-        ///大嘴蝠
-        ///走路草
-        ///臭臭花
-        ///霸王花
-        ///派拉斯
-        ///派拉斯特
-        ///毛球
-        ///摩鲁蛾
-        ///地鼠
-        ///三地鼠
-        ///喵喵
-        ///猫老大
-        ///可达鸭
-        ///哥达鸭
-        ///猴怪
-        ///火暴猴
-        ///卡蒂狗
-        ///风速狗
-        ///蚊香蝌蚪
-        ///蚊香君
-        ///蚊香泳士
-        ///凯西
-        ///勇基拉
-        ///胡地
-        ///腕力
-        ///豪力
-        ///怪力
-        ///喇叭芽
-        ///口呆花
-        ///大食花
-        ///玛瑙水母
-        ///毒刺水母
-        ///小拳石
-        ///隆隆石
-        ///隆隆岩
-        ///小火马
-        ///烈焰马
-        ///呆呆兽
-        ///呆壳兽
-        ///小磁怪
-        ///三合一磁怪
-        ///大葱鸭
-        ///嘟嘟
-        ///嘟嘟利
-        ///小海狮
-        ///白海狮
-        ///臭泥
-        ///臭臭泥
-        ///大舌贝
-        ///刺甲贝
-        ///鬼斯
-        ///鬼斯通
-        ///耿鬼
-        ///大岩蛇
-        ///催眠貘
-        ///引梦貘人
-        ///大钳蟹
-        ///巨钳蟹
-        ///霹雳电球
-        ///顽皮雷弹
-        ///蛋蛋
-        ///椰蛋树
-        ///卡拉卡拉 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 勤奋
+        ///怕寂寞
+        ///勇敢
+        ///固执
+        ///顽皮
+        ///大胆
+        ///坦率
+        ///悠闲
+        ///淘气
+        ///乐天
+        ///胆小
+        ///急躁
+        ///认真
+        ///爽朗
+        ///天真
+        ///内敛
+        ///慢吞吞
+        ///冷静
+        ///害羞
+        ///马虎
+        ///温和
+        ///温顺
+        ///自大
+        ///慎重
+        ///浮躁.
         /// </summary>
-        internal static string text_Species_cn {
+        internal static string text_Natures_zh {
             get {
-                return ResourceManager.GetString("text_Species_cn", resourceCulture);
+                return ResourceManager.GetString("text_Natures_zh", resourceCulture);
             }
         }
         
@@ -2213,28 +2100,115 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 一般
-        ///格斗
-        ///飞行
-        ///毒
-        ///地面
-        ///岩石
-        ///虫
-        ///幽灵
-        ///钢
-        ///火
-        ///水
-        ///草
-        ///电
-        ///超能力
-        ///冰
-        ///龙
-        ///恶
-        ///妖精.
+        ///   Looks up a localized string similar to 蛋
+        ///妙蛙种子
+        ///妙蛙草
+        ///妙蛙花
+        ///小火龙
+        ///火恐龙
+        ///喷火龙
+        ///杰尼龟
+        ///卡咪龟
+        ///水箭龟
+        ///绿毛虫
+        ///铁甲蛹
+        ///巴大蝶
+        ///独角虫
+        ///铁壳蛹
+        ///大针蜂
+        ///波波
+        ///比比鸟
+        ///大比鸟
+        ///小拉达
+        ///拉达
+        ///烈雀
+        ///大嘴雀
+        ///阿柏蛇
+        ///阿柏怪
+        ///皮卡丘
+        ///雷丘
+        ///穿山鼠
+        ///穿山王
+        ///尼多兰
+        ///尼多娜
+        ///尼多后
+        ///尼多朗
+        ///尼多力诺
+        ///尼多王
+        ///皮皮
+        ///皮可西
+        ///六尾
+        ///九尾
+        ///胖丁
+        ///胖可丁
+        ///超音蝠
+        ///大嘴蝠
+        ///走路草
+        ///臭臭花
+        ///霸王花
+        ///派拉斯
+        ///派拉斯特
+        ///毛球
+        ///摩鲁蛾
+        ///地鼠
+        ///三地鼠
+        ///喵喵
+        ///猫老大
+        ///可达鸭
+        ///哥达鸭
+        ///猴怪
+        ///火暴猴
+        ///卡蒂狗
+        ///风速狗
+        ///蚊香蝌蚪
+        ///蚊香君
+        ///蚊香泳士
+        ///凯西
+        ///勇基拉
+        ///胡地
+        ///腕力
+        ///豪力
+        ///怪力
+        ///喇叭芽
+        ///口呆花
+        ///大食花
+        ///玛瑙水母
+        ///毒刺水母
+        ///小拳石
+        ///隆隆石
+        ///隆隆岩
+        ///小火马
+        ///烈焰马
+        ///呆呆兽
+        ///呆壳兽
+        ///小磁怪
+        ///三合一磁怪
+        ///大葱鸭
+        ///嘟嘟
+        ///嘟嘟利
+        ///小海狮
+        ///白海狮
+        ///臭泥
+        ///臭臭泥
+        ///大舌贝
+        ///刺甲贝
+        ///鬼斯
+        ///鬼斯通
+        ///耿鬼
+        ///大岩蛇
+        ///催眠貘
+        ///引梦貘人
+        ///大钳蟹
+        ///巨钳蟹
+        ///霹雳电球
+        ///顽皮雷弹
+        ///蛋蛋
+        ///椰蛋树
+        ///卡拉卡拉 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string text_Types_cn {
+        internal static string text_Species_zh {
             get {
-                return ResourceManager.GetString("text_Types_cn", resourceCulture);
+                return ResourceManager.GetString("text_Species_zh", resourceCulture);
             }
         }
         
@@ -2365,6 +2339,32 @@ namespace Pk3DSRNGTool.Properties {
         internal static string text_Types_ja {
             get {
                 return ResourceManager.GetString("text_Types_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 一般
+        ///格斗
+        ///飞行
+        ///毒
+        ///地面
+        ///岩石
+        ///虫
+        ///幽灵
+        ///钢
+        ///火
+        ///水
+        ///草
+        ///电
+        ///超能力
+        ///冰
+        ///龙
+        ///恶
+        ///妖精.
+        /// </summary>
+        internal static string text_Types_zh {
+            get {
+                return ResourceManager.GetString("text_Types_zh", resourceCulture);
             }
         }
     }
