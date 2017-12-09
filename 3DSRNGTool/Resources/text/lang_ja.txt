@@ -39,7 +39,7 @@ M_Exit = 閉じる
 ---------------------TabPage1----------------------------------
 ---
 Sta_Setting = Stationary Setting
-L_Poke = Pokemon
+L_Poke = ポケモン
 ShinyLocked = Shiny Locked
 AlwaysSynced = Always Synced
 Fix3v = 3IVs
@@ -206,7 +206,7 @@ DumpAcceptList = ダンプリスト
 ---------------------TabPage5----------------------------------
 ID_RE = 正規表現
 ID_Disable = 絞り込みを無効
-L_CurrentSeed = Current Seed
+L_CurrentSeed = 現在Seed
 dgv_IDframe = Frame
 dgv_gen7ID = G7TID
 dgv_ID_rand = 乱数値

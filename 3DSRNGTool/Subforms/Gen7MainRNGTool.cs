@@ -185,7 +185,7 @@ namespace Pk3DSRNGTool
             int[] totaltime = FuncUtil.CalcFrame(Program.mainform.globalseed, min, max, (byte)(NPC.Value + 1), fidget, raining);
             double realtime = totaltime[0] / 30.0;
             string str = $"{totaltime[0] * 2}F. ({realtime.ToString("F")}s)";
-            if (totaltime[1] > 1)
+            if (totaltime[1] > 0)  // To-do should be a good sign for menu method
                 str += $" <{totaltime[1] * 2}F>";
             str = string.Format(TIMER_STR[language], str);
             MessageBox.Show(str, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
