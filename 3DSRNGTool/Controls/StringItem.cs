@@ -46,12 +46,12 @@ namespace Pk3DSRNGTool
         {
             // Translation for category
             // en ja fr de es zh
-            new [] { "Legendary",           "伝説のポケモン",     "Légendaires",      "Legendäre",        "Legendario",        "定点传说" },
+            new [] { "Legendary",           "伝説のポケモン",     "Légendaires",      "Legendäre",        "Legendario",       "定点传说" },
             new [] { "Starters",            "御三家",            "Starters",         "Starters",         "Starters",         "御三家" },
             new [] { "In-Game Gift",        "In-Game Gift",     "Cadeaux",          "In-Game Gift",     "In-Game Gift",     "礼物" },
             new [] { "In-Game Trade",       "In-Game Trade",    "Echanges en jeu",  "In-Game Trade",    "In-Game Trade",    "游戏内交换" },
             new [] { "Pokemon Link",        "ポケモンリンク",     "Pokemon Link",    "Pokémon-Link",     "Nexo Pokémon",     "宝可梦连接" },
-            new [] { "Poké Transporter",    "ポケムーバー",      "Poke Transfert",   "PokeMover",        "Poké Trasladador", "宝可虚拟传送" },
+            new [] { "Poke Transporter",    "ポケムーバー",      "Poke Transfert",   "PokeMover",        "Poké Trasladador", "宝可虚拟传送" },
             new [] { "Normal Stationary",   "Normal Stationary", "Fixes",           "Normal Stationary", "Normal Stationary", "普通定点" },
             new [] { "Fossils",             "カセキ",           "Fossiles",         "Fossils",           "Fósils",         "复原化石" },
             new [] { "Kanto Legendary",     "カントーの伝説",  "Kanto Légendaires", "Kanto Legendäre", "Kanto Legendario",  "关都传说" },
@@ -64,21 +64,21 @@ namespace Pk3DSRNGTool
             new [] { "Ultra Space Wilds",   "ウルトラホール", "Ultra-Dimension Sauvages", "Ultrapforte", "Ultraumbral",      "究极之洞" },
             new [] { "Totem",               "ぬしポケモン",      "Dominants",         "Herrscher",        "Dominante",       "霸主" },
             new [] { "Island Scan",         "QRスキャン",        "Scanner des îles", "nsel-Scanner",    "Escáner Insular",   "岛屿扫描" },
-            new [] { "Normal Wild",         "Normal Wild",      "Normal Sauvage",   "Normal Wild",    "Normal Wild",      "普通野外" },
+            new [] { "Normal Wild",         "Normal Wild",      "Normal Sauvage",   "Normal Wild",    "Normal Wild",        "普通野外" },
             new [] { "Berry Tree",          "Berry Tree",       "Arbre à baies",    "Berry Tree",       "Berry Tree",       "果树" },
             new [] { "Cave Drop",           "Cave Drop",        "Chutes (Grottes)", "Cave Drop",        "Cave Drop",        "洞窟坠物" },
             new [] { "Rustling Bush",       "Rustling Bush",    "Buisson",    "Rustling Bush",    "Rustling Bush",          "晃动树影" },
             new [] { "Friend Safari",       "フレンドサファリ",  "Safari des amis", "Kontaktsafari",    "Kontaktsafari",     "朋友狩猎区" },
-            new [] { "Cave Shadows",        "Cave Shadows",     "Ombres (Grottes)",     "Cave Shadows",     "Cave Shadows",     "洞窟阴影" },
+            new [] { "Cave Shadows",        "Cave Shadows",     "Ombres (Grottes)",     "Cave Shadows",     "Cave Shadows", "洞窟阴影" },
             new [] { "Trap",                "Trap",             "Poussières",             "Trap",       "Trap",             "沙尘" },
-            new [] { "Poké Pelago",         "ポケリゾート",      "Poké Loisir",      "Pokémon-Resort",   "Poké Resort",      "宝可度假地" },
+            new [] { "Poke Pelago",         "ポケリゾート",      "Poké Loisir",      "Pokémon-Resort",   "Poké Resort",      "宝可度假地" },
             new [] { "Johto Starters",      "ジョウトの御三家",  "Johto Starters",   "Johto Starters",   "Johto Starters",   "城都御三家" },
             new [] { "Legendary Titans",    "伝説のゴーレム",    "Regis",            "Legendary Titans", "Legendary Titans", "三神柱" },
-            new [] { "Trash Can",           "Trash Can",        "Poubelles",        "Trash Can",        "Trash Can",        "垃圾桶" },
+            new [] { "Trash Can",           "ゴミ箱",            "Poubelles",        "Mülleimer",        "Papelera",        "垃圾桶" },
             new [] { "Rock Smash",          "いわくだき",        "Eclat'roc",        "Zertrümmerer",     "Golpe Roca",       "碎岩" },
             new [] { "Horde",               "群れバトル",        "Horde",            "Massenbegegnungen","Horda",            "群战" },
-            new [] { "Poké Radar",          "ポケトレ",          "Poke Radar",       "Pokéradar",        "Pokéradar",        "宝可雷达" },
-            new [] { "Fishing",             "Fishing",           "Pêche",           "Fishing",          "Fishing",          "钓鱼" },
+            new [] { "Poke Radar",          "ポケトレ",          "Poke Radar",       "Pokéradar",        "Pokéradar",        "宝可雷达" },
+            new [] { "Fishing",             "釣り",              "Pêche",           "Angeln",           "Pescar",          "钓鱼" },
             new [] { "None",                "なし",              "None",            "None",             "None",             "无" },
         };
 
@@ -169,8 +169,8 @@ namespace Pk3DSRNGTool
             new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
             new string[] { "さいこう", "すばらしい", "すごくいい", "かなりいい", "まあまあ", "ダメかも" },
             new string[] { "Exceptionnel", "Fantastique", "Très bon", "Bon", "Passable", "Pas top" },
-            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
-            new string[] { "Perfect", "Fantastic", "Very Good", "Pretty Good", "Decent", "No Good" },
+            new string[] { "Sensationell", "Fantastisch", "Sehr gut", "Gut", "Nicht übel", "Schlecht" },
+            new string[] { "Inmejorable", "Espectacular", "Genial", "Notable", "No está mal", "Cojea un poco" },
             new string[] { "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" },
         };
         public static readonly string[][] COLUMN_STR =
@@ -225,7 +225,7 @@ namespace Pk3DSRNGTool
             {".\nRejetez {0} fois",",\nand puis rejetez {0} fois" },
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\nReject {0} times",",\nand then reject {0} times" },
-            { ",\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
+            {".\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
         };
     }
 }
