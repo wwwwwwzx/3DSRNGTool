@@ -712,7 +712,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 012, idx = 2,
-                Correction = 31, NPC = 1,
+                Correction = 31,
                 LevelMin = 07,
                 Species = new[] {35,296,023,058,742,235,734,021,096},
             },
@@ -1304,6 +1304,6 @@ namespace Pk3DSRNGTool
             #endregion
         };
 
-        public readonly static int[] RustlingSpots = { 046, 052, 058, 064, 158, 166 };
+        public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };
     }
 }
