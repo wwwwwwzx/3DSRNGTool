@@ -1309,26 +1309,96 @@ namespace Pk3DSRNGTool
 
         public readonly static FishingArea7[] Fishing_USUM =
         {
-            new FishingArea_USUM
+            new FishingArea7
             {
-                Location = 014,
+                Location = 042, NPC = 1, // Seaward Cave
                 LevelMax = 17,
-                SlottType = 5,
+                SlotType = 5,
+                Species = new[] {129,339},
+            },
+            new FishingArea7
+            {
+                Location = 014, // Kala'e Bay
+                LevelMax = 17,
+                SlotType = 7,
                 Species = new[] {129,746,090,223},
             },
-            new FishingArea_USUM
+            new FishingArea7
             {
-                Location = 016, NPC = 2,
+                Location = 016, NPC = 3, // Melemele Sea
                 LevelMax = 17,
-                SlottType = 7,
+                SlotType = 9,
                 Species = new[] {129,746,370,222,366,223},
             },
-            new FishingArea_USUM
+            new FishingArea7
             {
-                Location = 086, NPC = 4,
+                Location = 068, NPC = 1, // Paniola Town
+                LevelMax = 18,
+                SlotType = 5,
+                Species = new[] {129,339},
+            },
+            new FishingArea7
+            {
+                Location = 086, NPC = 4, // Brooklet Hill
                 LevelMax = 16,
-                SlottType = 9,
+                SlotType = 11,
                 Species = new[] {129,118,550,349},
+            },
+            new FishingArea7
+            {
+                Location = 088, NPC = 1, // Brooklet Hill - Totem's Den
+                LevelMax = 16,
+                SlotType = 13,
+                Species = new[] {129,746,594},
+            },
+            new FishingArea7
+            {
+                Location = 056, NPC = 1, // Route 7
+                LevelMax = 18,
+                SlotType = 13,
+                Species = new[] {129,746,120},
+            },
+            new FishingArea7
+            {
+                Location = 058, NPC = 1, // Route 8
+                LevelMax = 20,
+                SlotType = 15,
+                Species = new[] {129,746,170,223},
+            },
+            new FishingArea7
+            {
+                Location = 060, NPC = 1, // Route 9
+                LevelMax = 23,
+                SlotType = 17,
+                Species = new[] {129,746,370,222},
+            },
+            new FishingArea7
+            {
+                Location = 094, NPC = 1, // Akala Outskirts
+                LevelMax = 24,
+                SlotType = 13,
+                Species = new[] {129,746,170},
+            },
+            new FishingArea7
+            {
+                Location = 112, NPC = 1, // Route 13
+                LevelMax = 33,
+                SlotType = 13,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 126, NPC = 1, // Route 14
+                LevelMax = 34,
+                SlotType = 13,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 116, NPC = 1, // Route 15
+                LevelMax = 35,
+                SlotType = 19,
+                Species = new[] {129,746,779,336},
             },
         };
 

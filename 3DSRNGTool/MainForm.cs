@@ -183,7 +183,10 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm));
+            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
+            if (Gen7 && !gen7honey)
+                for (int i = 0; i < List.Count; i++)
+                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType][i]);
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -1255,7 +1258,7 @@ namespace Pk3DSRNGTool
                 {
                     setting7.Fishing = CB_Category.SelectedIndex == 3;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
-                    slottype = (ea as FishingArea7).SlottType;
+                    slottype = (ea as FishingArea7).SlotType;
                 }
             }
             if (setting is Wild6 setting6)

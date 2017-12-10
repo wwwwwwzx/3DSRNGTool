@@ -20,7 +20,7 @@ namespace Pk3DSRNGTool
             bool sync = (int)(getrand % 100) >= 50;
             if (blinkwhensync)
                 time_elapse(3);
-            return sync;
+            return sync || PostNatureLock;
         }
 
         public override void Delay() => RNGPool.StationaryDelay7();
@@ -38,7 +38,6 @@ namespace Pk3DSRNGTool
             else
             {
                 rt.Synchronize = blink_process();
-                rt.Synchronize |= PostNatureLock;
                 Advance(60);
             }
 
