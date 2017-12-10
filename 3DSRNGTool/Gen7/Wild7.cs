@@ -15,12 +15,13 @@ namespace Pk3DSRNGTool
         public byte SpecialLevel;
         public bool CompoundEye;
         public bool UB;
+        public bool Fishing;
 
         private bool IsSpecial;
         private bool IsMinior => SpecForm[slot] == 774;
         private bool IsUB => UB && IsSpecial;
         private bool IsShinyLocked => IsUB && SpecForm[0] < 800; // Not USUM UB
-        private bool NormalSlot => !IsSpecial;
+        private bool NormalSlot => !IsSpecial || Fishing;
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
@@ -30,7 +31,12 @@ namespace Pk3DSRNGTool
             ResultW7 rt = new ResultW7();
             rt.Level = SpecialLevel;
 
-            if (SpecialEnctr > 0)
+            if (Fishing)
+            {
+                IsSpecial = rt.IsSpecial = (byte)(getrand % 100) > SpecialEnctr;
+                time_elapse(12);
+            }
+            else if (SpecialEnctr > 0)
                 IsSpecial = rt.IsSpecial = (byte)(getrand % 100) < SpecialEnctr;
 
             if (NormalSlot) // Normal wild
@@ -122,6 +128,26 @@ namespace Pk3DSRNGTool
             if (rand < (CompoundEye ? 80 : 55))
                 return StringItem.helditemStr[1]; // 5%
             return StringItem.helditemStr[3]; // None
+        }
+
+        public static byte getDelayType(int category)
+        {
+            switch (category)
+            {
+                case 3: return 1;
+                default: return 0;
+            }
+        }
+
+        public static byte getSpecialRate(int category)
+        {
+            switch (category)
+            {
+                case 1: return 80;
+                case 2: return 50;
+                case 3: return 80; // To-do
+                default: return 0;
+            }
         }
     }
 }

@@ -387,12 +387,19 @@ namespace Pk3DSRNGTool.Core
         public static void WildDelay7()
         {
             NormalDelay7();
-            ResetModelStatus();
-            if (ultrawild) Advance(1);    // Caused by using the item?
-            if (raining) Advance(2);
-            time_elapse7(1);              // Blink process also occurs when loading map
-            Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
-            time_elapse7(HoneyDelay);
+            switch (DelayType)
+            {
+                case 1:  // Fishing
+                    break;
+                default: // Honey
+                    ResetModelStatus();
+                    if (ultrawild) Advance(1);    // Caused by using the item?
+                    if (raining) Advance(2);
+                    time_elapse7(1);              // Blink process also occurs when loading map
+                    Advance(PreHoneyCorrection - modelnumber);  //Pre-HoneyCorrection
+                    time_elapse7(HoneyDelay);
+                    break;
+            }
         }
 
         private static int getframeshift()

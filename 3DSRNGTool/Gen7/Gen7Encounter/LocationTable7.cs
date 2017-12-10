@@ -16,6 +16,9 @@ namespace Pk3DSRNGTool
                 case 2:
                     return (IsUltra ? PKMW7.Species_USUM : PKMW7.Species_SM)[category].List
                            .Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
+                case 3:
+                    TableNow = Fishing_USUM;
+                    goto default;
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }
         }
@@ -1302,6 +1305,31 @@ namespace Pk3DSRNGTool
                 Species = new[] {44,108,279,686,760,210,210,055,279,686,686},
             },
             #endregion
+        };
+
+        public readonly static FishingArea7[] Fishing_USUM =
+        {
+            new FishingArea_USUM
+            {
+                Location = 014,
+                LevelMax = 17,
+                SlottType = 5,
+                Species = new[] {129,746,090,223},
+            },
+            new FishingArea_USUM
+            {
+                Location = 016, NPC = 2,
+                LevelMax = 17,
+                SlottType = 7,
+                Species = new[] {129,746,370,222,366,223},
+            },
+            new FishingArea_USUM
+            {
+                Location = 086, NPC = 4,
+                LevelMax = 16,
+                SlottType = 9,
+                Species = new[] {129,118,550,349},
+            },
         };
 
         public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };

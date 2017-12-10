@@ -72,8 +72,9 @@
     <Compile Include="Gen6\ResultW6.cs" />
     <Compile Include="Gen6\TinyTimeline.cs" />
     <Compile Include="Gen6\Wild6.cs" />
-    <Compile Include="Gen7\ID7.cs" />
-    <Compile Include="Gen7\ResultME7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\FishingArea7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Controls\CheckBoxComboBox\CheckBoxComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,13 +117,13 @@
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\ID7.cs" />
+    <Compile Include="Gen7\ResultME7.cs" />
     <Compile Include="Gen7\Egg7.cs" />
     <Compile Include="Gen7\PKMW7.cs" />
     <Compile Include="Gen7\ResultE7.cs" />
     <Compile Include="Gen7\ResultW7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Event7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Gen7\ModelStatus.cs" />
     <Compile Include="Gen7\PKM7.cs" />
     <Compile Include="Gen7\Result7.cs" />

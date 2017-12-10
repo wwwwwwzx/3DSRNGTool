@@ -30,6 +30,8 @@ namespace Pk3DSRNGTool
         private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
+        private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3;
+        private bool LinearDelay => IsPelago || gen7honey;
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
@@ -181,8 +183,7 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = Gen7 ? species.Skip(1).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm))
-                : species.Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm));
+            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm));
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -206,9 +207,15 @@ namespace Pk3DSRNGTool
             }
             else
             {
-                byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
-                for (int i = 0; i < 10; i++)
-                    Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(Slottype[i]);
+                if (gen7honey)
+                {
+                    byte[] Slottype = EncounterArea7.SlotType[slotspecies[0]];
+                    for (int i = 0; i < 10; i++)
+                        Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(Slottype[i]);
+                }
+                else // Other short slots
+                    for (int i = 0; i < slotspecies.Length; i++)
+                        Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
 
             SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0);
@@ -235,7 +242,7 @@ namespace Pk3DSRNGTool
             TranslateInterface(TTT, lang);
             TranslateInterface(gen7tool, lang);
             TranslateInterface(ntrhelper, lang);
-            Text = Text + $" v{Updater.CurrentVersion}";
+            Text = Text + $" v{Updater.CurrentVersion}" + "Beta";
 
             naturestr = getStringList("Natures", curlanguage);
             hpstr = getStringList("Types", curlanguage);
@@ -379,7 +386,7 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
-            L_Correction.Visible = Correction.Visible = IsPelago || Gen7 && Method == 2;
+            L_Correction.Visible = Correction.Visible = LinearDelay;
             if (IsPelago)
             {
                 Correction.Minimum = 0; Correction.Maximum = 255;
@@ -622,7 +629,7 @@ namespace Pk3DSRNGTool
 
             // Contorls in RNGInfo
             AroundTarget.Visible = timedelaypanel.Visible = Method < 3 || mainrngegg;
-            L_Correction.Visible = Correction.Visible = Gen7 && Method == 2; // Not time-based shift
+            L_Correction.Visible = Correction.Visible = LinearDelay; // Not time-based shift
             Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
@@ -740,19 +747,28 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 ea = LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
-                var tmp = ea as EncounterArea7;
-                NPC.Value = tmp.NPC;
-                Correction.Value = tmp.Correction;
-                Raining.Enabled = true;
-                Raining.Checked = tmp.Raining;
-                if (CB_Category.SelectedIndex == 1 && FormPM is PKMW7 pmw7 && !pmw7.Conceptual)
-                    Special_th.Value = pmw7.Rate[MetLocation.SelectedIndex];
-                if (LocationTable7.RustlingSpots.Contains(tmp.Location))
-                    UpdateTip("Correction and NPC might be different from default setting when there are rustling spots");
-                else
-                    UpdateTip(null);
-                Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
-                Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
+                if (ea is EncounterArea7 tmp)
+                {
+                    NPC.Value = tmp.NPC;
+                    Correction.Value = tmp.Correction;
+                    Raining.Enabled = true;
+                    Raining.Checked = tmp.Raining;
+                    if (CB_Category.SelectedIndex == 1 && FormPM is PKMW7 pmw7 && !pmw7.Conceptual)
+                        Special_th.Value = pmw7.Rate[MetLocation.SelectedIndex];
+                    if (LocationTable7.RustlingSpots.Contains(tmp.Location))
+                        UpdateTip("Correction and NPC might be different from default setting when there are rustling spots");
+                    else
+                        UpdateTip(null);
+                    Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
+                    Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
+                }
+                else if (ea is FishingArea7 f)
+                {
+                    NPC.Value = f.NPC;
+                    Raining.Enabled = true;
+                    Lv_min.Value = f.LevelMin;
+                    Lv_max.Value = f.LevelMax;
+                }
             }
             else if (Gen6)
             {
@@ -964,7 +980,7 @@ namespace Pk3DSRNGTool
                 RefreshLocation();
                 if (FormPM is PKMW7 pmw7) // For UB
                 {
-                    Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? (byte)(CB_Category.SelectedIndex == 2 ? 50 : 0);
+                    Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? Wild7.getSpecialRate(CB_Category.SelectedIndex);
                     Special_th.Enabled = pmw7.Conceptual;
                 }
                 else if (FormPM is PKMW6 pmw6)
@@ -1004,7 +1020,6 @@ namespace Pk3DSRNGTool
             DGV.CellFormatting -= new DataGridViewCellFormattingEventHandler(DGV_CellFormatting); //Stop Freshing
             Frames.Clear();
             Frames = new List<Frame>();
-            RNGPool.DelayType = 0;
 
             filter = FilterSettings;
             RNGPool.igenerator = getGenerator(Method);
@@ -1218,19 +1233,29 @@ namespace Pk3DSRNGTool
             int slottype = 0;
             if (setting is Wild7 setting7)
             {
-                if (ea.Locationidx == 1190) slottype = 1; // Poni Plains -4
+                RNGPool.DelayType = Wild7.getDelayType(CB_Category.SelectedIndex);
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
                 setting7.SpecialEnctr = (byte)Special_th.Value;
                 setting7.UB = CB_Category.SelectedIndex == 1;
-                setting7.SpecForm = new int[11];
                 setting7.CompoundEye = CompoundEyes.Checked;
-                for (int i = 1; i < 11; i++)
-                    setting7.SpecForm[i] = slotspecies[EncounterArea7.SlotType[slotspecies[0]][i - 1]];
-                if (setting7.SpecialEnctr > 0)
+                if (gen7honey)
                 {
-                    setting7.SpecForm[0] = FormPM.SpecForm;
-                    setting7.SpecialLevel = FormPM.Level;
+                    setting7.SpecForm = new int[11];
+                    if (ea.Locationidx == 1190) slottype = 1; // Poni Plains -4
+                    for (int i = 1; i < 11; i++)
+                        setting7.SpecForm[i] = slotspecies[EncounterArea7.SlotType[slotspecies[0]][i - 1]];
+                    if (setting7.SpecialEnctr > 0)
+                    {
+                        setting7.SpecForm[0] = FormPM.SpecForm;
+                        setting7.SpecialLevel = FormPM.Level;
+                    }
+                }
+                else
+                {
+                    setting7.Fishing = CB_Category.SelectedIndex == 3;
+                    setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
+                    slottype = (ea as FishingArea7).SlottType;
                 }
             }
             if (setting is Wild6 setting6)

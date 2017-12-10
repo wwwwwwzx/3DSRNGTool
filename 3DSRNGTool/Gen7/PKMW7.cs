@@ -145,6 +145,14 @@
                     new PKMW7 { Species = 655, Level = 44, Location = new[] {160}, }, // Delphox @ Ancient Poni Path
                 }
             },
+            new PokemonList
+            {
+                Text = "Fishing",
+                List = new[]
+                {
+                   new PKMW7 { Species = 000, Conceptual = true, Delay = -2, },
+                }
+            },
         };
     }
 }

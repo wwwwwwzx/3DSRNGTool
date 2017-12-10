@@ -40,6 +40,13 @@
             new byte[] { 10,10,10,10,10,10,10,10,10,5,4,1 }, // Gen6
             new byte[] { 60,35,5 }, // Horde / Fishing
             new byte[] { 50,30,15,4,1 }, // Rock Smash
+             // Gen7 Fishing
+            new byte[] { 35,35,5,25, },
+            new byte[] { 25,25,35,15, },
+            new byte[] { 25,25,25,5,5,15, },
+            new byte[] { 15,15,15,35,5,15, },
+            new byte[] { 44,30,25,1, },
+            new byte[] { 40,25,25,10, },
         };
     }
 }
