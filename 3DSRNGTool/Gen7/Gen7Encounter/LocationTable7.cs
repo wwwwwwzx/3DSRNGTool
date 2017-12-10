@@ -1398,7 +1398,42 @@ namespace Pk3DSRNGTool
                 Location = 116, NPC = 1, // Route 15
                 LevelMax = 35,
                 SlotType = 19,
-                Species = new[] {129,746,779,336},
+                Species = new[] {129,746,779,366},
+            },
+            new FishingArea7
+            {
+                Location = 172, NPC = 1, // Seafolk Village
+                LevelMax = 44,
+                SlotType = 13,
+                Species = new[] {129,320,781},
+            },
+            new FishingArea7
+            {
+                Location = 162, NPC = 1, // Poni Breaker Coast
+                LevelMax = 44,
+                SlotType = 11,
+                Species = new[] {129,320,318,369},
+            },
+            new FishingArea7
+            {
+                Location = 174, NPC = 1, // Vast Poni Canyon
+                LevelMax = 46,
+                SlotType = 21,
+                Species = new[] {129,339,341,550},
+            },
+            new FishingArea7
+            {
+                Location = 156, NPC = 1, // Poni Meadow
+                LevelMax = 57,
+                SlotType = 23,
+                Species = new[] {129,339,147},
+            },
+            new FishingArea7
+            {
+                Location = 170, NPC = 1, // Poni Gauntlet
+                LevelMax = 61,
+                SlotType = 23,
+                Species = new[] {129,339,147},
             },
         };
 

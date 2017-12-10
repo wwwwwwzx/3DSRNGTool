@@ -186,7 +186,7 @@ namespace Pk3DSRNGTool
             var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
             if (Gen7 && !gen7honey)
                 for (int i = 0; i < List.Count; i++)
-                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType][i]);
+                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1: 0)][i]);
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -388,7 +388,8 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
-            SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
+            SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0;
+            Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             if (IsPelago)
             {
@@ -663,7 +664,8 @@ namespace Pk3DSRNGTool
 
             if (MainRNGEgg.Checked)
                 UpdateTip("NPC can be 4-8");
-
+            
+            Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
             L_Slot.Visible = Slot.Visible = Method == 2;
@@ -770,7 +772,7 @@ namespace Pk3DSRNGTool
                     NPC.Value = f.NPC;
                     Raining.Enabled = true;
                     Lv_min.Value = f.LevelMin;
-                    Lv_max.Value = f.LevelMax;
+                    Lv_max.Value = f.LevelMax + (Bubbling.Checked && IsUltra ? 5 : 0);
                 }
             }
             else if (Gen6)
@@ -1258,7 +1260,7 @@ namespace Pk3DSRNGTool
                 {
                     setting7.Fishing = CB_Category.SelectedIndex == 3;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
-                    slottype = (ea as FishingArea7).SlotType;
+                    slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
                 }
             }
             if (setting is Wild6 setting6)

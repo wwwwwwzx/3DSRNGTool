@@ -206,6 +206,7 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.Bubbling = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
             this.SuctionCups = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
@@ -2270,6 +2271,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.Bubbling);
             this.Wild_Setting.Controls.Add(this.Raining);
             this.Wild_Setting.Controls.Add(this.SuctionCups);
             this.Wild_Setting.Controls.Add(this.L_ChainLength);
@@ -2299,6 +2301,17 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // Bubbling
+            // 
+            this.Bubbling.AutoSize = true;
+            this.Bubbling.Location = new System.Drawing.Point(213, 196);
+            this.Bubbling.Name = "Bubbling";
+            this.Bubbling.Size = new System.Drawing.Size(50, 17);
+            this.Bubbling.TabIndex = 109;
+            this.Bubbling.Text = "冒泡";
+            this.Bubbling.UseVisualStyleBackColor = true;
+            this.Bubbling.CheckedChanged += new System.EventHandler(this.MetLocation_SelectedIndexChanged);
             // 
             // Raining
             // 
@@ -5337,6 +5350,7 @@
         private System.Windows.Forms.ComboBox CB_Profile;
         private System.Windows.Forms.Label L_Profile;
         private System.Windows.Forms.Button B_AddProfile;
+        private System.Windows.Forms.CheckBox Bubbling;
     }
 }
 

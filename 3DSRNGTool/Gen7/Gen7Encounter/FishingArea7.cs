@@ -10,8 +10,7 @@ namespace Pk3DSRNGTool
         public byte LevelMin = 10;
         public byte LevelMax;
 
-        public byte SlotType;
-        public byte SlotType2 => (byte)(SlotType + 1);
+        public byte SlotType; // Bubbling slottype++
 
         public override int[] getSpecies(int ver, bool IsNight) => (int[])Species.Clone();
     }
