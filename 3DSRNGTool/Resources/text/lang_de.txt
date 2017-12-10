@@ -86,16 +86,12 @@ ShinyOnly = Nur Shiny
 SafeFOnly = Nur Sichere F
 BlinkFOnly = Nur Blink F
 ShowStats = Zeige Werte
-Reset = Zuruecksetzen
-B_LoadFilter = Laden
-B_SaveFilter = Sichern
 ---
 RNGInfo = RNG Info
 B_Search = Berechnen
 L_NPC = # of NPCs
 AroundTarget = ±100 Frame
 RB_FrameRange = Rahmenbereich
-B_ResetFrame = Standard
 L_StartingPoint = <-- Startrahmen
 CreateTimeline = Zeitachse erstellen
 ---
@@ -163,10 +159,9 @@ Day = Tag
 Night = Nacht
 CompoundEyes = Facettenauge
 SuctionCups = Saugnapf
+Bubbling = Bubbling
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Aktueller Status
-B_Load = Laden...
-B_Backup = Sichern
 ---
 Parents_Info = Eltern Infomation
 L_Egg_H = KP

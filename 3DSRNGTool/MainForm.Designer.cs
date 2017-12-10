@@ -273,7 +273,7 @@
             this.L_Event_PID = new System.Windows.Forms.Label();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
-            this.Tip = new System.Windows.Forms.Label();
+            this.Tip = new System.Windows.Forms.PictureBox();
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.RB_EggShortest = new System.Windows.Forms.RadioButton();
             this.B_ResetFrame = new System.Windows.Forms.Button();
@@ -453,6 +453,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Event_TID)).BeginInit();
             this.TP_StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Tip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
             this.timedelaypanel.SuspendLayout();
             this.Gen6EggPanel.SuspendLayout();
@@ -1716,11 +1717,11 @@
             // 
             // B_Load
             // 
+            this.B_Load.Image = global::Pk3DSRNGTool.Properties.Resources.Open;
             this.B_Load.Location = new System.Drawing.Point(5, 145);
             this.B_Load.Name = "B_Load";
             this.B_Load.Size = new System.Drawing.Size(53, 25);
             this.B_Load.TabIndex = 5;
-            this.B_Load.Text = "导入";
             this.B_Load.UseVisualStyleBackColor = true;
             this.B_Load.Click += new System.EventHandler(this.B_Load_Click);
             // 
@@ -1739,11 +1740,11 @@
             // 
             // B_Backup
             // 
+            this.B_Backup.Image = global::Pk3DSRNGTool.Properties.Resources.Save;
             this.B_Backup.Location = new System.Drawing.Point(70, 145);
             this.B_Backup.Name = "B_Backup";
             this.B_Backup.Size = new System.Drawing.Size(53, 25);
             this.B_Backup.TabIndex = 6;
-            this.B_Backup.Text = "保存";
             this.B_Backup.UseVisualStyleBackColor = true;
             this.B_Backup.Click += new System.EventHandler(this.B_Backup_Click);
             // 
@@ -3122,13 +3123,12 @@
             // 
             // Tip
             // 
-            this.Tip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tip.AutoSize = true;
-            this.Tip.Location = new System.Drawing.Point(231, 0);
+            this.Tip.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
+            this.Tip.Location = new System.Drawing.Point(236, 0);
             this.Tip.Name = "Tip";
-            this.Tip.Size = new System.Drawing.Size(13, 13);
-            this.Tip.TabIndex = 94;
-            this.Tip.Text = "?";
+            this.Tip.Size = new System.Drawing.Size(16, 16);
+            this.Tip.TabIndex = 102;
+            this.Tip.TabStop = false;
             // 
             // TargetFrame
             // 
@@ -3167,11 +3167,11 @@
             // 
             // B_ResetFrame
             // 
-            this.B_ResetFrame.Location = new System.Drawing.Point(179, 22);
+            this.B_ResetFrame.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
+            this.B_ResetFrame.Location = new System.Drawing.Point(171, 19);
             this.B_ResetFrame.Name = "B_ResetFrame";
             this.B_ResetFrame.Size = new System.Drawing.Size(53, 25);
             this.B_ResetFrame.TabIndex = 100;
-            this.B_ResetFrame.Text = "重置";
             this.B_ResetFrame.UseVisualStyleBackColor = true;
             this.B_ResetFrame.Click += new System.EventHandler(this.B_ResetFrame_Click);
             // 
@@ -4321,21 +4321,21 @@
             // 
             // B_LoadFilter
             // 
-            this.B_LoadFilter.Location = new System.Drawing.Point(265, 17);
+            this.B_LoadFilter.Image = global::Pk3DSRNGTool.Properties.Resources.Open;
+            this.B_LoadFilter.Location = new System.Drawing.Point(269, 19);
             this.B_LoadFilter.Name = "B_LoadFilter";
-            this.B_LoadFilter.Size = new System.Drawing.Size(58, 25);
+            this.B_LoadFilter.Size = new System.Drawing.Size(50, 25);
             this.B_LoadFilter.TabIndex = 99;
-            this.B_LoadFilter.Text = "Load";
             this.B_LoadFilter.UseVisualStyleBackColor = true;
             this.B_LoadFilter.Click += new System.EventHandler(this.B_LoadFilter_Click);
             // 
             // B_SaveFilter
             // 
-            this.B_SaveFilter.Location = new System.Drawing.Point(196, 17);
+            this.B_SaveFilter.Image = global::Pk3DSRNGTool.Properties.Resources.Save;
+            this.B_SaveFilter.Location = new System.Drawing.Point(207, 19);
             this.B_SaveFilter.Name = "B_SaveFilter";
-            this.B_SaveFilter.Size = new System.Drawing.Size(58, 25);
+            this.B_SaveFilter.Size = new System.Drawing.Size(50, 25);
             this.B_SaveFilter.TabIndex = 96;
-            this.B_SaveFilter.Text = "Save";
             this.B_SaveFilter.UseVisualStyleBackColor = true;
             this.B_SaveFilter.Click += new System.EventHandler(this.B_SaveFilter_Click);
             // 
@@ -4452,11 +4452,11 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(334, 17);
+            this.Reset.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
+            this.Reset.Location = new System.Drawing.Point(331, 19);
             this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(58, 25);
+            this.Reset.Size = new System.Drawing.Size(50, 25);
             this.Reset.TabIndex = 73;
-            this.Reset.Text = "Reset";
             this.Reset.UseVisualStyleBackColor = true;
             this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
@@ -4937,6 +4937,7 @@
             this.TP_StationaryRNG.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Tip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).EndInit();
             this.timedelaypanel.ResumeLayout(false);
             this.timedelaypanel.PerformLayout();
@@ -5338,7 +5339,6 @@
         private System.Windows.Forms.PictureBox ShinyMark;
         private System.Windows.Forms.ToolStripMenuItem SetAsFidget;
         private System.Windows.Forms.ToolStripMenuItem DumpAcceptList;
-        private System.Windows.Forms.Label Tip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem M_KeyBV;
         private System.Windows.Forms.ToolStripMenuItem M_Option;
@@ -5351,6 +5351,7 @@
         private System.Windows.Forms.Label L_Profile;
         private System.Windows.Forms.Button B_AddProfile;
         private System.Windows.Forms.CheckBox Bubbling;
+        private System.Windows.Forms.PictureBox Tip;
     }
 }
 

@@ -84,16 +84,12 @@ ShinyOnly = 色違いのみ
 SafeFOnly = Safe F Only
 BlinkFOnly = まばたきのみ
 ShowStats = 実数値を表示
-Reset = リセット
-B_LoadFilter = ロ—ド
-B_SaveFilter = 保存
 ---
 RNGInfo = 検索範囲
 B_Search = 計算
 L_NPC = NPCの数
 AroundTarget = ±100 Frame
 RB_FrameRange = 検索範囲
-B_ResetFrame = リセット
 L_StartingPoint = <-- StartingFrame
 CreateTimeline = Create Timeline/s
 ---
@@ -161,10 +157,9 @@ Day = 昼
 Night = 夜
 CompoundEyes = ふくがん
 SuctionCups = きゅうばん
+Bubbling = Bubbling
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Current Status
-B_Load = ロ—ド
-B_Backup = 保存
 ---
 Parents_Info = 親の情報
 L_Egg_H = HP

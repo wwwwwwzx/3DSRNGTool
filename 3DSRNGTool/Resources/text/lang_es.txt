@@ -86,16 +86,12 @@ ShinyOnly = Solo Variocolor
 SafeFOnly = Solo Safe F
 BlinkFOnly = Solo Blink F
 ShowStats = Mostrar Estadísticas
-Reset = Reiniciar
-B_LoadFilter = Cargar
-B_SaveFilter = Guardar
 ---
 RNGInfo = RNG Info
 B_Search = Calcular
 L_NPC = # de NPCs
 AroundTarget = ±100 Fotogramas
 RB_FrameRange = Rango de Fotogramas
-B_ResetFrame = Por defecto
 L_StartingPoint = <-- Fotograma Inicial
 CreateTimeline = Crear Línea/s de tiempo
 ---
@@ -163,10 +159,9 @@ Day = Día
 Night = Noche
 CompoundEyes = Ojo Compuesto
 SuctionCups = Ventosas
+Bubbling = Bubbling
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Fotograma actual
-B_Load = Cargar...
-B_Backup = Copia de Seguridad
 ---
 Parents_Info = Información de Padres
 L_Egg_H = PS
