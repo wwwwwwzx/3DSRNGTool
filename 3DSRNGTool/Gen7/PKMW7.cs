@@ -78,6 +78,14 @@
                     new PKMW7 { Species = 500, Level = 43, Location = new[]{ 160 }, }, // Emboar @ Ancient Poni Path
                 },
             },
+            new PokemonList
+            {
+                Text = "Fishing",
+                List = new[]
+                {
+                   new PKMW7 { Species = 000, Conceptual = true, Delay = -2, },
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_USUM =

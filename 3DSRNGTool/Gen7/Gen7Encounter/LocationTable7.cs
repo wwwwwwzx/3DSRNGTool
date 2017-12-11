@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
                     return (IsUltra ? PKMW7.Species_USUM : PKMW7.Species_SM)[category].List
                            .Skip(1).SelectMany(pk => (pk as PKMW7).Location).ToArray();
                 case 3:
-                    TableNow = Fishing_USUM;
+                    TableNow = IsUltra ? Fishing_USUM : Fishing_SM;
                     goto default;
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }
@@ -1305,6 +1305,136 @@ namespace Pk3DSRNGTool
                 Species = new[] {44,108,279,686,760,210,210,055,279,686,686},
             },
             #endregion
+        };
+
+        public readonly static FishingArea7[] Fishing_SM =
+        {
+            new FishingArea7
+            {
+                Location = 042, // Seaward Cave
+                LevelMax = 15,
+                SlotType = 25,
+                Species = new[] {129,339},
+            },
+            new FishingArea7
+            {
+                Location = 014, // Kala'e Bay
+                LevelMax = 15,
+                SlotType = 27,
+                Species = new[] {129,746,090},
+            },
+            new FishingArea7
+            {
+                Location = 016, NPC = 3, // Melemele Sea
+                LevelMax = 18,
+                SlotType = 29,
+                Species = new[] {129,746,370,222},
+            },
+            new FishingArea7
+            {
+                Location = 068, NPC = 1, // Paniola Town
+                LevelMax = 18,
+                SlotType = 25,
+                Species = new[] {129,339},
+            },
+            new FishingArea7
+            {
+                Location = 086, NPC = 4, // Brooklet Hill
+                LevelMax = 15,
+                SlotType = 31,
+                Species = new[] {129,118,349},
+            },
+            new FishingArea7
+            {
+                Location = 088, NPC = 1, // Brooklet Hill - Totem's Den
+                LevelMax = 15,
+                SlotType = 27,
+                Species = new[] {129,746,594},
+            },
+            new FishingArea7
+            {
+                Location = 056, NPC = 1, // Route 7
+                LevelMax = 19,
+                SlotType = 33,
+                Species = new[] {129,746,120},
+            },
+            new FishingArea7
+            {
+                Location = 058, NPC = 1, // Route 8
+                LevelMax = 20,
+                SlotType = 33,
+                Species = new[] {129,746,170},
+            },
+            new FishingArea7
+            {
+                Location = 060, NPC = 1, // Route 9
+                LevelMax = 23,
+                SlotType = 35,
+                Species = new[] {129,746,370,222},
+            },
+            new FishingArea7
+            {
+                Location = 094, NPC = 1, // Akala Outskirts
+                LevelMax = 23,
+                SlotType = 33,
+                Species = new[] {129,746,170},
+            },
+            new FishingArea7
+            {
+                Location = 110, NPC = 1, // Secluded Shore
+                LevelMax = 30,
+                SlotType = 27,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 112, NPC = 1, // Route 13
+                LevelMax = 30,
+                SlotType = 27,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 126, NPC = 1, // Route 14
+                LevelMax = 31,
+                SlotType = 27,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 116, NPC = 1, // Route 15
+                LevelMax = 33,
+                SlotType = 27,
+                Species = new[] {129,746,779},
+            },
+            new FishingArea7
+            {
+                Location = 172, NPC = 1, // Seafolk Village
+                LevelMax = 43,
+                SlotType = 37,
+                Species = new[] {129,320,781},
+            },
+            new FishingArea7
+            {
+                Location = 174, NPC = 1, // Vast Poni Canyon
+                LevelMax = 44,
+                SlotType = 39,
+                Species = new[] {129,339,147},
+            },
+            new FishingArea7
+            {
+                Location = 156, NPC = 1, // Poni Meadow
+                LevelMax = 57,
+                SlotType = 39,
+                Species = new[] {129,339,147},
+            },
+            new FishingArea7
+            {
+                Location = 170, NPC = 1, // Poni Gauntlet
+                LevelMax = 59,
+                SlotType = 39,
+                Species = new[] {129,339,147},
+            },
         };
 
         public readonly static FishingArea7[] Fishing_USUM =

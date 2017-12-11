@@ -40,7 +40,8 @@
             new byte[] { 10,10,10,10,10,10,10,10,10,5,4,1 }, // Gen6
             new byte[] { 60,35,5 }, // Horde / Fishing
             new byte[] { 50,30,15,4,1 }, // Rock Smash
-             // Gen7 Fishing
+            // Gen7 Fishing
+            // USUM
             new byte[] { 90,10 }, // 5
             new byte[] { 40,60 },
             new byte[] { 35,35,05,25, }, // 7
@@ -61,6 +62,23 @@
             new byte[] { 25,20,35,20 },
             new byte[] { 59,40,01 }, // 23
             new byte[] { 50,40,10 },
+            // SM
+            new byte[] { 99,01, }, // 25
+            new byte[] { 50,50, },
+            new byte[] { 79,20,01, }, // 27
+            new byte[] { 50,30,20, },
+            new byte[] { 78,20,01,01, }, // 29
+            new byte[] { 20,20,40,20, },
+            new byte[] { 70,29,01, }, // 31
+            new byte[] { 50,45,05, },
+            new byte[] { 79,20,01, }, // 33
+            new byte[] { 60,20,20, },
+            new byte[] { 15,10,70,05 }, // 35
+            new byte[] { 15,10,70,05 },
+            new byte[] { 79,20,01, }, // 37
+            new byte[] { 50,40,10, },
+            new byte[] { 59,40,01, }, // 39
+            new byte[] { 50,40,10, },
         };
     }
 }
