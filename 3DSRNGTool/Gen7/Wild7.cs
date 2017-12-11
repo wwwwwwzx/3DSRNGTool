@@ -35,6 +35,13 @@ namespace Pk3DSRNGTool
             {
                 IsSpecial = rt.IsSpecial = (byte)(getrand % 100) > SpecialEnctr;
                 time_elapse(12);
+                if (IsSpecial) // Predict hooked item
+                {
+                    int mark = RNGPool.index;
+                    time_elapse(34);
+                    rt.SpecialVal = (byte)(getrand % 100);
+                    RNGPool.Rewind(mark);
+                }
             }
             else if (SpecialEnctr > 0)
                 IsSpecial = rt.IsSpecial = (byte)(getrand % 100) < SpecialEnctr;

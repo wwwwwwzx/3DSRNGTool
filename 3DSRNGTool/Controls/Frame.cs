@@ -53,7 +53,8 @@ namespace Pk3DSRNGTool
         public string GenderStr => StringItem.genderstr[rt.Gender];
         public string AbilityStr => StringItem.abilitystr[rt.Ability];
         public int Delay => (rt as Result7)?.FrameDelayUsed ?? 0;
-        public string Slot => (rt as WildResult)?.IsSpecial ?? false ? SpecialSlotStr : (rt as WildResult)?.Slot.ToString();
+        private string specialstr => (rt as ResultW7)?.SpecialVal?.ToString("D2").PadLeft(3, '<').PadRight(4, '>') ?? SpecialSlotStr;
+        public string Slot => (rt as WildResult)?.IsSpecial ?? false ? specialstr : (rt as WildResult)?.Slot.ToString();
         public byte Level => rt.Level;
         public string Ball => Parents[(rt as EggResult)?.Ball ?? (rt as ResultME7)?.Ball ?? 0];
         public string Item => (rt as WildResult)?.ItemStr ?? "";

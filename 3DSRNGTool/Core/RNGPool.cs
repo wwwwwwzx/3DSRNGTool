@@ -29,6 +29,10 @@ namespace Pk3DSRNGTool.Core
                     Pointer -= BufferSize;
             }
         }
+        public static void Rewind(int idx)
+        {
+            index = idx;
+        }
 
         public static void Advance(int d)
         {

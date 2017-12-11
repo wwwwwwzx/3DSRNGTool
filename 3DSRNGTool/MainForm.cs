@@ -1478,6 +1478,9 @@ namespace Pk3DSRNGTool
                 if (index == 0) row.DefaultCellStyle.BackColor = DefaultBackColor;
             }
 
+            if (result is ResultW7 rtw7 && rtw7.SpecialVal != null)
+                row.DefaultCellStyle.BackColor = DefaultBackColor;
+
             Frames[index].Formatted = true;
 
             bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as ResultME7)?.InheritMaleIV;
