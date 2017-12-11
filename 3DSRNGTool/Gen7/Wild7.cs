@@ -40,7 +40,7 @@ namespace Pk3DSRNGTool
                     int mark = RNGPool.index;
                     time_elapse(34);
                     rt.SpecialVal = (byte)(getrand % 100);
-                    RNGPool.Rewind(mark);
+                    RNGPool.Rewind(mark); // Don't need to put modelstatus back
                 }
             }
             else if (SpecialEnctr > 0)

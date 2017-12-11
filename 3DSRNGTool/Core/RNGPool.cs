@@ -49,6 +49,7 @@ namespace Pk3DSRNGTool.Core
             tinystatus = null;
             timeline = null;
             horde = null;
+            DelayType = 0;
         }
 
         public static void CreateBuffer(int buffersize, IRNG rng)
