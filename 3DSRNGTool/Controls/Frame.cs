@@ -5,7 +5,7 @@ namespace Pk3DSRNGTool
     internal class Frame
     {
         public RNGResult rt;
-        private int realtime;
+        public int realtime;
         public bool Formatted;
 
         public Frame(RNGResult sc, int frame = -1, int time = -1, int eggnum = -1, byte blink = 0)
@@ -18,7 +18,7 @@ namespace Pk3DSRNGTool
         }
 
         // DataSource Display Block
-        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
+        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★", "<?>" };
         public static string[] Parents = { "-", "Male", "Female" };
         public static string SpecialSlotStr;
 
@@ -29,7 +29,7 @@ namespace Pk3DSRNGTool
         public int FrameNum { get; private set; }
         public int Shift => realtime > -1 ? realtime - standard : 0;
         public byte Blink;
-        public string Mark => Blink < 4 ? blinkmarks[Blink] : Blink.ToString();
+        public string Mark => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         private string _FrameUsed;
         public string FrameUsed { get => _FrameUsed ?? (rt as EggResult)?.FramesUsed.ToString("+#") ?? (rt as Result6)?.FrameUsed.ToString("+00") ?? ""; set => _FrameUsed = value; }
         public int HP => showstats ? rt.Stats[0] : rt.IVs[0];

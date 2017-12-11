@@ -14,9 +14,12 @@ namespace Pk3DSRNGTool
         public byte PelagoShift;
         public bool Trade;
         private bool PostNatureLock;
+        public bool? SkipSync { get; set; }
 
         private bool blink_process()
         {
+            if (SkipSync != null)
+                return (bool)SkipSync;
             bool sync = (int)(getrand % 100) >= 50;
             if (blinkwhensync)
                 time_elapse(3);

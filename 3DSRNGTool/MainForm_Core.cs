@@ -218,6 +218,8 @@ namespace Pk3DSRNGTool
             // Method 0-2 & MainRNGEgg
             if (CreateTimeline.Checked)
                 Search7_Timeline();
+            else if (AroundTarget.Checked)
+                Search7_AroundTarget();
             else
                 Search7_Normal();
         }
@@ -229,10 +231,6 @@ namespace Pk3DSRNGTool
             int max = (int)Frame_max.Value;
             if (min > max)
                 return;
-            if (AroundTarget.Checked)
-            {
-                min = (int)TargetFrame.Value - 100; max = (int)TargetFrame.Value + 100;
-            }
             // Blinkflag
             FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
             // Advance
@@ -283,6 +281,115 @@ namespace Pk3DSRNGTool
                 status.CopyTo(stmp);
                 frametime = realtime;
             }
+        }
+
+        private void Search7_AroundTarget()
+        {
+            SFMT sfmt = new SFMT(Seed.Value);
+            int start = (int)Frame_min.Value;
+            int target = (int)TargetFrame.Value;
+            int min = target - 100;
+            int max = target + 100;
+            if (start > min)
+                start = min;
+
+            // Blinkflag
+            FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
+
+            // Prepare
+            int i = 0;
+            byte blinkflag = 0;
+            RNGResult result = null;
+            for (; i < start; i++)
+                sfmt.Next();
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            ModelStatus stmp = new ModelStatus(Modelnum, sfmt);
+            status.raining = stmp.raining = Raining.Checked;
+            getsetting(sfmt);
+            int frameadvance;
+            int realtime = 0;
+            int frametime = 0;
+
+            // Calc frames around target
+            for (; i <= max;)
+            {
+                do
+                {
+                    frameadvance = status.NextState();
+                    realtime++;
+                }
+                while (frameadvance == 0); // Keep the starting status of a longlife frame(for npc=0 case)
+                do
+                {
+                    if (i >= min)
+                    {
+                        RNGPool.CopyStatus(stmp);
+                        result = RNGPool.Generate7() as Result7;
+                    }
+                    RNGPool.AddNext(sfmt);
+
+                    frameadvance--;
+                    if (i++ < min)
+                        continue;
+                    if (i == target + 1)
+                        Frame.standard = 2 * frametime;
+                    if (i > max + 1)
+                        break;
+                    blinkflag = FuncUtil.blinkflaglist[i - min - 1];
+                    Frames.Add(new Frame(result, frame: i - 1, time: frametime * 2, blink: blinkflag));
+                }
+                while (frameadvance > 0);
+
+                // Backup current status
+                status.CopyTo(stmp);
+                frametime = realtime;
+            }
+
+            // Get all possible results by EC matching
+            // Can't identify MainRNGEggs by EC
+            if (Method < 3)
+            {
+                var EClist = Frames.Select(f => f.rt.EC).ToArray();
+
+                // Another Buffer
+                sfmt = new SFMT(Seed.Value);
+                int starting = Frames[0].FrameNum + (Frames[0].rt as Result7).FrameDelayUsed;
+                for (i = 0; i < starting; i++)
+                    sfmt.Next();
+                RNGPool.CreateBuffer(sfmt);
+
+                // Skip Delay
+                RNGPool.Considerdelay = false;
+                if (RNGPool.igenerator is Stationary7 st7)
+                    st7.SkipSync = false;
+
+                uint EC;
+                uint EClast = EClist.Last();
+                int Nframe = -1;
+                do
+                {
+                    result = RNGPool.Generate7();
+                    EC = result.EC;
+                    RNGPool.AddNext(sfmt);
+                    if (EClist.Contains(EC))
+                    {
+                        var framenow = Frames.LastOrDefault(f => f.EC == EC);
+                        Nframe = framenow.FrameNum;
+                        frametime = framenow.realtime;
+                        continue;
+                    }
+                    else if (Nframe > -1)
+                    {
+                        Frames.Add(new Frame(result, frame: Nframe, time: frametime, blink: 4));
+                    }
+                }
+                while (EC != EClast);
+            }
+
+            // Filters
+            Frames = Frames.Where(f => filter.CheckResult(f.rt))
+                           .OrderBy(f => f.FrameNum)
+                           .ToList();
         }
 
         private void Search7_Timeline()

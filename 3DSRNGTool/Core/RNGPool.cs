@@ -52,7 +52,7 @@ namespace Pk3DSRNGTool.Core
             DelayType = 0;
         }
 
-        public static void CreateBuffer(int buffersize, IRNG rng)
+        public static void CreateBuffer(IRNG rng, int buffersize = 5000)
         {
             BufferSize = buffersize;
             Tail = buffersize - 1;

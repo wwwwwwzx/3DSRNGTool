@@ -186,7 +186,7 @@ namespace Pk3DSRNGTool
             var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
             if (Gen7 && !gen7honey)
                 for (int i = 0; i < List.Count; i++)
-                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1: 0)][i]);
+                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0)][i]);
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -664,7 +664,7 @@ namespace Pk3DSRNGTool
 
             if (MainRNGEgg.Checked)
                 UpdateTip("NPC can be 4-8");
-            
+
             Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
@@ -1081,7 +1081,7 @@ namespace Pk3DSRNGTool
                     buffersize += 400; // 132 +240
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
-            RNGPool.CreateBuffer(buffersize, rng);
+            RNGPool.CreateBuffer(rng, buffersize);
         }
 
         private IGenerator getGenerator(byte method)
@@ -1376,7 +1376,7 @@ namespace Pk3DSRNGTool
 
         private MainEggRNG getmaineggrng()
         {
-            RNGPool.CreateBuffer(50, new TinyMT(Status));
+            RNGPool.CreateBuffer(new TinyMT(Status), 50);
             ResultME7.Egg = RNGPool.GenerateEgg7() as EggResult; // First Egg From Tiny
             return new MainEggRNG()
             {
