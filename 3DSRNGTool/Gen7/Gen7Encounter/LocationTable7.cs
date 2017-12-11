@@ -1416,6 +1416,20 @@ namespace Pk3DSRNGTool
             },
             new FishingArea7
             {
+                Location = 158, NPC = 1, // Poni Wilds
+                LevelMax = 43,
+                SlotType = 37,
+                Species = new[] {129,320,369},
+            },
+            new FishingArea7
+            {
+                Location = 162, NPC = 1, // Poni Breaker Coast
+                LevelMax = 43,
+                SlotType = 37,
+                Species = new[] {129,320,319},
+            },
+            new FishingArea7
+            {
                 Location = 174, NPC = 1, // Vast Poni Canyon
                 LevelMax = 44,
                 SlotType = 39,
