@@ -306,39 +306,28 @@ namespace Pk3DSRNGTool
             ModelStatus stmp = new ModelStatus(Modelnum, sfmt);
             status.raining = stmp.raining = Raining.Checked;
             getsetting(sfmt);
-            int frameadvance;
+            int frameadvance = 0;
             int realtime = 0;
             int frametime = 0;
 
             // Calc frames around target
             for (; i <= max;)
             {
-                do
-                {
-                    frameadvance = status.NextState();
+                for (; frameadvance == 0; frameadvance = status.NextState())
                     realtime++;
-                }
-                while (frameadvance == 0); // Keep the starting status of a longlife frame(for npc=0 case)
-                do
+                for (; frameadvance > 0; frameadvance--, i++)
                 {
-                    if (i >= min)
+                    if (min <= i && i <= max)
                     {
+                        if (i == target)
+                            Frame.standard = 2 * frametime;
                         RNGPool.CopyStatus(stmp);
                         result = RNGPool.Generate7() as Result7;
+                        blinkflag = FuncUtil.blinkflaglist[i - min];
+                        Frames.Add(new Frame(result, frame: i, time: frametime * 2, blink: blinkflag));
                     }
                     RNGPool.AddNext(sfmt);
-
-                    frameadvance--;
-                    if (i++ < min)
-                        continue;
-                    if (i == target + 1)
-                        Frame.standard = 2 * frametime;
-                    if (i > max + 1)
-                        break;
-                    blinkflag = FuncUtil.blinkflaglist[i - min - 1];
-                    Frames.Add(new Frame(result, frame: i - 1, time: frametime * 2, blink: blinkflag));
                 }
-                while (frameadvance > 0);
 
                 // Backup current status
                 status.CopyTo(stmp);
