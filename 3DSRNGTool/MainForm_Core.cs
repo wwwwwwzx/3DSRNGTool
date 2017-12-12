@@ -299,7 +299,6 @@ namespace Pk3DSRNGTool
             // Prepare
             int i = 0;
             byte blinkflag = 0;
-            RNGResult result = null;
             for (; i < start; i++)
                 sfmt.Next();
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
@@ -322,7 +321,7 @@ namespace Pk3DSRNGTool
                         if (i == target)
                             Frame.standard = 2 * frametime;
                         RNGPool.CopyStatus(stmp);
-                        result = RNGPool.Generate7() as Result7;
+                        var result = RNGPool.Generate7();
                         blinkflag = FuncUtil.blinkflaglist[i - min];
                         Frames.Add(new Frame(result, frame: i, time: frametime * 2, blink: blinkflag));
                     }
@@ -355,9 +354,10 @@ namespace Pk3DSRNGTool
                 uint EC;
                 uint EClast = EClist.Last();
                 int Nframe = -1;
+                ulong rand = 0;
                 do
                 {
-                    result = RNGPool.Generate7();
+                    var result = RNGPool.Generate7() as Result7;
                     EC = result.EC;
                     RNGPool.AddNext(sfmt);
                     if (EClist.Contains(EC))
@@ -365,10 +365,12 @@ namespace Pk3DSRNGTool
                         var framenow = Frames.LastOrDefault(f => f.EC == EC);
                         Nframe = framenow.FrameNum;
                         frametime = framenow.realtime;
+                        rand = framenow.Rand64;
                         continue;
                     }
                     else if (Nframe > -1)
                     {
+                        result.RandNum = rand;
                         Frames.Add(new Frame(result, frame: Nframe, time: frametime, blink: 4));
                     }
                 }

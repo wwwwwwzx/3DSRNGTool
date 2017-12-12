@@ -773,7 +773,7 @@
             // 
             this.dgv_delay.DataPropertyName = "Delay";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "+#;-#;0";
+            dataGridViewCellStyle5.Format = "+0;-#";
             this.dgv_delay.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_delay.HeaderText = "延时";
             this.dgv_delay.Name = "dgv_delay";
