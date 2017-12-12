@@ -93,7 +93,7 @@
 
                     new PKM7 { Species = 382, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Kyogre
                     new PKM7 { Species = 383, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Groudon
-                    new PKM7 { Species = 384, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Rayquaza
+                    new PKM7 { Species = 384, Level = 60, NPC = 0, Delay = 156, DelayType = 4, }, // Rayquaza
                 }
             },
             new PokemonList
