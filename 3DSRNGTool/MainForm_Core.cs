@@ -349,7 +349,7 @@ namespace Pk3DSRNGTool
                 // Skip Delay
                 RNGPool.Considerdelay = false;
                 if (RNGPool.igenerator is Stationary7 st7)
-                    st7.SkipSync = false;
+                    st7.AssumeSynced = Nature.CheckBoxItems[SyncNature.SelectedIndex].Checked;
 
                 uint EC;
                 uint EClast = EClist.Last();
