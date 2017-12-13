@@ -97,32 +97,8 @@ namespace Pk3DSRNGTool
             try { ntrclient.sendHeartbeatPacket(); } catch { }
         }
 
-        private readonly static string[] HElP_STR =
-        {
-            "For X, Y(1.5), Omega Ruby, Alpha Sapphire(1.4), Sun, Moon(1.2)\n\n" +
-            "Usage:\n" +
-            "(1) Look for your 3DS' IP using FBI/Homebrew/Luma, input your console IP address. Make sure your PC running this tool and your console are in the same network.\n" +
-            "(2) Install and start NTR-CFW (3.4 or above) before you start the game.\n"+
-            "(3) Gen6: Hold the left arrow key of your console while the game is starting, until the screen flashes 3 times. It will stay at 3DS logo, don't worry.\n"+
-            "Gen7: Proceed the game normally, stop at title screen or continue screen. Enable NTR Debugger via NTR menu (Press X+Y) \n"+
-            "(4) Click 'One Click' button, the tool will try to connect the console and the game will proceed normally.\n"+
-            "(5) If gen7 skip this step. Press A or Select/Start to skip the title screen until you get to the continue screen.\n"+
-            "(6) All done. The tool will help you grab the initial seed (also egg seed and TSV) and wrap up everything. Enjoy!\n\n"+
-            "(7) If you want to reset the inital seed, just press B at continue screen, and go through title sreen again. This tool will get the initial seed seemlessly"+
-            "- You can also keep the connection via 'Connect' button, and double click one of the labels of TinyMT status textboxes (in TTT or Egg RNG tab) to sync them.\n"+
-            "- Moon version game will be recognized as Sun, it's normal.",
-
-            "如何使用:\n" +
-            "(1) 通过FBI/Homebrew/Luma 查看3DS的IP地址, 输入此处, 并确保打开本程序的软件与3DS处在同一网络下\n" +
-            "(2) 安装并在开始游戏前打开 NTR-CFW (需破解)\n"+
-            "(3) 6代：在游戏启动时按住左键,直至屏幕闪烁三次并停在3DS图标处,此时游戏不会继续,为正常现象\n"+
-            "7代：进入游戏,在封面或读档界面按X+Y调出NTR菜单,选择Enable Debugger\n"+
-            "(4) 点击\"一键完成\"本程序将自动连接并继续游戏\n"+
-            "(5) 7代跳过此步骤。不断按A直至读档界面\n"+
-            "(6) 完成.软件会自动读取初始Seed并断开连接",
-        };
-
-        private void B_Help_Click(object sender, EventArgs e) => Alert(HElP_STR[Program.mainform.lindex]);
+        private void B_Help_Click(object sender, EventArgs e) =>
+            System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/wiki/NTR-Helper-Usage");
 
         #region IDBot
         private void Start()
@@ -175,11 +151,8 @@ namespace Pk3DSRNGTool
                 // Input "!"
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed";
                 await Task.Delay(Delay1);
-                // Press Start
-                ntrclient.PressStart(); L_NTRLog.Text = "Start pressed";
-                await Task.Delay(Delay1);
                 // Confirm
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
+                ntrclient.Confirm(JPN.Checked); L_NTRLog.Text = "Enter pressed";
                 await Task.Delay(Delay2);
                 // Discard
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";
@@ -205,7 +178,7 @@ namespace Pk3DSRNGTool
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
                 await Task.Delay(Delay1);
                 // Dialogue-1 
-                ntrclient.Confirm(); L_NTRLog.Text = "Enter pressed";
+                ntrclient.Confirm(JPN.Checked); L_NTRLog.Text = "Enter pressed";
                 await Task.Delay(Delay4);
                 // Discard
                 ntrclient.PressB(); L_NTRLog.Text = "B pressed";

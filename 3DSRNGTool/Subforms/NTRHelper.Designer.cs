@@ -39,6 +39,7 @@
             this.NTR_Timer = new System.Windows.Forms.Timer(this.components);
             this.B_Help = new System.Windows.Forms.Button();
             this.IDBot = new System.Windows.Forms.GroupBox();
+            this.JPN = new System.Windows.Forms.CheckBox();
             this.B_MashA = new System.Windows.Forms.Button();
             this.B_A = new System.Windows.Forms.Button();
             this.L_Speed = new System.Windows.Forms.Label();
@@ -119,16 +120,17 @@
             // 
             // B_Help
             // 
+            this.B_Help.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
             this.B_Help.Location = new System.Drawing.Point(311, 21);
             this.B_Help.Name = "B_Help";
             this.B_Help.Size = new System.Drawing.Size(24, 25);
             this.B_Help.TabIndex = 121;
-            this.B_Help.Text = "?";
             this.B_Help.UseVisualStyleBackColor = true;
             this.B_Help.Click += new System.EventHandler(this.B_Help_Click);
             // 
             // IDBot
             // 
+            this.IDBot.Controls.Add(this.JPN);
             this.IDBot.Controls.Add(this.B_MashA);
             this.IDBot.Controls.Add(this.B_A);
             this.IDBot.Controls.Add(this.L_Speed);
@@ -144,7 +146,17 @@
             this.IDBot.TabStop = false;
             this.IDBot.Text = "ID Bot";
             // 
-            // B_MassA
+            // JPN
+            // 
+            this.JPN.AutoSize = true;
+            this.JPN.Location = new System.Drawing.Point(252, 0);
+            this.JPN.Name = "JPN";
+            this.JPN.Size = new System.Drawing.Size(46, 17);
+            this.JPN.TabIndex = 126;
+            this.JPN.Text = "JPN";
+            this.JPN.UseVisualStyleBackColor = true;
+            // 
+            // B_MashA
             // 
             this.B_MashA.Location = new System.Drawing.Point(248, 67);
             this.B_MashA.Name = "B_MashA";
@@ -307,5 +319,6 @@
         private System.Windows.Forms.Button B_A;
         private System.Windows.Forms.NumericUpDown Speed;
         private System.Windows.Forms.Button B_MashA;
+        private System.Windows.Forms.CheckBox JPN;
     }
 }
