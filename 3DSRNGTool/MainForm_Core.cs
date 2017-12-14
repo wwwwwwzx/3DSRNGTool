@@ -318,8 +318,6 @@ namespace Pk3DSRNGTool
                 {
                     if (min <= i && i <= max)
                     {
-                        if (i == target)
-                            Frame.standard = 2 * frametime;
                         RNGPool.CopyStatus(stmp);
                         var result = RNGPool.Generate7();
                         blinkflag = FuncUtil.blinkflaglist[i - min];

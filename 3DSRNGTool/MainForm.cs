@@ -663,7 +663,7 @@ namespace Pk3DSRNGTool
             B_OpenTool.Visible = gen6timeline_available || IsHorde;
 
             if (MainRNGEgg.Checked)
-                UpdateTip("NPC can be 4-8");
+                UpdateTip("4 to 8 NPCs");
 
             Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
             SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
@@ -761,7 +761,7 @@ namespace Pk3DSRNGTool
                     if (CB_Category.SelectedIndex == 1 && FormPM is PKMW7 pmw7 && !pmw7.Conceptual)
                         Special_th.Value = pmw7.Rate[MetLocation.SelectedIndex];
                     if (LocationTable7.RustlingSpots.Contains(tmp.Location))
-                        UpdateTip("Correction and NPC might be different from default setting when there are rustling spots");
+                        UpdateTip("Correction and NPC count might be different from default setting when there are rustling spots");
                     else
                         UpdateTip(null);
                     Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
@@ -1001,14 +1001,16 @@ namespace Pk3DSRNGTool
                 case 383 when Gen6: // Grondon / Kyogre
                     UpdateTip("The delay varies from 2700-4000, depends on save and console"); break;
                 case 772 when IsUltra: // Type:Null
-                    UpdateTip("NPC number = 1 at Aether Paradise"); break;
+                    UpdateTip("1 NPC at Aether Paradise"); break;
                 case 791 when Gen7 && !IsUltra:
                 case 792 when Gen7 && !IsUltra: // SolLuna
-                    UpdateTip("NPC can be 2 or 6, it depends on save"); break;
+                    UpdateTip("2 or 6 NPCs, depends on save"); break;
                 case 796 when IsUltra: // Xurkitree
-                    UpdateTip("NPC can be 1 or 2. Depends on the walking Xurkitree in the background"); break;
+                    UpdateTip("1 or 2 NPCs, depends on the walking Xurkitree in the background"); break;
                 case 801:  // Magearna
-                    UpdateTip("NPC can be 6 or 7. Depends on the person walking by"); break;
+                    UpdateTip("6 or 7 NPCs, depends on the person walking by"); break;
+                case 803:  // Pipole
+                    UpdateTip("8 or 9 NPCs at the top of Megalo Tower. NPC might fluctuate due to the inproper standing point"); break;
                 default:
                     UpdateTip(null); break;
             }
@@ -1058,7 +1060,7 @@ namespace Pk3DSRNGTool
                     buffersize = 100;
                 if (Method < 3 || MainRNGEgg.Checked)
                     Frame.standard = FuncUtil.CalcFrame(seed: Seed.Value,
-                        min: (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value),
+                        min: (int)(AroundTarget.Checked && TargetFrame.Value - 100 < Frame_min.Value ? TargetFrame.Value - 100 : Frame_min.Value),
                         max: (int)TargetFrame.Value,
                         ModelNumber: Modelnum,
                         raining: Raining.Checked,

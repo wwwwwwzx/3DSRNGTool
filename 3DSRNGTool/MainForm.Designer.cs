@@ -3124,7 +3124,7 @@
             // Tip
             // 
             this.Tip.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
-            this.Tip.Location = new System.Drawing.Point(236, 0);
+            this.Tip.Location = new System.Drawing.Point(230, 0);
             this.Tip.Name = "Tip";
             this.Tip.Size = new System.Drawing.Size(16, 16);
             this.Tip.TabIndex = 102;
