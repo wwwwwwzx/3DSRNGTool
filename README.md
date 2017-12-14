@@ -39,9 +39,9 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __In-game gifts/Fossils/Cosmog/Mystery Gift__: _You received xxx!_
 - __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
 - __Solgaleo/Lunala__: No dialogue.
-- __Wild UBs, Island Scan & wild Pokemon__: Hover over `Bag` and press A to enter. The tool will take into account the honey delay for you.
+- __Wild UBs, Island Scan & wild Pokemon__: Hover over `Bag` button and press A to enter. The tool will take into account the honey delay for you.
 - __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
-- __Poke Pelago__: Hover over `Poke Pelago` and press A to enter. Be sure that new Pokemon will be generated when you enter the Poke Pelago.
+- __Poke Pelago__: Hover over `Poke Pelago` button and press A to enter. Be sure that new Pokemon will be generated when you enter the Poke Pelago.
 - __Assembled Zygarde__: _Zygarde has gone into a Poke Ball!_
 - __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
 - __Fishing__: When the exclamation mark pops up.
@@ -71,7 +71,7 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 
 #### Transporter (Virtual Console)
 
-At `Use this game` Button. Calibrate the delay beforehand.
+- Hover over `Use this game` button. Calibrate the delay beforehand.
 
 #### Generation 6
 
@@ -83,10 +83,8 @@ At `Use this game` Button. Calibrate the delay beforehand.
 - __Rock Smash__: _Would you like to use Rock Smash? Yes/No_
 - __Fishing__: Register at least two key items to Y menu. Wait at Y shortcut menu. Press arrow key to use the fish rod. TTT calibration required.
 - __Eggs__ from Day Care:
-
-Accepting => 1st Yes/No Screen: _You do want it. don't you? / You'll be wanting it won't you? / You've gotta want it, right?_
-
-Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!/ Well then, I'll be having this one! Thanks!/ Really really? Well... I'll keep it, then! Thanks!_
+   - Accepting => 1st Yes/No Screen: _You do want it. don't you? / You'll be wanting it won't you? / You've gotta want it, right?_
+   - Rejecting => the Screen _AFTER_ the 2nd Yes/No Screen: _Well then, I'll hang on to it. Thank you!/ Well then, I'll be having this one! Thanks!/ Really really? Well... I'll keep it, then! Thanks!_
 - __ID__ : _xxx... Tres bien! What a fantastic name! / So you're xxx? Yes/No_
 
 ##### XY
