@@ -1009,7 +1009,7 @@ namespace Pk3DSRNGTool
                     UpdateTip("1 or 2 NPCs, depends on the walking Xurkitree in the background"); break;
                 case 801:  // Magearna
                     UpdateTip("6 or 7 NPCs, depends on the person walking by"); break;
-                case 803:  // Pipole
+                case 803:  // Poipole
                     UpdateTip("8 or 9 NPCs at the top of Megalo Tower. NPC might fluctuate due to the inproper standing point"); break;
                 default:
                     UpdateTip(null); break;
@@ -1447,6 +1447,8 @@ namespace Pk3DSRNGTool
                 Error(SETTINGERROR_STR[lindex] + L_D.Text);
             else if (ivmin5.Value > ivmax5.Value)
                 Error(SETTINGERROR_STR[lindex] + L_S.Text);
+            else if (Frame_min.Value > Frame_max.Value && RB_FrameRange.Checked)
+                Error(SETTINGERROR_STR[lindex] + RB_FrameRange.Text);
             else
             {
                 if (Gen6)
