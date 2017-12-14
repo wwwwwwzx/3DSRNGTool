@@ -21,10 +21,10 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 ## Credit
 
 - Zaksabeast, Zep715, Real96, Admiral Fish and Shiny_Sylveon for great teamworks on gen6 development  
-  Zaksabeast and Admiral Fish for building up the plugin  
-  Real96 for testing and lots of good advice  
-  Zep715 for figuring out tons of infomation from the assembly  
-  Shiny_Sylveon for contributions to Gen6 Egg RNG
+   - Zaksabeast and Admiral Fish for building up the plugin  
+   - Real96 for testing and lots of good advice  
+   - Zep715 for figuring out tons of infomation from the assembly  
+   - Shiny_Sylveon for contributions to Gen6 Egg RNG
   
 - Kaphotics for PkHeX and Pk3DS. I borrowed some code from the PKHeX Core Library and extracted ROM info using Pk3DS.
 - 44670 for NTRClient.
@@ -39,11 +39,12 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __In-game gifts/Fossils/Cosmog/Mystery Gift__: _You received xxx!_
 - __Tapus__: _Tapu ko-ko-ko-kooo!!! / Ta-pu-leeeh! / Ta-pu-loooo! / Ta-pu-fiiieee!_
 - __Solgaleo/Lunala__: No dialogue.
-- __Wild UBs, Island Scan & wild Pokemon__: Press A and thus enter the bag from X menu.
+- __Wild UBs, Island Scan & wild Pokemon__: Hover over `Bag` and press A to enter. The tool will take into account the honey delay for you.
 - __Main RNG egg__: _But you want the Egg your Pokemon was holding. right?_
-- __Poke Pelago__: Press A and thus go to Poke Pelago from X menu.
+- __Poke Pelago__: Hover over `Poke Pelago` and press A to enter. Be sure that new Pokemon will be generated when you enter the Poke Pelago.
 - __Assembled Zygarde__: _Zygarde has gone into a Poke Ball!_
 - __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
+- __Fishing__: When the exclamation mark pops up.
 
 ##### Sun and Moon
 - __Pikipek__: No dialogue. Before the fourth step in grass.
@@ -51,9 +52,22 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __Starters__: _Having accepted on another, you'll surely be friends for life._
 
 ##### Ultra Sun and Ultra Moon
-- __Grubbin__: No dialogue. Before the fourth step in grass.
 - __Ultra Wormholes Past-gen Legends/Non-legends__: No dialogue. Save as close as possible, make a step to trigger the battle.
 - __Ultra Wormholes UBs__: No dialogue. Press A to trigger the battle.
+- __Necrozma__ : _Linooo!_
+- __Zygarde at Resolution Cave__: _Zeeehhhd!_
+- __Starters__: _You chose xxx!_
+- __Grubbin__: No dialogue. Before the fourth step in grass.
+- __Totem Pokemon__: _You received xxx!_
+- __Gastly__: _The cold thing suddenly attacked you!_
+- __Drifloon__: _Flooo!_
+- __Hypno__: _The Hypno are upset about being accused!_
+- __Bewear__: _Weeeaaarrrr!_
+- __Ditto Five__: _Dittoooo!_ / _Di...Ditto-o-o-o-o?!_ / _Dittottotto_ / _Didi!_ / _Ditto!_
+- __Sandygast__: _Gaaaaaaaaassstt!!!_
+- __Frillish__: _Friiiiilll..._
+- __Pinsir__: _Thwak!_ / _Gruh!_ / _Hyah!_
+- __Electrode__: No dialogue. Unsable.
 
 #### Transporter (Virtual Console)
 

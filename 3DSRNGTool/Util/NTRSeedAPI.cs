@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
                 case 7:
                 case 8:
                     NfcOffset = 0; // To-do
-                    WriteWifiPatch(); SFMTOffset = 0x326601C4; TinyOffset = 0x3307B1EC; IDOffset = 0x33012818; break;
+                    WriteWifiPatch(); SFMTOffset = 0x32663BF0; TinyOffset = 0x3307B1EC; IDOffset = 0x33012818; break;
             }
             SendMsg(Gameversion, "Version");
             if (Gameversion < 4)
