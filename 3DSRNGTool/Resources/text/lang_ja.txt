@@ -54,8 +54,8 @@ BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
 Raining = 雨
 Fidget = 主人公の動き
-Boy = Boy
-Girl = Girl
+Boy = 男の子
+Girl = 女の子
 B_OpenTool = Tiny Timeline Tool
 L_GenderList = 性別比リスト (0:無性別 1:Random 2:ミュウ):
 ---

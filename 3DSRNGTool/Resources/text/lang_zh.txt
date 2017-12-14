@@ -159,7 +159,7 @@ Day = 白天
 Night = 夜晚
 CompoundEyes = 复眼
 SuctionCups = 吸盘
-Bubbling = 冒泡
+Bubbling = 波纹
 ---------------------TabPage4----------------------------------
 TinyMT_Status = 当前状态
 ---

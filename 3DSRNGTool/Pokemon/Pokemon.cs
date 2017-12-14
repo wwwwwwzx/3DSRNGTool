@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Pk3DSRNGTool
 {
@@ -139,10 +140,12 @@ namespace Pk3DSRNGTool
             NatureAdjustment(Stats, Nature);
             return Stats;
         }
+
+        public static uint getTSV(uint RN) => ((RN >> 16) ^ (RN & 0xFFFF)) >> 4;
         #endregion
 
         #region Enums
-        public readonly static int[] BattleForms =
+        public readonly static HashSet<int> BattleForms = new HashSet<int>
         {
             351, // Castform
             421, // Cherrim
@@ -171,6 +174,9 @@ namespace Pk3DSRNGTool
             // Primal
             382, 383,
 
+            // USUM
+            800, // Ultra Necrozma
+
             // Others
             492, // Shaymin
             647, // Keldeo
@@ -179,7 +185,7 @@ namespace Pk3DSRNGTool
         };
 
         // For undiscovered egg group without 3 perfect ivs
-        public readonly static int[] BabyMons =
+        public readonly static HashSet<int> BabyMons = new HashSet<int>
         {
             030, 031,
             172, 173, 174, 175, 201, 236, 238, 239, 240,
@@ -187,7 +193,7 @@ namespace Pk3DSRNGTool
             406, 433, 438, 439, 440, 446, 447, 458
         };
 
-        public readonly static int[] AlolanForms = { 019, 020, 027, 037, 050, 051, 052, 074, 075, 088, 103, };
+        public readonly static HashSet<int> AlolanForms = new HashSet<int> { 019, 020, 027, 037, 050, 051, 052, 074, 075, 088, 103, };
         #endregion
     }
 }
