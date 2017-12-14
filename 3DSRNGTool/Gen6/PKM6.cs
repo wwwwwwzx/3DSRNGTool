@@ -345,8 +345,8 @@
                 List = new[]
                 {
                     new PKM6 { Bank = true, Species = 150, Ability = 4, NumOfPkm = 20, Conceptual = true, }, // Transporter 
-                    new PKM6 { Bank = true, Species = 151, Ability = 4, NumOfPkm = 20, }, // Mew
-                    // new PKM6 { Bank = true, Species = 251, Ability = 4, NumOfPkm = 200, }, // Celebi
+                    new PKM6 { Bank = true, Species = 151, Ability = 1, NumOfPkm = 20, }, // Mew
+                    new PKM6 { Bank = true, Species = 251, Ability = 1, NumOfPkm = 20, }, // Celebi
                 }
             },
         };
