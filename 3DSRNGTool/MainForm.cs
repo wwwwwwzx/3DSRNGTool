@@ -839,6 +839,13 @@ namespace Pk3DSRNGTool
             Sta_Ability.Visible = Sta_AbilityLocked.Checked;
         }
 
+        private void TargetMon_ValueChanged(object sender, EventArgs e)
+        {
+            if (GenderList.Text.Length < TargetMon.Value)
+                return;
+            GenderRatio.SelectedIndex = GenderList.Text[(int)TargetMon.Value - 1] == '1' ? 1 : 0;
+        }
+
         private void DGV_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Advanced.Checked)
@@ -1150,7 +1157,7 @@ namespace Pk3DSRNGTool
                 Stationary6 set6 = setting as Stationary6;
                 set6.Bank = true;
                 set6.Target = (int)TargetMon.Value;
-                var tmp = "".PadLeft(set6.Target, FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
+                var tmp = string.Empty.PadLeft(set6.Target, FuncUtil.IsRandomGender((int)GenderRatio.SelectedValue) ? '1' : '0').ToArray();
                 if (IsTransporter)
                 {
                     for (int i = 0; i < tmp.Length - 1 && i < GenderList.Text.Length; i++)

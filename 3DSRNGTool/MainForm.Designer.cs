@@ -3688,6 +3688,7 @@
             0,
             0,
             0});
+            this.TargetMon.ValueChanged += new System.EventHandler(this.TargetMon_ValueChanged);
             // 
             // B_OpenTool
             // 
