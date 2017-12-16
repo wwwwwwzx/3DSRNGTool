@@ -57,15 +57,16 @@ namespace Pk3DSRNGTool
         public string Slot => (rt as WildResult)?.IsSpecial ?? false ? specialstr : (rt as WildResult)?.Slot.ToString();
         public byte Level => rt.Level;
         public string Ball => Parents[(rt as EggResult)?.Ball ?? (rt as ResultME7)?.Ball ?? 0];
-        public string Item => (rt as WildResult)?.ItemStr ?? "";
+        public string Item => (rt as WildResult)?.ItemStr ?? string.Empty;
         public uint Rand => (rt as Result6)?.RandNum ?? (rt as EggResult)?.RandNum ?? 0;
         public ulong Rand64 => (rt as Result7)?.RandNum ?? (rt as EggResult)?.EggSeed ?? 0;
         public uint PID => rt.PID;
         public uint EC => rt.EC;
         public string WurmpleEvo => (rt.EC >> 16) % 10 < 5 ? StringItem.speciestr[267] : StringItem.speciestr[269];
-        public string State => (rt as Result6)?.Status.ToString() ?? (rt as ResultE6)?.Status.ToString() ?? "";
+        public string State => (rt as Result6)?.Status.ToString() ?? (rt as ResultE6)?.Status.ToString() ?? string.Empty;
         public PRNGState _tinystate;
-        public string TinyState => (_tinystate ?? (rt as ResultE7)?.Status)?.ToString() ?? "";
-        public string RealTime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : "";
+        public string TinyState => (_tinystate ?? (rt as ResultE7)?.Status)?.ToString() ?? string.Empty;
+        public string RealTime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : string.Empty;
+        public int FishingFrame { get; set; }
     }
 }

@@ -160,6 +160,10 @@ Night = Nacht
 CompoundEyes = Facettenauge
 SuctionCups = Saugnapf
 Bubbling = Bubbling
+Overview = Overview
+L_BiteChance = Bite Chance
+L_FishingDelay = Delay
+dgv_fishing = Fishing
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Aktueller Status
 ---

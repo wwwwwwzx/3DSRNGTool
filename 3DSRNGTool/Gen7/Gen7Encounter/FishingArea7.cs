@@ -6,6 +6,8 @@ namespace Pk3DSRNGTool
     {
         public override int[] Species { get; set; } = new int[2];
         public byte NPC;
+        public bool Longdelay; // 89/97 vs 78
+        public bool Lapras; // Increase pkm generation delay by 2
 
         public byte LevelMin = 10;
         public byte LevelMax;

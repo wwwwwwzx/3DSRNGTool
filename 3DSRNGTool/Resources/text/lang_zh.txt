@@ -160,6 +160,10 @@ Night = 夜晚
 CompoundEyes = 复眼
 SuctionCups = 吸盘
 Bubbling = 波纹
+Overview = 预览
+L_BiteChance = 咬勾率
+L_FishingDelay = 延时
+dgv_fishing = 钓杆帧
 ---------------------TabPage4----------------------------------
 TinyMT_Status = 当前状态
 ---

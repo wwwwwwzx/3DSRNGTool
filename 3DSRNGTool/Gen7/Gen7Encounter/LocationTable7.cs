@@ -1312,6 +1312,7 @@ namespace Pk3DSRNGTool
             new FishingArea7
             {
                 Location = 042, // Seaward Cave
+                NPC = 1, Lapras = true,
                 LevelMax = 15,
                 SlotType = 25,
                 Species = new[] {129,339},
@@ -1325,126 +1326,143 @@ namespace Pk3DSRNGTool
             },
             new FishingArea7
             {
-                Location = 016, NPC = 3, // Melemele Sea
+                Location = 016, // Melemele Sea
+                NPC = 2, Lapras = true,
                 LevelMax = 18,
                 SlotType = 29,
                 Species = new[] {129,746,370,222},
             },
             new FishingArea7
             {
-                Location = 068, NPC = 1, // Paniola Town
+                Location = 068, // Paniola Town
+                NPC = 6,
                 LevelMax = 18,
                 SlotType = 25,
                 Species = new[] {129,339},
             },
             new FishingArea7
             {
-                Location = 086, NPC = 4, // Brooklet Hill
+                Location = 086, // Brooklet Hill
+                NPC = 2, Lapras = true,
                 LevelMax = 15,
                 SlotType = 31,
                 Species = new[] {129,118,349},
             },
             new FishingArea7
             {
-                Location = 088, NPC = 1, // Brooklet Hill - Totem's Den
+                Location = 088, // Brooklet Hill - Totem's Den
+                NPC = 1, Lapras = true,
                 LevelMax = 15,
                 SlotType = 27,
                 Species = new[] {129,746,594},
             },
             new FishingArea7
             {
-                Location = 056, NPC = 1, // Route 7
+                Location = 056, // Route 7
                 LevelMax = 19,
                 SlotType = 33,
                 Species = new[] {129,746,120},
             },
             new FishingArea7
             {
-                Location = 058, NPC = 1, // Route 8
+                Location = 058, // Route 8
+                NPC = 3, Lapras = true,
                 LevelMax = 20,
                 SlotType = 33,
                 Species = new[] {129,746,170},
             },
             new FishingArea7
             {
-                Location = 060, NPC = 1, // Route 9
+                Location = 060, // Route 9
+                NPC = 3, Longdelay = true,
                 LevelMax = 23,
                 SlotType = 35,
                 Species = new[] {129,746,370,222},
             },
             new FishingArea7
             {
-                Location = 094, NPC = 1, // Akala Outskirts
+                Location = 094, // Akala Outskirts
+                Longdelay = true,
                 LevelMax = 23,
                 SlotType = 33,
                 Species = new[] {129,746,170},
             },
             new FishingArea7
             {
-                Location = 110, NPC = 1, // Secluded Shore
+                Location = 110, // Secluded Shore
+                NPC = 7, Lapras = true,
                 LevelMax = 30,
                 SlotType = 27,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 112, NPC = 1, // Route 13
+                Location = 112, // Route 13
+                NPC = 3, Longdelay = true,
                 LevelMax = 30,
                 SlotType = 27,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 126, NPC = 1, // Route 14
+                Location = 126, // Route 14
+                NPC = 2, Lapras = true,
                 LevelMax = 31,
                 SlotType = 27,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 116, NPC = 1, // Route 15
+                Location = 116, // Route 15
+                NPC = 1, Lapras = true,
                 LevelMax = 33,
                 SlotType = 27,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 172, NPC = 1, // Seafolk Village
+                Location = 172, // Seafolk Village
+                NPC = 1, Longdelay = true,
                 LevelMax = 43,
                 SlotType = 37,
                 Species = new[] {129,320,781},
             },
             new FishingArea7
             {
-                Location = 158, NPC = 1, // Poni Wilds
+                Location = 158, // Poni Wilds
+                NPC = 1, Lapras = true,
                 LevelMax = 43,
                 SlotType = 37,
                 Species = new[] {129,320,369},
             },
             new FishingArea7
             {
-                Location = 162, NPC = 1, // Poni Breaker Coast
+                Location = 162, // Poni Breaker Coast
+                NPC = 2,
                 LevelMax = 43,
                 SlotType = 37,
                 Species = new[] {129,320,319},
             },
             new FishingArea7
             {
-                Location = 174, NPC = 1, // Vast Poni Canyon
+                Location = 174, // Vast Poni Canyon
+                NPC = 2, Lapras = true,
                 LevelMax = 44,
                 SlotType = 39,
                 Species = new[] {129,339,147},
             },
             new FishingArea7
             {
-                Location = 156, NPC = 1, // Poni Meadow
+                Location = 156, // Poni Meadow
+                NPC = 2,
                 LevelMax = 57,
                 SlotType = 39,
                 Species = new[] {129,339,147},
             },
             new FishingArea7
             {
-                Location = 170, NPC = 1, // Poni Gauntlet
+                Location = 170, // Poni Gauntlet
+                NPC = 7, Longdelay = true,
                 LevelMax = 59,
                 SlotType = 39,
                 Species = new[] {129,339,147},
@@ -1455,7 +1473,8 @@ namespace Pk3DSRNGTool
         {
             new FishingArea7
             {
-                Location = 042, NPC = 1, // Seaward Cave
+                Location = 042, // Seaward Cave
+                NPC = 6, Lapras = true,
                 LevelMax = 17,
                 SlotType = 5,
                 Species = new[] {129,339},
@@ -1469,112 +1488,127 @@ namespace Pk3DSRNGTool
             },
             new FishingArea7
             {
-                Location = 016, NPC = 3, // Melemele Sea
+                Location = 016, // Melemele Sea
+                NPC = 3, Lapras = true,
                 LevelMax = 17,
                 SlotType = 9,
                 Species = new[] {129,746,370,222,366,223},
             },
             new FishingArea7
             {
-                Location = 068, NPC = 1, // Paniola Town
+                Location = 068, // Paniola Town
+                NPC = 4,
                 LevelMax = 18,
                 SlotType = 5,
                 Species = new[] {129,339},
             },
             new FishingArea7
             {
-                Location = 086, NPC = 4, // Brooklet Hill
+                Location = 086, // Brooklet Hill
+                NPC = 2, Lapras = true,
                 LevelMax = 16,
                 SlotType = 11,
                 Species = new[] {129,118,550,349},
             },
             new FishingArea7
             {
-                Location = 088, NPC = 1, // Brooklet Hill - Totem's Den
+                Location = 088, // Brooklet Hill - Totem's Den
+                NPC = 1, Lapras = true,
                 LevelMax = 16,
                 SlotType = 13,
                 Species = new[] {129,746,594},
             },
             new FishingArea7
             {
-                Location = 056, NPC = 1, // Route 7
+                Location = 056, // Route 7
                 LevelMax = 18,
                 SlotType = 13,
                 Species = new[] {129,746,120},
             },
             new FishingArea7
             {
-                Location = 058, NPC = 1, // Route 8
+                Location = 058, // Route 8
+                NPC = 5, Lapras = true,
                 LevelMax = 20,
                 SlotType = 15,
                 Species = new[] {129,746,170,223},
             },
             new FishingArea7
             {
-                Location = 060, NPC = 1, // Route 9
+                Location = 060, // Route 9
+                NPC = 2, Longdelay = true,
                 LevelMax = 23,
                 SlotType = 17,
                 Species = new[] {129,746,370,222},
             },
             new FishingArea7
             {
-                Location = 094, NPC = 1, // Akala Outskirts
+                Location = 094, // Akala Outskirts
+                NPC = 1, Longdelay = true,
                 LevelMax = 24,
                 SlotType = 13,
                 Species = new[] {129,746,170},
             },
             new FishingArea7
             {
-                Location = 112, NPC = 1, // Route 13
+                Location = 112, // Route 13
+                NPC = 4, Longdelay = true,
                 LevelMax = 33,
                 SlotType = 13,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 126, NPC = 1, // Route 14
+                Location = 126, // Route 14
+                NPC = 2, Lapras = true,
                 LevelMax = 34,
                 SlotType = 13,
                 Species = new[] {129,746,779},
             },
             new FishingArea7
             {
-                Location = 116, NPC = 1, // Route 15
+                Location = 116, // Route 15
+                NPC = 3, Lapras = true,
                 LevelMax = 35,
                 SlotType = 19,
                 Species = new[] {129,746,779,366},
             },
             new FishingArea7
             {
-                Location = 172, NPC = 1, // Seafolk Village
+                Location = 172,  // Seafolk Village
+                NPC = 1, Longdelay = true,
                 LevelMax = 44,
                 SlotType = 13,
                 Species = new[] {129,320,781},
             },
             new FishingArea7
             {
-                Location = 162, NPC = 1, // Poni Breaker Coast
+                Location = 162, // Poni Breaker Coast
+                NPC = 3,
                 LevelMax = 44,
                 SlotType = 11,
                 Species = new[] {129,320,318,369},
             },
             new FishingArea7
             {
-                Location = 174, NPC = 1, // Vast Poni Canyon
+                Location = 174, // Vast Poni Canyon
+                NPC = 2, Lapras = true,
                 LevelMax = 46,
                 SlotType = 21,
                 Species = new[] {129,339,341,550},
             },
             new FishingArea7
             {
-                Location = 156, NPC = 1, // Poni Meadow
+                Location = 156, // Poni Meadow
+                NPC = 2,
                 LevelMax = 57,
                 SlotType = 23,
                 Species = new[] {129,339,147},
             },
             new FishingArea7
             {
-                Location = 170, NPC = 1, // Poni Gauntlet
+                Location = 170, // Poni Gauntlet
+                NPC = 7, Longdelay = true,
                 LevelMax = 61,
                 SlotType = 23,
                 Species = new[] {129,339,147},
@@ -1582,5 +1616,7 @@ namespace Pk3DSRNGTool
         };
 
         public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };
+
+        public readonly static int[] FishingNPCChangeSpots = { 056, 126, 172 };
     }
 }

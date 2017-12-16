@@ -160,6 +160,10 @@ Night = Noche
 CompoundEyes = Ojo Compuesto
 SuctionCups = Ventosas
 Bubbling = Bubbling
+Overview = Overview
+L_BiteChance = Bite Chance
+L_FishingDelay = Delay
+dgv_fishing = Fishing
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Fotograma actual
 ---

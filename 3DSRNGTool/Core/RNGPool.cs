@@ -415,6 +415,35 @@ namespace Pk3DSRNGTool.Core
                 ResetModelStatus();
             return index;
         }
+
+        // For fishy time travel
+        private static int oldtail;
+        public static void Save()
+        {
+            oldtail = Tail;
+        }
+        public static ulong getsavepoint => RandList64[oldtail == BufferSize - 1 ? 0 : oldtail + 1];
+        public static void Load()
+        {
+            Tail = oldtail;
+        }
+        
+        private static int[] remain_frame_bak;
+        private static bool phase_bak;
+        public static void SaveStatus()
+        {
+            if (remain_frame_bak?.Length != modelnumber)
+                remain_frame_bak = new int[modelnumber];
+            remain_frame.CopyTo(remain_frame_bak, 0);
+            phase_bak = phase;
+            Tail = Pointer;
+        }
+        public static void LoadStatus()
+        {
+            remain_frame_bak.CopyTo(remain_frame, 0);
+            phase = phase_bak;
+            index = 0;
+        }
         #endregion
     }
 }

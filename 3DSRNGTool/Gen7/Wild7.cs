@@ -108,6 +108,9 @@ namespace Pk3DSRNGTool
             rt.Item = (byte)(NormalSlot ? getrand % 100 : 100);
             rt.ItemStr = getitemstr(rt.Item);
 
+            if (Fishing && rt.IsSpecial)
+                rt.Slot = getHookedItemSlot(rt.SpecialVal);
+
             return rt;
         }
 
@@ -155,6 +158,19 @@ namespace Pk3DSRNGTool
                 case 3: return 80; // To-do
                 default: return 0;
             }
+        }
+
+        public static byte getHookedItemSlot(byte? rand)
+        {
+            if (rand == 0)
+                return 0;
+            if (rand < 60)
+                return 1; // Pearl/Big Pearl
+            if (rand < 90)
+                return 2; // Sticky Barb
+            if (rand < 99)
+                return 3; // Bottle Cap
+            return 4; // Gold Bottle Cap
         }
     }
 }

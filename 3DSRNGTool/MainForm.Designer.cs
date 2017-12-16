@@ -61,6 +61,7 @@
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.dgv_eggnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_fishing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -206,6 +207,12 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.FishingPanel = new System.Windows.Forms.Panel();
+            this.Overview = new System.Windows.Forms.CheckBox();
+            this.FishingRate = new System.Windows.Forms.NumericUpDown();
+            this.FishingDelay = new System.Windows.Forms.NumericUpDown();
+            this.L_FishingDelay = new System.Windows.Forms.Label();
+            this.L_BiteChance = new System.Windows.Forms.Label();
             this.Bubbling = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
             this.SuctionCups = new System.Windows.Forms.CheckBox();
@@ -435,6 +442,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
+            this.FishingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).BeginInit();
@@ -580,6 +590,7 @@
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_eggnum,
+            this.dgv_fishing,
             this.dgv_Frame,
             this.dgv_shift,
             this.dgv_mark,
@@ -648,6 +659,14 @@
             this.dgv_eggnum.Name = "dgv_eggnum";
             this.dgv_eggnum.Visible = false;
             this.dgv_eggnum.Width = 40;
+            // 
+            // dgv_fishing
+            // 
+            this.dgv_fishing.DataPropertyName = "FishingFrame";
+            this.dgv_fishing.HeaderText = "钓鱼";
+            this.dgv_fishing.Name = "dgv_fishing";
+            this.dgv_fishing.Visible = false;
+            this.dgv_fishing.Width = 60;
             // 
             // dgv_Frame
             // 
@@ -2272,6 +2291,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.FishingPanel);
             this.Wild_Setting.Controls.Add(this.Bubbling);
             this.Wild_Setting.Controls.Add(this.Raining);
             this.Wild_Setting.Controls.Add(this.SuctionCups);
@@ -2303,10 +2323,75 @@
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
             // 
+            // FishingPanel
+            // 
+            this.FishingPanel.Controls.Add(this.Overview);
+            this.FishingPanel.Controls.Add(this.FishingRate);
+            this.FishingPanel.Controls.Add(this.FishingDelay);
+            this.FishingPanel.Controls.Add(this.L_FishingDelay);
+            this.FishingPanel.Controls.Add(this.L_BiteChance);
+            this.FishingPanel.Location = new System.Drawing.Point(0, 219);
+            this.FishingPanel.Name = "FishingPanel";
+            this.FishingPanel.Size = new System.Drawing.Size(405, 54);
+            this.FishingPanel.TabIndex = 113;
+            // 
+            // Overview
+            // 
+            this.Overview.AutoSize = true;
+            this.Overview.Checked = true;
+            this.Overview.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Overview.Location = new System.Drawing.Point(17, 19);
+            this.Overview.Name = "Overview";
+            this.Overview.Size = new System.Drawing.Size(50, 17);
+            this.Overview.TabIndex = 112;
+            this.Overview.Text = "概要";
+            this.Overview.UseVisualStyleBackColor = true;
+            // 
+            // FishingRate
+            // 
+            this.FishingRate.AccessibleName = "";
+            this.FishingRate.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FishingRate.Location = new System.Drawing.Point(247, 15);
+            this.FishingRate.Name = "FishingRate";
+            this.FishingRate.Size = new System.Drawing.Size(44, 22);
+            this.FishingRate.TabIndex = 114;
+            this.FishingRate.Value = new decimal(new int[] {
+            49,
+            0,
+            0,
+            0});
+            // 
+            // FishingDelay
+            // 
+            this.FishingDelay.AccessibleName = "";
+            this.FishingDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FishingDelay.Location = new System.Drawing.Point(130, 15);
+            this.FishingDelay.Name = "FishingDelay";
+            this.FishingDelay.Size = new System.Drawing.Size(44, 22);
+            this.FishingDelay.TabIndex = 115;
+            // 
+            // L_FishingDelay
+            // 
+            this.L_FishingDelay.Location = new System.Drawing.Point(77, 18);
+            this.L_FishingDelay.Name = "L_FishingDelay";
+            this.L_FishingDelay.Size = new System.Drawing.Size(52, 17);
+            this.L_FishingDelay.TabIndex = 116;
+            this.L_FishingDelay.Text = "延时";
+            this.L_FishingDelay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_BiteChance
+            // 
+            this.L_BiteChance.Location = new System.Drawing.Point(180, 18);
+            this.L_BiteChance.Name = "L_BiteChance";
+            this.L_BiteChance.Size = new System.Drawing.Size(65, 17);
+            this.L_BiteChance.TabIndex = 114;
+            this.L_BiteChance.Text = "成功率";
+            this.L_BiteChance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Bubbling
             // 
             this.Bubbling.AutoSize = true;
-            this.Bubbling.Location = new System.Drawing.Point(213, 196);
+            this.Bubbling.Location = new System.Drawing.Point(130, 196);
             this.Bubbling.Name = "Bubbling";
             this.Bubbling.Size = new System.Drawing.Size(50, 17);
             this.Bubbling.TabIndex = 109;
@@ -2328,7 +2413,7 @@
             // SuctionCups
             // 
             this.SuctionCups.AutoSize = true;
-            this.SuctionCups.Location = new System.Drawing.Point(125, 196);
+            this.SuctionCups.Location = new System.Drawing.Point(225, 196);
             this.SuctionCups.Name = "SuctionCups";
             this.SuctionCups.Size = new System.Drawing.Size(50, 17);
             this.SuctionCups.TabIndex = 100;
@@ -2438,12 +2523,12 @@
             // 
             // L_Rate
             // 
-            this.L_Rate.AutoSize = true;
-            this.L_Rate.Location = new System.Drawing.Point(210, 159);
+            this.L_Rate.Location = new System.Drawing.Point(195, 159);
             this.L_Rate.Name = "L_Rate";
-            this.L_Rate.Size = new System.Drawing.Size(43, 13);
+            this.L_Rate.Size = new System.Drawing.Size(49, 17);
             this.L_Rate.TabIndex = 85;
             this.L_Rate.Text = "出现率";
+            this.L_Rate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.L_Rate.Visible = false;
             // 
             // Special_th
@@ -2451,7 +2536,7 @@
             this.Special_th.AccessibleName = "";
             this.Special_th.Enabled = false;
             this.Special_th.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Special_th.Location = new System.Drawing.Point(263, 155);
+            this.Special_th.Location = new System.Drawing.Point(246, 155);
             this.Special_th.Name = "Special_th";
             this.Special_th.Size = new System.Drawing.Size(44, 22);
             this.Special_th.TabIndex = 84;
@@ -4404,7 +4489,7 @@
             // SpecialOnly
             // 
             this.SpecialOnly.AutoSize = true;
-            this.SpecialOnly.Location = new System.Drawing.Point(193, 220);
+            this.SpecialOnly.Location = new System.Drawing.Point(193, 221);
             this.SpecialOnly.Name = "SpecialOnly";
             this.SpecialOnly.Size = new System.Drawing.Size(86, 17);
             this.SpecialOnly.TabIndex = 81;
@@ -4871,10 +4956,10 @@
             this.Controls.Add(this.ShinyCharm);
             this.Controls.Add(this.L_TSV);
             this.Controls.Add(this.L_Seed);
+            this.Controls.Add(this.L_Profile);
             this.Controls.Add(this.DGV_ID);
             this.Controls.Add(this.DGV);
             this.Controls.Add(this.RNGMethod);
-            this.Controls.Add(this.L_Profile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MS_Toolkit;
             this.MinimumSize = new System.Drawing.Size(1120, 648);
@@ -4918,6 +5003,10 @@
             this.TP_WildRNG.ResumeLayout(false);
             this.Wild_Setting.ResumeLayout(false);
             this.Wild_Setting.PerformLayout();
+            this.FishingPanel.ResumeLayout(false);
+            this.FishingPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).EndInit();
@@ -5026,6 +5115,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_fishing;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_shift;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;
@@ -5353,6 +5443,12 @@
         private System.Windows.Forms.Button B_AddProfile;
         private System.Windows.Forms.CheckBox Bubbling;
         private System.Windows.Forms.PictureBox Tip;
+        private System.Windows.Forms.CheckBox Overview;
+        private System.Windows.Forms.Panel FishingPanel;
+        private System.Windows.Forms.NumericUpDown FishingDelay;
+        private System.Windows.Forms.NumericUpDown FishingRate;
+        private System.Windows.Forms.Label L_FishingDelay;
+        private System.Windows.Forms.Label L_BiteChance;
     }
 }
 

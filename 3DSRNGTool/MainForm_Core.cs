@@ -383,6 +383,11 @@ namespace Pk3DSRNGTool
 
         private void Search7_Timeline()
         {
+            if (gen7fishing)
+            {
+                Search7_FishyTimeline();
+                return;
+            }
             SFMT sfmt = new SFMT(Seed.Value);
             int start_frame = (int)Frame_min.Value;
             int targetframe = (int)TargetFrame.Value;
@@ -432,6 +437,83 @@ namespace Pk3DSRNGTool
             }
             if (Frames.FirstOrDefault()?.FrameNum == (int)Frame_min.Value)
                 Frames[0].Blink = FuncUtil.blinkflaglist[0];
+        }
+
+        private void Search7_FishyTimeline()
+        {
+            SFMT sfmt = new SFMT(Seed.Value);
+            int start_frame = (int)Frame_min.Value;
+            int targetframe = (int)TargetFrame.Value;
+            // Advance
+            for (int i = 0; i < start_frame; i++)
+                sfmt.Next();
+            // Prepare
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            status.raining = Raining.Checked;
+            getsetting(sfmt);
+            int totaltime = (int)TimeSpan.Value * 30;
+            int frame = (int)Frame_min.Value;
+            int frameadvance, Currentframe;
+            int normaldelay = RNGPool.DelayTime;
+            int Timewindow = Overview.Checked ? 2 : Bubbling.Checked ? 45 : 40; // To-do;
+            int Unstable = Math.Max(31, Timewindow - 9);
+            int Thrashold = (int)FishingRate.Value;
+            int basedelay = (int)FishingDelay.Value;
+            int platdelay = Bubbling.Checked ? 19 : 14;
+            // Start
+            for (int i = 0; i <= totaltime; i++)
+            {
+                Currentframe = frame;
+
+                RNGPool.Save();
+
+                // 2 Frames for delay calc
+                RNGPool.Rewind(0); RNGPool.CopyStatus(status);
+                int fishingdelay = (int)(RNGPool.getrand64 % 60) + basedelay;
+                RNGPool.Advance(1);
+
+                // Fishing Delay
+                RNGPool.time_elapse7(fishingdelay);
+                int Value = (int)(RNGPool.getrand64 % 100);
+                if (Value < Thrashold)
+                {
+                    RNGPool.time_elapse7(1);
+                    int fishingframe = RNGPool.index + frame;
+
+                    RNGPool.SaveStatus();
+                    frameadvance = 0;
+
+                    for (int j = 2; j <= Timewindow; j++)
+                    {
+                        RNGPool.LoadStatus();
+                        RNGPool.time_elapse7(1);
+                        fishingframe += RNGPool.index;
+                        RNGPool.SaveStatus();
+                        RNGPool.DelayTime = normaldelay + Math.Max(0, platdelay - j); //  Duplicates
+
+                        var result = RNGPool.Generate7() as ResultW7;
+
+                        if (!filter.CheckResult(result))
+                            continue;
+                        if (Overview.Checked)
+                            result.RandNum = RNGPool.getsavepoint;
+                        result.FrameDelayUsed = fishingdelay;
+                        Frames.Add(new Frame(result, frame: fishingframe, time: (i + j + fishingdelay) * 2, blink: (byte)(Unstable < j ? 2 : 0)));
+                        Frames.Last().FishingFrame = Currentframe;
+                    }
+                }
+
+                RNGPool.Load();
+
+                if (Frames.Count > 100000)
+                    break;
+
+                // Move to next Frame Update RNGPool
+                frameadvance = status.NextState();
+                frame += frameadvance;
+                for (int j = 0; j < frameadvance; j++)
+                    RNGPool.AddNext(sfmt);
+            }
         }
 
         private void Search7_Egg()

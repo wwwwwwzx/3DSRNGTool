@@ -31,6 +31,7 @@ namespace Pk3DSRNGTool
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3;
+        private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
         private bool LinearDelay => IsPelago || gen7honey;
         private byte lastgen;
         private EncounterArea ea;
@@ -221,7 +222,7 @@ namespace Pk3DSRNGTool
                         Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
 
-            SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0);
+            SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0 || gen7fishing);
         }
         #endregion
 
@@ -710,7 +711,7 @@ namespace Pk3DSRNGTool
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
             Fidget.Enabled = Fidget.Checked = Fidget.Visible && CreateTimeline.Checked;
-
+            FishingPanel.Visible = gen7fishing && CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -769,10 +770,18 @@ namespace Pk3DSRNGTool
                 }
                 else if (ea is FishingArea7 f)
                 {
-                    NPC.Value = f.NPC;
+                    if (LocationTable7.FishingNPCChangeSpots.Contains(f.Location))
+                        UpdateTip("NPC count might be affected");
+                    else
+                        UpdateTip(null);
                     Raining.Enabled = true;
+                    if (sender == MetLocation)
+                        NPC.Value = f.NPC;
                     Lv_min.Value = f.LevelMin;
                     Lv_max.Value = f.LevelMax + (Bubbling.Checked && IsUltra ? 5 : 0);
+                    FishingDelay.Increment = IsUltra ? 11 : 19; // Sometimes first try will have long delay
+                    FishingDelay.Value = f.Longdelay ? IsUltra ? 89 : 97 : 78;
+                    Timedelay.Value = f.Lapras ? 0 : -2;
                 }
             }
             else if (Gen6)
@@ -809,7 +818,7 @@ namespace Pk3DSRNGTool
 
         private void SuctionCups_CheckedChanged(object sender, EventArgs e)
         {
-            Special_th.Value = SuctionCups.Checked ? 98 : 49;
+            (Gen7 ? FishingRate : Special_th).Value = SuctionCups.Checked ? 98 : 49;
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -864,6 +873,7 @@ namespace Pk3DSRNGTool
                     + "★: One person on the map will blink soon. Warning for following frames.\r\n"
                     + (Modelnum > 1 ? "?: The spread might be affected by the history of NPC blink status, it's unsafe."
                                     : "5: This frame will survive for 5/30 second.\r\n30: This frame will survive for 1.00 second.\r\n36: This frame will survive for 1.20 second.")
+                    + (AroundTarget.Checked ? "<?>: Some hidden frames" : string.Empty)
                     , this,
                     DGV.Location.X + cellRect.X + cellRect.Size.Width,
                     DGV.Location.Y + cellRect.Y + cellRect.Size.Height,
@@ -963,9 +973,10 @@ namespace Pk3DSRNGTool
             else // Fall through
             {
                 Fidget.Visible =
-                ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible =
+                ChainLength.Visible = L_ChainLength.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
+                SuctionCups.Visible = gen7fishing;
                 ShinyMark.Visible = IsBank;
             }
         }
@@ -1055,7 +1066,7 @@ namespace Pk3DSRNGTool
                 if (Method == 2)
                 {
                     Frame.SpecialSlotStr = gen7wildtypestr[CB_Category.SelectedIndex];
-                    buffersize += RNGPool.modelnumber * 100;
+                    buffersize += RNGPool.modelnumber * 500;
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
@@ -1434,6 +1445,7 @@ namespace Pk3DSRNGTool
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
+            dgv_fishing.Visible = gen7fishing && CreateTimeline.Checked;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
             DGV.CurrentCell = null;
@@ -1495,7 +1507,7 @@ namespace Pk3DSRNGTool
             Frames[index].Formatted = true;
 
             bool?[] ivsflag = (result as EggResult)?.InheritMaleIV ?? (result as ResultME7)?.InheritMaleIV;
-            const int ivstart = 5;
+            const int ivstart = 6;
             if (ivsflag != null)
             {
                 if (RB_EggShortest.Checked && Frames[index].FrameUsed == EGGACCEPT_STR[lindex, 0])
