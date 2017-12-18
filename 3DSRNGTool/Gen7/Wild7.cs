@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using PKHeX.Core;
+﻿using PKHeX.Core;
 using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
@@ -172,5 +171,13 @@ namespace Pk3DSRNGTool
                 return 3; // Bottle Cap
             return 4; // Gold Bottle Cap
         }
+    }
+
+    public struct FishingSetting
+    {
+        public int basedelay;
+        public int bitechance;
+        public int platdelay;
+        public int pkmdelay;
     }
 }

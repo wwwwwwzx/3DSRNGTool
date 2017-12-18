@@ -209,7 +209,7 @@
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
             this.Overview = new System.Windows.Forms.CheckBox();
-            this.FishingRate = new System.Windows.Forms.NumericUpDown();
+            this.BiteChance = new System.Windows.Forms.NumericUpDown();
             this.FishingDelay = new System.Windows.Forms.NumericUpDown();
             this.L_FishingDelay = new System.Windows.Forms.Label();
             this.L_BiteChance = new System.Windows.Forms.Label();
@@ -443,7 +443,7 @@
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
             this.FishingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
@@ -2326,7 +2326,7 @@
             // FishingPanel
             // 
             this.FishingPanel.Controls.Add(this.Overview);
-            this.FishingPanel.Controls.Add(this.FishingRate);
+            this.FishingPanel.Controls.Add(this.BiteChance);
             this.FishingPanel.Controls.Add(this.FishingDelay);
             this.FishingPanel.Controls.Add(this.L_FishingDelay);
             this.FishingPanel.Controls.Add(this.L_BiteChance);
@@ -2347,15 +2347,15 @@
             this.Overview.Text = "概要";
             this.Overview.UseVisualStyleBackColor = true;
             // 
-            // FishingRate
+            // BiteChance
             // 
-            this.FishingRate.AccessibleName = "";
-            this.FishingRate.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FishingRate.Location = new System.Drawing.Point(247, 15);
-            this.FishingRate.Name = "FishingRate";
-            this.FishingRate.Size = new System.Drawing.Size(44, 22);
-            this.FishingRate.TabIndex = 114;
-            this.FishingRate.Value = new decimal(new int[] {
+            this.BiteChance.AccessibleName = "";
+            this.BiteChance.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BiteChance.Location = new System.Drawing.Point(247, 15);
+            this.BiteChance.Name = "BiteChance";
+            this.BiteChance.Size = new System.Drawing.Size(44, 22);
+            this.BiteChance.TabIndex = 114;
+            this.BiteChance.Value = new decimal(new int[] {
             49,
             0,
             0,
@@ -5005,7 +5005,7 @@
             this.Wild_Setting.PerformLayout();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
@@ -5446,7 +5446,7 @@
         private System.Windows.Forms.CheckBox Overview;
         private System.Windows.Forms.Panel FishingPanel;
         private System.Windows.Forms.NumericUpDown FishingDelay;
-        private System.Windows.Forms.NumericUpDown FishingRate;
+        private System.Windows.Forms.NumericUpDown BiteChance;
         private System.Windows.Forms.Label L_FishingDelay;
         private System.Windows.Forms.Label L_BiteChance;
     }

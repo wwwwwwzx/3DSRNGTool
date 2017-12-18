@@ -818,7 +818,7 @@ namespace Pk3DSRNGTool
 
         private void SuctionCups_CheckedChanged(object sender, EventArgs e)
         {
-            (Gen7 ? FishingRate : Special_th).Value = SuctionCups.Checked ? 98 : 49;
+            (Gen7 ? BiteChance : Special_th).Value = SuctionCups.Checked ? 98 : 49;
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -1136,6 +1136,14 @@ namespace Pk3DSRNGTool
 
             Ball = (byte)Ball.SelectedIndex,
             NatureInheritance = (byte)ParentNature.SelectedIndex,
+        };
+
+        private FishingSetting getFishingSetting => new FishingSetting
+        {
+            basedelay = (int)FishingDelay.Value,
+            bitechance = (int)BiteChance.Value,
+            platdelay = Bubbling.Checked ? 19 : 14,
+            pkmdelay = ((int)Timedelay.Value + 4)/2,
         };
 
         private IDFilters getIDFilter()

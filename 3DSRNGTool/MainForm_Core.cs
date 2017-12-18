@@ -454,12 +454,10 @@ namespace Pk3DSRNGTool
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
-            int normaldelay = RNGPool.DelayTime;
-            int Timewindow = Overview.Checked ? 2 : Bubbling.Checked ? 45 : 40; // To-do;
+            var fsetting = getFishingSetting;
+            int Timewindow = Overview.Checked ? 2 : 25 + fsetting.platdelay; // To-do;
             int Unstable = Math.Max(31, Timewindow - 9);
-            int Threshold = (int)FishingRate.Value;
-            int basedelay = (int)FishingDelay.Value;
-            int platdelay = Bubbling.Checked ? 19 : 14;
+
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -469,19 +467,19 @@ namespace Pk3DSRNGTool
 
                 // 2 Frames for delay calc
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
-                int fishingdelay = (int)(RNGPool.getrand64 % 60) + basedelay;
+                int fishingdelay = (int)(RNGPool.getrand64 % 60) + fsetting.basedelay;
                 RNGPool.Advance(1);
 
                 // Fishing Delay
                 RNGPool.time_elapse7(fishingdelay);
+
+                // Bitechance
                 int Value = (int)(RNGPool.getrand64 % 100);
-                if (Value < Threshold)
+                if (Value < fsetting.bitechance)
                 {
                     RNGPool.time_elapse7(1);
                     int fishingframe = RNGPool.index + frame;
-
                     RNGPool.SaveStatus();
-                    frameadvance = 0;
 
                     for (int j = 2; j <= Timewindow; j++)
                     {
@@ -489,7 +487,7 @@ namespace Pk3DSRNGTool
                         RNGPool.time_elapse7(1);
                         fishingframe += RNGPool.index;
                         RNGPool.SaveStatus();
-                        RNGPool.DelayTime = normaldelay + Math.Max(0, platdelay - j); //  Duplicates
+                        RNGPool.DelayTime = fsetting.pkmdelay + Math.Max(0, fsetting.platdelay - j); //  Duplicates
 
                         var result = RNGPool.Generate7() as ResultW7;
 
