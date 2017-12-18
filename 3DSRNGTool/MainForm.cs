@@ -1144,7 +1144,7 @@ namespace Pk3DSRNGTool
             basedelay = (int)FishingDelay.Value,
             bitechance = (int)BiteChance.Value,
             platdelay = Bubbling.Checked ? 19 : 14,
-            pkmdelay = ((int)Timedelay.Value + 4)/2,
+            pkmdelay = ((int)Timedelay.Value + 4) / 2,
         };
 
         private IDFilters getIDFilter()
@@ -1648,7 +1648,7 @@ namespace Pk3DSRNGTool
             {
                 case "Version":
                     var newver = (byte)data;
-                    if (Ver == newver || Ver == 8 && newver == 7 || Ver == 6 && newver == 5)
+                    if (Ver == newver)
                         return;
                     Gameversion.SelectedIndex = newver;
                     return;

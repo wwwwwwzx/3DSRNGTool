@@ -37,7 +37,8 @@ namespace Pk3DSRNGTool
             getBP(logmsg);
         }
 
-        private static string[] pnamestr = { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc" , "momiji", "momiji" };
+        private static string[] pnamestr = { "kujira-1", "kujira-2", "sango-1", "sango-2", "salmon", "niji_loc", "niji_loc", "momiji", "momiji" };
+        private static string[] titleidstr = { "175e00", "1b5100" };
         private bool getGame(string logmsg)
         {
             string pname;
@@ -47,6 +48,8 @@ namespace Pk3DSRNGTool
             pname = ", pname:" + pname.PadLeft(9);
             string pidaddr = logmsg.Substring(logmsg.IndexOf(pname, StringComparison.Ordinal) - 10, 10);
             Pid = Convert.ToByte(pidaddr, 16);
+            if (Gameversion > 4 && titleidstr.Any(logmsg.Contains)) // Moon or UM
+                Gameversion++;
             switch (Gameversion)
             {
                 case 0:
@@ -61,11 +64,11 @@ namespace Pk3DSRNGTool
                     break;
                 case 5:
                 case 6:
-                    NfcOffset = 0x3E14C0; // 1.0 offset was 0x3DFFD0
+                    NfcOffset = 0x3E14C0;
                     WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; IDOffset = 0x330D67D0; break;
                 case 7:
                 case 8:
-                    NfcOffset = 0; // To-do
+                    NfcOffset = Gameversion == 7 ? 0x3F341Cu : 0x3F3420u;
                     WriteWifiPatch(); SFMTOffset = 0x32663BF0; TinyOffset = 0x3307B1EC; IDOffset = 0x33012818; break;
             }
             SendMsg(Gameversion, "Version");
@@ -155,7 +158,6 @@ namespace Pk3DSRNGTool
         private const uint nfcVal = 0xE3A01000;
         private void WriteWifiPatch()
         {
-            if (NfcOffset == 0) return;
             byte[] command = BitConverter.GetBytes(nfcVal);
             Write(NfcOffset, command, Pid);
             SendMsg("NFC Patched!");
