@@ -175,6 +175,7 @@ namespace Pk3DSRNGTool
 
     public struct FishingSetting
     {
+        public int offset;
         public int basedelay;
         public int bitechance;
         public int platdelay;

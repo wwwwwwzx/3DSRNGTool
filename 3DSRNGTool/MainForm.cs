@@ -1140,6 +1140,7 @@ namespace Pk3DSRNGTool
 
         private FishingSetting getFishingSetting => new FishingSetting
         {
+            offset = (int)FishingOffset.Value,
             basedelay = (int)FishingDelay.Value,
             bitechance = (int)BiteChance.Value,
             platdelay = Bubbling.Checked ? 19 : 14,
