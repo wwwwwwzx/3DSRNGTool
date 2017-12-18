@@ -1448,7 +1448,7 @@ namespace Pk3DSRNGTool
                 Location = 174, // Vast Poni Canyon
                 NPC = 2, Lapras = true,
                 LevelMax = 44,
-                SlotType = 39,
+                SlotType = 23,
                 Species = new[] {129,339,147},
             },
             new FishingArea7
@@ -1456,7 +1456,7 @@ namespace Pk3DSRNGTool
                 Location = 156, // Poni Meadow
                 NPC = 2,
                 LevelMax = 57,
-                SlotType = 39,
+                SlotType = 23,
                 Species = new[] {129,339,147},
             },
             new FishingArea7
@@ -1464,7 +1464,7 @@ namespace Pk3DSRNGTool
                 Location = 170, // Poni Gauntlet
                 NPC = 7, Longdelay = true,
                 LevelMax = 59,
-                SlotType = 39,
+                SlotType = 23,
                 Species = new[] {129,339,147},
             },
         };

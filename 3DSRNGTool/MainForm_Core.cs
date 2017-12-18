@@ -457,7 +457,7 @@ namespace Pk3DSRNGTool
             int normaldelay = RNGPool.DelayTime;
             int Timewindow = Overview.Checked ? 2 : Bubbling.Checked ? 45 : 40; // To-do;
             int Unstable = Math.Max(31, Timewindow - 9);
-            int Thrashold = (int)FishingRate.Value;
+            int Threshold = (int)FishingRate.Value;
             int basedelay = (int)FishingDelay.Value;
             int platdelay = Bubbling.Checked ? 19 : 14;
             // Start
@@ -475,7 +475,7 @@ namespace Pk3DSRNGTool
                 // Fishing Delay
                 RNGPool.time_elapse7(fishingdelay);
                 int Value = (int)(RNGPool.getrand64 % 100);
-                if (Value < Thrashold)
+                if (Value < Threshold)
                 {
                     RNGPool.time_elapse7(1);
                     int fishingframe = RNGPool.index + frame;

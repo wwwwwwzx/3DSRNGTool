@@ -162,7 +162,7 @@ namespace Pk3DSRNGTool
 
         public static byte getHookedItemSlot(byte? rand)
         {
-            if (rand == 0)
+            if (rand == null)
                 return 0;
             if (rand < 60)
                 return 1; // Pearl/Big Pearl
