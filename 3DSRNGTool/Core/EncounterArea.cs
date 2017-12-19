@@ -11,14 +11,14 @@
         {
             get
             {
-                string tmp = _mark ?? (idx > 0 ? idx.ToString() : "");
-                return tmp == "" ? "" : $" ({tmp})";
+                string tmp = _mark ?? (idx > 0 ? idx.ToString() : string.Empty);
+                return string.IsNullOrEmpty(tmp) ? string.Empty : $" ({tmp})";
             }
             set { _mark = value; }
         }
 
         public virtual bool VersionDifference { get; }
-        public virtual bool DayNightDifference => false;
+        public virtual bool DayNightDifference { get; }
 
         public abstract int[] Species { get; set; }
         public abstract int[] getSpecies(int ver, bool IsNight);

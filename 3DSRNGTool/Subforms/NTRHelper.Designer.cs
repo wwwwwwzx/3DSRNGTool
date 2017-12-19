@@ -217,7 +217,6 @@
             // 
             // StopFrame
             // 
-            this.StopFrame.AccessibleName = "";
             this.StopFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StopFrame.Location = new System.Drawing.Point(115, 28);
             this.StopFrame.Maximum = new decimal(new int[] {
@@ -236,7 +235,6 @@
             // 
             // StartFrame
             // 
-            this.StartFrame.AccessibleName = "";
             this.StartFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartFrame.Location = new System.Drawing.Point(18, 28);
             this.StartFrame.Maximum = new decimal(new int[] {

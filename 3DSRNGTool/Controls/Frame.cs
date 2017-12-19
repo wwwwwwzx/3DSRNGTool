@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
         public byte Blink;
         public string Mark => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         private string _FrameUsed;
-        public string FrameUsed { get => _FrameUsed ?? (rt as EggResult)?.FramesUsed.ToString("+#") ?? (rt as Result6)?.FrameUsed.ToString("+00") ?? ""; set => _FrameUsed = value; }
+        public string FrameUsed { get => _FrameUsed ?? (rt as EggResult)?.FramesUsed.ToString("+#") ?? (rt as Result6)?.FrameUsed.ToString("+00") ?? string.Empty; set => _FrameUsed = value; }
         public int HP => showstats ? rt.Stats[0] : rt.IVs[0];
         public int Atk => showstats ? rt.Stats[1] : rt.IVs[1];
         public int Def => showstats ? rt.Stats[2] : rt.IVs[2];

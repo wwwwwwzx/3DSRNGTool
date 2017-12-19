@@ -87,7 +87,7 @@ namespace Pk3DSRNGTool
             Event_Gender.Items.AddRange(genderstr);
             Event_Nature.Items.AddRange(naturestr);
             for (int i = 0; i <= naturestr.Length; i++)
-                SyncNature.Items.Add("");
+                SyncNature.Items.Add(string.Empty);
 
             string l = Properties.Settings.Default.Language;
             int lang = Array.IndexOf(langlist, l);
@@ -1196,7 +1196,7 @@ namespace Pk3DSRNGTool
                         tmp[i] = GenderList.Text[i];
                     if (FormPM.Species == 151 || FormPM.Species == 251)
                         tmp[set6.Target - 1] = '2';
-                    GenderList.Text = set6.GenderList = new string(tmp) + (GenderList.Text.Length > set6.Target ? GenderList.Text.Substring(set6.Target, GenderList.Text.Length - set6.Target) : "");
+                    GenderList.Text = set6.GenderList = new string(tmp) + (GenderList.Text.Length > set6.Target ? GenderList.Text.Substring(set6.Target, GenderList.Text.Length - set6.Target) : string.Empty);
                 }
                 else
                     set6.GenderList = "000";

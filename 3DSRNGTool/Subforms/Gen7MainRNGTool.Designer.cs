@@ -137,7 +137,6 @@
             // 
             // Offset
             // 
-            this.Offset.AccessibleName = "";
             this.Offset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Offset.Location = new System.Drawing.Point(110, 107);
             this.Offset.Maximum = new decimal(new int[] {
@@ -431,7 +430,6 @@
             // 
             // Time_min
             // 
-            this.Time_min.AccessibleName = "";
             this.Time_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Time_min.Location = new System.Drawing.Point(90, 33);
             this.Time_min.Maximum = new decimal(new int[] {
@@ -521,7 +519,6 @@
             // 
             // Frame_max
             // 
-            this.Frame_max.AccessibleName = "";
             this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_max.Increment = new decimal(new int[] {
             5000,
@@ -569,7 +566,6 @@
             // 
             // Frame_min
             // 
-            this.Frame_min.AccessibleName = "";
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(22, 94);
             this.Frame_min.Maximum = new decimal(new int[] {
@@ -593,7 +589,6 @@
             // 
             // TargetFrame
             // 
-            this.TargetFrame.AccessibleName = "";
             this.TargetFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TargetFrame.Increment = new decimal(new int[] {
             100,
@@ -649,7 +644,6 @@
             // 
             // NPC
             // 
-            this.NPC.AccessibleName = "";
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NPC.Location = new System.Drawing.Point(81, 119);
             this.NPC.Maximum = new decimal(new int[] {

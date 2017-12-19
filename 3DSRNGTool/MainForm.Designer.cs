@@ -2349,7 +2349,6 @@
             // 
             // BiteChance
             // 
-            this.BiteChance.AccessibleName = "";
             this.BiteChance.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BiteChance.Location = new System.Drawing.Point(247, 15);
             this.BiteChance.Name = "BiteChance";
@@ -2363,7 +2362,6 @@
             // 
             // FishingDelay
             // 
-            this.FishingDelay.AccessibleName = "";
             this.FishingDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FishingDelay.Location = new System.Drawing.Point(130, 15);
             this.FishingDelay.Name = "FishingDelay";
@@ -2433,7 +2431,6 @@
             // 
             // ChainLength
             // 
-            this.ChainLength.AccessibleName = "";
             this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChainLength.Location = new System.Drawing.Point(93, 155);
             this.ChainLength.Name = "ChainLength";
@@ -2497,7 +2494,6 @@
             // 
             // WildIVsCnt
             // 
-            this.WildIVsCnt.AccessibleName = "";
             this.WildIVsCnt.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WildIVsCnt.Location = new System.Drawing.Point(107, 155);
             this.WildIVsCnt.Maximum = new decimal(new int[] {
@@ -2533,7 +2529,6 @@
             // 
             // Special_th
             // 
-            this.Special_th.AccessibleName = "";
             this.Special_th.Enabled = false;
             this.Special_th.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Special_th.Location = new System.Drawing.Point(246, 155);
@@ -2554,7 +2549,6 @@
             // 
             // Lv_max
             // 
-            this.Lv_max.AccessibleName = "IV_min";
             this.Lv_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv_max.Location = new System.Drawing.Point(142, 155);
             this.Lv_max.Name = "Lv_max";
@@ -2577,7 +2571,6 @@
             // 
             // Lv_min
             // 
-            this.Lv_min.AccessibleName = "";
             this.Lv_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv_min.Location = new System.Drawing.Point(89, 155);
             this.Lv_min.Name = "Lv_min";
@@ -2710,7 +2703,6 @@
             // 
             // EventIV0
             // 
-            this.EventIV0.AccessibleName = "";
             this.EventIV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV0.Location = new System.Drawing.Point(66, 59);
             this.EventIV0.Maximum = new decimal(new int[] {
@@ -2725,7 +2717,6 @@
             // 
             // EventIV1
             // 
-            this.EventIV1.AccessibleName = "";
             this.EventIV1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV1.Location = new System.Drawing.Point(66, 96);
             this.EventIV1.Maximum = new decimal(new int[] {
@@ -2733,14 +2724,12 @@
             0,
             0,
             0});
-            this.EventIV1.Name = "EventIV1";
             this.EventIV1.Size = new System.Drawing.Size(47, 22);
             this.EventIV1.TabIndex = 7;
             this.EventIV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // EventIV2
             // 
-            this.EventIV2.AccessibleName = "";
             this.EventIV2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV2.Location = new System.Drawing.Point(66, 133);
             this.EventIV2.Maximum = new decimal(new int[] {
@@ -2755,7 +2744,6 @@
             // 
             // EventIV3
             // 
-            this.EventIV3.AccessibleName = "";
             this.EventIV3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV3.Location = new System.Drawing.Point(66, 170);
             this.EventIV3.Maximum = new decimal(new int[] {
@@ -2770,7 +2758,6 @@
             // 
             // EventIV4
             // 
-            this.EventIV4.AccessibleName = "";
             this.EventIV4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV4.Location = new System.Drawing.Point(66, 207);
             this.EventIV4.Maximum = new decimal(new int[] {
@@ -2785,7 +2772,6 @@
             // 
             // EventIV5
             // 
-            this.EventIV5.AccessibleName = "";
             this.EventIV5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventIV5.Location = new System.Drawing.Point(66, 244);
             this.EventIV5.Maximum = new decimal(new int[] {
@@ -2856,7 +2842,6 @@
             // 
             // Event_SID
             // 
-            this.Event_SID.AccessibleName = "";
             this.Event_SID.Enabled = false;
             this.Event_SID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_SID.Location = new System.Drawing.Point(324, 134);
@@ -2896,7 +2881,6 @@
             // 
             // IVsCount
             // 
-            this.IVsCount.AccessibleName = "";
             this.IVsCount.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IVsCount.Location = new System.Drawing.Point(228, 61);
             this.IVsCount.Maximum = new decimal(new int[] {
@@ -3075,7 +3059,6 @@
             // 
             // Event_TID
             // 
-            this.Event_TID.AccessibleName = "";
             this.Event_TID.Enabled = false;
             this.Event_TID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Event_TID.Location = new System.Drawing.Point(324, 95);
@@ -3217,7 +3200,6 @@
             // 
             // TargetFrame
             // 
-            this.TargetFrame.AccessibleName = "";
             this.TargetFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TargetFrame.Increment = new decimal(new int[] {
             100,
@@ -3332,7 +3314,6 @@
             // 
             // Correction
             // 
-            this.Correction.AccessibleName = "";
             this.Correction.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Correction.Location = new System.Drawing.Point(190, 39);
             this.Correction.Maximum = new decimal(new int[] {
@@ -3352,7 +3333,6 @@
             // 
             // Timedelay
             // 
-            this.Timedelay.AccessibleName = "";
             this.Timedelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Timedelay.Increment = new decimal(new int[] {
             2,
@@ -3403,7 +3383,6 @@
             // 
             // NPC
             // 
-            this.NPC.AccessibleName = "";
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NPC.Location = new System.Drawing.Point(78, 39);
             this.NPC.Name = "NPC";
@@ -3445,7 +3424,6 @@
             // 
             // Egg_max
             // 
-            this.Egg_max.AccessibleName = "";
             this.Egg_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Egg_max.Increment = new decimal(new int[] {
             100,
@@ -3469,7 +3447,6 @@
             // 
             // Egg_min
             // 
-            this.Egg_min.AccessibleName = "";
             this.Egg_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Egg_min.Location = new System.Drawing.Point(14, 9);
             this.Egg_min.Maximum = new decimal(new int[] {
@@ -3542,7 +3519,6 @@
             // 
             // TimeSpan
             // 
-            this.TimeSpan.AccessibleName = "";
             this.TimeSpan.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeSpan.Location = new System.Drawing.Point(133, 208);
             this.TimeSpan.Maximum = new decimal(new int[] {
@@ -3582,7 +3558,6 @@
             // 
             // Frame_max
             // 
-            this.Frame_max.AccessibleName = "";
             this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_max.Increment = new decimal(new int[] {
             5000,
@@ -3606,7 +3581,6 @@
             // 
             // Frame_min
             // 
-            this.Frame_min.AccessibleName = "";
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(16, 52);
             this.Frame_min.Maximum = new decimal(new int[] {
@@ -3704,7 +3678,6 @@
             // 
             // JumpFrame
             // 
-            this.JumpFrame.AccessibleName = "";
             this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JumpFrame.Location = new System.Drawing.Point(85, 199);
             this.JumpFrame.Maximum = new decimal(new int[] {
@@ -3757,7 +3730,6 @@
             // 
             // TargetMon
             // 
-            this.TargetMon.AccessibleName = "";
             this.TargetMon.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TargetMon.Location = new System.Drawing.Point(311, 153);
             this.TargetMon.Minimum = new decimal(new int[] {
@@ -3988,7 +3960,6 @@
             // 
             // Filter_Lv
             // 
-            this.Filter_Lv.AccessibleName = "";
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Filter_Lv.Location = new System.Drawing.Point(326, 59);
             this.Filter_Lv.Name = "Filter_Lv";
@@ -4078,7 +4049,6 @@
             // 
             // PerfectIVs
             // 
-            this.PerfectIVs.AccessibleName = "";
             this.PerfectIVs.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PerfectIVs.Location = new System.Drawing.Point(86, 3);
             this.PerfectIVs.Maximum = new decimal(new int[] {
@@ -4093,7 +4063,6 @@
             // 
             // ivmin0
             // 
-            this.ivmin0.AccessibleName = "";
             this.ivmin0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin0.Location = new System.Drawing.Point(11, 32);
             this.ivmin0.Maximum = new decimal(new int[] {
@@ -4109,7 +4078,6 @@
             // 
             // ivmax0
             // 
-            this.ivmax0.AccessibleName = "";
             this.ivmax0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax0.Location = new System.Drawing.Point(86, 32);
             this.ivmax0.Maximum = new decimal(new int[] {
@@ -4130,7 +4098,6 @@
             // 
             // ivmin1
             // 
-            this.ivmin1.AccessibleName = "";
             this.ivmin1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin1.Location = new System.Drawing.Point(11, 62);
             this.ivmin1.Maximum = new decimal(new int[] {
@@ -4155,7 +4122,6 @@
             // 
             // ivmin2
             // 
-            this.ivmin2.AccessibleName = "";
             this.ivmin2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin2.Location = new System.Drawing.Point(11, 92);
             this.ivmin2.Maximum = new decimal(new int[] {
@@ -4180,7 +4146,6 @@
             // 
             // ivmin3
             // 
-            this.ivmin3.AccessibleName = "";
             this.ivmin3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin3.Location = new System.Drawing.Point(11, 122);
             this.ivmin3.Maximum = new decimal(new int[] {
@@ -4205,7 +4170,6 @@
             // 
             // ivmin4
             // 
-            this.ivmin4.AccessibleName = "";
             this.ivmin4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin4.Location = new System.Drawing.Point(11, 152);
             this.ivmin4.Maximum = new decimal(new int[] {
@@ -4230,7 +4194,6 @@
             // 
             // ivmin5
             // 
-            this.ivmin5.AccessibleName = "";
             this.ivmin5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmin5.Location = new System.Drawing.Point(11, 182);
             this.ivmin5.Maximum = new decimal(new int[] {
@@ -4264,7 +4227,6 @@
             // 
             // ivmax1
             // 
-            this.ivmax1.AccessibleName = "";
             this.ivmax1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax1.Location = new System.Drawing.Point(86, 62);
             this.ivmax1.Maximum = new decimal(new int[] {
@@ -4285,7 +4247,6 @@
             // 
             // ivmax5
             // 
-            this.ivmax5.AccessibleName = "";
             this.ivmax5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax5.Location = new System.Drawing.Point(86, 182);
             this.ivmax5.Maximum = new decimal(new int[] {
@@ -4306,7 +4267,6 @@
             // 
             // ivmax2
             // 
-            this.ivmax2.AccessibleName = "";
             this.ivmax2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax2.Location = new System.Drawing.Point(86, 92);
             this.ivmax2.Maximum = new decimal(new int[] {
@@ -4327,7 +4287,6 @@
             // 
             // ivmax4
             // 
-            this.ivmax4.AccessibleName = "";
             this.ivmax4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax4.Location = new System.Drawing.Point(86, 152);
             this.ivmax4.Maximum = new decimal(new int[] {
@@ -4348,7 +4307,6 @@
             // 
             // ivmax3
             // 
-            this.ivmax3.AccessibleName = "";
             this.ivmax3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ivmax3.Location = new System.Drawing.Point(86, 122);
             this.ivmax3.Maximum = new decimal(new int[] {
@@ -4677,7 +4635,6 @@
             // 
             // Stat0
             // 
-            this.Stat0.AccessibleName = "";
             this.Stat0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat0.Location = new System.Drawing.Point(80, 32);
             this.Stat0.Maximum = new decimal(new int[] {
@@ -4691,7 +4648,6 @@
             // 
             // Stat1
             // 
-            this.Stat1.AccessibleName = "";
             this.Stat1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat1.Location = new System.Drawing.Point(80, 62);
             this.Stat1.Maximum = new decimal(new int[] {
@@ -4705,7 +4661,6 @@
             // 
             // BS_5
             // 
-            this.BS_5.AccessibleName = "";
             this.BS_5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_5.Location = new System.Drawing.Point(11, 182);
             this.BS_5.Maximum = new decimal(new int[] {
@@ -4719,7 +4674,6 @@
             // 
             // Stat2
             // 
-            this.Stat2.AccessibleName = "";
             this.Stat2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat2.Location = new System.Drawing.Point(80, 92);
             this.Stat2.Maximum = new decimal(new int[] {
@@ -4733,7 +4687,6 @@
             // 
             // BS_4
             // 
-            this.BS_4.AccessibleName = "";
             this.BS_4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_4.Location = new System.Drawing.Point(11, 152);
             this.BS_4.Maximum = new decimal(new int[] {
@@ -4747,7 +4700,6 @@
             // 
             // Stat3
             // 
-            this.Stat3.AccessibleName = "";
             this.Stat3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat3.Location = new System.Drawing.Point(80, 122);
             this.Stat3.Maximum = new decimal(new int[] {
@@ -4761,7 +4713,6 @@
             // 
             // BS_3
             // 
-            this.BS_3.AccessibleName = "";
             this.BS_3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_3.Location = new System.Drawing.Point(11, 122);
             this.BS_3.Maximum = new decimal(new int[] {
@@ -4775,7 +4726,6 @@
             // 
             // Stat4
             // 
-            this.Stat4.AccessibleName = "";
             this.Stat4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat4.Location = new System.Drawing.Point(80, 152);
             this.Stat4.Maximum = new decimal(new int[] {
@@ -4789,7 +4739,6 @@
             // 
             // BS_2
             // 
-            this.BS_2.AccessibleName = "";
             this.BS_2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_2.Location = new System.Drawing.Point(11, 92);
             this.BS_2.Maximum = new decimal(new int[] {
@@ -4803,7 +4752,6 @@
             // 
             // Stat5
             // 
-            this.Stat5.AccessibleName = "";
             this.Stat5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stat5.Location = new System.Drawing.Point(80, 182);
             this.Stat5.Maximum = new decimal(new int[] {
@@ -4817,7 +4765,6 @@
             // 
             // BS_1
             // 
-            this.BS_1.AccessibleName = "";
             this.BS_1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_1.Location = new System.Drawing.Point(11, 62);
             this.BS_1.Maximum = new decimal(new int[] {
@@ -4831,7 +4778,6 @@
             // 
             // BS_0
             // 
-            this.BS_0.AccessibleName = "";
             this.BS_0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BS_0.Location = new System.Drawing.Point(11, 32);
             this.BS_0.Maximum = new decimal(new int[] {

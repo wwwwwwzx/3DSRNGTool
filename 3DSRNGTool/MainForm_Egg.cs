@@ -195,7 +195,7 @@ namespace Pk3DSRNGTool
 
         private string getEggListString(int eggnum, int rejectnum, bool path = false)
         {
-            string tmp = "";
+            string tmp = string.Empty;
             if (eggnum < 0)
                 return LOWEGGNUM_STR[lindex];
             tmp += string.Format(ACCEPTEGGNUM_STR[lindex], eggnum);
@@ -214,7 +214,6 @@ namespace Pk3DSRNGTool
                 if (e.Button == MouseButtons.Right)
                 {
                     var hti = DGV.HitTest(e.X, e.Y);
-                    DGV.ClearSelection();
                     DGV.CurrentCell = DGV.Rows[hti.RowIndex].Cells[hti.ColumnIndex];
                 }
             }
@@ -298,11 +297,7 @@ namespace Pk3DSRNGTool
             { }
         }
 
-        private void B_Template_Click(object sender, EventArgs e)
-        {
-            IVTemplate newform = new IVTemplate();
-            newform.Show();
-        }
+        private void B_Template_Click(object sender, EventArgs e) => new IVTemplate().Show();
 
         private void ConsiderOtherTSV_CheckedChanged(object sender, EventArgs e)
         {
