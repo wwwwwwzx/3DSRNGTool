@@ -32,7 +32,7 @@ namespace Pk3DSRNGTool
 
             if (Fishing)
             {
-                IsSpecial = rt.IsSpecial = (byte)(getrand % 100) > SpecialEnctr;
+                IsSpecial = rt.IsSpecial = (byte)(getrand % 100) >= SpecialEnctr;
                 time_elapse(12);
                 if (IsSpecial) // Predict hooked item
                 {

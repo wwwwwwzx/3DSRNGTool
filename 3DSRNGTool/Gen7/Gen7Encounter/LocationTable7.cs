@@ -1311,6 +1311,14 @@ namespace Pk3DSRNGTool
         {
             new FishingArea7
             {
+                Location = 172, // Seafolk Village
+                NPC = 1, Longdelay = true,
+                LevelMax = 43,
+                SlotType = 37,
+                Species = new[] {129,320,781},
+            },
+            new FishingArea7
+            {
                 Location = 042, // Seaward Cave
                 NPC = 1, Lapras = true,
                 LevelMax = 15,
@@ -1406,7 +1414,7 @@ namespace Pk3DSRNGTool
             new FishingArea7
             {
                 Location = 126, // Route 14
-                NPC = 2, Lapras = true,
+                NPC = 1, Lapras = true,
                 LevelMax = 31,
                 SlotType = 27,
                 Species = new[] {129,746,779},
@@ -1418,14 +1426,6 @@ namespace Pk3DSRNGTool
                 LevelMax = 33,
                 SlotType = 27,
                 Species = new[] {129,746,779},
-            },
-            new FishingArea7
-            {
-                Location = 172, // Seafolk Village
-                NPC = 1, Longdelay = true,
-                LevelMax = 43,
-                SlotType = 37,
-                Species = new[] {129,320,781},
             },
             new FishingArea7
             {
@@ -1471,6 +1471,14 @@ namespace Pk3DSRNGTool
 
         public readonly static FishingArea7[] Fishing_USUM =
         {
+            new FishingArea7
+            {
+                Location = 172,  // Seafolk Village
+                NPC = 1, Longdelay = true,
+                LevelMax = 44,
+                SlotType = 13,
+                Species = new[] {129,320,781},
+            },
             new FishingArea7
             {
                 Location = 042, // Seaward Cave
@@ -1560,7 +1568,7 @@ namespace Pk3DSRNGTool
             new FishingArea7
             {
                 Location = 126, // Route 14
-                NPC = 2, Lapras = true,
+                NPC = 1, Lapras = true,
                 LevelMax = 34,
                 SlotType = 13,
                 Species = new[] {129,746,779},
@@ -1572,14 +1580,6 @@ namespace Pk3DSRNGTool
                 LevelMax = 35,
                 SlotType = 19,
                 Species = new[] {129,746,779,366},
-            },
-            new FishingArea7
-            {
-                Location = 172,  // Seafolk Village
-                NPC = 1, Longdelay = true,
-                LevelMax = 44,
-                SlotType = 13,
-                Species = new[] {129,320,781},
             },
             new FishingArea7
             {
