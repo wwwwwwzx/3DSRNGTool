@@ -129,6 +129,7 @@ namespace Pk3DSRNGTool
             {
                 PostNatureLock = true;
                 AlwaysSync = false;
+                PIDroll_count = ShinyCharm ? 3 : 1;
             }
             blinkwhensync = !AlwaysSync && !pm7.NoBlink;
             Ability = Ability == 0 && blinkwhensync ? (byte)1 : Ability;

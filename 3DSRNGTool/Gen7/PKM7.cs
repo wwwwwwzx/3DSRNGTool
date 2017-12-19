@@ -211,11 +211,11 @@
                     new PKM7 { Species = 425, Level = 19, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Drifloon @ Route 1 Trainers' School
                     new PKM7 { Species = 760, Level = 28, NPC = 10, ShinyLocked = true, Ability = 0xFF }, // Bewear @ Hau'oli City
                     new PKM7 { Species = 097, Level = 29, NPC = 04, Delay = 90, ShinyLocked = true, Ability = 0xFF }, // Hypno @ Hau'oli City
-                    new PKM7 { Species = 132, Level = 29, NPC = 02, IVs = new[] {-1,-1,31,30,-1,00}, Ability = 2, Nature = 05, }, // Ditto @ Route 9
-                    new PKM7 { Species = 132, Level = 29, NPC = 03, IVs = new[] {-1,-1,30,30,-1,31}, Ability = 2, Nature = 13, }, // Ditto @ Konikoni City
-                    new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 2, Nature = 03, }, // Ditto @ Konikoni City
-                    new PKM7 { Species = 132, Level = 29, NPC = 08, IVs = new[] {-1,00,-1,31,30,-1}, Ability = 2, Nature = 15, }, // Ditto @ Konikoni City
-                    new PKM7 { Species = 132, Level = 29, NPC = 01, IVs = new[] {-1,30,-1,-1,30,31}, Ability = 2, Nature = 10, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 02, IVs = new[] {-1,-1,31,30,-1,00}, Ability = 0xFF, Nature = 05, }, // Ditto @ Route 9
+                    new PKM7 { Species = 132, Level = 29, NPC = 03, IVs = new[] {-1,-1,30,30,-1,31}, Ability = 0xFF, Nature = 13, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 06, IVs = new[] {-1,31,30,-1,-1,30}, Ability = 0xFF, Nature = 03, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 08, IVs = new[] {-1,00,-1,31,30,-1}, Ability = 0xFF, Nature = 15, }, // Ditto @ Konikoni City
+                    new PKM7 { Species = 132, Level = 29, NPC = 01, IVs = new[] {-1,30,-1,-1,30,31}, Ability = 0xFF, Nature = 10, }, // Ditto @ Konikoni City
                     new PKM7 { Species = 592, Level = 34, NPC = 07, ShinyLocked = true, Ability = 0xFF, Gender = 2, Delay = -4, }, // Frillish @ Route 14
                     new PKM7 { Species = 769, Level = 30, NPC = 02, ShinyLocked = true, Ability = 0xFF, Version = GameVersion.UM, }, // Sandygast @ Route 15
                     new PKM7 { Species = 127, NPC = 5, Raining = true, ShinyLocked = true, Ability = 0xFF, Unstable = true},  // Pinsir
