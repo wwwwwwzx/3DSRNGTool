@@ -468,14 +468,13 @@ namespace Pk3DSRNGTool
                 // 2 Frames for delay calc
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 int fishingdelay = (int)(RNGPool.getrand64 % 60) + fsetting.basedelay;
-                RNGPool.Advance(fsetting.offset); // Fishy consumption
+                RNGPool.Advance(1); // Fishy consumption
 
                 // Fishing Delay
                 RNGPool.time_elapse7(fishingdelay);
 
                 // Bitechance
-                int Value = (int)(RNGPool.getrand64 % 100);
-                if (Value < fsetting.bitechance)
+                if (fsetting.suctioncups || (int)(RNGPool.getrand64 % 100) < fsetting.bitechance)
                 {
                     RNGPool.time_elapse7(1);
                     int fishingframe = RNGPool.index + frame;

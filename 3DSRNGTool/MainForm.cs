@@ -818,7 +818,13 @@ namespace Pk3DSRNGTool
 
         private void SuctionCups_CheckedChanged(object sender, EventArgs e)
         {
-            (Gen7 ? BiteChance : Special_th).Value = SuctionCups.Checked ? 98 : 49;
+            if (Gen7)
+            {
+                BiteChance.Value = SuctionCups.Checked ? 100 : 50;
+                BiteChance.Enabled = !SuctionCups.Checked;
+            }
+            else
+                Special_th.Value = SuctionCups.Checked ? 98 : 49;
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -1140,8 +1146,8 @@ namespace Pk3DSRNGTool
 
         private FishingSetting getFishingSetting => new FishingSetting
         {
-            offset = (int)FishingOffset.Value,
             basedelay = (int)FishingDelay.Value,
+            suctioncups = SuctionCups.Checked,
             bitechance = (int)BiteChance.Value,
             platdelay = Bubbling.Checked ? 19 : 14,
             pkmdelay = ((int)Timedelay.Value + 4) / 2,

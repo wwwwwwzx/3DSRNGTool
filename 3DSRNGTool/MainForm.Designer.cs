@@ -208,8 +208,6 @@
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
-            this.L_FishingOffset = new System.Windows.Forms.Label();
-            this.FishingOffset = new System.Windows.Forms.NumericUpDown();
             this.Overview = new System.Windows.Forms.CheckBox();
             this.BiteChance = new System.Windows.Forms.NumericUpDown();
             this.FishingDelay = new System.Windows.Forms.NumericUpDown();
@@ -445,7 +443,6 @@
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
             this.FishingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
@@ -2328,8 +2325,6 @@
             // 
             // FishingPanel
             // 
-            this.FishingPanel.Controls.Add(this.L_FishingOffset);
-            this.FishingPanel.Controls.Add(this.FishingOffset);
             this.FishingPanel.Controls.Add(this.Overview);
             this.FishingPanel.Controls.Add(this.BiteChance);
             this.FishingPanel.Controls.Add(this.FishingDelay);
@@ -2339,29 +2334,6 @@
             this.FishingPanel.Name = "FishingPanel";
             this.FishingPanel.Size = new System.Drawing.Size(405, 54);
             this.FishingPanel.TabIndex = 113;
-            // 
-            // L_FishingOffset
-            // 
-            this.L_FishingOffset.Location = new System.Drawing.Point(297, 18);
-            this.L_FishingOffset.Name = "L_FishingOffset";
-            this.L_FishingOffset.Size = new System.Drawing.Size(52, 17);
-            this.L_FishingOffset.TabIndex = 118;
-            this.L_FishingOffset.Text = "Offset";
-            this.L_FishingOffset.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FishingOffset
-            // 
-            this.FishingOffset.AccessibleName = "";
-            this.FishingOffset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FishingOffset.Location = new System.Drawing.Point(351, 15);
-            this.FishingOffset.Maximum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.FishingOffset.Name = "FishingOffset";
-            this.FishingOffset.Size = new System.Drawing.Size(44, 22);
-            this.FishingOffset.TabIndex = 117;
             // 
             // Overview
             // 
@@ -2384,7 +2356,7 @@
             this.BiteChance.Size = new System.Drawing.Size(44, 22);
             this.BiteChance.TabIndex = 114;
             this.BiteChance.Value = new decimal(new int[] {
-            49,
+            50,
             0,
             0,
             0});
@@ -5033,7 +5005,6 @@
             this.Wild_Setting.PerformLayout();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
@@ -5478,8 +5449,6 @@
         private System.Windows.Forms.NumericUpDown BiteChance;
         private System.Windows.Forms.Label L_FishingDelay;
         private System.Windows.Forms.Label L_BiteChance;
-        private System.Windows.Forms.Label L_FishingOffset;
-        private System.Windows.Forms.NumericUpDown FishingOffset;
     }
 }
 
