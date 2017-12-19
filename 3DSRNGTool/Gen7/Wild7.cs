@@ -154,7 +154,7 @@ namespace Pk3DSRNGTool
             {
                 case 1: return 80;
                 case 2: return 50;
-                case 3: return 80; // To-do
+                case 3: return 80;
                 default: return 0;
             }
         }
@@ -164,12 +164,14 @@ namespace Pk3DSRNGTool
             if (rand == null)
                 return 0;
             if (rand < 60)
-                return 1; // Pearl/Big Pearl
+                return 1;
+            if (rand < 80)
+                return 2;
             if (rand < 90)
-                return 2; // Sticky Barb
+                return 3;
             if (rand < 99)
-                return 3; // Bottle Cap
-            return 4; // Gold Bottle Cap
+                return 4;
+            return 5;
         }
     }
 

@@ -389,12 +389,22 @@ namespace Pk3DSRNGTool.Core
             }
         }
 
+        public static FishingSetting fsetting;
+
         public static void WildDelay7()
         {
             NormalDelay7();
             switch (DelayType)
             {
                 case 1:  // Fishing
+                    break;
+                case 2:  // Fishing Delay
+                    // PUT DelayTime TO ZERO
+                    int fishingdelay = (int)(getrand64 % 60) + fsetting.basedelay;
+                    Advance(1);
+                    time_elapse7(fishingdelay);
+                    Advance(fsetting.suctioncups ? 0 : 1);
+                    time_elapse7(fsetting.platdelay + fsetting.pkmdelay);
                     break;
                 default: // Honey
                     ResetModelStatus();

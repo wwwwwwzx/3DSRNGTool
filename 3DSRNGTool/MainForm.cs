@@ -1073,6 +1073,12 @@ namespace Pk3DSRNGTool
                 {
                     Frame.SpecialSlotStr = gen7wildtypestr[CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 500;
+                    if (gen7fishing && ConsiderDelay.Checked && !CreateTimeline.Checked)
+                    {
+                        RNGPool.DelayType = 2;
+                        RNGPool.DelayTime = 0;
+                        RNGPool.fsetting = getFishingSetting;
+                    }
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
@@ -1291,9 +1297,9 @@ namespace Pk3DSRNGTool
                         setting7.SpecialLevel = FormPM.Level;
                     }
                 }
-                else
+                else if (gen7fishing)
                 {
-                    setting7.Fishing = CB_Category.SelectedIndex == 3;
+                    setting7.Fishing = true;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
                     slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
                 }
