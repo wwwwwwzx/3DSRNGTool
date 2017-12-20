@@ -32,6 +32,7 @@ namespace Pk3DSRNGTool
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
+        private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
         private byte lastgen;
         private EncounterArea ea;
@@ -251,6 +252,7 @@ namespace Pk3DSRNGTool
             naturestr = getStringList("Natures", curlanguage);
             hpstr = getStringList("Types", curlanguage);
             speciestr = getStringList("Species", curlanguage);
+            abilitystr = getStringList("Abilities", curlanguage);
             items = getStringList("Items", curlanguage);
             genderratio = getStringList("Genderratio", curlanguage);
             smlocation = getStringList("Location_sm", curlanguage);
@@ -310,6 +312,11 @@ namespace Pk3DSRNGTool
             Egg_GenderRatio.DisplayMember = "Text";
             Egg_GenderRatio.DataSource = new BindingSource(GenderRatioList, null);
             Egg_GenderRatio.SelectedIndex = 1;
+
+            LeadAbility.ValueMember = "Value";
+            LeadAbility.DisplayMember = "Text";
+            LeadAbility.DataSource = new BindingSource(LeadAbilityList, null);
+            LeadAbility.SelectedIndex = 0;
 
             Event_Species.Items.Clear();
             Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : 807)).ToArray());
@@ -411,12 +418,25 @@ namespace Pk3DSRNGTool
         private void SyncNature_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SyncNature.SelectedIndex > 0)
+                LeadAbility.SelectedIndex = 1;
+            if (AlwaysSynced.Checked && SyncNature.SelectedIndex == 0)
+                Nature.ClearSelection();
+        }
+
+        private void LeadAbility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Sync
+            if (LeadAbility.SelectedIndex > 1)
+                SyncNature.SelectedIndex = 0;
+
+            // Suction Cups
+            if (Gen7)
             {
-                SuctionCups.Checked = CompoundEyes.Checked = false;
-                if (AlwaysSynced.Checked)
-                    Nature.ClearSelection();
+                BiteChance.Value = SuctionCups ? 100 : 50;
+                BiteChance.Enabled = !SuctionCups;
             }
-            SuctionCups.Enabled = CompoundEyes.Enabled = SyncNature.SelectedIndex == 0;
+            else
+                Special_th.Value = SuctionCups ? 98 : 49;
         }
 
         private void Fix3v_CheckedChanged(object sender, EventArgs e)
@@ -716,11 +736,11 @@ namespace Pk3DSRNGTool
                 ConsiderDelay.Checked = true;
             if (Gen6)
             {
-                CB_3rdSlotUnlocked.Enabled = CompoundEyes.Enabled = CreateTimeline.Checked;
+                CB_3rdSlotUnlocked.Enabled = LeadAbility.Enabled = CreateTimeline.Checked;
                 AssumeSynced.Checked &= AssumeSynced.Enabled = !CreateTimeline.Checked && B_OpenTool.Visible;
             }
             else
-                CompoundEyes.Enabled = true;
+                LeadAbility.Enabled = true;
             NPC_ValueChanged(null, null);
         }
 
@@ -790,7 +810,7 @@ namespace Pk3DSRNGTool
                 if (FormPM is PKMW6 pm && pm.IsFishing)
                 {
                     ChainLength.Maximum = 20;
-                    Special_th.Value = SuctionCups.Checked ? 98 : 49;
+                    Special_th.Value = LeadAbility.SelectedIndex == (int)Lead.SuctionCups ? 98 : 49;
                     ea = (ea as FishingArea6).GetRodArea(pm.Type);
                 }
             }
@@ -814,17 +834,6 @@ namespace Pk3DSRNGTool
         {
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
-        }
-
-        private void SuctionCups_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Gen7)
-            {
-                BiteChance.Value = SuctionCups.Checked ? 100 : 50;
-                BiteChance.Enabled = !SuctionCups.Checked;
-            }
-            else
-                Special_th.Value = SuctionCups.Checked ? 98 : 49;
         }
 
         private void SetAsTarget_Click(object sender, EventArgs e)
@@ -934,7 +943,11 @@ namespace Pk3DSRNGTool
             var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.USUM.getFormeEntry(Species, Forme);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
-            Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); //Undiscovered Group
+            Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); // Undiscovered Group
+
+            for (int i = 1; i < 4; i++)
+                Ability.Items[i] = abilitynumstr[i] + (Species > 0 ? $" - {abilitystr[t.Abilities[i - 1]]}" : string.Empty);
+            Ability.DropDownWidth = Species > 0 ? 100 : 74;
 
             // Load from Pokemonlist
             if (FormPM == null || IsEvent || skip)
@@ -974,7 +987,7 @@ namespace Pk3DSRNGTool
             {
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
-                ChainLength.Visible = L_ChainLength.Visible = SuctionCups.Visible = pmw6.IsFishing;
+                ChainLength.Visible = L_ChainLength.Visible = pmw6.IsFishing;
             }
             else // Fall through
             {
@@ -982,7 +995,6 @@ namespace Pk3DSRNGTool
                 ChainLength.Visible = L_ChainLength.Visible =
                 FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
                 CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
-                SuctionCups.Visible = gen7fishing;
                 ShinyMark.Visible = IsBank;
             }
         }
@@ -1153,7 +1165,7 @@ namespace Pk3DSRNGTool
         private FishingSetting getFishingSetting => new FishingSetting
         {
             basedelay = (int)FishingDelay.Value,
-            suctioncups = SuctionCups.Checked,
+            suctioncups = SuctionCups,
             bitechance = (int)BiteChance.Value,
             platdelay = Bubbling.Checked ? 19 : 14,
             pkmdelay = ((int)Timedelay.Value + 4) / 2,
@@ -1273,6 +1285,8 @@ namespace Pk3DSRNGTool
         {
             WildRNG setting = Gen6 ? new Wild6() : (WildRNG)new Wild7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
+            setting.Static = LeadAbility.SelectedIndex == (int)Lead.Static;
+            setting.Magnet = LeadAbility.SelectedIndex == (int)Lead.MagnetPull;
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
@@ -1284,7 +1298,7 @@ namespace Pk3DSRNGTool
                 setting7.Levelmax = (byte)Lv_max.Value;
                 setting7.SpecialEnctr = (byte)Special_th.Value;
                 setting7.UB = CB_Category.SelectedIndex == 1;
-                setting7.CompoundEye = CompoundEyes.Checked;
+                setting7.CompoundEye = LeadAbility.SelectedIndex == (int)Lead.CompoundEyes;
                 if (gen7honey)
                 {
                     setting7.SpecForm = new int[11];
@@ -1600,7 +1614,6 @@ namespace Pk3DSRNGTool
                 {
                     case EncounterType.Horde:
                         TTT.Method.SelectedIndex = 2;
-                        CompoundEyes.Enabled = true;
                         break;
                     case EncounterType.FriendSafari:
                         TTT.Method.SelectedIndex = 3;

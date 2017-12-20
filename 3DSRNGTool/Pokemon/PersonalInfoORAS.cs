@@ -23,6 +23,16 @@ namespace PKHeX.Core
         public override int SPE { get => Data[0x03]; set => Data[0x03] = (byte)value; }
         public override int SPA { get => Data[0x04]; set => Data[0x04] = (byte)value; }
         public override int SPD { get => Data[0x05]; set => Data[0x05] = (byte)value; }
+        public override int[] Types
+        {
+            get => new int[] { Data[0x06], Data[0x07] };
+            set
+            {
+                if (value?.Length != 2) return;
+                Data[0x06] = (byte)value[0];
+                Data[0x07] = (byte)value[1];
+            }
+        }
         public override int CatchRate { get => Data[0x08]; set => Data[0x08] = (byte)value; }
         public override int Gender { get => Data[0x12]; set => Data[012] = (byte)value; }
         public override int[] Items

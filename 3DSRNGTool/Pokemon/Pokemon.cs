@@ -145,6 +145,9 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Enums
+        public const int electric = 12;
+        public const int steel = 08;
+
         public readonly static HashSet<int> BattleForms = new HashSet<int>
         {
             351, // Castform

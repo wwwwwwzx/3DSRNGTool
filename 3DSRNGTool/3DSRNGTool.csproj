@@ -147,6 +147,7 @@
     <Compile Include="MainForm_Core.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pokemon\Lead.cs" />
     <Compile Include="Pokemon\PKX.cs" />
     <Compile Include="Pokemon\Pokemon.cs" />
     <Compile Include="Pokemon\IPKM.cs" />
@@ -326,6 +327,12 @@
     <None Include="Resources\text\text_Location_xy_de.txt" />
     <None Include="Resources\text\text_Location_xy_es.txt" />
     <None Include="Resources\text\text_Location_xy_ja.txt" />
+    <None Include="Resources\text\text_Abilities_de.txt" />
+    <None Include="Resources\text\text_Abilities_en.txt" />
+    <None Include="Resources\text\text_Abilities_es.txt" />
+    <None Include="Resources\text\text_Abilities_fr.txt" />
+    <None Include="Resources\text\text_Abilities_ja.txt" />
+    <None Include="Resources\text\text_Abilities_zh.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FollowmeTogetic.ico" />

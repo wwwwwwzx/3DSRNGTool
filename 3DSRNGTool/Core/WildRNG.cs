@@ -5,6 +5,11 @@
         public int TSV;
         public bool ShinyCharm;
         public byte Synchro_Stat;
+        public bool Static;
+        public bool Magnet;
+        public bool StaticMagnet => Magnet || Static;
+        public byte[] StaticMagnetSlot;
+        public ulong NStaticMagnetSlot;
 
         public byte[] SlotSplitter;
         public int[] SpecForm;

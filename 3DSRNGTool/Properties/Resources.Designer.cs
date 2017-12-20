@@ -519,6 +519,417 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -
+        ///Duftnote
+        ///Niesel
+        ///Temposchub
+        ///Kampfpanzer
+        ///Robustheit
+        ///Feuchtigkeit
+        ///Flexibilität
+        ///Sandschleier
+        ///Statik
+        ///Voltabsorber
+        ///H2O-Absorber
+        ///Dösigkeit
+        ///Wolke Sieben
+        ///Facettenauge
+        ///Insomnia
+        ///Farbwechsel
+        ///Immunität
+        ///Feuerfänger
+        ///Puderabwehr
+        ///Tempomacher
+        ///Saugnapf
+        ///Bedroher
+        ///Wegsperre
+        ///Rauhaut
+        ///Wunderwache
+        ///Schwebe
+        ///Sporenwirt
+        ///Synchro
+        ///Neutraltorso
+        ///Innere Kraft
+        ///Blitzfänger
+        ///Edelmut
+        ///Wassertempo
+        ///Chlorophyll
+        ///Erleuchtung
+        ///Fährte
+        ///Kraftkoloss
+        ///Giftdorn
+        ///Konzentrator
+        ///Magmapanzer
+        ///Aquahülle
+        ///Magnetfalle
+        ///Lärmschutz [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_de {
+            get {
+                return ResourceManager.GetString("text_Abilities_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to —
+        ///Stench
+        ///Drizzle
+        ///Speed Boost
+        ///Battle Armor
+        ///Sturdy
+        ///Damp
+        ///Limber
+        ///Sand Veil
+        ///Static
+        ///Volt Absorb
+        ///Water Absorb
+        ///Oblivious
+        ///Cloud Nine
+        ///Compound Eyes
+        ///Insomnia
+        ///Color Change
+        ///Immunity
+        ///Flash Fire
+        ///Shield Dust
+        ///Own Tempo
+        ///Suction Cups
+        ///Intimidate
+        ///Shadow Tag
+        ///Rough Skin
+        ///Wonder Guard
+        ///Levitate
+        ///Effect Spore
+        ///Synchronize
+        ///Clear Body
+        ///Natural Cure
+        ///Lightning Rod
+        ///Serene Grace
+        ///Swift Swim
+        ///Chlorophyll
+        ///Illuminate
+        ///Trace
+        ///Huge Power
+        ///Poison Point
+        ///Inner Focus
+        ///Magma Armor
+        ///Water Veil
+        ///Magnet Pull
+        ///Soundproof
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_en {
+            get {
+                return ResourceManager.GetString("text_Abilities_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -
+        ///Hedor
+        ///Llovizna
+        ///Impulso
+        ///Armadura Batalla
+        ///Robustez
+        ///Humedad
+        ///Flexibilidad
+        ///Velo Arena
+        ///Elec. Estática
+        ///Absorbe Elec
+        ///Absorbe Agua
+        ///Despiste
+        ///Aclimatación
+        ///Ojo Compuesto
+        ///Insomnio
+        ///Cambio Color
+        ///Inmunidad
+        ///Absorbe Fuego
+        ///Polvo Escudo
+        ///Ritmo Propio
+        ///Ventosas
+        ///Intimidación
+        ///Sombra Trampa
+        ///Piel Tosca
+        ///Superguarda
+        ///Levitación
+        ///Efecto Espora
+        ///Sincronía
+        ///Cuerpo Puro
+        ///Cura Natural
+        ///Pararrayos
+        ///Dicha
+        ///Nado Rápido
+        ///Clorofila
+        ///Iluminación
+        ///Rastro
+        ///Potencia
+        ///Punto Tóxico
+        ///Foco Interno
+        ///Escudo Magma
+        ///Velo Agua
+        ///Imá [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_es {
+            get {
+                return ResourceManager.GetString("text_Abilities_es", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Puanteur
+        ///Crachin
+        ///Turbo
+        ///Armurbaston
+        ///Fermeté
+        ///Moiteur
+        ///Échauffement
+        ///Voile Sable
+        ///Statik
+        ///Absorb Volt
+        ///Absorb Eau
+        ///Benêt
+        ///Ciel Gris
+        ///Œil Composé
+        ///Insomnia
+        ///Déguisement
+        ///Vaccin
+        ///Torche
+        ///Écran Poudre
+        ///Tempo Perso
+        ///Ventouse
+        ///Intimidation
+        ///Marque Ombre
+        ///Peau Dure
+        ///Garde Mystik
+        ///Lévitation
+        ///Pose Spore
+        ///Synchro
+        ///Corps Sain
+        ///Médic Nature
+        ///Paratonnerre
+        ///Sérénité
+        ///Glissade
+        ///Chlorophylle
+        ///Lumiattirance
+        ///Calque
+        ///Coloforce
+        ///Point Poison
+        ///Attention
+        ///Armumagma
+        ///Ignifu-Voile
+        ///Magnépiège
+        ///Anti-Bruit
+        ///Cuvette
+        ///Sable Vol [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_fr {
+            get {
+                return ResourceManager.GetString("text_Abilities_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ―
+        ///あくしゅう
+        ///あめふらし
+        ///かそく
+        ///カブトアーマー
+        ///がんじょう
+        ///しめりけ
+        ///じゅうなん
+        ///すながくれ
+        ///せいでんき
+        ///ちくでん
+        ///ちょすい
+        ///どんかん
+        ///ノーてんき
+        ///ふくがん
+        ///ふみん
+        ///へんしょく
+        ///めんえき
+        ///もらいび
+        ///りんぷん
+        ///マイペース
+        ///きゅうばん
+        ///いかく
+        ///かげふみ
+        ///さめはだ
+        ///ふしぎなまもり
+        ///ふゆう
+        ///ほうし
+        ///シンクロ
+        ///クリアボディ
+        ///しぜんかいふく
+        ///ひらいしん
+        ///てんのめぐみ
+        ///すいすい
+        ///ようりょくそ
+        ///はっこう
+        ///トレース
+        ///ちからもち
+        ///どくのトゲ
+        ///せいしんりょく
+        ///マグマのよろい
+        ///みずのベール
+        ///じりょく
+        ///ぼうおん
+        ///あめうけざら
+        ///すなおこし
+        ///プレッシャー
+        ///あついしぼう
+        ///はやおき
+        ///ほのおのからだ
+        ///にげあし
+        ///するどいめ
+        ///かいりきバサミ
+        ///ものひろい
+        ///なまけ
+        ///はりきり
+        ///メロメロボディ
+        ///プラス
+        ///マイナス
+        ///てんきや
+        ///ねんちゃく
+        ///だっぴ
+        ///こんじょう
+        ///ふしぎなうろこ
+        ///ヘドロえき
+        ///しんりょく
+        ///もうか
+        ///げきりゅう
+        ///むしのしらせ
+        ///いしあたま
+        ///ひでり
+        ///ありじごく
+        ///やるき
+        ///しろいけむり
+        ///ヨガパワー
+        ///シェルアーマー [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_ja {
+            get {
+                return ResourceManager.GetString("text_Abilities_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ―
+        ///恶臭
+        ///降雨
+        ///加速
+        ///战斗盔甲
+        ///结实
+        ///湿气
+        ///柔软
+        ///沙隐
+        ///静电
+        ///蓄电
+        ///储水
+        ///迟钝
+        ///无关天气
+        ///复眼
+        ///不眠
+        ///变色
+        ///免疫
+        ///引火
+        ///鳞粉
+        ///我行我素
+        ///吸盘
+        ///威吓
+        ///踩影
+        ///粗糙皮肤
+        ///神奇守护
+        ///飘浮
+        ///孢子
+        ///同步
+        ///恒净之躯
+        ///自然回复
+        ///避雷针
+        ///天恩
+        ///悠游自如
+        ///叶绿素
+        ///发光
+        ///复制
+        ///大力士
+        ///毒刺
+        ///精神力
+        ///熔岩铠甲
+        ///水幕
+        ///磁力
+        ///隔音
+        ///雨盘
+        ///扬沙
+        ///压迫感
+        ///厚脂肪
+        ///早起
+        ///火焰之躯
+        ///逃跑
+        ///锐利目光
+        ///怪力钳
+        ///捡拾
+        ///懒惰
+        ///活力
+        ///迷人之躯
+        ///正电
+        ///负电
+        ///阴晴不定
+        ///黏着
+        ///蜕皮
+        ///毅力
+        ///神奇鳞片
+        ///污泥浆
+        ///茂盛
+        ///猛火
+        ///激流
+        ///虫之预感
+        ///坚硬脑袋
+        ///日照
+        ///沙穴
+        ///干劲
+        ///白色烟雾
+        ///瑜伽之力
+        ///硬壳盔甲
+        ///气闸
+        ///蹒跚
+        ///电气引擎
+        ///斗争心
+        ///不屈之心
+        ///雪隐
+        ///贪吃鬼
+        ///愤怒穴位
+        ///轻装
+        ///耐热
+        ///单纯
+        ///干燥皮肤
+        ///下载
+        ///铁拳
+        ///毒疗
+        ///适应力
+        ///连续攻击
+        ///湿润之躯
+        ///太阳之力
+        ///飞毛腿
+        ///一般皮肤
+        ///狙击手
+        ///魔法防守
+        ///无防守
+        ///慢出
+        ///技术高手
+        ///叶子防守
+        ///笨拙
+        ///破格
+        ///超幸运
+        ///引爆
+        ///危险预知
+        ///预知梦        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text_Abilities_zh {
+            get {
+                return ResourceManager.GetString("text_Abilities_zh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Neutral
         ///♂1：♀1
         ///♂7：♀1

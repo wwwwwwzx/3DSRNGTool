@@ -207,6 +207,8 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.L_Lead = new System.Windows.Forms.Label();
+            this.LeadAbility = new System.Windows.Forms.ComboBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
             this.Overview = new System.Windows.Forms.CheckBox();
             this.BiteChance = new System.Windows.Forms.NumericUpDown();
@@ -215,7 +217,6 @@
             this.L_BiteChance = new System.Windows.Forms.Label();
             this.Bubbling = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
-            this.SuctionCups = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
             this.ChainLength = new System.Windows.Forms.NumericUpDown();
             this.L_HordeInfo = new System.Windows.Forms.Label();
@@ -224,7 +225,6 @@
             this.FirstEncounter = new System.Windows.Forms.CheckBox();
             this.L_WildIVsCnt = new System.Windows.Forms.Label();
             this.WildIVsCnt = new System.Windows.Forms.NumericUpDown();
-            this.CompoundEyes = new System.Windows.Forms.CheckBox();
             this.L_Rate = new System.Windows.Forms.Label();
             this.Special_th = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -2291,10 +2291,11 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.L_Lead);
+            this.Wild_Setting.Controls.Add(this.LeadAbility);
             this.Wild_Setting.Controls.Add(this.FishingPanel);
             this.Wild_Setting.Controls.Add(this.Bubbling);
             this.Wild_Setting.Controls.Add(this.Raining);
-            this.Wild_Setting.Controls.Add(this.SuctionCups);
             this.Wild_Setting.Controls.Add(this.L_ChainLength);
             this.Wild_Setting.Controls.Add(this.ChainLength);
             this.Wild_Setting.Controls.Add(this.L_HordeInfo);
@@ -2303,7 +2304,6 @@
             this.Wild_Setting.Controls.Add(this.FirstEncounter);
             this.Wild_Setting.Controls.Add(this.L_WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.WildIVsCnt);
-            this.Wild_Setting.Controls.Add(this.CompoundEyes);
             this.Wild_Setting.Controls.Add(this.L_Rate);
             this.Wild_Setting.Controls.Add(this.Special_th);
             this.Wild_Setting.Controls.Add(this.label9);
@@ -2322,6 +2322,24 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // L_Lead
+            // 
+            this.L_Lead.AutoSize = true;
+            this.L_Lead.Location = new System.Drawing.Point(14, 197);
+            this.L_Lead.Name = "L_Lead";
+            this.L_Lead.Size = new System.Drawing.Size(31, 13);
+            this.L_Lead.TabIndex = 115;
+            this.L_Lead.Text = "队首";
+            // 
+            // LeadAbility
+            // 
+            this.LeadAbility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LeadAbility.Location = new System.Drawing.Point(57, 192);
+            this.LeadAbility.Name = "LeadAbility";
+            this.LeadAbility.Size = new System.Drawing.Size(88, 21);
+            this.LeadAbility.TabIndex = 114;
+            this.LeadAbility.SelectedIndexChanged += new System.EventHandler(this.LeadAbility_SelectedIndexChanged);
             // 
             // FishingPanel
             // 
@@ -2389,7 +2407,7 @@
             // Bubbling
             // 
             this.Bubbling.AutoSize = true;
-            this.Bubbling.Location = new System.Drawing.Point(130, 196);
+            this.Bubbling.Location = new System.Drawing.Point(194, 196);
             this.Bubbling.Name = "Bubbling";
             this.Bubbling.Size = new System.Drawing.Size(50, 17);
             this.Bubbling.TabIndex = 109;
@@ -2407,17 +2425,6 @@
             this.Raining.Text = "下雨";
             this.Raining.UseVisualStyleBackColor = true;
             this.Raining.CheckedChanged += new System.EventHandler(this.Raining_CheckedChanged);
-            // 
-            // SuctionCups
-            // 
-            this.SuctionCups.AutoSize = true;
-            this.SuctionCups.Location = new System.Drawing.Point(225, 196);
-            this.SuctionCups.Name = "SuctionCups";
-            this.SuctionCups.Size = new System.Drawing.Size(50, 17);
-            this.SuctionCups.TabIndex = 100;
-            this.SuctionCups.Text = "吸盘";
-            this.SuctionCups.UseVisualStyleBackColor = true;
-            this.SuctionCups.CheckedChanged += new System.EventHandler(this.SuctionCups_CheckedChanged);
             // 
             // L_ChainLength
             // 
@@ -2506,16 +2513,6 @@
             this.WildIVsCnt.TabIndex = 93;
             this.WildIVsCnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.WildIVsCnt.Visible = false;
-            // 
-            // CompoundEyes
-            // 
-            this.CompoundEyes.AutoSize = true;
-            this.CompoundEyes.Location = new System.Drawing.Point(17, 196);
-            this.CompoundEyes.Name = "CompoundEyes";
-            this.CompoundEyes.Size = new System.Drawing.Size(50, 17);
-            this.CompoundEyes.TabIndex = 92;
-            this.CompoundEyes.Text = "复眼";
-            this.CompoundEyes.UseVisualStyleBackColor = true;
             // 
             // L_Rate
             // 
@@ -2724,6 +2721,7 @@
             0,
             0,
             0});
+            this.EventIV1.Name = "EventIV1";
             this.EventIV1.Size = new System.Drawing.Size(47, 22);
             this.EventIV1.TabIndex = 7;
             this.EventIV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -5180,7 +5178,6 @@
         private System.Windows.Forms.CheckBox FirstEncounter;
         private System.Windows.Forms.Label L_WildIVsCnt;
         private System.Windows.Forms.NumericUpDown WildIVsCnt;
-        private System.Windows.Forms.CheckBox CompoundEyes;
         private System.Windows.Forms.Label L_Rate;
         private System.Windows.Forms.NumericUpDown Special_th;
         private System.Windows.Forms.Label label9;
@@ -5365,7 +5362,6 @@
         private System.Windows.Forms.Label L_HordeInfo;
         private System.Windows.Forms.Label L_ChainLength;
         private System.Windows.Forms.NumericUpDown ChainLength;
-        private System.Windows.Forms.CheckBox SuctionCups;
         private System.Windows.Forms.CheckBox AssumeSynced;
         private System.Windows.Forms.CheckBox Raining;
         private System.Windows.Forms.ComboBox ParentNature;
@@ -5395,6 +5391,8 @@
         private System.Windows.Forms.NumericUpDown BiteChance;
         private System.Windows.Forms.Label L_FishingDelay;
         private System.Windows.Forms.Label L_BiteChance;
+        private System.Windows.Forms.Label L_Lead;
+        private System.Windows.Forms.ComboBox LeadAbility;
     }
 }
 

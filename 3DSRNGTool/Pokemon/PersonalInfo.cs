@@ -12,12 +12,13 @@
         public abstract int SPD { get; set; }
 
         public int[] Stats => new[] { HP, ATK, DEF, SPE, SPA, SPD };
-        
+
+        public abstract int[] Types { get; set; }
         public abstract int CatchRate { get; set; }
         public abstract int[] Items { get; set; }
         public abstract int Gender { get; set; }
         public abstract int[] EggGroups { get; set; }
-        public abstract int [] Abilities { get; set; }
+        public abstract int[] Abilities { get; set; }
         public virtual int FormeCount { get; set; }
         protected internal virtual int FormStatsIndex { get; set; }
 

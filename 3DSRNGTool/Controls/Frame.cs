@@ -51,7 +51,7 @@ namespace Pk3DSRNGTool
         public string HiddenPower => StringItem.hpstr[rt.hiddenpower + 1];
         public uint PSV => rt.PSV;
         public string GenderStr => StringItem.genderstr[rt.Gender];
-        public string AbilityStr => StringItem.abilitystr[rt.Ability];
+        public string AbilityStr => StringItem.abilitynumstr[rt.Ability];
         public int Delay => (rt as Result7)?.FrameDelayUsed ?? 0;
         private string specialstr => (rt as ResultW7)?.SpecialVal?.ToString("D2").PadLeft(3, '<').PadRight(4, '>') ?? SpecialSlotStr;
         public string Slot => (rt as WildResult)?.IsSpecial ?? false ? specialstr : (rt as WildResult)?.Slot.ToString();

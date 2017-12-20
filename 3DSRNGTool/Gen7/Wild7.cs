@@ -1,4 +1,5 @@
-﻿using PKHeX.Core;
+﻿using System.Linq;
+using PKHeX.Core;
 using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
@@ -48,7 +49,7 @@ namespace Pk3DSRNGTool
             if (NormalSlot) // Normal wild
             {
                 rt.Synchronize = (int)(getrand % 100) >= 50;
-                rt.Slot = getslot((int)(getrand % 100));
+                rt.Slot = StaticMagnet && rt.Synchronize ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
                 Advance(1);
                 if (IsMinior) Advance(1);
@@ -118,6 +119,7 @@ namespace Pk3DSRNGTool
             IV3 = new bool[SpecForm.Length];
             RandomGender = new bool[SpecForm.Length];
             Gender = new byte[SpecForm.Length];
+            var smslot = new int[0].ToList();
             for (int i = 0; i < SpecForm.Length; i++)
             {
                 if (SpecForm[i] == 0) continue;
@@ -126,8 +128,18 @@ namespace Pk3DSRNGTool
                 IV3[i] = info.EggGroups[0] == 0xF && !Pokemon.BabyMons.Contains(SpecForm[i] & 0x7FF);
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
+                if (Static && info.Types.Contains(Pokemon.electric) || Magnet && info.Types.Contains(Pokemon.steel)) // Collect slots
+                    smslot.Add(i);
             }
+            StaticMagnetSlot = smslot.Select(s => (byte)s).ToArray();
+            if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
+                Static = Magnet = false;
             if (UB) IV3[0] = true; // For UB Template
+        }
+
+        private byte getsmslot(ulong rand)
+        {
+            return slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
         }
 
         private string getitemstr(int rand)
@@ -163,15 +175,19 @@ namespace Pk3DSRNGTool
         {
             if (rand == null)
                 return 0;
-            if (rand < 60)
+            if (rand < 50)
                 return 1;
-            if (rand < 80)
+            if (rand < 60)
                 return 2;
-            if (rand < 90)
+            if (rand < 70)
                 return 3;
-            if (rand < 99)
+            if (rand < 80)
                 return 4;
-            return 5;
+            if (rand < 90)
+                return 5;
+            if (rand < 99)
+                return 6;
+            return 7;
         }
     }
 

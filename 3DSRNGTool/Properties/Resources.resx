@@ -358,4 +358,22 @@
   <data name="Reset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pic\Buttons\Reset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="text_Abilities_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_de.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Abilities_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Abilities_es" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_es.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Abilities_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_fr.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Abilities_ja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_ja.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="text_Abilities_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text\text_Abilities_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

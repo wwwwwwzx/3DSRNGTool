@@ -12,12 +12,13 @@ namespace Pk3DSRNGTool
         public static string[] genderratio = new bool[7].Select(i => string.Empty).ToArray();
 
         public readonly static string[] genderstr = { "-", "♂", "♀" };
-        public readonly static string[] abilitystr = { "-", "1", "2", "H" };
+        public readonly static string[] abilitynumstr = { "-", "1", "2", "H" };
         public readonly static string[] eventabilitystr = { "1/2", "1/2/H" };
         public readonly static string[] helditemStr = { "50%", "5%", "1%", "---" };
 
         public readonly static string[] gen7wildtypestr = { "-", "UB", "QR", "XX" };
 
+        public static string[] abilitystr;
         public static string[] speciestr;
         public static string[] smlocation, gen6location;
         public static string[] items;
@@ -32,6 +33,19 @@ namespace Pk3DSRNGTool
 
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();
+
+        private readonly static int[] LeadAbilityIndex = new[] { 000, 028, 056, 056, 009, 042, 014, 021 };
+
+        public static ComboItem[] LeadAbilityList
+        {
+            get
+            {
+                var list = LeadAbilityIndex.Select((t, i) => new ComboItem(abilitystr[t], i)).ToArray();
+                list[2].Text += genderstr[1];
+                list[3].Text += genderstr[2];
+                return list;
+            }
+        }
 
         public static string getlocationstr(int locationidx, int ver)
         {

@@ -137,7 +137,7 @@ namespace Pk3DSRNGTool
         private void AbilityLocked_CheckedChanged(object sender, EventArgs e)
         {
             Event_Ability.Items.Clear();
-            Event_Ability.Items.AddRange(AbilityLocked.Checked ? StringItem.abilitystr : StringItem.eventabilitystr);
+            Event_Ability.Items.AddRange(AbilityLocked.Checked ? StringItem.abilitynumstr : StringItem.eventabilitystr);
             Event_Ability.SelectedIndex = 0;
         }
 
