@@ -4,6 +4,8 @@ namespace Pk3DSRNGTool.Core
 {
     public class RNGFilters
     {
+        public static bool Block;
+
         public bool[] Nature;
         public bool[] HPType;
         public bool ShinyOnly;
@@ -62,6 +64,8 @@ namespace Pk3DSRNGTool.Core
 
         public bool CheckResult(RNGResult result)
         {
+            if (Block)
+                return false;
             if (Skip)
             {
                 result.hiddenpower = (byte)Pokemon.getHiddenPowerValue(result.IVs);

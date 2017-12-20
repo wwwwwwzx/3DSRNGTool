@@ -397,7 +397,7 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
             SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0;
-            Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
+            FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             if (IsPelago)
             {
@@ -731,16 +731,14 @@ namespace Pk3DSRNGTool
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
             Fidget.Enabled = Fidget.Checked = Fidget.Visible && CreateTimeline.Checked;
-            FishingPanel.Visible = gen7fishing && CreateTimeline.Checked;
+            Overview.Visible = gen7fishing && CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
             {
-                CB_3rdSlotUnlocked.Enabled = LeadAbility.Enabled = CreateTimeline.Checked;
+                CB_3rdSlotUnlocked.Enabled = CreateTimeline.Checked;
                 AssumeSynced.Checked &= AssumeSynced.Enabled = !CreateTimeline.Checked && B_OpenTool.Visible;
             }
-            else
-                LeadAbility.Enabled = true;
             NPC_ValueChanged(null, null);
         }
 
@@ -810,7 +808,7 @@ namespace Pk3DSRNGTool
                 if (FormPM is PKMW6 pm && pm.IsFishing)
                 {
                     ChainLength.Maximum = 20;
-                    Special_th.Value = LeadAbility.SelectedIndex == (int)Lead.SuctionCups ? 98 : 49;
+                    Special_th.Value = SuctionCups ? 98 : 49;
                     ea = (ea as FishingArea6).GetRodArea(pm.Type);
                 }
             }
