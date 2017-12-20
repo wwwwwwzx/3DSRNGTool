@@ -62,18 +62,20 @@ namespace Pk3DSRNGTool
                 Error("Please Calibrate Timeline");
                 return;
             }
-            var rng = new MersenneTwister(Seed.Value);
-            int min = (int)Frame_min.Value;
-            int max = (int)TimeSpan.Value * 60 + min;
-            // Advance
-            for (int i = 0; i < min; i++)
-                rng.Next();
-            // Prepare
-            getsetting(rng);
+
             RNGPool.timeline = TTT.gettimeline();
+            int min = Math.Max((int)Frame_min.Value, RNGPool.timeline.Startingframe + 2);
+            int max = (int)TimeSpan.Value * 60 + min;
             RNGPool.timeline.Maxframe = max;
             RNGPool.timeline.Generate(Method == 0); // Consider Stationary delay
             int listlength = RNGPool.timeline.TinyLength;
+            
+            // Prepare
+            var rng = new MersenneTwister(Seed.Value);
+            for (int i = 0; i < min; i++)
+                rng.Next();
+            getsetting(rng);
+
             for (int i = 0; i < listlength; i++)
             {
                 var tinyframe = RNGPool.timeline.results[i];
@@ -88,7 +90,7 @@ namespace Pk3DSRNGTool
                     RNGPool.tinystatus = (TinyStatus)tinyframe.tinystate.DeepCopy();
                     RNGPool.tinystatus.Currentframe = j;
                     RNGResult result = RNGPool.Generate6();
-                    if (!filter.CheckResult(result) || result is ResultW6 rt && !rt.IsPokemon)
+                    if (!filter.CheckResult(result))
                         continue;
                     Frames.Add(new Frame(result, frame: j, time: j - min));
                     Frames.Last()._tinystate = new PRNGState(tinyframe.state);
