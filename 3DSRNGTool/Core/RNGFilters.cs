@@ -4,8 +4,6 @@ namespace Pk3DSRNGTool.Core
 {
     public class RNGFilters
     {
-        public static bool IsPokemon = true;
-
         public bool[] Nature;
         public bool[] HPType;
         public bool ShinyOnly;
@@ -64,7 +62,7 @@ namespace Pk3DSRNGTool.Core
 
         public bool CheckResult(RNGResult result)
         {
-            if (!IsPokemon)
+            if (!RNGResult.IsPokemon)
                 return false;
             if (Skip)
             {

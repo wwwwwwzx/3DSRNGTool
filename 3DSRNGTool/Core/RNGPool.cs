@@ -50,7 +50,7 @@ namespace Pk3DSRNGTool.Core
             timeline = null;
             horde = null;
             DelayType = 0;
-            RNGFilters.IsPokemon = true;
+            RNGResult.IsPokemon = true;
         }
 
         public static void CreateBuffer(IRNG rng, int buffersize = 5000)
@@ -404,7 +404,7 @@ namespace Pk3DSRNGTool.Core
                     int fishingdelay = (int)(getrand64 % 60) + fsetting.basedelay;
                     Advance(1);
                     time_elapse7(fishingdelay);
-                    RNGFilters.IsPokemon = fsetting.suctioncups || (int)(getrand64 % 100) < fsetting.bitechance;
+                    RNGResult.IsPokemon = fsetting.suctioncups || (int)(getrand64 % 100) < fsetting.bitechance;
                     time_elapse7(fsetting.platdelay + fsetting.pkmdelay);
                     break;
                 default: // Honey

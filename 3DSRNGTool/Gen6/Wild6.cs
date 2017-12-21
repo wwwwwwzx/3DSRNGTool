@@ -50,7 +50,7 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime - 228);
                     tiny_Advance(1);
                     RNGPool.time_elapse6(212);
-                    RNGFilters.IsPokemon = TinyRand(100) < 30; // To-do
+                    RNGResult.IsPokemon = TinyRand(100) < 30; // To-do
                     break;
                 case EncounterType.CaveShadow:
                     RNGPool.time_elapse6(32);
@@ -79,13 +79,13 @@ namespace Pk3DSRNGTool
             switch (Wildtype)
             {
                 case EncounterType.FriendSafari:
-                    RNGFilters.IsPokemon = TinyRand(100) < 13;
+                    RNGResult.IsPokemon = TinyRand(100) < 13;
                     rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
                     break;
                 case EncounterType.OldRod:
                 case EncounterType.GoodRod:
                 case EncounterType.SuperRod:
-                    RNGFilters.IsPokemon = TinyRand(100) < EncounterRate;
+                    RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
                     rt.Slot = slot = getslot(TinyRand(100));
                     break;
                 case EncounterType.PokeRadar:

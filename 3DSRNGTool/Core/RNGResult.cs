@@ -2,6 +2,8 @@
 {
     public abstract class RNGResult : IPKM
     {
+        public static bool IsPokemon = true;
+
         public uint PID, EC;
         public uint PSV => ((PID >> 16) ^ (PID & 0xFFFF)) >> 4;
         public byte hiddenpower;

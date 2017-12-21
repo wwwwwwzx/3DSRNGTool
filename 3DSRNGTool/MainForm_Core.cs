@@ -337,6 +337,8 @@ namespace Pk3DSRNGTool
             // Can't identify MainRNGEggs by EC
             if (Method < 3)
             {
+                Frames = Frames.OrderBy(f => f.FrameNum + (f.rt as Result7).FrameDelayUsed).ToList();
+
                 var EClist = Frames.Select(f => f.rt.EC).ToArray();
 
                 // Another Buffer
@@ -378,6 +380,7 @@ namespace Pk3DSRNGTool
             }
 
             // Filters
+            RNGResult.IsPokemon = true;
             Frames = Frames.Where(f => filter.CheckResult(f.rt))
                            .OrderBy(f => f.FrameNum)
                            .ToList();
