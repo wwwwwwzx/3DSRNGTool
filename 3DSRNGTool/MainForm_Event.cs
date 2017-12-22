@@ -166,18 +166,25 @@ namespace Pk3DSRNGTool
             if (species > 0)
             {
                 RNGMethod.SelectedIndex = 1;
-                SetPersonalInfo(species);
-                IVsCount.Value = Fix3v.Checked ? 3 : 0;
                 int formcount = (Gen6 ? PersonalTable.ORAS : PersonalTable.USUM).getFormeEntry(species, 0).FormeCount;
                 if (Pokemon.BattleForms.Contains(species))
                     formcount = 1;
                 L_Forme.Visible = Event_Forme.Visible = formcount > 1;
+                Event_Forme_SelectedIndexChanged(null, null);
                 if (formcount == Event_Forme.Items.Count)
                     return;
                 Event_Forme.Items.Clear();
                 Event_Forme.Items.AddRange(new bool[formcount].Select((t, i) => i.ToString()).ToArray());
                 Event_Forme.SelectedIndex = 0;
             }
+        }
+
+        private void Event_Forme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int species = Event_Species.SelectedIndex;
+            int forme = Event_Forme.SelectedIndex;
+            SetPersonalInfo(species, forme);
+            IVsCount.Value = Fix3v.Checked ? 3 : 0;
         }
 
         private int EventDelay => IsUltra ? 42 : 62;

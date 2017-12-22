@@ -2801,6 +2801,7 @@
             this.Event_Forme.Size = new System.Drawing.Size(61, 21);
             this.Event_Forme.TabIndex = 96;
             this.Event_Forme.Visible = false;
+            this.Event_Forme.SelectedIndexChanged += new System.EventHandler(this.Event_Forme_SelectedIndexChanged);
             // 
             // Event_PID
             // 
