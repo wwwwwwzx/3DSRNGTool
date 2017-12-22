@@ -8,9 +8,19 @@ namespace Pk3DSRNGTool
     public partial class IVTemplate : Form
     {
         public MainForm parentform => Program.mainform;
-        public IVTemplate()
+        private bool _EggParents { get; set; }
+        public IVTemplate(bool EggParents = true)
         {
             InitializeComponent();
+
+            _EggParents = EggParents;
+
+            if (!EggParents)
+            {
+                B_Male.Text = "Set low IV";
+                B_Female.Text = "Set high IV";
+            }
+
             string txt = Properties.Settings.Default.Ivspread;
             if (txt == "")
             {
@@ -60,13 +70,19 @@ namespace Pk3DSRNGTool
         private void B_Male_Click(object sender, EventArgs e)
         {
             if (IVSpread.SelectedIndex >= 0)
-                parentform.IV_Male = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString());
+            {
+                if (_EggParents) { parentform.IV_Male = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+                else { parentform.IVlow = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+            }
         }
 
         private void B_Female_Click(object sender, EventArgs e)
         {
             if (IVSpread.SelectedIndex >= 0)
-                parentform.IV_Female = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString());
+            {
+                if (_EggParents) { parentform.IV_Female = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+                else { parentform.IVup = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+            }
         }
 
         private void B_Save_Click(object sender, EventArgs e)

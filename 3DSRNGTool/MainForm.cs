@@ -531,6 +531,12 @@ namespace Pk3DSRNGTool
 
         private void B_LoadFilter_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Use IV template?", "Template or file?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                new IVTemplate(false).Show();
+                return;
+            }
+
             try
             {
                 OpenFileDialog OFD = new OpenFileDialog();
