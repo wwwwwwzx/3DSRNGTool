@@ -1086,7 +1086,6 @@ namespace Pk3DSRNGTool
                     if (gen7fishing && ConsiderDelay.Checked && !CreateTimeline.Checked)
                     {
                         RNGPool.DelayType = 2;
-                        RNGPool.DelayTime = 0;
                         RNGPool.fsetting = getFishingSetting;
                     }
                 }

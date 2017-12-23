@@ -2831,7 +2831,8 @@
             // 
             // Event_Species
             // 
-            this.Event_Species.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Event_Species.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Event_Species.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Event_Species.FormattingEnabled = true;
             this.Event_Species.Location = new System.Drawing.Point(79, 24);
             this.Event_Species.Name = "Event_Species";

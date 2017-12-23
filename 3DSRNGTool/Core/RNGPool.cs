@@ -394,20 +394,21 @@ namespace Pk3DSRNGTool.Core
 
         public static void WildDelay7()
         {
-            NormalDelay7();
             switch (DelayType)
             {
-                case 1:  // Fishing
+                case 1:  // Simple encounter
+                    NormalDelay7();
                     break;
-                case 2:  // Fishing Delay
-                    // PUT DelayTime TO ZERO
+                case 2:  // Fishing CFWless
                     int fishingdelay = (int)(getrand64 % 60) + fsetting.basedelay;
                     Advance(1);
                     time_elapse7(fishingdelay);
                     RNGResult.IsPokemon = fsetting.suctioncups || (int)(getrand64 % 100) < fsetting.bitechance;
-                    time_elapse7(fsetting.platdelay + fsetting.pkmdelay);
+                    time_elapse7(fsetting.platdelay); // 2nd Input can be at any moment inside
+                    NormalDelay7();
                     break;
                 default: // Honey
+                    NormalDelay7(); // Enter the bag
                     ResetModelStatus();
                     if (ultrawild) Advance(1);    // Caused by using the item?
                     if (raining) Advance(2);
@@ -429,16 +430,10 @@ namespace Pk3DSRNGTool.Core
 
         // For fishy time travel
         private static int oldtail;
-        public static void Save()
-        {
-            oldtail = Tail;
-        }
+        public static void Save() { oldtail = Tail; }
+        public static void Load() { Tail = oldtail; }
         public static ulong getsavepoint => RandList64[oldtail == BufferSize - 1 ? 0 : oldtail + 1];
-        public static void Load()
-        {
-            Tail = oldtail;
-        }
-        
+
         private static int[] remain_frame_bak;
         private static bool phase_bak;
         public static void SaveStatus()
