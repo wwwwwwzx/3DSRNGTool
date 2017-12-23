@@ -1014,7 +1014,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 136, idx = 1, // Hokulani
-                Correction = 27,
+                Correction = 28,
                 LevelMin = 27,
                 Species = new[] {37,605,774,774,173,374,173,132,132},
                 Reverse = true, // Cleffa at night
@@ -1022,7 +1022,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 136, idx = 2, // Hokulani
-                Correction = 27,
+                Correction = 28,
                 LevelMin = 27,
                 Species = new[] {35,605,173,022,774,374,227,239,132},
                 Reverse = true, // Cleffa at night

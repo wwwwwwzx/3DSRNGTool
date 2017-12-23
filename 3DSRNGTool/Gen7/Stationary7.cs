@@ -20,7 +20,7 @@ namespace Pk3DSRNGTool
         {
             if (AssumeSynced != null)
                 return (bool)AssumeSynced;
-            bool sync = (int)(getrand % 100) >= 50;
+            bool sync = getrand % 100 >= 50;
             if (blinkwhensync)
                 time_elapse(3);
             return sync || PostNatureLock;
@@ -89,13 +89,13 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand & 0x1F);
 
             //Ability
-            rt.Ability = (byte)(Ability > 0 ? Ability : (getrand & 1) + 1);
+            rt.Ability = Ability > 0 ? Ability : (byte)((getrand & 1) + 1);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : getrand % 25);
+            rt.Nature = rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : (byte)(getrand % 25);
 
             //Gender
-            rt.Gender = (byte)(RandomGender ? ((int)(getrand % 252) >= Gender ? 1 : 2) : Gender);
+            rt.Gender = RandomGender ? (byte)(getrand % 252 >= Gender ? 1 : 2) : Gender;
 
             return rt;
         }

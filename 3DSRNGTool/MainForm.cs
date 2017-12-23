@@ -1031,6 +1031,8 @@ namespace Pk3DSRNGTool
             }
             switch (specform)
             {
+                case 133 when IsUltra && FormPM.Egg:
+                    UpdateTip("4 or 20 delay, depends on save"); break;
                 case 382 when Gen6:
                 case 383 when Gen6: // Grondon / Kyogre
                     UpdateTip("The delay varies from 2700-4000, depends on save and console"); break;
