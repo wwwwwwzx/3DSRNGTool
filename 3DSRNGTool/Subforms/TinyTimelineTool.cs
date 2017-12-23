@@ -87,7 +87,7 @@ namespace Pk3DSRNGTool
             if (!NTRHelper.ntrclient?.DebuggerEnabled ?? true)
             {
                 Program.mainform.TryToConnectNTR(true);
-                PKHeX.Util.Error("Please use One Click function.");
+                PKHeX.Util.Error("Connection lost, please double check your setup:\n(1) Disable PSS communications.\n(2) Use One Click function.");
                 return;
             }
             NTRHelper.ntrclient.ReadTiny("TTT");
@@ -135,7 +135,7 @@ namespace Pk3DSRNGTool
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
-            if (ConsiderDelay.Checked)
+            if (ConsiderDelay.Checked && list.Count > 0)
             {
                 int targetframeindex = list.FindIndex(t => t.framemin < state.Maxframe && state.Maxframe <= t.framemax);
                 MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
