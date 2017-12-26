@@ -25,6 +25,14 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
+        private void VerifyLead()
+        {
+            var rand100 = getrand % 100;
+            SynchroPass = rand100 >= 50;
+            CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
+            StaticMagnetPass = StaticMagnet && rand100 >= 50;
+        }
+
         public override void Delay() => RNGPool.WildDelay7();
         public override RNGResult Generate()
         {
@@ -48,8 +56,9 @@ namespace Pk3DSRNGTool
 
             if (NormalSlot) // Normal wild
             {
-                rt.Synchronize = getrand % 100 >= 50;
-                rt.Slot = StaticMagnet && rt.Synchronize ? getsmslot(getrand) : getslot((int)(getrand % 100));
+                VerifyLead();
+                rt.Synchronize = SynchroPass;
+                rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
                 Advance(1);
                 if (IsMinior) Advance(1);
@@ -102,7 +111,7 @@ namespace Pk3DSRNGTool
             rt.Nature = rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : (byte)(getrand % 25);
 
             //Gender
-            rt.Gender = RandomGender[slot] ? (byte)(getrand % 252 >= Gender[slot] ? 1 : 2) : Gender[slot];
+            rt.Gender = RandomGender[slot] ? (CuteCharmPass ? CuteCharmGender : (byte)(getrand % 252 >= Gender[slot] ? 1 : 2)) : Gender[slot];
 
             //Item
             rt.Item = (byte)(NormalSlot ? getrand % 100 : 100);

@@ -1286,6 +1286,10 @@ namespace Pk3DSRNGTool
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.Static = LeadAbility.SelectedIndex == (int)Lead.Static;
             setting.Magnet = LeadAbility.SelectedIndex == (int)Lead.MagnetPull;
+            if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmF)
+                setting.CuteCharmGender = 1;
+            else if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmM)
+                setting.CuteCharmGender = 2;
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
