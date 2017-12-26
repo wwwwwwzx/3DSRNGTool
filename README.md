@@ -44,7 +44,9 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __Poke Pelago__: Hover over `Poke Pelago` button and press A to enter. Be sure that new Pokemon will be generated when you enter the Poke Pelago.
 - __Assembled Zygarde__: _Zygarde has gone into a Poke Ball!_
 - __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
-- __Fishing__: When the exclamation mark pops up.
+- __Fishing__: 
+   - Timer user: Press A when `A` pops up, then pull the fishing rod off water once you hear the sound.
+   - PCalc user: Press 1st A when `A` pops up (`fishing`), press 2nd A when the exclamation mark pops up (`frame`).
 
 ##### Sun and Moon
 - __Pikipek__: No dialogue. Before the fourth step in grass.
