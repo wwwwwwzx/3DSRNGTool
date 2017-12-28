@@ -104,6 +104,7 @@
     <Compile Include="Gen6\ID6.cs" />
     <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />
+    <Compile Include="Gen6\Pokerus6.cs" />
     <Compile Include="Gen6\TinyTimeline.cs" />
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen6\Event6.cs" />
