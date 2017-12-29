@@ -25,6 +25,14 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
+        private void VerifyLead()
+        {
+            var rand100 = getrand % 100;
+            SynchroPass = rand100 >= 50;
+            CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
+            StaticMagnetPass = StaticMagnet && rand100 >= 50;
+        }
+
         public override void Delay() => RNGPool.WildDelay7();
         public override RNGResult Generate()
         {
@@ -33,7 +41,7 @@ namespace Pk3DSRNGTool
 
             if (Fishing)
             {
-                IsSpecial = rt.IsSpecial = (byte)(getrand % 100) >= SpecialEnctr;
+                IsSpecial = rt.IsSpecial = getrand % 100 >= SpecialEnctr;
                 time_elapse(12);
                 if (IsSpecial) // Predict hooked item
                 {
@@ -44,12 +52,13 @@ namespace Pk3DSRNGTool
                 }
             }
             else if (SpecialEnctr > 0)
-                IsSpecial = rt.IsSpecial = (byte)(getrand % 100) < SpecialEnctr;
+                IsSpecial = rt.IsSpecial = getrand % 100 < SpecialEnctr;
 
             if (NormalSlot) // Normal wild
             {
-                rt.Synchronize = (int)(getrand % 100) >= 50;
-                rt.Slot = StaticMagnet && rt.Synchronize ? getsmslot(getrand) : getslot((int)(getrand % 100));
+                VerifyLead();
+                rt.Synchronize = SynchroPass;
+                rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
                 Advance(1);
                 if (IsMinior) Advance(1);
@@ -58,7 +67,7 @@ namespace Pk3DSRNGTool
             {
                 slot = 0;
                 time_elapse(7);
-                rt.Synchronize = (int)(getrand % 100) >= 50;
+                rt.Synchronize = getrand % 100 >= 50;
                 time_elapse(3);
             }
 
@@ -99,15 +108,16 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)(IsUB ? 1 : (getrand & 1) + 1);
 
             //Nature
-            rt.Nature = (byte)(rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : getrand % 25);
+            rt.Nature = rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : (byte)(getrand % 25);
 
             //Gender
-            rt.Gender = (byte)(RandomGender[slot] ? ((int)(getrand % 252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
+            rt.Gender = RandomGender[slot] ? (CuteCharmPass ? CuteCharmGender : (byte)(getrand % 252 >= Gender[slot] ? 1 : 2)) : Gender[slot];
 
             //Item
             rt.Item = (byte)(NormalSlot ? getrand % 100 : 100);
             rt.ItemStr = getitemstr(rt.Item);
 
+            //Fishing item slots
             if (Fishing && rt.IsSpecial)
                 rt.Slot = getHookedItemSlot(rt.SpecialVal);
 

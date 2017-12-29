@@ -39,7 +39,7 @@ namespace Pk3DSRNGTool
                 if (remain_frame[i] < 0)                       //Cooldown 1st part
                 {
                     if (++remain_frame[i] == 0)                //Blinking
-                        remain_frame[i] = (int)(getrand % 3) == 0 ? 36 : 30;
+                        remain_frame[i] = getrand % 3 == 0 ? 36 : 30;
                     continue;
                 }
                 if ((int)(getrand & 0x7F) == 0)                //Not Blinking

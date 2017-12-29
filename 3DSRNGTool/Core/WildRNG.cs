@@ -10,7 +10,12 @@
         public bool StaticMagnet => Magnet || Static;
         public byte[] StaticMagnetSlot;
         public ulong NStaticMagnetSlot;
+        public byte CuteCharmGender;
 
+        protected bool SynchroPass;
+        protected bool CuteCharmPass;
+        protected bool StaticMagnetPass;
+        
         public byte[] SlotSplitter;
         public int[] SpecForm;
 

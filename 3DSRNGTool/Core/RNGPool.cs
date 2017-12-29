@@ -207,7 +207,7 @@ namespace Pk3DSRNGTool.Core
                     if (remain_frame[i] < 0)                       //Cooldown 1st part
                     {
                         if (++remain_frame[i] == 0)                //Blinking
-                            remain_frame[i] = (int)(getrand64 % 3) == 0 ? 36 : 30;
+                            remain_frame[i] = getrand64 % 3 == 0 ? 36 : 30;
                         continue;
                     }
                     if ((int)(getrand64 & 0x7F) == 0)              //Not Blinking
@@ -255,7 +255,7 @@ namespace Pk3DSRNGTool.Core
                 if (remain_frame[i] < 0)
                 {
                     if (++remain_frame[i] == 0)
-                        remain_frame[i] = (int)(getrand64 % 3) == 0 ? 36 : 30;
+                        remain_frame[i] = getrand64 % 3 == 0 ? 36 : 30;
                     continue;
                 }
                 if ((int)(getrand64 & 0x7F) == 0)

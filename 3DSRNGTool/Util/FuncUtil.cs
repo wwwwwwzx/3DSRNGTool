@@ -50,7 +50,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < min - 2; i++)
                 st.Next();
             if ((int)(st.Nextulong() & 0x7F) == 0)
-                blinkflaglist[0] = (byte)((int)(st.Nextulong() % 3) == 0 ? 36 : 30);
+                blinkflaglist[0] = (byte)(st.Nextulong() % 3 == 0 ? 36 : 30);
             else if ((int)(st.Nextulong() & 0x7F) == 0)
                 blink_flag = 1;
             for (int i = min; i <= max; i++)
@@ -59,7 +59,7 @@ namespace Pk3DSRNGTool
                 if (blink_flag == 1)
                 {
                     blinkflaglist[i - min] = 5;
-                    blinkflaglist[++i - min] = (byte)((int)(rand % 3) == 0 ? 36 : 30);
+                    blinkflaglist[++i - min] = (byte)(rand % 3 == 0 ? 36 : 30);
                     blink_flag = 0; st.Next(); // Reset and advance
                 }
                 if ((int)(rand & 0x7F) == 0)
