@@ -4,7 +4,7 @@
     {
         None,
 
-        // Ability
+        // Nature
         Synchronize,
 
         // Gender
@@ -21,7 +21,7 @@
         // Fishing
         SuctionCups,
 
-        // Levels
+        // Level
         PressureHustleSpirit,
         IntimidateKeenEye,
     }
