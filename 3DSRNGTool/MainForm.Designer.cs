@@ -2335,6 +2335,7 @@
             // LeadAbility
             // 
             this.LeadAbility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LeadAbility.DropDownWidth = 150;
             this.LeadAbility.Location = new System.Drawing.Point(57, 192);
             this.LeadAbility.Name = "LeadAbility";
             this.LeadAbility.Size = new System.Drawing.Size(88, 21);

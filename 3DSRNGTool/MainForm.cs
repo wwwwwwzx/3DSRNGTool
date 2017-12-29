@@ -1290,6 +1290,10 @@ namespace Pk3DSRNGTool
                 setting.CuteCharmGender = 1;
             else if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmM)
                 setting.CuteCharmGender = 2;
+            else if (LeadAbility.SelectedIndex == (int)Lead.PressureHustleSpirit)
+                setting.HighLevel = true;
+            else if (LeadAbility.SelectedIndex == (int)Lead.IntimidateKeenEye)
+                setting.HighLevel = false;
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 

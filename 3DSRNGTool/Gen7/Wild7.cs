@@ -25,12 +25,13 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
-        private void VerifyLead()
+        private void CheckLeadAbility()
         {
             var rand100 = getrand % 100;
             SynchroPass = rand100 >= 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 >= 50;
+            LevelModifierPass = HighLevel != null && rand100 >= 50;
         }
 
         public override void Delay() => RNGPool.WildDelay7();
@@ -56,10 +57,11 @@ namespace Pk3DSRNGTool
 
             if (NormalSlot) // Normal wild
             {
-                VerifyLead();
+                CheckLeadAbility();
                 rt.Synchronize = SynchroPass;
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
+                if (LevelModifierPass) rt.Level = (bool)HighLevel ? Levelmax : Levelmin;
                 Advance(1);
                 if (IsMinior) Advance(1);
             }
