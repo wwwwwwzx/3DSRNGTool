@@ -25,6 +25,7 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
+        // USUM v1.1 sub_3A7FE0
         private void CheckLeadAbility()
         {
             var rand100 = getrand % 100;
@@ -151,10 +152,7 @@ namespace Pk3DSRNGTool
             if (UB) IV3[0] = true; // For UB Template
         }
 
-        private byte getsmslot(ulong rand)
-        {
-            return slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
-        }
+        private byte getsmslot(ulong rand) => slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
 
         private string getitemstr(int rand)
         {

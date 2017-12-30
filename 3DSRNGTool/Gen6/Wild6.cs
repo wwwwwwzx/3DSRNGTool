@@ -33,7 +33,18 @@ namespace Pk3DSRNGTool
         public byte PartyPKM;       // For fishing
         public byte EncounterRate;
 
-        private bool getSync => getTinyRand < 0x80000000;
+        // ORAS v1.4 sub_78D900
+        private void CheckLeadAbility()
+        {
+            var rand100 = TinyRand(100);
+            SynchroPass = rand100 < 50;
+            CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
+            StaticMagnetPass = StaticMagnet && rand100 < 50;
+            LevelModifierPass = ModifiedLevel != 0 && rand100 < 50;
+        }
+
+        private byte getslot6() => slot = StaticMagnetPass ? StaticMagnetSlot[TinyRand((int)NStaticMagnetSlot)] : getslot(TinyRand(100));
+
         private void Prepare(ResultW6 rt)
         {
             if (RNGPool.tinystatus == null)
@@ -73,8 +84,9 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime);
                     break;
             }
-            // Sync
-            rt.Synchronize = getSync;
+            
+            CheckLeadAbility();
+            rt.Synchronize = SynchroPass;
 
             // Encounter Slot and Others
             switch (Wildtype)
@@ -87,13 +99,13 @@ namespace Pk3DSRNGTool
                 case EncounterType.GoodRod:
                 case EncounterType.SuperRod:
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
-                    rt.Slot = slot = getslot(TinyRand(100));
+                    rt.Slot = getslot6();
                     break;
                 case EncounterType.PokeRadar:
-                    rt.Slot = IsShinyLocked ? slot = 1 : getslot(TinyRand(100));
+                    rt.Slot = IsShinyLocked ? slot = 1 : getslot6();
                     break;
                 default:
-                    rt.Slot = getslot(TinyRand(100));
+                    rt.Slot = getslot6();
                     break;
             }
 
@@ -151,7 +163,7 @@ namespace Pk3DSRNGTool
         private void Generate_Once(ResultW6 rt)
         {
             //Level
-            rt.Level = SlotLevel[slot];
+            rt.Level = LevelModifierPass ? ModifiedLevel : SlotLevel[slot];
 
             //Encryption Constant
             rt.EC = getrand;
@@ -191,7 +203,7 @@ namespace Pk3DSRNGTool
             rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
 
             //Gender
-            rt.Gender = (byte)(RandomGender[slot] ? (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
+            rt.Gender = (byte)(RandomGender[slot] ? CuteCharmPass ? CuteCharmGender : (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
         }
 
         public override void Markslots()
