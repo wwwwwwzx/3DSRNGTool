@@ -435,7 +435,7 @@ namespace Pk3DSRNGTool
                 BiteChance.Value = SuctionCups ? 100 : 50;
                 BiteChance.Enabled = !SuctionCups;
             }
-            else
+            else if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
