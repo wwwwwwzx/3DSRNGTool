@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
         public static ComboItem[] GenderRatioList
             => genderratio.Select((str, i) => new ComboItem(str, genderratiodata[i])).ToArray();
 
-        private readonly static int[] LeadAbilityIndex = { 000, 028, 056, 056, 009, 042, 014, 021, 046, 022 };
+        private readonly static int[] LeadAbilityIndex = { 000, 028, 056, 056, 009, 042, 014, 021, 046, };
 
         public static ComboItem[] LeadAbilityList
         {
@@ -45,7 +45,6 @@ namespace Pk3DSRNGTool
                 list[3].Text += genderstr[2];
                 list[7].Text += " | " + abilitystr[60]; // Suction cups|Sticky Hold
                 list[8].Text += " | " + abilitystr[55] + " | " + abilitystr[72]; // Pressure|Hustle|Vital Spirit
-                list[9].Text += " | " + abilitystr[51]; // Initimidate|Keen eye
                 return list;
             }
         }

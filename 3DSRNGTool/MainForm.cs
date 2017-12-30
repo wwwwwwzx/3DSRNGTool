@@ -1291,7 +1291,6 @@ namespace Pk3DSRNGTool
                 case Lead.CuteCharmF: setting.CuteCharmGender = 1; break;
                 case Lead.CuteCharmM: setting.CuteCharmGender = 2; break;
                 case Lead.PressureHustleSpirit: setting.ModifiedLevel = 1; break;
-                case Lead.IntimidateKeenEye: setting.ModifiedLevel = 0xFF; break;
             }
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;

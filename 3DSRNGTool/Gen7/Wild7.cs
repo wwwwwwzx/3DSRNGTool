@@ -148,7 +148,7 @@ namespace Pk3DSRNGTool
             if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
                 Static = Magnet = false;
             if (ModifiedLevel != 0)
-                ModifiedLevel = ModifiedLevel == 1 ? Levelmax : Levelmin;
+                ModifiedLevel = Levelmax;
             if (UB) IV3[0] = true; // For UB Template
         }
 

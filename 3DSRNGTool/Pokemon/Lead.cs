@@ -23,6 +23,5 @@
 
         // Level
         PressureHustleSpirit,
-        IntimidateKeenEye,
     }
 }

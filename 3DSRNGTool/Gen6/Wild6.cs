@@ -234,7 +234,7 @@ namespace Pk3DSRNGTool
             if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
                 Static = Magnet = false;
             if (ModifiedLevel != 0)
-                ModifiedLevel = ModifiedLevel == 1 ? SlotLevel.Skip(1).Max() : SlotLevel.Skip(1).Min();
+                ModifiedLevel = SlotLevel.Skip(1).Max();
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
