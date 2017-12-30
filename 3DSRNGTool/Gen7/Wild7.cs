@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
             SynchroPass = rand100 >= 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 >= 50;
-            LevelModifierPass = HighLevel != null && rand100 >= 50;
+            LevelModifierPass = ModifiedLevel != 0 && rand100 >= 50;
         }
 
         public override void Delay() => RNGPool.WildDelay7();
@@ -61,7 +61,7 @@ namespace Pk3DSRNGTool
                 rt.Synchronize = SynchroPass;
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
-                if (LevelModifierPass) rt.Level = (bool)HighLevel ? Levelmax : Levelmin;
+                if (LevelModifierPass) rt.Level = ModifiedLevel;
                 Advance(1);
                 if (IsMinior) Advance(1);
             }
@@ -146,6 +146,8 @@ namespace Pk3DSRNGTool
             StaticMagnetSlot = smslot.Select(s => (byte)s).ToArray();
             if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
                 Static = Magnet = false;
+            if (ModifiedLevel != 0)
+                ModifiedLevel = ModifiedLevel == 1 ? Levelmax : Levelmin;
             if (UB) IV3[0] = true; // For UB Template
         }
 

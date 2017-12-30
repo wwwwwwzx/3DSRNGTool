@@ -1284,16 +1284,15 @@ namespace Pk3DSRNGTool
         {
             WildRNG setting = Gen6 ? new Wild6() : (WildRNG)new Wild7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
-            setting.Static = LeadAbility.SelectedIndex == (int)Lead.Static;
-            setting.Magnet = LeadAbility.SelectedIndex == (int)Lead.MagnetPull;
-            if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmF)
-                setting.CuteCharmGender = 1;
-            else if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmM)
-                setting.CuteCharmGender = 2;
-            else if (LeadAbility.SelectedIndex == (int)Lead.PressureHustleSpirit)
-                setting.HighLevel = true;
-            else if (LeadAbility.SelectedIndex == (int)Lead.IntimidateKeenEye)
-                setting.HighLevel = false;
+            switch((Lead)LeadAbility.SelectedIndex)
+            {
+                case Lead.Static: setting.Static = true; break;
+                case Lead.MagnetPull: setting.Magnet = true; break;
+                case Lead.CuteCharmF: setting.CuteCharmGender = 1; break;
+                case Lead.CuteCharmM: setting.CuteCharmGender = 2; break;
+                case Lead.PressureHustleSpirit: setting.ModifiedLevel = 1; break;
+                case Lead.IntimidateKeenEye: setting.ModifiedLevel = 0xFF; break;
+            }
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 

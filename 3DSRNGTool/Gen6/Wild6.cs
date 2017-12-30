@@ -1,4 +1,5 @@
-﻿using PKHeX.Core;
+﻿using System.Linq;
+using PKHeX.Core;
 using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
@@ -198,6 +199,7 @@ namespace Pk3DSRNGTool
             IV3 = new bool[SpecForm.Length];
             RandomGender = new bool[SpecForm.Length];
             Gender = new byte[SpecForm.Length];
+            var smslot = new int[0].ToList();
             for (int i = 0; i < SpecForm.Length; i++)
             {
                 if (SpecForm[i] == 0)
@@ -213,7 +215,14 @@ namespace Pk3DSRNGTool
                 IV3[i] = info.EggGroups[0] == 0xF;
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
+                if (Static && info.Types.Contains(Pokemon.electric) || Magnet && info.Types.Contains(Pokemon.steel)) // Collect slots
+                    smslot.Add(i);
             }
+            StaticMagnetSlot = smslot.Select(s => (byte)s).ToArray();
+            if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
+                Static = Magnet = false;
+            if (ModifiedLevel != 0)
+                ModifiedLevel = ModifiedLevel == 1 ? SlotLevel.Skip(1).Max() : SlotLevel.Skip(1).Min();
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 

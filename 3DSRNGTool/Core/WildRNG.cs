@@ -11,7 +11,7 @@
         public byte[] StaticMagnetSlot;
         public ulong NStaticMagnetSlot;
         public byte CuteCharmGender;
-        public bool? HighLevel;
+        public byte ModifiedLevel;
 
         protected bool SynchroPass;
         protected bool CuteCharmPass;
