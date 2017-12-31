@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
@@ -121,10 +122,12 @@ namespace Pk3DSRNGTool.Subforms
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
             int frameadvance;
+            bool CheckBlink = NPC.Value == 0;
+
+            FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
 
             for (int i = 0; i < frame; i++)
                 sfmt.Next();
-
             ModelStatus status = new ModelStatus((byte)(NPC.Value + 1), sfmt);
 
             RNGPool.CreateBuffer(sfmt);
@@ -135,6 +138,10 @@ namespace Pk3DSRNGTool.Subforms
                 f.Frame = frame;
                 f.Rand64 = RNGPool.getcurrent64;
                 f.realtime = 2 * i;
+
+                // USUM v1.1 sub_421E4C
+                if (CheckBlink && (status.remain_frame[0] == -3 || status.remain_frame[0] == 33))
+                    f.Blink = 1;
 
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
@@ -153,6 +160,8 @@ namespace Pk3DSRNGTool.Subforms
 
                 Frames.Add(f);
             }
+            if (Frames.FirstOrDefault()?.Frame == (int)StartingFrame.Value)
+                Frames[0].Blink = FuncUtil.blinkflaglist[0];
         }
 
         private void Search7_Battle()
@@ -222,7 +231,7 @@ namespace Pk3DSRNGTool.Subforms
 
         private void AdjustDGVColumns()
         {
-            dgv_clock.Visible = dgv_blink.Visible = RNG.SelectedIndex == 0;
+            dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex < 2;
             dgv_rand32.Visible = RNG.SelectedIndex > 1;
             dgv_pokerus.Visible = filter.Pokerus;
