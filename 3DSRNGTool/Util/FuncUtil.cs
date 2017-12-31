@@ -104,6 +104,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Misc
+        public const int MAXFRAME = 1000000000;
         public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber, bool fidget = false, bool raining = false)
         {
             if (min > max)

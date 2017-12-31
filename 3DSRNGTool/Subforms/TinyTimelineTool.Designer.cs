@@ -167,19 +167,9 @@
             0,
             0});
             this.Frame1.Location = new System.Drawing.Point(15, 210);
-            this.Frame1.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame1.Name = "Frame1";
             this.Frame1.Size = new System.Drawing.Size(73, 22);
             this.Frame1.TabIndex = 109;
-            this.Frame1.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // B_Create
             // 
@@ -211,19 +201,9 @@
             0,
             0});
             this.Frame_max.Location = new System.Drawing.Point(95, 62);
-            this.Frame_max.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame_max.Name = "Frame_max";
             this.Frame_max.Size = new System.Drawing.Size(88, 22);
             this.Frame_max.TabIndex = 112;
-            this.Frame_max.Value = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
             // 
             // L_TargetFrame
             // 
@@ -328,19 +308,9 @@
             0,
             0});
             this.Frame3.Location = new System.Drawing.Point(15, 265);
-            this.Frame3.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame3.Name = "Frame3";
             this.Frame3.Size = new System.Drawing.Size(73, 22);
             this.Frame3.TabIndex = 117;
-            this.Frame3.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // Type2
             // 
@@ -362,19 +332,9 @@
             0,
             0});
             this.Frame2.Location = new System.Drawing.Point(15, 238);
-            this.Frame2.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame2.Name = "Frame2";
             this.Frame2.Size = new System.Drawing.Size(73, 22);
             this.Frame2.TabIndex = 112;
-            this.Frame2.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
             // 
             // Type1
             // 
@@ -653,8 +613,8 @@
             this.tiny_hitidx.HeaderText = "Hit";
             this.tiny_hitidx.Name = "tiny_hitidx";
             this.tiny_hitidx.ReadOnly = true;
-            this.tiny_hitidx.Width = 35;
             this.tiny_hitidx.Visible = false;
+            this.tiny_hitidx.Width = 35;
             // 
             // tiny_enctr
             // 

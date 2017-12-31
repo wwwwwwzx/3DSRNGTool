@@ -63,6 +63,7 @@ namespace Pk3DSRNGTool
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
+            Frame_min.Maximum = Frame_max.Maximum = TargetFrame.Maximum = TimeSpan.Maximum = FuncUtil.MAXFRAME;
 
             Seed.Value = (uint)(Properties.Settings.Default.Seed);
             var LastGameversion = Properties.Settings.Default.GameVersion;
@@ -747,6 +748,7 @@ namespace Pk3DSRNGTool
             Frame_min.Value = FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method);
             TargetFrame.Value = 5000;
             Frame_max.Value = 50000;
+            TimeSpan.Value = 3600;
             if (0 == Method || Method == 2)
                 Poke_SelectedIndexChanged(null, null);
             JumpFrame.Value = 0;

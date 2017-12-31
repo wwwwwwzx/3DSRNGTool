@@ -14,6 +14,8 @@ namespace Pk3DSRNGTool.Subforms
             RNG.SelectedIndex = Program.mainform.Ver > 4 ? 0 : 3;
             Seed.Value = Program.mainform.globalseed;
             dataGridView1.AutoGenerateColumns = false;
+            Range.Maximum = Value.Maximum = uint.MaxValue;
+            StartingFrame.Maximum = FuncUtil.MAXFRAME;
         }
 
         private List<Frame_Misc> Frames = new List<Frame_Misc>();

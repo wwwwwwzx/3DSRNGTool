@@ -120,6 +120,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.M_NTRHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Option = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Profile = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Language = new System.Windows.Forms.ToolStripMenuItem();
@@ -414,7 +415,6 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -1111,7 +1111,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(209, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1174,6 +1174,13 @@
             this.M_KeyBV.Size = new System.Drawing.Size(195, 22);
             this.M_KeyBV.Text = "KeyBV";
             this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
+            // 
+            // MiscRNGTool
+            // 
+            this.MiscRNGTool.Name = "MiscRNGTool";
+            this.MiscRNGTool.Size = new System.Drawing.Size(195, 22);
+            this.MiscRNGTool.Text = "Misc. RNG Tool";
+            this.MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
             // 
             // M_Option
             // 
@@ -3210,19 +3217,9 @@
             0,
             0});
             this.TargetFrame.Location = new System.Drawing.Point(82, 91);
-            this.TargetFrame.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.TargetFrame.Name = "TargetFrame";
             this.TargetFrame.Size = new System.Drawing.Size(73, 22);
             this.TargetFrame.TabIndex = 97;
-            this.TargetFrame.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
             this.TargetFrame.ValueChanged += new System.EventHandler(this.TargetFrame_ValueChanged);
             // 
             // RB_EggShortest
@@ -3524,19 +3521,9 @@
             // 
             this.TimeSpan.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeSpan.Location = new System.Drawing.Point(133, 208);
-            this.TimeSpan.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             this.TimeSpan.Name = "TimeSpan";
             this.TimeSpan.Size = new System.Drawing.Size(72, 22);
             this.TimeSpan.TabIndex = 94;
-            this.TimeSpan.Value = new decimal(new int[] {
-            600,
-            0,
-            0,
-            0});
             // 
             // RB_FrameRange
             // 
@@ -3576,21 +3563,11 @@
             this.Frame_max.Name = "Frame_max";
             this.Frame_max.Size = new System.Drawing.Size(75, 22);
             this.Frame_max.TabIndex = 41;
-            this.Frame_max.Value = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
             // 
             // Frame_min
             // 
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(16, 52);
-            this.Frame_min.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame_min.Name = "Frame_min";
             this.Frame_min.Size = new System.Drawing.Size(75, 22);
             this.Frame_min.TabIndex = 40;
@@ -4888,13 +4865,6 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // MiscRNGTool
-            // 
-            this.MiscRNGTool.Name = "MiscRNGTool";
-            this.MiscRNGTool.Size = new System.Drawing.Size(195, 22);
-            this.MiscRNGTool.Text = "Misc. RNG";
-            this.MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
             // 
             // MainForm
             // 

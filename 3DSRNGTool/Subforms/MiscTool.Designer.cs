@@ -46,16 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.RNG = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Filters = new System.Windows.Forms.GroupBox();
-            this.Range = new System.Windows.Forms.NumericUpDown();
-            this.Value = new System.Windows.Forms.NumericUpDown();
-            this.Compare = new System.Windows.Forms.ComboBox();
-            this.Random = new System.Windows.Forms.RadioButton();
-            this.Pokerus = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.CurrentText = new System.Windows.Forms.TextBox();
-            this.B_Calc = new System.Windows.Forms.Button();
-            this.B_ResetFrame = new System.Windows.Forms.Button();
             this.dgv_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_blink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +54,16 @@
             this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_realtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Filters = new System.Windows.Forms.GroupBox();
+            this.B_ResetFrame = new System.Windows.Forms.Button();
+            this.Range = new System.Windows.Forms.NumericUpDown();
+            this.Value = new System.Windows.Forms.NumericUpDown();
+            this.Compare = new System.Windows.Forms.ComboBox();
+            this.Random = new System.Windows.Forms.RadioButton();
+            this.Pokerus = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CurrentText = new System.Windows.Forms.TextBox();
+            this.B_Calc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
@@ -167,11 +167,6 @@
             // 
             this.StartingFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartingFrame.Location = new System.Drawing.Point(104, 65);
-            this.StartingFrame.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
             this.StartingFrame.Name = "StartingFrame";
             this.StartingFrame.Size = new System.Drawing.Size(74, 22);
             this.StartingFrame.TabIndex = 1;
@@ -254,8 +249,73 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(456, 446);
+            this.dataGridView1.Size = new System.Drawing.Size(461, 446);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // dgv_frame
+            // 
+            this.dgv_frame.DataPropertyName = "Frame";
+            this.dgv_frame.HeaderText = "Frame";
+            this.dgv_frame.Name = "dgv_frame";
+            this.dgv_frame.Width = 60;
+            // 
+            // dgv_blink
+            // 
+            this.dgv_blink.DataPropertyName = "Blinkflag";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_blink.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_blink.HeaderText = "Blink";
+            this.dgv_blink.Name = "dgv_blink";
+            this.dgv_blink.Width = 35;
+            // 
+            // dgv_clock
+            // 
+            this.dgv_clock.DataPropertyName = "Clock";
+            this.dgv_clock.HeaderText = "Clk";
+            this.dgv_clock.Name = "dgv_clock";
+            this.dgv_clock.Width = 35;
+            // 
+            // dgv_pokerus
+            // 
+            this.dgv_pokerus.DataPropertyName = "Pokerus";
+            this.dgv_pokerus.HeaderText = "Pokerus";
+            this.dgv_pokerus.Name = "dgv_pokerus";
+            this.dgv_pokerus.Width = 55;
+            // 
+            // dgv_randn
+            // 
+            this.dgv_randn.DataPropertyName = "RandN";
+            this.dgv_randn.HeaderText = "RN";
+            this.dgv_randn.Name = "dgv_randn";
+            this.dgv_randn.Width = 40;
+            // 
+            // dgv_rand32
+            // 
+            this.dgv_rand32.DataPropertyName = "Rand32";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "X8";
+            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_rand32.HeaderText = "Random#";
+            this.dgv_rand32.Name = "dgv_rand32";
+            this.dgv_rand32.Visible = false;
+            this.dgv_rand32.Width = 70;
+            // 
+            // dgv_rand64
+            // 
+            this.dgv_rand64.DataPropertyName = "Rand64";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Format = "X16";
+            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_rand64.HeaderText = "Random Number";
+            this.dgv_rand64.Name = "dgv_rand64";
+            this.dgv_rand64.Width = 123;
+            // 
+            // dgv_realtime
+            // 
+            this.dgv_realtime.DataPropertyName = "Realtime";
+            this.dgv_realtime.HeaderText = "Real Time";
+            this.dgv_realtime.Name = "dgv_realtime";
+            this.dgv_realtime.Width = 80;
             // 
             // Filters
             // 
@@ -274,15 +334,20 @@
             this.Filters.TabStop = false;
             this.Filters.Text = "Filters";
             // 
+            // B_ResetFrame
+            // 
+            this.B_ResetFrame.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
+            this.B_ResetFrame.Location = new System.Drawing.Point(165, 24);
+            this.B_ResetFrame.Name = "B_ResetFrame";
+            this.B_ResetFrame.Size = new System.Drawing.Size(27, 25);
+            this.B_ResetFrame.TabIndex = 101;
+            this.B_ResetFrame.UseVisualStyleBackColor = true;
+            this.B_ResetFrame.Click += new System.EventHandler(this.B_ResetFrame_Click);
+            // 
             // Range
             // 
             this.Range.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Range.Location = new System.Drawing.Point(98, 65);
-            this.Range.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.Range.Name = "Range";
             this.Range.Size = new System.Drawing.Size(71, 22);
             this.Range.TabIndex = 57;
@@ -296,11 +361,6 @@
             // 
             this.Value.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Value.Location = new System.Drawing.Point(98, 97);
-            this.Value.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.Value.Name = "Value";
             this.Value.Size = new System.Drawing.Size(71, 22);
             this.Value.TabIndex = 52;
@@ -373,81 +433,6 @@
             this.B_Calc.Text = "Search";
             this.B_Calc.UseVisualStyleBackColor = true;
             this.B_Calc.Click += new System.EventHandler(this.B_Calc_Click);
-            // 
-            // B_ResetFrame
-            // 
-            this.B_ResetFrame.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
-            this.B_ResetFrame.Location = new System.Drawing.Point(165, 24);
-            this.B_ResetFrame.Name = "B_ResetFrame";
-            this.B_ResetFrame.Size = new System.Drawing.Size(27, 25);
-            this.B_ResetFrame.TabIndex = 101;
-            this.B_ResetFrame.UseVisualStyleBackColor = true;
-            this.B_ResetFrame.Click += new System.EventHandler(this.B_ResetFrame_Click);
-            // 
-            // dgv_frame
-            // 
-            this.dgv_frame.DataPropertyName = "Frame";
-            this.dgv_frame.HeaderText = "Frame";
-            this.dgv_frame.Name = "dgv_frame";
-            this.dgv_frame.Width = 60;
-            // 
-            // dgv_blink
-            // 
-            this.dgv_blink.DataPropertyName = "Blinkflag";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_blink.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_blink.HeaderText = "Blink";
-            this.dgv_blink.Name = "dgv_blink";
-            this.dgv_blink.Width = 35;
-            // 
-            // dgv_clock
-            // 
-            this.dgv_clock.DataPropertyName = "Clock";
-            this.dgv_clock.HeaderText = "Clk";
-            this.dgv_clock.Name = "dgv_clock";
-            this.dgv_clock.Width = 35;
-            // 
-            // dgv_pokerus
-            // 
-            this.dgv_pokerus.DataPropertyName = "Pokerus";
-            this.dgv_pokerus.HeaderText = "Pokerus";
-            this.dgv_pokerus.Name = "dgv_pokerus";
-            this.dgv_pokerus.Width = 55;
-            // 
-            // dgv_randn
-            // 
-            this.dgv_randn.DataPropertyName = "RandN";
-            this.dgv_randn.HeaderText = "RN";
-            this.dgv_randn.Name = "dgv_randn";
-            this.dgv_randn.Width = 40;
-            // 
-            // dgv_rand32
-            // 
-            this.dgv_rand32.DataPropertyName = "Rand32";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.Format = "X8";
-            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_rand32.HeaderText = "Random#";
-            this.dgv_rand32.Name = "dgv_rand32";
-            this.dgv_rand32.Visible = false;
-            this.dgv_rand32.Width = 70;
-            // 
-            // dgv_rand64
-            // 
-            this.dgv_rand64.DataPropertyName = "Rand64";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.Format = "X16";
-            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_rand64.HeaderText = "Random Number";
-            this.dgv_rand64.Name = "dgv_rand64";
-            this.dgv_rand64.Width = 123;
-            // 
-            // dgv_realtime
-            // 
-            this.dgv_realtime.DataPropertyName = "Realtime";
-            this.dgv_realtime.HeaderText = "Real Time";
-            this.dgv_realtime.Name = "dgv_realtime";
-            this.dgv_realtime.Width = 80;
             // 
             // MiscTool
             // 
