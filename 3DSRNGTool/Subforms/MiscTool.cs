@@ -35,6 +35,7 @@ namespace Pk3DSRNGTool.Subforms
             Frames.Clear();
             Frames = new List<Frame_Misc>();
             getFilter();
+            Frame_Misc.X64 = RNG.SelectedIndex < 2;
             switch (RNG.SelectedIndex)
             {
                 case 0: Search7(); break;
