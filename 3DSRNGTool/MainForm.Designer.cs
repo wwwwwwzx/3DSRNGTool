@@ -415,6 +415,7 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ShinyRemind = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -3891,6 +3892,7 @@
             // 
             // Filters
             // 
+            this.Filters.Controls.Add(this.ShinyRemind);
             this.Filters.Controls.Add(this.Filter_Lv);
             this.Filters.Controls.Add(this.L_S);
             this.Filters.Controls.Add(this.L_C);
@@ -4462,7 +4464,7 @@
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
-            this.ShowStats.Location = new System.Drawing.Point(194, 248);
+            this.ShowStats.Location = new System.Drawing.Point(193, 248);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(86, 17);
             this.ShowStats.TabIndex = 75;
@@ -4860,6 +4862,17 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // ShinyRemind
+            // 
+            this.ShinyRemind.AutoSize = true;
+            this.ShinyRemind.Location = new System.Drawing.Point(193, 221);
+            this.ShinyRemind.Name = "ShinyRemind";
+            this.ShinyRemind.Size = new System.Drawing.Size(74, 17);
+            this.ShinyRemind.TabIndex = 101;
+            this.ShinyRemind.Text = "闪数提醒";
+            this.ShinyRemind.UseVisualStyleBackColor = true;
+            this.ShinyRemind.Visible = false;
             // 
             // MainForm
             // 
@@ -5371,6 +5384,7 @@
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
         private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
+        private System.Windows.Forms.CheckBox ShinyRemind;
     }
 }
 

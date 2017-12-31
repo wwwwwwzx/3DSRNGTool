@@ -76,6 +76,7 @@ namespace Pk3DSRNGTool
 
         private void MM_CheckedChanged(object sender, EventArgs e)
         {
+            ShinyRemind.Visible = Method == 3 && Gen7 && (ShinyCharm.Checked || MM.Checked);
             if (Method != 3)
                 return;
             bool mainrng = !(ShinyCharm.Checked || MM.Checked);

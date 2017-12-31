@@ -532,12 +532,18 @@ namespace Pk3DSRNGTool
             for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
             {
                 var result = RNGPool.GenerateEgg7() as EggResult;
-                if (!filter.CheckResult(result))
+                if (!(filter.CheckResult(result) || ShinyRemind.Checked && CheckRandomNumber(result.RandNum)))
                     continue;
                 Frames.Add(new Frame(result, frame: i));
                 if (Frames.Count > 100000)
                     return;
             }
+        }
+
+        private bool CheckRandomNumber(uint rn)
+        {
+            int sv = (int)((rn >> 16) ^ (rn & 0xFFFF)) >> 4;
+            return sv == TSV.Value || ConsiderOtherTSV.Checked && OtherTSVList.Contains(sv);
         }
 
         private void Search7_EggList()

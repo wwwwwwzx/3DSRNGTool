@@ -86,6 +86,7 @@ ShinyOnly = Shiny uniquement
 SafeFOnly = Frames sûres uniquement
 BlinkFOnly = Blink Frames uniquement
 ShowStats = Montrer les statistiques
+ShinyRemind = Shiny Remind
 ---
 RNGInfo = RNG Info
 B_Search = Calculer
