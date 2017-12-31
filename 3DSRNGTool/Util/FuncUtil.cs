@@ -52,9 +52,9 @@ namespace Pk3DSRNGTool
             if (min < 2)
                 for (int i = 0; i < min; i++)
                     st.Next();
-            else if ((int)(st.Nextulong() & 0x7F) == 0)
+            else if ((st.Nextulong() & 0x7F) == 0)
                 blinkflaglist[0] = (byte)(st.Nextulong() % 3 == 0 ? 36 : 30);
-            else if ((int)(st.Nextulong() & 0x7F) == 0)
+            else if ((st.Nextulong() & 0x7F) == 0)
                 blink_flag = 1;
             for (int i = min; i <= max; i++)
             {
