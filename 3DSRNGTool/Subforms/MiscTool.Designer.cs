@@ -382,7 +382,7 @@
             this.dgv_frame.HeaderText = "Frame";
             this.dgv_frame.Name = "dgv_frame";
             this.dgv_frame.ReadOnly = true;
-            this.dgv_frame.Width = 60;
+            this.dgv_frame.Width = 55;
             // 
             // dgv_hit
             // 
@@ -391,7 +391,7 @@
             this.dgv_hit.Name = "dgv_hit";
             this.dgv_hit.ReadOnly = true;
             this.dgv_hit.Visible = false;
-            this.dgv_hit.Width = 60;
+            this.dgv_hit.Width = 55;
             // 
             // dgv_blink
             // 

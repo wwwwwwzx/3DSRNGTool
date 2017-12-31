@@ -56,7 +56,7 @@ namespace Pk3DSRNGTool.Subforms
             SFMT sfmt = new SFMT(Seed.Value);
             int min = (int)StartingFrame.Value;
             int max = min + (int)MaxResults.Value;
-            int delay = (int)Delay.Value;
+            int delay = (int)Delay.Value / 2;
             ulong N = (ulong)Range.Value;
             byte Modelnum = (byte)(NPC.Value + 1);
 
@@ -121,7 +121,7 @@ namespace Pk3DSRNGTool.Subforms
             SFMT sfmt = new SFMT(Seed.Value);
             int frame = (int)StartingFrame.Value;
             int loopcount = (int)MaxResults.Value;
-            int delay = (int)Delay.Value;
+            int delay = (int)Delay.Value / 2;
             ulong N = (ulong)Range.Value;
             int frameadvance;
 
@@ -238,7 +238,7 @@ namespace Pk3DSRNGTool.Subforms
             dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex < 2;
             dgv_rand32.Visible = RNG.SelectedIndex > 1;
-            dgv_hit.Visible &= Delay.Value != 0;
+            dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 2;
