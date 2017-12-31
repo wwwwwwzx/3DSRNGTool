@@ -1787,6 +1787,9 @@ namespace Pk3DSRNGTool
             new Subforms.ProfileView(null, true).ShowDialog();
             RefreshProfile();
         }
+        
+        private void MiscRNGTool_Click(object sender, EventArgs e) 
+            => new Subforms.MiscTool().Show();
         #endregion
     }
 }

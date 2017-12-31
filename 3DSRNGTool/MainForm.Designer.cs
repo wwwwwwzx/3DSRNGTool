@@ -414,6 +414,7 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -1110,7 +1111,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(209, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1123,7 +1124,8 @@
             this.M_Gen6MainSeedFinder,
             this.toolStripSeparator2,
             this.M_NTRHelper,
-            this.M_KeyBV});
+            this.M_KeyBV,
+            this.MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
             this.M_Tool.Size = new System.Drawing.Size(48, 20);
             this.M_Tool.Text = "Tools";
@@ -4887,6 +4889,13 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // MiscRNGTool
+            // 
+            this.MiscRNGTool.Name = "MiscRNGTool";
+            this.MiscRNGTool.Size = new System.Drawing.Size(195, 22);
+            this.MiscRNGTool.Text = "Misc. RNG";
+            this.MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5396,6 +5405,7 @@
         private System.Windows.Forms.Label L_BiteChance;
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
+        private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
     }
 }
 
