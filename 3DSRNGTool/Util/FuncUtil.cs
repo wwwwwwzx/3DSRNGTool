@@ -65,7 +65,7 @@ namespace Pk3DSRNGTool
                     blinkflaglist[++i - min] = (byte)(rand % 3 == 0 ? 36 : 30);
                     blink_flag = 0; st.Next(); // Reset and advance
                 }
-                if ((int)(rand & 0x7F) == 0)
+                if ((rand & 0x7F) == 0)
                     blink_flag = blinkflaglist[i - min] = 1;
             }
         }

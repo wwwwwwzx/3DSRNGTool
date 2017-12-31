@@ -1111,7 +1111,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(116, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1127,7 +1127,7 @@
             this.M_KeyBV,
             this.MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(48, 20);
+            this.M_Tool.Size = new System.Drawing.Size(47, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -3660,11 +3660,6 @@
             // 
             this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JumpFrame.Location = new System.Drawing.Point(85, 199);
-            this.JumpFrame.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.JumpFrame.Name = "JumpFrame";
             this.JumpFrame.Size = new System.Drawing.Size(75, 22);
             this.JumpFrame.TabIndex = 102;

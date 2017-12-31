@@ -89,9 +89,11 @@ namespace Pk3DSRNGTool.Subforms
                     f.Rand64 = RNGPool.getcurrent64;
                     f.Blink = FuncUtil.blinkflaglist[i - min];
                     f.realtime = 2 * frametime;
+                    f.status = (int[])stmp.remain_frame.Clone();
 
-                    RNGPool.Rewind(0); RNGPool.CopyStatus(status);
+                    RNGPool.Rewind(0); RNGPool.CopyStatus(stmp);
                     RNGPool.time_elapse7(delay);
+                    f.frameused = RNGPool.index;
                     if (filter.Random)
                         f.RandN = (int)(RNGPool.getrand64 % N);
                     else if (filter.Pokerus)
@@ -122,7 +124,6 @@ namespace Pk3DSRNGTool.Subforms
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
             int frameadvance;
-            bool CheckBlink = NPC.Value == 0;
 
             FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
 
@@ -138,13 +139,15 @@ namespace Pk3DSRNGTool.Subforms
                 f.Frame = frame;
                 f.Rand64 = RNGPool.getcurrent64;
                 f.realtime = 2 * i;
+                f.status = (int[])status.remain_frame.Clone();
 
                 // USUM v1.1 sub_421E4C
-                if (CheckBlink && (status.remain_frame[0] == -3 || status.remain_frame[0] == 33))
+                if (status.remain_frame[0] == -3 || status.remain_frame[0] == 33)
                     f.Blink = 1;
 
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
+                f.frameused = RNGPool.index;
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand64 % N);
                 else if (filter.Pokerus)
@@ -231,9 +234,11 @@ namespace Pk3DSRNGTool.Subforms
 
         private void AdjustDGVColumns()
         {
+            dgv_hit.Visible = dgv_status.Visible =
             dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex < 2;
             dgv_rand32.Visible = RNG.SelectedIndex > 1;
+            dgv_hit.Visible &= Delay.Value != 0;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 2;

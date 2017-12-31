@@ -262,12 +262,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\ProfileManager.resx">
-      <DependentUpon>ProfileManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\ProfileView.resx">
-      <DependentUpon>ProfileView.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

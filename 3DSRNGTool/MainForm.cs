@@ -63,7 +63,8 @@ namespace Pk3DSRNGTool
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
-            Frame_min.Maximum = Frame_max.Maximum = TargetFrame.Maximum = TimeSpan.Maximum = FuncUtil.MAXFRAME;
+            JumpFrame.Maximum = TargetFrame.Maximum =
+            Frame_min.Maximum = Frame_max.Maximum = TimeSpan.Maximum = FuncUtil.MAXFRAME;
 
             Seed.Value = (uint)(Properties.Settings.Default.Seed);
             var LastGameversion = Properties.Settings.Default.GameVersion;
