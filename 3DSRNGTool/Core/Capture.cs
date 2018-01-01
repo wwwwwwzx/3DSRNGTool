@@ -4,14 +4,16 @@ namespace Pk3DSRNGTool.Core
 {
     public class CaptureResult
     {
+        public static bool Details = true;
         public byte CriticalVal;
         public ushort MaxRandom;
         public byte Shake;
         public byte Total;
 
         public bool Gotta => Shake == Total;
-        public string Result_raw => CriticalVal.ToString("X2") + "/" + MaxRandom.ToString("X4");
-        public string Result => Shake.ToString() + "/" + Total.ToString();
+        private string result_raw => CriticalVal.ToString("X2") + "/" + MaxRandom.ToString("X4");
+        private string result_shake => Shake.ToString() + "/" + Total.ToString();
+        public string Result => Details ? result_raw : result_shake;
     }
 
     public abstract class Capture

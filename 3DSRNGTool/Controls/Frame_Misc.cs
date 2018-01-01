@@ -21,7 +21,7 @@ namespace Pk3DSRNGTool
         public int RandN { get; set; }
         public byte Pokerus { get; set; }
         public CaptureResult Crt;
-        public string Capture => Crt?.Result_raw ?? string.Empty;
+        public string Capture => Crt?.Result ?? string.Empty;
         public byte Blink;
         public string BlinkFlag => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         public byte Clock => (byte)(Rand64 % 17);

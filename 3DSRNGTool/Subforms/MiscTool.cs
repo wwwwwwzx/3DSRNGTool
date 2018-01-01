@@ -45,7 +45,7 @@ namespace Pk3DSRNGTool.Subforms
             filter = new Misc_Filter
             {
                 Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked,
-                Capture = RB_Capture.Visible && RB_Capture.Checked,
+                Capture = SuccessOnly.Checked && Filters.SelectedTab == TP_Capture,
                 CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) ? null : CurrentText.Text.ToUpper(),
                 Random = RB_Random.Checked,
                 CompareType = (byte)Compare.SelectedIndex,
@@ -207,10 +207,10 @@ namespace Pk3DSRNGTool.Subforms
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
 
+            CaptureResult.Details = CB_Detail.Checked || Filters.SelectedIndex == 0;
             var capture7 = new Capture7();
-            if (Filters.SelectedIndex == 2)
+            if (Filters.SelectedTab == TP_Capture)
             {
-                filter.Capture = true;
                 capture7.HPCurr = (uint)HPCurr.Value;
                 capture7.HPMax = (uint)HPMax.Value;
                 capture7.CatchRate = (byte)CatchRate.Value;
@@ -218,7 +218,7 @@ namespace Pk3DSRNGTool.Subforms
                 capture7.BallBonus = (uint)(int)BallBonus.SelectedValue;
                 capture7.DexBonus = (uint)(int)DexBonus.SelectedValue;
                 capture7.Calc();
-                MessageBox.Show(capture7.CriticalRate.ToString("X2") + "/" + capture7.ShakeRate.ToString("X4"));
+                L_output.Text = string.Format("Critical {0:P}  \tShake {1:P}", capture7.CriticalRate / 256.0, capture7.ShakeRate / 65536.0);
             }
 
             for (int i = 0; i < frame; i++)
@@ -236,8 +236,8 @@ namespace Pk3DSRNGTool.Subforms
                 RNGPool.Advance(delay);
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand % N);
-                if (filter.Capture)
-                    f.Crt = capture7.Catch();
+                RNGPool.Rewind(0);
+                f.Crt = capture7.Catch();
 
                 if (!filter.check(f))
                     continue;
@@ -288,7 +288,7 @@ namespace Pk3DSRNGTool.Subforms
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
-            dgv_capture.Visible = filter.Capture;
+            dgv_capture.Visible = RNG.SelectedIndex == 1;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 1;
             dataGridView1.DataSource = Frames;
@@ -305,7 +305,6 @@ namespace Pk3DSRNGTool.Subforms
             Createtimeline.Checked &= Createtimeline.Enabled = RNG.SelectedIndex == 0;
             Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
             EnaDisaTab(TP_Capture, RNG.SelectedIndex == 1);
-            RB_Capture.Visible = RNG.SelectedIndex == 1;
         }
 
         private void EnaDisaTab(TabPage tab, bool enable)

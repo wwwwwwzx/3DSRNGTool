@@ -70,7 +70,6 @@
             this.B_Calc = new System.Windows.Forms.Button();
             this.Filters = new System.Windows.Forms.TabControl();
             this.TP_Misc = new System.Windows.Forms.TabPage();
-            this.RB_Capture = new System.Windows.Forms.RadioButton();
             this.TP_Timeline = new System.Windows.Forms.TabPage();
             this.Createtimeline = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
@@ -79,6 +78,9 @@
             this.Fidget = new System.Windows.Forms.CheckBox();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.TP_Capture = new System.Windows.Forms.TabPage();
+            this.SuccessOnly = new System.Windows.Forms.CheckBox();
+            this.CB_Detail = new System.Windows.Forms.CheckBox();
+            this.L_output = new System.Windows.Forms.Label();
             this.Status = new System.Windows.Forms.ComboBox();
             this.DexBonus = new System.Windows.Forms.ComboBox();
             this.BallBonus = new System.Windows.Forms.ComboBox();
@@ -498,7 +500,6 @@
             // 
             // TP_Misc
             // 
-            this.TP_Misc.Controls.Add(this.RB_Capture);
             this.TP_Misc.Controls.Add(this.CurrentText);
             this.TP_Misc.Controls.Add(this.Range);
             this.TP_Misc.Controls.Add(this.label5);
@@ -513,16 +514,6 @@
             this.TP_Misc.TabIndex = 0;
             this.TP_Misc.Text = "Misc";
             this.TP_Misc.UseVisualStyleBackColor = true;
-            // 
-            // RB_Capture
-            // 
-            this.RB_Capture.AutoSize = true;
-            this.RB_Capture.Location = new System.Drawing.Point(11, 127);
-            this.RB_Capture.Name = "RB_Capture";
-            this.RB_Capture.Size = new System.Drawing.Size(62, 17);
-            this.RB_Capture.TabIndex = 58;
-            this.RB_Capture.Text = "Capture";
-            this.RB_Capture.UseVisualStyleBackColor = true;
             // 
             // TP_Timeline
             // 
@@ -607,6 +598,9 @@
             // 
             // TP_Capture
             // 
+            this.TP_Capture.Controls.Add(this.SuccessOnly);
+            this.TP_Capture.Controls.Add(this.CB_Detail);
+            this.TP_Capture.Controls.Add(this.L_output);
             this.TP_Capture.Controls.Add(this.Status);
             this.TP_Capture.Controls.Add(this.DexBonus);
             this.TP_Capture.Controls.Add(this.BallBonus);
@@ -620,11 +614,39 @@
             this.TP_Capture.Controls.Add(this.label6);
             this.TP_Capture.Location = new System.Drawing.Point(4, 22);
             this.TP_Capture.Name = "TP_Capture";
-            this.TP_Capture.Padding = new System.Windows.Forms.Padding(3);
             this.TP_Capture.Size = new System.Drawing.Size(203, 161);
             this.TP_Capture.TabIndex = 2;
             this.TP_Capture.Text = "Capture";
             this.TP_Capture.UseVisualStyleBackColor = true;
+            // 
+            // SuccessOnly
+            // 
+            this.SuccessOnly.AutoSize = true;
+            this.SuccessOnly.Location = new System.Drawing.Point(80, 13);
+            this.SuccessOnly.Name = "SuccessOnly";
+            this.SuccessOnly.Size = new System.Drawing.Size(91, 17);
+            this.SuccessOnly.TabIndex = 117;
+            this.SuccessOnly.Text = "Success Only";
+            this.SuccessOnly.UseVisualStyleBackColor = true;
+            // 
+            // CB_Detail
+            // 
+            this.CB_Detail.AutoSize = true;
+            this.CB_Detail.Location = new System.Drawing.Point(9, 13);
+            this.CB_Detail.Name = "CB_Detail";
+            this.CB_Detail.Size = new System.Drawing.Size(58, 17);
+            this.CB_Detail.TabIndex = 116;
+            this.CB_Detail.Text = "Details";
+            this.CB_Detail.UseVisualStyleBackColor = true;
+            // 
+            // L_output
+            // 
+            this.L_output.AutoSize = true;
+            this.L_output.Location = new System.Drawing.Point(4, 137);
+            this.L_output.Name = "L_output";
+            this.L_output.Size = new System.Drawing.Size(47, 13);
+            this.L_output.TabIndex = 62;
+            this.L_output.Text = "Chance:";
             // 
             // Status
             // 
@@ -634,9 +656,9 @@
             "G7 SFMT (64bit)",
             "G7 SFMT (32bit)",
             "G6 MT"});
-            this.Status.Location = new System.Drawing.Point(137, 44);
+            this.Status.Location = new System.Drawing.Point(134, 43);
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(60, 21);
+            this.Status.Size = new System.Drawing.Size(55, 21);
             this.Status.TabIndex = 61;
             // 
             // DexBonus
@@ -647,7 +669,7 @@
             "G7 SFMT (64bit)",
             "G7 SFMT (32bit)",
             "G6 MT"});
-            this.DexBonus.Location = new System.Drawing.Point(87, 118);
+            this.DexBonus.Location = new System.Drawing.Point(79, 103);
             this.DexBonus.Name = "DexBonus";
             this.DexBonus.Size = new System.Drawing.Size(65, 21);
             this.DexBonus.TabIndex = 60;
@@ -660,7 +682,7 @@
             "G7 SFMT (64bit)",
             "G7 SFMT (32bit)",
             "G6 MT"});
-            this.BallBonus.Location = new System.Drawing.Point(150, 78);
+            this.BallBonus.Location = new System.Drawing.Point(143, 73);
             this.BallBonus.Name = "BallBonus";
             this.BallBonus.Size = new System.Drawing.Size(47, 21);
             this.BallBonus.TabIndex = 52;
@@ -668,7 +690,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 121);
+            this.label7.Location = new System.Drawing.Point(4, 107);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 59;
@@ -677,7 +699,7 @@
             // Ball
             // 
             this.Ball.AutoSize = true;
-            this.Ball.Location = new System.Drawing.Point(120, 83);
+            this.Ball.Location = new System.Drawing.Point(115, 77);
             this.Ball.Name = "Ball";
             this.Ball.Size = new System.Drawing.Size(24, 13);
             this.Ball.TabIndex = 58;
@@ -686,7 +708,7 @@
             // CatchRate
             // 
             this.CatchRate.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CatchRate.Location = new System.Drawing.Point(73, 79);
+            this.CatchRate.Location = new System.Drawing.Point(69, 72);
             this.CatchRate.Maximum = new decimal(new int[] {
             255,
             0,
@@ -704,7 +726,7 @@
             // L_CatchRate
             // 
             this.L_CatchRate.AutoSize = true;
-            this.L_CatchRate.Location = new System.Drawing.Point(9, 83);
+            this.L_CatchRate.Location = new System.Drawing.Point(4, 77);
             this.L_CatchRate.Name = "L_CatchRate";
             this.L_CatchRate.Size = new System.Drawing.Size(61, 13);
             this.L_CatchRate.TabIndex = 56;
@@ -713,7 +735,7 @@
             // HPMax
             // 
             this.HPMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HPMax.Location = new System.Drawing.Point(89, 44);
+            this.HPMax.Location = new System.Drawing.Point(89, 42);
             this.HPMax.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -732,7 +754,7 @@
             // L_HP
             // 
             this.L_HP.AutoSize = true;
-            this.L_HP.Location = new System.Drawing.Point(9, 49);
+            this.L_HP.Location = new System.Drawing.Point(4, 47);
             this.L_HP.Name = "L_HP";
             this.L_HP.Size = new System.Drawing.Size(22, 13);
             this.L_HP.TabIndex = 53;
@@ -741,7 +763,7 @@
             // HPCurr
             // 
             this.HPCurr.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HPCurr.Location = new System.Drawing.Point(35, 44);
+            this.HPCurr.Location = new System.Drawing.Point(29, 42);
             this.HPCurr.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -760,7 +782,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(77, 49);
+            this.label6.Location = new System.Drawing.Point(74, 47);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(12, 13);
             this.label6.TabIndex = 54;
@@ -859,7 +881,9 @@
         private System.Windows.Forms.Label Ball;
         private System.Windows.Forms.NumericUpDown CatchRate;
         private System.Windows.Forms.Label L_CatchRate;
-        private System.Windows.Forms.RadioButton RB_Capture;
         private System.Windows.Forms.ComboBox Status;
+        private System.Windows.Forms.Label L_output;
+        private System.Windows.Forms.CheckBox CB_Detail;
+        private System.Windows.Forms.CheckBox SuccessOnly;
     }
 }
