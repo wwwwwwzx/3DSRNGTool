@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
+using Pk3DSRNGTool.Controls;
 
 namespace Pk3DSRNGTool.Subforms
 {
@@ -22,8 +23,21 @@ namespace Pk3DSRNGTool.Subforms
             JumpFrame.Maximum =
             StartingFrame.Maximum = MaxResults.Maximum = FuncUtil.MAXFRAME;
             MaxResults.Value = 200000;
+
+            BallBonus.DisplayMember = "Text";
+            BallBonus.ValueMember = "Value";
+            BallBonus.DataSource = new BindingSource(BallBonusList, null);
+
+            DexBonus.DisplayMember = "Text";
+            DexBonus.ValueMember = "Value";
+            DexBonus.DataSource = new BindingSource(DexBonusList, null);
+
+            Status.DisplayMember = "Text";
+            Status.ValueMember = "Value";
+            Status.DataSource = new BindingSource(StatusBonusList, null);
         }
 
+        #region Core
         private List<Frame_Misc> Frames = new List<Frame_Misc>();
         private Misc_Filter filter;
         private void getFilter()
@@ -194,6 +208,18 @@ namespace Pk3DSRNGTool.Subforms
             ulong N = (ulong)Range.Value;
 
             var capture7 = new Capture7();
+            if (Filters.SelectedIndex == 2)
+            {
+                filter.Capture = true;
+                capture7.HPCurr = (uint)HPCurr.Value;
+                capture7.HPMax = (uint)HPMax.Value;
+                capture7.CatchRate = (byte)CatchRate.Value;
+                capture7.StatusBonus = (uint)(int)Status.SelectedValue;
+                capture7.BallBonus = (uint)(int)BallBonus.SelectedValue;
+                capture7.DexBonus = (uint)(int)DexBonus.SelectedValue;
+                capture7.Calc();
+                MessageBox.Show(capture7.CriticalRate.ToString("X2") + "/" + capture7.ShakeRate.ToString("X4"));
+            }
 
             for (int i = 0; i < frame; i++)
                 sfmt.Nextuint();
@@ -210,7 +236,7 @@ namespace Pk3DSRNGTool.Subforms
                 RNGPool.Advance(delay);
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand % N);
-                else if (filter.Capture)
+                if (filter.Capture)
                     f.Crt = capture7.Catch();
 
                 if (!filter.check(f))
@@ -269,15 +295,30 @@ namespace Pk3DSRNGTool.Subforms
             dataGridView1.CurrentCell = null;
             if (Frames.Count > 0) dataGridView1.FirstDisplayedScrollingRowIndex = 0;
         }
+        #endregion
 
+        #region UI Logic
         private void RNG_SelectedIndexChanged(object sender, EventArgs e)
         {
             RB_Random.Checked = true;
-            Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
             RB_Pokerus.Visible = RNG.SelectedIndex != 1;
+            Createtimeline.Checked &= Createtimeline.Enabled = RNG.SelectedIndex == 0;
+            Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
+            EnaDisaTab(TP_Capture, RNG.SelectedIndex == 1);
             RB_Capture.Visible = RNG.SelectedIndex == 1;
-            Createtimeline.Checked &=
-            L_NPC.Visible = NPC.Visible = Createtimeline.Enabled = RNG.SelectedIndex == 0;
+        }
+
+        private void EnaDisaTab(TabPage tab, bool enable)
+        {
+            foreach (Control ctr in tab.Controls)
+            {
+                switch (ctr)
+                {
+                    case NumericUpDown n: n.Enabled = enable; break;
+                    case ComboBox CB: CB.Enabled = enable; break;
+                    case CheckBox cb: cb.Enabled = enable; break;
+                }
+            }
         }
 
         private void Method_CheckedChanged(object sender, EventArgs e)
@@ -306,5 +347,45 @@ namespace Pk3DSRNGTool.Subforms
         {
             JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked;
         }
+
+        private void HP_ValueChanged(object sender, EventArgs e)
+        {
+            if (HPCurr.Value > HPMax.Value)
+                HPCurr.Value = HPMax.Value;
+        }
+        #endregion
+
+        #region Control
+        private static readonly ComboItem[] StatusBonusList = new ComboItem[]
+        {
+            new ComboItem("None", 0x1000),
+            new ComboItem("Poisoned", 0x1800),
+            new ComboItem("Paralyzed", 0x1800),
+            new ComboItem("Burned", 0x1800),
+            new ComboItem("Asleep", 0x2800),
+            new ComboItem("Frozen", 0x2800),
+        };
+        private static readonly ComboItem[] BallBonusList = new ComboItem[]
+        {
+            new ComboItem("x1.0", 0x1000), // Poke
+            new ComboItem("x1.5", 0x1800), // Great Level
+            new ComboItem("x2.0", 0x2000), // Ultra
+            new ComboItem("x3.0", 0x3000), // Past-gen
+            new ComboItem("x3.5", 0x3800), // Net Repeat Dive Dusk
+            new ComboItem("x4.0", 0x4000), // Level Moon Fast Timer
+            new ComboItem("x5.0", 0x5000), // Lure Quick Beast
+            new ComboItem("x8.0", 0x8000), // Level Love Nest
+            new ComboItem("x0.1", 0x019A), // UB
+        };
+        private static readonly ComboItem[] DexBonusList = new ComboItem[]
+        {
+            new ComboItem(">600", 0x2800),
+            new ComboItem("451-600", 0x2000),
+            new ComboItem("301-450", 0x1800),
+            new ComboItem("151-300", 0x1000),
+            new ComboItem("031-150", 0x0800),
+            new ComboItem("<=30", 0x0000),
+        };
+        #endregion
     }
 }

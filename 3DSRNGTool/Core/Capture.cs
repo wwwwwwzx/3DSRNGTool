@@ -17,7 +17,6 @@ namespace Pk3DSRNGTool.Core
     public abstract class Capture
     {
         protected static uint getrand => RNGPool.getrand;
-        private const ulong CritcalFactor = 0x2AAAAAABul; // 1/6
 
         public uint HPMax;
         public uint HPCurr;
@@ -30,17 +29,19 @@ namespace Pk3DSRNGTool.Core
         public byte CriticalRate;
         public ushort ShakeRate = ushort.MaxValue;
 
-        private static uint Multiply(uint A, uint B) => (A * B + 0x800) >> 12;
-        private static double ToDouble(uint A) => (A >> 12) + ((A & 0xFFF) > 0 ? (A & 0xFFF) * 0.000244140625 : 0.0);
+        // To 1/4096
+        private static ulong Multiply(ulong A, uint B) => (A * B + 0x800) >> 12;
+        private static double Round(double A) => Math.Round(A * 4096) / 4096;
 
         public void Calc()
         {
-            uint HPFactor = (uint)(((3 * HPMax - 2 * HPCurr) << 12) + 0.5) * CatchRate;
-            uint AfterBall = Multiply(HPFactor, BallBonus) / HPMax;
-            uint A = StatusBonus == 0x1000 ? AfterBall : Multiply(AfterBall, StatusBonus);
+            ulong HPFactor = ((3 * HPMax - 2 * HPCurr) << 12) * CatchRate;
+            ulong AfterBall = Multiply(HPFactor, BallBonus) / (3 * HPMax);
+            ulong A = StatusBonus == 0x1000 ? AfterBall : Multiply(AfterBall, StatusBonus);
             if (AlwaysCapture = A >= 0xFF000) A = 0xFF000;
-            CriticalRate = (byte)((CritcalFactor * Multiply(A, DexBonus)) >> 34);
-            ShakeRate = (ushort)(65536.0 / Math.Pow(255.0 / ToDouble(A), 0.75) - 0.5);
+            CriticalRate = (byte)Math.Round((Multiply(A, DexBonus) / 4096.0 / 6.0));
+            if (A < 0xFF000)
+                ShakeRate = (ushort)(A == 0 ? 0 : Math.Floor(65536.0 / Round(Math.Pow(Round(255 / (A / 4096.0)), 3.0 / 16))));
         }
 
         public abstract CaptureResult Catch();
