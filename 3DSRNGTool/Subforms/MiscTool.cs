@@ -14,9 +14,13 @@ namespace Pk3DSRNGTool.Subforms
             InitializeComponent();
             RNG.SelectedIndex = Program.mainform.Ver > 4 ? 0 : 3;
             Seed.Value = Program.mainform.globalseed;
+            System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
+                 | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            dgvPropertyInfo.SetValue(dataGridView1, true, null);
             dataGridView1.AutoGenerateColumns = false;
             Range.Maximum = Value.Maximum = uint.MaxValue;
-            StartingFrame.Maximum = FuncUtil.MAXFRAME;
+            StartingFrame.Maximum = MaxResults.Maximum = FuncUtil.MAXFRAME;
+            MaxResults.Value = 200000;
         }
 
         private List<Frame_Misc> Frames = new List<Frame_Misc>();
