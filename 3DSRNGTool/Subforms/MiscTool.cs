@@ -12,13 +12,14 @@ namespace Pk3DSRNGTool.Subforms
         public MiscTool()
         {
             InitializeComponent();
-            RNG.SelectedIndex = Program.mainform.Ver > 4 ? 0 : 3;
+            RNG.SelectedIndex = Program.mainform.Ver > 4 ? 0 : 2;
             Seed.Value = Program.mainform.globalseed;
             System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(dataGridView1, true, null);
             dataGridView1.AutoGenerateColumns = false;
             Range.Maximum = Value.Maximum = uint.MaxValue;
+            JumpFrame.Maximum =
             StartingFrame.Maximum = MaxResults.Maximum = FuncUtil.MAXFRAME;
             MaxResults.Value = 200000;
         }
@@ -43,13 +44,13 @@ namespace Pk3DSRNGTool.Subforms
             Frames.Clear();
             Frames = new List<Frame_Misc>();
             getFilter();
-            Frame_Misc.X64 = RNG.SelectedIndex < 2;
+            Frame_Misc.X64 = RNG.SelectedIndex == 0;
             switch (RNG.SelectedIndex)
             {
-                case 0: Search7(); break;
-                case 1: Search7_Timeline(); break;
-                case 2: Search7_Battle(); break;
-                case 3: Search6(); break;
+                case 0 when !Createtimeline.Checked: Search7(); break;
+                case 0 when Createtimeline.Checked: Search7_Timeline(); break;
+                case 1: Search7_Battle(); break;
+                case 2: Search6(); break;
             }
             AdjustDGVColumns();
             RNGPool.Clear();
@@ -129,12 +130,16 @@ namespace Pk3DSRNGTool.Subforms
             int delay = (int)Delay.Value / 2;
             ulong N = (ulong)Range.Value;
             int frameadvance;
+            int FirstJumpFrame = (int)JumpFrame.Value;
+            FirstJumpFrame = FirstJumpFrame >= frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
 
             FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
 
             for (int i = 0; i < frame; i++)
                 sfmt.Next();
             ModelStatus status = new ModelStatus((byte)(NPC.Value + 1), sfmt);
+            status.raining = Raining.Checked;
+            status.IsBoy = Boy.Checked;
 
             RNGPool.CreateBuffer(sfmt);
 
@@ -146,9 +151,17 @@ namespace Pk3DSRNGTool.Subforms
                 f.realtime = 2 * i;
                 f.status = (int[])status.remain_frame.Clone();
 
-                // USUM v1.1 sub_421E4C
-                if (status.remain_frame[0] == -3 || status.remain_frame[0] == 33)
+                if (frame >= FirstJumpFrame) // Find the first call
+                {
+                    status.fidget_cd = 1;
+                    FirstJumpFrame = int.MaxValue; // Disable this part
+                }
+                if (status.fidget_cd == 1)
                     f.Blink = 1;
+
+                // USUM v1.1 sub_421E4C eyes closed
+                if (status.remain_frame[0] == -3 || status.remain_frame[0] == 33)
+                    f.Blink = 4;
 
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
@@ -245,13 +258,13 @@ namespace Pk3DSRNGTool.Subforms
         {
             dgv_hit.Visible = dgv_status.Visible =
             dgv_clock.Visible = dgv_blink.Visible =
-            dgv_rand64.Visible = RNG.SelectedIndex < 2;
-            dgv_rand32.Visible = RNG.SelectedIndex > 1;
+            dgv_rand64.Visible = RNG.SelectedIndex == 0;
+            dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_capture.Visible = filter.Capture;
             dgv_randn.Visible = filter.Random;
-            dgv_realtime.Visible = RNG.SelectedIndex != 2;
+            dgv_realtime.Visible = RNG.SelectedIndex != 1;
             dataGridView1.DataSource = Frames;
             dataGridView1.CurrentCell = null;
             if (Frames.Count > 0) dataGridView1.FirstDisplayedScrollingRowIndex = 0;
@@ -260,9 +273,11 @@ namespace Pk3DSRNGTool.Subforms
         private void RNG_SelectedIndexChanged(object sender, EventArgs e)
         {
             RB_Random.Checked = true;
-            RB_Pokerus.Visible = RNG.SelectedIndex != 2;
-            L_NPC.Visible = NPC.Visible = RNG.SelectedIndex < 2;
-            RB_Capture.Visible = RNG.SelectedIndex == 2;
+            Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
+            RB_Pokerus.Visible = RNG.SelectedIndex != 1;
+            RB_Capture.Visible = RNG.SelectedIndex == 1;
+            Createtimeline.Checked &=
+            L_NPC.Visible = NPC.Visible = Createtimeline.Enabled = RNG.SelectedIndex == 0;
         }
 
         private void Method_CheckedChanged(object sender, EventArgs e)
@@ -272,10 +287,24 @@ namespace Pk3DSRNGTool.Subforms
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
         {
-            CurrentText.Text = string.Empty;
-            Compare.SelectedIndex = -1;
-            Value.Value = Range.Value = 100;
-            RB_Random.Checked = true;
+            switch (Filters.SelectedIndex)
+            {
+                case 0:
+                    CurrentText.Text = string.Empty;
+                    Compare.SelectedIndex = -1;
+                    Value.Value = Range.Value = 100;
+                    RB_Random.Checked = true;
+                    break;
+                case 1:
+                    Fidget.Checked = false;
+                    JumpFrame.Value = 0;
+                    break;
+            }
+        }
+
+        private void Fidget_CheckedChanged(object sender, EventArgs e)
+        {
+            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked;
         }
     }
 }

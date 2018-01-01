@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
     public class Frame_Misc
     {
         public static bool X64;
-        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★" };
+        private static readonly string[] blinkmarks = { "-", "★", "?", "? ★", "E" };
 
         public int Frame { get; set; }
         public int frameused;

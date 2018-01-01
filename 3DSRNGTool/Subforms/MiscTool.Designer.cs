@@ -59,7 +59,6 @@
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_realtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Filters = new System.Windows.Forms.GroupBox();
             this.RB_Capture = new System.Windows.Forms.RadioButton();
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.Range = new System.Windows.Forms.NumericUpDown();
@@ -70,19 +69,40 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CurrentText = new System.Windows.Forms.TextBox();
             this.B_Calc = new System.Windows.Forms.Button();
+            this.Filters = new System.Windows.Forms.TabControl();
+            this.TP_Misc = new System.Windows.Forms.TabPage();
+            this.TP_Timeline = new System.Windows.Forms.TabPage();
+            this.Createtimeline = new System.Windows.Forms.CheckBox();
+            this.Raining = new System.Windows.Forms.CheckBox();
+            this.Girl = new System.Windows.Forms.RadioButton();
+            this.Boy = new System.Windows.Forms.RadioButton();
+            this.Fidget = new System.Windows.Forms.CheckBox();
+            this.JumpFrame = new System.Windows.Forms.NumericUpDown();
+            this.TP_Capture = new System.Windows.Forms.TabPage();
+            this.L_HP = new System.Windows.Forms.Label();
+            this.HPRemain = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.HPMax = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.Filters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Range)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).BeginInit();
+            this.Filters.SuspendLayout();
+            this.TP_Misc.SuspendLayout();
+            this.TP_Timeline.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
+            this.TP_Capture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HPRemain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPMax)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.L_Delay);
             this.groupBox1.Controls.Add(this.Delay);
             this.groupBox1.Controls.Add(this.L_NPC);
@@ -97,7 +117,7 @@
             this.groupBox1.Controls.Add(this.RNG);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(198, 225);
+            this.groupBox1.Size = new System.Drawing.Size(209, 225);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "RNGInfo";
@@ -127,7 +147,7 @@
             // L_NPC
             // 
             this.L_NPC.AutoSize = true;
-            this.L_NPC.Location = new System.Drawing.Point(101, 188);
+            this.L_NPC.Location = new System.Drawing.Point(117, 188);
             this.L_NPC.Name = "L_NPC";
             this.L_NPC.Size = new System.Drawing.Size(29, 13);
             this.L_NPC.TabIndex = 49;
@@ -136,7 +156,7 @@
             // NPC
             // 
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NPC.Location = new System.Drawing.Point(136, 183);
+            this.NPC.Location = new System.Drawing.Point(152, 183);
             this.NPC.Name = "NPC";
             this.NPC.Size = new System.Drawing.Size(42, 22);
             this.NPC.TabIndex = 48;
@@ -144,9 +164,9 @@
             // MaxResults
             // 
             this.MaxResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaxResults.Location = new System.Drawing.Point(98, 142);
+            this.MaxResults.Location = new System.Drawing.Point(105, 142);
             this.MaxResults.Name = "MaxResults";
-            this.MaxResults.Size = new System.Drawing.Size(80, 22);
+            this.MaxResults.Size = new System.Drawing.Size(89, 22);
             this.MaxResults.TabIndex = 5;
             this.MaxResults.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -162,9 +182,9 @@
             // StartingFrame
             // 
             this.StartingFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartingFrame.Location = new System.Drawing.Point(98, 104);
+            this.StartingFrame.Location = new System.Drawing.Point(105, 104);
             this.StartingFrame.Name = "StartingFrame";
-            this.StartingFrame.Size = new System.Drawing.Size(80, 22);
+            this.StartingFrame.Size = new System.Drawing.Size(89, 22);
             this.StartingFrame.TabIndex = 1;
             this.StartingFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -180,7 +200,7 @@
             // Seed
             // 
             this.Seed.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Location = new System.Drawing.Point(111, 66);
+            this.Seed.Location = new System.Drawing.Point(127, 66);
             this.Seed.Mask = "AAAAAAAA";
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(67, 23);
@@ -213,10 +233,9 @@
             this.RNG.FormattingEnabled = true;
             this.RNG.Items.AddRange(new object[] {
             "G7 SFMT (64bit)",
-            "G7 SFMT (64bit) - T",
             "G7 SFMT (32bit)",
             "G6 MT"});
-            this.RNG.Location = new System.Drawing.Point(74, 29);
+            this.RNG.Location = new System.Drawing.Point(90, 29);
             this.RNG.Name = "RNG";
             this.RNG.Size = new System.Drawing.Size(104, 21);
             this.RNG.TabIndex = 1;
@@ -243,14 +262,14 @@
             this.dgv_rand64,
             this.dgv_realtime,
             this.dgv_status});
-            this.dataGridView1.Location = new System.Drawing.Point(216, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(227, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 18;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(456, 456);
+            this.dataGridView1.Size = new System.Drawing.Size(445, 456);
             this.dataGridView1.TabIndex = 1;
             // 
             // dgv_frame
@@ -341,7 +360,7 @@
             // dgv_realtime
             // 
             this.dgv_realtime.DataPropertyName = "Realtime";
-            this.dgv_realtime.HeaderText = "Real Time";
+            this.dgv_realtime.HeaderText = "Time";
             this.dgv_realtime.Name = "dgv_realtime";
             this.dgv_realtime.ReadOnly = true;
             this.dgv_realtime.Width = 80;
@@ -357,28 +376,10 @@
             this.dgv_status.Visible = false;
             this.dgv_status.Width = 40;
             // 
-            // Filters
-            // 
-            this.Filters.Controls.Add(this.RB_Capture);
-            this.Filters.Controls.Add(this.B_ResetFrame);
-            this.Filters.Controls.Add(this.Range);
-            this.Filters.Controls.Add(this.Value);
-            this.Filters.Controls.Add(this.Compare);
-            this.Filters.Controls.Add(this.RB_Random);
-            this.Filters.Controls.Add(this.RB_Pokerus);
-            this.Filters.Controls.Add(this.label5);
-            this.Filters.Controls.Add(this.CurrentText);
-            this.Filters.Location = new System.Drawing.Point(12, 243);
-            this.Filters.Name = "Filters";
-            this.Filters.Size = new System.Drawing.Size(198, 196);
-            this.Filters.TabIndex = 52;
-            this.Filters.TabStop = false;
-            this.Filters.Text = "Filters";
-            // 
             // RB_Capture
             // 
             this.RB_Capture.AutoSize = true;
-            this.RB_Capture.Location = new System.Drawing.Point(104, 134);
+            this.RB_Capture.Location = new System.Drawing.Point(98, 127);
             this.RB_Capture.Name = "RB_Capture";
             this.RB_Capture.Size = new System.Drawing.Size(62, 17);
             this.RB_Capture.TabIndex = 102;
@@ -389,7 +390,7 @@
             // B_ResetFrame
             // 
             this.B_ResetFrame.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
-            this.B_ResetFrame.Location = new System.Drawing.Point(165, 24);
+            this.B_ResetFrame.Location = new System.Drawing.Point(194, 243);
             this.B_ResetFrame.Name = "B_ResetFrame";
             this.B_ResetFrame.Size = new System.Drawing.Size(27, 25);
             this.B_ResetFrame.TabIndex = 101;
@@ -399,7 +400,7 @@
             // Range
             // 
             this.Range.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Range.Location = new System.Drawing.Point(98, 65);
+            this.Range.Location = new System.Drawing.Point(92, 58);
             this.Range.Name = "Range";
             this.Range.Size = new System.Drawing.Size(71, 22);
             this.Range.TabIndex = 57;
@@ -412,7 +413,7 @@
             // Value
             // 
             this.Value.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Value.Location = new System.Drawing.Point(98, 97);
+            this.Value.Location = new System.Drawing.Point(92, 90);
             this.Value.Name = "Value";
             this.Value.Size = new System.Drawing.Size(71, 22);
             this.Value.TabIndex = 52;
@@ -430,7 +431,7 @@
             "<",
             ">=",
             "="});
-            this.Compare.Location = new System.Drawing.Point(17, 96);
+            this.Compare.Location = new System.Drawing.Point(11, 89);
             this.Compare.Name = "Compare";
             this.Compare.Size = new System.Drawing.Size(54, 21);
             this.Compare.TabIndex = 54;
@@ -439,7 +440,7 @@
             // 
             this.RB_Random.AutoSize = true;
             this.RB_Random.Checked = true;
-            this.RB_Random.Location = new System.Drawing.Point(16, 65);
+            this.RB_Random.Location = new System.Drawing.Point(10, 58);
             this.RB_Random.Name = "RB_Random";
             this.RB_Random.Size = new System.Drawing.Size(76, 17);
             this.RB_Random.TabIndex = 56;
@@ -451,7 +452,7 @@
             // RB_Pokerus
             // 
             this.RB_Pokerus.AutoSize = true;
-            this.RB_Pokerus.Location = new System.Drawing.Point(17, 134);
+            this.RB_Pokerus.Location = new System.Drawing.Point(11, 127);
             this.RB_Pokerus.Name = "RB_Pokerus";
             this.RB_Pokerus.Size = new System.Drawing.Size(64, 17);
             this.RB_Pokerus.TabIndex = 55;
@@ -462,7 +463,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 30);
+            this.label5.Location = new System.Drawing.Point(8, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 52;
@@ -471,28 +472,207 @@
             // CurrentText
             // 
             this.CurrentText.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentText.Location = new System.Drawing.Point(69, 27);
+            this.CurrentText.Location = new System.Drawing.Point(63, 20);
             this.CurrentText.Name = "CurrentText";
-            this.CurrentText.Size = new System.Drawing.Size(90, 22);
+            this.CurrentText.Size = new System.Drawing.Size(127, 22);
             this.CurrentText.TabIndex = 54;
             // 
             // B_Calc
             // 
-            this.B_Calc.Location = new System.Drawing.Point(135, 445);
+            this.B_Calc.Location = new System.Drawing.Point(146, 445);
             this.B_Calc.Name = "B_Calc";
-            this.B_Calc.Size = new System.Drawing.Size(75, 23);
+            this.B_Calc.Size = new System.Drawing.Size(75, 25);
             this.B_Calc.TabIndex = 53;
             this.B_Calc.Text = "Search";
             this.B_Calc.UseVisualStyleBackColor = true;
             this.B_Calc.Click += new System.EventHandler(this.B_Calc_Click);
+            // 
+            // Filters
+            // 
+            this.Filters.Controls.Add(this.TP_Misc);
+            this.Filters.Controls.Add(this.TP_Timeline);
+            this.Filters.Controls.Add(this.TP_Capture);
+            this.Filters.Location = new System.Drawing.Point(10, 252);
+            this.Filters.Name = "Filters";
+            this.Filters.SelectedIndex = 0;
+            this.Filters.Size = new System.Drawing.Size(211, 187);
+            this.Filters.TabIndex = 54;
+            // 
+            // TP_Misc
+            // 
+            this.TP_Misc.Controls.Add(this.RB_Capture);
+            this.TP_Misc.Controls.Add(this.CurrentText);
+            this.TP_Misc.Controls.Add(this.Range);
+            this.TP_Misc.Controls.Add(this.label5);
+            this.TP_Misc.Controls.Add(this.Value);
+            this.TP_Misc.Controls.Add(this.RB_Pokerus);
+            this.TP_Misc.Controls.Add(this.Compare);
+            this.TP_Misc.Controls.Add(this.RB_Random);
+            this.TP_Misc.Location = new System.Drawing.Point(4, 22);
+            this.TP_Misc.Name = "TP_Misc";
+            this.TP_Misc.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Misc.Size = new System.Drawing.Size(203, 161);
+            this.TP_Misc.TabIndex = 0;
+            this.TP_Misc.Text = "Misc";
+            this.TP_Misc.UseVisualStyleBackColor = true;
+            // 
+            // TP_Timeline
+            // 
+            this.TP_Timeline.Controls.Add(this.Createtimeline);
+            this.TP_Timeline.Controls.Add(this.Raining);
+            this.TP_Timeline.Controls.Add(this.Girl);
+            this.TP_Timeline.Controls.Add(this.Boy);
+            this.TP_Timeline.Controls.Add(this.Fidget);
+            this.TP_Timeline.Controls.Add(this.JumpFrame);
+            this.TP_Timeline.Location = new System.Drawing.Point(4, 22);
+            this.TP_Timeline.Name = "TP_Timeline";
+            this.TP_Timeline.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Timeline.Size = new System.Drawing.Size(203, 161);
+            this.TP_Timeline.TabIndex = 1;
+            this.TP_Timeline.Text = "Timeline";
+            this.TP_Timeline.UseVisualStyleBackColor = true;
+            // 
+            // Createtimeline
+            // 
+            this.Createtimeline.AutoSize = true;
+            this.Createtimeline.Location = new System.Drawing.Point(7, 20);
+            this.Createtimeline.Name = "Createtimeline";
+            this.Createtimeline.Size = new System.Drawing.Size(99, 17);
+            this.Createtimeline.TabIndex = 115;
+            this.Createtimeline.Text = "Create Timeline";
+            this.Createtimeline.UseVisualStyleBackColor = true;
+            this.Createtimeline.CheckedChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // Raining
+            // 
+            this.Raining.AutoSize = true;
+            this.Raining.Location = new System.Drawing.Point(7, 106);
+            this.Raining.Name = "Raining";
+            this.Raining.Size = new System.Drawing.Size(62, 17);
+            this.Raining.TabIndex = 114;
+            this.Raining.Text = "Raining";
+            this.Raining.UseVisualStyleBackColor = true;
+            // 
+            // Girl
+            // 
+            this.Girl.AutoSize = true;
+            this.Girl.Location = new System.Drawing.Point(145, 73);
+            this.Girl.Name = "Girl";
+            this.Girl.Size = new System.Drawing.Size(40, 17);
+            this.Girl.TabIndex = 113;
+            this.Girl.Text = "Girl";
+            this.Girl.UseVisualStyleBackColor = true;
+            this.Girl.Visible = false;
+            // 
+            // Boy
+            // 
+            this.Boy.AutoSize = true;
+            this.Boy.Checked = true;
+            this.Boy.Location = new System.Drawing.Point(145, 50);
+            this.Boy.Name = "Boy";
+            this.Boy.Size = new System.Drawing.Size(43, 17);
+            this.Boy.TabIndex = 112;
+            this.Boy.TabStop = true;
+            this.Boy.Text = "Boy";
+            this.Boy.UseVisualStyleBackColor = true;
+            this.Boy.Visible = false;
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(7, 62);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
+            this.Fidget.TabIndex = 111;
+            this.Fidget.Text = "Fidget";
+            this.Fidget.UseVisualStyleBackColor = true;
+            this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            // 
+            // JumpFrame
+            // 
+            this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JumpFrame.Location = new System.Drawing.Point(62, 57);
+            this.JumpFrame.Name = "JumpFrame";
+            this.JumpFrame.Size = new System.Drawing.Size(76, 22);
+            this.JumpFrame.TabIndex = 110;
+            this.JumpFrame.Visible = false;
+            // 
+            // TP_Capture
+            // 
+            this.TP_Capture.Controls.Add(this.HPMax);
+            this.TP_Capture.Controls.Add(this.label6);
+            this.TP_Capture.Controls.Add(this.L_HP);
+            this.TP_Capture.Controls.Add(this.HPRemain);
+            this.TP_Capture.Location = new System.Drawing.Point(4, 22);
+            this.TP_Capture.Name = "TP_Capture";
+            this.TP_Capture.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Capture.Size = new System.Drawing.Size(203, 161);
+            this.TP_Capture.TabIndex = 2;
+            this.TP_Capture.Text = "Capture";
+            this.TP_Capture.UseVisualStyleBackColor = true;
+            // 
+            // L_HP
+            // 
+            this.L_HP.AutoSize = true;
+            this.L_HP.Location = new System.Drawing.Point(21, 21);
+            this.L_HP.Name = "L_HP";
+            this.L_HP.Size = new System.Drawing.Size(22, 13);
+            this.L_HP.TabIndex = 53;
+            this.L_HP.Text = "HP";
+            // 
+            // HPRemain
+            // 
+            this.HPRemain.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPRemain.Location = new System.Drawing.Point(61, 16);
+            this.HPRemain.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.HPRemain.Name = "HPRemain";
+            this.HPRemain.Size = new System.Drawing.Size(49, 22);
+            this.HPRemain.TabIndex = 52;
+            this.HPRemain.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(116, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(12, 13);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "/";
+            // 
+            // HPMax
+            // 
+            this.HPMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPMax.Location = new System.Drawing.Point(134, 16);
+            this.HPMax.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.HPMax.Name = "HPMax";
+            this.HPMax.Size = new System.Drawing.Size(49, 22);
+            this.HPMax.TabIndex = 55;
+            this.HPMax.Value = new decimal(new int[] {
+            208,
+            0,
+            0,
+            0});
             // 
             // MiscTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 482);
-            this.Controls.Add(this.B_Calc);
+            this.Controls.Add(this.B_ResetFrame);
             this.Controls.Add(this.Filters);
+            this.Controls.Add(this.B_Calc);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(700, 520);
@@ -505,10 +685,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.Filters.ResumeLayout(false);
-            this.Filters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Range)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).EndInit();
+            this.Filters.ResumeLayout(false);
+            this.TP_Misc.ResumeLayout(false);
+            this.TP_Misc.PerformLayout();
+            this.TP_Timeline.ResumeLayout(false);
+            this.TP_Timeline.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
+            this.TP_Capture.ResumeLayout(false);
+            this.TP_Capture.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HPRemain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPMax)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,7 +717,6 @@
         private System.Windows.Forms.NumericUpDown Delay;
         private System.Windows.Forms.Label L_NPC;
         private System.Windows.Forms.NumericUpDown NPC;
-        private System.Windows.Forms.GroupBox Filters;
         private System.Windows.Forms.Button B_Calc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox CurrentText;
@@ -540,6 +727,15 @@
         private System.Windows.Forms.NumericUpDown Range;
         private System.Windows.Forms.Button B_ResetFrame;
         private System.Windows.Forms.RadioButton RB_Capture;
+        private System.Windows.Forms.TabControl Filters;
+        private System.Windows.Forms.TabPage TP_Misc;
+        private System.Windows.Forms.TabPage TP_Timeline;
+        private System.Windows.Forms.TabPage TP_Capture;
+        private System.Windows.Forms.RadioButton Girl;
+        private System.Windows.Forms.RadioButton Boy;
+        private System.Windows.Forms.CheckBox Fidget;
+        private System.Windows.Forms.NumericUpDown JumpFrame;
+        private System.Windows.Forms.CheckBox Raining;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
@@ -551,5 +747,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
+        private System.Windows.Forms.CheckBox Createtimeline;
+        private System.Windows.Forms.NumericUpDown HPMax;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label L_HP;
+        private System.Windows.Forms.NumericUpDown HPRemain;
     }
 }
