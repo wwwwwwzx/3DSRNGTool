@@ -85,6 +85,7 @@
       <DependentUpon>PopupComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StringItem.cs" />
+    <Compile Include="Core\Capture.cs" />
     <Compile Include="Core\EncounterArea.cs" />
     <Compile Include="Core\IDFilters.cs" />
     <Compile Include="Core\IDResult.cs" />
