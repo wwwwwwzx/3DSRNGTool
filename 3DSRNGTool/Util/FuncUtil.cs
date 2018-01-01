@@ -49,9 +49,12 @@ namespace Pk3DSRNGTool
             ulong rand;
             for (int i = 0; i < min - 2; i++)
                 st.Next();
-            if ((int)(st.Nextulong() & 0x7F) == 0)
+            if (min < 2)
+                for (int i = 0; i < min; i++)
+                    st.Next();
+            else if ((st.Nextulong() & 0x7F) == 0)
                 blinkflaglist[0] = (byte)(st.Nextulong() % 3 == 0 ? 36 : 30);
-            else if ((int)(st.Nextulong() & 0x7F) == 0)
+            else if ((st.Nextulong() & 0x7F) == 0)
                 blink_flag = 1;
             for (int i = min; i <= max; i++)
             {
@@ -62,7 +65,7 @@ namespace Pk3DSRNGTool
                     blinkflaglist[++i - min] = (byte)(rand % 3 == 0 ? 36 : 30);
                     blink_flag = 0; st.Next(); // Reset and advance
                 }
-                if ((int)(rand & 0x7F) == 0)
+                if ((rand & 0x7F) == 0)
                     blink_flag = blinkflaglist[i - min] = 1;
             }
         }
@@ -104,6 +107,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Misc
+        public const int MAXFRAME = 1000000000;
         public static int[] CalcFrame(uint seed, int min, int max, byte ModelNumber, bool fidget = false, bool raining = false)
         {
             if (min > max)

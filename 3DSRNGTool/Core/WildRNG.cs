@@ -11,10 +11,12 @@
         public byte[] StaticMagnetSlot;
         public ulong NStaticMagnetSlot;
         public byte CuteCharmGender;
+        public byte ModifiedLevel;
 
         protected bool SynchroPass;
         protected bool CuteCharmPass;
         protected bool StaticMagnetPass;
+        protected bool LevelModifierPass;
         
         public byte[] SlotSplitter;
         public int[] SpecForm;

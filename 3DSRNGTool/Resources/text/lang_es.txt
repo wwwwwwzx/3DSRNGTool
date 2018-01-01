@@ -86,6 +86,7 @@ ShinyOnly = Solo Variocolor
 SafeFOnly = Solo Safe F
 BlinkFOnly = Solo Blink F
 ShowStats = Mostrar Estadísticas
+ShinyRemind = Shiny Remind
 ---
 RNGInfo = RNG Info
 B_Search = Calcular

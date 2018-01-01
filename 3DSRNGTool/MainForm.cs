@@ -63,6 +63,8 @@ namespace Pk3DSRNGTool
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
+            JumpFrame.Maximum = TargetFrame.Maximum =
+            Frame_min.Maximum = Frame_max.Maximum = TimeSpan.Maximum = FuncUtil.MAXFRAME;
 
             Seed.Value = (uint)(Properties.Settings.Default.Seed);
             var LastGameversion = Properties.Settings.Default.GameVersion;
@@ -435,7 +437,7 @@ namespace Pk3DSRNGTool
                 BiteChance.Value = SuctionCups ? 100 : 50;
                 BiteChance.Enabled = !SuctionCups;
             }
-            else
+            else if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
@@ -753,6 +755,7 @@ namespace Pk3DSRNGTool
             Frame_min.Value = FuncUtil.getstartingframe(Gameversion.SelectedIndex, MainRNGEgg.Checked ? 0 : Method);
             TargetFrame.Value = 5000;
             Frame_max.Value = 50000;
+            TimeSpan.Value = 3600;
             if (0 == Method || Method == 2)
                 Poke_SelectedIndexChanged(null, null);
             JumpFrame.Value = 0;
@@ -1290,12 +1293,14 @@ namespace Pk3DSRNGTool
         {
             WildRNG setting = Gen6 ? new Wild6() : (WildRNG)new Wild7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
-            setting.Static = LeadAbility.SelectedIndex == (int)Lead.Static;
-            setting.Magnet = LeadAbility.SelectedIndex == (int)Lead.MagnetPull;
-            if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmF)
-                setting.CuteCharmGender = 1;
-            else if (LeadAbility.SelectedIndex == (int)Lead.CuteCharmM)
-                setting.CuteCharmGender = 2;
+            switch((Lead)LeadAbility.SelectedIndex)
+            {
+                case Lead.Static: setting.Static = true; break;
+                case Lead.MagnetPull: setting.Magnet = true; break;
+                case Lead.CuteCharmF: setting.CuteCharmGender = 1; break;
+                case Lead.CuteCharmM: setting.CuteCharmGender = 2; break;
+                case Lead.PressureHustleSpirit: setting.ModifiedLevel = 1; break;
+            }
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
@@ -1791,6 +1796,9 @@ namespace Pk3DSRNGTool
             new Subforms.ProfileView(null, true).ShowDialog();
             RefreshProfile();
         }
+        
+        private void MiscRNGTool_Click(object sender, EventArgs e) 
+            => new Subforms.MiscTool().Show();
         #endregion
     }
 }

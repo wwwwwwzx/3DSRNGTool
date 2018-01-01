@@ -86,6 +86,7 @@ ShinyOnly = 仅异色帧
 SafeFOnly = 仅准确帧
 BlinkFOnly = 仅眨眼帧
 ShowStats = 显示能力值
+ShinyRemind = 闪数提醒
 ---
 RNGInfo = 乱数信息
 B_Search = 检索

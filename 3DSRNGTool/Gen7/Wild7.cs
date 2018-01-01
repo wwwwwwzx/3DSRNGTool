@@ -25,12 +25,14 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
 
-        private void VerifyLead()
+        // USUM v1.1 sub_3A7FE0
+        private void CheckLeadAbility()
         {
             var rand100 = getrand % 100;
             SynchroPass = rand100 >= 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 >= 50;
+            LevelModifierPass = ModifiedLevel != 0 && rand100 >= 50;
         }
 
         public override void Delay() => RNGPool.WildDelay7();
@@ -56,10 +58,11 @@ namespace Pk3DSRNGTool
 
             if (NormalSlot) // Normal wild
             {
-                VerifyLead();
+                CheckLeadAbility();
                 rt.Synchronize = SynchroPass;
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
+                if (LevelModifierPass) rt.Level = ModifiedLevel;
                 Advance(1);
                 if (IsMinior) Advance(1);
             }
@@ -144,13 +147,12 @@ namespace Pk3DSRNGTool
             StaticMagnetSlot = smslot.Select(s => (byte)s).ToArray();
             if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
                 Static = Magnet = false;
+            if (ModifiedLevel != 0)
+                ModifiedLevel = Levelmax;
             if (UB) IV3[0] = true; // For UB Template
         }
 
-        private byte getsmslot(ulong rand)
-        {
-            return slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
-        }
+        private byte getsmslot(ulong rand) => slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
 
         private string getitemstr(int rand)
         {

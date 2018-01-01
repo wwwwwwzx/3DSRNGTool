@@ -120,6 +120,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.M_NTRHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Option = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Profile = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Language = new System.Windows.Forms.ToolStripMenuItem();
@@ -414,6 +415,7 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.ShinyRemind = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -1110,7 +1112,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(116, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1123,9 +1125,10 @@
             this.M_Gen6MainSeedFinder,
             this.toolStripSeparator2,
             this.M_NTRHelper,
-            this.M_KeyBV});
+            this.M_KeyBV,
+            this.MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(48, 20);
+            this.M_Tool.Size = new System.Drawing.Size(47, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -1172,6 +1175,13 @@
             this.M_KeyBV.Size = new System.Drawing.Size(195, 22);
             this.M_KeyBV.Text = "KeyBV";
             this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
+            // 
+            // MiscRNGTool
+            // 
+            this.MiscRNGTool.Name = "MiscRNGTool";
+            this.MiscRNGTool.Size = new System.Drawing.Size(195, 22);
+            this.MiscRNGTool.Text = "Misc. RNG Tool";
+            this.MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
             // 
             // M_Option
             // 
@@ -2335,6 +2345,7 @@
             // LeadAbility
             // 
             this.LeadAbility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LeadAbility.DropDownWidth = 150;
             this.LeadAbility.Location = new System.Drawing.Point(57, 192);
             this.LeadAbility.Name = "LeadAbility";
             this.LeadAbility.Size = new System.Drawing.Size(88, 21);
@@ -3207,19 +3218,9 @@
             0,
             0});
             this.TargetFrame.Location = new System.Drawing.Point(82, 91);
-            this.TargetFrame.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.TargetFrame.Name = "TargetFrame";
             this.TargetFrame.Size = new System.Drawing.Size(73, 22);
             this.TargetFrame.TabIndex = 97;
-            this.TargetFrame.Value = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
             this.TargetFrame.ValueChanged += new System.EventHandler(this.TargetFrame_ValueChanged);
             // 
             // RB_EggShortest
@@ -3521,19 +3522,9 @@
             // 
             this.TimeSpan.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeSpan.Location = new System.Drawing.Point(133, 208);
-            this.TimeSpan.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             this.TimeSpan.Name = "TimeSpan";
             this.TimeSpan.Size = new System.Drawing.Size(72, 22);
             this.TimeSpan.TabIndex = 94;
-            this.TimeSpan.Value = new decimal(new int[] {
-            600,
-            0,
-            0,
-            0});
             // 
             // RB_FrameRange
             // 
@@ -3573,21 +3564,11 @@
             this.Frame_max.Name = "Frame_max";
             this.Frame_max.Size = new System.Drawing.Size(75, 22);
             this.Frame_max.TabIndex = 41;
-            this.Frame_max.Value = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
             // 
             // Frame_min
             // 
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(16, 52);
-            this.Frame_min.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.Frame_min.Name = "Frame_min";
             this.Frame_min.Size = new System.Drawing.Size(75, 22);
             this.Frame_min.TabIndex = 40;
@@ -3680,11 +3661,6 @@
             // 
             this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JumpFrame.Location = new System.Drawing.Point(85, 199);
-            this.JumpFrame.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
             this.JumpFrame.Name = "JumpFrame";
             this.JumpFrame.Size = new System.Drawing.Size(75, 22);
             this.JumpFrame.TabIndex = 102;
@@ -3916,6 +3892,7 @@
             // 
             // Filters
             // 
+            this.Filters.Controls.Add(this.ShinyRemind);
             this.Filters.Controls.Add(this.Filter_Lv);
             this.Filters.Controls.Add(this.L_S);
             this.Filters.Controls.Add(this.L_C);
@@ -4487,7 +4464,7 @@
             // ShowStats
             // 
             this.ShowStats.AutoSize = true;
-            this.ShowStats.Location = new System.Drawing.Point(194, 248);
+            this.ShowStats.Location = new System.Drawing.Point(193, 248);
             this.ShowStats.Name = "ShowStats";
             this.ShowStats.Size = new System.Drawing.Size(86, 17);
             this.ShowStats.TabIndex = 75;
@@ -4885,6 +4862,17 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // ShinyRemind
+            // 
+            this.ShinyRemind.AutoSize = true;
+            this.ShinyRemind.Location = new System.Drawing.Point(193, 221);
+            this.ShinyRemind.Name = "ShinyRemind";
+            this.ShinyRemind.Size = new System.Drawing.Size(74, 17);
+            this.ShinyRemind.TabIndex = 101;
+            this.ShinyRemind.Text = "闪数提醒";
+            this.ShinyRemind.UseVisualStyleBackColor = true;
+            this.ShinyRemind.Visible = false;
             // 
             // MainForm
             // 
@@ -5395,6 +5383,8 @@
         private System.Windows.Forms.Label L_BiteChance;
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
+        private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
+        private System.Windows.Forms.CheckBox ShinyRemind;
     }
 }
 

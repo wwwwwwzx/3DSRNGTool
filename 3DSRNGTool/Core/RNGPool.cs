@@ -12,6 +12,8 @@ namespace Pk3DSRNGTool.Core
         private static int Head => Tail == BufferSize - 1 ? 0 : Tail + 1;
         public static uint getrand => RandList[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
         public static ulong getrand64 => RandList64[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
+        public static uint getcurrent => RandList[Head];
+        public static ulong getcurrent64 => RandList64[Head];
 
         public static int index
         {
@@ -53,11 +55,11 @@ namespace Pk3DSRNGTool.Core
             RNGResult.IsPokemon = true;
         }
 
-        public static void CreateBuffer(IRNG rng, int buffersize = 5000)
+        public static void CreateBuffer(IRNG rng, int buffersize = 5000, bool AutoCheck = true)
         {
             BufferSize = buffersize;
             Tail = buffersize - 1;
-            if (rng is IRNG64 rng64)
+            if (AutoCheck && rng is IRNG64 rng64)
             {
                 RandList64 = new ulong[buffersize];
                 for (int i = 0; i < buffersize; i++)
@@ -73,9 +75,9 @@ namespace Pk3DSRNGTool.Core
             }
         }
 
-        public static void AddNext(IRNG rng)
+        public static void AddNext(IRNG rng, bool AutoCheck = true)
         {
-            if (rng is IRNG64 rng64)
+            if (AutoCheck && rng is IRNG64 rng64)
             {
                 RandList64[Head] = rng64.Nextulong();
                 if (++Tail == BufferSize) Tail = 0;

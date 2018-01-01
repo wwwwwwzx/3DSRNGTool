@@ -84,6 +84,7 @@ ShinyOnly = 色違いのみ
 SafeFOnly = Safe F Only
 BlinkFOnly = まばたきのみ
 ShowStats = 実数値を表示
+ShinyRemind = 色違注意
 ---
 RNGInfo = 検索範囲
 B_Search = 計算

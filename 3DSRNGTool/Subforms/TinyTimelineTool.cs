@@ -20,6 +20,9 @@ namespace Pk3DSRNGTool
             Type3.SelectedIndex =
             Type2.SelectedIndex =
             Type1.SelectedIndex = 0;
+            Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = Frame_max.Maximum = FuncUtil.MAXFRAME;
+            Frame1.Value = Frame2.Value = Frame3.Value = 500;
+            Frame_max.Value = 100000;
         }
         public void UpdateTypeComboBox(int[] type)
         {
