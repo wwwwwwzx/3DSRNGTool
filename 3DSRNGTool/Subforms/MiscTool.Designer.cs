@@ -37,8 +37,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.L_Delay = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
-            this.L_NPC = new System.Windows.Forms.Label();
-            this.NPC = new System.Windows.Forms.NumericUpDown();
             this.MaxResults = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.StartingFrame = new System.Windows.Forms.NumericUpDown();
@@ -47,6 +45,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RNG = new System.Windows.Forms.ComboBox();
+            this.L_NPC = new System.Windows.Forms.Label();
+            this.NPC = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dgv_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_hit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,9 +94,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Range)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).BeginInit();
@@ -115,8 +115,6 @@
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.L_Delay);
             this.groupBox1.Controls.Add(this.Delay);
-            this.groupBox1.Controls.Add(this.L_NPC);
-            this.groupBox1.Controls.Add(this.NPC);
             this.groupBox1.Controls.Add(this.MaxResults);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.StartingFrame);
@@ -153,23 +151,6 @@
             this.Delay.Name = "Delay";
             this.Delay.Size = new System.Drawing.Size(49, 22);
             this.Delay.TabIndex = 50;
-            // 
-            // L_NPC
-            // 
-            this.L_NPC.AutoSize = true;
-            this.L_NPC.Location = new System.Drawing.Point(117, 188);
-            this.L_NPC.Name = "L_NPC";
-            this.L_NPC.Size = new System.Drawing.Size(29, 13);
-            this.L_NPC.TabIndex = 49;
-            this.L_NPC.Text = "NPC";
-            // 
-            // NPC
-            // 
-            this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NPC.Location = new System.Drawing.Point(152, 183);
-            this.NPC.Name = "NPC";
-            this.NPC.Size = new System.Drawing.Size(42, 22);
-            this.NPC.TabIndex = 48;
             // 
             // MaxResults
             // 
@@ -250,6 +231,23 @@
             this.RNG.Size = new System.Drawing.Size(104, 21);
             this.RNG.TabIndex = 1;
             this.RNG.SelectedIndexChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // L_NPC
+            // 
+            this.L_NPC.AutoSize = true;
+            this.L_NPC.Location = new System.Drawing.Point(115, 22);
+            this.L_NPC.Name = "L_NPC";
+            this.L_NPC.Size = new System.Drawing.Size(29, 13);
+            this.L_NPC.TabIndex = 49;
+            this.L_NPC.Text = "NPC";
+            // 
+            // NPC
+            // 
+            this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NPC.Location = new System.Drawing.Point(150, 17);
+            this.NPC.Name = "NPC";
+            this.NPC.Size = new System.Drawing.Size(42, 22);
+            this.NPC.TabIndex = 48;
             // 
             // dataGridView1
             // 
@@ -519,7 +517,9 @@
             // 
             this.TP_Timeline.Controls.Add(this.Createtimeline);
             this.TP_Timeline.Controls.Add(this.Raining);
+            this.TP_Timeline.Controls.Add(this.L_NPC);
             this.TP_Timeline.Controls.Add(this.Girl);
+            this.TP_Timeline.Controls.Add(this.NPC);
             this.TP_Timeline.Controls.Add(this.Boy);
             this.TP_Timeline.Controls.Add(this.Fidget);
             this.TP_Timeline.Controls.Add(this.JumpFrame);
@@ -804,9 +804,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Range)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).EndInit();
