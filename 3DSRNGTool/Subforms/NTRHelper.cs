@@ -139,7 +139,7 @@ namespace Pk3DSRNGTool
         private int delaylevel => 5 - (int)Speed.Value;
         private int Delay1 => 500 + 100 * delaylevel;
         private int Delay2 => 3800 + 200 * delaylevel;
-        private int Delay3 => 2200 + 100 * delaylevel;
+        private int Delay3 => 2100 + 100 * delaylevel;
         private int Delay4 => 5000 + 200 * delaylevel;
         private int Delay5 => 1500 + 100 * delaylevel;
 
@@ -148,8 +148,8 @@ namespace Pk3DSRNGTool
             int CurrFrame = (int)StartFrame.Value;
             while (Botting && CurrFrame < (int)StopFrame.Value)
             {
-                // Input "!"
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed";
+                // Keyboard Input
+                ntrclient.TouchCenter(); L_NTRLog.Text = "Character input";
                 await Task.Delay(Delay1);
                 // Confirm
                 ntrclient.Confirm(JPN.Checked); L_NTRLog.Text = "Enter pressed";
@@ -169,13 +169,13 @@ namespace Pk3DSRNGTool
             {
                 // Choose gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 1";
-                await Task.Delay(Delay1);
+                await Task.Delay(Delay5);
                 // Confirm gender
                 ntrclient.PressA(); L_NTRLog.Text = "A pressed - 2";
                 await Task.Delay(Delay5);
                 StartFrame.Value = ++CurrFrame;
-                // Input "!"
-                ntrclient.PressA(); L_NTRLog.Text = "A pressed - 3";
+                // Keyboard Input
+                ntrclient.TouchCenter(); L_NTRLog.Text = "Character input";
                 await Task.Delay(Delay1);
                 // Dialogue-1 
                 ntrclient.Confirm(JPN.Checked); L_NTRLog.Text = "Enter pressed";

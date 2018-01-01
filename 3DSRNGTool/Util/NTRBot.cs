@@ -27,6 +27,7 @@ namespace Pk3DSRNGTool
         private const uint TouchscrOff = 0x10DF24;
         private const uint touchEnter_U = 0x01707C70;
         private const uint touchEnter_J = 0x01E30D60;
+        private const uint touchCenter = 0x01800800;
         private const uint noTouch = 0x02000000;
 
         private int Buttondelay => 200;
@@ -92,6 +93,7 @@ namespace Pk3DSRNGTool
         public void PressA() => QuickButton(keyA);
         public void PressB() => QuickButton(keyB);
         public void PressStart() => QuickButton(keyStart);
+        public void TouchCenter() => QuickTouch(touchCenter);
         public void Confirm(bool JP) => QuickTouch(JP ? touchEnter_J : touchEnter_U);
     }
 }
