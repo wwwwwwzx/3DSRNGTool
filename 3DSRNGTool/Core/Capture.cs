@@ -2,6 +2,18 @@
 
 namespace Pk3DSRNGTool.Core
 {
+    public class CaptureResult
+    {
+        public byte CriticalVal;
+        public ushort MaxRandom;
+        public byte Shake;
+        public byte Total;
+
+        public bool Gotta => Shake == Total;
+        public string Result_raw => CriticalVal.ToString("X2") + "/" + MaxRandom.ToString("X4");
+        public string Result => Shake.ToString() + "/" + Total.ToString();
+    }
+
     public abstract class Capture
     {
         protected static uint getrand => RNGPool.getrand;
@@ -18,9 +30,6 @@ namespace Pk3DSRNGTool.Core
         public byte CriticalRate;
         public ushort ShakeRate = ushort.MaxValue;
 
-        // 0:Critical Value 1:Maxmimun RN 2:Actual Shake Number 3:Total Shake Number 
-        public uint[] outcome = new uint[4]; 
-
         private static uint Multiply(uint A, uint B) => (A * B + 0x800) >> 12;
         private static double ToDouble(uint A) => (A >> 12) + ((A & 0xFFF) > 0 ? (A & 0xFFF) * 0.000244140625 : 0.0);
 
@@ -34,52 +43,54 @@ namespace Pk3DSRNGTool.Core
             ShakeRate = (ushort)(65536.0 / Math.Pow(255.0 / ToDouble(A), 0.75) - 0.5);
         }
 
-        public abstract bool Catch();
+        public abstract CaptureResult Catch();
     }
 
     public class Capture6 : Capture
     {
-        public override bool Catch()
+        public override CaptureResult Catch()
         {
-            outcome[0] = getrand >> 24;
-            outcome[3] = outcome[0] < CriticalRate ? 1u : 4u;
+            var output = new CaptureResult();
+            output.CriticalVal = (byte)(getrand >> 24);
+            output.Total = (byte)(output.CriticalVal < CriticalRate ? 1 : 4);
             if (AlwaysCapture)
-                outcome[2] = outcome[3];
+                output.Shake = output.Total;
             else
             {
-                for (uint i = 1; i <= outcome[3]; i++)
+                for (byte i = 1; i <= output.Total; i++)
                 {
-                    var high16bits = getrand >> 16;
-                    if (high16bits > outcome[1])
-                        outcome[1] = high16bits;
-                    if (high16bits < ShakeRate && outcome[2] == i - 1)
-                        outcome[2] = i;
+                    ushort high16bits = (ushort)(getrand >> 16);
+                    if (high16bits > output.MaxRandom)
+                        output.MaxRandom = high16bits;
+                    if (high16bits < ShakeRate && output.Shake == i - 1)
+                        output.Shake = i;
                 }
             }
-            return outcome[2] == outcome[3];
+            return output;
         }
     }
 
     public class Capture7 : Capture
     {
-        public override bool Catch()
+        public override CaptureResult Catch()
         {
-            outcome[0] = (byte)getrand;
-            outcome[3] = outcome[0] < CriticalRate ? 1u : 4u;
+            var output = new CaptureResult();
+            output.CriticalVal = (byte)getrand;
+            output.Total = (byte)(output.CriticalVal < CriticalRate ? 1 : 4);
             if (AlwaysCapture)
-                outcome[2] = outcome[3];
+                output.Shake = output.Total;
             else
             {
-                for (uint i = 1; i <= outcome[3]; i++)
+                for (byte i = 1; i <= output.Total; i++)
                 {
-                    var low16bits = (ushort)getrand;
-                    if (low16bits > outcome[1])
-                        outcome[1] = low16bits;
-                    if (low16bits < ShakeRate && outcome[2] == i - 1)
-                        outcome[2] = i;
+                    ushort low16bits = (ushort)getrand;
+                    if (low16bits > output.MaxRandom)
+                        output.MaxRandom = low16bits;
+                    if (low16bits < ShakeRate && output.Shake == i - 1)
+                        output.Shake = i;
                 }
             }
-            return outcome[2] == outcome[3];
+            return output;
         }
     }
 }

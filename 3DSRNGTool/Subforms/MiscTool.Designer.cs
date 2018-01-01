@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.L_Delay = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
@@ -48,12 +49,13 @@
             this.RNG = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.RB_Capture = new System.Windows.Forms.RadioButton();
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.Range = new System.Windows.Forms.NumericUpDown();
             this.Value = new System.Windows.Forms.NumericUpDown();
             this.Compare = new System.Windows.Forms.ComboBox();
-            this.Random = new System.Windows.Forms.RadioButton();
-            this.Pokerus = new System.Windows.Forms.RadioButton();
+            this.RB_Random = new System.Windows.Forms.RadioButton();
+            this.RB_Pokerus = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.CurrentText = new System.Windows.Forms.TextBox();
             this.B_Calc = new System.Windows.Forms.Button();
@@ -62,6 +64,7 @@
             this.dgv_blink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -244,6 +247,7 @@
             this.dgv_blink,
             this.dgv_clock,
             this.dgv_pokerus,
+            this.dgv_capture,
             this.dgv_randn,
             this.dgv_rand32,
             this.dgv_rand64,
@@ -253,20 +257,21 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 18;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(461, 446);
             this.dataGridView1.TabIndex = 1;
             // 
             // Filters
             // 
+            this.Filters.Controls.Add(this.RB_Capture);
             this.Filters.Controls.Add(this.B_ResetFrame);
             this.Filters.Controls.Add(this.Range);
             this.Filters.Controls.Add(this.Value);
             this.Filters.Controls.Add(this.Compare);
-            this.Filters.Controls.Add(this.Random);
-            this.Filters.Controls.Add(this.Pokerus);
+            this.Filters.Controls.Add(this.RB_Random);
+            this.Filters.Controls.Add(this.RB_Pokerus);
             this.Filters.Controls.Add(this.label5);
             this.Filters.Controls.Add(this.CurrentText);
             this.Filters.Location = new System.Drawing.Point(12, 243);
@@ -275,6 +280,17 @@
             this.Filters.TabIndex = 52;
             this.Filters.TabStop = false;
             this.Filters.Text = "Filters";
+            // 
+            // RB_Capture
+            // 
+            this.RB_Capture.AutoSize = true;
+            this.RB_Capture.Location = new System.Drawing.Point(104, 134);
+            this.RB_Capture.Name = "RB_Capture";
+            this.RB_Capture.Size = new System.Drawing.Size(62, 17);
+            this.RB_Capture.TabIndex = 102;
+            this.RB_Capture.Text = "Capture";
+            this.RB_Capture.UseVisualStyleBackColor = true;
+            this.RB_Capture.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
             // 
             // B_ResetFrame
             // 
@@ -325,29 +341,29 @@
             this.Compare.Size = new System.Drawing.Size(54, 21);
             this.Compare.TabIndex = 54;
             // 
-            // Random
+            // RB_Random
             // 
-            this.Random.AutoSize = true;
-            this.Random.Checked = true;
-            this.Random.Location = new System.Drawing.Point(16, 65);
-            this.Random.Name = "Random";
-            this.Random.Size = new System.Drawing.Size(76, 17);
-            this.Random.TabIndex = 56;
-            this.Random.TabStop = true;
-            this.Random.Text = "Random N";
-            this.Random.UseVisualStyleBackColor = true;
-            this.Random.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
+            this.RB_Random.AutoSize = true;
+            this.RB_Random.Checked = true;
+            this.RB_Random.Location = new System.Drawing.Point(16, 65);
+            this.RB_Random.Name = "RB_Random";
+            this.RB_Random.Size = new System.Drawing.Size(76, 17);
+            this.RB_Random.TabIndex = 56;
+            this.RB_Random.TabStop = true;
+            this.RB_Random.Text = "Random N";
+            this.RB_Random.UseVisualStyleBackColor = true;
+            this.RB_Random.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
             // 
-            // Pokerus
+            // RB_Pokerus
             // 
-            this.Pokerus.AutoSize = true;
-            this.Pokerus.Location = new System.Drawing.Point(17, 134);
-            this.Pokerus.Name = "Pokerus";
-            this.Pokerus.Size = new System.Drawing.Size(64, 17);
-            this.Pokerus.TabIndex = 55;
-            this.Pokerus.Text = "Pokerus";
-            this.Pokerus.UseVisualStyleBackColor = true;
-            this.Pokerus.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
+            this.RB_Pokerus.AutoSize = true;
+            this.RB_Pokerus.Location = new System.Drawing.Point(17, 134);
+            this.RB_Pokerus.Name = "RB_Pokerus";
+            this.RB_Pokerus.Size = new System.Drawing.Size(64, 17);
+            this.RB_Pokerus.TabIndex = 55;
+            this.RB_Pokerus.Text = "Pokerus";
+            this.RB_Pokerus.UseVisualStyleBackColor = true;
+            this.RB_Pokerus.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
             // 
             // label5
             // 
@@ -419,6 +435,17 @@
             this.dgv_pokerus.ReadOnly = true;
             this.dgv_pokerus.Width = 55;
             // 
+            // dgv_capture
+            // 
+            this.dgv_capture.DataPropertyName = "Capture";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_capture.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_capture.HeaderText = "Capture";
+            this.dgv_capture.Name = "dgv_capture";
+            this.dgv_capture.ReadOnly = true;
+            this.dgv_capture.Visible = false;
+            this.dgv_capture.Width = 70;
+            // 
             // dgv_randn
             // 
             this.dgv_randn.DataPropertyName = "RandN";
@@ -430,9 +457,9 @@
             // dgv_rand32
             // 
             this.dgv_rand32.DataPropertyName = "Rand32";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.Format = "X8";
-            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Format = "X8";
+            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_rand32.HeaderText = "Random#";
             this.dgv_rand32.Name = "dgv_rand32";
             this.dgv_rand32.ReadOnly = true;
@@ -442,9 +469,9 @@
             // dgv_rand64
             // 
             this.dgv_rand64.DataPropertyName = "Rand64";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.Format = "X16";
-            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "X16";
+            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_rand64.HeaderText = "Random Number";
             this.dgv_rand64.Name = "dgv_rand64";
             this.dgv_rand64.ReadOnly = true;
@@ -461,8 +488,8 @@
             // dgv_status
             // 
             this.dgv_status.DataPropertyName = "NPCStatus";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_status.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_status.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_status.HeaderText = "NPC";
             this.dgv_status.Name = "dgv_status";
             this.dgv_status.ReadOnly = true;
@@ -515,17 +542,19 @@
         private System.Windows.Forms.Button B_Calc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox CurrentText;
-        private System.Windows.Forms.RadioButton Pokerus;
-        private System.Windows.Forms.RadioButton Random;
+        private System.Windows.Forms.RadioButton RB_Pokerus;
+        private System.Windows.Forms.RadioButton RB_Random;
         private System.Windows.Forms.ComboBox Compare;
         private System.Windows.Forms.NumericUpDown Value;
         private System.Windows.Forms.NumericUpDown Range;
         private System.Windows.Forms.Button B_ResetFrame;
+        private System.Windows.Forms.RadioButton RB_Capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pokerus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;

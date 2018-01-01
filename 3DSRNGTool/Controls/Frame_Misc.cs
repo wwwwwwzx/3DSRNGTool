@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
@@ -19,6 +20,8 @@ namespace Pk3DSRNGTool
 
         public int RandN { get; set; }
         public byte Pokerus { get; set; }
+        public CaptureResult Crt;
+        public string Capture => Crt?.Result_raw ?? string.Empty;
         public byte Blink;
         public string BlinkFlag => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         public byte Clock => (byte)(Rand64 % 17);
@@ -29,6 +32,7 @@ namespace Pk3DSRNGTool
 
     public class Misc_Filter
     {
+        public bool Capture;
         public bool Pokerus;
         public bool Random;
         public byte CompareType;
@@ -50,6 +54,8 @@ namespace Pk3DSRNGTool
                     case 2: if (f.RandN != Value) return false; break;
                 }
             }
+            if (Capture && !f.Crt.Gotta)
+                return false;
             return true;
         }
     }

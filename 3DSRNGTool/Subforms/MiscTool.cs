@@ -25,9 +25,10 @@ namespace Pk3DSRNGTool.Subforms
         {
             filter = new Misc_Filter
             {
-                Pokerus = Pokerus.Visible && Pokerus.Checked,
+                Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked,
+                Capture = RB_Capture.Visible && RB_Capture.Checked,
                 CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) ? null : CurrentText.Text.ToUpper(),
-                Random = Random.Checked,
+                Random = RB_Random.Checked,
                 CompareType = (byte)Compare.SelectedIndex,
                 Value = (int)Value.Value,
             };
@@ -175,6 +176,8 @@ namespace Pk3DSRNGTool.Subforms
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
 
+            var capture7 = new Capture7();
+
             for (int i = 0; i < frame; i++)
                 sfmt.Nextuint();
 
@@ -190,6 +193,8 @@ namespace Pk3DSRNGTool.Subforms
                 RNGPool.Advance(delay);
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand % N);
+                else if (filter.Capture)
+                    f.Crt = capture7.Catch();
 
                 if (!filter.check(f))
                     continue;
@@ -240,6 +245,7 @@ namespace Pk3DSRNGTool.Subforms
             dgv_rand32.Visible = RNG.SelectedIndex > 1;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
+            dgv_capture.Visible = filter.Capture;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 2;
             dataGridView1.DataSource = Frames;
@@ -249,13 +255,15 @@ namespace Pk3DSRNGTool.Subforms
 
         private void RNG_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Pokerus.Visible = RNG.SelectedIndex != 2;
+            RB_Random.Checked = true;
+            RB_Pokerus.Visible = RNG.SelectedIndex != 2;
             L_NPC.Visible = NPC.Visible = RNG.SelectedIndex < 2;
+            RB_Capture.Visible = RNG.SelectedIndex == 2;
         }
 
         private void Method_CheckedChanged(object sender, EventArgs e)
         {
-            Range.Enabled = Compare.Enabled = Value.Enabled = Random.Checked;
+            Range.Enabled = Compare.Enabled = Value.Enabled = RB_Random.Checked;
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -263,7 +271,7 @@ namespace Pk3DSRNGTool.Subforms
             CurrentText.Text = string.Empty;
             Compare.SelectedIndex = -1;
             Value.Value = Range.Value = 100;
-            Random.Checked = true;
+            RB_Random.Checked = true;
         }
     }
 }
