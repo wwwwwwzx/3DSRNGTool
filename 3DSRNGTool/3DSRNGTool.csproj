@@ -189,11 +189,11 @@
     <Compile Include="Subforms\KeyBV.Designer.cs">
       <DependentUpon>KeyBV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\MiscTool.cs">
+    <Compile Include="Subforms\MiscRNGTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\MiscTool.Designer.cs">
-      <DependentUpon>MiscTool.cs</DependentUpon>
+    <Compile Include="Subforms\MiscRNGTool.Designer.cs">
+      <DependentUpon>MiscRNGTool.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\NTRHelper.cs">
       <SubType>Form</SubType>

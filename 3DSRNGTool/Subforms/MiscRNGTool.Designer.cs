@@ -1,6 +1,6 @@
-﻿namespace Pk3DSRNGTool.Subforms
+﻿namespace Pk3DSRNGTool
 {
-    partial class MiscTool
+    partial class MiscRNGTool
     {
         /// <summary>
         /// Required designer variable.
@@ -799,8 +799,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(700, 520);
-            this.Name = "MiscTool";
-            this.Text = "MiscTool";
+            this.Name = "MiscRNGTool";
+            this.Text = "MiscRNGTool";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();

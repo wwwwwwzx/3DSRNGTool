@@ -6,15 +6,14 @@ using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
 using Pk3DSRNGTool.Controls;
 
-namespace Pk3DSRNGTool.Subforms
+namespace Pk3DSRNGTool
 {
-    public partial class MiscTool : Form
+    public partial class MiscRNGTool : Form
     {
-        public MiscTool()
+        public MiscRNGTool()
         {
             InitializeComponent();
-            RNG.SelectedIndex = Program.mainform.Ver > 4 ? 0 : 2;
-            Seed.Value = Program.mainform.globalseed;
+            RNG.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? 0 : 2;
             System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(dataGridView1, true, null);
@@ -35,6 +34,14 @@ namespace Pk3DSRNGTool.Subforms
             Status.DisplayMember = "Text";
             Status.ValueMember = "Value";
             Status.DataSource = new BindingSource(StatusBonusList, null);
+        }
+
+        public void UpdateInfo(int catchrate = -1, int HP = -1)
+        {
+            if (HP > -1)
+                HPMax.Value = HP;
+            if (catchrate > -1)
+                CatchRate.Value = catchrate;
         }
 
         #region Core

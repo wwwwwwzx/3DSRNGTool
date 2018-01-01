@@ -966,6 +966,9 @@ namespace Pk3DSRNGTool
             Timedelay.Minimum = Math.Min((int)FormPM.Delay, 0);
             Timedelay.Value = FormPM.Delay;
 
+            if (Species > 0 && !FormPM.Gift)
+                miscrngtool.UpdateInfo(catchrate: t.CatchRate, HP: (((t.HP * 2 + 31) * FormPM.Level) / 100) + FormPM.Level + 10);
+
             if (Sta_AbilityLocked.Checked = 0 < FormPM.Ability && FormPM.Ability < 5)
                 Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
             if (FormPM is PKM7 pm7)
@@ -1589,6 +1592,7 @@ namespace Pk3DSRNGTool
         // Tools
         private IVRange IVInputer = new IVRange();
         private TinyTimelineTool TTT = new TinyTimelineTool();
+        private MiscRNGTool miscrngtool = new MiscRNGTool();
         private Gen7MainRNGTool gen7tool;
         private NTRHelper ntrhelper;
 
@@ -1792,7 +1796,7 @@ namespace Pk3DSRNGTool
         }
         
         private void MiscRNGTool_Click(object sender, EventArgs e) 
-            => new Subforms.MiscTool().Show();
+            => miscrngtool.Show();
         #endregion
     }
 }
