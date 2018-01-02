@@ -69,7 +69,7 @@ namespace Pk3DSRNGTool
             RNGPool.timeline.Maxframe = max;
             RNGPool.timeline.Generate(Method == 0); // Consider Stationary delay
             int listlength = RNGPool.timeline.TinyLength;
-            
+
             // Prepare
             var rng = new MersenneTwister(Seed.Value);
             for (int i = 0; i < min; i++)
@@ -460,8 +460,7 @@ namespace Pk3DSRNGTool
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
             var fsetting = getFishingSetting;
-            int Timewindow = Overview.Checked ? 2 : 25 + fsetting.platdelay; // To-do;
-            int Unstable = Math.Max(31, Timewindow - 9);
+            int Timewindow = 2;
 
             // Start
             for (int i = 0; i <= totaltime; i++)
@@ -471,9 +470,13 @@ namespace Pk3DSRNGTool
                 RNGPool.Save();
 
                 // 2 Frames for delay calc
+                // USUM v1.1 sub_39E2F0
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 int fishingdelay = (int)(RNGPool.getrand64 % 60) + fsetting.basedelay;
-                RNGPool.Advance(1); // Fishy consumption
+                if (Overview.Checked)
+                    RNGPool.Advance(1); // Keep timewindow at 2 to avoid calculation
+                else
+                    Timewindow = (int)(RNGPool.getrand64 % 15) + fsetting.platdelay + 14;
 
                 // Fishing Delay
                 RNGPool.time_elapse7(fishingdelay);
@@ -500,7 +503,7 @@ namespace Pk3DSRNGTool
                         if (Overview.Checked)
                             result.RandNum = RNGPool.getsavepoint;
                         result.FrameDelayUsed = fishingdelay;
-                        Frames.Add(new Frame(result, frame: fishingframe, time: (i + j + fishingdelay) * 2, blink: (byte)(Unstable < j ? 2 : 0)));
+                        Frames.Add(new Frame(result, frame: fishingframe, time: (i + j + fishingdelay) * 2));
                         Frames.Last().FishingFrame = Currentframe;
                     }
                 }
