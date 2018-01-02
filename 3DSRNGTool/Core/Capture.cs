@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool.Core
         public uint DexBonus;
         public uint StatusBonus;
         public uint BallBonus;
+        public float OPowerBonus;
 
         public bool AlwaysCapture;
         public byte CriticalRate;
@@ -40,6 +41,7 @@ namespace Pk3DSRNGTool.Core
             ulong HPFactor = ((3 * HPMax - 2 * HPCurr) << 12) * CatchRate;
             ulong AfterBall = Multiply(HPFactor, BallBonus) / (3 * HPMax);
             ulong A = StatusBonus == 0x1000 ? AfterBall : Multiply(AfterBall, StatusBonus);
+            A = (ulong)Math.Round(A * OPowerBonus);
             if (AlwaysCapture = A >= 0xFF000) A = 0xFF000;
             CriticalRate = (byte)Math.Round((Multiply(A, DexBonus) / 4096.0 / 6.0));
             if (A < 0xFF000)

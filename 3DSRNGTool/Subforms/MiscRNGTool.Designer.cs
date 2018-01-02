@@ -78,6 +78,7 @@
             this.Fidget = new System.Windows.Forms.CheckBox();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.TP_Capture = new System.Windows.Forms.TabPage();
+            this.RotoCatch = new System.Windows.Forms.CheckBox();
             this.SuccessOnly = new System.Windows.Forms.CheckBox();
             this.CB_Detail = new System.Windows.Forms.CheckBox();
             this.L_output = new System.Windows.Forms.Label();
@@ -598,6 +599,7 @@
             // 
             // TP_Capture
             // 
+            this.TP_Capture.Controls.Add(this.RotoCatch);
             this.TP_Capture.Controls.Add(this.SuccessOnly);
             this.TP_Capture.Controls.Add(this.CB_Detail);
             this.TP_Capture.Controls.Add(this.L_output);
@@ -618,6 +620,16 @@
             this.TP_Capture.TabIndex = 2;
             this.TP_Capture.Text = "Capture";
             this.TP_Capture.UseVisualStyleBackColor = true;
+            // 
+            // RotoCatch
+            // 
+            this.RotoCatch.AutoSize = true;
+            this.RotoCatch.Location = new System.Drawing.Point(150, 106);
+            this.RotoCatch.Name = "RotoCatch";
+            this.RotoCatch.Size = new System.Drawing.Size(49, 17);
+            this.RotoCatch.TabIndex = 118;
+            this.RotoCatch.Text = "Roto";
+            this.RotoCatch.UseVisualStyleBackColor = true;
             // 
             // SuccessOnly
             // 
@@ -788,7 +800,7 @@
             this.label6.TabIndex = 54;
             this.label6.Text = "/";
             // 
-            // MiscTool
+            // MiscRNGTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -885,5 +897,6 @@
         private System.Windows.Forms.Label L_output;
         private System.Windows.Forms.CheckBox CB_Detail;
         private System.Windows.Forms.CheckBox SuccessOnly;
+        private System.Windows.Forms.CheckBox RotoCatch;
     }
 }

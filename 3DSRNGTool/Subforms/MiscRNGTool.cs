@@ -224,6 +224,7 @@ namespace Pk3DSRNGTool
                 capture7.StatusBonus = (uint)(int)Status.SelectedValue;
                 capture7.BallBonus = (uint)(int)BallBonus.SelectedValue;
                 capture7.DexBonus = (uint)(int)DexBonus.SelectedValue;
+                capture7.OPowerBonus = RotoCatch.Checked ? 2.5f : 1.0f;
                 capture7.Calc();
                 L_output.Text = string.Format("Critical {0:P}  \tShake {1:P}", capture7.CriticalRate / 256.0, capture7.ShakeRate / 65536.0);
             }
