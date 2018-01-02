@@ -813,6 +813,7 @@
             this.MinimumSize = new System.Drawing.Size(700, 520);
             this.Name = "MiscRNGTool";
             this.Text = "MiscRNGTool";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MiscRNGTool_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();

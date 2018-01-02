@@ -35,6 +35,12 @@ namespace Pk3DSRNGTool
             Status.ValueMember = "Value";
             Status.DataSource = new BindingSource(StatusBonusList, null);
         }
+        private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
+        }
 
         public void UpdateInfo(int catchrate = -1, int HP = -1)
         {
