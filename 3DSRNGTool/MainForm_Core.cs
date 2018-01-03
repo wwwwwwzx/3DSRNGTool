@@ -502,7 +502,7 @@ namespace Pk3DSRNGTool
                             continue;
                         if (Overview.Checked)
                             result.RandNum = RNGPool.getsavepoint;
-                        result.FrameDelayUsed = fishingdelay;
+                        result.FrameDelayUsed += fishingframe - Currentframe;
                         Frames.Add(new Frame(result, frame: fishingframe, time: (i + j + fishingdelay) * 2));
                         Frames.Last().FishingFrame = Currentframe;
                     }
