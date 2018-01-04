@@ -243,5 +243,16 @@ namespace Pk3DSRNGTool
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
         };
+        public readonly static string[] FacilityName =
+        {
+            "Big Dream","Gold Rush","Treasure Hunt",
+            "Ghosts Den","Trick Room","Confuse Ray",
+            "Ball Shop","General Shop","Battle Shop","Soft Drink","Pharmacy",
+            "Rare Kitchen","Battle Table", "FriendshipCafe", "FriendshipParlor",
+            "Thump-Bump","Clink-Clunk","Stomp-Stomp",
+            "Kanto Tent","Johto Tent","Hoenn Tent","Sinnoh Tent","Unova Tent","Kalos Tent","Pokemon House",
+            "Team Red","Team Yellow","Team Green","Team Blue","Team Orange","Team NavyBlue","Team Purple","Team Pink",
+            "Switcheroo",
+        };
     }
 }

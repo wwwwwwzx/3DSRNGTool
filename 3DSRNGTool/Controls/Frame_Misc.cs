@@ -22,6 +22,8 @@ namespace Pk3DSRNGTool
         public byte Pokerus { get; set; }
         public CaptureResult Crt;
         public string Capture => Crt?.Result ?? string.Empty;
+        public FPFacility frt;
+        public string Facility => frt?.Result ?? string.Empty;
         public byte Blink;
         public string BlinkFlag => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         public byte Clock => (byte)(Rand64 % 17);
@@ -38,6 +40,7 @@ namespace Pk3DSRNGTool
         public byte CompareType;
         public int Value;
         public string CurrentSeed;
+        public FPFacility FacilityFilter;
 
         public bool check(Frame_Misc f)
         {
@@ -55,6 +58,8 @@ namespace Pk3DSRNGTool
                 }
             }
             if (Capture && !f.Crt.Gotta)
+                return false;
+            if (FacilityFilter?.IsDifferentFrom(f.frt) ?? false)
                 return false;
             return true;
         }

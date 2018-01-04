@@ -1,4 +1,15 @@
-###  Frame1: Random % 100 to determine the number of stars of facility
+## Introduction
+
+![](https://i.imgur.com/TIZOP9B.png)
+
+When you press A at the above screen: 
+(1) Get your previous seed from save and initialize the TinyMT table
+(2) Use TinyMT to generate the facility you receive this time
+(3) Pull another seed from main RNG (SFMT) and save to RAM, later to your save
+
+That means Festival Plaza facility is determined when you receive the **previous** rank up bonus. (Similar to Gen6 Egg RNG)
+
+### Frame1: Random % 100 to determine the number of stars of the facility
 
 | Rank  |  ★1  |  ★2  |  ★3  |  ★4  |  ★5  |
 | :---: | :--: | :--: | :--: | :--: | :--: |

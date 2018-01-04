@@ -34,6 +34,12 @@ namespace Pk3DSRNGTool
             Status.DisplayMember = "Text";
             Status.ValueMember = "Value";
             Status.DataSource = new BindingSource(StatusBonusList, null);
+
+            Game.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? Properties.Settings.Default.GameVersion - 5 : 0;
+            Rank.SelectedIndex = 18;
+            Stars.SelectedIndex = 0;
+            NPCType.SelectedIndex = 0;
+            Color.SelectedIndex = 0;
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -63,8 +69,16 @@ namespace Pk3DSRNGTool
                 Random = RB_Random.Checked,
                 CompareType = (byte)Compare.SelectedIndex,
                 Value = (int)Value.Value,
+                FacilityFilter = getFacilityFilter,
             };
         }
+        private FPFacility getFacilityFilter => Filters.SelectedTab != TP_FP ? null : new FPFacility
+        {
+            star = (byte)Stars.SelectedIndex,
+            type = (sbyte)(int)Facility.SelectedValue,
+            NPC = (sbyte)(NPCType.SelectedIndex - 1),
+            Color = (sbyte)(Color.SelectedIndex - 1),
+        };
 
         private void B_Calc_Click(object sender, EventArgs e)
         {
@@ -92,6 +106,11 @@ namespace Pk3DSRNGTool
             int delay = (int)Delay.Value / 2;
             ulong N = (ulong)Range.Value;
             byte Modelnum = (byte)(NPC.Value + 1);
+            if (filter.FacilityFilter != null)
+            {
+                FPFacility.GameVer = (byte)Game.SelectedIndex;
+                FPFacility.Rank = (byte)Rank.SelectedIndex;
+            }
 
             FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
 
@@ -127,6 +146,8 @@ namespace Pk3DSRNGTool
                     RNGPool.Rewind(0); RNGPool.CopyStatus(stmp);
                     RNGPool.time_elapse7(delay);
                     f.frameused = RNGPool.index;
+                    if (filter.FacilityFilter != null)
+                        f.frt = FPFacility.Generate();
                     if (filter.Random)
                         f.RandN = (int)(RNGPool.getrand64 % N);
                     else if (filter.Pokerus)
@@ -193,6 +214,7 @@ namespace Pk3DSRNGTool
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
                 f.frameused = RNGPool.index;
+                f.frt = FPFacility.Generate();
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand64 % N);
                 else if (filter.Pokerus)
@@ -296,9 +318,11 @@ namespace Pk3DSRNGTool
 
         private void AdjustDGVColumns()
         {
+            dgv_facility.Visible =
             dgv_hit.Visible = dgv_status.Visible =
             dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex == 0;
+            dgv_facility.Visible &= filter.FacilityFilter != null;
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
@@ -314,6 +338,8 @@ namespace Pk3DSRNGTool
         #region UI Logic
         private void RNG_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (sender == Filters && Filters.SelectedIndex < 2)
+                Filters.SelectedTab.Controls.Add(B_ResetFrame);
             RB_Random.Checked = true;
             RB_Pokerus.Visible = RNG.SelectedIndex != 1;
             Createtimeline.Checked &= Createtimeline.Enabled = RNG.SelectedIndex == 0;
@@ -400,5 +426,17 @@ namespace Pk3DSRNGTool
             new ComboItem("<=30", 0x0000),
         };
         #endregion
+
+        private void FacilityPool_Changed(object sender, EventArgs e)
+        {
+            int tmp = Facility.SelectedIndex == -1 ? - 1 : (int)Facility.SelectedValue;
+            var List = FPFacility.getList((byte)Game.SelectedIndex, Stars.SelectedIndex).Select(t => new ComboItem(StringItem.FacilityName[t],t)).ToList();
+            List.Insert(0, new ComboItem("-", -1));
+            Facility.DisplayMember = "Text";
+            Facility.ValueMember = "Value";
+            Facility.DataSource = new BindingSource(List, null);
+            if (List.Any(t => t.Value == tmp))
+                Facility.SelectedValue = tmp;
+        }
     }
 }

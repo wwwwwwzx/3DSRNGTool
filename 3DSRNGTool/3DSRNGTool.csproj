@@ -117,6 +117,7 @@
     <Compile Include="Gen6\Results\ResultW6.cs" />
     <Compile Include="Gen6\Results\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\FPFacility.cs" />
     <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Gen7\Gen7Encounter\FishingArea7.cs" />
