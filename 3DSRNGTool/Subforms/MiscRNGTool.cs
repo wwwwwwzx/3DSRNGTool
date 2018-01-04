@@ -63,10 +63,10 @@ namespace Pk3DSRNGTool
         {
             filter = new Misc_Filter
             {
-                Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked,
+                Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked && Filters.SelectedTab == TP_Misc,
                 Capture = SuccessOnly.Checked && Filters.SelectedTab == TP_Capture,
-                CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) ? null : CurrentText.Text.ToUpper(),
-                Random = RB_Random.Checked,
+                CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) || Filters.SelectedTab != TP_Misc ? null : CurrentText.Text.ToUpper(),
+                Random = RB_Random.Checked && Filters.SelectedTab == TP_Misc,
                 CompareType = (byte)Compare.SelectedIndex,
                 Value = (int)Value.Value,
                 FacilityFilter = getFacilityFilter,
@@ -438,5 +438,8 @@ namespace Pk3DSRNGTool
             if (List.Any(t => t.Value == tmp))
                 Facility.SelectedValue = tmp;
         }
+
+        private void B_Help_Click(object sender, EventArgs e)
+            => System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/FestivalPlazaFacilities.md");
     }
 }

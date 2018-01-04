@@ -248,7 +248,7 @@ namespace Pk3DSRNGTool
             "Big Dream","Gold Rush","Treasure Hunt",
             "Ghosts Den","Trick Room","Confuse Ray",
             "Ball Shop","General Shop","Battle Shop","Soft Drink","Pharmacy",
-            "Rare Kitchen","Battle Table", "FriendshipCafe", "FriendshipParlor",
+            "Rare Kitchen","Battle Table", "Friendship Cafe", "Friendship Parlor",
             "Thump-Bump","Clink-Clunk","Stomp-Stomp",
             "Kanto Tent","Johto Tent","Hoenn Tent","Sinnoh Tent","Unova Tent","Kalos Tent","Pokemon House",
             "Team Red","Team Yellow","Team Green","Team Blue","Team Orange","Team NavyBlue","Team Purple","Team Pink",
