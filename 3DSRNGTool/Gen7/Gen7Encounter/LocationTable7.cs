@@ -474,7 +474,7 @@ namespace Pk3DSRNGTool
                 Location = 128, //Meadow
                 Correction = 08,
                 LevelMin = 31,
-                Species = new[] {22,734,546,741,741,166},
+                Species = new[] {22,743,546,741,741,166},
             },
             new EncounterArea_SM
             {
