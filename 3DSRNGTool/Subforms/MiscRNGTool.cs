@@ -184,6 +184,11 @@ namespace Pk3DSRNGTool
             int frameadvance;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
+            if (filter.FacilityFilter != null)
+            {
+                FPFacility.GameVer = (byte)Game.SelectedIndex;
+                FPFacility.Rank = (byte)Rank.SelectedIndex;
+            }
 
             FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
 
@@ -218,7 +223,8 @@ namespace Pk3DSRNGTool
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
                 f.frameused = RNGPool.index;
-                f.frt = FPFacility.Generate();
+                if (filter.FacilityFilter != null)
+                    f.frt = FPFacility.Generate();
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand64 % N);
                 else if (filter.Pokerus)
