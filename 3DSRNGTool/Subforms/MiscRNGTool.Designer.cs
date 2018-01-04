@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -73,7 +71,6 @@
             this.CurrentText = new System.Windows.Forms.TextBox();
             this.B_Calc = new System.Windows.Forms.Button();
             this.Filters = new System.Windows.Forms.TabControl();
-            this.TP_Misc = new System.Windows.Forms.TabPage();
             this.TP_Timeline = new System.Windows.Forms.TabPage();
             this.Createtimeline = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
@@ -81,6 +78,7 @@
             this.Boy = new System.Windows.Forms.RadioButton();
             this.Fidget = new System.Windows.Forms.CheckBox();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
+            this.TP_Misc = new System.Windows.Forms.TabPage();
             this.TP_Capture = new System.Windows.Forms.TabPage();
             this.RotoCatch = new System.Windows.Forms.CheckBox();
             this.SuccessOnly = new System.Windows.Forms.CheckBox();
@@ -118,9 +116,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Range)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).BeginInit();
             this.Filters.SuspendLayout();
-            this.TP_Misc.SuspendLayout();
             this.TP_Timeline.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
+            this.TP_Misc.SuspendLayout();
             this.TP_Capture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CatchRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HPMax)).BeginInit();
@@ -299,27 +297,12 @@
             this.dgv_rand64,
             this.dgv_realtime,
             this.dgv_status});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Location = new System.Drawing.Point(227, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowHeadersWidth = 18;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(445, 456);
             this.dataGridView1.TabIndex = 1;
@@ -366,7 +349,7 @@
             this.dgv_facility.Name = "dgv_facility";
             this.dgv_facility.ReadOnly = true;
             this.dgv_facility.Visible = false;
-            this.dgv_facility.Width = 150;
+            this.dgv_facility.Width = 160;
             // 
             // dgv_pokerus
             // 
@@ -539,8 +522,8 @@
             // 
             // Filters
             // 
-            this.Filters.Controls.Add(this.TP_Misc);
             this.Filters.Controls.Add(this.TP_Timeline);
+            this.Filters.Controls.Add(this.TP_Misc);
             this.Filters.Controls.Add(this.TP_Capture);
             this.Filters.Controls.Add(this.TP_FP);
             this.Filters.Location = new System.Drawing.Point(10, 243);
@@ -549,24 +532,6 @@
             this.Filters.Size = new System.Drawing.Size(211, 196);
             this.Filters.TabIndex = 54;
             this.Filters.SelectedIndexChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
-            // 
-            // TP_Misc
-            // 
-            this.TP_Misc.Controls.Add(this.B_ResetFrame);
-            this.TP_Misc.Controls.Add(this.CurrentText);
-            this.TP_Misc.Controls.Add(this.Range);
-            this.TP_Misc.Controls.Add(this.label5);
-            this.TP_Misc.Controls.Add(this.Value);
-            this.TP_Misc.Controls.Add(this.RB_Pokerus);
-            this.TP_Misc.Controls.Add(this.Compare);
-            this.TP_Misc.Controls.Add(this.RB_Random);
-            this.TP_Misc.Location = new System.Drawing.Point(4, 22);
-            this.TP_Misc.Name = "TP_Misc";
-            this.TP_Misc.Padding = new System.Windows.Forms.Padding(3);
-            this.TP_Misc.Size = new System.Drawing.Size(203, 170);
-            this.TP_Misc.TabIndex = 0;
-            this.TP_Misc.Text = "Misc";
-            this.TP_Misc.UseVisualStyleBackColor = true;
             // 
             // TP_Timeline
             // 
@@ -648,6 +613,24 @@
             this.JumpFrame.Size = new System.Drawing.Size(76, 22);
             this.JumpFrame.TabIndex = 110;
             this.JumpFrame.Visible = false;
+            // 
+            // TP_Misc
+            // 
+            this.TP_Misc.Controls.Add(this.B_ResetFrame);
+            this.TP_Misc.Controls.Add(this.CurrentText);
+            this.TP_Misc.Controls.Add(this.Range);
+            this.TP_Misc.Controls.Add(this.label5);
+            this.TP_Misc.Controls.Add(this.Value);
+            this.TP_Misc.Controls.Add(this.RB_Pokerus);
+            this.TP_Misc.Controls.Add(this.Compare);
+            this.TP_Misc.Controls.Add(this.RB_Random);
+            this.TP_Misc.Location = new System.Drawing.Point(4, 22);
+            this.TP_Misc.Name = "TP_Misc";
+            this.TP_Misc.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Misc.Size = new System.Drawing.Size(203, 170);
+            this.TP_Misc.TabIndex = 0;
+            this.TP_Misc.Text = "Misc";
+            this.TP_Misc.UseVisualStyleBackColor = true;
             // 
             // TP_Capture
             // 
@@ -870,15 +853,15 @@
             this.TP_FP.Padding = new System.Windows.Forms.Padding(3);
             this.TP_FP.Size = new System.Drawing.Size(203, 170);
             this.TP_FP.TabIndex = 3;
-            this.TP_FP.Text = "FP";
+            this.TP_FP.Text = "Festival Plaza";
             this.TP_FP.UseVisualStyleBackColor = true;
             // 
             // B_Help
             // 
             this.B_Help.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
-            this.B_Help.Location = new System.Drawing.Point(168, 139);
+            this.B_Help.Location = new System.Drawing.Point(173, 142);
             this.B_Help.Name = "B_Help";
-            this.B_Help.Size = new System.Drawing.Size(24, 25);
+            this.B_Help.Size = new System.Drawing.Size(27, 25);
             this.B_Help.TabIndex = 122;
             this.B_Help.UseVisualStyleBackColor = true;
             this.B_Help.Click += new System.EventHandler(this.B_Help_Click);
@@ -1050,11 +1033,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Range)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Value)).EndInit();
             this.Filters.ResumeLayout(false);
-            this.TP_Misc.ResumeLayout(false);
-            this.TP_Misc.PerformLayout();
             this.TP_Timeline.ResumeLayout(false);
             this.TP_Timeline.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
+            this.TP_Misc.ResumeLayout(false);
+            this.TP_Misc.PerformLayout();
             this.TP_Capture.ResumeLayout(false);
             this.TP_Capture.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CatchRate)).EndInit();

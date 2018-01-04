@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
         public MiscRNGTool()
         {
             InitializeComponent();
-            RNG.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? 0 : 2;
+            UpdateInfo();
             System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(dataGridView1, true, null);
@@ -35,11 +35,12 @@ namespace Pk3DSRNGTool
             Status.ValueMember = "Value";
             Status.DataSource = new BindingSource(StatusBonusList, null);
 
-            Game.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? Properties.Settings.Default.GameVersion - 5 : 0;
             Rank.SelectedIndex = 18;
             Stars.SelectedIndex = 0;
             NPCType.SelectedIndex = 0;
             Color.SelectedIndex = 0;
+
+            RNG_SelectedIndexChanged(null, null);
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -50,6 +51,9 @@ namespace Pk3DSRNGTool
 
         public void UpdateInfo(int catchrate = -1, int HP = -1)
         {
+            Seed.Value = (uint)Properties.Settings.Default.Seed;
+            RNG.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? 0 : 2;
+            Game.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? Properties.Settings.Default.GameVersion - 5 : 0;
             if (HP > -1)
                 HPMax.Value = HP;
             if (catchrate > -1)
@@ -242,7 +246,7 @@ namespace Pk3DSRNGTool
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
 
-            CaptureResult.Details = CB_Detail.Checked || Filters.SelectedIndex == 0;
+            CaptureResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
             var capture7 = new Capture7();
             if (Filters.SelectedTab == TP_Capture)
             {
@@ -342,21 +346,21 @@ namespace Pk3DSRNGTool
                 Filters.SelectedTab.Controls.Add(B_ResetFrame);
             RB_Random.Checked = true;
             RB_Pokerus.Visible = RNG.SelectedIndex != 1;
-            Createtimeline.Checked &= Createtimeline.Enabled = RNG.SelectedIndex == 0;
+            NPC.Visible = L_NPC.Visible = RNG.SelectedIndex <= 0;
+            ShowHideTab(TP_Timeline, RNG.SelectedIndex == 0, 0);
             Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
-            EnaDisaTab(TP_Capture, RNG.SelectedIndex == 1);
+            ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);
+            ShowHideTab(TP_Capture, RNG.SelectedIndex == 1, 1);
         }
 
-        private void EnaDisaTab(TabPage tab, bool enable)
+        private void ShowHideTab(TabPage tab, bool enable, int index = 1)
         {
-            foreach (Control ctr in tab.Controls)
+            if (enable ^ Filters.TabPages.Contains(tab))
             {
-                switch (ctr)
-                {
-                    case NumericUpDown n: n.Enabled = enable; break;
-                    case ComboBox CB: CB.Enabled = enable; break;
-                    case CheckBox cb: cb.Enabled = enable; break;
-                }
+                if (enable)
+                    Filters.TabPages.Insert(index, tab);
+                else
+                    Filters.TabPages.Remove(tab);
             }
         }
 
@@ -367,18 +371,17 @@ namespace Pk3DSRNGTool
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
         {
-            switch (Filters.SelectedIndex)
+            if (Filters.SelectedTab == TP_Misc)
             {
-                case 0:
-                    CurrentText.Text = string.Empty;
-                    Compare.SelectedIndex = -1;
-                    Value.Value = Range.Value = 100;
-                    RB_Random.Checked = true;
-                    break;
-                case 1:
-                    Fidget.Checked = false;
-                    JumpFrame.Value = 0;
-                    break;
+                CurrentText.Text = string.Empty;
+                Compare.SelectedIndex = -1;
+                Value.Value = Range.Value = 100;
+                RB_Random.Checked = true;
+            }
+            else if (Filters.SelectedTab == TP_Timeline)
+            {
+                Fidget.Checked = false;
+                JumpFrame.Value = 0;
             }
         }
 
@@ -392,6 +395,21 @@ namespace Pk3DSRNGTool
             if (HPCurr.Value > HPMax.Value)
                 HPCurr.Value = HPMax.Value;
         }
+
+        private void FacilityPool_Changed(object sender, EventArgs e)
+        {
+            int tmp = Facility.SelectedValue == null ? -1 : (int)Facility.SelectedValue;
+            var List = FPFacility.getList((byte)Game.SelectedIndex, Stars.SelectedIndex).Select(t => new ComboItem(StringItem.FacilityName[t], t)).ToList();
+            List.Insert(0, new ComboItem("-", -1));
+            Facility.DisplayMember = "Text";
+            Facility.ValueMember = "Value";
+            Facility.DataSource = new BindingSource(List, null);
+            if (List.Any(t => t.Value == tmp))
+                Facility.SelectedValue = tmp;
+        }
+
+        private void B_Help_Click(object sender, EventArgs e)
+            => System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/FestivalPlazaFacilities.md");
         #endregion
 
         #region Control
@@ -426,20 +444,5 @@ namespace Pk3DSRNGTool
             new ComboItem("<=30", 0x0000),
         };
         #endregion
-
-        private void FacilityPool_Changed(object sender, EventArgs e)
-        {
-            int tmp = Facility.SelectedIndex == -1 ? - 1 : (int)Facility.SelectedValue;
-            var List = FPFacility.getList((byte)Game.SelectedIndex, Stars.SelectedIndex).Select(t => new ComboItem(StringItem.FacilityName[t],t)).ToList();
-            List.Insert(0, new ComboItem("-", -1));
-            Facility.DisplayMember = "Text";
-            Facility.ValueMember = "Value";
-            Facility.DataSource = new BindingSource(List, null);
-            if (List.Any(t => t.Value == tmp))
-                Facility.SelectedValue = tmp;
-        }
-
-        private void B_Help_Click(object sender, EventArgs e)
-            => System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/FestivalPlazaFacilities.md");
     }
 }
