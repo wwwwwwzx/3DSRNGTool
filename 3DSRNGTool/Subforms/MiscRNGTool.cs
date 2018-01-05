@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
         public MiscRNGTool()
         {
             InitializeComponent();
-            UpdateInfo();
+            UpdateInfo(updategame: true, updateseed: true);
             System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             dgvPropertyInfo.SetValue(dataGridView1, true, null);
@@ -50,11 +50,15 @@ namespace Pk3DSRNGTool
             e.Cancel = true;
         }
 
-        public void UpdateInfo(int catchrate = -1, int HP = -1)
+        public void UpdateInfo(int catchrate = -1, int HP = -1, bool updateseed = false, bool updategame = false)
         {
-            Seed.Value = (uint)Properties.Settings.Default.Seed;
-            RNG.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? 0 : 2;
-            Game.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? Properties.Settings.Default.GameVersion - 5 : 0;
+            if (updateseed && RNG.SelectedIndex != 1)
+                Seed.Value = (uint)Properties.Settings.Default.Seed;
+            if (updategame)
+            {
+                RNG.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? 0 : 2;
+                Game.SelectedIndex = Properties.Settings.Default.GameVersion > 4 ? Properties.Settings.Default.GameVersion - 5 : 0;
+            }
             if (HP > -1)
                 HPMax.Value = HP;
             if (catchrate > -1)

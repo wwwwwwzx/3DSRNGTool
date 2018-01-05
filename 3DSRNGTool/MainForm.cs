@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
         public string VersionStr => L_GameVersion.Text + ": " + Gameversion.SelectedItem.ToString();
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
+        private bool Initializing = true;
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsBank => Method == 0 && ((FormPM as PKM6)?.Bank ?? false);
@@ -126,6 +127,8 @@ namespace Pk3DSRNGTool
 
             Profiles.ReadProfiles(); // Read all profiles
             RefreshProfile();
+
+            Initializing = false;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -378,8 +381,11 @@ namespace Pk3DSRNGTool
 
         private void Seed_ValueChanged(object sender, EventArgs e)
         {
+            if (Initializing)
+                return;
             Properties.Settings.Default.Seed = Seed.Value;
             Properties.Settings.Default.Save();
+            miscrngtool.UpdateInfo(updateseed: true);
         }
 
         private void UpdateTip(string msg)
@@ -618,6 +624,7 @@ namespace Pk3DSRNGTool
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
+            miscrngtool.UpdateInfo(updategame: !Initializing);
             L_GenderList.Visible = GenderList.Visible = IsTransporter;
             byte currentgen = (byte)(Gen6 ? 6 : 7);
             if (currentgen != lastgen)
@@ -945,6 +952,7 @@ namespace Pk3DSRNGTool
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); // Undiscovered Group
+            miscrngtool.UpdateInfo(catchrate: t.CatchRate, HP: Filter_Lv.Value == 0 ? - 1 : (((t.HP * 2 + 31) * (int)Filter_Lv.Value) / 100) + (int)Filter_Lv.Value + 10);
 
             for (int i = 1; i < 4; i++)
                 Ability.Items[i] = abilitynumstr[i] + (Species > 0 ? $" - {abilitystr[t.Abilities[i - 1]]}" : string.Empty);
@@ -967,7 +975,7 @@ namespace Pk3DSRNGTool
             Timedelay.Value = FormPM.Delay;
 
             if (Species > 0 && !FormPM.Gift)
-                miscrngtool.UpdateInfo(catchrate: t.CatchRate, HP: (((t.HP * 2 + 31) * FormPM.Level) / 100) + FormPM.Level + 10);
+                miscrngtool.UpdateInfo(HP: (((t.HP * 2 + 31) * FormPM.Level) / 100) + FormPM.Level + 10);
 
             if (Sta_AbilityLocked.Checked = 0 < FormPM.Ability && FormPM.Ability < 5)
                 Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
