@@ -109,7 +109,7 @@ namespace Pk3DSRNGTool
         }
 
         #region gen7main
-        private bool FesitivalPlaza => filter.FacilityFilter != null;
+        private bool FestivalPlaza => filter.FacilityFilter != null;
         private bool BattleTree => filter.TrainerFilter != null;
         private ulong N;
         private int Timedelay;
@@ -117,7 +117,7 @@ namespace Pk3DSRNGTool
         {
             Timedelay = (int)Delay.Value / 2;
             N = (ulong)Range.Value;
-            if (FesitivalPlaza)
+            if (FestivalPlaza)
             {
                 FPFacility.GameVer = (byte)Game.SelectedIndex;
                 FPFacility.Rank = (byte)Rank.SelectedIndex;
@@ -132,7 +132,7 @@ namespace Pk3DSRNGTool
         {
             RNGPool.time_elapse7(Timedelay);
             f.frameused = RNGPool.index;
-            if (FesitivalPlaza)
+            if (FestivalPlaza)
                 f.frt = FPFacility.Generate();
             else if (BattleTree)
             {
@@ -187,7 +187,7 @@ namespace Pk3DSRNGTool
                     f.realtime = 2 * frametime;
                     f.status = (int[])stmp.remain_frame.Clone();
 
-                    RNGPool.Rewind(0); RNGPool.CopyStatus(status);
+                    RNGPool.Rewind(0); RNGPool.CopyStatus(stmp);
                     getspecialinfo(f);
 
                     RNGPool.AddNext(sfmt);
@@ -358,7 +358,7 @@ namespace Pk3DSRNGTool
             dgv_hit.Visible = dgv_status.Visible =
             dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex == 0;
-            dgv_facility.Visible &= FesitivalPlaza;
+            dgv_facility.Visible &= FestivalPlaza;
             dgv_trainer.Visible &= BattleTree;
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;

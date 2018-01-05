@@ -4,17 +4,17 @@ The game randomly choose the battle tree trainer from a [trainer table](https://
 
 ### Special Trainers:
 
-| Trainer              | ID      | Rate |
-| -------------------- | ------- | ---- |
-| Grimsley             | 192     | 14   |
-| Anabel               | 193     | 2    |
-| Wally                | 194     | 14   |
-| Colress              | 195     | 14   |
-| Cynthia              | 196     | 14   |
-| Plumeria(S)/Guzma(M) | 197/198 | 14   |
-| Kiawe(S)/Mallow(M)   | 199/200 | 14   |
-| Sina(S)/Dexio(M)     | 201/202 | 14   |
-| Kukui(USUM)          | 205     | 14   |
+| Trainer              | ID      | Relative Chance |
+| -------------------- | ------- | --------------- |
+| Grimsley             | 192     | 14              |
+| Anabel               | 193     | 2               |
+| Wally                | 194     | 14              |
+| Colress              | 195     | 14              |
+| Cynthia              | 196     | 14              |
+| Plumeria(S)/Guzma(M) | 197/198 | 14              |
+| Kiawe(S)/Mallow(M)   | 199/200 | 14              |
+| Sina(S)/Dexio(M)     | 201/202 | 14              |
+| Kukui(USUM)          | 205     | 14              |
 
 ## Possible Trainer IDs
 
