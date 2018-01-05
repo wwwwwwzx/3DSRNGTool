@@ -107,17 +107,16 @@ namespace Pk3DSRNGTool
             RNGPool.Clear();
             GC.Collect();
         }
+
+        #region gen7main
         private bool FesitivalPlaza => filter.FacilityFilter != null;
         private bool BattleTree => filter.TrainerFilter != null;
-
-        private void Search7()
+        private ulong N;
+        private int Timedelay;
+        private void setupgenerator()
         {
-            SFMT sfmt = new SFMT(Seed.Value);
-            int min = (int)StartingFrame.Value;
-            int max = min + (int)MaxResults.Value;
-            int delay = (int)Delay.Value / 2;
-            ulong N = (ulong)Range.Value;
-            byte Modelnum = (byte)(NPC.Value + 1);
+            Timedelay = (int)Delay.Value / 2;
+            N = (ulong)Range.Value;
             if (FesitivalPlaza)
             {
                 FPFacility.GameVer = (byte)Game.SelectedIndex;
@@ -128,6 +127,34 @@ namespace Pk3DSRNGTool
                 BTTrainer.GameVer = (byte)Game.SelectedIndex;
                 BTTrainer.Steak = (int)Streak.Value;
             }
+        }
+        private void getspecialinfo(Frame_Misc f)
+        {
+            RNGPool.time_elapse7(Timedelay);
+            f.frameused = RNGPool.index;
+            if (FesitivalPlaza)
+                f.frt = FPFacility.Generate();
+            else if (BattleTree)
+            {
+                RNGPool.modelnumber = 2;
+                RNGPool.ResetModelStatus();
+                RNGPool.time_elapse7(2);
+                f.frameused = RNGPool.index;
+                f.trt = BTTrainer.Generate();
+            }
+            else if (filter.Random)
+                f.RandN = (int)(RNGPool.getrand64 % N);
+            else if (filter.Pokerus)
+                f.Pokerus = Pokerus7.getStrain();
+        }
+
+        private void Search7()
+        {
+            SFMT sfmt = new SFMT(Seed.Value);
+            int min = (int)StartingFrame.Value;
+            int max = min + (int)MaxResults.Value;
+            byte Modelnum = (byte)(NPC.Value + 1);
+            setupgenerator();
 
             FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
 
@@ -161,22 +188,7 @@ namespace Pk3DSRNGTool
                     f.status = (int[])stmp.remain_frame.Clone();
 
                     RNGPool.Rewind(0); RNGPool.CopyStatus(status);
-                    RNGPool.time_elapse7(delay);
-                    f.frameused = RNGPool.index;
-                    if (FesitivalPlaza)
-                        f.frt = FPFacility.Generate();
-                    else if (BattleTree)
-                    {
-                        RNGPool.modelnumber = 2;
-                        RNGPool.ResetModelStatus();
-                        RNGPool.time_elapse7(2);
-                        f.frameused = RNGPool.index;
-                        f.trt = BTTrainer.Generate();
-                    }
-                    else if (filter.Random)
-                        f.RandN = (int)(RNGPool.getrand64 % N);
-                    else if (filter.Pokerus)
-                        f.Pokerus = Pokerus7.getStrain();
+                    getspecialinfo(f);
 
                     RNGPool.AddNext(sfmt);
                     frameadvance--;
@@ -200,21 +212,10 @@ namespace Pk3DSRNGTool
             SFMT sfmt = new SFMT(Seed.Value);
             int frame = (int)StartingFrame.Value;
             int loopcount = (int)MaxResults.Value;
-            int delay = (int)Delay.Value / 2;
-            ulong N = (ulong)Range.Value;
             int frameadvance;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
-            if (FesitivalPlaza)
-            {
-                FPFacility.GameVer = (byte)Game.SelectedIndex;
-                FPFacility.Rank = (byte)Rank.SelectedIndex;
-            }
-            if (BattleTree)
-            {
-                BTTrainer.GameVer = (byte)Game.SelectedIndex;
-                BTTrainer.Steak = (int)Streak.Value;
-            }
+            setupgenerator();
 
             FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
 
@@ -247,22 +248,7 @@ namespace Pk3DSRNGTool
                     f.Blink = 4;
 
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
-                RNGPool.time_elapse7(delay);
-                f.frameused = RNGPool.index;
-                if (FesitivalPlaza)
-                    f.frt = FPFacility.Generate();
-                else if (BattleTree)
-                {
-                    RNGPool.modelnumber = 2;
-                    RNGPool.ResetModelStatus();
-                    RNGPool.time_elapse7(2);
-                    f.frameused = RNGPool.index;
-                    f.trt = BTTrainer.Generate();
-                }
-                else if (filter.Random)
-                    f.RandN = (int)(RNGPool.getrand64 % N);
-                else if (filter.Pokerus)
-                    f.Pokerus = Pokerus7.getStrain();
+                getspecialinfo(f);
 
                 frameadvance = status.NextState();
                 frame += frameadvance;
@@ -277,6 +263,7 @@ namespace Pk3DSRNGTool
             if (Frames.FirstOrDefault()?.Frame == (int)StartingFrame.Value)
                 Frames[0].Blink = FuncUtil.blinkflaglist[0];
         }
+        #endregion
 
         private void Search7_Battle()
         {
