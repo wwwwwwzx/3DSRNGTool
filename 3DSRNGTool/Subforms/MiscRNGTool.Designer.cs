@@ -55,6 +55,7 @@
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_facility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,6 +108,12 @@
             this.Facility = new System.Windows.Forms.ComboBox();
             this.Rank = new System.Windows.Forms.ComboBox();
             this.Game = new System.Windows.Forms.ComboBox();
+            this.TP_BattleTree = new System.Windows.Forms.TabPage();
+            this.L_Trainer = new System.Windows.Forms.Label();
+            this.L_Streak = new System.Windows.Forms.Label();
+            this.Streak = new System.Windows.Forms.NumericUpDown();
+            this.TrainerID = new System.Windows.Forms.NumericUpDown();
+            this.L_TrainerName = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
@@ -124,6 +131,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.HPMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HPCurr)).BeginInit();
             this.TP_FP.SuspendLayout();
+            this.TP_BattleTree.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -291,6 +301,7 @@
             this.dgv_clock,
             this.dgv_facility,
             this.dgv_pokerus,
+            this.dgv_trainer,
             this.dgv_capture,
             this.dgv_randn,
             this.dgv_rand32,
@@ -358,6 +369,15 @@
             this.dgv_pokerus.Name = "dgv_pokerus";
             this.dgv_pokerus.ReadOnly = true;
             this.dgv_pokerus.Width = 55;
+            // 
+            // dgv_trainer
+            // 
+            this.dgv_trainer.DataPropertyName = "Trainer";
+            this.dgv_trainer.HeaderText = "TrainerID";
+            this.dgv_trainer.Name = "dgv_trainer";
+            this.dgv_trainer.ReadOnly = true;
+            this.dgv_trainer.Visible = false;
+            this.dgv_trainer.Width = 55;
             // 
             // dgv_capture
             // 
@@ -526,6 +546,7 @@
             this.Filters.Controls.Add(this.TP_Misc);
             this.Filters.Controls.Add(this.TP_Capture);
             this.Filters.Controls.Add(this.TP_FP);
+            this.Filters.Controls.Add(this.TP_BattleTree);
             this.Filters.Location = new System.Drawing.Point(10, 243);
             this.Filters.Name = "Filters";
             this.Filters.SelectedIndex = 0;
@@ -1010,6 +1031,89 @@
             this.Game.TabIndex = 55;
             this.Game.SelectedIndexChanged += new System.EventHandler(this.FacilityPool_Changed);
             // 
+            // TP_BattleTree
+            // 
+            this.TP_BattleTree.Controls.Add(this.L_TrainerName);
+            this.TP_BattleTree.Controls.Add(this.TrainerID);
+            this.TP_BattleTree.Controls.Add(this.L_Trainer);
+            this.TP_BattleTree.Controls.Add(this.L_Streak);
+            this.TP_BattleTree.Controls.Add(this.Streak);
+            this.TP_BattleTree.Location = new System.Drawing.Point(4, 22);
+            this.TP_BattleTree.Name = "TP_BattleTree";
+            this.TP_BattleTree.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_BattleTree.Size = new System.Drawing.Size(203, 170);
+            this.TP_BattleTree.TabIndex = 4;
+            this.TP_BattleTree.Text = "Battle Tree";
+            this.TP_BattleTree.UseVisualStyleBackColor = true;
+            // 
+            // L_Trainer
+            // 
+            this.L_Trainer.AutoSize = true;
+            this.L_Trainer.Location = new System.Drawing.Point(12, 65);
+            this.L_Trainer.Name = "L_Trainer";
+            this.L_Trainer.Size = new System.Drawing.Size(54, 13);
+            this.L_Trainer.TabIndex = 53;
+            this.L_Trainer.Text = "Trainer ID";
+            // 
+            // L_Streak
+            // 
+            this.L_Streak.AutoSize = true;
+            this.L_Streak.Location = new System.Drawing.Point(100, 26);
+            this.L_Streak.Name = "L_Streak";
+            this.L_Streak.Size = new System.Drawing.Size(38, 13);
+            this.L_Streak.TabIndex = 52;
+            this.L_Streak.Text = "Streak";
+            // 
+            // Streak
+            // 
+            this.Streak.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Streak.Location = new System.Drawing.Point(144, 24);
+            this.Streak.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Streak.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Streak.Name = "Streak";
+            this.Streak.Size = new System.Drawing.Size(49, 22);
+            this.Streak.TabIndex = 52;
+            this.Streak.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // TrainerID
+            // 
+            this.TrainerID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrainerID.Location = new System.Drawing.Point(72, 60);
+            this.TrainerID.Maximum = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.Name = "TrainerID";
+            this.TrainerID.Size = new System.Drawing.Size(42, 22);
+            this.TrainerID.TabIndex = 54;
+            this.TrainerID.Value = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.ValueChanged += new System.EventHandler(this.Trainer_ValueChanged);
+            // 
+            // L_TrainerName
+            // 
+            this.L_TrainerName.AutoSize = true;
+            this.L_TrainerName.Location = new System.Drawing.Point(129, 65);
+            this.L_TrainerName.Name = "L_TrainerName";
+            this.L_TrainerName.Size = new System.Drawing.Size(0, 13);
+            this.L_TrainerName.TabIndex = 55;
+            // 
             // MiscRNGTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,6 +1149,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.HPCurr)).EndInit();
             this.TP_FP.ResumeLayout(false);
             this.TP_FP.PerformLayout();
+            this.TP_BattleTree.ResumeLayout(false);
+            this.TP_BattleTree.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1110,18 +1218,25 @@
         private System.Windows.Forms.Label L_Rank;
         private System.Windows.Forms.Label L_Color;
         private System.Windows.Forms.Label L_NPCType;
+        private System.Windows.Forms.Button B_Help;
+        private System.Windows.Forms.TabPage TP_BattleTree;
+        private System.Windows.Forms.Label L_Streak;
+        private System.Windows.Forms.NumericUpDown Streak;
+        private System.Windows.Forms.Label L_Trainer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_facility;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pokerus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_trainer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
-        private System.Windows.Forms.Button B_Help;
+        private System.Windows.Forms.NumericUpDown TrainerID;
+        private System.Windows.Forms.Label L_TrainerName;
     }
 }

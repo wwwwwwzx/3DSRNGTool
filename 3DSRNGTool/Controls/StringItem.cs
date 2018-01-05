@@ -5,7 +5,7 @@ namespace Pk3DSRNGTool
 {
     internal static class StringItem
     {
-        public static int language => Program.mainform.lindex;
+        public static int language => Program.mainform?.lindex ?? 0;
         public static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "zh" };
         public static string[] naturestr = new bool[25].Select(i => string.Empty).ToArray();
         public static string[] hpstr = new bool[18].Select(i => string.Empty).ToArray();
@@ -253,6 +253,11 @@ namespace Pk3DSRNGTool
             "Kanto Tent","Johto Tent","Hoenn Tent","Sinnoh Tent","Unova Tent","Kalos Tent","Pokemon House",
             "Team Red","Team Yellow","Team Green","Team Blue","Team Orange","Team NavyBlue","Team Purple","Team Pink",
             "Switcheroo",
+        };
+        public readonly static string[] TrainerName =
+        {
+            "Grimsley","Anabel","Wally","Colress","Cynthia","Plumeria","Guzma",
+            "Kiawe","Mallow","Sina","Dexio","Red","Blue","Kukui",
         };
     }
 }

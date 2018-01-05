@@ -21,9 +21,11 @@ namespace Pk3DSRNGTool
         public int RandN { get; set; }
         public byte Pokerus { get; set; }
         public CaptureResult Crt;
-        public string Capture => Crt?.Result ?? string.Empty;
+        public string Capture => Crt?.ToString() ?? string.Empty;
         public FPFacility frt;
-        public string Facility => frt?.Result ?? string.Empty;
+        public string Facility => frt?.ToString() ?? string.Empty;
+        public BTTrainer trt;
+        public string Trainer => trt?.ToString() ?? string.Empty;
         public byte Blink;
         public string BlinkFlag => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         public byte Clock => (byte)(Rand64 % 17);
@@ -41,6 +43,7 @@ namespace Pk3DSRNGTool
         public int Value;
         public string CurrentSeed;
         public FPFacility FacilityFilter;
+        public BTTrainer TrainerFilter;
 
         public bool check(Frame_Misc f)
         {
@@ -60,6 +63,8 @@ namespace Pk3DSRNGTool
             if (Capture && !f.Crt.Gotta)
                 return false;
             if (FacilityFilter?.IsDifferentFrom(f.frt) ?? false)
+                return false;
+            if (TrainerFilter?.IsDifferentFrom(f.trt) ?? false)
                 return false;
             return true;
         }

@@ -41,6 +41,7 @@ namespace Pk3DSRNGTool
             Color.SelectedIndex = 0;
 
             RNG_SelectedIndexChanged(null, null);
+            L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -74,14 +75,19 @@ namespace Pk3DSRNGTool
                 CompareType = (byte)Compare.SelectedIndex,
                 Value = (int)Value.Value,
                 FacilityFilter = getFacilityFilter,
+                TrainerFilter = getTrainerFilter,
             };
         }
         private FPFacility getFacilityFilter => Filters.SelectedTab != TP_FP ? null : new FPFacility
         {
-            star = (byte)Stars.SelectedIndex,
-            type = (sbyte)(int)Facility.SelectedValue,
+            Star = (byte)Stars.SelectedIndex,
+            Type = (sbyte)(int)Facility.SelectedValue,
             NPC = (sbyte)(NPCType.SelectedIndex - 1),
             Color = (sbyte)(Color.SelectedIndex - 1),
+        };
+        private BTTrainer getTrainerFilter => Filters.SelectedTab != TP_BattleTree ? null : new BTTrainer
+        {
+            TrainerID = (byte)TrainerID.Value,
         };
 
         private void B_Calc_Click(object sender, EventArgs e)
@@ -101,6 +107,8 @@ namespace Pk3DSRNGTool
             RNGPool.Clear();
             GC.Collect();
         }
+        private bool FesitivalPlaza => filter.FacilityFilter != null;
+        private bool BattleTree => filter.TrainerFilter != null;
 
         private void Search7()
         {
@@ -110,10 +118,15 @@ namespace Pk3DSRNGTool
             int delay = (int)Delay.Value / 2;
             ulong N = (ulong)Range.Value;
             byte Modelnum = (byte)(NPC.Value + 1);
-            if (filter.FacilityFilter != null)
+            if (FesitivalPlaza)
             {
                 FPFacility.GameVer = (byte)Game.SelectedIndex;
                 FPFacility.Rank = (byte)Rank.SelectedIndex;
+            }
+            if (BattleTree)
+            {
+                BTTrainer.GameVer = (byte)Game.SelectedIndex;
+                BTTrainer.Steak = (int)Streak.Value;
             }
 
             FuncUtil.getblinkflaglist(min, max, sfmt, Modelnum);
@@ -147,12 +160,20 @@ namespace Pk3DSRNGTool
                     f.realtime = 2 * frametime;
                     f.status = (int[])stmp.remain_frame.Clone();
 
-                    RNGPool.Rewind(0); RNGPool.CopyStatus(stmp);
+                    RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                     RNGPool.time_elapse7(delay);
                     f.frameused = RNGPool.index;
-                    if (filter.FacilityFilter != null)
+                    if (FesitivalPlaza)
                         f.frt = FPFacility.Generate();
-                    if (filter.Random)
+                    else if (BattleTree)
+                    {
+                        RNGPool.modelnumber = 2;
+                        RNGPool.ResetModelStatus();
+                        RNGPool.time_elapse7(2);
+                        f.frameused = RNGPool.index;
+                        f.trt = BTTrainer.Generate();
+                    }
+                    else if (filter.Random)
                         f.RandN = (int)(RNGPool.getrand64 % N);
                     else if (filter.Pokerus)
                         f.Pokerus = Pokerus7.getStrain();
@@ -184,10 +205,15 @@ namespace Pk3DSRNGTool
             int frameadvance;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
-            if (filter.FacilityFilter != null)
+            if (FesitivalPlaza)
             {
                 FPFacility.GameVer = (byte)Game.SelectedIndex;
                 FPFacility.Rank = (byte)Rank.SelectedIndex;
+            }
+            if (BattleTree)
+            {
+                BTTrainer.GameVer = (byte)Game.SelectedIndex;
+                BTTrainer.Steak = (int)Streak.Value;
             }
 
             FuncUtil.getblinkflaglist(frame, frame, sfmt, (byte)(NPC.Value + 1));
@@ -223,9 +249,17 @@ namespace Pk3DSRNGTool
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
                 RNGPool.time_elapse7(delay);
                 f.frameused = RNGPool.index;
-                if (filter.FacilityFilter != null)
+                if (FesitivalPlaza)
                     f.frt = FPFacility.Generate();
-                if (filter.Random)
+                else if (BattleTree)
+                {
+                    RNGPool.modelnumber = 2;
+                    RNGPool.ResetModelStatus();
+                    RNGPool.time_elapse7(2);
+                    f.frameused = RNGPool.index;
+                    f.trt = BTTrainer.Generate();
+                }
+                else if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand64 % N);
                 else if (filter.Pokerus)
                     f.Pokerus = Pokerus7.getStrain();
@@ -264,7 +298,11 @@ namespace Pk3DSRNGTool
                 capture7.DexBonus = (uint)(int)DexBonus.SelectedValue;
                 capture7.OPowerBonus = RotoCatch.Checked ? 2.5f : 1.0f;
                 capture7.Calc();
-                L_output.Text = string.Format("Critical {0:P}  \tShake {1:P}", capture7.CriticalRate / 256.0, capture7.ShakeRate / 65536.0);
+                var criticalchance = capture7.CriticalRate / 256.0;
+                var shakechance = capture7.ShakeRate / 65536.0;
+                var capturechance = criticalchance * shakechance + (1 - criticalchance) * Math.Pow(shakechance, 4);
+                L_output.Text = CB_Detail.Checked ? string.Format("Critical {0:P}  \tShake {1:P}", criticalchance, shakechance)
+                    : string.Format("Critical {0:P}  \tSuccess {1:P}", criticalchance, capturechance);
             }
 
             for (int i = 0; i < frame; i++)
@@ -328,11 +366,13 @@ namespace Pk3DSRNGTool
 
         private void AdjustDGVColumns()
         {
+            dgv_trainer.Visible =
             dgv_facility.Visible =
             dgv_hit.Visible = dgv_status.Visible =
             dgv_clock.Visible = dgv_blink.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex == 0;
-            dgv_facility.Visible &= filter.FacilityFilter != null;
+            dgv_facility.Visible &= FesitivalPlaza;
+            dgv_trainer.Visible &= BattleTree;
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
@@ -348,14 +388,24 @@ namespace Pk3DSRNGTool
         #region UI Logic
         private void RNG_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (sender == Filters && Filters.SelectedIndex < 2)
-                Filters.SelectedTab.Controls.Add(B_ResetFrame);
+            if (sender == Filters)
+            {
+                var selected = Filters.SelectedTab;
+                if (selected == TP_Misc || selected == TP_Timeline)
+                    selected.Controls.Add(B_ResetFrame);
+                if (selected == TP_BattleTree || selected == TP_FP)
+                {
+                    selected.Controls.Add(Game);
+                    selected.Controls.Add(B_Help);
+                }
+            }
             RB_Random.Checked = true;
             RB_Pokerus.Visible = RNG.SelectedIndex != 1;
             NPC.Visible = L_NPC.Visible = RNG.SelectedIndex <= 0;
             ShowHideTab(TP_Timeline, RNG.SelectedIndex == 0, 0);
             Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
             ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);
+            ShowHideTab(TP_BattleTree, RNG.SelectedIndex == 0, 3);
             ShowHideTab(TP_Capture, RNG.SelectedIndex == 1, 1);
         }
 
@@ -413,9 +463,15 @@ namespace Pk3DSRNGTool
             if (List.Any(t => t.Value == tmp))
                 Facility.SelectedValue = tmp;
         }
+        
+        private void Trainer_ValueChanged(object sender, EventArgs e)
+        {
+            L_TrainerName.Text = 192 <= TrainerID.Value ? TrainerID.Value <= 205 ? StringItem.TrainerName[(int)TrainerID.Value - 192] : StringItem.ANY_STR[StringItem.language]
+                                                        : string.Empty;
+        }
 
         private void B_Help_Click(object sender, EventArgs e)
-            => System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/FestivalPlazaFacilities.md");
+            => System.Diagnostics.Process.Start(string.Format("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/{0}.md" , Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
         #endregion
 
         #region Control
