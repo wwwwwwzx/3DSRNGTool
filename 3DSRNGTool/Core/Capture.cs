@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool.Core
         public bool Gotta => Shake == Total;
         private string result_raw => CriticalVal.ToString("X2") + "/" + MaxRandom.ToString("X4");
         private string result_shake => Shake.ToString() + "/" + Total.ToString();
-        public string Result => Details ? result_raw : result_shake;
+        public override string ToString() => Details ? result_raw : result_shake;
     }
 
     public abstract class Capture

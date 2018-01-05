@@ -6,19 +6,19 @@ namespace Pk3DSRNGTool
 {
     public class FPFacility
     {
-        public byte star;
-        public sbyte type = -1;
+        public byte Star;
+        public sbyte Type = -1;
         public sbyte NPC = -1;
         public sbyte Color = -1;
 
-        public string Result => string.Format("{0} ★{1} - N{2} - C{3}", StringItem.FacilityName[type], star, NPC, Color);
+        public override string ToString() => string.Format("{0} ★{1} - N{2} - C{3}", StringItem.FacilityName[Type], Star, NPC, Color);
         
         // Filter
         public bool IsDifferentFrom(FPFacility result)
         {
-            if (star != 0 && star != result.star)
+            if (Star != 0 && Star != result.Star)
                 return true;
-            if (type >= 0 && type != result.type)
+            if (Type >= 0 && Type != result.Type)
                 return true;
             if (NPC >= 0 && NPC != result.NPC)
                 return true;
@@ -42,9 +42,9 @@ namespace Pk3DSRNGTool
 
             var result = new FPFacility();
 
-            result.star = getStar(tiny.Nextuint() % 100);
+            result.Star = getStar(tiny.Nextuint() % 100);
 
-            result.type = FacilityList[result.star * 2 - (IsMoon ? 1 : 2)][tiny.Nextuint() % Nlist[result.star - 1]];
+            result.Type = FacilityList[result.Star * 2 - (IsMoon ? 1 : 2)][tiny.Nextuint() % Nlist[result.Star - 1]];
 
             result.NPC = (sbyte)(tiny.Nextuint() % 12);
 
