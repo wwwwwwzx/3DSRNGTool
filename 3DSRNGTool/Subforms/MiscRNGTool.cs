@@ -405,7 +405,7 @@ namespace Pk3DSRNGTool
             if (enable ^ Filters.TabPages.Contains(tab))
             {
                 if (enable)
-                    Filters.TabPages.Insert(index, tab);
+                    Filters.TabPages.Insert(Math.Min(Filters.TabPages.Count, index), tab);
                 else
                     Filters.TabPages.Remove(tab);
             }
@@ -454,7 +454,7 @@ namespace Pk3DSRNGTool
             if (List.Any(t => t.Value == tmp))
                 Facility.SelectedValue = tmp;
         }
-        
+
         private void Trainer_ValueChanged(object sender, EventArgs e)
         {
             L_TrainerName.Text = 192 <= TrainerID.Value ? TrainerID.Value <= 205 ? StringItem.TrainerName[(int)TrainerID.Value - 192] : StringItem.ANY_STR[StringItem.language]
@@ -462,7 +462,7 @@ namespace Pk3DSRNGTool
         }
 
         private void B_Help_Click(object sender, EventArgs e)
-            => System.Diagnostics.Process.Start(string.Format("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/{0}.md" , Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
+            => System.Diagnostics.Process.Start(string.Format("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/{0}.md", Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
         #endregion
 
         #region Control

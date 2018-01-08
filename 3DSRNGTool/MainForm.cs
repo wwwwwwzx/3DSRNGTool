@@ -577,7 +577,7 @@ namespace Pk3DSRNGTool
                                     break;
                                 case "Ability":
                                     tmp = Convert.ToInt32(value);
-                                    Sta_Ability.SelectedIndex = 0 < tmp && tmp < 4 ? tmp : 0;
+                                    Ability.SelectedIndex = 0 < tmp && tmp < 4 ? tmp : 0;
                                     break;
                                 case "Gender":
                                     tmp = Convert.ToInt32(value);
