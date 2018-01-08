@@ -98,7 +98,7 @@ namespace Pk3DSRNGTool
         }
 
         private void B_Help_Click(object sender, EventArgs e) =>
-            System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/wiki/NTR-Helper-Usage");
+            System.Diagnostics.Process.Start(StringItem.GITHUB + "wiki/NTR-Helper-Usage");
 
         #region IDBot
         private void Start()

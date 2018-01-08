@@ -5,6 +5,7 @@ namespace Pk3DSRNGTool
 {
     internal static class StringItem
     {
+        public static string GITHUB = "https://github.com/wwwwwwzx/3DSRNGTool/";
         public static int language => Program.mainform?.lindex ?? 0;
         public static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "zh" };
         public static string[] naturestr = new bool[25].Select(i => string.Empty).ToArray();

@@ -462,7 +462,7 @@ namespace Pk3DSRNGTool
         }
 
         private void B_Help_Click(object sender, EventArgs e)
-            => System.Diagnostics.Process.Start(string.Format("https://github.com/wwwwwwzx/3DSRNGTool/blob/master/Data/{0}.md", Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
+            => System.Diagnostics.Process.Start(string.Format(StringItem.GITHUB + "blob/master/Data/{0}.md", Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
         #endregion
 
         #region Control
