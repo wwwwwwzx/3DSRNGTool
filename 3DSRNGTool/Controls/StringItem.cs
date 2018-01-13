@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
         public readonly static string[] eventabilitystr = { "1/2", "1/2/H" };
         public readonly static string[] helditemStr = { "50%", "5%", "1%", "---" };
 
-        public readonly static string[] gen7wildtypestr = { "-", "UB", "QR", "XX" };
+        public readonly static string[] gen7wildtypestr = { "-", "UB", "QR", "XX", "W" };
 
         public static string[] abilitystr;
         public static string[] speciestr;

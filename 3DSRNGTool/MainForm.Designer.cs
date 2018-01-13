@@ -208,6 +208,10 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.L_SOSRNGFrame = new System.Windows.Forms.Label();
+            this.SOSRNGFrame = new System.Windows.Forms.NumericUpDown();
+            this.SOSRNGSeed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.L_SOSRNGSeed = new System.Windows.Forms.Label();
             this.L_Lead = new System.Windows.Forms.Label();
             this.LeadAbility = new System.Windows.Forms.ComboBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
@@ -341,6 +345,7 @@
             this.AlwaysSynced = new System.Windows.Forms.CheckBox();
             this.Fix3v = new System.Windows.Forms.CheckBox();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.ShinyRemind = new System.Windows.Forms.CheckBox();
             this.Filter_Lv = new System.Windows.Forms.NumericUpDown();
             this.L_S = new System.Windows.Forms.Label();
             this.L_C = new System.Windows.Forms.Label();
@@ -415,7 +420,6 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.ShinyRemind = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -444,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).BeginInit();
             this.FishingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
@@ -1112,7 +1117,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(116, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -1128,7 +1133,7 @@
             this.M_KeyBV,
             this.MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(47, 20);
+            this.M_Tool.Size = new System.Drawing.Size(48, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -2301,6 +2306,10 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.L_SOSRNGFrame);
+            this.Wild_Setting.Controls.Add(this.SOSRNGFrame);
+            this.Wild_Setting.Controls.Add(this.SOSRNGSeed);
+            this.Wild_Setting.Controls.Add(this.L_SOSRNGSeed);
             this.Wild_Setting.Controls.Add(this.L_Lead);
             this.Wild_Setting.Controls.Add(this.LeadAbility);
             this.Wild_Setting.Controls.Add(this.FishingPanel);
@@ -2332,6 +2341,57 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // L_SOSRNGFrame
+            // 
+            this.L_SOSRNGFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_SOSRNGFrame.AutoSize = true;
+            this.L_SOSRNGFrame.Location = new System.Drawing.Point(303, 159);
+            this.L_SOSRNGFrame.Name = "L_SOSRNGFrame";
+            this.L_SOSRNGFrame.Size = new System.Drawing.Size(36, 13);
+            this.L_SOSRNGFrame.TabIndex = 119;
+            this.L_SOSRNGFrame.Text = "Frame";
+            this.L_SOSRNGFrame.Visible = false;
+            // 
+            // SOSRNGFrame
+            // 
+            this.SOSRNGFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SOSRNGFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SOSRNGFrame.Location = new System.Drawing.Point(345, 155);
+            this.SOSRNGFrame.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.SOSRNGFrame.Name = "SOSRNGFrame";
+            this.SOSRNGFrame.Size = new System.Drawing.Size(54, 22);
+            this.SOSRNGFrame.TabIndex = 97;
+            this.SOSRNGFrame.Visible = false;
+            // 
+            // SOSRNGSeed
+            // 
+            this.SOSRNGSeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SOSRNGSeed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SOSRNGSeed.Location = new System.Drawing.Point(226, 155);
+            this.SOSRNGSeed.Mask = "AAAAAAAA";
+            this.SOSRNGSeed.Name = "SOSRNGSeed";
+            this.SOSRNGSeed.Size = new System.Drawing.Size(64, 22);
+            this.SOSRNGSeed.TabIndex = 117;
+            this.SOSRNGSeed.Text = "00000000";
+            this.SOSRNGSeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SOSRNGSeed.Value = ((uint)(0u));
+            this.SOSRNGSeed.Visible = false;
+            // 
+            // L_SOSRNGSeed
+            // 
+            this.L_SOSRNGSeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_SOSRNGSeed.AutoSize = true;
+            this.L_SOSRNGSeed.Location = new System.Drawing.Point(194, 160);
+            this.L_SOSRNGSeed.Name = "L_SOSRNGSeed";
+            this.L_SOSRNGSeed.Size = new System.Drawing.Size(32, 13);
+            this.L_SOSRNGSeed.TabIndex = 116;
+            this.L_SOSRNGSeed.Text = "Seed";
+            this.L_SOSRNGSeed.Visible = false;
             // 
             // L_Lead
             // 
@@ -2439,18 +2499,18 @@
             // 
             // L_ChainLength
             // 
-            this.L_ChainLength.AutoSize = true;
-            this.L_ChainLength.Location = new System.Drawing.Point(11, 159);
+            this.L_ChainLength.Location = new System.Drawing.Point(164, 196);
             this.L_ChainLength.Name = "L_ChainLength";
-            this.L_ChainLength.Size = new System.Drawing.Size(43, 13);
+            this.L_ChainLength.Size = new System.Drawing.Size(78, 13);
             this.L_ChainLength.TabIndex = 99;
             this.L_ChainLength.Text = "连锁数";
+            this.L_ChainLength.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.L_ChainLength.Visible = false;
             // 
             // ChainLength
             // 
             this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChainLength.Location = new System.Drawing.Point(93, 155);
+            this.ChainLength.Location = new System.Drawing.Point(246, 192);
             this.ChainLength.Name = "ChainLength";
             this.ChainLength.Size = new System.Drawing.Size(44, 22);
             this.ChainLength.TabIndex = 98;
@@ -3935,6 +3995,17 @@
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
             // 
+            // ShinyRemind
+            // 
+            this.ShinyRemind.AutoSize = true;
+            this.ShinyRemind.Location = new System.Drawing.Point(193, 221);
+            this.ShinyRemind.Name = "ShinyRemind";
+            this.ShinyRemind.Size = new System.Drawing.Size(74, 17);
+            this.ShinyRemind.TabIndex = 101;
+            this.ShinyRemind.Text = "闪数提醒";
+            this.ShinyRemind.UseVisualStyleBackColor = true;
+            this.ShinyRemind.Visible = false;
+            // 
             // Filter_Lv
             // 
             this.Filter_Lv.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4863,17 +4934,6 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
-            // ShinyRemind
-            // 
-            this.ShinyRemind.AutoSize = true;
-            this.ShinyRemind.Location = new System.Drawing.Point(193, 221);
-            this.ShinyRemind.Name = "ShinyRemind";
-            this.ShinyRemind.Size = new System.Drawing.Size(74, 17);
-            this.ShinyRemind.TabIndex = 101;
-            this.ShinyRemind.Text = "闪数提醒";
-            this.ShinyRemind.UseVisualStyleBackColor = true;
-            this.ShinyRemind.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4937,6 +4997,7 @@
             this.TP_WildRNG.ResumeLayout(false);
             this.Wild_Setting.ResumeLayout(false);
             this.Wild_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).EndInit();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).EndInit();
@@ -5385,6 +5446,10 @@
         private System.Windows.Forms.ComboBox LeadAbility;
         private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
         private System.Windows.Forms.CheckBox ShinyRemind;
+        private System.Windows.Forms.Label L_SOSRNGFrame;
+        private System.Windows.Forms.NumericUpDown SOSRNGFrame;
+        private Controls.HexMaskedTextBox SOSRNGSeed;
+        private System.Windows.Forms.Label L_SOSRNGSeed;
     }
 }
 

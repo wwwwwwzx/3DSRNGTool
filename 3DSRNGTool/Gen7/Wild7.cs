@@ -88,7 +88,8 @@ namespace Pk3DSRNGTool
             }
             rt.Species = (short)(SpecForm[slot] & 0x7FF);
 
-            Advance(60);
+            if (!SOS)
+                Advance(60);
 
             //Encryption Constant
             rt.EC = (uint)getrand;
@@ -182,7 +183,8 @@ namespace Pk3DSRNGTool
         {
             switch (category)
             {
-                case 3: return 1;
+                case 3:
+                case 4: return 1;
                 default: return 0;
             }
         }
