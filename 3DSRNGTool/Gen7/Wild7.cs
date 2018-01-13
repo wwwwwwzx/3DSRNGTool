@@ -7,6 +7,7 @@ namespace Pk3DSRNGTool
     public class Wild7 : WildRNG
     {
         private static ulong getrand => RNGPool.getrand64;
+        private static uint getsosrand => SOSRNG.getrand;
         private static void time_elapse(int n) => RNGPool.time_elapse7(n);
         private static void Advance(int n) => RNGPool.Advance(n);
 
@@ -16,6 +17,7 @@ namespace Pk3DSRNGTool
         public bool CompoundEye;
         public bool UB;
         public bool Fishing;
+        public bool SOS;
 
         private bool IsSpecial;
         private bool IsMinior => SpecForm[slot] == 774;
@@ -23,12 +25,11 @@ namespace Pk3DSRNGTool
         private bool IsShinyLocked => IsUB && SpecForm[0] < 800; // Not USUM UB
         private bool NormalSlot => !IsSpecial || Fishing;
 
-        protected override int PIDroll_count => ShinyCharm && !IsShinyLocked ? 3 : 1;
+        protected override int PIDroll_count => (ShinyCharm && !IsShinyLocked ? 3 : 1) + (SOS ? SOSRNG.PIDBonus : 0);
 
         // USUM v1.1 sub_3A7FE0
-        private void CheckLeadAbility()
+        private void CheckLeadAbility(ulong rand100)
         {
-            var rand100 = getrand % 100;
             SynchroPass = rand100 >= 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 >= 50;
@@ -56,23 +57,36 @@ namespace Pk3DSRNGTool
             else if (SpecialEnctr > 0)
                 IsSpecial = rt.IsSpecial = getrand % 100 < SpecialEnctr;
 
-            if (NormalSlot) // Normal wild
+            if (SOS)
             {
-                CheckLeadAbility();
-                rt.Synchronize = SynchroPass;
+                SOSRNG.Reset();
+                SOSRNG.Advance(2); // Call Rate Check
+                CheckLeadAbility(getsosrand % 100);
+                if (SOSRNG.Weather && (rt.Slot = slot = SOSRNG.getWeatherSlot()) > 7) // No Electric/Steel Type in weather sos slots
+                    rt.IsSpecial = true;
+                else
+                    rt.Slot = StaticMagnetPass ? getsmslot(getsosrand) : getslot((int)(getsosrand % 100));
+                rt.Level = (byte)(getsosrand % (uint)(Levelmax - Levelmin + 1) + Levelmin);
+                if (LevelModifierPass) rt.Level = ModifiedLevel;
+                SOSRNG.Advance(1);
+            }
+            else if (NormalSlot) // Normal wild
+            {
+                CheckLeadAbility(getrand % 100);
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
                 if (LevelModifierPass) rt.Level = ModifiedLevel;
                 Advance(1);
-                if (IsMinior) Advance(1);
+                if (IsMinior) rt.Forme = (byte)(getrand % 7);
             }
             else // UB or QR
             {
                 slot = 0;
                 time_elapse(7);
-                rt.Synchronize = getrand % 100 >= 50;
+                CheckLeadAbility(getrand % 100);
                 time_elapse(3);
             }
+            rt.Species = (short)(SpecForm[slot] & 0x7FF);
 
             Advance(60);
 
@@ -111,18 +125,19 @@ namespace Pk3DSRNGTool
             rt.Ability = (byte)(IsUB ? 1 : (getrand & 1) + 1);
 
             //Nature
-            rt.Nature = rt.Synchronize && Synchro_Stat < 25 ? Synchro_Stat : (byte)(getrand % 25);
+            rt.Nature = (rt.Synchronize = SynchroPass) && Synchro_Stat < 25 ? Synchro_Stat : (byte)(getrand % 25);
 
             //Gender
             rt.Gender = RandomGender[slot] ? (CuteCharmPass ? CuteCharmGender : (byte)(getrand % 252 >= Gender[slot] ? 1 : 2)) : Gender[slot];
 
             //Item
-            rt.Item = (byte)(NormalSlot ? getrand % 100 : 100);
+            rt.Item = (byte)(SOS ? getsosrand % 100 : NormalSlot ? getrand % 100 : 100);
             rt.ItemStr = getitemstr(rt.Item);
 
-            //Fishing item slots
             if (Fishing && rt.IsSpecial)
-                rt.Slot = getHookedItemSlot(rt.SpecialVal);
+                rt.Slot = getHookedItemSlot(rt.SpecialVal); //Fishing item slots
+            else if (SOS)
+                SOSRNG.PostGeneration(rt); // IVs and HA
 
             return rt;
         }

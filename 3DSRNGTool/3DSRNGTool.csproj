@@ -133,6 +133,7 @@
     <Compile Include="Gen7\Event7.cs" />
     <Compile Include="Gen7\ModelStatus.cs" />
     <Compile Include="Gen7\PKM7.cs" />
+    <Compile Include="Gen7\SOSRNG.cs" />
     <Compile Include="Gen7\Wild7.cs" />
     <Compile Include="Gen7\Stationary7.cs" />
     <Compile Include="MainForm.cs">
