@@ -5,7 +5,8 @@ namespace Pk3DSRNGTool
 {
     internal static class StringItem
     {
-        public static int language => Program.mainform.lindex;
+        public static string GITHUB = "https://github.com/wwwwwwzx/3DSRNGTool/";
+        public static int language => Program.mainform?.lindex ?? 0;
         public static readonly string[] langlist = { "en", "ja", "fr", "de", "es", "zh" };
         public static string[] naturestr = new bool[25].Select(i => string.Empty).ToArray();
         public static string[] hpstr = new bool[18].Select(i => string.Empty).ToArray();
@@ -16,7 +17,7 @@ namespace Pk3DSRNGTool
         public readonly static string[] eventabilitystr = { "1/2", "1/2/H" };
         public readonly static string[] helditemStr = { "50%", "5%", "1%", "---" };
 
-        public readonly static string[] gen7wildtypestr = { "-", "UB", "QR", "XX" };
+        public readonly static string[] gen7wildtypestr = { "-", "UB", "QR", "XX", "W" };
 
         public static string[] abilitystr;
         public static string[] speciestr;
@@ -242,6 +243,22 @@ namespace Pk3DSRNGTool
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
+        };
+        public readonly static string[] FacilityName =
+        {
+            "Big Dream","Gold Rush","Treasure Hunt",
+            "Ghosts Den","Trick Room","Confuse Ray",
+            "Ball Shop","General Shop","Battle Shop","Soft Drink","Pharmacy",
+            "Rare Kitchen","Battle Table", "Friendship Cafe", "Friendship Parlor",
+            "Thump-Bump","Clink-Clunk","Stomp-Stomp",
+            "Kanto Tent","Johto Tent","Hoenn Tent","Sinnoh Tent","Unova Tent","Kalos Tent","Pokemon House",
+            "Team Red","Team Yellow","Team Green","Team Blue","Team Orange","Team NavyBlue","Team Purple","Team Pink",
+            "Switcheroo",
+        };
+        public readonly static string[] TrainerName =
+        {
+            "Grimsley","Anabel","Wally","Colress","Cynthia","Plumeria","Guzma",
+            "Kiawe","Mallow","Sina","Dexio","Red","Blue","Kukui",
         };
     }
 }

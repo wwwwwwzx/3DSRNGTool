@@ -1,0 +1,1242 @@
+﻿namespace Pk3DSRNGTool
+{
+    partial class MiscRNGTool
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.L_Delay = new System.Windows.Forms.Label();
+            this.Delay = new System.Windows.Forms.NumericUpDown();
+            this.L_NPC = new System.Windows.Forms.Label();
+            this.MaxResults = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.NPC = new System.Windows.Forms.NumericUpDown();
+            this.StartingFrame = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.RNG = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_hit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_blink = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_facility = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_realtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B_ResetFrame = new System.Windows.Forms.Button();
+            this.Range = new System.Windows.Forms.NumericUpDown();
+            this.Value = new System.Windows.Forms.NumericUpDown();
+            this.Compare = new System.Windows.Forms.ComboBox();
+            this.RB_Random = new System.Windows.Forms.RadioButton();
+            this.RB_Pokerus = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CurrentText = new System.Windows.Forms.TextBox();
+            this.B_Calc = new System.Windows.Forms.Button();
+            this.Filters = new System.Windows.Forms.TabControl();
+            this.TP_Timeline = new System.Windows.Forms.TabPage();
+            this.Createtimeline = new System.Windows.Forms.CheckBox();
+            this.Raining = new System.Windows.Forms.CheckBox();
+            this.Girl = new System.Windows.Forms.RadioButton();
+            this.Boy = new System.Windows.Forms.RadioButton();
+            this.Fidget = new System.Windows.Forms.CheckBox();
+            this.JumpFrame = new System.Windows.Forms.NumericUpDown();
+            this.TP_Misc = new System.Windows.Forms.TabPage();
+            this.TP_Capture = new System.Windows.Forms.TabPage();
+            this.RotoCatch = new System.Windows.Forms.CheckBox();
+            this.SuccessOnly = new System.Windows.Forms.CheckBox();
+            this.CB_Detail = new System.Windows.Forms.CheckBox();
+            this.L_output = new System.Windows.Forms.Label();
+            this.Status = new System.Windows.Forms.ComboBox();
+            this.DexBonus = new System.Windows.Forms.ComboBox();
+            this.BallBonus = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Ball = new System.Windows.Forms.Label();
+            this.CatchRate = new System.Windows.Forms.NumericUpDown();
+            this.L_CatchRate = new System.Windows.Forms.Label();
+            this.HPMax = new System.Windows.Forms.NumericUpDown();
+            this.L_HP = new System.Windows.Forms.Label();
+            this.HPCurr = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TP_FP = new System.Windows.Forms.TabPage();
+            this.B_Help = new System.Windows.Forms.Button();
+            this.L_Color = new System.Windows.Forms.Label();
+            this.L_NPCType = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.L_Rank = new System.Windows.Forms.Label();
+            this.Color = new System.Windows.Forms.ComboBox();
+            this.NPCType = new System.Windows.Forms.ComboBox();
+            this.Stars = new System.Windows.Forms.ComboBox();
+            this.Facility = new System.Windows.Forms.ComboBox();
+            this.Rank = new System.Windows.Forms.ComboBox();
+            this.Game = new System.Windows.Forms.ComboBox();
+            this.TP_BattleTree = new System.Windows.Forms.TabPage();
+            this.L_Trainer = new System.Windows.Forms.Label();
+            this.L_Streak = new System.Windows.Forms.Label();
+            this.Streak = new System.Windows.Forms.NumericUpDown();
+            this.TrainerID = new System.Windows.Forms.NumericUpDown();
+            this.L_TrainerName = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Range)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Value)).BeginInit();
+            this.Filters.SuspendLayout();
+            this.TP_Timeline.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
+            this.TP_Misc.SuspendLayout();
+            this.TP_Capture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CatchRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPCurr)).BeginInit();
+            this.TP_FP.SuspendLayout();
+            this.TP_BattleTree.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.L_Delay);
+            this.groupBox1.Controls.Add(this.Delay);
+            this.groupBox1.Controls.Add(this.L_NPC);
+            this.groupBox1.Controls.Add(this.MaxResults);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.NPC);
+            this.groupBox1.Controls.Add(this.StartingFrame);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.Seed);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.RNG);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(209, 215);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "RNGInfo";
+            // 
+            // L_Delay
+            // 
+            this.L_Delay.AutoSize = true;
+            this.L_Delay.Location = new System.Drawing.Point(14, 185);
+            this.L_Delay.Name = "L_Delay";
+            this.L_Delay.Size = new System.Drawing.Size(34, 13);
+            this.L_Delay.TabIndex = 51;
+            this.L_Delay.Text = "Delay";
+            // 
+            // Delay
+            // 
+            this.Delay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delay.Location = new System.Drawing.Point(54, 180);
+            this.Delay.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Delay.Name = "Delay";
+            this.Delay.Size = new System.Drawing.Size(49, 22);
+            this.Delay.TabIndex = 50;
+            // 
+            // L_NPC
+            // 
+            this.L_NPC.AutoSize = true;
+            this.L_NPC.Location = new System.Drawing.Point(117, 185);
+            this.L_NPC.Name = "L_NPC";
+            this.L_NPC.Size = new System.Drawing.Size(29, 13);
+            this.L_NPC.TabIndex = 49;
+            this.L_NPC.Text = "NPC";
+            // 
+            // MaxResults
+            // 
+            this.MaxResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxResults.Location = new System.Drawing.Point(105, 142);
+            this.MaxResults.Name = "MaxResults";
+            this.MaxResults.Size = new System.Drawing.Size(89, 22);
+            this.MaxResults.TabIndex = 5;
+            this.MaxResults.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 144);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Max Results";
+            // 
+            // NPC
+            // 
+            this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NPC.Location = new System.Drawing.Point(152, 180);
+            this.NPC.Name = "NPC";
+            this.NPC.Size = new System.Drawing.Size(42, 22);
+            this.NPC.TabIndex = 48;
+            // 
+            // StartingFrame
+            // 
+            this.StartingFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartingFrame.Location = new System.Drawing.Point(105, 104);
+            this.StartingFrame.Name = "StartingFrame";
+            this.StartingFrame.Size = new System.Drawing.Size(89, 22);
+            this.StartingFrame.TabIndex = 1;
+            this.StartingFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 106);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Starting Frame";
+            // 
+            // Seed
+            // 
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Location = new System.Drawing.Point(127, 66);
+            this.Seed.Mask = "AAAAAAAA";
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(67, 23);
+            this.Seed.TabIndex = 1;
+            this.Seed.Text = "00000000";
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.Value = ((uint)(0u));
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Seed";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "RNG";
+            // 
+            // RNG
+            // 
+            this.RNG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RNG.FormattingEnabled = true;
+            this.RNG.Items.AddRange(new object[] {
+            "G7 SFMT (64bit)",
+            "G7 SFMT (32bit)",
+            "G6 MT"});
+            this.RNG.Location = new System.Drawing.Point(90, 29);
+            this.RNG.Name = "RNG";
+            this.RNG.Size = new System.Drawing.Size(104, 21);
+            this.RNG.TabIndex = 1;
+            this.RNG.SelectedIndexChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_frame,
+            this.dgv_hit,
+            this.dgv_blink,
+            this.dgv_clock,
+            this.dgv_facility,
+            this.dgv_pokerus,
+            this.dgv_trainer,
+            this.dgv_capture,
+            this.dgv_randn,
+            this.dgv_rand32,
+            this.dgv_rand64,
+            this.dgv_realtime,
+            this.dgv_status});
+            this.dataGridView1.Location = new System.Drawing.Point(227, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 18;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(445, 456);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // dgv_frame
+            // 
+            this.dgv_frame.DataPropertyName = "Frame";
+            this.dgv_frame.HeaderText = "Frame";
+            this.dgv_frame.Name = "dgv_frame";
+            this.dgv_frame.ReadOnly = true;
+            this.dgv_frame.Width = 55;
+            // 
+            // dgv_hit
+            // 
+            this.dgv_hit.DataPropertyName = "ActualFrame";
+            this.dgv_hit.HeaderText = "Actual Hit";
+            this.dgv_hit.Name = "dgv_hit";
+            this.dgv_hit.ReadOnly = true;
+            this.dgv_hit.Visible = false;
+            this.dgv_hit.Width = 55;
+            // 
+            // dgv_blink
+            // 
+            this.dgv_blink.DataPropertyName = "Blinkflag";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_blink.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_blink.HeaderText = "Blink";
+            this.dgv_blink.Name = "dgv_blink";
+            this.dgv_blink.ReadOnly = true;
+            this.dgv_blink.Width = 35;
+            // 
+            // dgv_clock
+            // 
+            this.dgv_clock.DataPropertyName = "Clock";
+            this.dgv_clock.HeaderText = "Clk";
+            this.dgv_clock.Name = "dgv_clock";
+            this.dgv_clock.ReadOnly = true;
+            this.dgv_clock.Width = 35;
+            // 
+            // dgv_facility
+            // 
+            this.dgv_facility.DataPropertyName = "Facility";
+            this.dgv_facility.HeaderText = "Facility";
+            this.dgv_facility.Name = "dgv_facility";
+            this.dgv_facility.ReadOnly = true;
+            this.dgv_facility.Visible = false;
+            this.dgv_facility.Width = 160;
+            // 
+            // dgv_pokerus
+            // 
+            this.dgv_pokerus.DataPropertyName = "Pokerus";
+            this.dgv_pokerus.HeaderText = "Pokerus";
+            this.dgv_pokerus.Name = "dgv_pokerus";
+            this.dgv_pokerus.ReadOnly = true;
+            this.dgv_pokerus.Width = 55;
+            // 
+            // dgv_trainer
+            // 
+            this.dgv_trainer.DataPropertyName = "Trainer";
+            this.dgv_trainer.HeaderText = "TrainerID";
+            this.dgv_trainer.Name = "dgv_trainer";
+            this.dgv_trainer.ReadOnly = true;
+            this.dgv_trainer.Visible = false;
+            this.dgv_trainer.Width = 55;
+            // 
+            // dgv_capture
+            // 
+            this.dgv_capture.DataPropertyName = "Capture";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_capture.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_capture.HeaderText = "Capture";
+            this.dgv_capture.Name = "dgv_capture";
+            this.dgv_capture.ReadOnly = true;
+            this.dgv_capture.Visible = false;
+            this.dgv_capture.Width = 70;
+            // 
+            // dgv_randn
+            // 
+            this.dgv_randn.DataPropertyName = "RandN";
+            this.dgv_randn.HeaderText = "RN";
+            this.dgv_randn.Name = "dgv_randn";
+            this.dgv_randn.ReadOnly = true;
+            this.dgv_randn.Width = 40;
+            // 
+            // dgv_rand32
+            // 
+            this.dgv_rand32.DataPropertyName = "Rand32";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "X8";
+            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_rand32.HeaderText = "Random#";
+            this.dgv_rand32.Name = "dgv_rand32";
+            this.dgv_rand32.ReadOnly = true;
+            this.dgv_rand32.Visible = false;
+            this.dgv_rand32.Width = 70;
+            // 
+            // dgv_rand64
+            // 
+            this.dgv_rand64.DataPropertyName = "Rand64";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Format = "X16";
+            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_rand64.HeaderText = "Random Number";
+            this.dgv_rand64.Name = "dgv_rand64";
+            this.dgv_rand64.ReadOnly = true;
+            this.dgv_rand64.Width = 123;
+            // 
+            // dgv_realtime
+            // 
+            this.dgv_realtime.DataPropertyName = "Realtime";
+            this.dgv_realtime.HeaderText = "Time";
+            this.dgv_realtime.Name = "dgv_realtime";
+            this.dgv_realtime.ReadOnly = true;
+            this.dgv_realtime.Width = 80;
+            // 
+            // dgv_status
+            // 
+            this.dgv_status.DataPropertyName = "NPCStatus";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_status.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_status.HeaderText = "NPC";
+            this.dgv_status.Name = "dgv_status";
+            this.dgv_status.ReadOnly = true;
+            this.dgv_status.Visible = false;
+            this.dgv_status.Width = 40;
+            // 
+            // B_ResetFrame
+            // 
+            this.B_ResetFrame.Image = global::Pk3DSRNGTool.Properties.Resources.Reset;
+            this.B_ResetFrame.Location = new System.Drawing.Point(173, 142);
+            this.B_ResetFrame.Name = "B_ResetFrame";
+            this.B_ResetFrame.Size = new System.Drawing.Size(27, 25);
+            this.B_ResetFrame.TabIndex = 101;
+            this.B_ResetFrame.UseVisualStyleBackColor = true;
+            this.B_ResetFrame.Click += new System.EventHandler(this.B_ResetFrame_Click);
+            // 
+            // Range
+            // 
+            this.Range.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Range.Location = new System.Drawing.Point(92, 58);
+            this.Range.Name = "Range";
+            this.Range.Size = new System.Drawing.Size(71, 22);
+            this.Range.TabIndex = 57;
+            this.Range.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // Value
+            // 
+            this.Value.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Value.Location = new System.Drawing.Point(92, 90);
+            this.Value.Name = "Value";
+            this.Value.Size = new System.Drawing.Size(71, 22);
+            this.Value.TabIndex = 52;
+            this.Value.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // Compare
+            // 
+            this.Compare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Compare.FormattingEnabled = true;
+            this.Compare.Items.AddRange(new object[] {
+            "<",
+            ">=",
+            "="});
+            this.Compare.Location = new System.Drawing.Point(11, 89);
+            this.Compare.Name = "Compare";
+            this.Compare.Size = new System.Drawing.Size(54, 21);
+            this.Compare.TabIndex = 54;
+            // 
+            // RB_Random
+            // 
+            this.RB_Random.AutoSize = true;
+            this.RB_Random.Checked = true;
+            this.RB_Random.Location = new System.Drawing.Point(10, 58);
+            this.RB_Random.Name = "RB_Random";
+            this.RB_Random.Size = new System.Drawing.Size(76, 17);
+            this.RB_Random.TabIndex = 56;
+            this.RB_Random.TabStop = true;
+            this.RB_Random.Text = "Random N";
+            this.RB_Random.UseVisualStyleBackColor = true;
+            this.RB_Random.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
+            // 
+            // RB_Pokerus
+            // 
+            this.RB_Pokerus.AutoSize = true;
+            this.RB_Pokerus.Location = new System.Drawing.Point(11, 127);
+            this.RB_Pokerus.Name = "RB_Pokerus";
+            this.RB_Pokerus.Size = new System.Drawing.Size(64, 17);
+            this.RB_Pokerus.TabIndex = 55;
+            this.RB_Pokerus.Text = "Pokerus";
+            this.RB_Pokerus.UseVisualStyleBackColor = true;
+            this.RB_Pokerus.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Current";
+            // 
+            // CurrentText
+            // 
+            this.CurrentText.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentText.Location = new System.Drawing.Point(63, 20);
+            this.CurrentText.Name = "CurrentText";
+            this.CurrentText.Size = new System.Drawing.Size(127, 22);
+            this.CurrentText.TabIndex = 54;
+            // 
+            // B_Calc
+            // 
+            this.B_Calc.Location = new System.Drawing.Point(146, 441);
+            this.B_Calc.Name = "B_Calc";
+            this.B_Calc.Size = new System.Drawing.Size(75, 29);
+            this.B_Calc.TabIndex = 53;
+            this.B_Calc.Text = "Search";
+            this.B_Calc.UseVisualStyleBackColor = true;
+            this.B_Calc.Click += new System.EventHandler(this.B_Calc_Click);
+            // 
+            // Filters
+            // 
+            this.Filters.Controls.Add(this.TP_Timeline);
+            this.Filters.Controls.Add(this.TP_Misc);
+            this.Filters.Controls.Add(this.TP_Capture);
+            this.Filters.Controls.Add(this.TP_FP);
+            this.Filters.Controls.Add(this.TP_BattleTree);
+            this.Filters.Location = new System.Drawing.Point(10, 243);
+            this.Filters.Name = "Filters";
+            this.Filters.SelectedIndex = 0;
+            this.Filters.Size = new System.Drawing.Size(211, 196);
+            this.Filters.TabIndex = 54;
+            this.Filters.SelectedIndexChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // TP_Timeline
+            // 
+            this.TP_Timeline.Controls.Add(this.Createtimeline);
+            this.TP_Timeline.Controls.Add(this.Raining);
+            this.TP_Timeline.Controls.Add(this.Girl);
+            this.TP_Timeline.Controls.Add(this.Boy);
+            this.TP_Timeline.Controls.Add(this.Fidget);
+            this.TP_Timeline.Controls.Add(this.JumpFrame);
+            this.TP_Timeline.Location = new System.Drawing.Point(4, 22);
+            this.TP_Timeline.Name = "TP_Timeline";
+            this.TP_Timeline.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Timeline.Size = new System.Drawing.Size(203, 170);
+            this.TP_Timeline.TabIndex = 1;
+            this.TP_Timeline.Text = "Timeline";
+            this.TP_Timeline.UseVisualStyleBackColor = true;
+            // 
+            // Createtimeline
+            // 
+            this.Createtimeline.AutoSize = true;
+            this.Createtimeline.Location = new System.Drawing.Point(11, 20);
+            this.Createtimeline.Name = "Createtimeline";
+            this.Createtimeline.Size = new System.Drawing.Size(99, 17);
+            this.Createtimeline.TabIndex = 115;
+            this.Createtimeline.Text = "Create Timeline";
+            this.Createtimeline.UseVisualStyleBackColor = true;
+            this.Createtimeline.CheckedChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // Raining
+            // 
+            this.Raining.AutoSize = true;
+            this.Raining.Location = new System.Drawing.Point(11, 106);
+            this.Raining.Name = "Raining";
+            this.Raining.Size = new System.Drawing.Size(62, 17);
+            this.Raining.TabIndex = 114;
+            this.Raining.Text = "Raining";
+            this.Raining.UseVisualStyleBackColor = true;
+            // 
+            // Girl
+            // 
+            this.Girl.AutoSize = true;
+            this.Girl.Location = new System.Drawing.Point(151, 73);
+            this.Girl.Name = "Girl";
+            this.Girl.Size = new System.Drawing.Size(40, 17);
+            this.Girl.TabIndex = 113;
+            this.Girl.Text = "Girl";
+            this.Girl.UseVisualStyleBackColor = true;
+            this.Girl.Visible = false;
+            // 
+            // Boy
+            // 
+            this.Boy.AutoSize = true;
+            this.Boy.Checked = true;
+            this.Boy.Location = new System.Drawing.Point(151, 50);
+            this.Boy.Name = "Boy";
+            this.Boy.Size = new System.Drawing.Size(43, 17);
+            this.Boy.TabIndex = 112;
+            this.Boy.TabStop = true;
+            this.Boy.Text = "Boy";
+            this.Boy.UseVisualStyleBackColor = true;
+            this.Boy.Visible = false;
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(11, 62);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
+            this.Fidget.TabIndex = 111;
+            this.Fidget.Text = "Fidget";
+            this.Fidget.UseVisualStyleBackColor = true;
+            this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            // 
+            // JumpFrame
+            // 
+            this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JumpFrame.Location = new System.Drawing.Point(68, 57);
+            this.JumpFrame.Name = "JumpFrame";
+            this.JumpFrame.Size = new System.Drawing.Size(76, 22);
+            this.JumpFrame.TabIndex = 110;
+            this.JumpFrame.Visible = false;
+            // 
+            // TP_Misc
+            // 
+            this.TP_Misc.Controls.Add(this.B_ResetFrame);
+            this.TP_Misc.Controls.Add(this.CurrentText);
+            this.TP_Misc.Controls.Add(this.Range);
+            this.TP_Misc.Controls.Add(this.label5);
+            this.TP_Misc.Controls.Add(this.Value);
+            this.TP_Misc.Controls.Add(this.RB_Pokerus);
+            this.TP_Misc.Controls.Add(this.Compare);
+            this.TP_Misc.Controls.Add(this.RB_Random);
+            this.TP_Misc.Location = new System.Drawing.Point(4, 22);
+            this.TP_Misc.Name = "TP_Misc";
+            this.TP_Misc.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_Misc.Size = new System.Drawing.Size(203, 170);
+            this.TP_Misc.TabIndex = 0;
+            this.TP_Misc.Text = "Misc";
+            this.TP_Misc.UseVisualStyleBackColor = true;
+            // 
+            // TP_Capture
+            // 
+            this.TP_Capture.Controls.Add(this.RotoCatch);
+            this.TP_Capture.Controls.Add(this.SuccessOnly);
+            this.TP_Capture.Controls.Add(this.CB_Detail);
+            this.TP_Capture.Controls.Add(this.L_output);
+            this.TP_Capture.Controls.Add(this.Status);
+            this.TP_Capture.Controls.Add(this.DexBonus);
+            this.TP_Capture.Controls.Add(this.BallBonus);
+            this.TP_Capture.Controls.Add(this.label7);
+            this.TP_Capture.Controls.Add(this.Ball);
+            this.TP_Capture.Controls.Add(this.CatchRate);
+            this.TP_Capture.Controls.Add(this.L_CatchRate);
+            this.TP_Capture.Controls.Add(this.HPMax);
+            this.TP_Capture.Controls.Add(this.L_HP);
+            this.TP_Capture.Controls.Add(this.HPCurr);
+            this.TP_Capture.Controls.Add(this.label6);
+            this.TP_Capture.Location = new System.Drawing.Point(4, 22);
+            this.TP_Capture.Name = "TP_Capture";
+            this.TP_Capture.Size = new System.Drawing.Size(203, 170);
+            this.TP_Capture.TabIndex = 2;
+            this.TP_Capture.Text = "Capture";
+            this.TP_Capture.UseVisualStyleBackColor = true;
+            // 
+            // RotoCatch
+            // 
+            this.RotoCatch.AutoSize = true;
+            this.RotoCatch.Location = new System.Drawing.Point(150, 106);
+            this.RotoCatch.Name = "RotoCatch";
+            this.RotoCatch.Size = new System.Drawing.Size(49, 17);
+            this.RotoCatch.TabIndex = 118;
+            this.RotoCatch.Text = "Roto";
+            this.RotoCatch.UseVisualStyleBackColor = true;
+            // 
+            // SuccessOnly
+            // 
+            this.SuccessOnly.AutoSize = true;
+            this.SuccessOnly.Location = new System.Drawing.Point(80, 13);
+            this.SuccessOnly.Name = "SuccessOnly";
+            this.SuccessOnly.Size = new System.Drawing.Size(91, 17);
+            this.SuccessOnly.TabIndex = 117;
+            this.SuccessOnly.Text = "Success Only";
+            this.SuccessOnly.UseVisualStyleBackColor = true;
+            // 
+            // CB_Detail
+            // 
+            this.CB_Detail.AutoSize = true;
+            this.CB_Detail.Location = new System.Drawing.Point(9, 13);
+            this.CB_Detail.Name = "CB_Detail";
+            this.CB_Detail.Size = new System.Drawing.Size(58, 17);
+            this.CB_Detail.TabIndex = 116;
+            this.CB_Detail.Text = "Details";
+            this.CB_Detail.UseVisualStyleBackColor = true;
+            // 
+            // L_output
+            // 
+            this.L_output.AutoSize = true;
+            this.L_output.Location = new System.Drawing.Point(4, 137);
+            this.L_output.Name = "L_output";
+            this.L_output.Size = new System.Drawing.Size(47, 13);
+            this.L_output.TabIndex = 62;
+            this.L_output.Text = "Chance:";
+            // 
+            // Status
+            // 
+            this.Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status.FormattingEnabled = true;
+            this.Status.Items.AddRange(new object[] {
+            "G7 SFMT (64bit)",
+            "G7 SFMT (32bit)",
+            "G6 MT"});
+            this.Status.Location = new System.Drawing.Point(134, 43);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(55, 21);
+            this.Status.TabIndex = 61;
+            // 
+            // DexBonus
+            // 
+            this.DexBonus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DexBonus.FormattingEnabled = true;
+            this.DexBonus.Items.AddRange(new object[] {
+            "G7 SFMT (64bit)",
+            "G7 SFMT (32bit)",
+            "G6 MT"});
+            this.DexBonus.Location = new System.Drawing.Point(79, 103);
+            this.DexBonus.Name = "DexBonus";
+            this.DexBonus.Size = new System.Drawing.Size(65, 21);
+            this.DexBonus.TabIndex = 60;
+            // 
+            // BallBonus
+            // 
+            this.BallBonus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BallBonus.FormattingEnabled = true;
+            this.BallBonus.Items.AddRange(new object[] {
+            "G7 SFMT (64bit)",
+            "G7 SFMT (32bit)",
+            "G6 MT"});
+            this.BallBonus.Location = new System.Drawing.Point(143, 73);
+            this.BallBonus.Name = "BallBonus";
+            this.BallBonus.Size = new System.Drawing.Size(47, 21);
+            this.BallBonus.TabIndex = 52;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "Dex Caught";
+            // 
+            // Ball
+            // 
+            this.Ball.AutoSize = true;
+            this.Ball.Location = new System.Drawing.Point(115, 77);
+            this.Ball.Name = "Ball";
+            this.Ball.Size = new System.Drawing.Size(24, 13);
+            this.Ball.TabIndex = 58;
+            this.Ball.Text = "Ball";
+            // 
+            // CatchRate
+            // 
+            this.CatchRate.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CatchRate.Location = new System.Drawing.Point(69, 72);
+            this.CatchRate.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.CatchRate.Name = "CatchRate";
+            this.CatchRate.Size = new System.Drawing.Size(42, 22);
+            this.CatchRate.TabIndex = 57;
+            this.CatchRate.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // L_CatchRate
+            // 
+            this.L_CatchRate.AutoSize = true;
+            this.L_CatchRate.Location = new System.Drawing.Point(4, 77);
+            this.L_CatchRate.Name = "L_CatchRate";
+            this.L_CatchRate.Size = new System.Drawing.Size(61, 13);
+            this.L_CatchRate.TabIndex = 56;
+            this.L_CatchRate.Text = "Catch Rate";
+            // 
+            // HPMax
+            // 
+            this.HPMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPMax.Location = new System.Drawing.Point(89, 42);
+            this.HPMax.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.HPMax.Name = "HPMax";
+            this.HPMax.Size = new System.Drawing.Size(42, 22);
+            this.HPMax.TabIndex = 55;
+            this.HPMax.Value = new decimal(new int[] {
+            208,
+            0,
+            0,
+            0});
+            this.HPMax.ValueChanged += new System.EventHandler(this.HP_ValueChanged);
+            // 
+            // L_HP
+            // 
+            this.L_HP.AutoSize = true;
+            this.L_HP.Location = new System.Drawing.Point(4, 47);
+            this.L_HP.Name = "L_HP";
+            this.L_HP.Size = new System.Drawing.Size(22, 13);
+            this.L_HP.TabIndex = 53;
+            this.L_HP.Text = "HP";
+            // 
+            // HPCurr
+            // 
+            this.HPCurr.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPCurr.Location = new System.Drawing.Point(29, 42);
+            this.HPCurr.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.HPCurr.Name = "HPCurr";
+            this.HPCurr.Size = new System.Drawing.Size(42, 22);
+            this.HPCurr.TabIndex = 52;
+            this.HPCurr.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.HPCurr.ValueChanged += new System.EventHandler(this.HP_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(74, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(12, 13);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "/";
+            // 
+            // TP_FP
+            // 
+            this.TP_FP.Controls.Add(this.B_Help);
+            this.TP_FP.Controls.Add(this.L_Color);
+            this.TP_FP.Controls.Add(this.L_NPCType);
+            this.TP_FP.Controls.Add(this.label8);
+            this.TP_FP.Controls.Add(this.L_Rank);
+            this.TP_FP.Controls.Add(this.Color);
+            this.TP_FP.Controls.Add(this.NPCType);
+            this.TP_FP.Controls.Add(this.Stars);
+            this.TP_FP.Controls.Add(this.Facility);
+            this.TP_FP.Controls.Add(this.Rank);
+            this.TP_FP.Controls.Add(this.Game);
+            this.TP_FP.Location = new System.Drawing.Point(4, 22);
+            this.TP_FP.Name = "TP_FP";
+            this.TP_FP.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_FP.Size = new System.Drawing.Size(203, 170);
+            this.TP_FP.TabIndex = 3;
+            this.TP_FP.Text = "Festival Plaza";
+            this.TP_FP.UseVisualStyleBackColor = true;
+            // 
+            // B_Help
+            // 
+            this.B_Help.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
+            this.B_Help.Location = new System.Drawing.Point(173, 142);
+            this.B_Help.Name = "B_Help";
+            this.B_Help.Size = new System.Drawing.Size(27, 25);
+            this.B_Help.TabIndex = 122;
+            this.B_Help.UseVisualStyleBackColor = true;
+            this.B_Help.Click += new System.EventHandler(this.B_Help_Click);
+            // 
+            // L_Color
+            // 
+            this.L_Color.AutoSize = true;
+            this.L_Color.Location = new System.Drawing.Point(123, 109);
+            this.L_Color.Name = "L_Color";
+            this.L_Color.Size = new System.Drawing.Size(31, 13);
+            this.L_Color.TabIndex = 63;
+            this.L_Color.Text = "Color";
+            // 
+            // L_NPCType
+            // 
+            this.L_NPCType.AutoSize = true;
+            this.L_NPCType.Location = new System.Drawing.Point(10, 109);
+            this.L_NPCType.Name = "L_NPCType";
+            this.L_NPCType.Size = new System.Drawing.Size(29, 13);
+            this.L_NPCType.TabIndex = 62;
+            this.L_NPCType.Text = "NPC";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(133, 66);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 61;
+            this.label8.Text = "★";
+            // 
+            // L_Rank
+            // 
+            this.L_Rank.AutoSize = true;
+            this.L_Rank.Location = new System.Drawing.Point(100, 26);
+            this.L_Rank.Name = "L_Rank";
+            this.L_Rank.Size = new System.Drawing.Size(33, 13);
+            this.L_Rank.TabIndex = 52;
+            this.L_Rank.Text = "Rank";
+            // 
+            // Color
+            // 
+            this.Color.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Color.FormattingEnabled = true;
+            this.Color.Items.AddRange(new object[] {
+            "-",
+            "0",
+            "1",
+            "2",
+            "3"});
+            this.Color.Location = new System.Drawing.Point(156, 106);
+            this.Color.Name = "Color";
+            this.Color.Size = new System.Drawing.Size(36, 21);
+            this.Color.TabIndex = 60;
+            // 
+            // NPCType
+            // 
+            this.NPCType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NPCType.FormattingEnabled = true;
+            this.NPCType.Items.AddRange(new object[] {
+            "-",
+            "Ace Trainer F",
+            "Ace Trainer M",
+            "Veteran F",
+            "Veteran M",
+            "Office Worker M",
+            "Office Worker F",
+            "Punk Guy",
+            "Punk Girl",
+            "Breeder M",
+            "Breeder F",
+            "Youngster",
+            "Lass"});
+            this.NPCType.Location = new System.Drawing.Point(39, 106);
+            this.NPCType.Name = "NPCType";
+            this.NPCType.Size = new System.Drawing.Size(81, 21);
+            this.NPCType.TabIndex = 59;
+            // 
+            // Stars
+            // 
+            this.Stars.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Stars.FormattingEnabled = true;
+            this.Stars.Items.AddRange(new object[] {
+            "-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.Stars.Location = new System.Drawing.Point(156, 63);
+            this.Stars.Name = "Stars";
+            this.Stars.Size = new System.Drawing.Size(36, 21);
+            this.Stars.TabIndex = 58;
+            this.Stars.SelectedIndexChanged += new System.EventHandler(this.FacilityPool_Changed);
+            // 
+            // Facility
+            // 
+            this.Facility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Facility.FormattingEnabled = true;
+            this.Facility.Location = new System.Drawing.Point(15, 63);
+            this.Facility.Name = "Facility";
+            this.Facility.Size = new System.Drawing.Size(104, 21);
+            this.Facility.TabIndex = 57;
+            // 
+            // Rank
+            // 
+            this.Rank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Rank.FormattingEnabled = true;
+            this.Rank.Items.AddRange(new object[] {
+            "<=2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11-20",
+            "21-30",
+            "31-40",
+            "41-50",
+            "51-60",
+            "61-70",
+            "71-80",
+            "81-90",
+            "91-99",
+            "100+"});
+            this.Rank.Location = new System.Drawing.Point(139, 23);
+            this.Rank.Name = "Rank";
+            this.Rank.Size = new System.Drawing.Size(57, 21);
+            this.Rank.TabIndex = 56;
+            // 
+            // Game
+            // 
+            this.Game.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Game.FormattingEnabled = true;
+            this.Game.Items.AddRange(new object[] {
+            "Sun",
+            "Moon",
+            "Ultra Sun",
+            "Ultra Moon"});
+            this.Game.Location = new System.Drawing.Point(15, 23);
+            this.Game.Name = "Game";
+            this.Game.Size = new System.Drawing.Size(80, 21);
+            this.Game.TabIndex = 55;
+            this.Game.SelectedIndexChanged += new System.EventHandler(this.FacilityPool_Changed);
+            // 
+            // TP_BattleTree
+            // 
+            this.TP_BattleTree.Controls.Add(this.L_TrainerName);
+            this.TP_BattleTree.Controls.Add(this.TrainerID);
+            this.TP_BattleTree.Controls.Add(this.L_Trainer);
+            this.TP_BattleTree.Controls.Add(this.L_Streak);
+            this.TP_BattleTree.Controls.Add(this.Streak);
+            this.TP_BattleTree.Location = new System.Drawing.Point(4, 22);
+            this.TP_BattleTree.Name = "TP_BattleTree";
+            this.TP_BattleTree.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_BattleTree.Size = new System.Drawing.Size(203, 170);
+            this.TP_BattleTree.TabIndex = 4;
+            this.TP_BattleTree.Text = "Battle Tree";
+            this.TP_BattleTree.UseVisualStyleBackColor = true;
+            // 
+            // L_Trainer
+            // 
+            this.L_Trainer.AutoSize = true;
+            this.L_Trainer.Location = new System.Drawing.Point(12, 65);
+            this.L_Trainer.Name = "L_Trainer";
+            this.L_Trainer.Size = new System.Drawing.Size(54, 13);
+            this.L_Trainer.TabIndex = 53;
+            this.L_Trainer.Text = "Trainer ID";
+            // 
+            // L_Streak
+            // 
+            this.L_Streak.AutoSize = true;
+            this.L_Streak.Location = new System.Drawing.Point(100, 26);
+            this.L_Streak.Name = "L_Streak";
+            this.L_Streak.Size = new System.Drawing.Size(38, 13);
+            this.L_Streak.TabIndex = 52;
+            this.L_Streak.Text = "Streak";
+            // 
+            // Streak
+            // 
+            this.Streak.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Streak.Location = new System.Drawing.Point(144, 24);
+            this.Streak.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Streak.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Streak.Name = "Streak";
+            this.Streak.Size = new System.Drawing.Size(49, 22);
+            this.Streak.TabIndex = 52;
+            this.Streak.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // TrainerID
+            // 
+            this.TrainerID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrainerID.Location = new System.Drawing.Point(72, 60);
+            this.TrainerID.Maximum = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.Name = "TrainerID";
+            this.TrainerID.Size = new System.Drawing.Size(42, 22);
+            this.TrainerID.TabIndex = 54;
+            this.TrainerID.Value = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.ValueChanged += new System.EventHandler(this.Trainer_ValueChanged);
+            // 
+            // L_TrainerName
+            // 
+            this.L_TrainerName.AutoSize = true;
+            this.L_TrainerName.Location = new System.Drawing.Point(129, 65);
+            this.L_TrainerName.Name = "L_TrainerName";
+            this.L_TrainerName.Size = new System.Drawing.Size(0, 13);
+            this.L_TrainerName.TabIndex = 55;
+            // 
+            // MiscRNGTool
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(684, 482);
+            this.Controls.Add(this.Filters);
+            this.Controls.Add(this.B_Calc);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(700, 520);
+            this.Name = "MiscRNGTool";
+            this.Text = "MiscRNGTool";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MiscRNGTool_FormClosing);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingFrame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Range)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Value)).EndInit();
+            this.Filters.ResumeLayout(false);
+            this.TP_Timeline.ResumeLayout(false);
+            this.TP_Timeline.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
+            this.TP_Misc.ResumeLayout(false);
+            this.TP_Misc.PerformLayout();
+            this.TP_Capture.ResumeLayout(false);
+            this.TP_Capture.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CatchRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HPCurr)).EndInit();
+            this.TP_FP.ResumeLayout(false);
+            this.TP_FP.PerformLayout();
+            this.TP_BattleTree.ResumeLayout(false);
+            this.TP_BattleTree.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox RNG;
+        private Controls.HexMaskedTextBox Seed;
+        private System.Windows.Forms.NumericUpDown MaxResults;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown StartingFrame;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label L_Delay;
+        private System.Windows.Forms.NumericUpDown Delay;
+        private System.Windows.Forms.Label L_NPC;
+        private System.Windows.Forms.NumericUpDown NPC;
+        private System.Windows.Forms.Button B_Calc;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox CurrentText;
+        private System.Windows.Forms.RadioButton RB_Pokerus;
+        private System.Windows.Forms.RadioButton RB_Random;
+        private System.Windows.Forms.ComboBox Compare;
+        private System.Windows.Forms.NumericUpDown Value;
+        private System.Windows.Forms.NumericUpDown Range;
+        private System.Windows.Forms.Button B_ResetFrame;
+        private System.Windows.Forms.TabControl Filters;
+        private System.Windows.Forms.TabPage TP_Misc;
+        private System.Windows.Forms.TabPage TP_Timeline;
+        private System.Windows.Forms.TabPage TP_Capture;
+        private System.Windows.Forms.RadioButton Girl;
+        private System.Windows.Forms.RadioButton Boy;
+        private System.Windows.Forms.CheckBox Fidget;
+        private System.Windows.Forms.NumericUpDown JumpFrame;
+        private System.Windows.Forms.CheckBox Raining;
+        private System.Windows.Forms.CheckBox Createtimeline;
+        private System.Windows.Forms.NumericUpDown HPMax;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label L_HP;
+        private System.Windows.Forms.NumericUpDown HPCurr;
+        private System.Windows.Forms.ComboBox DexBonus;
+        private System.Windows.Forms.ComboBox BallBonus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Ball;
+        private System.Windows.Forms.NumericUpDown CatchRate;
+        private System.Windows.Forms.Label L_CatchRate;
+        private System.Windows.Forms.ComboBox Status;
+        private System.Windows.Forms.Label L_output;
+        private System.Windows.Forms.CheckBox CB_Detail;
+        private System.Windows.Forms.CheckBox SuccessOnly;
+        private System.Windows.Forms.CheckBox RotoCatch;
+        private System.Windows.Forms.TabPage TP_FP;
+        private System.Windows.Forms.ComboBox Color;
+        private System.Windows.Forms.ComboBox NPCType;
+        private System.Windows.Forms.ComboBox Stars;
+        private System.Windows.Forms.ComboBox Facility;
+        private System.Windows.Forms.ComboBox Rank;
+        private System.Windows.Forms.ComboBox Game;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label L_Rank;
+        private System.Windows.Forms.Label L_Color;
+        private System.Windows.Forms.Label L_NPCType;
+        private System.Windows.Forms.Button B_Help;
+        private System.Windows.Forms.TabPage TP_BattleTree;
+        private System.Windows.Forms.Label L_Streak;
+        private System.Windows.Forms.NumericUpDown Streak;
+        private System.Windows.Forms.Label L_Trainer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_facility;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pokerus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_trainer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_capture;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
+        private System.Windows.Forms.NumericUpDown TrainerID;
+        private System.Windows.Forms.Label L_TrainerName;
+    }
+}

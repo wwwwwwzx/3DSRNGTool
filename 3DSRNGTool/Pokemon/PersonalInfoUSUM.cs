@@ -9,9 +9,6 @@
                 return;
             Data = data;
         }
-        public override byte[] Write()
-        {
-            return Data;
-        }
+        public byte CallRate => EscapeRate;
     }
 }

@@ -6,7 +6,7 @@ namespace Pk3DSRNGTool
 {
     public static class Updater
     {
-        public static string CurrentVersion = "0.9.9.1";
+        public static string CurrentVersion = "0.9.9.2";
 
         public static void CheckUpdate()
         {
@@ -34,7 +34,7 @@ namespace Pk3DSRNGTool
                 if (HasNewerVersion(LatestVersion))
                     if (Prompt(MessageBoxButtons.YesNo, "New version detected. Start to download?") == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://github.com/wwwwwwzx/3DSRNGTool/releases/download/" + LatestVersion + "/3DSRNGTool.exe");
+                        System.Diagnostics.Process.Start(StringItem.GITHUB + "releases/download/" + LatestVersion + "/3DSRNGTool.exe");
                         Program.mainform.Close();
                     }
             }

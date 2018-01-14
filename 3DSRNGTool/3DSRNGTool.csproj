@@ -117,6 +117,8 @@
     <Compile Include="Gen6\Results\ResultW6.cs" />
     <Compile Include="Gen6\Results\Result6.cs" />
     <Compile Include="Gen6\Stationary6.cs" />
+    <Compile Include="Gen7\BTTrainer.cs" />
+    <Compile Include="Gen7\FPFacility.cs" />
     <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Gen7\Gen7Encounter\FishingArea7.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Gen7\Event7.cs" />
     <Compile Include="Gen7\ModelStatus.cs" />
     <Compile Include="Gen7\PKM7.cs" />
+    <Compile Include="Gen7\SOSRNG.cs" />
     <Compile Include="Gen7\Wild7.cs" />
     <Compile Include="Gen7\Stationary7.cs" />
     <Compile Include="MainForm.cs">
@@ -189,11 +192,11 @@
     <Compile Include="Subforms\KeyBV.Designer.cs">
       <DependentUpon>KeyBV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\MiscTool.cs">
+    <Compile Include="Subforms\MiscRNGTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\MiscTool.Designer.cs">
-      <DependentUpon>MiscTool.cs</DependentUpon>
+    <Compile Include="Subforms\MiscRNGTool.Designer.cs">
+      <DependentUpon>MiscRNGTool.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\NTRHelper.cs">
       <SubType>Form</SubType>

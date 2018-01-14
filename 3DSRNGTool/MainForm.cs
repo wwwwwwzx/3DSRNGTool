@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
         public string VersionStr => L_GameVersion.Text + ": " + Gameversion.SelectedItem.ToString();
         private Pokemon[] Pokemonlist;
         private Pokemon FormPM => RNGPool.PM;
+        private bool Initializing = true;
         private byte Method => (byte)RNGMethod.SelectedIndex;
         private bool IsEvent => Method == 1;
         private bool IsBank => Method == 0 && ((FormPM as PKM6)?.Bank ?? false);
@@ -32,6 +33,7 @@ namespace Pk3DSRNGTool
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
+        private bool gen7sos => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
         private byte lastgen;
@@ -126,6 +128,8 @@ namespace Pk3DSRNGTool
 
             Profiles.ReadProfiles(); // Read all profiles
             RefreshProfile();
+
+            Initializing = false;
         }
 
         private void MainForm_Close(object sender, FormClosedEventArgs e)
@@ -187,8 +191,8 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
-            if (Gen7 && !gen7honey)
+            var List = (gen7honey || gen7sos ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
+            if (gen7fishing)
                 for (int i = 0; i < List.Count; i++)
                     List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0)][i]);
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
@@ -378,8 +382,11 @@ namespace Pk3DSRNGTool
 
         private void Seed_ValueChanged(object sender, EventArgs e)
         {
+            if (Initializing)
+                return;
             Properties.Settings.Default.Seed = Seed.Value;
             Properties.Settings.Default.Save();
+            miscrngtool.UpdateInfo(updateseed: true);
         }
 
         private void UpdateTip(string msg)
@@ -401,6 +408,13 @@ namespace Pk3DSRNGTool
             SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0;
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
+            Raining.Visible = Gen7 && !gen7sos;
+            L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
+            ChainLength.Visible = L_ChainLength.Visible = gen7sos;
+            var pmw6 = FormPM as PKMW6;
+            FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6?.Type == EncounterType.PokeRadar;
+            CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6?.Type == EncounterType.FriendSafari;
+            ChainLength.Visible = L_ChainLength.Visible |= (pmw6?.IsFishing ?? false);
             if (IsPelago)
             {
                 Correction.Minimum = 0; Correction.Maximum = 255;
@@ -577,7 +591,7 @@ namespace Pk3DSRNGTool
                                     break;
                                 case "Ability":
                                     tmp = Convert.ToInt32(value);
-                                    Sta_Ability.SelectedIndex = 0 < tmp && tmp < 4 ? tmp : 0;
+                                    Ability.SelectedIndex = 0 < tmp && tmp < 4 ? tmp : 0;
                                     break;
                                 case "Gender":
                                     tmp = Convert.ToInt32(value);
@@ -624,6 +638,7 @@ namespace Pk3DSRNGTool
         private void GameVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
+            miscrngtool.UpdateInfo(updategame: !Initializing);
             L_GenderList.Visible = GenderList.Visible = IsTransporter;
             byte currentgen = (byte)(Gen6 ? 6 : 7);
             if (currentgen != lastgen)
@@ -785,7 +800,7 @@ namespace Pk3DSRNGTool
                     NPC.Value = tmp.NPC;
                     Correction.Value = tmp.Correction;
                     Raining.Enabled = true;
-                    Raining.Checked = tmp.Raining;
+                    Raining.Checked = tmp.Raining && !gen7sos;
                     if (CB_Category.SelectedIndex == 1 && FormPM is PKMW7 pmw7 && !pmw7.Conceptual)
                         Special_th.Value = pmw7.Rate[MetLocation.SelectedIndex];
                     if (LocationTable7.RustlingSpots.Contains(tmp.Location))
@@ -794,6 +809,7 @@ namespace Pk3DSRNGTool
                         UpdateTip(null);
                     Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
                     Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
+                    ChainLength.Maximum = 255;
                 }
                 else if (ea is FishingArea7 f)
                 {
@@ -951,6 +967,7 @@ namespace Pk3DSRNGTool
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
             GenderRatio.SelectedValue = t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); // Undiscovered Group
+            miscrngtool.UpdateInfo(catchrate: t.CatchRate, HP: Filter_Lv.Value == 0 ? -1 : (((t.HP * 2 + 31) * (int)Filter_Lv.Value) / 100) + (int)Filter_Lv.Value + 10);
 
             for (int i = 1; i < 4; i++)
                 Ability.Items[i] = abilitynumstr[i] + (Species > 0 ? $" - {abilitystr[t.Abilities[i - 1]]}" : string.Empty);
@@ -972,6 +989,9 @@ namespace Pk3DSRNGTool
             Timedelay.Minimum = Math.Min((int)FormPM.Delay, 0);
             Timedelay.Value = FormPM.Delay;
 
+            if (Species > 0 && !FormPM.Gift)
+                miscrngtool.UpdateInfo(HP: (((t.HP * 2 + 31) * FormPM.Level) / 100) + FormPM.Level + 10);
+
             if (Sta_AbilityLocked.Checked = 0 < FormPM.Ability && FormPM.Ability < 5)
                 Sta_Ability.SelectedIndex = FormPM.Ability >> 1; // 1/2/4 -> 0/1/2
             if (FormPM is PKM7 pm7)
@@ -990,20 +1010,8 @@ namespace Pk3DSRNGTool
                 }
                 return;
             }
-            if (FormPM is PKMW6 pmw6)
-            {
-                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
-                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
-                ChainLength.Visible = L_ChainLength.Visible = pmw6.IsFishing;
-            }
-            else // Fall through
-            {
-                Fidget.Visible =
-                ChainLength.Visible = L_ChainLength.Visible =
-                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
-                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
-                ShinyMark.Visible = IsBank;
-            }
+            Fidget.Visible = false;
+            ShinyMark.Visible = IsBank;
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
@@ -1293,7 +1301,7 @@ namespace Pk3DSRNGTool
         {
             WildRNG setting = Gen6 ? new Wild6() : (WildRNG)new Wild7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
-            switch((Lead)LeadAbility.SelectedIndex)
+            switch ((Lead)LeadAbility.SelectedIndex)
             {
                 case Lead.Static: setting.Static = true; break;
                 case Lead.MagnetPull: setting.Magnet = true; break;
@@ -1330,6 +1338,19 @@ namespace Pk3DSRNGTool
                     setting7.Fishing = true;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
                     slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
+                }
+                else if (gen7sos)
+                {
+                    setting7.SOS = true;
+                    setting7.SpecForm = new int[10];
+                    int[] SOSSlots = new bool[7].Select(t => 172).ToArray(); // To-do
+                    int[] WeatherSlots = new int[2]; // To-do
+                    SOSSlots.CopyTo(setting7.SpecForm, 1);
+                    if (SOSRNG.Weather = WeatherSlots.Any(s => s != 0)) // To-do
+                        WeatherSlots.CopyTo(setting7.SpecForm, 8);
+                    SOSRNG.ChainLength = (int)ChainLength.Value;
+                    SOSRNG.SetBuffer(seed: SOSRNGSeed.Value, frame: (int)SOSRNGFrame.Value);
+                    slottype = 39;
                 }
             }
             if (setting is Wild6 setting6)
@@ -1595,6 +1616,7 @@ namespace Pk3DSRNGTool
         // Tools
         private IVRange IVInputer = new IVRange();
         private TinyTimelineTool TTT = new TinyTimelineTool();
+        private MiscRNGTool miscrngtool = new MiscRNGTool();
         private Gen7MainRNGTool gen7tool;
         private NTRHelper ntrhelper;
 
@@ -1796,9 +1818,9 @@ namespace Pk3DSRNGTool
             new Subforms.ProfileView(null, true).ShowDialog();
             RefreshProfile();
         }
-        
-        private void MiscRNGTool_Click(object sender, EventArgs e) 
-            => new Subforms.MiscTool().Show();
+
+        private void MiscRNGTool_Click(object sender, EventArgs e)
+            => miscrngtool.Show();
         #endregion
     }
 }

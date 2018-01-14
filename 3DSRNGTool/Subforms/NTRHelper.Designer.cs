@@ -123,7 +123,7 @@
             this.B_Help.Image = global::Pk3DSRNGTool.Properties.Resources.Info;
             this.B_Help.Location = new System.Drawing.Point(311, 21);
             this.B_Help.Name = "B_Help";
-            this.B_Help.Size = new System.Drawing.Size(24, 25);
+            this.B_Help.Size = new System.Drawing.Size(27, 25);
             this.B_Help.TabIndex = 121;
             this.B_Help.UseVisualStyleBackColor = true;
             this.B_Help.Click += new System.EventHandler(this.B_Help_Click);

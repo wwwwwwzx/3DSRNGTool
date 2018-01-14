@@ -69,7 +69,7 @@ namespace Pk3DSRNGTool
             RNGPool.timeline.Maxframe = max;
             RNGPool.timeline.Generate(Method == 0); // Consider Stationary delay
             int listlength = RNGPool.timeline.TinyLength;
-            
+
             // Prepare
             var rng = new MersenneTwister(Seed.Value);
             for (int i = 0; i < min; i++)
@@ -457,23 +457,24 @@ namespace Pk3DSRNGTool
             status.raining = Raining.Checked;
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
-            int frame = (int)Frame_min.Value;
-            int frameadvance, Currentframe;
+            int frameinput1 = (int)Frame_min.Value;          // Input 1: Cast the rod
+            int frameadvance, fishingdelay, frameinput2;    // Input 2: Pull the rod off water
             var fsetting = getFishingSetting;
-            int Timewindow = Overview.Checked ? 2 : 25 + fsetting.platdelay; // To-do;
-            int Unstable = Math.Max(31, Timewindow - 9);
+            int Timewindow = 2;
 
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
-                Currentframe = frame;
-
                 RNGPool.Save();
 
                 // 2 Frames for delay calc
+                // USUM v1.1 sub_39E2F0
                 RNGPool.Rewind(0); RNGPool.CopyStatus(status);
-                int fishingdelay = (int)(RNGPool.getrand64 % 60) + fsetting.basedelay;
-                RNGPool.Advance(1); // Fishy consumption
+                fishingdelay = (int)(RNGPool.getrand64 % 60) + fsetting.basedelay;
+                if (Overview.Checked)
+                    RNGPool.Advance(1); // Keep timewindow at 2 to avoid calculation
+                else
+                    Timewindow = (int)(RNGPool.getrand64 % 15) + fsetting.platdelay + 14;
 
                 // Fishing Delay
                 RNGPool.time_elapse7(fishingdelay);
@@ -482,14 +483,14 @@ namespace Pk3DSRNGTool
                 if (fsetting.suctioncups || (int)(RNGPool.getrand64 % 100) < fsetting.bitechance)
                 {
                     RNGPool.time_elapse7(1);
-                    int fishingframe = RNGPool.index + frame;
+                    frameinput2 = RNGPool.index + frameinput1;
                     RNGPool.SaveStatus();
 
                     for (int j = 2; j <= Timewindow; j++)
                     {
                         RNGPool.LoadStatus();
                         RNGPool.time_elapse7(1);
-                        fishingframe += RNGPool.index;
+                        frameinput2 += RNGPool.index;
                         RNGPool.SaveStatus();
                         RNGPool.DelayTime = fsetting.pkmdelay + Math.Max(0, fsetting.platdelay - j); //  Duplicates
 
@@ -499,9 +500,9 @@ namespace Pk3DSRNGTool
                             continue;
                         if (Overview.Checked)
                             result.RandNum = RNGPool.getsavepoint;
-                        result.FrameDelayUsed = fishingdelay;
-                        Frames.Add(new Frame(result, frame: fishingframe, time: (i + j + fishingdelay) * 2, blink: (byte)(Unstable < j ? 2 : 0)));
-                        Frames.Last().FishingFrame = Currentframe;
+                        result.FrameDelayUsed += frameinput2 - frameinput1;
+                        Frames.Add(new Frame(result, frame: frameinput2, time: (i + j + fishingdelay) * 2));
+                        Frames.Last().FishingFrame = frameinput1;
                     }
                 }
 
@@ -510,9 +511,9 @@ namespace Pk3DSRNGTool
                 if (Frames.Count > 100000)
                     break;
 
-                // Move to next Frame Update RNGPool
+                // Move to next Frame, Update RNGPool
                 frameadvance = status.NextState();
-                frame += frameadvance;
+                frameinput1 += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
                     RNGPool.AddNext(sfmt);
             }
