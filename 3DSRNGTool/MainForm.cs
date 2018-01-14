@@ -409,6 +409,12 @@ namespace Pk3DSRNGTool
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             Raining.Visible = Gen7 && !gen7sos;
+            L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
+            ChainLength.Visible = L_ChainLength.Visible = gen7sos;
+            var pmw6 = FormPM as PKMW6;
+            FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6?.Type == EncounterType.PokeRadar;
+            CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6?.Type == EncounterType.FriendSafari;
+            ChainLength.Visible = L_ChainLength.Visible |= (pmw6?.IsFishing ?? false);
             if (IsPelago)
             {
                 Correction.Minimum = 0; Correction.Maximum = 255;
@@ -998,21 +1004,8 @@ namespace Pk3DSRNGTool
                 }
                 return;
             }
-            if (FormPM is PKMW6 pmw6)
-            {
-                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6.Type == EncounterType.PokeRadar;
-                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6.Type == EncounterType.FriendSafari;
-                ChainLength.Visible = L_ChainLength.Visible = pmw6.IsFishing;
-            }
-            else // Fall through
-            {
-                L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
-                ChainLength.Visible = L_ChainLength.Visible = gen7sos;
-                Fidget.Visible =
-                FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible =
-                CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = false;
-                ShinyMark.Visible = IsBank;
-            }
+            Fidget.Visible = false;
+            ShinyMark.Visible = IsBank;
         }
 
         private void SetPersonalInfo(int SpecForm, bool skip = false) => SetPersonalInfo(SpecForm & 0x7FF, SpecForm >> 11, skip);
