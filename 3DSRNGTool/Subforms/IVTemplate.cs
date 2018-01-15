@@ -28,6 +28,11 @@ namespace Pk3DSRNGTool
                 IVSpread.Items.Add("6Zero = 0,0,0,0,0,0");
                 IVSpread.Items.Add("HPIce = 31,0,30,31,31,31");
                 IVSpread.Items.Add("HPFire = 31,0,31,30,31,30");
+                IVSpread.Items.Add("Physical = 31,31,31,0,31,31");
+                IVSpread.Items.Add("Special = 31,0,31,31,31,31");
+                IVSpread.Items.Add("Trick Room = 31,31,31,31,31,0");
+                IVSpread.Items.Add("TR. Phy. = 31,31,31,0,31,0");
+                IVSpread.Items.Add("TR. Spe. = 31,0,31,31,31,0");
                 return;
             }
             string[] Ivspreadlist = txt.Split(';');
