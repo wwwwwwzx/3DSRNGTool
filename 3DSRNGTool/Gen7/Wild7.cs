@@ -133,7 +133,7 @@ namespace Pk3DSRNGTool
 
             //Item
             rt.Item = (byte)(SOS ? getsosrand % 100 : NormalSlot ? getrand % 100 : 100);
-            rt.ItemStr = getitemstr(rt.Item);
+            rt.ItemStr = getitemstr(rt.Item, CompoundEye);
 
             if (Fishing && rt.IsSpecial)
                 rt.Slot = getHookedItemSlot(rt.SpecialVal); //Fishing item slots
@@ -170,7 +170,7 @@ namespace Pk3DSRNGTool
 
         private byte getsmslot(ulong rand) => slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
 
-        private string getitemstr(int rand)
+        public static string getitemstr(int rand, bool CompoundEye = false)
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return StringItem.helditemStr[0]; // 50%

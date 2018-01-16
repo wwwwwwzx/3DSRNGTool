@@ -9,9 +9,29 @@ namespace Pk3DSRNGTool
     {
         // First 2 frames for sos call
         private static uint rand => RNGPool.getrand;
-        public static byte Rate1;
-        public static byte Rate2;
-        public static bool Call() => rand % 100 < Rate1 && rand % 100 < Rate2;
+        public static byte Rate1 = 3;
+        public static byte Rate2 = 3;
+        public static SOSResult Generate()
+        {
+            var rt = new SOSResult();
+            rt.Call1 = (byte)(rand % 100);
+            rt.Call2 = (byte)(rand % 100);
+
+            rt.Sync = rand % 100 >= 50;
+            if (Weather)
+                rt.Slot = getWeatherSlot();
+            if (rt.Slot == 0)
+                rt.Slot = getSOSSlot();
+            rt.Level = (byte)(rand % 4);
+            Advance(1);
+
+            rt.HeldItem = (byte)(rand % 100);
+
+            while (rt.BumpedIVs.Count(iv => iv) < FlawlessCount)
+                rt.BumpedIVs[rand % 6] = true;
+            rt.HA = rand % 100 < HARate;
+            return rt;
+        }
 
         // Generate SOS Pokemon (sync, slot, level, held item)
         private static uint[] Buffer;
@@ -40,7 +60,17 @@ namespace Pk3DSRNGTool
                 return 9;
             return 0;
         }
-        
+
+        public static byte getSOSSlot()
+        {
+            var tmp = getrand % 100;
+            if (tmp < 3)  // 1%
+                return (byte)(tmp + 1); // 1/2/3
+            if (tmp < 33) // 10%
+                return (byte)((tmp - 3) / 10 + 4); // 4/5/6
+            return 7;
+        }
+
         public static int PIDBonus;
         private static int HARate;
         private static int FlawlessCount;
