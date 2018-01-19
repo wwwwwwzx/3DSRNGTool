@@ -35,6 +35,15 @@ namespace Pk3DSRNGTool
             Status.ValueMember = "Value";
             Status.DataSource = new BindingSource(StatusBonusList, null);
 
+            CB_CallRate.DisplayMember = "Text";
+            CB_CallRate.ValueMember = "Value";
+            CB_CallRate.DataSource = new BindingSource(CallRateList, null);
+            CB_CallRate.SelectedValue = 3;
+
+            HPBarColor.DisplayMember = "Text";
+            HPBarColor.ValueMember = "Value";
+            HPBarColor.DataSource = new BindingSource(HPBarBonusList, null);
+
             Rank.SelectedIndex = 18;
             Stars.SelectedIndex = 0;
             NPCType.SelectedIndex = 0;
@@ -74,6 +83,7 @@ namespace Pk3DSRNGTool
             {
                 Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked && Filters.SelectedTab == TP_Misc,
                 Capture = SuccessOnly.Checked && Filters.SelectedTab == TP_Capture,
+                SOSCall = SuccessOnly.Checked && Filters.SelectedTab == TP_SOS,
                 CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) || Filters.SelectedTab != TP_Misc ? null : CurrentText.Text.ToUpper(),
                 Random = RB_Random.Checked && Filters.SelectedTab == TP_Misc,
                 CompareType = (byte)Compare.SelectedIndex,
@@ -115,6 +125,8 @@ namespace Pk3DSRNGTool
         #region gen7main
         private bool FestivalPlaza => filter.FacilityFilter != null;
         private bool BattleTree => filter.TrainerFilter != null;
+        private bool ShowCapture => Filters.SelectedTab == TP_Capture || Filters.SelectedTab == TP_Misc;
+        private bool ShowSOS => Filters.SelectedTab == TP_SOS || Filters.SelectedTab == TP_Misc;
         private ulong N;
         private int Timedelay;
         private void setupgenerator()
@@ -277,7 +289,7 @@ namespace Pk3DSRNGTool
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
 
-            CaptureResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
+            CaptureResult.Details = SOSResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
             var capture7 = new Capture7();
             if (Filters.SelectedTab == TP_Capture)
             {
@@ -295,6 +307,29 @@ namespace Pk3DSRNGTool
                 L_output.Text = CB_Detail.Checked ? string.Format("Critical {0:P}  \tShake {1:P}", criticalchance, shakechance)
                     : string.Format("Critical {0:P}  \tSuccess {1:P}", criticalchance, capturechance);
             }
+            else if (Filters.SelectedTab == TP_SOS)
+            {
+                SOSRNG.ChainLength = (int)ChainLength.Value;
+                SOSRNG.Weather = Weather.Checked;
+
+                int Rate1 = (int)CB_CallRate.SelectedValue * (int)HPBarColor.SelectedValue;
+                if (AO.Checked)
+                    Rate1 *= 2;
+                if (Rate1 > 100)
+                    Rate1 = 100;
+                SOSRNG.Rate1 = (byte)Rate1;
+
+                double Rate2 = (int)CB_CallRate.SelectedValue * (Intimidate.Checked ? 0x4CCC : 0x4000) / 4096.0;
+                if (SameCaller.Checked)
+                    Rate2 *= 1.5;
+                if (SupperEffective.Checked)
+                    Rate2 *= 2;
+                if (LastCallFail.Checked)
+                    Rate2 *= 3;
+                if (Rate2 > 100)
+                    Rate2 = 100.0;
+                SOSRNG.Rate2 = (byte)Math.Round(Rate2);
+            }
 
             for (int i = 0; i < frame; i++)
                 sfmt.Nextuint();
@@ -311,8 +346,16 @@ namespace Pk3DSRNGTool
                 RNGPool.Advance(delay);
                 if (filter.Random)
                     f.RandN = (int)(RNGPool.getrand % N);
-                RNGPool.Rewind(0);
-                f.Crt = capture7.Catch();
+                if (ShowCapture)
+                {
+                    RNGPool.Rewind(0);
+                    f.Crt = capture7.Catch();
+                }
+                if (ShowSOS)
+                {
+                    RNGPool.Rewind(0);
+                    f.Srt = SOSRNG.Generate();
+                }
 
                 if (!filter.check(f))
                     continue;
@@ -367,7 +410,8 @@ namespace Pk3DSRNGTool
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
-            dgv_capture.Visible = RNG.SelectedIndex == 1;
+            dgv_capture.Visible = RNG.SelectedIndex == 1 && ShowCapture;
+            dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 1;
             dataGridView1.DataSource = Frames;
@@ -385,9 +429,20 @@ namespace Pk3DSRNGTool
                 if (selected == TP_Misc || selected == TP_Timeline)
                     selected.Controls.Add(B_ResetFrame);
                 if (selected == TP_BattleTree || selected == TP_FP)
-                {
                     selected.Controls.Add(Game);
-                    selected.Controls.Add(B_Help);
+                selected.Controls.Add(B_Help);
+                if (selected == TP_BattleTree)
+                    HelpMdName = "BattleTree";
+                else if (selected == TP_FP)
+                    HelpMdName = "FestivalPlazaFacilities";
+                else if (selected == TP_SOS)
+                    HelpMdName = "SOSCall";
+                else
+                    selected.Controls.Remove(B_Help);
+                if (selected == TP_Capture || selected == TP_SOS)
+                {
+                    selected.Controls.Add(CB_Detail);
+                    selected.Controls.Add(SuccessOnly);
                 }
             }
             RB_Random.Checked = true;
@@ -398,6 +453,7 @@ namespace Pk3DSRNGTool
             ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);
             ShowHideTab(TP_BattleTree, RNG.SelectedIndex == 0, 3);
             ShowHideTab(TP_Capture, RNG.SelectedIndex == 1, 1);
+            ShowHideTab(TP_SOS, RNG.SelectedIndex == 1, 2);
         }
 
         private void ShowHideTab(TabPage tab, bool enable, int index = 1)
@@ -462,7 +518,8 @@ namespace Pk3DSRNGTool
         }
 
         private void B_Help_Click(object sender, EventArgs e)
-            => System.Diagnostics.Process.Start(string.Format(StringItem.GITHUB + "blob/master/Data/{0}.md", Filters.SelectedTab == TP_BattleTree ? "BattleTree" : "FestivalPlazaFacilities"));
+            => System.Diagnostics.Process.Start(string.Format(StringItem.GITHUB + "blob/master/Data/{0}.md", HelpMdName));
+        private string HelpMdName = "BattleTree";
         #endregion
 
         #region Control
@@ -495,6 +552,14 @@ namespace Pk3DSRNGTool
             new ComboItem("151-300", 0x1000),
             new ComboItem("031-150", 0x0800),
             new ComboItem("<=30", 0x0000),
+        };
+
+        private static readonly ComboItem[] CallRateList = new[] { 3, 6, 9, 15, 0, }.Select(t => new ComboItem(t.ToString(), t)).ToArray();
+        private static readonly ComboItem[] HPBarBonusList = new ComboItem[]
+        {
+            new ComboItem("Green >1/2", 1),
+            new ComboItem("Yellow 1/5~1/2", 3),
+            new ComboItem("Red <=1/5", 5),
         };
         #endregion
     }

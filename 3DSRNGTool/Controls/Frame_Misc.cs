@@ -22,6 +22,8 @@ namespace Pk3DSRNGTool
         public byte Pokerus { get; set; }
         public CaptureResult Crt;
         public string Capture => Crt?.ToString() ?? string.Empty;
+        public SOSResult Srt;
+        public string SOS => Srt?.ToString() ?? string.Empty;
         public FPFacility frt;
         public string Facility => frt?.ToString() ?? string.Empty;
         public BTTrainer trt;
@@ -37,6 +39,7 @@ namespace Pk3DSRNGTool
     public class Misc_Filter
     {
         public bool Capture;
+        public bool SOSCall;
         public bool Pokerus;
         public bool Random;
         public byte CompareType;
@@ -61,6 +64,8 @@ namespace Pk3DSRNGTool
                 }
             }
             if (Capture && !f.Crt.Gotta)
+                return false;
+            if (SOSCall && !f.Srt.Success)
                 return false;
             if (FacilityFilter?.IsDifferentFrom(f.frt) ?? false)
                 return false;

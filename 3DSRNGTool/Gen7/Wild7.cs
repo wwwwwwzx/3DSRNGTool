@@ -62,7 +62,7 @@ namespace Pk3DSRNGTool
                 SOSRNG.Reset();
                 SOSRNG.Advance(2); // Call Rate Check
                 CheckLeadAbility(getsosrand % 100);
-                if (SOSRNG.Weather && (rt.Slot = slot = SOSRNG.getWeatherSlot()) > 7) // No Electric/Steel Type in weather sos slots
+                if (SOSRNG.Weather && (rt.Slot = slot = SOSRNG.getWeatherSlot(getsosrand % 100)) > 7) // No Electric/Steel Type in weather sos slots
                     rt.IsSpecial = true;
                 else
                     rt.Slot = StaticMagnetPass ? getsmslot(getsosrand) : getslot((int)(getsosrand % 100));

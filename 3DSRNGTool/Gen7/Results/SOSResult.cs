@@ -4,25 +4,25 @@ namespace Pk3DSRNGTool
 {
     public class SOSResult
     {
+        public static bool Details;
         public byte Call1;
         public byte Call2;
         public bool Sync;
         public byte Slot;
         public byte Level;
         public byte HeldItem;
-        public bool[] BumpedIVs;
+        public bool[] BumpedIVs = new bool[6];
         public bool HA;
 
         public bool Success => Call1 < SOSRNG.Rate1 && Call2 < SOSRNG.Rate2;
 
         public override string ToString() => string.Join(" / ", new string[]
         {
-            Call1.ToString("D2"),
-            Call2.ToString("D2"),
-            Sync ? "O" : "X",
+            Details ? Call1.ToString("D2") + "/" + Call2.ToString("D2") : FuncUtil.Bool2Str(Call1 < SOSRNG.Rate1) + FuncUtil.Bool2Str(Call2 < SOSRNG.Rate2),
+            FuncUtil.Bool2Str(Sync),
             Slot > 7 ? "W" + (Slot - 7).ToString() : Slot.ToString(),
             Level.ToString(),
-            Wild7.getitemstr(HeldItem),
+            Wild7.getitemstr(HeldItem).PadLeft(4),
             string.Join(string.Empty, BumpedIVs.Select(iv => iv ? "V" : "X")),
             HA ? "HA" : "NA",
         });

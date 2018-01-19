@@ -29,7 +29,7 @@ namespace Pk3DSRNGTool
 
         public override string ToString()
         {
-            string o = "Sync: " + (Sync ? "O" : "X") + "  ";
+            string o = "Sync: " + FuncUtil.Bool2Str(Sync) + "  ";
             o += "Encounter Slot: " + Slot.ToString() + "  ";
             o += "Hidden Power Positon: " + (HA == 0 ? "None" : HA.ToString()) + "\n";
             return o;

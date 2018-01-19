@@ -44,7 +44,6 @@
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.StartingFrame = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.RNG = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,7 @@
             this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_SOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,11 +109,26 @@
             this.Rank = new System.Windows.Forms.ComboBox();
             this.Game = new System.Windows.Forms.ComboBox();
             this.TP_BattleTree = new System.Windows.Forms.TabPage();
+            this.L_TrainerName = new System.Windows.Forms.Label();
+            this.TrainerID = new System.Windows.Forms.NumericUpDown();
             this.L_Trainer = new System.Windows.Forms.Label();
             this.L_Streak = new System.Windows.Forms.Label();
             this.Streak = new System.Windows.Forms.NumericUpDown();
-            this.TrainerID = new System.Windows.Forms.NumericUpDown();
-            this.L_TrainerName = new System.Windows.Forms.Label();
+            this.TP_SOS = new System.Windows.Forms.TabPage();
+            this.L_ChainLength = new System.Windows.Forms.Label();
+            this.ChainLength = new System.Windows.Forms.NumericUpDown();
+            this.HPBarColor = new System.Windows.Forms.ComboBox();
+            this.L_HPBarColor = new System.Windows.Forms.Label();
+            this.LastCallFail = new System.Windows.Forms.CheckBox();
+            this.SupperEffective = new System.Windows.Forms.CheckBox();
+            this.SameCaller = new System.Windows.Forms.CheckBox();
+            this.Intimidate = new System.Windows.Forms.CheckBox();
+            this.AO = new System.Windows.Forms.CheckBox();
+            this.Weather = new System.Windows.Forms.CheckBox();
+            this.L_CallRate = new System.Windows.Forms.Label();
+            this.CB_CallRate = new System.Windows.Forms.ComboBox();
+            this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
@@ -132,8 +147,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.HPCurr)).BeginInit();
             this.TP_FP.SuspendLayout();
             this.TP_BattleTree.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Streak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).BeginInit();
+            this.TP_SOS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -233,18 +250,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Starting Frame";
             // 
-            // Seed
-            // 
-            this.Seed.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Location = new System.Drawing.Point(127, 66);
-            this.Seed.Mask = "AAAAAAAA";
-            this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(67, 23);
-            this.Seed.TabIndex = 1;
-            this.Seed.Text = "00000000";
-            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Seed.Value = ((uint)(0u));
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -303,6 +308,7 @@
             this.dgv_pokerus,
             this.dgv_trainer,
             this.dgv_capture,
+            this.dgv_SOS,
             this.dgv_randn,
             this.dgv_rand32,
             this.dgv_rand64,
@@ -389,6 +395,15 @@
             this.dgv_capture.ReadOnly = true;
             this.dgv_capture.Visible = false;
             this.dgv_capture.Width = 70;
+            // 
+            // dgv_SOS
+            // 
+            this.dgv_SOS.DataPropertyName = "SOS";
+            this.dgv_SOS.HeaderText = "SOS";
+            this.dgv_SOS.Name = "dgv_SOS";
+            this.dgv_SOS.ReadOnly = true;
+            this.dgv_SOS.Visible = false;
+            this.dgv_SOS.Width = 200;
             // 
             // dgv_randn
             // 
@@ -547,6 +562,7 @@
             this.Filters.Controls.Add(this.TP_Capture);
             this.Filters.Controls.Add(this.TP_FP);
             this.Filters.Controls.Add(this.TP_BattleTree);
+            this.Filters.Controls.Add(this.TP_SOS);
             this.Filters.Location = new System.Drawing.Point(10, 243);
             this.Filters.Name = "Filters";
             this.Filters.SelectedIndex = 0;
@@ -1046,6 +1062,33 @@
             this.TP_BattleTree.Text = "Battle Tree";
             this.TP_BattleTree.UseVisualStyleBackColor = true;
             // 
+            // L_TrainerName
+            // 
+            this.L_TrainerName.AutoSize = true;
+            this.L_TrainerName.Location = new System.Drawing.Point(129, 65);
+            this.L_TrainerName.Name = "L_TrainerName";
+            this.L_TrainerName.Size = new System.Drawing.Size(0, 13);
+            this.L_TrainerName.TabIndex = 55;
+            // 
+            // TrainerID
+            // 
+            this.TrainerID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrainerID.Location = new System.Drawing.Point(72, 60);
+            this.TrainerID.Maximum = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.Name = "TrainerID";
+            this.TrainerID.Size = new System.Drawing.Size(42, 22);
+            this.TrainerID.TabIndex = 54;
+            this.TrainerID.Value = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
+            this.TrainerID.ValueChanged += new System.EventHandler(this.Trainer_ValueChanged);
+            // 
             // L_Trainer
             // 
             this.L_Trainer.AutoSize = true;
@@ -1087,32 +1130,168 @@
             0,
             0});
             // 
-            // TrainerID
+            // TP_SOS
             // 
-            this.TrainerID.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrainerID.Location = new System.Drawing.Point(72, 60);
-            this.TrainerID.Maximum = new decimal(new int[] {
-            254,
+            this.TP_SOS.Controls.Add(this.L_ChainLength);
+            this.TP_SOS.Controls.Add(this.ChainLength);
+            this.TP_SOS.Controls.Add(this.HPBarColor);
+            this.TP_SOS.Controls.Add(this.L_HPBarColor);
+            this.TP_SOS.Controls.Add(this.LastCallFail);
+            this.TP_SOS.Controls.Add(this.SupperEffective);
+            this.TP_SOS.Controls.Add(this.SameCaller);
+            this.TP_SOS.Controls.Add(this.checkBox1);
+            this.TP_SOS.Controls.Add(this.Intimidate);
+            this.TP_SOS.Controls.Add(this.AO);
+            this.TP_SOS.Controls.Add(this.Weather);
+            this.TP_SOS.Controls.Add(this.L_CallRate);
+            this.TP_SOS.Controls.Add(this.CB_CallRate);
+            this.TP_SOS.Location = new System.Drawing.Point(4, 22);
+            this.TP_SOS.Name = "TP_SOS";
+            this.TP_SOS.Padding = new System.Windows.Forms.Padding(3);
+            this.TP_SOS.Size = new System.Drawing.Size(203, 170);
+            this.TP_SOS.TabIndex = 5;
+            this.TP_SOS.Text = "SOS";
+            this.TP_SOS.UseVisualStyleBackColor = true;
+            // 
+            // L_ChainLength
+            // 
+            this.L_ChainLength.AutoSize = true;
+            this.L_ChainLength.Location = new System.Drawing.Point(113, 43);
+            this.L_ChainLength.Name = "L_ChainLength";
+            this.L_ChainLength.Size = new System.Drawing.Size(40, 13);
+            this.L_ChainLength.TabIndex = 66;
+            this.L_ChainLength.Text = "Length";
+            // 
+            // ChainLength
+            // 
+            this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChainLength.Location = new System.Drawing.Point(157, 39);
+            this.ChainLength.Maximum = new decimal(new int[] {
+            255,
             0,
             0,
             0});
-            this.TrainerID.Name = "TrainerID";
-            this.TrainerID.Size = new System.Drawing.Size(42, 22);
-            this.TrainerID.TabIndex = 54;
-            this.TrainerID.Value = new decimal(new int[] {
-            254,
-            0,
-            0,
-            0});
-            this.TrainerID.ValueChanged += new System.EventHandler(this.Trainer_ValueChanged);
+            this.ChainLength.Name = "ChainLength";
+            this.ChainLength.Size = new System.Drawing.Size(42, 22);
+            this.ChainLength.TabIndex = 67;
             // 
-            // L_TrainerName
+            // HPBarColor
             // 
-            this.L_TrainerName.AutoSize = true;
-            this.L_TrainerName.Location = new System.Drawing.Point(129, 65);
-            this.L_TrainerName.Name = "L_TrainerName";
-            this.L_TrainerName.Size = new System.Drawing.Size(0, 13);
-            this.L_TrainerName.TabIndex = 55;
+            this.HPBarColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.HPBarColor.FormattingEnabled = true;
+            this.HPBarColor.Location = new System.Drawing.Point(34, 68);
+            this.HPBarColor.Name = "HPBarColor";
+            this.HPBarColor.Size = new System.Drawing.Size(72, 21);
+            this.HPBarColor.TabIndex = 65;
+            // 
+            // L_HPBarColor
+            // 
+            this.L_HPBarColor.AutoSize = true;
+            this.L_HPBarColor.Location = new System.Drawing.Point(6, 71);
+            this.L_HPBarColor.Name = "L_HPBarColor";
+            this.L_HPBarColor.Size = new System.Drawing.Size(22, 13);
+            this.L_HPBarColor.TabIndex = 64;
+            this.L_HPBarColor.Text = "HP";
+            // 
+            // LastCallFail
+            // 
+            this.LastCallFail.AutoSize = true;
+            this.LastCallFail.Location = new System.Drawing.Point(9, 141);
+            this.LastCallFail.Name = "LastCallFail";
+            this.LastCallFail.Size = new System.Drawing.Size(97, 17);
+            this.LastCallFail.TabIndex = 63;
+            this.LastCallFail.Text = "Last Call Failed";
+            this.LastCallFail.UseVisualStyleBackColor = true;
+            // 
+            // SupperEffective
+            // 
+            this.SupperEffective.AutoSize = true;
+            this.SupperEffective.Location = new System.Drawing.Point(101, 118);
+            this.SupperEffective.Name = "SupperEffective";
+            this.SupperEffective.Size = new System.Drawing.Size(99, 17);
+            this.SupperEffective.TabIndex = 62;
+            this.SupperEffective.Text = "Super Effective";
+            this.SupperEffective.UseVisualStyleBackColor = true;
+            // 
+            // SameCaller
+            // 
+            this.SameCaller.AutoSize = true;
+            this.SameCaller.Location = new System.Drawing.Point(9, 118);
+            this.SameCaller.Name = "SameCaller";
+            this.SameCaller.Size = new System.Drawing.Size(82, 17);
+            this.SameCaller.TabIndex = 61;
+            this.SameCaller.Text = "Same Caller";
+            this.SameCaller.UseVisualStyleBackColor = true;
+            // 
+            // Intimidate
+            // 
+            this.Intimidate.AutoSize = true;
+            this.Intimidate.Location = new System.Drawing.Point(118, 95);
+            this.Intimidate.Name = "Intimidate";
+            this.Intimidate.Size = new System.Drawing.Size(71, 17);
+            this.Intimidate.TabIndex = 60;
+            this.Intimidate.Text = "Intimidate";
+            this.Intimidate.UseVisualStyleBackColor = true;
+            // 
+            // AO
+            // 
+            this.AO.AutoSize = true;
+            this.AO.Location = new System.Drawing.Point(9, 95);
+            this.AO.Name = "AO";
+            this.AO.Size = new System.Drawing.Size(96, 17);
+            this.AO.TabIndex = 59;
+            this.AO.Text = "Adrenaline Orb";
+            this.AO.UseVisualStyleBackColor = true;
+            // 
+            // Weather
+            // 
+            this.Weather.AutoSize = true;
+            this.Weather.Location = new System.Drawing.Point(118, 70);
+            this.Weather.Name = "Weather";
+            this.Weather.Size = new System.Drawing.Size(67, 17);
+            this.Weather.TabIndex = 55;
+            this.Weather.Text = "Weather";
+            this.Weather.UseVisualStyleBackColor = true;
+            // 
+            // L_CallRate
+            // 
+            this.L_CallRate.AutoSize = true;
+            this.L_CallRate.Location = new System.Drawing.Point(6, 43);
+            this.L_CallRate.Name = "L_CallRate";
+            this.L_CallRate.Size = new System.Drawing.Size(50, 13);
+            this.L_CallRate.TabIndex = 57;
+            this.L_CallRate.Text = "Call Rate";
+            // 
+            // CB_CallRate
+            // 
+            this.CB_CallRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CallRate.FormattingEnabled = true;
+            this.CB_CallRate.Location = new System.Drawing.Point(60, 38);
+            this.CB_CallRate.Name = "CB_CallRate";
+            this.CB_CallRate.Size = new System.Drawing.Size(45, 21);
+            this.CB_CallRate.TabIndex = 58;
+            // 
+            // Seed
+            // 
+            this.Seed.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Seed.Location = new System.Drawing.Point(127, 66);
+            this.Seed.Mask = "AAAAAAAA";
+            this.Seed.Name = "Seed";
+            this.Seed.Size = new System.Drawing.Size(67, 23);
+            this.Seed.TabIndex = 1;
+            this.Seed.Text = "00000000";
+            this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Seed.Value = ((uint)(0u));
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(118, 95);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(71, 17);
+            this.checkBox1.TabIndex = 60;
+            this.checkBox1.Text = "Intimidate";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // MiscRNGTool
             // 
@@ -1151,8 +1330,11 @@
             this.TP_FP.PerformLayout();
             this.TP_BattleTree.ResumeLayout(false);
             this.TP_BattleTree.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Streak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrainerID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Streak)).EndInit();
+            this.TP_SOS.ResumeLayout(false);
+            this.TP_SOS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1184,14 +1366,7 @@
         private System.Windows.Forms.Button B_ResetFrame;
         private System.Windows.Forms.TabControl Filters;
         private System.Windows.Forms.TabPage TP_Misc;
-        private System.Windows.Forms.TabPage TP_Timeline;
         private System.Windows.Forms.TabPage TP_Capture;
-        private System.Windows.Forms.RadioButton Girl;
-        private System.Windows.Forms.RadioButton Boy;
-        private System.Windows.Forms.CheckBox Fidget;
-        private System.Windows.Forms.NumericUpDown JumpFrame;
-        private System.Windows.Forms.CheckBox Raining;
-        private System.Windows.Forms.CheckBox Createtimeline;
         private System.Windows.Forms.NumericUpDown HPMax;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label L_HP;
@@ -1223,6 +1398,18 @@
         private System.Windows.Forms.Label L_Streak;
         private System.Windows.Forms.NumericUpDown Streak;
         private System.Windows.Forms.Label L_Trainer;
+        private System.Windows.Forms.NumericUpDown TrainerID;
+        private System.Windows.Forms.Label L_TrainerName;
+        private System.Windows.Forms.TabPage TP_SOS;
+        private System.Windows.Forms.TabPage TP_Timeline;
+        private System.Windows.Forms.CheckBox Createtimeline;
+        private System.Windows.Forms.CheckBox Raining;
+        private System.Windows.Forms.RadioButton Girl;
+        private System.Windows.Forms.RadioButton Boy;
+        private System.Windows.Forms.CheckBox Fidget;
+        private System.Windows.Forms.NumericUpDown JumpFrame;
+        private System.Windows.Forms.Label L_CallRate;
+        private System.Windows.Forms.ComboBox CB_CallRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_blink;
@@ -1231,12 +1418,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_pokerus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_trainer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_capture;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
-        private System.Windows.Forms.NumericUpDown TrainerID;
-        private System.Windows.Forms.Label L_TrainerName;
+        private System.Windows.Forms.CheckBox Weather;
+        private System.Windows.Forms.CheckBox Intimidate;
+        private System.Windows.Forms.CheckBox AO;
+        private System.Windows.Forms.CheckBox LastCallFail;
+        private System.Windows.Forms.CheckBox SupperEffective;
+        private System.Windows.Forms.CheckBox SameCaller;
+        private System.Windows.Forms.ComboBox HPBarColor;
+        private System.Windows.Forms.Label L_HPBarColor;
+        private System.Windows.Forms.Label L_ChainLength;
+        private System.Windows.Forms.NumericUpDown ChainLength;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

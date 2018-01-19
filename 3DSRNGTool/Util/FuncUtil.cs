@@ -249,6 +249,8 @@ namespace Pk3DSRNGTool
                 return method == 4 ? 1012 : 418;
             return method == 4 ? 1132 : 478; // USUM
         }
+
+        public static string Bool2Str(bool b) => b ? "O" : "X";
         #endregion
     }
 }
