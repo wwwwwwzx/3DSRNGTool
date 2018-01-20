@@ -78,7 +78,6 @@
             this.tiny_hitidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_enctr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_cutscenesync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -557,7 +556,6 @@
             this.tiny_hitidx,
             this.tiny_enctr,
             this.tiny_sync,
-            this.tiny_cutscenesync,
             this.tiny_slot,
             this.tiny_item,
             this.tiny_ha,
@@ -631,14 +629,6 @@
             this.tiny_sync.Name = "tiny_sync";
             this.tiny_sync.ReadOnly = true;
             this.tiny_sync.Width = 40;
-            // 
-            // tiny_cutscenesync
-            // 
-            this.tiny_cutscenesync.DataPropertyName = "CSync";
-            this.tiny_cutscenesync.HeaderText = "CSync";
-            this.tiny_cutscenesync.Name = "tiny_cutscenesync";
-            this.tiny_cutscenesync.ReadOnly = true;
-            this.tiny_cutscenesync.Width = 45;
             // 
             // tiny_slot
             // 
@@ -779,7 +769,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_hitidx;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_enctr;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_cutscenesync;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;

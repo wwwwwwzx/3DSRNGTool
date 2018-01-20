@@ -266,19 +266,13 @@ namespace Pk3DSRNGTool
         private int PM_Num => Parameter;
         private int SlotNum => Parameter;
 
-        private void MarkSync(bool Instant)
+        private void MarkSync(bool Instant) => getshiftedsync(Instant ? 0 : 3 * PM_Num);
+
+        private void getshiftedsync(int shift)
         {
             int max = results.Count;
-            if (Instant)
-            {
-                for (int i = 0; i < max; i++)
-                    results[i].sync = ReferenceList[results[i].HitIndex].Rand2;
-            }
-            else
-            {
-                for (int i = 0; i < max; i++)
-                    results[i].csync = getcsync(results[i].HitIndex);
-            }
+            for (int i = shift; i < max; i++)
+                results[i - shift].sync = ReferenceList[results[i].HitIndex].Rand2;
         }
 
         private void MarkFS()
@@ -345,17 +339,6 @@ namespace Pk3DSRNGTool
                 results[i].slot = getfishingslot(ReferenceList[j++].Rand(100));
                 results[i].item = getItem(ReferenceList[++j].Rand(100));
             }
-        }
-
-        public byte getcsync(int hitidx)
-        {
-            int csync = 0;
-            int weight = 2 * PM_Num + 1;
-            int max = Math.Min(hitidx + 4 * PM_Num, ReferenceList.Count - 1);
-            for (int i = hitidx + 3 * PM_Num; i <= max; i++, weight -= 2)
-                if (ReferenceList[i].Rand2)
-                    csync += weight;
-            return (byte)(csync * 100 / ((PM_Num + 1) * (PM_Num + 1)));
         }
 
         private static byte getItem(uint rand)

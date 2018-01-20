@@ -22,7 +22,7 @@ namespace Pk3DSRNGTool
             FuncUtil.Bool2Str(Sync),
             Slot > 7 ? "W" + (Slot - 7).ToString() : Slot.ToString(),
             Level.ToString(),
-            Wild7.getitemstr(HeldItem).PadLeft(4),
+            Wild7.getitemstr(HeldItem),
             string.Join(string.Empty, BumpedIVs.Select(iv => iv ? "V" : "X")),
             HA ? "HA" : "NA",
         });
