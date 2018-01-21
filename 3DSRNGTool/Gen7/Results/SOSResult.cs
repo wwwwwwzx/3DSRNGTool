@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool
         public byte HeldItem;
         public bool[] BumpedIVs = new bool[6];
         public bool HA;
+        public int Advance;
 
         public bool Success => Call1 < SOSRNG.Rate1 && Call2 < SOSRNG.Rate2;
 

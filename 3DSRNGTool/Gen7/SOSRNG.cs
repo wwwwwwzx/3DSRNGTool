@@ -33,6 +33,13 @@ namespace Pk3DSRNGTool
             while (rt.BumpedIVs.Count(iv => iv) < FlawlessCount)
                 rt.BumpedIVs[rand % 6] = true;
             rt.HA = rand % 100 < HARate;
+
+            if (rt.Call1 >= Rate1)
+                rt.Advance = 1;
+            else if (rt.Call2 >= Rate2)
+                rt.Advance = 2;
+            else
+                rt.Advance = RNGPool.index;
             return rt;
         }
 

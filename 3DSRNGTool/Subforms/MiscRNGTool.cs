@@ -38,7 +38,6 @@ namespace Pk3DSRNGTool
             CB_CallRate.DisplayMember = "Text";
             CB_CallRate.ValueMember = "Value";
             CB_CallRate.DataSource = new BindingSource(CallRateList, null);
-            CB_CallRate.SelectedValue = 3;
 
             HPBarColor.DisplayMember = "Text";
             HPBarColor.ValueMember = "Value";
@@ -411,6 +410,7 @@ namespace Pk3DSRNGTool
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_capture.Visible = RNG.SelectedIndex == 1 && ShowCapture;
+            dgv_adv.Visible = Filters.SelectedTab == TP_SOS;
             dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = RNG.SelectedIndex != 1;
@@ -557,9 +557,9 @@ namespace Pk3DSRNGTool
         private static readonly ComboItem[] CallRateList = new[] { 3, 6, 9, 15, 0, }.Select(t => new ComboItem(t.ToString(), t)).ToArray();
         private static readonly ComboItem[] HPBarBonusList = new ComboItem[]
         {
-            new ComboItem("Green >1/2", 1),
-            new ComboItem("Yellow 1/5~1/2", 3),
             new ComboItem("Red <=1/5", 5),
+            new ComboItem("Yellow 1/5~1/2", 3),
+            new ComboItem("Green >1/2", 1),
         };
         #endregion
     }

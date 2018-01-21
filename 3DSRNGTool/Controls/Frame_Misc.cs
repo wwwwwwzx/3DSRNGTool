@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
         public int Frame { get; set; }
         public int frameused;
         public int ActualFrame => Frame + frameused;
+        public int Advance => Srt?.Advance ?? 0;
         public int realtime = -1;
         public string Realtime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : string.Empty;
 
