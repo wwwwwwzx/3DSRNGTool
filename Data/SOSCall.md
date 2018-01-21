@@ -8,7 +8,7 @@ Rate1 =  H * AO * BCR.
   - 1/5 < HP < 1/2 (Yellow): **x3**
   - HP < 1/5 (Red): **x5**
 - AO: Adrenaline Orb Bonus. If used **x2**
-- [BCR](BasicCallRate.txt) : Basic call rate, depends on species and form, can be 3, 6, 9, 15. (0 means ally call is impossible)
+- [BCR](https://pastebin.com/W59vsi0H) : Basic call rate, depends on species and form, can be 3, 6, 9, 15. (0 means ally call is impossible)
 #### 2) Ally appears: Rand % 100 < Rate2, Pass
 Rate2 = 4 * A * S1 * S2 * S3 * BCR. Rounded to the nearest multiple of 1/4096 and finally the nearest integer, capped at 100.
 - A: Lead Pokemon Ability Bonus. If Ability is Intimidate / Unnerve / Pressure: **x1.2 (0x4CCC/0x4000)**

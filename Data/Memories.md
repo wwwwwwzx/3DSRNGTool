@@ -29,7 +29,7 @@ Each Pokemon in your party will consume 3 to 4 RNG values from TinyMT, which wil
 
 #### How to avoid it messing other RNG process
 
-According to the [mechanics](MemoryRNGMechanics.txt), there are several ways we can do:
+According to the [mechanics](https://pastebin.com/h1RHL7nR), there are several ways we can do:
 
 - Enhance the memory intensity of your party Pokemon
 - Let all your party Pokemon have the same memory type as the new event.
