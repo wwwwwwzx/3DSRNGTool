@@ -1337,6 +1337,7 @@ namespace Pk3DSRNGTool
                 {
                     setting7.Fishing = true;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
+                    setting7.HookedItemSlot = (ea as FishingArea7).getitemslots(Bubbling.Checked && IsUltra);
                     slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
                 }
                 else if (gen7sos)

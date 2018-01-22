@@ -127,6 +127,7 @@
     <Compile Include="Gen7\Results\ResultE7.cs" />
     <Compile Include="Gen7\Results\ResultW7.cs" />
     <Compile Include="Gen7\Results\Result7.cs" />
+    <Compile Include="Gen7\Results\SOSResult.cs" />
     <Compile Include="Gen7\ID7.cs" />
     <Compile Include="Gen7\Egg7.cs" />
     <Compile Include="Gen7\PKMW7.cs" />

@@ -175,8 +175,6 @@ namespace Pk3DSRNGTool
             if (list.Count <= index)
                 return;
             var row = MainDGV.Rows[index];
-            if (Method.SelectedIndex == 1 && list[index].csync == 100)
-                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 3 && list[index].enctr < 13)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 4 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
@@ -201,8 +199,6 @@ namespace Pk3DSRNGTool
             tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
             tiny_slot.Visible = Method.SelectedIndex > 1;
-            tiny_cutscenesync.Visible = Method.SelectedIndex == 1;
-            tiny_sync.Visible = !tiny_cutscenesync.Visible;
             tiny_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             tiny_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;

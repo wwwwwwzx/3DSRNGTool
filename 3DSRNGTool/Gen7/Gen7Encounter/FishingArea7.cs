@@ -14,6 +14,29 @@ namespace Pk3DSRNGTool
 
         public byte SlotType; // Bubbling slottype++
 
+        public byte[] getitemslots(bool IsUltraBubbling)
+        {
+            byte[] slots = new byte[2];
+            int index = Island + (IsUltraBubbling ? 4 : 0);
+            slots[0] = FishingItemSlots[index * 3];
+            slots[1] = (byte)(FishingItemSlots[index * 3] + FishingItemSlots[index * 3 + 1]);
+            return slots;
+        }
+
+        private int Island => Location / 50;
+
+        private static byte[] FishingItemSlots = new byte[]
+        {
+            50,30,20,
+            50,30,20,
+            50,40,10,
+            60,30,10,
+            60,30,10, // Ultra Bubbling
+            45,30,25,
+            40,30,30,
+            80,19,01,
+        };
+
         public override int[] getSpecies(int ver, bool IsNight) => (int[])Species.Clone();
     }
 }

@@ -62,7 +62,7 @@ namespace Pk3DSRNGTool
                 SOSRNG.Reset();
                 SOSRNG.Advance(2); // Call Rate Check
                 CheckLeadAbility(getsosrand % 100);
-                if (SOSRNG.Weather && (rt.Slot = slot = SOSRNG.getWeatherSlot()) > 7) // No Electric/Steel Type in weather sos slots
+                if (SOSRNG.Weather && (rt.Slot = slot = SOSRNG.getWeatherSlot(getsosrand % 100)) > 7) // No Electric/Steel Type in weather sos slots
                     rt.IsSpecial = true;
                 else
                     rt.Slot = StaticMagnetPass ? getsmslot(getsosrand) : getslot((int)(getsosrand % 100));
@@ -133,7 +133,7 @@ namespace Pk3DSRNGTool
 
             //Item
             rt.Item = (byte)(SOS ? getsosrand % 100 : NormalSlot ? getrand % 100 : 100);
-            rt.ItemStr = getitemstr(rt.Item);
+            rt.ItemStr = getitemstr(rt.Item, CompoundEye);
 
             if (Fishing && rt.IsSpecial)
                 rt.Slot = getHookedItemSlot(rt.SpecialVal); //Fishing item slots
@@ -170,7 +170,7 @@ namespace Pk3DSRNGTool
 
         private byte getsmslot(ulong rand) => slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
 
-        private string getitemstr(int rand)
+        public static string getitemstr(int rand, bool CompoundEye = false)
         {
             if (rand < (CompoundEye ? 60 : 50))
                 return StringItem.helditemStr[0]; // 50%
@@ -200,23 +200,16 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public static byte getHookedItemSlot(byte? rand)
+        public byte[] HookedItemSlot;
+        public byte getHookedItemSlot(byte? rand)
         {
             if (rand == null)
                 return 0;
-            if (rand < 50)
+            if (rand < HookedItemSlot[0])
                 return 1;
-            if (rand < 60)
+            if (rand < HookedItemSlot[1])
                 return 2;
-            if (rand < 70)
-                return 3;
-            if (rand < 80)
-                return 4;
-            if (rand < 90)
-                return 5;
-            if (rand < 99)
-                return 6;
-            return 7;
+            return 3;
         }
     }
 

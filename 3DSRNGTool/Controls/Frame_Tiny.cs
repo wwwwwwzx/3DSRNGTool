@@ -11,7 +11,6 @@ namespace Pk3DSRNGTool
         public int HitIndex { get => hit == -1 ? Index : hit; set => hit = value; }
         public bool? sync;
         public byte? slot;
-        public int csync;
         public byte enctr;
         public uint[] state;
         public uint rand;
@@ -26,7 +25,6 @@ namespace Pk3DSRNGTool
 
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
         public char Sync => sync ?? horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
-        public string CSync => csync.ToString() + "%";
         public string Encounter => enctr < thershold ? enctr.ToString() : "X";
         public string HA => horde == null || horde.HA == 0 ?  "-" : horde.HA.ToString();
         public string Item => horde == null ? StringItem.helditemStr[item] : horde.ItemString;
