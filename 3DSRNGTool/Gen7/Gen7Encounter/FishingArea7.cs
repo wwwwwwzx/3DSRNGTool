@@ -23,19 +23,7 @@ namespace Pk3DSRNGTool
             return slots;
         }
 
-        private byte Island
-        {
-            get
-            {
-                if (Location < 50)
-                    return 0;
-                if (Location < 106)
-                    return 1;
-                if (Location < 156)
-                    return 2;
-                return 3;
-            }
-        }
+        private int Island => Location / 50;
 
         private static byte[] FishingItemSlots = new byte[]
         {
