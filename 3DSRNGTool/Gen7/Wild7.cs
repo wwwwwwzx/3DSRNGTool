@@ -200,23 +200,16 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public static byte getHookedItemSlot(byte? rand)
+        public byte[] HookedItemSlot;
+        public byte getHookedItemSlot(byte? rand)
         {
             if (rand == null)
                 return 0;
-            if (rand < 50)
+            if (rand < HookedItemSlot[0])
                 return 1;
-            if (rand < 60)
+            if (rand < HookedItemSlot[1])
                 return 2;
-            if (rand < 70)
-                return 3;
-            if (rand < 80)
-                return 4;
-            if (rand < 90)
-                return 5;
-            if (rand < 99)
-                return 6;
-            return 7;
+            return 3;
         }
     }
 

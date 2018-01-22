@@ -9,3 +9,4 @@
 |   Poni Island   |   Pearl   |  60  | Sticky Barb  |  30  |   Bottle Cap    |  10  |
 |                 | Big Pearl |  80  |  Bottle Cap  |  19  | Gold Bottle Cap |  1   |
 
+The 2nd row of each island is exclusive to USUM bubbling spots.
