@@ -3022,6 +3022,7 @@
             this.IVsCount.Size = new System.Drawing.Size(47, 22);
             this.IVsCount.TabIndex = 45;
             this.IVsCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IVsCount.ValueChanged += new System.EventHandler(this.IVCount_ValueChanged);
             // 
             // IsEgg
             // 
@@ -4007,7 +4008,7 @@
             this.Fix3v.TabIndex = 1;
             this.Fix3v.Text = "固定3V";
             this.Fix3v.UseVisualStyleBackColor = true;
-            this.Fix3v.CheckedChanged += new System.EventHandler(this.Fix3v_CheckedChanged);
+            this.Fix3v.CheckedChanged += new System.EventHandler(this.IVCount_ValueChanged);
             // 
             // Filters
             // 

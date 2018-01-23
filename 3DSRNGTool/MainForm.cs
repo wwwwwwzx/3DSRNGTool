@@ -490,9 +490,12 @@ namespace Pk3DSRNGTool
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
-        private void Fix3v_CheckedChanged(object sender, EventArgs e)
+        private void IVCount_ValueChanged(object sender, EventArgs e)
         {
-            PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
+            if (sender == IVsCount)
+                PerfectIVs.Value = IVsCount.Value;
+            else
+                PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
         }
 
         private bool Isforcedshiny;
