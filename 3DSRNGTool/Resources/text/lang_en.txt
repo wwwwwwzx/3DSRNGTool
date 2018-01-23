@@ -81,7 +81,7 @@ L_Lv_S = Lv
 L_Slot = Encounter Slot
 L_Ball = Ball
 DisableFilters = Disable Filters
-SpecialOnly = UB/QR Only
+SpecialOnly = Special Only
 ShinyOnly = Shiny Only
 SafeFOnly = Safe F Only
 BlinkFOnly = Blink F Only
@@ -164,6 +164,8 @@ Overview = Overview
 L_BiteChance = Bite Chance
 L_FishingDelay = Delay
 dgv_fishing = Fishing
+L_Weather = Weather
+L_Ally = Ally
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Current Status
 ---

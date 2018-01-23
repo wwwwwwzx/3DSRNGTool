@@ -164,6 +164,8 @@ Overview = Overview
 L_BiteChance = Bite Chance
 L_FishingDelay = Delay
 dgv_fishing = Fishing
+L_Weather = Weather
+L_Ally = Ally
 ---------------------TabPage4----------------------------------
 TinyMT_Status = Statut actuel
 ---
