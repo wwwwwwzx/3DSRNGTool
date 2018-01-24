@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 using static PKHeX.Util;
@@ -13,12 +14,27 @@ namespace Pk3DSRNGTool
         public Gen7MainRNGTool()
         {
             InitializeComponent();
+            RefreshClockImages();
         }
         private void Gen7MainRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
             this.Parent = null;
             e.Cancel = true;
+        }
+
+        private void RefreshClockImages()
+        {
+            for (int i = 0; i < 17; i++)
+            {
+                string imagename = "Clock_" + i.ToString("D2") + ".jpg";
+                if (File.Exists(imagename))
+                {
+                    string buttonname = "button" + i.ToString();
+                    Control b = Controls.Find(buttonname, true).FirstOrDefault();
+                    b.BackgroundImage = System.Drawing.Image.FromFile(imagename);
+                }
+            }
         }
 
         private static uint Seed { set => Program.mainform.globalseed = value; }
