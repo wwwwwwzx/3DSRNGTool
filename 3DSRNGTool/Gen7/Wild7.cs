@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
                     rt.Slot = StaticMagnetPass ? getsmslot(getsosrand) : getslot((int)(getsosrand % 100));
                 rt.Level = (byte)(getsosrand % (uint)(Levelmax - Levelmin + 1) + Levelmin);
                 if (LevelModifierPass) rt.Level = ModifiedLevel;
-                SOSRNG.Advance(1);
+                SOSRNG.Advance(1); // Flute boost (% 100)
             }
             else if (NormalSlot) // Normal wild
             {
@@ -76,7 +76,7 @@ namespace Pk3DSRNGTool
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
                 if (LevelModifierPass) rt.Level = ModifiedLevel;
-                Advance(1);
+                Advance(1); // Flute boost (% 100)
                 if (IsMinior) rt.Forme = (byte)(getrand % 7);
             }
             else // UB or QR

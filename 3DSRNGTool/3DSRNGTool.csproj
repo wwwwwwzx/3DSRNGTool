@@ -122,6 +122,7 @@
     <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
     <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
     <Compile Include="Gen7\Gen7Encounter\FishingArea7.cs" />
+    <Compile Include="Gen7\Gen7Encounter\SOSAllies.cs" />
     <Compile Include="Gen7\Pokerus7.cs" />
     <Compile Include="Gen7\Results\ResultME7.cs" />
     <Compile Include="Gen7\Results\ResultE7.cs" />

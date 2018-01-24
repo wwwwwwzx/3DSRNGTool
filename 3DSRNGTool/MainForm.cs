@@ -40,6 +40,8 @@ namespace Pk3DSRNGTool
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
         private int[] slotspecies => ea?.getSpecies(Ver, IsNight) ?? new int[0];
+        private int[] SOSSlots => SOSAllies.getAllies(ea.Locationidx, (int)SlotSpecies.SelectedValue, Ver, IsNight);
+        private int[] WeatherSlots => SOSAllies.getWeatherAllies(ea.Locationidx, Weather.SelectedIndex, IsUltra, IsNight);
         private byte Modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter;
         private byte lastmethod;
@@ -201,6 +203,7 @@ namespace Pk3DSRNGTool
             SlotSpecies.DataSource = new BindingSource(List, null);
             if (0 <= tmp && tmp < SlotSpecies.Items.Count)
                 SlotSpecies.SelectedIndex = tmp;
+            Weather.SelectedIndex = 0;
         }
 
         private void LoadSlotSpeciesInfo()
@@ -224,12 +227,43 @@ namespace Pk3DSRNGTool
                     for (int i = 0; i < 10; i++)
                         Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(Slottype[i]);
                 }
+                else if (gen7sos) // Refresh ally
+                    RefreshSOSAlly();
                 else // Other short slots
                     for (int i = 0; i < slotspecies.Length; i++)
                         Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
 
             SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0 || gen7fishing);
+        }
+
+        private void RefreshSOSAlly()
+        {
+            var Chancelist = WildRNG.SlotDistribution[39].Concat(new byte[] { 1, 10 }).ToArray();
+            var fulllist = SOSSlots.Concat(WeatherSlots).Where(t => t != 0).ToArray();
+            var list = fulllist.Distinct().Select(t => new ComboItem(speciestr[t & 0x7FF], t)).ToList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                int SpecForm = list[i].Value;
+                int k = 0;
+                for (int j = Array.IndexOf(fulllist, SpecForm); j > -1; j = Array.IndexOf(fulllist, SpecForm, j + 1))
+                    k += Chancelist[j];
+                list[i].Text += String.Format(" ({0}%)", k);
+            }
+            if (list.Count == 0)
+                list.Add(new ComboItem("-", 0));
+            Ally.DisplayMember = "Text";
+            Ally.ValueMember = "Value";
+            Ally.DataSource = new BindingSource(list, null);
+        }
+        
+        private void Ally_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var fulllist = SOSSlots.Concat(WeatherSlots).Where(t => t != 0).ToArray();
+            int SpecForm = (int)Ally.SelectedValue;
+            int offset = IsLinux ? 0 : 1;
+            for (int i = 0; i < fulllist.Length; i++)
+                Slot.CheckBoxItems[i + offset].Checked = fulllist[i] == SpecForm;
         }
         #endregion
 
@@ -409,6 +443,7 @@ namespace Pk3DSRNGTool
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             Raining.Visible = Gen7 && !gen7sos;
+            SOSPanel.Visible =
             L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
             ChainLength.Visible = L_ChainLength.Visible = gen7sos;
             var pmw6 = FormPM as PKMW6;
@@ -455,9 +490,12 @@ namespace Pk3DSRNGTool
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
-        private void Fix3v_CheckedChanged(object sender, EventArgs e)
+        private void IVCount_ValueChanged(object sender, EventArgs e)
         {
-            PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
+            if (sender == IVsCount)
+                PerfectIVs.Value = IVsCount.Value;
+            else
+                PerfectIVs.Value = Fix3v.Checked ? 3 : 0;
         }
 
         private bool Isforcedshiny;
@@ -518,7 +556,6 @@ namespace Pk3DSRNGTool
             }
             catch { }
         }
-
 
         private void IVs_Click(object sender, EventArgs e)
         {
@@ -858,6 +895,8 @@ namespace Pk3DSRNGTool
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
         }
+
+        private void Weather_SelectedIndexChanged(object sender, EventArgs e) => RefreshSOSAlly();
 
         private void SetAsTarget_Click(object sender, EventArgs e)
         {
@@ -1344,8 +1383,6 @@ namespace Pk3DSRNGTool
                 {
                     setting7.SOS = true;
                     setting7.SpecForm = new int[10];
-                    int[] SOSSlots = new bool[7].Select(t => 172).ToArray(); // To-do
-                    int[] WeatherSlots = new int[2]; // To-do
                     SOSSlots.CopyTo(setting7.SpecForm, 1);
                     if (SOSRNG.Weather = WeatherSlots.Any(s => s != 0)) // To-do
                         WeatherSlots.CopyTo(setting7.SpecForm, 8);

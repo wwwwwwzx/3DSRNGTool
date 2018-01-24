@@ -164,6 +164,8 @@ Overview = 预览
 L_BiteChance = 咬勾率
 L_FishingDelay = 延时
 dgv_fishing = 钓杆帧
+L_Weather = 天气
+L_Ally = 帮手
 ---------------------TabPage4----------------------------------
 TinyMT_Status = 当前状态
 ---

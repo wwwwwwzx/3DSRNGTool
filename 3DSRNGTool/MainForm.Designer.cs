@@ -208,6 +208,11 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.SOSPanel = new System.Windows.Forms.Panel();
+            this.Weather = new System.Windows.Forms.ComboBox();
+            this.L_Weather = new System.Windows.Forms.Label();
+            this.Ally = new System.Windows.Forms.ComboBox();
+            this.L_Ally = new System.Windows.Forms.Label();
             this.L_SOSRNGFrame = new System.Windows.Forms.Label();
             this.SOSRNGFrame = new System.Windows.Forms.NumericUpDown();
             this.SOSRNGSeed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
@@ -448,6 +453,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.M_IV4)).BeginInit();
             this.TP_WildRNG.SuspendLayout();
             this.Wild_Setting.SuspendLayout();
+            this.SOSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).BeginInit();
             this.FishingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).BeginInit();
@@ -2306,6 +2312,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.SOSPanel);
             this.Wild_Setting.Controls.Add(this.L_SOSRNGFrame);
             this.Wild_Setting.Controls.Add(this.SOSRNGFrame);
             this.Wild_Setting.Controls.Add(this.SOSRNGSeed);
@@ -2341,6 +2348,58 @@
             this.Wild_Setting.TabIndex = 75;
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
+            // 
+            // SOSPanel
+            // 
+            this.SOSPanel.Controls.Add(this.Weather);
+            this.SOSPanel.Controls.Add(this.L_Weather);
+            this.SOSPanel.Controls.Add(this.Ally);
+            this.SOSPanel.Controls.Add(this.L_Ally);
+            this.SOSPanel.Location = new System.Drawing.Point(0, 219);
+            this.SOSPanel.Name = "SOSPanel";
+            this.SOSPanel.Size = new System.Drawing.Size(405, 54);
+            this.SOSPanel.TabIndex = 76;
+            // 
+            // Weather
+            // 
+            this.Weather.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Weather.Items.AddRange(new object[] {
+            "None",
+            "Rain",
+            "Hail",
+            "Sand"});
+            this.Weather.Location = new System.Drawing.Point(225, 18);
+            this.Weather.Name = "Weather";
+            this.Weather.Size = new System.Drawing.Size(88, 21);
+            this.Weather.TabIndex = 123;
+            this.Weather.SelectedIndexChanged += new System.EventHandler(this.Weather_SelectedIndexChanged);
+            // 
+            // L_Weather
+            // 
+            this.L_Weather.AutoSize = true;
+            this.L_Weather.Location = new System.Drawing.Point(171, 21);
+            this.L_Weather.Name = "L_Weather";
+            this.L_Weather.Size = new System.Drawing.Size(48, 13);
+            this.L_Weather.TabIndex = 122;
+            this.L_Weather.Text = "Weather";
+            // 
+            // Ally
+            // 
+            this.Ally.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Ally.Location = new System.Drawing.Point(57, 17);
+            this.Ally.Name = "Ally";
+            this.Ally.Size = new System.Drawing.Size(108, 21);
+            this.Ally.TabIndex = 121;
+            this.Ally.SelectedIndexChanged += new System.EventHandler(this.Ally_SelectedIndexChanged);
+            // 
+            // L_Ally
+            // 
+            this.L_Ally.AutoSize = true;
+            this.L_Ally.Location = new System.Drawing.Point(13, 21);
+            this.L_Ally.Name = "L_Ally";
+            this.L_Ally.Size = new System.Drawing.Size(23, 13);
+            this.L_Ally.TabIndex = 120;
+            this.L_Ally.Text = "Ally";
             // 
             // L_SOSRNGFrame
             // 
@@ -2963,6 +3022,7 @@
             this.IVsCount.Size = new System.Drawing.Size(47, 22);
             this.IVsCount.TabIndex = 45;
             this.IVsCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.IVsCount.ValueChanged += new System.EventHandler(this.IVCount_ValueChanged);
             // 
             // IsEgg
             // 
@@ -3948,7 +4008,7 @@
             this.Fix3v.TabIndex = 1;
             this.Fix3v.Text = "固定3V";
             this.Fix3v.UseVisualStyleBackColor = true;
-            this.Fix3v.CheckedChanged += new System.EventHandler(this.Fix3v_CheckedChanged);
+            this.Fix3v.CheckedChanged += new System.EventHandler(this.IVCount_ValueChanged);
             // 
             // Filters
             // 
@@ -4997,6 +5057,8 @@
             this.TP_WildRNG.ResumeLayout(false);
             this.Wild_Setting.ResumeLayout(false);
             this.Wild_Setting.PerformLayout();
+            this.SOSPanel.ResumeLayout(false);
+            this.SOSPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).EndInit();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
@@ -5450,6 +5512,11 @@
         private System.Windows.Forms.NumericUpDown SOSRNGFrame;
         private Controls.HexMaskedTextBox SOSRNGSeed;
         private System.Windows.Forms.Label L_SOSRNGSeed;
+        private System.Windows.Forms.Panel SOSPanel;
+        private System.Windows.Forms.ComboBox Weather;
+        private System.Windows.Forms.Label L_Weather;
+        private System.Windows.Forms.ComboBox Ally;
+        private System.Windows.Forms.Label L_Ally;
     }
 }
 

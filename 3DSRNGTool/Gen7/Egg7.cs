@@ -87,6 +87,7 @@ namespace Pk3DSRNGTool
             // Ball
             egg.Ball = (byte)(Homogeneous && getrand % 100 >= 50 || FemaleIsDitto ? 1 : 2);
 
+            // Egg adopt & Egg Clear
             Advance(2);
 
             return egg;
