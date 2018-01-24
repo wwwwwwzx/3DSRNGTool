@@ -1860,5 +1860,15 @@ namespace Pk3DSRNGTool
         private void MiscRNGTool_Click(object sender, EventArgs e)
             => miscrngtool.Show();
         #endregion
+
+        private void SetAs10Starting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var f = (int)DGV.CurrentRow.Cells["dgv_Frame"].Value;
+                Frame_min.Value = f - 10;
+            }
+            catch { }
+        }
     }
 }
