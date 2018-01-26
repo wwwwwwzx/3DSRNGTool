@@ -221,7 +221,7 @@ namespace Pk3DSRNGTool.Core
         }
 
         //model # changes
-        private static void SolLunaRearrange(int[] NPC)
+        private static void Rearrange(int[] NPC)
         {
             modelnumber = (byte)NPC.Length;
             for (int i = 0; i < modelnumber; i++)
@@ -283,7 +283,7 @@ namespace Pk3DSRNGTool.Core
                 case 2:
                     int crydelay = DelayType == 1 ? 78 : 75;
                     time_elapse7(DelayTime - crydelay - 20); // 48
-                    if (modelnumber == 7) SolLunaRearrange(new[] { 0, 1, 2, 5, 6 });
+                    if (modelnumber == 7) Rearrange(new[] { 0, 1, 2, 5, 6 });
                     time_elapse7(19);
                     Cry(3);
                     time_elapse7(crydelay);
@@ -307,7 +307,7 @@ namespace Pk3DSRNGTool.Core
                     break;
                 case 10: // UM Luna
                     time_elapse7(DelayTime - 74);  // 8
-                    if (modelnumber == 9) SolLunaRearrange(new[] { 0, 1, 2, 6, 7, 8 });
+                    if (modelnumber == 9) Rearrange(new[] { 0, 1, 2, 6, 7, 8 });
                     SplittedDelay(74, 73);
                     break;
 
@@ -358,14 +358,18 @@ namespace Pk3DSRNGTool.Core
                     SplittedDelay(277, 35);
                     break;
                 case 25: // Celesteela
-                    time_elapse7(DelayTime - 322); // 248(2)|77(1)|195|50(2)
+                    time_elapse7(66); // 66(2)|34(1)|165(2)|77(1)|195|50(2)
+                    ChangeModelNumber(1);
+                    time_elapse7(34);
+                    ChangeModelNumber(2);
+                    time_elapse7(165);
                     ChangeModelNumber(1);
                     time_elapse7(77);
                     ChangeModelNumber(2);
-                    SplittedDelay(245, 50);
+                    SplittedDelay(DelayTime - 342, 50);
                     break;
                 case 26: // Kartana
-                    time_elapse7(DelayTime - 734); // 77(2)|34(1)|91(2)|61(3)|369(2)|71(4)|65|43(2)
+                    time_elapse7(77); // 77(2)|34(1)|91(2)|61(3)|369(2)|71(4)|65|43(2)
                     ChangeModelNumber(1);
                     time_elapse7(34);
                     ChangeModelNumber(2);
@@ -375,16 +379,17 @@ namespace Pk3DSRNGTool.Core
                     ChangeModelNumber(2);
                     time_elapse7(369);
                     ChangeModelNumber(4);
+                    remain_frame[3] = remain_frame[2]; remain_frame[2] = 0; // Swap 3 and 4
                     time_elapse7(71);
                     ChangeModelNumber(2);
-                    SplittedDelay(108, 43);
+                    SplittedDelay(DelayTime - 703, 43);
                     break;
                 case 27: // Guzzlord
-                    time_elapse7(DelayTime - 290); // 196(2)|101(1)|149|40(2)
+                    time_elapse7(196); // 196(2)|101(1)|149|40(2)
                     ChangeModelNumber(1);
                     time_elapse7(101);
                     ChangeModelNumber(2);
-                    SplittedDelay(189, 40);
+                    SplittedDelay(DelayTime - 297, 40);
                     break;
                 default:
                     NormalDelay7();
