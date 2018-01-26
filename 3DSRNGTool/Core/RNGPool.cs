@@ -319,9 +319,11 @@ namespace Pk3DSRNGTool.Core
                     SplittedDelay(DelayTime, 51); // 40|51
                     break;
                 case 13: // UM Pheromosa
-                    time_elapse7(DelayTime - 48); // 29(2)|14|34(3)
+                    time_elapse7(29); // 29(2)|13|2C1|34(3)
                     ChangeModelNumber(3);
-                    SplittedDelay(48, 34);
+                    time_elapse7(DelayTime - 64);
+                    Cry(2);
+                    time_elapse7(34);
                     break;
                 case 14: // Xurkitree
                     SplittedDelay(DelayTime, 35); // 34|35
