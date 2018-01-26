@@ -326,7 +326,9 @@ namespace Pk3DSRNGTool.Core
                     time_elapse7(34);
                     break;
                 case 14: // Xurkitree
-                    SplittedDelay(DelayTime, 35); // 34|35
+                    time_elapse7(11);
+                    ChangeModelNumber(2);
+                    SplittedDelay(DelayTime - 11, 35); // 11|23(2)|35
                     break;
                 case 15: // UM Celesteela
                     SplittedDelay(DelayTime, 50); // 45|50
