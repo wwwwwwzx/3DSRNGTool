@@ -59,7 +59,7 @@ Fidget = Fidget
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
-L_GenderList = Liste des sexes (0:Assexué 1:Aléatoire 2:Mew):
+L_GenderList = Liste des sexes (0:Assexué 1:Aléatoire 2:Myth):
 ---
 Filters = Filtres
 L_H = PV
