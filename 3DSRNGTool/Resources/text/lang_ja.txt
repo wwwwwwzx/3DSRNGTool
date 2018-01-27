@@ -57,7 +57,7 @@ Fidget = 主人公の動き
 Boy = 男の子
 Girl = 女の子
 B_OpenTool = Tiny Timeline Tool
-L_GenderList = 性別比リスト (0:無性別 1:Random 2:ミュウ):
+L_GenderList = 性別比リスト (0:無性別 1:Random 2:幻):
 ---
 Filters = フィルター
 L_H = HP

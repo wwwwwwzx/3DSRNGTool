@@ -324,6 +324,8 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.RNGNoise = new System.Windows.Forms.CheckBox();
+            this.NoiseFrame = new System.Windows.Forms.NumericUpDown();
             this.ShinyMark = new System.Windows.Forms.PictureBox();
             this.Girl = new System.Windows.Forms.RadioButton();
             this.Boy = new System.Windows.Forms.RadioButton();
@@ -491,6 +493,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoiseFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
@@ -3707,6 +3710,8 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.RNGNoise);
+            this.Sta_Setting.Controls.Add(this.NoiseFrame);
             this.Sta_Setting.Controls.Add(this.ShinyMark);
             this.Sta_Setting.Controls.Add(this.Girl);
             this.Sta_Setting.Controls.Add(this.Boy);
@@ -3731,6 +3736,26 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // RNGNoise
+            // 
+            this.RNGNoise.AutoSize = true;
+            this.RNGNoise.Location = new System.Drawing.Point(224, 202);
+            this.RNGNoise.Name = "RNGNoise";
+            this.RNGNoise.Size = new System.Drawing.Size(68, 17);
+            this.RNGNoise.TabIndex = 112;
+            this.RNGNoise.Text = "Xurkitree";
+            this.RNGNoise.UseVisualStyleBackColor = true;
+            this.RNGNoise.CheckedChanged += new System.EventHandler(this.RNGNoise_CheckedChanged);
+            // 
+            // NoiseFrame
+            // 
+            this.NoiseFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoiseFrame.Location = new System.Drawing.Point(298, 199);
+            this.NoiseFrame.Name = "NoiseFrame";
+            this.NoiseFrame.Size = new System.Drawing.Size(75, 22);
+            this.NoiseFrame.TabIndex = 111;
+            this.NoiseFrame.Visible = false;
             // 
             // ShinyMark
             // 
@@ -5111,6 +5136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoiseFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
@@ -5527,6 +5553,8 @@
         private System.Windows.Forms.ComboBox Ally;
         private System.Windows.Forms.Label L_Ally;
         private System.Windows.Forms.ToolStripMenuItem SetAs10Starting;
+        private System.Windows.Forms.CheckBox RNGNoise;
+        private System.Windows.Forms.NumericUpDown NoiseFrame;
     }
 }
 

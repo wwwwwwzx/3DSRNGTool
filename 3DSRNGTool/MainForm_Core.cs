@@ -410,6 +410,8 @@ namespace Pk3DSRNGTool
             int frameadvance, Currentframe;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= start_frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
+            int RNGNoiseFrame = (int)NoiseFrame.Value;
+            int XFrame = RNGNoiseFrame > start_frame && RNGNoise.Checked && FormPM.SpecForm == 796 ? RNGNoiseFrame : int.MaxValue;
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -423,6 +425,11 @@ namespace Pk3DSRNGTool
                 {
                     status.fidget_cd = 1;
                     FirstJumpFrame = int.MaxValue; // Disable this part
+                }
+                if (frame >= XFrame)
+                {
+                    status.Xurkitree = 1;
+                    XFrame = int.MaxValue;
                 }
                 byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
                 frameadvance = status.NextState();

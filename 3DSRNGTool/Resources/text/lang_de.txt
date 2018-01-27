@@ -59,7 +59,7 @@ Fidget = Fidget
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
-L_GenderList = Geschlecht (0:Neutral 1:Zufaellig 2:Mew):
+L_GenderList = Geschlecht (0:Neutral 1:Zufaellig 2:Myth):
 ---
 Filters = Filter
 L_H = KP
