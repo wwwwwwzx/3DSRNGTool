@@ -323,6 +323,9 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
+            this.L_X1 = new System.Windows.Forms.Label();
+            this.X1 = new System.Windows.Forms.NumericUpDown();
+            this.L_X2 = new System.Windows.Forms.Label();
             this.RNGNoise = new System.Windows.Forms.CheckBox();
             this.NoiseFrame = new System.Windows.Forms.NumericUpDown();
             this.ShinyMark = new System.Windows.Forms.PictureBox();
@@ -492,6 +495,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.X1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoiseFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
@@ -3708,6 +3712,9 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.L_X1);
+            this.Sta_Setting.Controls.Add(this.X1);
+            this.Sta_Setting.Controls.Add(this.L_X2);
             this.Sta_Setting.Controls.Add(this.RNGNoise);
             this.Sta_Setting.Controls.Add(this.NoiseFrame);
             this.Sta_Setting.Controls.Add(this.ShinyMark);
@@ -3734,6 +3741,47 @@
             this.Sta_Setting.TabIndex = 89;
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
+            // 
+            // L_X1
+            // 
+            this.L_X1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_X1.AutoSize = true;
+            this.L_X1.Location = new System.Drawing.Point(224, 240);
+            this.L_X1.Name = "L_X1";
+            this.L_X1.Size = new System.Drawing.Size(38, 13);
+            this.L_X1.TabIndex = 114;
+            this.L_X1.Text = "1 NPC";
+            this.L_X1.Visible = false;
+            // 
+            // X1
+            // 
+            this.X1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.X1.Location = new System.Drawing.Point(265, 236);
+            this.X1.Maximum = new decimal(new int[] {
+            320,
+            0,
+            0,
+            0});
+            this.X1.Name = "X1";
+            this.X1.Size = new System.Drawing.Size(44, 22);
+            this.X1.TabIndex = 115;
+            this.X1.Value = new decimal(new int[] {
+            193,
+            0,
+            0,
+            0});
+            this.X1.Visible = false;
+            // 
+            // L_X2
+            // 
+            this.L_X2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_X2.AutoSize = true;
+            this.L_X2.Location = new System.Drawing.Point(315, 240);
+            this.L_X2.Name = "L_X2";
+            this.L_X2.Size = new System.Drawing.Size(30, 13);
+            this.L_X2.TabIndex = 97;
+            this.L_X2.Text = "/321";
+            this.L_X2.Visible = false;
             // 
             // RNGNoise
             // 
@@ -5127,6 +5175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.X1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoiseFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
@@ -5545,6 +5594,9 @@
         private System.Windows.Forms.Label L_Ally;
         private System.Windows.Forms.CheckBox RNGNoise;
         private System.Windows.Forms.NumericUpDown NoiseFrame;
+        private System.Windows.Forms.Label L_X1;
+        private System.Windows.Forms.NumericUpDown X1;
+        private System.Windows.Forms.Label L_X2;
     }
 }
 

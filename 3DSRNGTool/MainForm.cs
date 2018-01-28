@@ -913,6 +913,7 @@ namespace Pk3DSRNGTool
         private void RNGNoise_CheckedChanged(object sender, EventArgs e)
         {
             NoiseFrame.Visible = RNGNoise.Checked;
+            L_X1.Visible = X1.Visible = L_X2.Visible = NoiseFrame.Visible && FormPM.SpecForm == 796;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)

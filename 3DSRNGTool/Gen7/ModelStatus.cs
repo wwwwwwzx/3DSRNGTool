@@ -62,17 +62,19 @@ namespace Pk3DSRNGTool
             return delay1 + delay2;
         }
 
+        public int X1 = 193;
+        private int X2 => 321 - X1;
         private void XurkitreeCycle()
         {
             if (Modelnumber == 2)
             {
                 ChangeModelNumber(3);
-                Xurkitree = 128;
+                Xurkitree = X2;
             }
             else if (Modelnumber == 3)
             {
                 ChangeModelNumber(2, true);
-                Xurkitree = 193;
+                Xurkitree = X1;
             }
         }
 

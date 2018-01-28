@@ -404,6 +404,7 @@ namespace Pk3DSRNGTool
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
             status.IsBoy = Boy.Checked;
             status.raining = Raining.Checked;
+            status.X1 = (int)X1.Value;
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
@@ -431,7 +432,7 @@ namespace Pk3DSRNGTool
                     status.Xurkitree = 1;
                     XFrame = int.MaxValue;
                 }
-                byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
+                byte Jumpflag = (byte)(status.fidget_cd == 1 || status.Xurkitree == 1 ? 1 : 0);
                 frameadvance = status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
