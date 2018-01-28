@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
             for (int i = n; i > 0; i--)
                 RNGPool.AdvanceTiny();
         }
-        
+
         public EncounterType Wildtype;
         public bool HA;
         public bool IsShinyLocked;
@@ -84,7 +84,7 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime);
                     break;
             }
-            
+
             CheckLeadAbility();
             rt.Synchronize = SynchroPass;
 
@@ -93,7 +93,7 @@ namespace Pk3DSRNGTool
             {
                 case EncounterType.FriendSafari:
                     RNGResult.IsPokemon = TinyRand(100) < 13;
-                    rt.Slot = slot = (byte)(TinyRand(SlotNum) + 1);
+                    rt.Slot = slot = getFSSlot(SlotNum, TinyRand(100));
                     break;
                 case EncounterType.OldRod:
                 case EncounterType.GoodRod:
@@ -247,6 +247,22 @@ namespace Pk3DSRNGTool
             if (rand < (compoundeye ? 85 : 56))
                 return StringItem.helditemStr[2]; // 1%
             return StringItem.helditemStr[3]; // None
+        }
+
+        // XY 1.5 sub_74BED4
+        public static byte getFSSlot(int SlotNum, int Rand100)
+        {
+            if (SlotNum == 2)
+                return (byte)(Rand100 < 50 ? 1 : 2);
+            else if(SlotNum == 3)
+            {
+                if (Rand100 < 34)
+                    return 1;
+                if (Rand100 < 67)
+                    return 2;
+                return 3;
+            }
+            return 0;
         }
     }
 }

@@ -290,7 +290,7 @@ namespace Pk3DSRNGTool
                 }
                 results[i].sync = ReferenceList[j++].Rand2;
                 results[i].enctr = ReferenceList[j++].Rand(100);
-                results[i].slot = (byte)(((ReferenceList[j++].rand * SlotNum) >> 32) + 1);
+                results[i].slot = Wild6.getFSSlot(SlotNum, ReferenceList[j++].Rand(100));
                 results[i].item = getItem(ReferenceList[++j].Rand(100));
             }
         }
@@ -319,7 +319,6 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < max; i++)
                 results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num);
         }
-
 
         public void MarkFishing()
         {
