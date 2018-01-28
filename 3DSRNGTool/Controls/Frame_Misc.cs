@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
 
         public uint Rand32 { get; set; }
         public ulong Rand64 { get; set; }
-        public string CurrentSeed => X64 ? Rand64.ToString("X16") : Rand32.ToString("X8");
+        public string CurrentSeed => st?.ToString() ?? (X64 ? Rand64.ToString("X16") : Rand32.ToString("X8"));
 
         public int RandN { get; set; }
         public byte Pokerus { get; set; }
@@ -34,7 +34,6 @@ namespace Pk3DSRNGTool
         public byte Clock => (byte)(Rand64 % 17);
 
         public PRNGState st;
-        public string CurrentStatus => st?.ToString() ?? string.Empty;
 
         public int[] status;
         public string NPCStatus => status == null ? string.Empty : string.Join(",", status.Select(i => (i > 0 ? i - 1 : i).ToString().PadLeft(2)).ToArray());

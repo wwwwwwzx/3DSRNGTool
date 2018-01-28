@@ -477,7 +477,7 @@
             // 
             // dgv_status
             // 
-            this.dgv_status.DataPropertyName = "CurrentStatus";
+            this.dgv_status.DataPropertyName = "CurrentSeed";
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_status.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_status.HeaderText = "Curr Seed";
