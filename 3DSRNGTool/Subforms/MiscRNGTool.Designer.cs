@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.L_Delay = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
@@ -65,6 +66,7 @@
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_realtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_npcstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.Range = new System.Windows.Forms.NumericUpDown();
             this.Value = new System.Windows.Forms.NumericUpDown();
@@ -84,6 +86,7 @@
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.TP_Misc = new System.Windows.Forms.TabPage();
             this.TP_Capture = new System.Windows.Forms.TabPage();
+            this.OPower = new System.Windows.Forms.ComboBox();
             this.RotoCatch = new System.Windows.Forms.CheckBox();
             this.SuccessOnly = new System.Windows.Forms.CheckBox();
             this.CB_Detail = new System.Windows.Forms.CheckBox();
@@ -289,7 +292,8 @@
             this.RNG.Items.AddRange(new object[] {
             "G7 SFMT (64bit)",
             "G7 SFMT (32bit)",
-            "G6 MT"});
+            "G6 MT",
+            "G6 TinyMT"});
             this.RNG.Location = new System.Drawing.Point(90, 29);
             this.RNG.Name = "RNG";
             this.RNG.Size = new System.Drawing.Size(104, 21);
@@ -328,13 +332,14 @@
             this.dgv_rand32,
             this.dgv_rand64,
             this.dgv_realtime,
-            this.dgv_status});
+            this.dgv_status,
+            this.dgv_npcstatus});
             this.dataGridView1.Location = new System.Drawing.Point(227, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 18;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(445, 456);
             this.dataGridView1.TabIndex = 1;
@@ -472,14 +477,24 @@
             // 
             // dgv_status
             // 
-            this.dgv_status.DataPropertyName = "NPCStatus";
+            this.dgv_status.DataPropertyName = "CurrentStatus";
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_status.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgv_status.HeaderText = "NPC";
+            this.dgv_status.HeaderText = "Curr Seed";
             this.dgv_status.Name = "dgv_status";
             this.dgv_status.ReadOnly = true;
             this.dgv_status.Visible = false;
-            this.dgv_status.Width = 40;
+            // 
+            // dgv_npcstatus
+            // 
+            this.dgv_npcstatus.DataPropertyName = "NPCStatus";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_npcstatus.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_npcstatus.HeaderText = "NPC";
+            this.dgv_npcstatus.Name = "dgv_npcstatus";
+            this.dgv_npcstatus.ReadOnly = true;
+            this.dgv_npcstatus.Visible = false;
+            this.dgv_npcstatus.Width = 40;
             // 
             // B_ResetFrame
             // 
@@ -697,6 +712,7 @@
             // 
             // TP_Capture
             // 
+            this.TP_Capture.Controls.Add(this.OPower);
             this.TP_Capture.Controls.Add(this.RotoCatch);
             this.TP_Capture.Controls.Add(this.SuccessOnly);
             this.TP_Capture.Controls.Add(this.CB_Detail);
@@ -718,6 +734,21 @@
             this.TP_Capture.TabIndex = 2;
             this.TP_Capture.Text = "Capture";
             this.TP_Capture.UseVisualStyleBackColor = true;
+            // 
+            // OPower
+            // 
+            this.OPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OPower.DropDownWidth = 100;
+            this.OPower.FormattingEnabled = true;
+            this.OPower.Items.AddRange(new object[] {
+            "No Opower",
+            "Level 1",
+            "Level 2",
+            "Level 3/S/MAX"});
+            this.OPower.Location = new System.Drawing.Point(142, 103);
+            this.OPower.Name = "OPower";
+            this.OPower.Size = new System.Drawing.Size(57, 21);
+            this.OPower.TabIndex = 119;
             // 
             // RotoCatch
             // 
@@ -779,7 +810,7 @@
             "G7 SFMT (64bit)",
             "G7 SFMT (32bit)",
             "G6 MT"});
-            this.DexBonus.Location = new System.Drawing.Point(79, 103);
+            this.DexBonus.Location = new System.Drawing.Point(71, 103);
             this.DexBonus.Name = "DexBonus";
             this.DexBonus.Size = new System.Drawing.Size(65, 21);
             this.DexBonus.TabIndex = 60;
@@ -1437,6 +1468,7 @@
         private System.Windows.Forms.Label L_ChainLength;
         private System.Windows.Forms.NumericUpDown ChainLength;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox OPower;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_adv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hit;
@@ -1452,5 +1484,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_npcstatus;
     }
 }

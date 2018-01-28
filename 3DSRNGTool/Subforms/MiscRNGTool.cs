@@ -48,6 +48,8 @@ namespace Pk3DSRNGTool
             NPCType.SelectedIndex = 0;
             Color.SelectedIndex = 0;
 
+            OPower.SelectedIndex = 0;
+
             RNG_SelectedIndexChanged(null, null);
             L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
         }
@@ -115,6 +117,7 @@ namespace Pk3DSRNGTool
                 case 0 when Createtimeline.Checked: Search7_Timeline(); break;
                 case 1: Search7_Battle(); break;
                 case 2: Search6(); break;
+                case 3: Search6_Battle(); break;
             }
             AdjustDGVColumns();
             RNGPool.Clear();
@@ -382,6 +385,7 @@ namespace Pk3DSRNGTool
                 f.Frame = frame++;
                 f.Rand32 = RNGPool.getcurrent;
                 f.realtime = i;
+                f.st = RNGPool.getcurrentstate;
 
                 RNGPool.Rewind(0);
                 RNGPool.Advance(delay);
@@ -389,6 +393,62 @@ namespace Pk3DSRNGTool
                     f.RandN = (int)((RNGPool.getrand * N) >> 32);
                 else if (filter.Pokerus)
                     f.Pokerus = Pokerus6.getStrain();
+
+                if (!filter.check(f))
+                    continue;
+
+                Frames.Add(f);
+            }
+        }
+
+        private void Search6_Battle()
+        {
+            TinyMT tiny = new TinyMT(Seed.Value);
+            int frame = (int)StartingFrame.Value;
+            int loopcount = (int)MaxResults.Value;
+            int delay = (int)Delay.Value;
+            ulong N = (ulong)Range.Value;
+
+            CaptureResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
+            var capture6 = new Capture6();
+            if (Filters.SelectedTab == TP_Capture)
+            {
+                capture6.HPCurr = (uint)HPCurr.Value;
+                capture6.HPMax = (uint)HPMax.Value;
+                capture6.CatchRate = (byte)CatchRate.Value;
+                capture6.StatusBonus = (uint)(int)Status.SelectedValue;
+                capture6.BallBonus = (uint)(int)BallBonus.SelectedValue;
+                capture6.DexBonus = (uint)(int)DexBonus.SelectedValue;
+                capture6.OPowerBonus = OPowerList[OPower.SelectedIndex];
+                capture6.Calc();
+                var criticalchance = capture6.CriticalRate / 256.0;
+                var shakechance = capture6.ShakeRate / 65536.0;
+                var capturechance = criticalchance * shakechance + (1 - criticalchance) * Math.Pow(shakechance, 4);
+                L_output.Text = CB_Detail.Checked ? string.Format("Critical {0:P}  \tShake {1:P}", criticalchance, shakechance)
+                    : string.Format("Critical {0:P}  \tSuccess {1:P}", criticalchance, capturechance);
+            }
+
+            for (int i = 0; i < frame; i++)
+                tiny.Nextuint();
+
+            RNGPool.CreateBuffer(tiny);
+
+            for (int i = 0; i < loopcount; i++, RNGPool.AddNext(tiny, AutoCheck: false))
+            {
+                var f = new Frame_Misc();
+                f.Frame = frame++;
+                f.Rand32 = RNGPool.getcurrent;
+                f.st = RNGPool.getcurrentstate;
+
+                RNGPool.Rewind(0);
+                RNGPool.Advance(delay);
+                if (filter.Random)
+                    f.RandN = (int)(RNGPool.getrand % N);
+                if (ShowCapture)
+                {
+                    RNGPool.Rewind(0);
+                    f.Crt = capture6.Catch();
+                }
 
                 if (!filter.check(f))
                     continue;
@@ -409,11 +469,13 @@ namespace Pk3DSRNGTool
             dgv_rand32.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
-            dgv_capture.Visible = RNG.SelectedIndex == 1 && ShowCapture;
+            dgv_capture.Visible = (RNG.SelectedIndex & 1) == 1 && ShowCapture;
             dgv_adv.Visible = Filters.SelectedTab == TP_SOS;
             dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
-            dgv_realtime.Visible = RNG.SelectedIndex != 1;
+            dgv_realtime.Visible = (RNG.SelectedIndex & 1) == 0;
+            dgv_status.Visible = RNG.SelectedIndex > 1;
+            dgv_status.Width = RNG.SelectedIndex == 2 ? 78 : 260;
             dataGridView1.DataSource = Frames;
             dataGridView1.CurrentCell = null;
             if (Frames.Count > 0) dataGridView1.FirstDisplayedScrollingRowIndex = 0;
@@ -446,13 +508,15 @@ namespace Pk3DSRNGTool
                 }
             }
             RB_Random.Checked = true;
-            RB_Pokerus.Visible = RNG.SelectedIndex != 1;
-            NPC.Visible = L_NPC.Visible = RNG.SelectedIndex <= 0;
+            RB_Pokerus.Visible = (RNG.SelectedIndex & 1) == 0;
+            NPC.Visible = L_NPC.Visible = RNG.SelectedIndex == 0;
             ShowHideTab(TP_Timeline, RNG.SelectedIndex == 0, 0);
             Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
             ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);
             ShowHideTab(TP_BattleTree, RNG.SelectedIndex == 0, 3);
-            ShowHideTab(TP_Capture, RNG.SelectedIndex == 1, 1);
+            ShowHideTab(TP_Capture, (RNG.SelectedIndex & 1) == 1, 1);
+            RotoCatch.Visible = RNG.SelectedIndex == 1;
+            OPower.Visible = RNG.SelectedIndex == 3;
             ShowHideTab(TP_SOS, RNG.SelectedIndex == 1, 2);
         }
 
@@ -523,7 +587,7 @@ namespace Pk3DSRNGTool
         #endregion
 
         #region Control
-        private static readonly ComboItem[] StatusBonusList = new ComboItem[]
+        private static readonly ComboItem[] StatusBonusList =
         {
             new ComboItem("None", 0x1000),
             new ComboItem("Poisoned", 0x1800),
@@ -532,7 +596,7 @@ namespace Pk3DSRNGTool
             new ComboItem("Asleep", 0x2800),
             new ComboItem("Frozen", 0x2800),
         };
-        private static readonly ComboItem[] BallBonusList = new ComboItem[]
+        private static readonly ComboItem[] BallBonusList =
         {
             new ComboItem("x1.0", 0x1000), // Poke
             new ComboItem("x1.5", 0x1800), // Great Level
@@ -544,7 +608,7 @@ namespace Pk3DSRNGTool
             new ComboItem("x8.0", 0x8000), // Level Love Nest
             new ComboItem("x0.1", 0x019A), // UB
         };
-        private static readonly ComboItem[] DexBonusList = new ComboItem[]
+        private static readonly ComboItem[] DexBonusList =
         {
             new ComboItem(">600", 0x2800),
             new ComboItem("451-600", 0x2000),
@@ -553,9 +617,10 @@ namespace Pk3DSRNGTool
             new ComboItem("031-150", 0x0800),
             new ComboItem("<=30", 0x0000),
         };
+        private static readonly float[] OPowerList = { 1.0f, 1.5f, 2.0f, 2.5f };
 
         private static readonly ComboItem[] CallRateList = new[] { 3, 6, 9, 15, 0, }.Select(t => new ComboItem(t.ToString(), t)).ToArray();
-        private static readonly ComboItem[] HPBarBonusList = new ComboItem[]
+        private static readonly ComboItem[] HPBarBonusList =
         {
             new ComboItem("Red <=1/5", 5),
             new ComboItem("Yellow 1/5~1/2", 3),

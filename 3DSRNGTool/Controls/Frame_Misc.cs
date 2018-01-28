@@ -33,6 +33,9 @@ namespace Pk3DSRNGTool
         public string BlinkFlag => Blink < 5 ? blinkmarks[Blink] : Blink.ToString();
         public byte Clock => (byte)(Rand64 % 17);
 
+        public PRNGState st;
+        public string CurrentStatus => st?.ToString() ?? string.Empty;
+
         public int[] status;
         public string NPCStatus => status == null ? string.Empty : string.Join(",", status.Select(i => (i > 0 ? i - 1 : i).ToString().PadLeft(2)).ToArray());
     }
@@ -57,7 +60,7 @@ namespace Pk3DSRNGTool
                 return false;
             if (Random)
             {
-                switch(CompareType)
+                switch (CompareType)
                 {
                     case 0: if (f.RandN >= Value) return false; break;
                     case 1: if (f.RandN < Value) return false; break;

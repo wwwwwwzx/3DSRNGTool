@@ -13,6 +13,7 @@ namespace Pk3DSRNGTool.Core
         public static uint getrand => RandList[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
         public static ulong getrand64 => RandList64[++Pointer >= BufferSize ? Pointer = 0 : Pointer];
         public static uint getcurrent => RandList[Head];
+        public static PRNGState getcurrentstate => RNGStateStr[Head];
         public static ulong getcurrent64 => RandList64[Head];
 
         public static int index

@@ -254,7 +254,7 @@ namespace Pk3DSRNGTool
         {
             if (SlotNum == 2)
                 return (byte)(Rand100 < 50 ? 1 : 2);
-            else if(SlotNum == 3)
+            else if (SlotNum == 3)
             {
                 if (Rand100 < 34)
                     return 1;
