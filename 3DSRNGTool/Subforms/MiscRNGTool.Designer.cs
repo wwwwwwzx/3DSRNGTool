@@ -62,10 +62,10 @@
             this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_realtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_npcstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.Range = new System.Windows.Forms.NumericUpDown();
@@ -329,10 +329,10 @@
             this.dgv_capture,
             this.dgv_SOS,
             this.dgv_randn,
+            this.dgv_status,
             this.dgv_rand32,
             this.dgv_rand64,
             this.dgv_realtime,
-            this.dgv_status,
             this.dgv_npcstatus});
             this.dataGridView1.Location = new System.Drawing.Point(227, 12);
             this.dataGridView1.Name = "dataGridView1";
@@ -444,6 +444,16 @@
             this.dgv_randn.ReadOnly = true;
             this.dgv_randn.Width = 40;
             // 
+            // dgv_status
+            // 
+            this.dgv_status.DataPropertyName = "CurrentSeed";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_status.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_status.HeaderText = "Curr Seed";
+            this.dgv_status.Name = "dgv_status";
+            this.dgv_status.ReadOnly = true;
+            this.dgv_status.Visible = false;
+            // 
             // dgv_rand32
             // 
             this.dgv_rand32.DataPropertyName = "Rand32";
@@ -474,16 +484,6 @@
             this.dgv_realtime.Name = "dgv_realtime";
             this.dgv_realtime.ReadOnly = true;
             this.dgv_realtime.Width = 80;
-            // 
-            // dgv_status
-            // 
-            this.dgv_status.DataPropertyName = "CurrentSeed";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_status.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgv_status.HeaderText = "Curr Seed";
-            this.dgv_status.Name = "dgv_status";
-            this.dgv_status.ReadOnly = true;
-            this.dgv_status.Visible = false;
             // 
             // dgv_npcstatus
             // 
@@ -1480,10 +1480,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_realtime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_status;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_npcstatus;
     }
 }
