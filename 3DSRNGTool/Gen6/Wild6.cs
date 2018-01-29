@@ -264,5 +264,16 @@ namespace Pk3DSRNGTool
             }
             return 0;
         }
+
+        public static byte getFluteBoost(ulong Rand100)
+        {
+            if (Rand100 < 40)
+                return 1;
+            if (Rand100 < 70)
+                return 2;
+            if (Rand100 < 90)
+                return 3;
+            return 4;
+        }
     }
 }
