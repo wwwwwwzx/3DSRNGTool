@@ -9,10 +9,6 @@ namespace Pk3DSRNGTool
         {
             var rt = new DexNavResult();
 
-            // Patch?
-            for (int i = 0; i < 6; i++)
-                rng.Next();
-
             // Something
             rng.Next();
 
@@ -54,15 +50,17 @@ namespace Pk3DSRNGTool
                 if (tmp < 0)
                     break;
             }
+            if (Index >= 2)
+                Index = 3;
             rt.HeldItem = (byte)Index;
 
             // Shiny Checks
             int CheckCount = ShinyCharm ? 3 : 1;
             if (Boost)
                 CheckCount += 4;
-            if (ChainLength == 50)
+            if (ChainLength == 49)
                 CheckCount += 5;
-            else if (ChainLength == 100)
+            else if (ChainLength == 99)
                 CheckCount += 10;
 
             int TargetValue = 0;
