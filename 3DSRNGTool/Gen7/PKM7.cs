@@ -366,9 +366,9 @@
                 Text = "Starters",
                 List = new[]
                 {
-                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 5, Delay = 40, Unstable = true, }, // Rowlet
-                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 5, Delay = 40, Unstable = true, }, // Litten
-                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 5, Delay = 40, Unstable = true, }, // Popplio
+                    new PKM7 { Gift = true, Species = 722, Level = 5, Syncable = false, NPC = 5, Delay = 40, DelayType = 05, }, // Rowlet
+                    new PKM7 { Gift = true, Species = 725, Level = 5, Syncable = false, NPC = 5, Delay = 40, DelayType = 05, }, // Litten
+                    new PKM7 { Gift = true, Species = 728, Level = 5, Syncable = false, NPC = 5, Delay = 40, DelayType = 05, }, // Popplio
                 }
             },
             new PokemonList

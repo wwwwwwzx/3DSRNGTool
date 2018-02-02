@@ -300,6 +300,11 @@ namespace Pk3DSRNGTool.Core
                     modelnumber = 1;
                     time_elapse7(2);
                     break;
+                case 5: // SuMo Starter
+                    time_elapse7(DelayTime - 2);
+                    remain_frame[1] = remain_frame[3] = remain_frame[4] = remain_frame[5] = 0;
+                    time_elapse7(2);
+                    break;
 
                 case 09: // US Sol
                     time_elapse7(DelayTime - 77);  // 8
