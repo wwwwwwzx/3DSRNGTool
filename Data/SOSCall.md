@@ -30,7 +30,7 @@ Each encounter area have 2 weather slots per weather (Rain, Snow, Sandstorm)
 #### 5) Regular SOS slots - Rand % 100
 Slot 1-7: 1% / 1% / 1% / 10% / 10% / 10% / 67%
 #### 6) Level - Rand % (max - min + 1)
-#### 7) Something - Rand % 100
+#### 7) Black/White flute level modifier - Rand % 100 
 
 ### Pokemon Generation from main RNG
 

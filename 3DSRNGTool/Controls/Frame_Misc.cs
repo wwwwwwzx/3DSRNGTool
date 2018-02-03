@@ -42,7 +42,11 @@ namespace Pk3DSRNGTool
     public class Misc_Filter
     {
         public bool Capture;
-        public bool SOSCall;
+        public bool SOS;
+        public bool Success;
+        public bool Sync;
+        public bool[] Slot;
+        public bool HA;
         public bool Pokerus;
         public bool Random;
         public byte CompareType;
@@ -66,9 +70,18 @@ namespace Pk3DSRNGTool
                     case 2: if (f.RandN != Value) return false; break;
                 }
             }
-            if (Capture && !f.Crt.Gotta)
-                return false;
-            if (SOSCall && !f.Srt.Success)
+            if (SOS)
+            {
+                if (Success && !f.Srt.Success)
+                    return false;
+                if (HA && !f.Srt.HA)
+                    return false;
+                if (Sync && !f.Srt.Sync)
+                    return false;
+                if (Slot.Any(n => n) && !Slot[f.Srt.Slot])
+                    return false;
+            }
+            if (Capture && Success && !f.Crt.Gotta)
                 return false;
             if (FacilityFilter?.IsDifferentFrom(f.frt) ?? false)
                 return false;

@@ -52,6 +52,10 @@ namespace Pk3DSRNGTool
 
             RNG_SelectedIndexChanged(null, null);
             L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
+
+            Slot.BlankText = "-";
+            Slot.CheckBoxItems[0].Checked = true;
+            Slot.CheckBoxItems[0].Checked = false;
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -83,8 +87,12 @@ namespace Pk3DSRNGTool
             filter = new Misc_Filter
             {
                 Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked && Filters.SelectedTab == TP_Misc,
-                Capture = SuccessOnly.Checked && Filters.SelectedTab == TP_Capture,
-                SOSCall = SuccessOnly.Checked && Filters.SelectedTab == TP_SOS,
+                Capture = Filters.SelectedTab == TP_Capture,
+                Success = SuccessOnly.Checked,
+                SOS = SOS,
+                Sync = Sync.Checked,
+                HA = HA.Checked && SOS,
+                Slot = SOS ? Slot.CheckBoxItems.Select(e => e.Checked).ToArray() : null,
                 CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) || Filters.SelectedTab != TP_Misc ? null : CurrentText.Text.ToUpper(),
                 Random = RB_Random.Checked && Filters.SelectedTab == TP_Misc,
                 CompareType = (byte)Compare.SelectedIndex,
@@ -128,7 +136,8 @@ namespace Pk3DSRNGTool
         private bool FestivalPlaza => filter.FacilityFilter != null;
         private bool BattleTree => filter.TrainerFilter != null;
         private bool ShowCapture => Filters.SelectedTab == TP_Capture || Filters.SelectedTab == TP_Misc;
-        private bool ShowSOS => Filters.SelectedTab == TP_SOS || Filters.SelectedTab == TP_Misc;
+        private bool SOS => Filters.SelectedTab == TP_SOS || Filters.SelectedTab == TP_SOS2;
+        private bool ShowSOS => SOS || Filters.SelectedTab == TP_Misc;
         private ulong N;
         private int Timedelay;
         private void setupgenerator()
@@ -309,7 +318,7 @@ namespace Pk3DSRNGTool
                 L_output.Text = CB_Detail.Checked ? string.Format("Critical {0:P}  \tShake {1:P}", criticalchance, shakechance)
                     : string.Format("Critical {0:P}  \tSuccess {1:P}", criticalchance, capturechance);
             }
-            else if (Filters.SelectedTab == TP_SOS)
+            else if (SOS)
             {
                 SOSRNG.ChainLength = (int)ChainLength.Value;
                 SOSRNG.Weather = Weather.Checked;
@@ -429,7 +438,7 @@ namespace Pk3DSRNGTool
             }
 
             for (int i = 0; i < frame; i++)
-                tiny.Nextuint();
+                tiny.Next();
 
             RNGPool.CreateBuffer(tiny);
 
@@ -470,7 +479,7 @@ namespace Pk3DSRNGTool
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_capture.Visible = (RNG.SelectedIndex & 1) == 1 && ShowCapture;
-            dgv_adv.Visible = Filters.SelectedTab == TP_SOS;
+            dgv_adv.Visible = SOS;
             dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
             dgv_realtime.Visible = (RNG.SelectedIndex & 1) == 0;
@@ -506,6 +515,8 @@ namespace Pk3DSRNGTool
                     selected.Controls.Add(CB_Detail);
                     selected.Controls.Add(SuccessOnly);
                 }
+                if (selected == TP_SOS)
+                    ShowHideTab(TP_SOS2, true, 3);
             }
             RB_Random.Checked = true;
             RB_Pokerus.Visible = (RNG.SelectedIndex & 1) == 0;
@@ -518,6 +529,7 @@ namespace Pk3DSRNGTool
             RotoCatch.Visible = RNG.SelectedIndex == 1;
             OPower.Visible = RNG.SelectedIndex == 3;
             ShowHideTab(TP_SOS, RNG.SelectedIndex == 1, 2);
+            ShowHideTab(TP_SOS2, RNG.SelectedIndex == 1 && Filters.TabPages.Contains(TP_SOS2), 3);
         }
 
         private void ShowHideTab(TabPage tab, bool enable, int index = 1)
