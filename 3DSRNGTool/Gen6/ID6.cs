@@ -16,7 +16,7 @@ namespace Pk3DSRNGTool
         {
             Status = rng.CurrentState();
             RandNum = rng.Nextuint();
-            TID = (ushort)(RandNum & 0xFFFF);
+            TID = (ushort)RandNum;
             SID = (ushort)(RandNum >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
         }

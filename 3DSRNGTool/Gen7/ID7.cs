@@ -16,8 +16,8 @@ namespace Pk3DSRNGTool
         public ID7(ulong rand)
         {
             RandNum = rand;
-            uint tmp = (uint)(RandNum & 0xFFFFFFFF);
-            TID = (ushort)(tmp & 0xFFFF);
+            uint tmp = (uint)RandNum;
+            TID = (ushort)tmp;
             SID = (ushort)(tmp >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
             G7TID = tmp % 1000000;
