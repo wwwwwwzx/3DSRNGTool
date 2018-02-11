@@ -786,7 +786,6 @@ namespace Pk3DSRNGTool
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
             Fidget.Enabled = Fidget.Visible && CreateTimeline.Checked;
             RNGNoise.Enabled = RNGNoise.Visible && CreateTimeline.Checked;
-            Overview.Visible = gen7fishing && CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -1147,7 +1146,7 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.modelnumber * 500;
                     if (gen7fishing && ConsiderDelay.Checked && !CreateTimeline.Checked)
                     {
-                        RNGPool.DelayType = 2;
+                        RNGPool.DelayType = (byte)(Overview.Checked ? 2 : 1);
                         RNGPool.fsetting = getFishingSetting;
                     }
                 }

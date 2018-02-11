@@ -2493,7 +2493,6 @@
             // Overview
             // 
             this.Overview.AutoSize = true;
-            this.Overview.Checked = true;
             this.Overview.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Overview.Location = new System.Drawing.Point(17, 19);
             this.Overview.Name = "Overview";
