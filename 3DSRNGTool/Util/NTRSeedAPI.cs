@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
                     WriteWifiPatch(); SFMTOffset = 0x325A3878; TinyOffset = 0x3313EDDC; IDOffset = 0x330D67D0; break;
                 case 7:
                 case 8:
-                    NfcOffset = Gameversion == 7 ? 0x3F341Cu : 0x3F3420u;
+                    NfcOffset = Gameversion == 7 ? 0x3F3424u : 0x3F3428u;
                     WriteWifiPatch(); SFMTOffset = 0x32663BF0; TinyOffset = 0x3307B1EC; IDOffset = 0x33012818; break;
             }
             SendMsg(Gameversion, "Version");
