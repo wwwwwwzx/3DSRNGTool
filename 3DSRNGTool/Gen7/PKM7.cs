@@ -60,9 +60,9 @@
                 Text = "Kanto Legendary",
                 List = new[]
                 {
-                    new PKM7 { Species = 144, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Articuno
-                    new PKM7 { Species = 145, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Zapdos
-                    new PKM7 { Species = 146, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Moltres
+                    new PKM7 { Species = 144, Level = 60, NPC = 1, Delay = 142, DelayType = 4, }, // Articuno
+                    new PKM7 { Species = 145, Level = 60, NPC = 1, Delay = 142, DelayType = 4, }, // Zapdos
+                    new PKM7 { Species = 146, Level = 60, NPC = 1, Delay = 142, DelayType = 4, }, // Moltres
                     new PKM7 { Species = 150, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Mewtwo
                 }
             },
@@ -76,7 +76,7 @@
                     new PKM7 { Species = 245, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Suicune
 
                     new PKM7 { Species = 249, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Lugia
-                    new PKM7 { Species = 250, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Ho-oh
+                    new PKM7 { Species = 250, Level = 60, NPC = 1, Delay = 142, DelayType = 4, Version = GameVersion.US, }, // Ho-oh
                 }
             },
             new PokemonList
@@ -93,7 +93,7 @@
 
                     new PKM7 { Species = 382, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Kyogre
                     new PKM7 { Species = 383, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Groudon
-                    new PKM7 { Species = 384, Level = 60, NPC = 0, Delay = 156, DelayType = 4, }, // Rayquaza
+                    new PKM7 { Species = 384, Level = 60, NPC = 0, Delay = 142, DelayType = 4, }, // Rayquaza
                 }
             },
             new PokemonList
@@ -111,7 +111,7 @@
                     new PKM7 { Species = 485, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Heatran
                     new PKM7 { Species = 486, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Regigigas
                     new PKM7 { Species = 487, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Giratina
-                    new PKM7 { Species = 488, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Cresselia
+                    new PKM7 { Species = 488, Level = 60, NPC = 1, Delay = 142, DelayType = 4, }, // Cresselia
                 }
             },
             new PokemonList
@@ -123,9 +123,9 @@
                     new PKM7 { Species = 639, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Terrakion
                     new PKM7 { Species = 640, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Virizion
 
-                    new PKM7 { Species = 641, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Tornadus
-                    new PKM7 { Species = 642, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Thundurus
-                    new PKM7 { Species = 645, Level = 60, NPC = 1, Delay = 156, DelayType = 4, }, // Landorus
+                    new PKM7 { Species = 641, Level = 60, NPC = 1, Delay = 142, DelayType = 4, Version = GameVersion.US, }, // Tornadus
+                    new PKM7 { Species = 642, Level = 60, NPC = 1, Delay = 142, DelayType = 4, Version = GameVersion.UM, }, // Thundurus
+                    new PKM7 { Species = 645, Level = 60, NPC = 1, Delay = 142, DelayType = 4, }, // Landorus
             
                     new PKM7 { Species = 643, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Reshiram
                     new PKM7 { Species = 644, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Zekrom
@@ -138,7 +138,7 @@
                 List = new[]
                 {
                     new PKM7 { Species = 716, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.US, }, // Xerneas
-                    new PKM7 { Species = 717, Level = 60, NPC = 1, Delay = 156, DelayType = 4, Version = GameVersion.UM, }, // Yveltal
+                    new PKM7 { Species = 717, Level = 60, NPC = 1, Delay = 142, DelayType = 4, Version = GameVersion.UM, }, // Yveltal
                     new PKM7 { Species = 718, Level = 60, NPC = 1, ShinyLocked = true, }, // Zygarde
                     new PKM7 { Species = 718, Level = 63, NPC = 7, Delay = 020, ShinyLocked = true, Gift = true, Forme = 2,},    // Zygarde-10%
                     new PKM7 { Species = 718, Level = 50, NPC = 7, Delay = 022, ShinyLocked = true, Gift = true, Forme = 1,},    // Zygarde-10%
@@ -272,7 +272,7 @@
                 List = new[]
                 {
                    new PKM7 { Species = 793, Level = 60, NPC = 1, DelayType = 21, Delay = 0702, },    // Nihilego
-                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 1678, Version = GameVersion.US,},    // Buzzwole
+                   new PKM7 { Species = 794, Level = 60, NPC = 1, DelayType = 22, Delay = 1654, Version = GameVersion.US,},    // Buzzwole
                    new PKM7 { Species = 795, Level = 60, NPC = 1, DelayType = 23, Delay = 0150, Version = GameVersion.UM,},    // Pheromosa
                    new PKM7 { Species = 796, Level = 60, NPC = 1, DelayType = 24, Delay = 0958, },    // Xurkitree
                    new PKM7 { Species = 797, Level = 60, NPC = 1, DelayType = 25, Delay = 1170, Version = GameVersion.UM,},    // Celesteela

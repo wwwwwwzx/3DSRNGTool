@@ -350,11 +350,12 @@ namespace Pk3DSRNGTool.Core
                 case 21: // Nihilego 
                     goto case 11; // 317|36
                 case 22: // Buzzwole
-                    time_elapse7(DelayTime - 378); // 463
+                    Advance(2); // Step
+                    time_elapse7(DelayTime - 376); //453(2)|214(1)|111|51(2)
                     ChangeModelNumber(1);
                     time_elapse7(214);
                     ChangeModelNumber(2);
-                    SplittedDelay(164, 51); // 113|51
+                    SplittedDelay(162, 51);
                     break;
                 case 23: // Pheromosa
                     goto case 13; // 29(2)|14|34(3)
