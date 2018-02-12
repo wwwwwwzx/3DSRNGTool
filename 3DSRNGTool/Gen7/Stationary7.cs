@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
             {
                 Advance(60 + PelagoShift);
                 rt.EC = (uint)getrand;
-                Advance(1);
+                Advance(1); // Random TID
             }
             else
                 rt.EC = (uint)getrand;
