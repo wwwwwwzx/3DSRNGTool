@@ -1,3 +1,14 @@
+###  Setting
+
+Random % 6
+
+Delay = 8
+
+Final Screen  
+![Final Screen](https://i.imgur.com/k0N4PnW.png)
+
+### Table
+
 |    Location     | Big pile first berry |   0    |   1    |   2    |   3    |   4    |   5    | Crabrawler Level |
 | :-------------: | :------------------: | :----: | :----: | :----: | :----: | :----: | :----: | :--------------: |
 |  Berry Fields   |          -           | Persim | Persim | Persim |  Oran  |  Oran  |  Oran  |        NA        |
@@ -13,4 +24,4 @@
 | Poni Wilds - NW |        Salac         |  Occa  | Colbur | Chople | Shuca  | Charti | Chilan |      41/43       |
 | Poni Wilds - N  |        Petaya        | Passho | Roseli | Yache  | Wacan  | Payapa | Babiri |      41/43       |
 | Poni Wilds - NE |        Liechi        | Rindo  | Kasib  |  Coba  | Kebia  | Tanga  | Haban  |      41/43       |
-|   Poni Plains   |        Marang        |  Occa  | Passho | Rindo  | Wacan  | Shuca  | Yache  |      55/57       |
+|   Poni Plains   |       Maranga        |  Occa  | Passho | Rindo  | Wacan  | Shuca  | Yache  |      55/57       |
