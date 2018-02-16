@@ -64,10 +64,10 @@ namespace Pk3DSRNGTool.Core
             {
                 for (byte i = 1; i <= output.Total; i++)
                 {
-                    ushort high16bits = (ushort)(getrand >> 16);
-                    if (high16bits > output.MaxRandom)
-                        output.MaxRandom = high16bits;
-                    if (high16bits < ShakeRate && output.Shake == i - 1)
+                    ushort low16bits = (ushort)getrand;
+                    if (low16bits > output.MaxRandom)
+                        output.MaxRandom = low16bits;
+                    if (low16bits < ShakeRate && output.Shake == i - 1)
                         output.Shake = i;
                 }
             }
