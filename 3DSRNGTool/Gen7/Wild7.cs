@@ -27,7 +27,7 @@ namespace Pk3DSRNGTool
 
         protected override int PIDroll_count => (ShinyCharm && !IsShinyLocked ? 3 : 1) + (SOS ? SOSRNG.PIDBonus : 0);
 
-        // USUM v1.1 sub_3A7FE0
+        // UM v1.2 sub_3A7FE8
         private void CheckLeadAbility(ulong rand100)
         {
             SynchroPass = rand100 >= 50;
