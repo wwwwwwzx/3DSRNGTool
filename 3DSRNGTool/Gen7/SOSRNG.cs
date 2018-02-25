@@ -25,7 +25,7 @@ namespace Pk3DSRNGTool
             if (rt.Slot == 0)
                 rt.Slot = getSOSSlot(rand % 100);
             rt.Level = (byte)(rand % 4);
-            Advance(1);
+            RNGPool.Advance(1);
 
             rt.HeldItem = (byte)(rand % 100);
 
