@@ -8,9 +8,19 @@ namespace Pk3DSRNGTool
     public partial class IVTemplate : Form
     {
         public MainForm parentform => Program.mainform;
-        public IVTemplate()
+        private bool _EggParents { get; set; }
+        public IVTemplate(bool EggParents = true)
         {
             InitializeComponent();
+
+            _EggParents = EggParents;
+
+            if (!EggParents)
+            {
+                B_Male.Text = "Set low IV";
+                B_Female.Text = "Set high IV";
+            }
+
             string txt = Properties.Settings.Default.Ivspread;
             if (txt == "")
             {
@@ -18,6 +28,11 @@ namespace Pk3DSRNGTool
                 IVSpread.Items.Add("6Zero = 0,0,0,0,0,0");
                 IVSpread.Items.Add("HPIce = 31,0,30,31,31,31");
                 IVSpread.Items.Add("HPFire = 31,0,31,30,31,30");
+                IVSpread.Items.Add("Physical = 31,31,31,0,31,31");
+                IVSpread.Items.Add("Special = 31,0,31,31,31,31");
+                IVSpread.Items.Add("Trick Room = 31,31,31,31,31,0");
+                IVSpread.Items.Add("TR. Phy. = 31,31,31,0,31,0");
+                IVSpread.Items.Add("TR. Spe. = 31,0,31,31,31,0");
                 return;
             }
             string[] Ivspreadlist = txt.Split(';');
@@ -60,13 +75,19 @@ namespace Pk3DSRNGTool
         private void B_Male_Click(object sender, EventArgs e)
         {
             if (IVSpread.SelectedIndex >= 0)
-                parentform.IV_Male = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString());
+            {
+                if (_EggParents) { parentform.IV_Male = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+                else { parentform.IVlow = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+            }
         }
 
         private void B_Female_Click(object sender, EventArgs e)
         {
             if (IVSpread.SelectedIndex >= 0)
-                parentform.IV_Female = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString());
+            {
+                if (_EggParents) { parentform.IV_Female = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+                else { parentform.IVup = parseSTR(IVSpread.Items[IVSpread.SelectedIndex].ToString()); }
+            }
         }
 
         private void B_Save_Click(object sender, EventArgs e)

@@ -96,6 +96,7 @@
             this.SetAsCurrent = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsStarting = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetAs10Starting = new System.Windows.Forms.ToolStripMenuItem();
             this.SetAsFidget = new System.Windows.Forms.ToolStripMenuItem();
             this.DumpAcceptList = new System.Windows.Forms.ToolStripMenuItem();
             this.Gameversion = new System.Windows.Forms.ComboBox();
@@ -596,8 +597,8 @@
             // 
             this.DGV.AllowDrop = true;
             this.DGV.AllowUserToAddRows = false;
-            this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.DGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -937,7 +938,8 @@
             this.SetAsAfter,
             this.SetAsStarting,
             this.SetAsFidget,
-            this.DumpAcceptList});
+                this.DumpAcceptList,
+                this.SetAs10Starting});
             this.DGVMS.Name = "DGVMS";
             this.DGVMS.Size = new System.Drawing.Size(263, 136);
             // 
@@ -1018,8 +1020,8 @@
             this.DGV_ID.AllowDrop = true;
             this.DGV_ID.AllowUserToAddRows = false;
             this.DGV_ID.AllowUserToResizeRows = false;
-            this.DGV_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.DGV_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGV_ID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV_ID.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -4994,8 +4996,8 @@
             // RNGMethod
             // 
             this.RNGMethod.AllowDrop = true;
-            this.RNGMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.RNGMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RNGMethod.Controls.Add(this.TP_StationaryRNG);
             this.RNGMethod.Controls.Add(this.TP_EventRNG);
@@ -5065,6 +5067,13 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // SetAs10Starting
+            // 
+            this.SetAs10Starting.Name = "SetAs10Starting";
+            this.SetAs10Starting.Size = new System.Drawing.Size(476, 36);
+            this.SetAs10Starting.Text = "Set as -10 Starting Frame";
+            this.SetAs10Starting.Click += new System.EventHandler(this.SetAs10Starting_Click);
             // 
             // MainForm
             // 
@@ -5591,6 +5600,7 @@
         private System.Windows.Forms.Label L_Weather;
         private System.Windows.Forms.ComboBox Ally;
         private System.Windows.Forms.Label L_Ally;
+        private System.Windows.Forms.ToolStripMenuItem SetAs10Starting;
         private System.Windows.Forms.CheckBox RNGNoise;
         private System.Windows.Forms.NumericUpDown NoiseFrame;
         private System.Windows.Forms.Label L_X1;

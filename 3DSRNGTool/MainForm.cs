@@ -584,6 +584,12 @@ namespace Pk3DSRNGTool
 
         private void B_LoadFilter_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Use IV template?", "Template or file?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                new IVTemplate(false).Show();
+                return;
+            }
+
             try
             {
                 OpenFileDialog OFD = new OpenFileDialog();
@@ -1863,5 +1869,15 @@ namespace Pk3DSRNGTool
         private void MiscRNGTool_Click(object sender, EventArgs e)
             => miscrngtool.Show();
         #endregion
+
+        private void SetAs10Starting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var f = (int)DGV.CurrentRow.Cells["dgv_Frame"].Value;
+                Frame_min.Value = f - 10;
+            }
+            catch { }
+        }
     }
 }
