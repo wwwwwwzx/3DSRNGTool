@@ -183,8 +183,7 @@ namespace Pk3DSRNGTool
         {
             switch (category)
             {
-                case 3:
-                case 4: return 1;
+                case 3: return 1;
                 default: return 0;
             }
         }

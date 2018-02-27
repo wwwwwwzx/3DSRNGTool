@@ -31,9 +31,9 @@ namespace Pk3DSRNGTool
         private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
-        private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3;
-        private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
-        private bool gen7sos => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4;
+        private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
+        private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
+        private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
         private byte lastgen;
@@ -439,7 +439,9 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
             RefreshPKM();
-            SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0;
+            if (sender != SOS)
+                SOS.Visible = Gen7 && Method == 2 && (CB_Category.SelectedIndex == 0 || CB_Category.SelectedIndex > 2);
+            SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0 || gen7sos;
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             Raining.Visible = Gen7 && !gen7sos;
@@ -740,8 +742,8 @@ namespace Pk3DSRNGTool
             if (MainRNGEgg.Checked)
                 UpdateTip("4 to 8 NPCs");
 
-            Bubbling.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex == 3;
-            SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0;
+            Bubbling.Visible = gen7fishing;
+            SpecialOnly.Visible = Method == 2 && Gen7 && CB_Category.SelectedIndex > 0 || gen7sos;
             L_Ball.Visible = Ball.Visible = Gen7 && Method == 3;
             L_Slot.Visible = Slot.Visible = Method == 2;
             ByIVs.Enabled = ByStats.Enabled = Method < 3;
@@ -888,6 +890,8 @@ namespace Pk3DSRNGTool
         {
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
+            if (gen7sos)
+                RefreshSOSAlly();
         }
 
         private void Weather_SelectedIndexChanged(object sender, EventArgs e) => RefreshSOSAlly();
@@ -1078,7 +1082,7 @@ namespace Pk3DSRNGTool
                 RefreshLocation();
                 if (FormPM is PKMW7 pmw7) // For UB
                 {
-                    Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? Wild7.getSpecialRate(CB_Category.SelectedIndex);
+                    Special_th.Value = pmw7.Rate?[MetLocation.SelectedIndex] ?? (gen7sos ? 0 : Wild7.getSpecialRate(CB_Category.SelectedIndex));
                     Special_th.Enabled = pmw7.Conceptual;
                 }
                 else if (FormPM is PKMW6 pmw6)
@@ -1142,7 +1146,7 @@ namespace Pk3DSRNGTool
 
                 if (Method == 2)
                 {
-                    Frame.SpecialSlotStr = gen7wildtypestr[CB_Category.SelectedIndex];
+                    Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 3 : CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 500;
                     if (gen7fishing && ConsiderDelay.Checked && !CreateTimeline.Checked)
                     {
@@ -1357,7 +1361,7 @@ namespace Pk3DSRNGTool
             int slottype = 0;
             if (setting is Wild7 setting7)
             {
-                RNGPool.DelayType = Wild7.getDelayType(CB_Category.SelectedIndex);
+                RNGPool.DelayType = gen7sos ? (byte)1 : Wild7.getDelayType(CB_Category.SelectedIndex);
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
                 setting7.SpecialEnctr = (byte)Special_th.Value;

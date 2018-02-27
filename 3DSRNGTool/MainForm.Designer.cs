@@ -208,6 +208,7 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.SOS = new System.Windows.Forms.CheckBox();
             this.SOSPanel = new System.Windows.Forms.Panel();
             this.Weather = new System.Windows.Forms.ComboBox();
             this.L_Weather = new System.Windows.Forms.Label();
@@ -2319,6 +2320,7 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.SOS);
             this.Wild_Setting.Controls.Add(this.SOSPanel);
             this.Wild_Setting.Controls.Add(this.L_SOSRNGFrame);
             this.Wild_Setting.Controls.Add(this.SOSRNGFrame);
@@ -2356,6 +2358,18 @@
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
             // 
+            // SOS
+            // 
+            this.SOS.AutoSize = true;
+            this.SOS.Location = new System.Drawing.Point(318, 0);
+            this.SOS.Name = "SOS";
+            this.SOS.Size = new System.Drawing.Size(68, 17);
+            this.SOS.TabIndex = 120;
+            this.SOS.Text = "SOS Call";
+            this.SOS.UseVisualStyleBackColor = true;
+            this.SOS.CheckedChanged += new System.EventHandler(this.Category_SelectedIndexChanged);
+            this.SOS.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
+            // 
             // SOSPanel
             // 
             this.SOSPanel.Controls.Add(this.Weather);
@@ -2375,7 +2389,7 @@
             "Rain",
             "Hail",
             "Sand"});
-            this.Weather.Location = new System.Drawing.Point(225, 18);
+            this.Weather.Location = new System.Drawing.Point(225, 17);
             this.Weather.Name = "Weather";
             this.Weather.Size = new System.Drawing.Size(88, 21);
             this.Weather.TabIndex = 123;
@@ -2493,6 +2507,7 @@
             // Overview
             // 
             this.Overview.AutoSize = true;
+            this.Overview.Checked = true;
             this.Overview.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Overview.Location = new System.Drawing.Point(17, 19);
             this.Overview.Name = "Overview";
@@ -5596,6 +5611,7 @@
         private System.Windows.Forms.Label L_X1;
         private System.Windows.Forms.NumericUpDown X1;
         private System.Windows.Forms.Label L_X2;
+        private System.Windows.Forms.CheckBox SOS;
     }
 }
 
