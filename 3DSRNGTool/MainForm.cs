@@ -1148,11 +1148,6 @@ namespace Pk3DSRNGTool
                 {
                     Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 3 : CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 500;
-                    if (gen7fishing && ConsiderDelay.Checked && !CreateTimeline.Checked)
-                    {
-                        RNGPool.DelayType = (byte)(Overview.Checked ? 2 : 1);
-                        RNGPool.fsetting = getFishingSetting;
-                    }
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
@@ -1361,7 +1356,6 @@ namespace Pk3DSRNGTool
             int slottype = 0;
             if (setting is Wild7 setting7)
             {
-                RNGPool.DelayType = gen7sos ? (byte)1 : Wild7.getDelayType(CB_Category.SelectedIndex);
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
                 setting7.SpecialEnctr = (byte)Special_th.Value;
@@ -1369,6 +1363,7 @@ namespace Pk3DSRNGTool
                 setting7.CompoundEye = LeadAbility.SelectedIndex == (int)Lead.CompoundEyes;
                 if (gen7honey)
                 {
+                    RNGPool.DelayType = 0;
                     setting7.SpecForm = new int[11];
                     if (ea.Locationidx == 1190) slottype = 1; // Poni Plains -4
                     for (int i = 1; i < 11; i++)
@@ -1382,12 +1377,15 @@ namespace Pk3DSRNGTool
                 else if (gen7fishing)
                 {
                     setting7.Fishing = true;
+                    RNGPool.DelayType = (byte)(ConsiderDelay.Checked && !CreateTimeline.Checked && Overview.Checked ? 2 : 1);
+                    RNGPool.fsetting = getFishingSetting;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
                     setting7.HookedItemSlot = (ea as FishingArea7).getitemslots(Bubbling.Checked && IsUltra);
                     slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
                 }
                 else if (gen7sos)
                 {
+                    RNGPool.DelayType = 1;
                     setting7.SOS = true;
                     setting7.SpecForm = new int[10];
                     SOSSlots.CopyTo(setting7.SpecForm, 1);

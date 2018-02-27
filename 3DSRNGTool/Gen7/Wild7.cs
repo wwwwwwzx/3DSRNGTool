@@ -179,15 +179,6 @@ namespace Pk3DSRNGTool
             return StringItem.helditemStr[3]; // None
         }
 
-        public static byte getDelayType(int category)
-        {
-            switch (category)
-            {
-                case 3: return 1;
-                default: return 0;
-            }
-        }
-
         public static byte getSpecialRate(int category)
         {
             switch (category)
