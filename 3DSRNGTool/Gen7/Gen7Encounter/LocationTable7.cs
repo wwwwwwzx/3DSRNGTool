@@ -1622,12 +1622,20 @@ namespace Pk3DSRNGTool
         {
             new MiscEncounter7
             {
-                Location = 064,
+                Location = 064, // Hano Beach
                 NPC = 5, LevelMin = 22,
                 DelayType1 = 3, Delay1 = 4,
                 DelayType2 = 1, Delay2 = 90,
                 SlotType = 40, Species = new[] {120, 769},
-            }
+            },
+            new MiscEncounter7
+            {
+                Location = 166, // Poni Plains
+                NPC = 2, LevelMin = 54,
+                DelayType1 = 4, Delay1 = 4,
+                DelayType2 = 0, Delay2 = 162,
+                SlotType = 28, Species = new[] {546, 123, 113},
+            },
         };
 
         public readonly static MiscEncounter7[] Misc_SM =
@@ -1639,7 +1647,7 @@ namespace Pk3DSRNGTool
                 DelayType1 = 3, Delay1 = 4,
                 DelayType2 = 1, Delay2 = 90,
                 SlotType = 41, Species = new[] {120, 769},
-            }
+            },
         };
 
         public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };

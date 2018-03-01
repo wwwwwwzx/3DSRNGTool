@@ -430,6 +430,10 @@ namespace Pk3DSRNGTool.Core
                     NormalDelay7();
                     Advance(1);
                     break;
+                case 4:
+                    Advance(2); // Step
+                    NormalDelay7();
+                    break;
                 default: // Honey
                     NormalDelay7(); // Enter the bag
                     ResetModelStatus();

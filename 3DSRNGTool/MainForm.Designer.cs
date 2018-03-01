@@ -3461,7 +3461,17 @@
             // Delay2
             // 
             this.Delay2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delay2.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.Delay2.Location = new System.Drawing.Point(176, 39);
+            this.Delay2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.Delay2.Name = "Delay2";
             this.Delay2.Size = new System.Drawing.Size(52, 22);
             this.Delay2.Visible = false;
