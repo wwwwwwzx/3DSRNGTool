@@ -97,6 +97,7 @@ L_StartingPoint = <-- Frame de départ
 CreateTimeline = Créer une chronologie
 ---
 ConsiderDelay = Considérer un délai
+L_Delay2 = délai2 (F)
 L_Correction = Correction
 ---
 SetStartFrame = Choisir comme Frame de base

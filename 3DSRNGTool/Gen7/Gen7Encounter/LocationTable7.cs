@@ -19,6 +19,9 @@ namespace Pk3DSRNGTool
                 case 3:
                     TableNow = IsUltra ? Fishing_USUM : Fishing_SM;
                     goto default;
+                case 4:
+                    TableNow = IsUltra ? Misc_USUM : Misc_SM;
+                    goto default;
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }
         }
@@ -1613,6 +1616,30 @@ namespace Pk3DSRNGTool
                 SlotType = 23,
                 Species = new[] {129,339,147},
             },
+        };
+
+        public readonly static MiscEncounter7[] Misc_USUM =
+        {
+            new MiscEncounter7
+            {
+                Location = 064,
+                NPC = 5, LevelMin = 22,
+                DelayType1 = 3, Delay1 = 4,
+                DelayType2 = 1, Delay2 = 90,
+                SlotType = 40, Species = new[] {120, 769},
+            }
+        };
+
+        public readonly static MiscEncounter7[] Misc_SM =
+        {
+            new MiscEncounter7
+            {
+                Location = 064,
+                NPC = 5, LevelMin = 21,
+                DelayType1 = 3, Delay1 = 4,
+                DelayType2 = 1, Delay2 = 90,
+                SlotType = 41, Species = new[] {120, 769},
+            }
         };
 
         public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };

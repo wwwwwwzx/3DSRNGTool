@@ -97,6 +97,7 @@ L_StartingPoint = <-- Fotograma Inicial
 CreateTimeline = Crear Línea/s de tiempo
 ---
 ConsiderDelay = Considerar Retraso
+L_Delay2 = Retraso2 (F)
 L_Correction = Corrección
 ---
 SetStartFrame = Establecer como Rango de Fotograma Inicial

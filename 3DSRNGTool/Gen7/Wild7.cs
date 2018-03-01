@@ -19,6 +19,9 @@ namespace Pk3DSRNGTool
         public bool Fishing;
         public bool SOS;
 
+        public byte DelayType;
+        public int DelayTime;
+
         private bool IsSpecial;
         private bool IsMinior => SpecForm[slot] == 774;
         private bool IsUB => UB && IsSpecial;
@@ -37,6 +40,20 @@ namespace Pk3DSRNGTool
         }
 
         public override void Delay() => RNGPool.WildDelay7();
+        private void InlineDelay()
+        {
+            switch (DelayType)
+            {
+                case 1:
+                    time_elapse(DelayTime - 2);
+                    RNGPool.modelnumber--;
+                    time_elapse(2);
+                    break;
+                default:
+                    time_elapse(DelayTime);
+                    break;
+            }
+        }
         public override RNGResult Generate()
         {
             ResultW7 rt = new ResultW7();
@@ -87,6 +104,9 @@ namespace Pk3DSRNGTool
                 time_elapse(3);
             }
             rt.Species = (short)(SpecForm[slot] & 0x7FF);
+
+            if (DelayTime > 0)
+                InlineDelay();
 
             if (!SOS)
                 Advance(60);

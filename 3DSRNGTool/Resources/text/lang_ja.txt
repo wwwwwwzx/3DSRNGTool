@@ -95,6 +95,7 @@ L_StartingPoint = <-- StartingFrame
 CreateTimeline = Create Timeline/s
 ---
 ConsiderDelay = Consider Delay
+L_Delay2 = Delay2 (F)
 L_Correction = 補正
 ---
 SetStartFrame = Set as Starting Frame Range

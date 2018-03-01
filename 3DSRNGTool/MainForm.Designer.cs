@@ -300,6 +300,8 @@
             this.Gen6EggPanel = new System.Windows.Forms.Panel();
             this.RB_Reject = new System.Windows.Forms.RadioButton();
             this.RB_Accept = new System.Windows.Forms.RadioButton();
+            this.L_Delay2 = new System.Windows.Forms.Label();
+            this.Delay2 = new System.Windows.Forms.NumericUpDown();
             this.L_Correction = new System.Windows.Forms.Label();
             this.Correction = new System.Windows.Forms.NumericUpDown();
             this.Timedelay = new System.Windows.Forms.NumericUpDown();
@@ -486,6 +488,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
             this.timedelaypanel.SuspendLayout();
             this.Gen6EggPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).BeginInit();
@@ -2361,7 +2364,7 @@
             // SOS
             // 
             this.SOS.AutoSize = true;
-            this.SOS.Location = new System.Drawing.Point(318, 0);
+            this.SOS.Location = new System.Drawing.Point(325, 2);
             this.SOS.Name = "SOS";
             this.SOS.Size = new System.Drawing.Size(68, 17);
             this.SOS.TabIndex = 120;
@@ -3397,6 +3400,8 @@
             // timedelaypanel
             // 
             this.timedelaypanel.Controls.Add(this.Gen6EggPanel);
+            this.timedelaypanel.Controls.Add(this.L_Delay2);
+            this.timedelaypanel.Controls.Add(this.Delay2);
             this.timedelaypanel.Controls.Add(this.L_Correction);
             this.timedelaypanel.Controls.Add(this.Correction);
             this.timedelaypanel.Controls.Add(this.Timedelay);
@@ -3443,6 +3448,24 @@
             this.RB_Accept.Text = "接受";
             this.RB_Accept.UseVisualStyleBackColor = true;
             this.RB_Accept.CheckedChanged += new System.EventHandler(this.MM_CheckedChanged);
+            // 
+            // L_Delay2
+            // 
+            this.L_Delay2.AutoSize = true;
+            this.L_Delay2.Location = new System.Drawing.Point(117, 44);
+            this.L_Delay2.Name = "L_Delay2";
+            this.L_Delay2.Size = new System.Drawing.Size(67, 13);
+            this.L_Delay2.Text = "Delay2";
+            this.L_Delay2.Visible = false;
+            // 
+            // Delay2
+            // 
+            this.Delay2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delay2.Location = new System.Drawing.Point(176, 39);
+            this.Delay2.Name = "Delay2";
+            this.Delay2.Size = new System.Drawing.Size(52, 22);
+            this.Delay2.Visible = false;
+            this.Delay2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // L_Correction
             // 
@@ -5177,6 +5200,7 @@
             this.timedelaypanel.PerformLayout();
             this.Gen6EggPanel.ResumeLayout(false);
             this.Gen6EggPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Delay2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Correction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Timedelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NPC)).EndInit();
@@ -5443,6 +5467,8 @@
         private System.Windows.Forms.Panel Gen6EggPanel;
         private System.Windows.Forms.RadioButton RB_Reject;
         private System.Windows.Forms.RadioButton RB_Accept;
+        private System.Windows.Forms.Label L_Delay2;
+        private System.Windows.Forms.NumericUpDown Delay2;
         private System.Windows.Forms.Label L_Correction;
         private System.Windows.Forms.NumericUpDown Correction;
         private System.Windows.Forms.NumericUpDown Timedelay;

@@ -97,6 +97,7 @@ L_StartingPoint = <-- Startrahmen
 CreateTimeline = Zeitachse erstellen
 ---
 ConsiderDelay = Verzögerung
+L_Delay2 = Verzögerung2 (F)
 L_Correction = Korrektur
 ---
 SetStartFrame = Als Startrahmenbereich festlegen

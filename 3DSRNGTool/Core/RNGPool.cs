@@ -425,6 +425,11 @@ namespace Pk3DSRNGTool.Core
                     time_elapse7(fsetting.platdelay); // 2nd Input can be at any moment inside
                     NormalDelay7();
                     break;
+                case 3:
+                    Advance(2); // Step
+                    NormalDelay7();
+                    Advance(1);
+                    break;
                 default: // Honey
                     NormalDelay7(); // Enter the bag
                     ResetModelStatus();

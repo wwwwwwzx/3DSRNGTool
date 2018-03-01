@@ -97,6 +97,7 @@ L_StartingPoint = <-- 时间线起点
 CreateTimeline = 生成时间线/秒
 ---
 ConsiderDelay = 考虑延迟
+L_Delay2 = 延迟2 (F)
 L_Correction = 帧数修正
 ---
 SetTargetFrame = 设为目标帧

@@ -33,6 +33,7 @@ namespace Pk3DSRNGTool
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
+        private bool gen7misc => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4 && !SOS.Checked;
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
@@ -193,10 +194,13 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
+            var List = (Gen7 && CB_Category.SelectedIndex < 3 ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
             if (gen7fishing)
                 for (int i = 0; i < List.Count; i++)
                     List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0)][i]);
+            if (gen7misc)
+                for (int i = 0; i < List.Count; i++)
+                    List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as MiscEncounter7).SlotType][i]);
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -234,7 +238,7 @@ namespace Pk3DSRNGTool
                         Slot.CheckBoxItems[i + offset].Checked = Slotidx.Contains(i);
             }
 
-            SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: SlotSpecies.SelectedIndex != 0 || gen7fishing);
+            SetPersonalInfo(SpecForm > 0 ? SpecForm : FormPM.SpecForm, skip: !(SlotSpecies.SelectedIndex == 0 && gen7honey));
         }
 
         private void RefreshSOSAlly()
@@ -255,6 +259,7 @@ namespace Pk3DSRNGTool
             Ally.DisplayMember = "Text";
             Ally.ValueMember = "Value";
             Ally.DataSource = new BindingSource(list, null);
+            Ally.SelectedIndex = 0;
         }
 
         private void Ally_SelectedIndexChanged(object sender, EventArgs e)
@@ -438,12 +443,17 @@ namespace Pk3DSRNGTool
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.Category = (byte)CB_Category.SelectedIndex;
-            RefreshPKM();
-            if (sender != SOS)
+            if (sender == SOS)
+                RefreshSOSAlly();
+            else
+            {
+                RefreshPKM();
                 SOS.Visible = Gen7 && Method == 2 && (CB_Category.SelectedIndex == 0 || CB_Category.SelectedIndex > 2);
+            }
             SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0 || gen7sos;
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
             L_Correction.Visible = Correction.Visible = LinearDelay;
+            L_Delay2.Visible = Delay2.Visible = gen7misc;
             Raining.Visible = Gen7 && !gen7sos;
             SOSPanel.Visible =
             L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
@@ -711,6 +721,7 @@ namespace Pk3DSRNGTool
             // Contorls in RNGInfo
             AroundTarget.Visible = timedelaypanel.Visible = Method < 3 || mainrngegg;
             L_Correction.Visible = Correction.Visible = LinearDelay; // Not time-based shift
+            L_Delay2.Visible = Delay2.Visible = gen7misc;
             Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
@@ -858,6 +869,18 @@ namespace Pk3DSRNGTool
                     FishingDelay.Increment = IsUltra ? 11 : 19; // Sometimes first try will have long delay
                     FishingDelay.Value = f.Longdelay ? IsUltra ? 89 : 97 : 78;
                     Timedelay.Value = f.Lapras ? 0 : -2;
+                }
+                else if (ea is MiscEncounter7 m)
+                {
+                    Raining.Enabled = true;
+                    if (sender == MetLocation)
+                    {
+                        NPC.Value = m.NPC;
+                        Lv_min.Value = m.LevelMin;
+                        Lv_max.Value = m.LevelMax;
+                        Timedelay.Value = m.Delay1;
+                        Delay2.Value = m.Delay2;
+                    }
                 }
             }
             else if (Gen6)
@@ -1146,7 +1169,7 @@ namespace Pk3DSRNGTool
 
                 if (Method == 2)
                 {
-                    Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 3 : CB_Category.SelectedIndex];
+                    Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 0 : CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 500;
                 }
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
@@ -1358,7 +1381,7 @@ namespace Pk3DSRNGTool
             {
                 setting7.Levelmin = (byte)Lv_min.Value;
                 setting7.Levelmax = (byte)Lv_max.Value;
-                setting7.SpecialEnctr = (byte)Special_th.Value;
+                setting7.SpecialEnctr = (byte)(gen7sos ? 0 : Special_th.Value);
                 setting7.UB = CB_Category.SelectedIndex == 1;
                 setting7.CompoundEye = LeadAbility.SelectedIndex == (int)Lead.CompoundEyes;
                 if (gen7honey)
@@ -1383,13 +1406,21 @@ namespace Pk3DSRNGTool
                     setting7.HookedItemSlot = (ea as FishingArea7).getitemslots(Bubbling.Checked && IsUltra);
                     slottype = (ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0);
                 }
+                else if (gen7misc)
+                {
+                    RNGPool.DelayType = (ea as MiscEncounter7).DelayType1;
+                    setting7.DelayType = (ea as MiscEncounter7).DelayType2;
+                    setting7.DelayTime = (int)Delay2.Value / 2;
+                    setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
+                    slottype = (ea as MiscEncounter7).SlotType;
+                }
                 else if (gen7sos)
                 {
                     RNGPool.DelayType = 1;
                     setting7.SOS = true;
                     setting7.SpecForm = new int[10];
                     SOSSlots.CopyTo(setting7.SpecForm, 1);
-                    if (SOSRNG.Weather = WeatherSlots.Any(s => s != 0)) // To-do
+                    if (SOSRNG.Weather = WeatherSlots.Any(s => s != 0))
                         WeatherSlots.CopyTo(setting7.SpecForm, 8);
                     SOSRNG.ChainLength = (int)ChainLength.Value;
                     SOSRNG.SetBuffer(seed: SOSRNGSeed.Value, frame: (int)SOSRNGFrame.Value);
