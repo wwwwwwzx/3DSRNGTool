@@ -193,7 +193,7 @@ namespace Pk3DSRNGTool
         {
             int tmp = SlotSpecies.SelectedIndex;
             var species = slotspecies;
-            var List = (gen7honey || gen7sos ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
+            var List = (gen7honey ? species.Skip(1) : species).Distinct().Select(SpecForm => new ComboItem(speciestr[SpecForm & 0x7FF], SpecForm)).ToList();
             if (gen7fishing)
                 for (int i = 0; i < List.Count; i++)
                     List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as FishingArea7).SlotType + (Bubbling.Checked ? 1 : 0)][i]);
