@@ -47,25 +47,15 @@ namespace Pk3DSRNGTool
             Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] : 0;
             GenderLocked.Checked = Data[0xA1] != 3;
             Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
-            switch (Data[0xAF])
-            {
-                case 0xFE: IVsCount.Value = 3; break;
-                case 0xFD: IVsCount.Value = 2; break;
-                // Maybe more rules here
-                default: IVsCount.Value = 0; break;
-            }
+
+            byte[] IVs = Pokemon.Reorder2.Select(i => Data[0xAF + i]).ToArray();
+            var ivflag = IVs.FirstOrDefault(iv => (byte)(iv - 0xFC) < 3);
+            if (ivflag != 0)
+                IVsCount.Value = ivflag - 0xFB;
             for (int i = 0; i < 6; i++)
             {
-                if (Data[0xAF + Pokemon.Reorder2[i]] < 0xFD)
-                {
-                    EventIV[i].Value = Data[0xAF + Pokemon.Reorder2[i]];
-                    EventIVLocked[i].Checked = true;
-                }
-                else
-                {
-                    EventIV[i].Value = 0;
-                    EventIVLocked[i].Checked = false;
-                }
+                EventIVLocked[i].Checked = ivflag == 0 && IVs[i] <= 0x1F;
+                EventIV[i].Value = EventIVLocked[i].Checked ? IVs[i] : 0;
             }
             Event_TID.Value = BitConverter.ToUInt16(Data, 0x68);
             Event_SID.Value = BitConverter.ToUInt16(Data, 0x6A);
