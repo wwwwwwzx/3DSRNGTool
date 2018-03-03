@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
 
             DGV.AutoGenerateColumns = false;
             DGV_ID.AutoGenerateColumns = false;
-            NoiseFrame.Maximum = JumpFrame.Maximum = TargetFrame.Maximum =
+            JumpFrame.Maximum = TargetFrame.Maximum =
             Frame_min.Maximum = Frame_max.Maximum = TimeSpan.Maximum = FuncUtil.MAXFRAME;
 
             Seed.Value = (uint)(Properties.Settings.Default.Seed);
@@ -798,7 +798,6 @@ namespace Pk3DSRNGTool
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
             Fidget.Enabled = Fidget.Visible && CreateTimeline.Checked;
-            RNGNoise.Enabled = RNGNoise.Visible && CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -936,12 +935,6 @@ namespace Pk3DSRNGTool
             JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked;
         }
 
-        private void RNGNoise_CheckedChanged(object sender, EventArgs e)
-        {
-            NoiseFrame.Visible = RNGNoise.Checked;
-            L_X1.Visible = X1.Visible = L_X2.Visible = NoiseFrame.Visible && FormPM.SpecForm == 796;
-        }
-
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
         {
             gen7tool?.UpdatePara(target: TargetFrame.Value);
@@ -1069,8 +1062,6 @@ namespace Pk3DSRNGTool
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
                 Fidget.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
-                if (RNGNoise.Visible = Fidget.Visible && pm7.SpecForm == 796)
-                    RNGNoise.Text = speciestr[pm7.SpecForm];
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
@@ -1078,7 +1069,6 @@ namespace Pk3DSRNGTool
                 }
                 return;
             }
-            RNGNoise.Visible =
             Fidget.Visible = false;
             ShinyMark.Visible = IsBank;
         }

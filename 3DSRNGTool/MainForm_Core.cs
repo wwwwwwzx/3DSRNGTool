@@ -404,15 +404,12 @@ namespace Pk3DSRNGTool
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
             status.IsBoy = Boy.Checked;
             status.raining = Raining.Checked;
-            status.X1 = (int)X1.Value;
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
             int FirstJumpFrame = (int)JumpFrame.Value;
             FirstJumpFrame = FirstJumpFrame >= start_frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
-            int RNGNoiseFrame = (int)NoiseFrame.Value;
-            int XFrame = RNGNoiseFrame > start_frame && RNGNoise.Checked && FormPM.SpecForm == 796 ? RNGNoiseFrame : int.MaxValue;
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -427,12 +424,7 @@ namespace Pk3DSRNGTool
                     status.fidget_cd = 1;
                     FirstJumpFrame = int.MaxValue; // Disable this part
                 }
-                if (frame >= XFrame)
-                {
-                    status.Xurkitree = 1;
-                    XFrame = int.MaxValue;
-                }
-                byte Jumpflag = (byte)(status.fidget_cd == 1 || status.Xurkitree == 1 ? 1 : 0);
+                byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
                 frameadvance = status.NextState();
                 frame += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
