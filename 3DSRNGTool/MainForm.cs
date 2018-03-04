@@ -1578,7 +1578,7 @@ namespace Pk3DSRNGTool
             DumpAcceptList.Visible = RB_EggShortest.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
-            dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank;
+            dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank || Gen6 && IsEvent;
             dgv_shift.Visible = dgv_time.Visible = !IsBank && (Gen6 || Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;
             dgv_rand64.Visible |= Gen6 && Method == 3;
