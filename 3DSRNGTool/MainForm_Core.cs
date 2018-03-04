@@ -541,7 +541,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < start; i++)
                 sfmt.Next();
             ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            status.raining = Raining.Checked;
+            status.IsBoy = Boy.Checked;
 
             // Advance
             int frame = start;
