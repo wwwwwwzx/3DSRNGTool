@@ -14,7 +14,7 @@ namespace Pk3DSRNGTool
         public byte LevelMin;
         private byte _LevelMax;
         public byte LevelMax { get { return _LevelMax > 0 ? _LevelMax : (byte)(LevelMin + 3); } set { _LevelMax = value; } }
-        
+
         public override bool DayNightDifference => Species.Any(i => Day2Night.ContainsKey(i) || UltraDay2Night.ContainsKey(i));
         private Dictionary<int, int> Day2Night => new Dictionary<int, int>
         {
@@ -27,7 +27,9 @@ namespace Pk3DSRNGTool
         private Dictionary<int, int> Sun2Moon => new Dictionary<int, int>
         {
             {546, 548}, // Cottonee -> Petill
+            {766, 765}, // Passimian -> Oranguru
             {627, 629}, {628, 630}, // Rufflet -> Vullaby
+            {693, 691}, // Clawitzer -> Dragalge
         };
         public override int[] getSpecies(int ver, bool IsNight)
         {

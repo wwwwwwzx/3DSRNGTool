@@ -1400,6 +1400,13 @@ namespace Pk3DSRNGTool
             },
             new FishingArea7
             {
+                Location = 134, // Malie Garden
+                LevelMax = 27,
+                SlotType = 48,
+                Species = new[] {129,118},
+            },
+            new FishingArea7
+            {
                 Location = 110, // Secluded Shore
                 NPC = 7, Lapras = true,
                 LevelMax = 30,
@@ -1562,6 +1569,13 @@ namespace Pk3DSRNGTool
             },
             new FishingArea7
             {
+                Location = 134, // Malie Garden
+                LevelMax = 28,
+                SlotType = 46,
+                Species = new[] {129,118,550,130},
+            },
+            new FishingArea7
+            {
                 Location = 112, // Route 13
                 NPC = 4, Longdelay = true,
                 LevelMax = 33,
@@ -1623,26 +1637,31 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 012, // Route 2
-                LevelMin = 10,
-                SlotType = 40, Species = new[] {022, 627},
-            },
-            new MiscEncounter7
-            {
-                Location = 010, // Route 3
                 LevelMin = 07,
                 SlotType = 43, Species = new[] {023, 206, 296, 096},
             },
             new MiscEncounter7
             {
-                Location = 064, // Hano Beach
-                NPC = 5, LevelMin = 22,
-                DelayType1 = 3, Delay1 = 4,
+                Location = 010, // Route 3
+                LevelMin = 10,
                 DelayType2 = 1, Delay2 = 90,
-                SlotType = 40, Species = new[] {120, 769},
+                SlotType = 40, Species = new[] {021, 627},
             },
             new MiscEncounter7
             {
-                Location = 232, idx = 1, // Tunnel
+                Location = 052, // Route 5
+                NPC = 2, LevelMin = 18,
+                SlotType = 42, Species = new[] {050},
+            },
+            new MiscEncounter7
+            {
+                Location = 056, // Route 7
+                NPC = 2, LevelMin = 16,
+                SlotType = 42, Species = new[] {050},
+            },
+            new MiscEncounter7
+            {
+                Location = 232, idx = 1, // Dividing Peak Tunnel
                 NPC = 2, LevelMin = 17,
                 DelayType1 = 3, Delay1 = 4,
                 DelayType2 = 1, Delay2 = 90,
@@ -1650,9 +1669,41 @@ namespace Pk3DSRNGTool
             },
             new MiscEncounter7
             {
-                Location = 232, idx = 2, // Tunnel
+                Location = 232, idx = 2, // Dividing Peak Tunnel
                 NPC = 2, LevelMin = 17,
                 SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 058, // Route 8
+                NPC = 2, LevelMin = 17,
+                SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 090, // Lush Jungle
+                NPC = 1, LevelMin = 19,
+                SlotType = 40, Species = new[] {762,766},
+            },
+            new MiscEncounter7
+            {
+                Location = 100, // Diglett's Tunnel
+                NPC = 1, LevelMin = 20,
+                SlotType = 42, Species = new[] {050},
+            },
+            new MiscEncounter7
+            {
+                Location = 064, idx = 1, // Hano Beach
+                NPC = 5, LevelMin = 22,
+                DelayType1 = 3, Delay1 = 4,
+                DelayType2 = 1, Delay2 = 90,
+                SlotType = 40, Species = new[] {120, 769},
+            },
+            new MiscEncounter7
+            {
+                Location = 064, idx = 2, // Hano Beach
+                NPC = 2, LevelMin = 22,
+                SlotType = 42, Species = new[] {072},
             },
             new MiscEncounter7
             {
@@ -1661,6 +1712,30 @@ namespace Pk3DSRNGTool
                 DelayType1 = 4, Delay1 = 4,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 28, Species = new[] {022, 204, 227},
+            },
+            new MiscEncounter7
+            {
+                Location = 124, // Haina Desert
+                NPC = 1, LevelMin = 32,
+                SlotType = 44, Species = new[] {551, 051, 328},
+            },
+            new MiscEncounter7
+            {
+                Location = 174, // Vast Poni Canyon
+                NPC = 1, LevelMin = 42,
+                SlotType = 42, Species = new[] {051},
+            },
+            new MiscEncounter7
+            {
+                Location = 162, idx = 1, // Poni Breaker Coast
+                NPC = 1, LevelMin = 41,
+                SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 162, idx = 2, // Poni Breaker Coast
+                NPC = 1, LevelMin = 41,
+                SlotType = 45, Species = new[] {320, 321, 693},
             },
             new MiscEncounter7
             {
@@ -1678,13 +1753,31 @@ namespace Pk3DSRNGTool
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 34, Species = new[] {057, 190, 587},
             },
+            new MiscEncounter7
+            {
+                Location = 166, idx = 3, // Poni Plains
+                NPC = 2, LevelMin = 54,
+                SlotType = 40, Species = new[] {022, 628},
+            },
+            new MiscEncounter7
+            {
+                Location = 168, // Poni Coast
+                NPC = 1, LevelMin = 56,
+                SlotType = 42, Species = new[] {051},
+            },
         };
 
         public readonly static MiscEncounter7[] Misc_SM =
         {
             new MiscEncounter7
             {
-                Location = 064,
+                Location = 012, // Route 2
+                LevelMin = 09, LevelMax = 10,
+                SlotType = 40, Species = new[] {023, 296},
+            },
+            new MiscEncounter7
+            {
+                Location = 064, // Hano Beach
                 NPC = 5, LevelMin = 21,
                 DelayType1 = 3, Delay1 = 4,
                 DelayType2 = 1, Delay2 = 90,
@@ -1708,6 +1801,36 @@ namespace Pk3DSRNGTool
             },
             new MiscEncounter7
             {
+                Location = 124, // Haina Desert
+                NPC = 1, LevelMin = 28,
+                SlotType = 44, Species = new[] {551, 051, 328},
+            },
+            new MiscEncounter7
+            {
+                Location = 158, idx = 1, // Poni Wilds
+                NPC = 1, LevelMin = 40,
+                SlotType = 05, Species = new[] {320, 321},
+            },
+            new MiscEncounter7
+            {
+                Location = 158, idx = 2, // Poni Wilds
+                NPC = 1, LevelMin = 40,
+                SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 162, // Poni Breaker Coast
+                NPC = 1, LevelMin = 40,
+                SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 174, // Vast Poni Canyon
+                NPC = 1, LevelMin = 41,
+                SlotType = 42, Species = new[] {051},
+            },
+            new MiscEncounter7
+            {
                 Location = 166, idx = 1, // Poni Plains
                 NPC = 2, LevelMin = 54,
                 DelayType1 = 4, Delay1 = 4,
@@ -1721,6 +1844,12 @@ namespace Pk3DSRNGTool
                 DelayType1 = 4, Delay1 = 4,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 41, Species = new[] {057, 587},
+            },
+            new MiscEncounter7
+            {
+                Location = 168, // Poni Coast
+                NPC = 1, LevelMin = 56,
+                SlotType = 42, Species = new[] {051},
             },
         };
 

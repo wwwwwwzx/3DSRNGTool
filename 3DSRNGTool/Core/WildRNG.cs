@@ -96,6 +96,13 @@
             new byte[] { 80,20, }, // 41
             new byte[] { 100, }, // 42
             new byte[] { 50,15,30,5, }, // 43
+            new byte[] { 70,20,10, }, // 44
+            new byte[] { 70,10,20 }, // 45
+            // Missing Fishing
+            new byte[] { 40,30,25,05, }, // 46
+            new byte[] { 30,20,15,35, },
+            new byte[] { 60,40 }, // 48
+            new byte[] { 50,50 },
         };
     }
 }
