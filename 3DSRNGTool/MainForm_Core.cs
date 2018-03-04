@@ -222,6 +222,8 @@ namespace Pk3DSRNGTool
                 Search7_Timeline();
             else if (AroundTarget.Checked)
                 Search7_AroundTarget();
+            else if (gen7fidgettimeline && MenuMethod.Checked)
+                Search7_MenuMethod();
             else
                 Search7_Normal();
         }
@@ -409,7 +411,7 @@ namespace Pk3DSRNGTool
             int frame = (int)Frame_min.Value;
             int frameadvance, Currentframe;
             int FirstJumpFrame = (int)JumpFrame.Value;
-            FirstJumpFrame = FirstJumpFrame >= start_frame && Fidget.Checked ? FirstJumpFrame : int.MaxValue;
+            FirstJumpFrame = FirstJumpFrame >= start_frame && gen7fidgettimeline ? FirstJumpFrame : int.MaxValue;
             // Start
             for (int i = 0; i <= totaltime; i++)
             {
@@ -421,7 +423,7 @@ namespace Pk3DSRNGTool
 
                 if (frame >= FirstJumpFrame) // Find the first call
                 {
-                    status.fidget_cd = 1;
+                    status.fidget_cd = MenuMethod.Checked ? 3 : 1;
                     FirstJumpFrame = int.MaxValue; // Disable this part
                 }
                 byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
@@ -516,6 +518,124 @@ namespace Pk3DSRNGTool
                 frameinput1 += frameadvance;
                 for (int j = 0; j < frameadvance; j++)
                     RNGPool.AddNext(sfmt);
+            }
+        }
+
+        private void Search7_MenuMethod()
+        {
+            int start = (int)Frame_min.Value;
+            int target = (int)TargetFrame.Value;
+            int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0];
+            int mindelay = (int)Math.Round(DelayMin.Value * 30);
+            int maxdelay = (int)Math.Round(DelayMax.Value * 30);
+            int starttime = Totaldelay - maxdelay;
+            int endtime = Totaldelay - mindelay;
+
+            List<int> Framelist = new List<int>();
+            List<ModelStatus> statuslist = new List<ModelStatus>();
+
+            // Intialize
+            SFMT sfmt = new SFMT(Seed.Value);
+            for (int i = 0; i < start; i++)
+                sfmt.Next();
+            ModelStatus status = new ModelStatus(Modelnum, sfmt)
+            {
+                raining = Raining.Checked,
+                IsBoy = Boy.Checked
+            };
+
+            // Advance
+            int frame = start;
+            for (int i = 0; i < starttime; i++)
+                frame += status.NextState();
+
+            // Search
+            int Tmpframe, bakframe1, bakframe2 = 0;
+            ModelStatus stmp, bak1, bak2 = null;
+            for (int i = Math.Max(0, starttime); i < endtime; i++, frame += status.NextState())
+            {
+                Tmpframe = frame;
+                stmp = status.Clone();
+
+                // Leap!
+                stmp.fidget_cd = 3;
+
+                bak1 = stmp.Clone();
+                bakframe1 = Tmpframe;
+
+                // Check if hit
+                while (Tmpframe < target)
+                    Tmpframe += stmp.NextState();
+                if (Tmpframe == target)
+                {
+                    Framelist.Add(frame);
+                    bak2 = bak1.Clone();
+                    bakframe2 = bakframe1;
+                    statuslist.Add(stmp.Clone());
+                }
+            }
+
+            if (Framelist.Count > 0)
+            {
+                JumpFrame.Value = Framelist.Last();
+                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes to check new timeline, No to check the spread.", Framelist.Last())) == DialogResult.Yes)
+                    Search7_TimelineLeap1(bakframe2, target, bak2, maxdelay + 10);
+                else
+                    Search7_TimelineLeap2(Framelist, statuslist, target);
+            }
+            else
+                Error(StringItem.NORESULT_STR[StringItem.language]);
+        }
+
+        private void Search7_TimelineLeap1(int newstartframe, int targetframe, ModelStatus status, int totaltime)
+        {
+            // Prepare
+            SFMT sfmt = new SFMT(Seed.Value);
+            for (int i = 0; i < newstartframe; i++)
+                sfmt.Next();
+            getsetting(sfmt);
+            int frame = newstartframe;
+            int frameadvance, Currentframe;
+
+            // Start
+            for (int i = 0; i <= totaltime; i++)
+            {
+                Currentframe = frame;
+
+                RNGPool.CopyStatus(status);
+
+                var result = RNGPool.Generate7() as Result7;
+
+                byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
+                frameadvance = status.NextState();
+                frame += frameadvance;
+                for (int j = 0; j < frameadvance; j++)
+                    RNGPool.AddNext(sfmt);
+                if (Currentframe <= targetframe && targetframe < frame)
+                    Frame.standard = i * 2;
+
+                if (!filter.CheckResult(result))
+                    continue;
+
+                Frames.Add(new Frame(result, frame: Currentframe, time: i * 2, blink: Jumpflag));
+            }
+        }
+        private void Search7_TimelineLeap2(List<int> framelist, List<ModelStatus> statuslist, int target)
+        {
+            // Prepare
+            SFMT sfmt = new SFMT(Seed.Value);
+            for (int i = 0; i < target; i++)
+                sfmt.Next();
+            getsetting(sfmt);
+
+            // Start
+            for (int i = 0; i < framelist.Count; i++)
+            {
+                RNGPool.CopyStatus(statuslist[i]);
+                var result = RNGPool.Generate7() as Result7;
+                if (!filter.CheckResult(result))
+                    continue;
+                Frames.Add(new Frame(result, frame: framelist[i]));
             }
         }
 

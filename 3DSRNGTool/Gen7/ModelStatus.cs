@@ -71,5 +71,15 @@ namespace Pk3DSRNGTool
             st.remain_frame = (int[])remain_frame.Clone();
             st.phase = phase;
         }
+
+        public ModelStatus Clone()
+        {
+            ModelStatus st = new ModelStatus(Modelnumber, sfmt);
+            CopyTo(st);
+            st.raining = raining;
+            st.fidget_cd = fidget_cd;
+            st.IsBoy = IsBoy;
+            return st;
+        }
     }
 }

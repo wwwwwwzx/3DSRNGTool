@@ -31,6 +31,7 @@ namespace Pk3DSRNGTool
         private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
+        private bool gen7fidgettimeline => FidgetPanel.Visible && (Fidget.Checked || MenuMethod.Checked);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
         private bool gen7misc => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4 && !SOS.Checked;
@@ -797,7 +798,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            Fidget.Enabled = Fidget.Visible && CreateTimeline.Checked;
+            Fidget.Enabled = CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -932,7 +933,10 @@ namespace Pk3DSRNGTool
 
         private void Fidget_CheckedChanged(object sender, EventArgs e)
         {
-            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked;
+            if (MenuMethod.Checked && Fidget.Checked)
+                (sender == Fidget ? MenuMethod : Fidget).Checked = false;
+            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || MenuMethod.Checked;
+            DelayMin.Visible = DelayMax.Visible = label14.Visible = MenuMethod.Checked;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
@@ -1061,7 +1065,7 @@ namespace Pk3DSRNGTool
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
-                Fidget.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
+                FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
                 if (BlinkWhenSync.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
@@ -1069,7 +1073,7 @@ namespace Pk3DSRNGTool
                 }
                 return;
             }
-            Fidget.Visible = false;
+            FidgetPanel.Visible = false;
             ShinyMark.Visible = IsBank;
         }
 
@@ -1176,7 +1180,7 @@ namespace Pk3DSRNGTool
                         max: (int)TargetFrame.Value,
                         ModelNumber: Modelnum,
                         raining: Raining.Checked,
-                        fidget: Fidget.Checked)[0] * 2;
+                        fidget: gen7fidgettimeline)[0] * 2;
             }
             if (Gen6)
             {

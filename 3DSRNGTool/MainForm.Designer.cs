@@ -326,11 +326,16 @@
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
-            this.ShinyMark = new System.Windows.Forms.PictureBox();
-            this.Girl = new System.Windows.Forms.RadioButton();
+            this.FidgetPanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.DelayMax = new System.Windows.Forms.NumericUpDown();
+            this.DelayMin = new System.Windows.Forms.NumericUpDown();
+            this.MenuMethod = new System.Windows.Forms.CheckBox();
             this.Boy = new System.Windows.Forms.RadioButton();
-            this.Fidget = new System.Windows.Forms.CheckBox();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
+            this.Girl = new System.Windows.Forms.RadioButton();
+            this.Fidget = new System.Windows.Forms.CheckBox();
+            this.ShinyMark = new System.Windows.Forms.PictureBox();
             this.AssumeSynced = new System.Windows.Forms.CheckBox();
             this.L_GenderList = new System.Windows.Forms.Label();
             this.GenderList = new Pk3DSRNGTool.Controls.GenderListBox();
@@ -494,8 +499,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
+            this.FidgetPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
             this.EnctrPanel.SuspendLayout();
             this.Filters.SuspendLayout();
@@ -3754,11 +3762,8 @@
             // 
             // Sta_Setting
             // 
+            this.Sta_Setting.Controls.Add(this.FidgetPanel);
             this.Sta_Setting.Controls.Add(this.ShinyMark);
-            this.Sta_Setting.Controls.Add(this.Girl);
-            this.Sta_Setting.Controls.Add(this.Boy);
-            this.Sta_Setting.Controls.Add(this.Fidget);
-            this.Sta_Setting.Controls.Add(this.JumpFrame);
             this.Sta_Setting.Controls.Add(this.AssumeSynced);
             this.Sta_Setting.Controls.Add(this.L_GenderList);
             this.Sta_Setting.Controls.Add(this.GenderList);
@@ -3779,6 +3784,126 @@
             this.Sta_Setting.TabStop = false;
             this.Sta_Setting.Text = "定点设置";
             // 
+            // FidgetPanel
+            // 
+            this.FidgetPanel.Controls.Add(this.label14);
+            this.FidgetPanel.Controls.Add(this.DelayMax);
+            this.FidgetPanel.Controls.Add(this.DelayMin);
+            this.FidgetPanel.Controls.Add(this.MenuMethod);
+            this.FidgetPanel.Controls.Add(this.Boy);
+            this.FidgetPanel.Controls.Add(this.JumpFrame);
+            this.FidgetPanel.Controls.Add(this.Girl);
+            this.FidgetPanel.Controls.Add(this.Fidget);
+            this.FidgetPanel.Location = new System.Drawing.Point(6, 185);
+            this.FidgetPanel.Name = "FidgetPanel";
+            this.FidgetPanel.Size = new System.Drawing.Size(393, 65);
+            this.FidgetPanel.TabIndex = 97;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(308, 28);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 13);
+            this.label14.TabIndex = 124;
+            this.label14.Text = "~";
+            this.label14.Visible = false;
+            // 
+            // DelayMax
+            // 
+            this.DelayMax.DecimalPlaces = 1;
+            this.DelayMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayMax.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.DelayMax.Location = new System.Drawing.Point(329, 22);
+            this.DelayMax.Name = "DelayMax";
+            this.DelayMax.Size = new System.Drawing.Size(53, 22);
+            this.DelayMax.TabIndex = 122;
+            this.DelayMax.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.DelayMax.Visible = false;
+            // 
+            // DelayMin
+            // 
+            this.DelayMin.DecimalPlaces = 1;
+            this.DelayMin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayMin.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.DelayMin.Location = new System.Drawing.Point(249, 22);
+            this.DelayMin.Name = "DelayMin";
+            this.DelayMin.Size = new System.Drawing.Size(53, 22);
+            this.DelayMin.TabIndex = 123;
+            this.DelayMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DelayMin.Visible = false;
+            // 
+            // MenuMethod
+            // 
+            this.MenuMethod.AutoSize = true;
+            this.MenuMethod.Location = new System.Drawing.Point(5, 36);
+            this.MenuMethod.Name = "MenuMethod";
+            this.MenuMethod.Size = new System.Drawing.Size(53, 17);
+            this.MenuMethod.TabIndex = 110;
+            this.MenuMethod.Text = "Menu";
+            this.MenuMethod.UseVisualStyleBackColor = true;
+            this.MenuMethod.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            // 
+            // Boy
+            // 
+            this.Boy.AutoSize = true;
+            this.Boy.Checked = true;
+            this.Boy.Location = new System.Drawing.Point(168, 9);
+            this.Boy.Name = "Boy";
+            this.Boy.Size = new System.Drawing.Size(49, 17);
+            this.Boy.TabIndex = 108;
+            this.Boy.TabStop = true;
+            this.Boy.Text = "男孩";
+            this.Boy.UseVisualStyleBackColor = true;
+            this.Boy.Visible = false;
+            // 
+            // JumpFrame
+            // 
+            this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JumpFrame.Location = new System.Drawing.Point(81, 19);
+            this.JumpFrame.Name = "JumpFrame";
+            this.JumpFrame.Size = new System.Drawing.Size(75, 22);
+            this.JumpFrame.TabIndex = 102;
+            this.JumpFrame.Visible = false;
+            // 
+            // Girl
+            // 
+            this.Girl.AutoSize = true;
+            this.Girl.Location = new System.Drawing.Point(168, 34);
+            this.Girl.Name = "Girl";
+            this.Girl.Size = new System.Drawing.Size(49, 17);
+            this.Girl.TabIndex = 109;
+            this.Girl.Text = "女孩";
+            this.Girl.UseVisualStyleBackColor = true;
+            this.Girl.Visible = false;
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(5, 10);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
+            this.Fidget.TabIndex = 107;
+            this.Fidget.Text = "Fidget";
+            this.Fidget.UseVisualStyleBackColor = true;
+            this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            // 
             // ShinyMark
             // 
             this.ShinyMark.Image = global::Pk3DSRNGTool.Properties.Resources.NonShiny;
@@ -3789,51 +3914,6 @@
             this.ShinyMark.TabStop = false;
             this.ShinyMark.VisibleChanged += new System.EventHandler(this.ShinyMark_Clear);
             this.ShinyMark.Click += new System.EventHandler(this.SwitchLock);
-            // 
-            // Girl
-            // 
-            this.Girl.AutoSize = true;
-            this.Girl.Location = new System.Drawing.Point(172, 214);
-            this.Girl.Name = "Girl";
-            this.Girl.Size = new System.Drawing.Size(49, 17);
-            this.Girl.TabIndex = 109;
-            this.Girl.Text = "女孩";
-            this.Girl.UseVisualStyleBackColor = true;
-            this.Girl.Visible = false;
-            // 
-            // Boy
-            // 
-            this.Boy.AutoSize = true;
-            this.Boy.Checked = true;
-            this.Boy.Location = new System.Drawing.Point(172, 189);
-            this.Boy.Name = "Boy";
-            this.Boy.Size = new System.Drawing.Size(49, 17);
-            this.Boy.TabIndex = 108;
-            this.Boy.TabStop = true;
-            this.Boy.Text = "男孩";
-            this.Boy.UseVisualStyleBackColor = true;
-            this.Boy.Visible = false;
-            // 
-            // Fidget
-            // 
-            this.Fidget.AutoSize = true;
-            this.Fidget.Location = new System.Drawing.Point(11, 202);
-            this.Fidget.Name = "Fidget";
-            this.Fidget.Size = new System.Drawing.Size(55, 17);
-            this.Fidget.TabIndex = 107;
-            this.Fidget.Text = "Fidget";
-            this.Fidget.UseVisualStyleBackColor = true;
-            this.Fidget.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
-            this.Fidget.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
-            // 
-            // JumpFrame
-            // 
-            this.JumpFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JumpFrame.Location = new System.Drawing.Point(85, 199);
-            this.JumpFrame.Name = "JumpFrame";
-            this.JumpFrame.Size = new System.Drawing.Size(75, 22);
-            this.JumpFrame.TabIndex = 102;
-            this.JumpFrame.Visible = false;
             // 
             // AssumeSynced
             // 
@@ -5152,8 +5232,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).EndInit();
             this.Sta_Setting.ResumeLayout(false);
             this.Sta_Setting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
+            this.FidgetPanel.ResumeLayout(false);
+            this.FidgetPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
             this.EnctrPanel.ResumeLayout(false);
             this.EnctrPanel.PerformLayout();
@@ -5570,6 +5654,11 @@
         private System.Windows.Forms.ComboBox Ally;
         private System.Windows.Forms.Label L_Ally;
         private System.Windows.Forms.CheckBox SOS;
+        private System.Windows.Forms.Panel FidgetPanel;
+        private System.Windows.Forms.CheckBox MenuMethod;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown DelayMax;
+        private System.Windows.Forms.NumericUpDown DelayMin;
     }
 }
 
