@@ -74,7 +74,7 @@ namespace Pk3DSRNGTool
             rt.Gender = GenderLocked || !IsRandomGender ? Gender : (byte)(rand(252) >= SettingGender ? 1 : 2);
 
             //Advance
-            rt.FrameUsed = (byte)RNGPool.index;
+            rt.FrameUsed = (byte)(RNGPool.index + 1);
 
             return rt;
         }
