@@ -56,6 +56,7 @@ BlinkWhenSync = 同步时眨眼
 Sta_AbilityLocked = 固定特性
 Raining = 下雨
 Fidget = 待机动作
+MenuMethod = 菜单栏法
 Boy = 男孩
 Girl = 女孩
 B_OpenTool = TinyMT 时间线工具
@@ -148,6 +149,7 @@ OtherInfo = 其他信息
 L_Species = 种类
 L_Forme = 形态
 NoDex = 未登入图鉴
+RB_TimelineLeap = 时间线跳跃
 ---------------------TabPage3----------------------------------
 Wild_Setting = 野生草丛遇敌设置
 L_Location = 地点

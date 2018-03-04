@@ -291,6 +291,7 @@
             this.L_Event_PID = new System.Windows.Forms.Label();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.RB_TimelineLeap = new System.Windows.Forms.RadioButton();
             this.Tip = new System.Windows.Forms.PictureBox();
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.RB_EggShortest = new System.Windows.Forms.RadioButton();
@@ -3321,6 +3322,7 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.RB_TimelineLeap);
             this.RNGInfo.Controls.Add(this.Tip);
             this.RNGInfo.Controls.Add(this.TargetFrame);
             this.RNGInfo.Controls.Add(this.RB_EggShortest);
@@ -3344,6 +3346,16 @@
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
+            // 
+            // RB_TimelineLeap
+            // 
+            this.RB_TimelineLeap.AutoSize = true;
+            this.RB_TimelineLeap.Location = new System.Drawing.Point(16, 243);
+            this.RB_TimelineLeap.Name = "RB_TimelineLeap";
+            this.RB_TimelineLeap.Size = new System.Drawing.Size(85, 17);
+            this.RB_TimelineLeap.TabIndex = 103;
+            this.RB_TimelineLeap.Text = "时间线跳跃";
+            this.RB_TimelineLeap.UseVisualStyleBackColor = true;
             // 
             // Tip
             // 
@@ -5659,6 +5671,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown DelayMax;
         private System.Windows.Forms.NumericUpDown DelayMin;
+        private System.Windows.Forms.RadioButton RB_TimelineLeap;
     }
 }
 

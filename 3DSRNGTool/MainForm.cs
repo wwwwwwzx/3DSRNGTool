@@ -726,6 +726,7 @@ namespace Pk3DSRNGTool
             Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
+            RB_TimelineLeap.Visible = Gen7 && Method == 1;
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
@@ -1166,6 +1167,8 @@ namespace Pk3DSRNGTool
                     Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 0 : CB_Category.SelectedIndex];
                     buffersize += RNGPool.modelnumber * 500;
                 }
+                if (RB_TimelineLeap.Checked)
+                    buffersize += RNGPool.modelnumber * 20;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
                     buffersize += RNGPool.modelnumber * RNGPool.DelayTime;
                 if (FormPM is PKM7 pm7 && pm7.DelayType > 0)

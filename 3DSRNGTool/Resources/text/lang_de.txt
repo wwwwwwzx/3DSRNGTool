@@ -56,6 +56,7 @@ BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Fähigkeit Sperre
 Raining = Regen
 Fidget = Fidget
+MenuMethod = Menu
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
@@ -148,6 +149,7 @@ OtherInfo = Andere Infos
 L_Species = Pokemon
 L_Forme = Form
 NoDex = Kein Dex Eintrag
+RB_TimelineLeap = Timeline Leap
 ---------------------TabPage3----------------------------------
 Wild_Setting = Wilde Pokemon Einstellungen
 L_Location = Ort

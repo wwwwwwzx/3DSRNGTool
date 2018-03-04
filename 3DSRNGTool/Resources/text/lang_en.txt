@@ -56,6 +56,7 @@ BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
 Raining = Raining
 Fidget = Fidget
+MenuMethod = Menu
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
@@ -148,6 +149,7 @@ OtherInfo = Other Information
 L_Species = Species
 L_Forme = Form
 NoDex = No Dex Entry
+RB_TimelineLeap = Timeline Leap
 ---------------------TabPage3----------------------------------
 Wild_Setting = Wild Encounter Setting
 L_Location = Location

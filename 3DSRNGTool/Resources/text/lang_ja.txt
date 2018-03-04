@@ -54,6 +54,7 @@ BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
 Raining = 雨
 Fidget = 主人公の動き
+MenuMethod = Menu
 Boy = 男の子
 Girl = 女の子
 B_OpenTool = Tiny Timeline Tool
@@ -146,6 +147,7 @@ OtherInfo = その他
 L_Species = 種類
 L_Forme = フォルム
 NoDex = No Dex Entry
+RB_TimelineLeap = Timeline Leap
 ---------------------TabPage3----------------------------------
 Wild_Setting = Wild Encounter Setting
 L_Location = Location

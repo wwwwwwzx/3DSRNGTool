@@ -56,6 +56,7 @@ BlinkWhenSync = Blink quand Synchro
 Sta_AbilityLocked = Capacité Spéciale définie
 Raining = Raining
 Fidget = Fidget
+MenuMethod = Menu
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
@@ -148,6 +149,7 @@ OtherInfo = Autres informations
 L_Species = Pokémon
 L_Forme = Forme
 NoDex = Pas présent dans le Pokédex
+RB_TimelineLeap = Timeline Leap
 ---------------------TabPage3----------------------------------
 Wild_Setting = Paramètres pour Pokémon sauvages
 L_Location = Lieu

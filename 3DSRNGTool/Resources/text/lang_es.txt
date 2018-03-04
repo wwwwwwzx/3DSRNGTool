@@ -56,6 +56,7 @@ BlinkWhenSync = Parpadea cuando sea Sincronizado
 Sta_AbilityLocked = Habilidad Bloqueada
 Raining = Raining
 Fidget = Fidget
+MenuMethod = Menu
 Boy = Boy
 Girl = Girl
 B_OpenTool = Tiny Timeline Tool
@@ -148,6 +149,7 @@ OtherInfo = Otra Información
 L_Species = Especies
 L_Forme = Forma
 NoDex = Sin Entrada en PokeDex
+RB_TimelineLeap = Timeline Leap
 ---------------------TabPage3----------------------------------
 Wild_Setting = Ajustes de Encuentros Salvajes
 L_Location = Ubicación

@@ -224,6 +224,8 @@ namespace Pk3DSRNGTool
                 Search7_AroundTarget();
             else if (gen7fidgettimeline && MenuMethod.Checked)
                 Search7_MenuMethod();
+            else if (RB_TimelineLeap.Checked)
+                Search7_TimelineLeap();
             else
                 Search7_Normal();
         }
@@ -538,11 +540,8 @@ namespace Pk3DSRNGTool
             SFMT sfmt = new SFMT(Seed.Value);
             for (int i = 0; i < start; i++)
                 sfmt.Next();
-            ModelStatus status = new ModelStatus(Modelnum, sfmt)
-            {
-                raining = Raining.Checked,
-                IsBoy = Boy.Checked
-            };
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            status.raining = Raining.Checked;
 
             // Advance
             int frame = start;
@@ -578,8 +577,82 @@ namespace Pk3DSRNGTool
             if (Framelist.Count > 0)
             {
                 JumpFrame.Value = Framelist.Last();
-                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes to check new timeline, No to check the spread.", Framelist.Last())) == DialogResult.Yes)
+                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes: Check new timeline / No: Check the spread", Framelist.Last())) == DialogResult.Yes)
                     Search7_TimelineLeap1(bakframe2, target, bak2, maxdelay + 10);
+                else
+                    Search7_TimelineLeap2(Framelist, statuslist, target);
+            }
+            else
+                Error(StringItem.NORESULT_STR[StringItem.language]);
+        }
+
+        private void Search7_TimelineLeap()
+        {
+            int start = (int)Frame_min.Value;
+            int target = (int)TargetFrame.Value;
+            int frame = start;
+            int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0] - 300; // 10 seconds ahead
+            if (Totaldelay > 20000)
+            {
+                Error("Too away from target!");
+                return;
+            }
+
+            List<int> Framelist = new List<int>();
+            List<ModelStatus> statuslist = new List<ModelStatus>();
+
+            // Intialize
+            SFMT sfmt = new SFMT(Seed.Value);
+            for (int i = 0; i < start; i++)
+                sfmt.Next();
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            getsetting(sfmt);
+
+            // Search
+            int frameadvance;
+            int Tmpframe, bakframe1, bakframe2 = 0;
+            ModelStatus stmp, bak1, bak2 = null;
+            for (int i = 0; i < Totaldelay; i++)
+            {
+                Tmpframe = frame;
+                stmp = status.Clone();
+
+                // Leap!
+                for (int j = 0; j < 19; j++)
+                    Tmpframe += stmp.NextState();
+                RNGPool.Rewind(Tmpframe - frame);
+                RNGPool.CopyStatus(stmp);
+                RNGPool.igenerator.Generate();
+                frameadvance = RNGPool.index - (Tmpframe - frame);
+                Tmpframe += frameadvance; stmp.frameshift(frameadvance);
+                Tmpframe += stmp.NextState();
+
+                bak1 = stmp.Clone();
+                bakframe1 = Tmpframe;
+
+                // Check if hit
+                while (Tmpframe < target)
+                    Tmpframe += stmp.NextState();
+                if (Tmpframe == target)
+                {
+                    Framelist.Add(frame);
+                    bak2 = bak1.Clone();
+                    bakframe2 = bakframe1;
+                    statuslist.Add(stmp.Clone());
+                }
+
+                // Move to next state
+                frameadvance = status.NextState();
+                frame += frameadvance;
+                for (int j = 0; j < frameadvance; j++)
+                    RNGPool.AddNext(sfmt);
+            }
+
+            if (Framelist.Count > 0)
+            {
+                Frame_max.Value = Framelist.Last();
+                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes: Check new timeline / No: Check the spread", Framelist.Last())) == DialogResult.Yes)
+                    Search7_TimelineLeap1(bakframe2, target, bak2, Totaldelay);
                 else
                     Search7_TimelineLeap2(Framelist, statuslist, target);
             }
