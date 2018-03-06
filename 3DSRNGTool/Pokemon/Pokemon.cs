@@ -231,7 +231,7 @@ namespace Pk3DSRNGTool
             690, 691, 692, 693, 696, 697, 698, 699, 701, 702, 714, 715,
         };
 
-        public static bool InAlolanDex(int Species, bool IsUltra) => AlolanForms.Contains(Species) || AlolanDex_SM.Contains(Species) || IsUltra && AlolanDex_USUM.Contains(Species);
+        public static bool InAlolanDex(int Species, bool IsUltra) => Species > 721 || AlolanForms.Contains(Species) || AlolanDex_SM.Contains(Species) || IsUltra && AlolanDex_USUM.Contains(Species);
         #endregion
     }
 }
