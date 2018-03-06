@@ -695,7 +695,7 @@ namespace Pk3DSRNGTool
                 Slot.CheckBoxItems[0].Checked = false;
 
                 Event_Species.Items.Clear();
-                Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : 807)).ToArray());
+                Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : IsUltra ? 807 : 802)).ToArray());
                 Event_Species.SelectedIndex = 0;
 
                 lastgen = currentgen;

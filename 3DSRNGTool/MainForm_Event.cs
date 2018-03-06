@@ -174,6 +174,7 @@ namespace Pk3DSRNGTool
             int species = Event_Species.SelectedIndex;
             int forme = Event_Forme.SelectedIndex;
             SetPersonalInfo(species, forme);
+            NoDex.Visible = Gen7 && Method == 1 && Pokemon.InAlolanDex(species, IsUltra);
             IVsCount.Value = Fix3v.Checked ? 3 : 0;
         }
 
