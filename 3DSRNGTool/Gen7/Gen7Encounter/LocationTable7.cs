@@ -1637,26 +1637,26 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 012, // Route 2
-                LevelMin = 07,
+                NPC = 1, LevelMin = 07,
+                DelayType2 = 1, Delay2 = 90,
                 SlotType = 43, Species = new[] {023, 206, 296, 096},
             },
             new MiscEncounter7
             {
                 Location = 010, // Route 3
-                LevelMin = 10,
-                DelayType2 = 1, Delay2 = 90,
+                NPC = 1, LevelMin = 10,
                 SlotType = 40, Species = new[] {021, 627},
             },
             new MiscEncounter7
             {
                 Location = 052, // Route 5
-                NPC = 2, LevelMin = 18,
+                NPC = 1, LevelMin = 18,
                 SlotType = 42, Species = new[] {050},
             },
             new MiscEncounter7
             {
                 Location = 056, // Route 7
-                NPC = 2, LevelMin = 16,
+                NPC = 1, LevelMin = 16,
                 SlotType = 42, Species = new[] {050},
             },
             new MiscEncounter7
@@ -1676,7 +1676,7 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 058, // Route 8
-                NPC = 2, LevelMin = 17,
+                NPC = 1, LevelMin = 17,
                 SlotType = 42, Species = new[] {767},
             },
             new MiscEncounter7
@@ -1772,8 +1772,47 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 012, // Route 2
-                LevelMin = 09, LevelMax = 10,
+                NPC = 1, LevelMin = 09, LevelMax = 10,
+                DelayType2 = 1, Delay2 = 90,
                 SlotType = 40, Species = new[] {023, 296},
+            },
+            new MiscEncounter7
+            {
+                Location = 010, // Route 3
+                NPC = 1, LevelMin = 11, LevelMax = 12,
+                SlotType = 40, Species = new[] {021, 627},
+            },
+            new MiscEncounter7
+            {
+                Location = 052, // Route 5
+                NPC = 1, LevelMin = 18,
+                SlotType = 42, Species = new[] {050},
+            },
+            new MiscEncounter7
+            {
+                Location = 056, // Route 7
+                NPC = 1, LevelMin = 16,
+                SlotType = 42, Species = new[] {050},
+            },
+            new MiscEncounter7
+            {
+                Location = 058, // Route 8
+                NPC = 1, LevelMin = 17,
+                SlotType = 42, Species = new[] {767},
+            },
+            new MiscEncounter7
+            {
+                Location = 090, // Lush Jungle
+                NPC = 1, LevelMin = 18,
+                DelayType1 = 4, Delay1 = 4,
+                DelayType2 = 0, Delay2 = 162,
+                SlotType = 42, Species = new[] {753},
+            },
+            new MiscEncounter7
+            {
+                Location = 100, // Diglett's Tunnel
+                NPC = 1, LevelMin = 19,
+                SlotType = 42, Species = new[] {050},
             },
             new MiscEncounter7
             {
@@ -1782,14 +1821,6 @@ namespace Pk3DSRNGTool
                 DelayType1 = 3, Delay1 = 4,
                 DelayType2 = 1, Delay2 = 90,
                 SlotType = 41, Species = new[] {120, 769},
-            },
-            new MiscEncounter7
-            {
-                Location = 090, // Lush Jungle
-                NPC = 2, LevelMin = 18,
-                DelayType1 = 4, Delay1 = 4,
-                DelayType2 = 0, Delay2 = 162,
-                SlotType = 42, Species = new[] {753},
             },
             new MiscEncounter7
             {

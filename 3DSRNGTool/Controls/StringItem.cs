@@ -82,6 +82,7 @@ namespace Pk3DSRNGTool
             new [] { "Totem",               "ぬしポケモン",      "Dominants",         "Herrscher",        "Dominante",       "霸主" },
             new [] { "Island Scan",         "QRスキャン",        "Scanner des îles", "nsel-Scanner",    "Escáner Insular",   "岛屿扫描" },
             new [] { "Normal Wild",         "Normal Wild",      "Normal Sauvage",   "Normal Wild",    "Normal Wild",        "普通野外" },
+            new [] { "Ambush Encounters",   "Ambush Encounters", "Ambush Encounters", "Ambush Encounters", "Ambush Encounters", "摇草/摇树/阴影/沙尘" },
             new [] { "Berry Tree",          "Berry Tree",       "Arbre à baies",    "Berry Tree",       "Berry Tree",       "果树" },
             new [] { "Cave Drop",           "Cave Drop",        "Chutes (Grottes)", "Cave Drop",        "Cave Drop",        "洞窟坠物" },
             new [] { "Rustling Bush",       "Rustling Bush",    "Buisson",    "Rustling Bush",    "Rustling Bush",          "晃动树影" },
