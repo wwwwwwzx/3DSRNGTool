@@ -94,6 +94,14 @@
                    new PKMW7 { Species = 000, Conceptual = true, },
                 }
             },
+            new PokemonList
+            {
+                Text = "Berry Tree",
+                List = new[]
+                {
+                   new PKMW7 { Species = 739, Delay = 4, Conceptual = true, },
+                }
+            },
         };
 
         public readonly static PokemonList[] Species_USUM =
@@ -175,6 +183,14 @@
                 List = new[]
                 {
                    new PKMW7 { Species = 000, Conceptual = true, },
+                }
+            },
+            new PokemonList
+            {
+                Text = "Berry Tree",
+                List = new[]
+                {
+                   new PKMW7 { Species = 739, Delay = 4, Conceptual = true, },
                 }
             },
         };

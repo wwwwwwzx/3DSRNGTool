@@ -8,8 +8,7 @@ namespace Pk3DSRNGTool
         private static ulong getrand => RNGPool.getrand64;
         private static void time_elapse(int n) => RNGPool.time_elapse7(n);
         private static void Advance(int n) => RNGPool.Advance(n);
-
-        public bool blinkwhensync;
+        
         private bool IsPelago;
         public byte PelagoShift;
         public bool Trade;
@@ -21,8 +20,7 @@ namespace Pk3DSRNGTool
             if (AssumeSynced != null)
                 return (bool)AssumeSynced;
             bool sync = getrand % 100 >= 50;
-            if (blinkwhensync)
-                time_elapse(3);
+            time_elapse(3);
             return sync || PostNatureLock;
         }
 
@@ -131,8 +129,7 @@ namespace Pk3DSRNGTool
                 AlwaysSync = false;
                 PIDroll_count = ShinyCharm ? 3 : 1;
             }
-            blinkwhensync = !AlwaysSync && !pm7.NoBlink;
-            Ability = Ability == 0 && blinkwhensync ? (byte)1 : Ability;
+            Ability = Ability == 0 && !AlwaysSync ? (byte)1 : Ability;
             if (pm7.Ability == 0xFF) // Outlier
                 Ability = 0;
             if (pm7.IsPelago)

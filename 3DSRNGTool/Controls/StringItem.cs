@@ -17,7 +17,7 @@ namespace Pk3DSRNGTool
         public readonly static string[] eventabilitystr = { "1/2", "1/2/H" };
         public readonly static string[] helditemStr = { "50%", "5%", "1%", "---" };
 
-        public readonly static string[] gen7wildtypestr = { "WT", "UB", "QR", string.Empty, string.Empty};
+        public readonly static string[] gen7wildtypestr = { "WT", "UB", "QR", string.Empty, string.Empty, string.Empty,};
 
         public static string[] abilitystr;
         public static string[] speciestr;
@@ -55,7 +55,7 @@ namespace Pk3DSRNGTool
             if (ver < 4)
                 return gen6location[locationidx & 0x1FF] + LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == locationidx).mark;
             else if (4 < ver && ver < 9)
-                return smlocation[locationidx & 0xFF] + LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == locationidx).mark;
+                return smlocation[locationidx & 0xFF] + LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == locationidx)?.mark ?? string.Empty;
             return "-";
         }
 

@@ -52,7 +52,6 @@ L_SyncNature = Sincro Naturaleza
 L_Rate = Proporción
 L_Lv = Rango de Nivel
 L_Targetmon = Índice de Pkm Objetivo
-BlinkWhenSync = Parpadea cuando sea Sincronizado
 Sta_AbilityLocked = Habilidad Bloqueada
 Raining = Raining
 Fidget = Fidget

@@ -18,6 +18,7 @@ namespace Pk3DSRNGTool
         public bool UB;
         public bool Fishing;
         public bool SOS;
+        public bool Crabrawler;
 
         public byte DelayType;
         public int DelayTime;
@@ -86,6 +87,12 @@ namespace Pk3DSRNGTool
                 rt.Level = (byte)(getsosrand % (uint)(Levelmax - Levelmin + 1) + Levelmin);
                 if (LevelModifierPass) rt.Level = ModifiedLevel;
                 SOSRNG.Advance(1); // Flute boost (% 100)
+            }
+            else if (Crabrawler)
+            {
+                CheckLeadAbility(getrand % 100);
+                rt.Slot = 1;
+                rt.Level = ModifiedLevel;
             }
             else if (NormalSlot) // Normal wild
             {
@@ -183,7 +190,7 @@ namespace Pk3DSRNGTool
             StaticMagnetSlot = smslot.Select(s => (byte)s).ToArray();
             if (0 == (NStaticMagnetSlot = (ulong)smslot.Count))
                 Static = Magnet = false;
-            if (ModifiedLevel != 0)
+            if (ModifiedLevel == 101)
                 ModifiedLevel = Levelmax;
             if (UB) IV3[0] = true; // For UB Template
         }

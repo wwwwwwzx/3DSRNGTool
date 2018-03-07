@@ -8,7 +8,6 @@
         private bool? _ShinyLocked;
         public byte DelayType;
         public byte NPC;
-        public bool NoBlink;
         public bool IsPelago;
         public bool Raining;
         public bool Totem, UltraWormhole;
@@ -205,7 +204,6 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     new PKM7 { Species = 736, Level = 04, NPC = 01, ShinyLocked = true, Delay = 12, }, // Grubbin
                     new PKM7 { Species = 092, Level = 19, ShinyLocked = true, Ability = 0xFF }, // Gastly @ Route 1 Trainers' School
                     new PKM7 { Species = 425, Level = 19, NPC = 02, ShinyLocked = true, Ability = 0xFF }, // Drifloon @ Route 1 Trainers' School
@@ -356,7 +354,6 @@
                 Text = "Normal Stationary",
                 List = new[]
                 {
-                    new PKM7 { Species = 739, NPC = 1, Delay = 04, NoBlink = true, },    // Crabrawler
                     new PKM7 { Species = 731, Level = 03, NPC = 1, Delay = 16, ShinyLocked = true, IVs = new[] { -1, -1, -1, -1, -1, 1 }, }, // Pikipek
                     new PKM7 { Species = 103, Level = 40, Forme = 1, Delay = 88, Unstable = true, DelayType = 3, },  // Exeggutor
                 }

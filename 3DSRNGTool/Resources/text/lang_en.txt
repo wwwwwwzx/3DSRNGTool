@@ -52,7 +52,6 @@ L_SyncNature = Sync Nature
 L_Rate = Rate
 L_Lv = Level Range
 L_Targetmon = Index of Target Pkm
-BlinkWhenSync = Blink When Sync
 Sta_AbilityLocked = Ability Locked
 Raining = Raining
 Fidget = Fidget

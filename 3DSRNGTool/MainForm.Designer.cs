@@ -345,7 +345,6 @@
             this.B_OpenTool = new System.Windows.Forms.Button();
             this.Sta_AbilityLocked = new System.Windows.Forms.CheckBox();
             this.Sta_Ability = new System.Windows.Forms.ComboBox();
-            this.BlinkWhenSync = new System.Windows.Forms.CheckBox();
             this.EnctrPanel = new System.Windows.Forms.Panel();
             this.CB_Category = new System.Windows.Forms.ComboBox();
             this.Poke = new System.Windows.Forms.ComboBox();
@@ -3784,7 +3783,6 @@
             this.Sta_Setting.Controls.Add(this.B_OpenTool);
             this.Sta_Setting.Controls.Add(this.Sta_AbilityLocked);
             this.Sta_Setting.Controls.Add(this.Sta_Ability);
-            this.Sta_Setting.Controls.Add(this.BlinkWhenSync);
             this.Sta_Setting.Controls.Add(this.EnctrPanel);
             this.Sta_Setting.Controls.Add(this.ShinyLocked);
             this.Sta_Setting.Controls.Add(this.AlwaysSynced);
@@ -4019,17 +4017,6 @@
             this.Sta_Ability.Size = new System.Drawing.Size(62, 21);
             this.Sta_Ability.TabIndex = 94;
             this.Sta_Ability.Visible = false;
-            // 
-            // BlinkWhenSync
-            // 
-            this.BlinkWhenSync.AutoSize = true;
-            this.BlinkWhenSync.Location = new System.Drawing.Point(203, 158);
-            this.BlinkWhenSync.Name = "BlinkWhenSync";
-            this.BlinkWhenSync.Size = new System.Drawing.Size(86, 17);
-            this.BlinkWhenSync.TabIndex = 93;
-            this.BlinkWhenSync.Text = "同步时眨眼";
-            this.BlinkWhenSync.UseVisualStyleBackColor = true;
-            this.BlinkWhenSync.VisibleChanged += new System.EventHandler(this.VisibleTrigger);
             // 
             // EnctrPanel
             // 
@@ -5529,7 +5516,6 @@
         private System.Windows.Forms.Button B_OpenTool;
         private System.Windows.Forms.CheckBox Sta_AbilityLocked;
         private System.Windows.Forms.ComboBox Sta_Ability;
-        private System.Windows.Forms.CheckBox BlinkWhenSync;
         private System.Windows.Forms.Panel EnctrPanel;
         private System.Windows.Forms.ComboBox CB_Category;
         private System.Windows.Forms.ComboBox Poke;

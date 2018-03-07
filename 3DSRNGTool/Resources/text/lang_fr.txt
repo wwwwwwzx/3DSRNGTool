@@ -52,7 +52,6 @@ L_SyncNature = Nature du Syncrho
 L_Rate = Ratio
 L_Lv = Fourchette de niveaux
 L_Targetmon = Index du Pokémon ciblé
-BlinkWhenSync = Blink quand Synchro
 Sta_AbilityLocked = Capacité Spéciale définie
 Raining = Raining
 Fidget = Fidget

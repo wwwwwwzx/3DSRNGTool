@@ -35,6 +35,7 @@ namespace Pk3DSRNGTool
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
         private bool gen7misc => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4 && !SOS.Checked;
+        private bool gen7crabrawler => Gen7 && Method == 2 && CB_Category.SelectedIndex == 5 && !SOS.Checked;
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
@@ -202,6 +203,8 @@ namespace Pk3DSRNGTool
             if (gen7misc)
                 for (int i = 0; i < List.Count; i++)
                     List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as MiscEncounter7).SlotType][i]);
+            if (gen7crabrawler)
+                List = new[] { new ComboItem(speciestr[739], 739) }.ToList();
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -773,7 +776,6 @@ namespace Pk3DSRNGTool
             TinyMT_Status.Visible = Homogeneity.Visible =
             Lv_max.Visible = Lv_min.Visible = L_Lv.Visible = label9.Visible =
             GB_RNGGEN7ID.Visible =
-            BlinkWhenSync.Visible =
             Filter_G7TID.Visible = Gen7;
 
             MM_CheckedChanged(null, null);
@@ -840,6 +842,8 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 ea = LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
+                if (ea == null && gen7crabrawler)
+                    ea = LocationTable7.TableNow.FirstOrDefault(t => t.Location == (int)MetLocation.SelectedValue);
                 if (ea is EncounterArea7 tmp)
                 {
                     NPC.Value = tmp.NPC;
@@ -854,7 +858,8 @@ namespace Pk3DSRNGTool
                         UpdateTip(null);
                     Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
                     Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
-                    ChainLength.Maximum = 255;
+                    if (gen7crabrawler)
+                        Filter_Lv.Value = Lv_max.Value;
                 }
                 else if (ea is FishingArea7 f)
                 {
@@ -883,6 +888,7 @@ namespace Pk3DSRNGTool
                         Delay2.Value = m.Delay2;
                     }
                 }
+                ChainLength.Maximum = 255;
             }
             else if (Gen6)
             {
@@ -1061,13 +1067,12 @@ namespace Pk3DSRNGTool
             if (FormPM is PKM7 pm7)
             {
                 NPC.Value = pm7.NPC;
-                BlinkWhenSync.Checked = !(pm7.AlwaysSync || pm7.NoBlink);
                 Fix3v.Checked |= pm7.iv3;
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
                 FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
-                if (BlinkWhenSync.Checked && FormPM.Ability == 0)
+                if (!AlwaysSynced.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
                     Sta_Ability.SelectedIndex = 0;
@@ -1133,7 +1138,7 @@ namespace Pk3DSRNGTool
             }
 
             Sta_AbilityLocked.Enabled = Sta_Ability.Enabled =
-            BlinkWhenSync.Enabled = AlwaysSynced.Enabled =
+            AlwaysSynced.Enabled =
             ShinyLocked.Enabled = Fix3v.Enabled = FormPM.Conceptual && !IsTransporter;
         }
         #endregion
@@ -1307,8 +1312,6 @@ namespace Pk3DSRNGTool
             setting.Ability = (byte)(Sta_AbilityLocked.Checked ? Sta_Ability.SelectedIndex + 1 : 0);
             setting.SetValue();
 
-            if (setting is Stationary7 setting7)
-                setting7.blinkwhensync = BlinkWhenSync.Checked;
             return setting;
         }
 
@@ -1367,7 +1370,7 @@ namespace Pk3DSRNGTool
                 case Lead.MagnetPull: setting.Magnet = true; break;
                 case Lead.CuteCharmF: setting.CuteCharmGender = 1; break;
                 case Lead.CuteCharmM: setting.CuteCharmGender = 2; break;
-                case Lead.PressureHustleSpirit: setting.ModifiedLevel = 1; break;
+                case Lead.PressureHustleSpirit: setting.ModifiedLevel = 101; break;
             }
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -1409,6 +1412,14 @@ namespace Pk3DSRNGTool
                     setting7.DelayTime = (int)Delay2.Value / 2;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();
                     slottype = (ea as MiscEncounter7).SlotType;
+                }
+                else if (gen7crabrawler)
+                {
+                    RNGPool.DelayType = 1;
+                    setting7.Crabrawler = true;
+                    setting7.SpecForm = new[] { 0, 739 };
+                    setting7.ModifiedLevel = (byte)Filter_Lv.Value;
+                    slottype = 42;
                 }
                 else if (gen7sos)
                 {

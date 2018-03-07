@@ -22,6 +22,8 @@ namespace Pk3DSRNGTool
                 case 4:
                     TableNow = IsUltra ? Misc_USUM : Misc_SM;
                     goto default;
+                case 5:
+                    return CrabrawlerSpots;
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }
         }
@@ -1887,5 +1889,7 @@ namespace Pk3DSRNGTool
         public readonly static int[] RustlingSpots = { 012, 046, 052, 058, 064, 158, 166 };
 
         public readonly static int[] FishingNPCChangeSpots = { 056, 126, 172 };
+
+        public readonly static int[] CrabrawlerSpots = { 012, 010, 050, 052, 058, 106, 110, 118, 120, 158, 166 };
     }
 }
