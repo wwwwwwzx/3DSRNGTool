@@ -93,7 +93,6 @@ namespace Pk3DSRNGTool.Core
         public static int DelayTime;
 
         public static Pokemon PM;
-        public static bool IsMainRNGEgg;
         public static IGenerator igenerator;
 
         public static RNGResult Generate6()
@@ -110,22 +109,6 @@ namespace Pk3DSRNGTool.Core
             return (igenerator as Wild6).Generate_Horde(horde);
         }
 
-        public static RNGResult GenerateEgg6()
-        {
-            index = Considerdelay ? DelayTime : 0;
-            Advance(1);
-            if (IsMainRNGEgg) Egg6.MainRNGPID = getrand; // Previous Egg PID
-            return GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
-        }
-
-        public static ResultE6 GenerateAnEgg6(uint[] key)
-        {
-            Egg6.ReSeed(key);
-            var result = igenerator.Generate() as ResultE6;
-            result.EggSeed = key[0] | ((ulong)key[1] << 32);
-            return result;
-        }
-
         public static RNGResult Generate7()
         {
             Pointer = Tail;
@@ -138,8 +121,8 @@ namespace Pk3DSRNGTool.Core
             Pointer = Tail;
             return igenerator.Generate();
         }
-        #region Gen6 Tiny Timeline
 
+        #region Gen6 Tiny Timeline
         // Without timeline input
         public static bool AssumeSynced;
 
@@ -149,11 +132,9 @@ namespace Pk3DSRNGTool.Core
 
         public static void time_elapse6(int i) => tinystatus.time_elapse(i); // Only Tiny Advance according to timeline. i.e. MT not advance
         public static void AdvanceTiny() => tinystatus.Tinyrng.Next();
-
         #endregion
 
         #region Gen7 Time keeping
-
         public static bool raining, phase;
         public static byte modelnumber;
         public static int[] remain_frame;

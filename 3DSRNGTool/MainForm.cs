@@ -982,7 +982,7 @@ namespace Pk3DSRNGTool
                     8000);
                 return;
             }
-            if (RNGPool.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
+            if (RNGPool.igenerator is Egg6 e6 && e6.IsMainRNGEgg && (DGV.Columns[e.ColumnIndex].Name == "dgv_psv" || DGV.Columns[e.ColumnIndex].Name == "dgv_pid"))
             {
                 DGVToolTip.ToolTipTitle = "Tips";
                 DGVToolTip.Show("This column shows the main RNG PID/ESV of the current egg (w/o mm or sc)\r\nNot the part of spread prediction of the egg seed in the same row."
@@ -1149,7 +1149,6 @@ namespace Pk3DSRNGTool
             RNGPool.igenerator = getGenerator(Method);
             if (MainRNGEgg.Checked)
                 RNGPool.igenerator = getmaineggrng();
-            RNGPool.IsMainRNGEgg = Method == 3 && Gen6 && !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
 
             Frame.showstats = ShowStats.Checked;
             int buffersize = 150;
@@ -1191,7 +1190,7 @@ namespace Pk3DSRNGTool
                 switch (Method)
                 {
                     case 1: buffersize = 80; break;
-                    case 3: buffersize = 4; Egg6.MainRNGPID = null; break;
+                    case 3: buffersize = 4; break;
                 }
                 RNGPool.DelayTime = (int)Timedelay.Value;
                 if (RNGPool.Considerdelay = ConsiderDelay.Checked)
@@ -1524,6 +1523,8 @@ namespace Pk3DSRNGTool
                 setting7.Homogeneous = Homogeneity.Checked;
                 setting7.FemaleIsDitto = F_ditto.Checked;
             }
+            else if (setting is Egg6 setting6)
+                setting6.IsMainRNGEgg = !ShinyCharm.Checked && !MM.Checked && RB_Accept.Checked;
             setting.InheritAbility = (byte)(F_ditto.Checked ? M_ability.SelectedIndex : F_ability.SelectedIndex);
             setting.MMethod = MM.Checked;
             setting.NidoType = NidoType.Checked;

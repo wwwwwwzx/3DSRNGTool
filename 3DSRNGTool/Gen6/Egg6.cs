@@ -7,15 +7,19 @@ namespace Pk3DSRNGTool
     public class Egg6 : EggRNG
     {
         private static MersenneTwister mt = new MersenneTwister(19650218u);
-        public static void ReSeed(uint[] key) => mt.Reseed(key);
-        public static uint? MainRNGPID;
+        private static uint getmtrand => RNGPool.getrand;
         private static uint getrand => mt.Nextuint();
         private static uint rand(uint n) => (uint)(getrand * (ulong)n >> 32);
         private static bool rand2 => getrand < 0x80000000;
+        public bool IsMainRNGEgg;
 
-        public override RNGResult Generate()
+        public override RNGResult Generate() => Generate(IsMainRNGEgg ? getmtrand : (uint?)null, new uint[] { getmtrand, getmtrand });
+
+        public RNGResult Generate(uint? MainRNGPID, uint[] key)
         {
-            ResultE6 egg = new ResultE6();
+            ResultE6 egg = new ResultE6(key);
+
+            mt.Reseed(key);
 
             // Gender
             if (NidoType)

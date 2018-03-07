@@ -6,10 +6,11 @@ namespace Pk3DSRNGTool
     {
         public object Status;
 
-        public ResultE6()
+        public ResultE6(uint[] key)
         {
             RandNum = RNGPool.getcurrent;
             Status = RNGPool.getcurrentstate;
+            EggSeed = key[0] | ((ulong)key[1] << 32);
         }
     }
 }

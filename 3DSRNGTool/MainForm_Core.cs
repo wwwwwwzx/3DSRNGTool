@@ -157,16 +157,17 @@ namespace Pk3DSRNGTool
 
             // The egg already have
             uint[] key = { Key0.Value, Key1.Value };
-            var eggnow = RNGPool.GenerateAnEgg6(key);
+            Egg6 IG = RNGPool.igenerator as Egg6;
+            var eggnow = IG.Generate(null, key) as ResultE6 ;
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
-            if (RNGPool.IsMainRNGEgg) eggnow.PID = 0xFFFFFFFF;
+            if (IG.IsMainRNGEgg) eggnow.PID = 0xFFFFFFFF;
             eggnow.Status = "Current";
             Frames.Add(new Frame(eggnow, frame: -1));
 
             // Start
             for (int i = min; i <= max; i++, RNGPool.AddNext(rng))
             {
-                var result = RNGPool.GenerateEgg6();
+                var result = RNGPool.Generate6();
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
