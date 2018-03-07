@@ -365,7 +365,7 @@ namespace Pk3DSRNGTool
             LeadAbility.SelectedIndex = 0;
 
             Event_Species.Items.Clear();
-            Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : 807)).ToArray());
+            Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : IsUltra ? 807 : 802)).ToArray());
             Event_Species.SelectedIndex = 0;
 
             // display something upon loading
@@ -684,7 +684,7 @@ namespace Pk3DSRNGTool
             Properties.Settings.Default.GameVersion = (byte)Gameversion.SelectedIndex;
             miscrngtool.UpdateInfo(updategame: !Initializing);
             L_GenderList.Visible = GenderList.Visible = IsTransporter;
-            byte currentgen = (byte)(Gen6 ? 6 : 7);
+            byte currentgen = (byte)(Gen6 ? 6 : IsUltra ? 8 : 7);
             if (currentgen != lastgen)
             {
                 var slotnum = new bool[Gen6 ? 12 : 10].Select((b, i) => (i + 1).ToString()).ToArray();
