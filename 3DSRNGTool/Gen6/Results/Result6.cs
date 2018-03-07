@@ -8,5 +8,11 @@ namespace Pk3DSRNGTool
         public uint RandNum;
         public PRNGState Status;
         public byte FrameUsed;
+
+        public Result6()
+        {
+            RandNum = RNGPool.getcurrent;
+            Status = RNGPool.getcurrentstate;
+        }
     }
 }

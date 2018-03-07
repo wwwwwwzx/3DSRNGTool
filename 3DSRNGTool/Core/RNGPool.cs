@@ -100,23 +100,14 @@ namespace Pk3DSRNGTool.Core
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            var result = igenerator.Generate() as Result6;
-            result.RandNum = RandList[Head];
-            result.Status = RNGStateStr[Head];
-            return result;
+            return igenerator.Generate();
         }
 
         public static RNGResult[] GenerateHorde6()
         {
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
-            var results = (igenerator as Wild6).Generate_Horde(horde);
-            foreach (var result in results)
-            {
-                result.RandNum = RandList[Head];
-                result.Status = RNGStateStr[Head];
-            }
-            return results;
+            return (igenerator as Wild6).Generate_Horde(horde);
         }
 
         public static RNGResult GenerateEgg6()
@@ -124,10 +115,7 @@ namespace Pk3DSRNGTool.Core
             index = Considerdelay ? DelayTime : 0;
             Advance(1);
             if (IsMainRNGEgg) Egg6.MainRNGPID = getrand; // Previous Egg PID
-            var result = GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
-            result.RandNum = RandList[Head];
-            result.Status = RNGStateStr[Head];
-            return result;
+            return GenerateAnEgg6(new uint[] { getrand, getrand }); // New Egg Seed
         }
 
         public static ResultE6 GenerateAnEgg6(uint[] key)
@@ -141,21 +129,14 @@ namespace Pk3DSRNGTool.Core
         public static RNGResult Generate7()
         {
             Pointer = Tail;
-            int frameshift = getframeshift();
-            var result = igenerator.Generate() as Result7;
-            result.RandNum = RandList64[Head];
-            result.FrameDelayUsed = frameshift;
-            return result;
+            Gen7Delay();
+            return igenerator.Generate();
         }
 
         public static RNGResult GenerateEgg7()
         {
             Pointer = Tail;
-            var result = igenerator.Generate() as ResultE7;
-            result.RandNum = RandList[Head];
-            result.Status = RNGStateStr[Head];
-            result.FramesUsed = index;
-            return result;
+            return igenerator.Generate();
         }
         #region Gen6 Tiny Timeline
 
@@ -446,13 +427,12 @@ namespace Pk3DSRNGTool.Core
             }
         }
 
-        private static int getframeshift()
+        private static void Gen7Delay()
         {
             if (Considerdelay)
                 igenerator.Delay();
             else
                 ResetModelStatus();
-            return index;
         }
 
         // For fishy time travel

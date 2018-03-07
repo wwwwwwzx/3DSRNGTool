@@ -89,6 +89,9 @@ namespace Pk3DSRNGTool
 
             // Egg adopt & Egg Clear
             Advance(2);
+            
+            // Count advancement
+            egg.FramesUsed = RNGPool.index;
 
             return egg;
         }
