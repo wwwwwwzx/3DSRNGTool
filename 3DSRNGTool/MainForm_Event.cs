@@ -47,11 +47,9 @@ namespace Pk3DSRNGTool
             Event_Nature.SelectedIndex = NatureLocked.Checked ? Data[0xA0] : 0;
             GenderLocked.Checked = Data[0xA1] != 3;
             Event_Gender.SelectedIndex = GenderLocked.Checked ? (Data[0xA1] + 1) % 3 : 0;
-
             byte[] IVs = Pokemon.Reorder2.Select(i => Data[0xAF + i]).ToArray();
             var ivflag = IVs.FirstOrDefault(iv => (byte)(iv - 0xFC) < 3);
-            if (ivflag != 0)
-                IVsCount.Value = ivflag - 0xFB;
+            IVsCount.Value = ivflag == 0 ? 0 : ivflag - 0xFB;
             for (int i = 0; i < 6; i++)
             {
                 EventIVLocked[i].Checked = ivflag == 0 && IVs[i] <= 0x1F;
