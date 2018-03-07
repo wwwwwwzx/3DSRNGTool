@@ -3375,7 +3375,7 @@
             0});
             this.TargetFrame.Location = new System.Drawing.Point(82, 91);
             this.TargetFrame.Name = "TargetFrame";
-            this.TargetFrame.Size = new System.Drawing.Size(73, 22);
+            this.TargetFrame.Size = new System.Drawing.Size(75, 22);
             this.TargetFrame.TabIndex = 97;
             this.TargetFrame.ValueChanged += new System.EventHandler(this.TargetFrame_ValueChanged);
             // 
@@ -3402,7 +3402,7 @@
             // L_StartingPoint
             // 
             this.L_StartingPoint.AutoSize = true;
-            this.L_StartingPoint.Location = new System.Drawing.Point(104, 56);
+            this.L_StartingPoint.Location = new System.Drawing.Point(110, 56);
             this.L_StartingPoint.Name = "L_StartingPoint";
             this.L_StartingPoint.Size = new System.Drawing.Size(82, 13);
             this.L_StartingPoint.TabIndex = 94;
@@ -3729,7 +3729,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(104, 57);
+            this.label7.Location = new System.Drawing.Point(110, 57);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(16, 13);
             this.label7.TabIndex = 42;
@@ -3750,7 +3750,7 @@
             0,
             0});
             this.Frame_max.Name = "Frame_max";
-            this.Frame_max.Size = new System.Drawing.Size(75, 22);
+            this.Frame_max.Size = new System.Drawing.Size(85, 22);
             this.Frame_max.TabIndex = 41;
             // 
             // Frame_min
@@ -3758,13 +3758,13 @@
             this.Frame_min.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Frame_min.Location = new System.Drawing.Point(16, 52);
             this.Frame_min.Name = "Frame_min";
-            this.Frame_min.Size = new System.Drawing.Size(75, 22);
+            this.Frame_min.Size = new System.Drawing.Size(85, 22);
             this.Frame_min.TabIndex = 40;
             // 
             // AroundTarget
             // 
             this.AroundTarget.AutoSize = true;
-            this.AroundTarget.Location = new System.Drawing.Point(163, 93);
+            this.AroundTarget.Location = new System.Drawing.Point(164, 93);
             this.AroundTarget.Name = "AroundTarget";
             this.AroundTarget.Size = new System.Drawing.Size(61, 17);
             this.AroundTarget.TabIndex = 97;

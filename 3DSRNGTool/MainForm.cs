@@ -42,9 +42,9 @@ namespace Pk3DSRNGTool
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
-        private int[] slotspecies => ea?.getSpecies(Ver, IsNight) ?? new int[0];
-        private int[] SOSSlots => SOSAllies.getAllies(ea.Locationidx, (int)SlotSpecies.SelectedValue, Ver, IsNight);
-        private int[] WeatherSlots => SOSAllies.getWeatherAllies(ea.Locationidx, Weather.SelectedIndex, IsUltra, IsNight);
+        private int[] slotspecies => Gen7 && CB_Category.SelectedIndex == 5 ? new[] {739} : ea?.getSpecies(Ver, IsNight) ?? new int[0];
+        private int[] SOSSlots => SOSAllies.getAllies(ea?.Locationidx ?? 0, (int)SlotSpecies.SelectedValue, Ver, IsNight);
+        private int[] WeatherSlots => SOSAllies.getWeatherAllies(ea?.Locationidx ?? 0, Weather.SelectedIndex, IsUltra, IsNight);
         private byte Modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter;
         private byte lastmethod;
@@ -203,8 +203,6 @@ namespace Pk3DSRNGTool
             if (gen7misc)
                 for (int i = 0; i < List.Count; i++)
                     List[i].Text += String.Format(" ({0}%)", WildRNG.SlotDistribution[(ea as MiscEncounter7).SlotType][i]);
-            if (gen7crabrawler)
-                List = new[] { new ComboItem(speciestr[739], 739) }.ToList();
             List = new[] { new ComboItem("-", 0) }.Concat(List).ToList();
             SlotSpecies.DisplayMember = "Text";
             SlotSpecies.ValueMember = "Value";
@@ -918,6 +916,8 @@ namespace Pk3DSRNGTool
 
         private void DayNight_CheckedChanged(object sender, EventArgs e)
         {
+            if (gen7crabrawler)
+                return;
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
             if (gen7sos)
