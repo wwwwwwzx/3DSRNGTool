@@ -23,6 +23,7 @@ namespace Pk3DSRNGTool
                     TableNow = IsUltra ? Misc_USUM : Misc_SM;
                     goto default;
                 case 5:
+                    TableNow = CrabrawlerSpots.Select(loc => new EncounterArea_Crabrawler((short)loc, IsUltra)).ToArray();
                     return CrabrawlerSpots;
                 default: return TableNow.Select(t => t.Locationidx).ToArray();
             }

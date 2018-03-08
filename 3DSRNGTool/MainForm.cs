@@ -42,9 +42,9 @@ namespace Pk3DSRNGTool
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
-        private int[] slotspecies => Gen7 && CB_Category.SelectedIndex == 5 ? new[] {739} : ea?.getSpecies(Ver, IsNight) ?? new int[0];
-        private int[] SOSSlots => SOSAllies.getAllies(ea?.Locationidx ?? 0, (int)SlotSpecies.SelectedValue, Ver, IsNight);
-        private int[] WeatherSlots => SOSAllies.getWeatherAllies(ea?.Locationidx ?? 0, Weather.SelectedIndex, IsUltra, IsNight);
+        private int[] slotspecies => ea.getSpecies(Ver, IsNight) ?? new int[0];
+        private int[] SOSSlots => SOSAllies.getAllies(ea.Locationidx, (int)SlotSpecies.SelectedValue, Ver, IsNight);
+        private int[] WeatherSlots => SOSAllies.getWeatherAllies(ea.Locationidx, Weather.SelectedIndex, IsUltra, IsNight);
         private byte Modelnum => (byte)(NPC.Value + 1);
         private RNGFilters filter;
         private byte lastmethod;
@@ -840,8 +840,6 @@ namespace Pk3DSRNGTool
             if (Gen7)
             {
                 ea = LocationTable7.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
-                if (ea == null && gen7crabrawler)
-                    ea = LocationTable7.TableNow.FirstOrDefault(t => t.Location == (int)MetLocation.SelectedValue);
                 if (ea is EncounterArea7 tmp)
                 {
                     NPC.Value = tmp.NPC;
@@ -856,8 +854,8 @@ namespace Pk3DSRNGTool
                         UpdateTip(null);
                     Lv_min.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMinMoon : tmp.LevelMin;
                     Lv_max.Value = ea.VersionDifference && (Ver == 6 || Ver == 8) ? tmp.LevelMaxMoon : tmp.LevelMax;
-                    if (gen7crabrawler)
-                        Filter_Lv.Value = Lv_max.Value;
+                    if (tmp is EncounterArea_Crabrawler eac)
+                        Filter_Lv.Value = eac.ScriptedLevel;
                 }
                 else if (ea is FishingArea7 f)
                 {
@@ -916,8 +914,6 @@ namespace Pk3DSRNGTool
 
         private void DayNight_CheckedChanged(object sender, EventArgs e)
         {
-            if (gen7crabrawler)
-                return;
             if (ea.DayNightDifference)
                 RefreshWildSpecies();
             if (gen7sos)

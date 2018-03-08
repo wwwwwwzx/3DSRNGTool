@@ -175,4 +175,20 @@ namespace Pk3DSRNGTool
             return table;
         }
     }
+
+    public class EncounterArea_Crabrawler : EncounterArea7
+    {
+        public override bool DayNightDifference => false;
+        public override bool VersionDifference => false;
+        public override int[] getSpecies(int ver, bool IsNight) => new[] { 739 };
+        public byte ScriptedLevel => LocationTable7.SMTable.FirstOrDefault(t => t.Location == Location).LevelMax;
+        public EncounterArea_Crabrawler(short loc, bool IsUltra)
+        {
+            Location = loc; idx = 0;
+            var match = (IsUltra ? LocationTable7.USUMTable : LocationTable7.SMTable).FirstOrDefault(t => t.Location == loc); // null if USUM Ula'ula Beach
+            NPC = match?.NPC ?? 7;
+            LevelMin = match?.LevelMin ?? 29;
+            Raining = match?.Raining ?? false;
+        }
+    }
 }
