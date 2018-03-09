@@ -158,7 +158,7 @@ namespace Pk3DSRNGTool
             // The egg already have
             uint[] key = { Key0.Value, Key1.Value };
             Egg6 IG = RNGPool.igenerator as Egg6;
-            var eggnow = IG.Generate(null, key) as ResultE6 ;
+            var eggnow = IG.Generate(null, key) as ResultE6;
             eggnow.hiddenpower = (byte)Pokemon.getHiddenPowerValue(eggnow.IVs);
             if (IG.IsMainRNGEgg) eggnow.PID = 0xFFFFFFFF;
             eggnow.Status = "Current";
@@ -263,7 +263,7 @@ namespace Pk3DSRNGTool
                 do
                 {
                     RNGPool.CopyStatus(stmp);
-                    var result = RNGPool.Generate7() as Result7;
+                    var result = RNGPool.Generate7();
 
                     RNGPool.AddNext(sfmt);
 
@@ -422,7 +422,7 @@ namespace Pk3DSRNGTool
 
                 RNGPool.CopyStatus(status);
 
-                var result = RNGPool.Generate7() as Result7;
+                var result = RNGPool.Generate7();
 
                 if (frame >= FirstJumpFrame) // Find the first call
                 {
@@ -678,7 +678,7 @@ namespace Pk3DSRNGTool
 
                 RNGPool.CopyStatus(status);
 
-                var result = RNGPool.Generate7() as Result7;
+                var result = RNGPool.Generate7();
 
                 byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
                 frameadvance = status.NextState();
@@ -706,7 +706,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < framelist.Count; i++)
             {
                 RNGPool.CopyStatus(statuslist[i]);
-                var result = RNGPool.Generate7() as Result7;
+                var result = RNGPool.Generate7();
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: framelist[i]));
