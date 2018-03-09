@@ -383,7 +383,7 @@ namespace Pk3DSRNGTool.Core
                     int fishingdelay = (int)(getrand64 % 60) + fsetting.basedelay;
                     Advance(1);
                     time_elapse7(fishingdelay);
-                    RNGResult.IsPokemon = fsetting.suctioncups || (int)(getrand64 % 100) < fsetting.bitechance;
+                    RNGResult.IsPokemon = fsetting.suctioncups || (int)(getrand64 % 100) < 50;
                     time_elapse7(fsetting.platdelay); // 2nd Input can be at any moment inside
                     NormalDelay7();
                     break;

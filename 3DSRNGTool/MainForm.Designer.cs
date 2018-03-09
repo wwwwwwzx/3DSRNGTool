@@ -222,10 +222,8 @@
             this.LeadAbility = new System.Windows.Forms.ComboBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
             this.Overview = new System.Windows.Forms.CheckBox();
-            this.BiteChance = new System.Windows.Forms.NumericUpDown();
             this.FishingDelay = new System.Windows.Forms.NumericUpDown();
             this.L_FishingDelay = new System.Windows.Forms.Label();
-            this.L_BiteChance = new System.Windows.Forms.Label();
             this.Bubbling = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
@@ -464,7 +462,6 @@
             this.SOSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).BeginInit();
             this.FishingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
@@ -2499,10 +2496,8 @@
             // FishingPanel
             // 
             this.FishingPanel.Controls.Add(this.Overview);
-            this.FishingPanel.Controls.Add(this.BiteChance);
             this.FishingPanel.Controls.Add(this.FishingDelay);
             this.FishingPanel.Controls.Add(this.L_FishingDelay);
-            this.FishingPanel.Controls.Add(this.L_BiteChance);
             this.FishingPanel.Location = new System.Drawing.Point(0, 219);
             this.FishingPanel.Name = "FishingPanel";
             this.FishingPanel.Size = new System.Drawing.Size(405, 54);
@@ -2520,19 +2515,6 @@
             this.Overview.Text = "概要";
             this.Overview.UseVisualStyleBackColor = true;
             // 
-            // BiteChance
-            // 
-            this.BiteChance.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BiteChance.Location = new System.Drawing.Point(247, 15);
-            this.BiteChance.Name = "BiteChance";
-            this.BiteChance.Size = new System.Drawing.Size(44, 22);
-            this.BiteChance.TabIndex = 114;
-            this.BiteChance.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
             // FishingDelay
             // 
             this.FishingDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2549,15 +2531,6 @@
             this.L_FishingDelay.TabIndex = 116;
             this.L_FishingDelay.Text = "延时";
             this.L_FishingDelay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_BiteChance
-            // 
-            this.L_BiteChance.Location = new System.Drawing.Point(180, 18);
-            this.L_BiteChance.Name = "L_BiteChance";
-            this.L_BiteChance.Size = new System.Drawing.Size(65, 17);
-            this.L_BiteChance.TabIndex = 114;
-            this.L_BiteChance.Text = "成功率";
-            this.L_BiteChance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Bubbling
             // 
@@ -5190,7 +5163,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).EndInit();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BiteChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
@@ -5635,9 +5607,7 @@
         private System.Windows.Forms.CheckBox Overview;
         private System.Windows.Forms.Panel FishingPanel;
         private System.Windows.Forms.NumericUpDown FishingDelay;
-        private System.Windows.Forms.NumericUpDown BiteChance;
         private System.Windows.Forms.Label L_FishingDelay;
-        private System.Windows.Forms.Label L_BiteChance;
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
         private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;

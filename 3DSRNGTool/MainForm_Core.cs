@@ -485,7 +485,7 @@ namespace Pk3DSRNGTool
                 RNGPool.time_elapse7(fishingdelay);
 
                 // Bitechance
-                if (fsetting.suctioncups || (int)(RNGPool.getrand64 % 100) < fsetting.bitechance)
+                if (fsetting.suctioncups || (int)(RNGPool.getrand64 % 100) < 50)
                 {
                     RNGPool.time_elapse7(1);
                     frameinput2 = RNGPool.index + frameinput1;

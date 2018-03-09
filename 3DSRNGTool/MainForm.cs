@@ -495,12 +495,7 @@ namespace Pk3DSRNGTool
                 SyncNature.SelectedIndex = 0;
 
             // Suction Cups
-            if (Gen7)
-            {
-                BiteChance.Value = SuctionCups ? 100 : 50;
-                BiteChance.Enabled = !SuctionCups;
-            }
-            else if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
+            if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
@@ -1243,7 +1238,6 @@ namespace Pk3DSRNGTool
         {
             basedelay = (int)FishingDelay.Value,
             suctioncups = SuctionCups,
-            bitechance = (int)BiteChance.Value,
             platdelay = Bubbling.Checked ? 19 : 14,
             pkmdelay = ((int)Timedelay.Value + 4) / 2,
         };

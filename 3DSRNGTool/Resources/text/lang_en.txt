@@ -163,7 +163,6 @@ Night = Night
 L_Lead = Lead
 Bubbling = Bubbling
 Overview = Overview
-L_BiteChance = Bite Chance
 L_FishingDelay = Delay
 dgv_fishing = Fishing
 L_Weather = Weather
