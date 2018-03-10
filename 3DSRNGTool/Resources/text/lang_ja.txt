@@ -161,7 +161,7 @@ Night = 夜
 L_Lead = Lead
 Bubbling = Bubbling
 Overview = Overview
-L_FishingDelay = Delay
+L_BiteDelay = Bite Delay
 L_Weather = Weather
 L_Ally = Ally
 ---------------------TabPage4----------------------------------

@@ -163,7 +163,7 @@ Night = 夜晚
 L_Lead = 队首
 Bubbling = 波纹
 Overview = 预览
-L_FishingDelay = 延时
+L_BiteDelay = 咬勾延时
 L_Weather = 天气
 L_Ally = 帮手
 ---------------------TabPage4----------------------------------

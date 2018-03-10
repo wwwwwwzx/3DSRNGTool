@@ -864,8 +864,8 @@ namespace Pk3DSRNGTool
                         NPC.Value = f.NPC;
                     Lv_min.Value = f.LevelMin;
                     Lv_max.Value = f.LevelMax + (Bubbling.Checked && IsUltra ? 5 : 0);
-                    FishingDelay.Increment = IsUltra ? 11 : 19; // Sometimes first try will have long delay
-                    FishingDelay.Value = f.Longdelay ? IsUltra ? 89 : 97 : 78;
+                    BiteDelay.Increment = IsUltra ? 11 : 19; // Sometimes first try will have long delay
+                    BiteDelay.Value = f.Longdelay ? IsUltra ? 89 : 97 : 78;
                     Timedelay.Value = f.Lapras ? 0 : -2;
                 }
                 else if (ea is MiscEncounter7 m)
@@ -1237,7 +1237,7 @@ namespace Pk3DSRNGTool
 
         private FishingSetting getFishingSetting => new FishingSetting
         {
-            basedelay = (int)FishingDelay.Value,
+            basedelay = (int)BiteDelay.Value,
             suctioncups = SuctionCups,
             platdelay = Bubbling.Checked ? 19 : 14,
             pkmdelay = ((int)Timedelay.Value + 4) / 2,

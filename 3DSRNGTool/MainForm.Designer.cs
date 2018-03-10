@@ -222,8 +222,8 @@
             this.LeadAbility = new System.Windows.Forms.ComboBox();
             this.FishingPanel = new System.Windows.Forms.Panel();
             this.Overview = new System.Windows.Forms.CheckBox();
-            this.FishingDelay = new System.Windows.Forms.NumericUpDown();
-            this.L_FishingDelay = new System.Windows.Forms.Label();
+            this.BiteDelay = new System.Windows.Forms.NumericUpDown();
+            this.L_BiteDelay = new System.Windows.Forms.Label();
             this.Bubbling = new System.Windows.Forms.CheckBox();
             this.Raining = new System.Windows.Forms.CheckBox();
             this.L_ChainLength = new System.Windows.Forms.Label();
@@ -462,7 +462,7 @@
             this.SOSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).BeginInit();
             this.FishingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BiteDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).BeginInit();
@@ -2408,7 +2408,7 @@
             // Ally
             // 
             this.Ally.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Ally.Location = new System.Drawing.Point(57, 17);
+            this.Ally.Location = new System.Drawing.Point(55, 17);
             this.Ally.Name = "Ally";
             this.Ally.Size = new System.Drawing.Size(108, 21);
             this.Ally.TabIndex = 121;
@@ -2496,8 +2496,8 @@
             // FishingPanel
             // 
             this.FishingPanel.Controls.Add(this.Overview);
-            this.FishingPanel.Controls.Add(this.FishingDelay);
-            this.FishingPanel.Controls.Add(this.L_FishingDelay);
+            this.FishingPanel.Controls.Add(this.BiteDelay);
+            this.FishingPanel.Controls.Add(this.L_BiteDelay);
             this.FishingPanel.Location = new System.Drawing.Point(0, 219);
             this.FishingPanel.Name = "FishingPanel";
             this.FishingPanel.Size = new System.Drawing.Size(405, 54);
@@ -2515,22 +2515,21 @@
             this.Overview.Text = "概要";
             this.Overview.UseVisualStyleBackColor = true;
             // 
-            // FishingDelay
+            // BiteDelay
             // 
-            this.FishingDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FishingDelay.Location = new System.Drawing.Point(130, 15);
-            this.FishingDelay.Name = "FishingDelay";
-            this.FishingDelay.Size = new System.Drawing.Size(44, 22);
-            this.FishingDelay.TabIndex = 115;
+            this.BiteDelay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BiteDelay.Location = new System.Drawing.Point(175, 15);
+            this.BiteDelay.Name = "BiteDelay";
+            this.BiteDelay.Size = new System.Drawing.Size(44, 22);
+            this.BiteDelay.TabIndex = 115;
             // 
-            // L_FishingDelay
+            // L_BiteDelay
             // 
-            this.L_FishingDelay.Location = new System.Drawing.Point(77, 18);
-            this.L_FishingDelay.Name = "L_FishingDelay";
-            this.L_FishingDelay.Size = new System.Drawing.Size(52, 17);
-            this.L_FishingDelay.TabIndex = 116;
-            this.L_FishingDelay.Text = "延时";
-            this.L_FishingDelay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_BiteDelay.Location = new System.Drawing.Point(97, 18);
+            this.L_BiteDelay.Name = "L_BiteDelay";
+            this.L_BiteDelay.Size = new System.Drawing.Size(69, 17);
+            this.L_BiteDelay.TabIndex = 116;
+            this.L_BiteDelay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Bubbling
             // 
@@ -5163,7 +5162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SOSRNGFrame)).EndInit();
             this.FishingPanel.ResumeLayout(false);
             this.FishingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FishingDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BiteDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).EndInit();
@@ -5606,8 +5605,8 @@
         private System.Windows.Forms.PictureBox Tip;
         private System.Windows.Forms.CheckBox Overview;
         private System.Windows.Forms.Panel FishingPanel;
-        private System.Windows.Forms.NumericUpDown FishingDelay;
-        private System.Windows.Forms.Label L_FishingDelay;
+        private System.Windows.Forms.NumericUpDown BiteDelay;
+        private System.Windows.Forms.Label L_BiteDelay;
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
         private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
