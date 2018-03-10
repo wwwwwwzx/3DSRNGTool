@@ -532,6 +532,7 @@ namespace Pk3DSRNGTool
 
             List<int> Framelist = new List<int>();
             List<ModelStatus> statuslist = new List<ModelStatus>();
+            List<int> timelist = new List<int>();
 
             // Intialize
             SFMT sfmt = new SFMT(Seed.Value);
@@ -564,6 +565,7 @@ namespace Pk3DSRNGTool
                 if (Tmpframe == target)
                 {
                     Framelist.Add(frame);
+                    timelist.Add(i);
                     bak2 = bak1.Clone();
                     bakframe2 = bakframe1;
                     statuslist.Add(stmp.Clone());
@@ -571,7 +573,7 @@ namespace Pk3DSRNGTool
             }
 
             JumpFrame.Value = Framelist.Last();
-            LeapPrompt(Framelist, target, bakframe2, bak2, maxdelay + 10, statuslist);
+            LeapPrompt(Framelist, target, bakframe2, bak2, maxdelay + 10, statuslist, timelist);
         }
 
         private void Search7_TimelineLeap()
@@ -588,6 +590,7 @@ namespace Pk3DSRNGTool
 
             List<int> Framelist = new List<int>();
             List<ModelStatus> statuslist = new List<ModelStatus>();
+            List<int> timelist = new List<int>();
 
             // Intialize
             SFMT sfmt = new SFMT(Seed.Value);
@@ -624,6 +627,7 @@ namespace Pk3DSRNGTool
                 if (Tmpframe == target)
                 {
                     Framelist.Add(frame);
+                    timelist.Add(i);
                     bak2 = bak1.Clone();
                     bakframe2 = bakframe1;
                     statuslist.Add(stmp.Clone());
@@ -637,10 +641,10 @@ namespace Pk3DSRNGTool
             }
 
             Frame_max.Value = Framelist.Last();
-            LeapPrompt(Framelist, target, bakframe2, bak2, Totaldelay, statuslist);
+            LeapPrompt(Framelist, target, bakframe2, bak2, Totaldelay, statuslist, timelist);
         }
 
-        private void LeapPrompt(List<int> Framelist, int target, int startframe, ModelStatus startstatus, int delay, List<ModelStatus> statuslist)
+        private void LeapPrompt(List<int> Framelist, int target, int startframe, ModelStatus startstatus, int delay, List<ModelStatus> statuslist, List<int> timelist)
         {
             if (Framelist.Count > 0)
             {
@@ -651,7 +655,7 @@ namespace Pk3DSRNGTool
                     foreach (var f in Frames) f.Frame0 = frame0;
                 }
                 else
-                    Search7_TimelineLeap2(Framelist, statuslist, target);
+                    Search7_TimelineLeap2(Framelist, statuslist, target, timelist);
             }
             else
                 Error(StringItem.NORESULT_STR[StringItem.language]);
@@ -690,13 +694,14 @@ namespace Pk3DSRNGTool
                 Frames.Add(new Frame(result, frame: Currentframe, time: i * 2, blink: Jumpflag));
             }
         }
-        private void Search7_TimelineLeap2(List<int> framelist, List<ModelStatus> statuslist, int target)
+        private void Search7_TimelineLeap2(List<int> framelist, List<ModelStatus> statuslist, int target, List<int> timelist)
         {
             // Prepare
             SFMT sfmt = new SFMT(Seed.Value);
             for (int i = 0; i < target; i++)
                 sfmt.Next();
             getsetting(sfmt);
+            Frame.standard = timelist.Last() * 2;
 
             // Start
             for (int i = 0; i < framelist.Count; i++)
@@ -705,7 +710,7 @@ namespace Pk3DSRNGTool
                 var result = RNGPool.Generate7();
                 if (!filter.CheckResult(result))
                     continue;
-                Frames.Add(new Frame(result, frame: target) { Frame0 = framelist[i] });
+                Frames.Add(new Frame(result, frame: target, time: timelist[i] * 2) { Frame0 = framelist[i] });
             }
         }
 
