@@ -61,7 +61,7 @@
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.dgv_eggnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_fishing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_frame0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_shift = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -612,7 +612,7 @@
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_eggnum,
-            this.dgv_fishing,
+            this.dgv_frame0,
             this.dgv_Frame,
             this.dgv_shift,
             this.dgv_mark,
@@ -682,13 +682,13 @@
             this.dgv_eggnum.Visible = false;
             this.dgv_eggnum.Width = 40;
             // 
-            // dgv_fishing
+            // dgv_frame0
             // 
-            this.dgv_fishing.DataPropertyName = "FishingFrame";
-            this.dgv_fishing.HeaderText = "钓鱼";
-            this.dgv_fishing.Name = "dgv_fishing";
-            this.dgv_fishing.Visible = false;
-            this.dgv_fishing.Width = 60;
+            this.dgv_frame0.DataPropertyName = "Frame0";
+            this.dgv_frame0.HeaderText = "帧0";
+            this.dgv_frame0.Name = "dgv_frame0";
+            this.dgv_frame0.Visible = false;
+            this.dgv_frame0.Width = 60;
             // 
             // dgv_Frame
             // 
@@ -5073,7 +5073,7 @@
             // B_AddProfile
             // 
             this.B_AddProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_AddProfile.Location = new System.Drawing.Point(544, 13);
+            this.B_AddProfile.Location = new System.Drawing.Point(547, 13);
             this.B_AddProfile.Name = "B_AddProfile";
             this.B_AddProfile.Size = new System.Drawing.Size(20, 21);
             this.B_AddProfile.TabIndex = 96;
@@ -5277,7 +5277,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_fishing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame0;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_shift;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_mark;

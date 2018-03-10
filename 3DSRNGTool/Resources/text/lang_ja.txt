@@ -162,7 +162,6 @@ L_Lead = Lead
 Bubbling = Bubbling
 Overview = Overview
 L_FishingDelay = Delay
-dgv_fishing = Fishing
 L_Weather = Weather
 L_Ally = Ally
 ---------------------TabPage4----------------------------------

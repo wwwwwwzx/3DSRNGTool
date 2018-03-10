@@ -330,6 +330,7 @@ namespace Pk3DSRNGTool
             Frame.Parents[1] = PARENTS_STR[lindex, 1];
             Frame.Parents[2] = PARENTS_STR[lindex, 2];
             dgv_wurmpleevo.HeaderText = speciestr[265];
+            dgv_frame0.HeaderText = dgv_IDframe.HeaderText + "1";
 
             RefreshCategory();
             if (Method == 2)
@@ -1588,7 +1589,8 @@ namespace Pk3DSRNGTool
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
-            dgv_fishing.Visible = gen7fishing && CreateTimeline.Checked;
+            dgv_frame0.Visible = gen7fishing && CreateTimeline.Checked || gen7fidgettimeline && MenuMethod.Checked && !CreateTimeline.Checked || RB_TimelineLeap.Checked;
+            dgv_Frame.HeaderText = gen7fishing || dgv_frame0.Visible ? !Overview.Checked || dgv_frame0.Visible ? dgv_IDframe.HeaderText + "2" : dgv_IDframe.HeaderText + "1" : dgv_IDframe.HeaderText;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
             DGV.CurrentCell = null;

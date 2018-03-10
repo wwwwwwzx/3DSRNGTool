@@ -67,6 +67,6 @@ namespace Pk3DSRNGTool
         public PRNGState _tinystate;
         public string TinyState => (_tinystate ?? (rt as ResultE7)?.Status)?.ToString() ?? string.Empty;
         public string RealTime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : string.Empty;
-        public int FishingFrame { get; set; }
+        public int Frame0 { get; set; } // Double Input Case
     }
 }

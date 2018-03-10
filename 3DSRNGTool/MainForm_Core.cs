@@ -406,9 +406,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < start_frame; i++)
                 sfmt.Next();
             // Prepare
-            ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            status.IsBoy = Boy.Checked;
-            status.raining = Raining.Checked;
+            ModelStatus status = new ModelStatus(Modelnum, sfmt) { IsBoy = Boy.Checked, raining = Raining.Checked };
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frame = (int)Frame_min.Value;
@@ -458,8 +456,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < start_frame; i++)
                 sfmt.Next();
             // Prepare
-            ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            status.raining = Raining.Checked;
+            ModelStatus status = new ModelStatus(Modelnum, sfmt) { raining = Raining.Checked };
             getsetting(sfmt);
             int totaltime = (int)TimeSpan.Value * 30;
             int frameinput1 = (int)Frame_min.Value;          // Input 1: Cast the rod
@@ -506,8 +503,7 @@ namespace Pk3DSRNGTool
                         if (Overview.Checked)
                             result.RandNum = RNGPool.getsavepoint;
                         result.FrameDelayUsed += frameinput2 - frameinput1;
-                        Frames.Add(new Frame(result, frame: frameinput2, time: (i + j + fishingdelay) * 2));
-                        Frames.Last().FishingFrame = frameinput1;
+                        Frames.Add(new Frame(result, frame: frameinput2, time: (i + j + fishingdelay) * 2) { Frame0 = frameinput1 });
                     }
                 }
 
@@ -541,8 +537,7 @@ namespace Pk3DSRNGTool
             SFMT sfmt = new SFMT(Seed.Value);
             for (int i = 0; i < start; i++)
                 sfmt.Next();
-            ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            status.IsBoy = Boy.Checked;
+            ModelStatus status = new ModelStatus(Modelnum, sfmt) { IsBoy = Boy.Checked };
 
             // Advance
             int frame = start;
@@ -575,16 +570,8 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            if (Framelist.Count > 0)
-            {
-                JumpFrame.Value = Framelist.Last();
-                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes: Check new timeline / No: Check the spread", Framelist.Last())) == DialogResult.Yes)
-                    Search7_TimelineLeap1(bakframe2, target, bak2, maxdelay + 10);
-                else
-                    Search7_TimelineLeap2(Framelist, statuslist, target);
-            }
-            else
-                Error(StringItem.NORESULT_STR[StringItem.language]);
+            JumpFrame.Value = Framelist.Last();
+            LeapPrompt(Framelist, target, bakframe2, bak2, maxdelay + 10, statuslist);
         }
 
         private void Search7_TimelineLeap()
@@ -649,11 +636,20 @@ namespace Pk3DSRNGTool
                     RNGPool.AddNext(sfmt);
             }
 
+            Frame_max.Value = Framelist.Last();
+            LeapPrompt(Framelist, target, bakframe2, bak2, Totaldelay, statuslist);
+        }
+
+        private void LeapPrompt(List<int> Framelist, int target, int startframe, ModelStatus startstatus, int delay, List<ModelStatus> statuslist)
+        {
             if (Framelist.Count > 0)
             {
-                Frame_max.Value = Framelist.Last();
-                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0}. Yes: Check new timeline / No: Check the spread", Framelist.Last())) == DialogResult.Yes)
-                    Search7_TimelineLeap1(bakframe2, target, bak2, Totaldelay);
+                int frame0 = Framelist.Last();
+                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0} (Frame1) and then at {1} (Frame2).\n\nYes: Check new timeline / No: Check the spread", frame0, target)) == DialogResult.Yes)
+                {
+                    Search7_TimelineLeap1(startframe, target, startstatus, delay);
+                    foreach (var f in Frames) f.Frame0 = frame0;
+                }
                 else
                     Search7_TimelineLeap2(Framelist, statuslist, target);
             }
@@ -709,7 +705,7 @@ namespace Pk3DSRNGTool
                 var result = RNGPool.Generate7();
                 if (!filter.CheckResult(result))
                     continue;
-                Frames.Add(new Frame(result, frame: framelist[i]));
+                Frames.Add(new Frame(result, frame: target) { Frame0 = framelist[i] });
             }
         }
 
