@@ -572,7 +572,7 @@ namespace Pk3DSRNGTool
                 }
             }
 
-            JumpFrame.Value = Framelist.Last();
+            if (Framelist.Count > 0) JumpFrame.Value = Framelist.Last();
             LeapPrompt(Framelist, target, bakframe2, bak2, maxdelay + 10, statuslist, timelist);
         }
 
@@ -582,6 +582,14 @@ namespace Pk3DSRNGTool
             int target = (int)TargetFrame.Value;
             int frame = start;
             int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0] - 300; // 10 seconds ahead
+
+            // Intialize
+            SFMT sfmt = new SFMT(Seed.Value);
+            for (int i = 0; i < start; i++)
+                sfmt.Next();
+            ModelStatus status = new ModelStatus(Modelnum, sfmt);
+            getsetting(sfmt);
+
             if (Totaldelay > 20000)
             {
                 Error("Too away from target!");
@@ -591,13 +599,6 @@ namespace Pk3DSRNGTool
             List<int> Framelist = new List<int>();
             List<ModelStatus> statuslist = new List<ModelStatus>();
             List<int> timelist = new List<int>();
-
-            // Intialize
-            SFMT sfmt = new SFMT(Seed.Value);
-            for (int i = 0; i < start; i++)
-                sfmt.Next();
-            ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            getsetting(sfmt);
 
             // Search
             int frameadvance;
@@ -640,7 +641,7 @@ namespace Pk3DSRNGTool
                     RNGPool.AddNext(sfmt);
             }
 
-            Frame_max.Value = Framelist.Last();
+            if (Framelist.Count > 0) Frame_max.Value = Framelist.Last();
             LeapPrompt(Framelist, target, bakframe2, bak2, Totaldelay, statuslist, timelist);
         }
 
