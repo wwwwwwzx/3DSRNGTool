@@ -45,8 +45,11 @@ Usually it's the last screen before the battle starts, or the special dialogue b
 - __Assembled Zygarde__: _Zygarde has gone into a Poke Ball!_
 - __Crabrawler__: _There was a Pokemon feeding on the Berries and it leaped out at you!_
 - __Fishing__: 
-   - Timer user: Press A when `A` pops up, then pull the fishing rod off water once you hear the sound.
-   - PCalc user: Press 1st A when `A` pops up (`fishing`), press 2nd A when the exclamation mark pops up (`frame`).
+   - Timer user:   
+     1. `Overview` checked: Press A when `A` pops up (`Frame1`), then pull the fishing rod off water __once__ you hear the sound. You have ~0.5 seconds tolerance to do so.   
+     2. `Overview` unchecked: Press A when the exclamation mark pops up (`Frame2`). Suction cups required.
+   - PCalc user: Press 1st A when `A` pops up (`Frame1`), press 2nd A when the exclamation mark pops up (`Frame2`).
+- __Rustling spots__: No dialogue. Save as close as possible, make a step to trigger the battle.
 
 ##### Sun and Moon
 - __Pikipek__: No dialogue. Before the fourth step in grass.

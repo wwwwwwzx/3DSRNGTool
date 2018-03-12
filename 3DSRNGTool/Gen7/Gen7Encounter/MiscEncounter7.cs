@@ -7,8 +7,8 @@ namespace Pk3DSRNGTool
     public class MiscEncounter7 : EncounterArea
     {
         public override int[] Species { get; set; }
-        public byte NPC, DelayType1 = 1, DelayType2;
-        public int Delay1, Delay2;
+        public byte NPC, DelayType1 = 1, DelayType2 = 1;
+        public int Delay1 = 4, Delay2 = 90;
         public byte SlotType;
 
         public byte LevelMin;
