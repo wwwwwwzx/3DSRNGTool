@@ -371,6 +371,7 @@ namespace Pk3DSRNGTool.Core
         }
 
         public static FishingSetting fsetting;
+        public static bool WildCry;
 
         public static void WildDelay7()
         {
@@ -387,18 +388,16 @@ namespace Pk3DSRNGTool.Core
                     time_elapse7(fsetting.platdelay); // 2nd Input can be at any moment inside
                     NormalDelay7();
                     break;
-                case 3:
-                    Advance(2); // Step
+                case 3:  // Step
+                    Advance(2);
                     NormalDelay7();
-                    Advance(1);
+                    if (WildCry) Advance(1);
                     break;
-                case 4:
-                    Advance(2); // Step
-                    NormalDelay7();
-                    break;
-                case 5:
-                    Advance(3); // Step + Encounter Trigger
-                    NormalDelay7();
+                case 4:  // Menu
+                    time_elapse7(2);
+                    Advance(2); // fidget
+                    time_elapse7(DelayTime - 2);
+                    if (WildCry) Advance(1);
                     break;
                 default: // Honey
                     NormalDelay7(); // Enter the bag

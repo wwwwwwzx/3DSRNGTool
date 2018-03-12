@@ -1399,6 +1399,7 @@ namespace Pk3DSRNGTool
                 else if (gen7misc)
                 {
                     RNGPool.DelayType = (ea as MiscEncounter7).DelayType1;
+                    RNGPool.WildCry = (ea as MiscEncounter7).Cry;
                     setting7.DelayType = (ea as MiscEncounter7).DelayType2;
                     setting7.DelayTime = (int)Delay2.Value / 2;
                     setting7.SpecForm = new[] { 0 }.Concat(slotspecies).ToArray();

@@ -1641,7 +1641,6 @@ namespace Pk3DSRNGTool
             {
                 Location = 012, // Route 2
                 NPC = 1, LevelMin = 07,
-                DelayType1 = 5,
                 SlotType = 43, Species = new[] {023, 206, 296, 096},
             },
             new MiscEncounter7
@@ -1697,7 +1696,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 064, idx = 1, // Hano Beach
                 NPC = 5, LevelMin = 22,
-                DelayType1 = 3, Delay1 = 4,
+                DelayType1 = 3, Cry = true,
                 SlotType = 40, Species = new[] {120, 769},
             },
             new MiscEncounter7
@@ -1710,7 +1709,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 106, // Route 10
                 NPC = 2, LevelMin = 26,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 28, Species = new[] {022, 204, 227},
             },
@@ -1742,7 +1741,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 166, idx = 1, // Poni Plains
                 NPC = 2, LevelMin = 54,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 28, Species = new[] {546, 123, 113},
             },
@@ -1750,7 +1749,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 166, idx = 2, // Poni Plains
                 NPC = 2, LevelMin = 54,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 34, Species = new[] {057, 190, 587},
             },
@@ -1781,7 +1780,6 @@ namespace Pk3DSRNGTool
             {
                 Location = 012, // Route 2
                 NPC = 1, LevelMin = 09, LevelMax = 10,
-                DelayType1 = 5,
                 SlotType = 40, Species = new[] {023, 296},
             },
             new MiscEncounter7
@@ -1813,7 +1811,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 090, // Lush Jungle
                 NPC = 1, LevelMin = 18,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 42, Species = new[] {753},
             },
@@ -1827,14 +1825,14 @@ namespace Pk3DSRNGTool
             {
                 Location = 064, // Hano Beach
                 NPC = 5, LevelMin = 21,
-                DelayType1 = 3, Delay1 = 4,
+                DelayType1 = 3, Cry = true,
                 SlotType = 41, Species = new[] {120, 769},
             },
             new MiscEncounter7
             {
                 Location = 106, // Route 10
                 NPC = 2, LevelMin = 24,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 41, Species = new[] {022, 227},
             },
@@ -1872,7 +1870,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 166, idx = 1, // Poni Plains
                 NPC = 2, LevelMin = 54,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 40, Species = new[] {546, 123},
             },
@@ -1880,7 +1878,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 166, idx = 2, // Poni Plains
                 NPC = 2, LevelMin = 54,
-                DelayType1 = 4, Delay1 = 4,
+                DelayType1 = 3,
                 DelayType2 = 0, Delay2 = 162,
                 SlotType = 41, Species = new[] {057, 587},
             },
