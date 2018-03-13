@@ -750,6 +750,8 @@ namespace Pk3DSRNGTool
                 else if (Poke.Items.Count > 0 && sender != AlwaysSynced)
                     Poke_SelectedIndexChanged(null, null);
             }
+            else if (IsEvent)
+                Event_Species_SelectedIndexChanged(null, null);
 
             AssumeSynced.Visible =
             B_OpenTool.Visible = gen6timeline_available || IsHorde;
