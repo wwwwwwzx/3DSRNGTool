@@ -891,7 +891,7 @@ namespace Pk3DSRNGTool
                         Timedelay.Value = m.Delay1;
                         Delay2.Value = m.Delay2;
                     }
-                    L_TriggerMethod.Visible = TriggerMethod.Visible = m.DelayType1 == 1;
+                    L_TriggerMethod.Visible = TriggerMethod.Visible = gen7misc && m.DelayType1 == 1;
                 }
                 ChainLength.Maximum = 255;
             }

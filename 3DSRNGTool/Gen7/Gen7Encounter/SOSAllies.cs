@@ -76,6 +76,8 @@ namespace Pk3DSRNGTool
 
         public static int[] getAllies(int LocationIndex, int species, int Ver, bool IsNight)
         {
+            if (PersonalTable.USUM.getFormeEntry(species & 0x7FF, species >> 11).EscapeRate == 0) // Zero call rate
+                return new int[7];
             bool IsUltra = Ver > 6;
             if (IsUltra && LocationIndex == 124 && species != 0) // Haina Desert
             {
