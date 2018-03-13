@@ -431,6 +431,8 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.L_TriggerMethod = new System.Windows.Forms.Label();
+            this.TriggerMethod = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -2321,6 +2323,8 @@
             // 
             // Wild_Setting
             // 
+            this.Wild_Setting.Controls.Add(this.L_TriggerMethod);
+            this.Wild_Setting.Controls.Add(this.TriggerMethod);
             this.Wild_Setting.Controls.Add(this.SOS);
             this.Wild_Setting.Controls.Add(this.SOSPanel);
             this.Wild_Setting.Controls.Add(this.L_SOSRNGFrame);
@@ -5094,6 +5098,23 @@
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
             // 
+            // L_TriggerMethod
+            // 
+            this.L_TriggerMethod.AutoSize = true;
+            this.L_TriggerMethod.Location = new System.Drawing.Point(164, 196);
+            this.L_TriggerMethod.Name = "L_TriggerMethod";
+            this.L_TriggerMethod.Size = new System.Drawing.Size(55, 13);
+            this.L_TriggerMethod.TabIndex = 122;
+            this.L_TriggerMethod.Text = "触发方式";
+            // 
+            // TriggerMethod
+            // 
+            this.TriggerMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TriggerMethod.Location = new System.Drawing.Point(225, 192);
+            this.TriggerMethod.Name = "TriggerMethod";
+            this.TriggerMethod.Size = new System.Drawing.Size(88, 21);
+            this.TriggerMethod.TabIndex = 121;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5627,6 +5648,8 @@
         private System.Windows.Forms.NumericUpDown DelayMax;
         private System.Windows.Forms.NumericUpDown DelayMin;
         private System.Windows.Forms.RadioButton RB_TimelineLeap;
+        private System.Windows.Forms.Label L_TriggerMethod;
+        private System.Windows.Forms.ComboBox TriggerMethod;
     }
 }
 

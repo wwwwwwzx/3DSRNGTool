@@ -14,7 +14,7 @@
 - DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
 ! MainForm = 3DS RNG Tool
 - Change stuff below this line, not above.
----------------------Global Setting------------------------
+---------------------Global Setting--------------------
 L_Seed = Semilla
 L_TSV = TSV
 L_GameVersion = Versión del Juego
@@ -36,13 +36,10 @@ M_Option = Opciones
 M_Profile = Profile Manager
 M_Language = Idioma
 M_Exit = Salir
----------------------TabPage1----------------------------------
----
+---------------------TabPage1--------------------------
 Sta_Setting = Ajustes para Estacionarios
 L_Poke = Pokemon
 ShinyLocked = Bloqueo Variocolor
-Wild = Salvaje
-Stationary = Estacionario
 AlwaysSynced = Siempre Sincronizado
 Fix3v = 3IVs
 AssumeSynced = Asume Sincronización
@@ -127,7 +124,7 @@ dgv_rand64 = Número Aleatorio
 dgv_PID = PID
 dgv_EC = EC
 dgv_time = Tiempo Real
----------------------TabPage2----------------------------------
+---------------------TabPage2--------------------------
 EventSetting = Ajustes de Eventos
 Event_IV_Fix0 = PS
 Event_IV_Fix1 = Atq
@@ -149,7 +146,7 @@ L_Species = Especies
 L_Forme = Forma
 NoDex = Sin Entrada en PokeDex
 RB_TimelineLeap = Timeline Leap
----------------------TabPage3----------------------------------
+---------------------TabPage3--------------------------
 Wild_Setting = Ajustes de Encuentros Salvajes
 L_Location = Ubicación
 L_Slots = Espacios
@@ -166,9 +163,9 @@ Overview = Overview
 L_BiteDelay = Bite Delay
 L_Weather = Weather
 L_Ally = Ally
----------------------TabPage4----------------------------------
+L_TriggerMethod = Trigger
+---------------------TabPage4--------------------------
 TinyMT_Status = Fotograma actual
----
 Parents_Info = Información de Padres
 L_Egg_H = PS
 L_Egg_A = Atq
@@ -206,7 +203,7 @@ SetAsAfter = Establecer el Estado luego de recibir este Huevo como Actual
 SetAsStarting = Establecer como Fotograma de Inicio
 SetAsFidget = Set as Fidget Frame
 DumpAcceptList = Dump Accept Egg List
----------------------TabPage5----------------------------------
+---------------------TabPage5--------------------------
 ID_RE = Expresión Regular
 ID_Disable = Desactivar Filtros
 L_CurrentSeed = Semilla Actual
@@ -217,7 +214,7 @@ dgv_ID_rand64 = Número Aleatorio
 dgv_ID_state = Tiny State
 L_ClkCorrection = Corrección de Reloj
 ! End
-----------------------TTT------------------------------------
+----------------------TTT------------------------------
 ! TinyTimelineTool = Tiny Timeline Tool
 GB_Cali = Calibración
 L_Mainframe = Fotograma de RNG Principal
@@ -234,7 +231,7 @@ tiny_portalsync = PSincro
 tiny_slot = Espacio
 tiny_state = Tiny State
 ! End
--------------------Gen7MainRNGTool----------------------------
+-------------------Gen7MainRNGTool---------------------
 ! Gen7MainRNGTool = Gen7 Main RNG Tool
 InputBox = InputBox
 Back = Back
@@ -255,7 +252,7 @@ Startup = Abrir al iniciar
 Raining = Raining
 Fidget = Fidget
 ! End
--------------------Gen7EggSeedFinder----------------------------
+-------------------Gen7EggSeedFinder-------------------
 ! Gen7EggSeedFinder = Gen7 Buscador de Semilla de Huevos
 B_EggSeed127 = Ya!
 Magikarp = Calculadora de 127 Magikarp
@@ -267,7 +264,7 @@ B_DelNature = Suprimir
 B_TinySearch = Buscar
 B_Abort7 = Abortar
 ! End
--------------------NTRHelper--------------------------------------
+-------------------NTRHelper---------------------------
 ! NTRHelper = Ayudante NTR
 B_OneClick = Un Clic
 B_Connect = Conectar
@@ -278,7 +275,7 @@ B_Start = Iniciar
 B_Stop = Detener
 L_Speed = Velocidad del Bot
 ! End
--------------------MTSeedFinder--------------------------------------
+-------------------MTSeedFinder------------------------
 ! Gen6MTSeedFinder = Buscador de Semilla RNG Gen6
 B_Abort6 = Abortar
 B_MTSearch = Buscar
@@ -300,7 +297,7 @@ dgv_Seed_frame2 = Fotograma2
 dgv_Seed_nature2 = Naturaleza2
 dgv_Seed_gender = Género
 ! End
--------------------Profile View--------------------------------------
+-------------------Profile View------------------------
 ! ProfileView = Profile View
 L_Description = Description:
 L_GameVersion = Versión:

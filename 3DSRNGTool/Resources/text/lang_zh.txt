@@ -14,7 +14,7 @@
 - DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
 ! MainForm = 3DS乱数工具 @wwwwwwzx
 - Change stuff below this line, not above.
----------------------Global Setting------------------------
+---------------------Global Setting--------------------
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = 游戏版本
@@ -36,13 +36,10 @@ M_Option = 设置
 M_Profile = 存档信息管理
 M_Language = 界面语言
 M_Exit = 退出
----------------------TabPage1----------------------------------
----
+---------------------TabPage1--------------------------
 Sta_Setting = 定点设置
 L_Poke = 宝可梦
 ShinyLocked = 固定不闪
-Wild = 野生
-Stationary = 定点
 AlwaysSynced = 必定同步
 Fix3v = 固定3V
 AssumeSynced = 假定同步成功
@@ -127,7 +124,7 @@ dgv_rand64 = 乱数值
 dgv_PID = PID
 dgv_EC = 加密常数
 dgv_time = 时间
----------------------TabPage2----------------------------------
+---------------------TabPage2--------------------------
 EventSetting = 配信设置
 Event_IV_Fix0 = HP
 Event_IV_Fix1 = 攻击
@@ -149,7 +146,7 @@ L_Species = 种类
 L_Forme = 形态
 NoDex = 未登入图鉴
 RB_TimelineLeap = 时间线跳跃
----------------------TabPage3----------------------------------
+---------------------TabPage3--------------------------
 Wild_Setting = 野生草丛遇敌设置
 L_Location = 地点
 L_Slots = 类别
@@ -166,9 +163,9 @@ Overview = 预览
 L_BiteDelay = 咬勾延时
 L_Weather = 天气
 L_Ally = 帮手
----------------------TabPage4----------------------------------
+L_TriggerMethod = 触发方式
+---------------------TabPage4--------------------------
 TinyMT_Status = 当前状态
----
 Parents_Info = 父母信息
 L_Egg_H = HP
 L_Egg_A = 攻击
@@ -206,7 +203,7 @@ SetAsAfter = 将领取该蛋后的状态设为当前状态
 SetAsStarting = 将该帧设为起点
 SetAsFidget = 将该帧设为动作
 DumpAcceptList = 导出取蛋列表
----------------------TabPage5----------------------------------
+---------------------TabPage5--------------------------
 ID_RE = 正则表达式
 ID_Disable = 取消筛选
 L_CurrentSeed = 当前状态
@@ -217,7 +214,7 @@ dgv_ID_rand = 乱数值
 dgv_ID_rand64 = 乱数值
 dgv_ID_state = 状态
 L_ClkCorrection = 指针修正
-----------------------TTT------------------------------------
+----------------------TTT------------------------------
 ! TinyTimelineTool = TinyMT 时间线工具
 GB_Cali = 校准
 L_Mainframe = 主乱数帧
@@ -234,7 +231,7 @@ tiny_portalsync = P同步
 tiny_slot = 种类
 tiny_state = Tiny状态
 ! End
--------------------Gen7MainRNGTool----------------------------
+-------------------Gen7MainRNGTool---------------------
 ! Gen7MainRNGTool = 7代主乱数工具
 InputBox = 输入
 Back = 后退
@@ -255,7 +252,7 @@ Startup = 自动打开
 Raining = 下雨
 Fidget = 待机动作
 ! End
--------------------Gen7EggSeedFinder----------------------------
+-------------------Gen7EggSeedFinder-------------------
 ! Gen7EggSeedFinder = 7代孵蛋乱数Seed检索
 B_EggSeed127 = Go!
 Magikarp = 127鲤鱼王计算器
@@ -267,7 +264,7 @@ B_DelNature = 删去
 B_TinySearch = 检索
 B_Abort7 = 终止
 ! End
--------------------NTRHelper--------------------------------------
+-------------------NTRHelper---------------------------
 ! NTRHelper = NTR助手
 B_OneClick = 一键完成
 B_Connect = 连接
@@ -278,7 +275,7 @@ B_Start = 启动
 B_Stop = 停止
 L_Speed = 运行速度
 ! End
--------------------MTSeedFinder--------------------------------------
+-------------------MTSeedFinder------------------------
 ! Gen6MTSeedFinder = 6代主乱数Seed检索
 B_Abort6 = 终止
 B_MTSearch = 检索
@@ -300,7 +297,7 @@ dgv_Seed_frame2 = 帧2
 dgv_Seed_nature2 = 性格2
 dgv_Seed_gender = 性别
 ! End
--------------------Profile View--------------------------------------
+-------------------Profile View------------------------
 ! ProfileView = 存档信息
 L_Description = 存档名称:
 L_GameVersion = 版本:

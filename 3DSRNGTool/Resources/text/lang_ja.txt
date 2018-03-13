@@ -14,7 +14,7 @@
 - DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
 ! MainForm = 3DS RNG Tool
 - Change stuff below this line, not above.
----------------------Global Setting------------------------
+---------------------Global Setting--------------------
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = バージョン
@@ -36,8 +36,7 @@ M_Option = 設定
 M_Profile = Profile Manager
 M_Language = 言語
 M_Exit = 閉じる
----------------------TabPage1----------------------------------
----
+---------------------TabPage1--------------------------
 Sta_Setting = Stationary Setting
 L_Poke = ポケモン
 ShinyLocked = Shiny Locked
@@ -125,7 +124,7 @@ dgv_rand64 = 乱数列
 dgv_PID = 性格値
 dgv_EC = 暗号化定数
 dgv_time = Real Time
----------------------TabPage2----------------------------------
+---------------------TabPage2--------------------------
 EventSetting = Event Setting
 Event_IV_Fix0 = HP
 Event_IV_Fix1 = 攻撃
@@ -147,7 +146,7 @@ L_Species = 種類
 L_Forme = フォルム
 NoDex = No Dex Entry
 RB_TimelineLeap = Timeline Leap
----------------------TabPage3----------------------------------
+---------------------TabPage3--------------------------
 Wild_Setting = Wild Encounter Setting
 L_Location = Location
 L_Slots = スロット
@@ -164,9 +163,9 @@ Overview = Overview
 L_BiteDelay = Bite Delay
 L_Weather = Weather
 L_Ally = Ally
----------------------TabPage4----------------------------------
+L_TriggerMethod = Trigger
+---------------------TabPage4--------------------------
 TinyMT_Status = Current Status
----
 Parents_Info = 親の情報
 L_Egg_H = HP
 L_Egg_A = 攻撃
@@ -204,7 +203,7 @@ SetAsAfter = Set the Status after receiving this Egg as Current
 SetAsStarting = Set as Starting Frame
 SetAsFidget = Set as Fidget Frame
 DumpAcceptList = ダンプリスト
----------------------TabPage5----------------------------------
+---------------------TabPage5--------------------------
 ID_RE = 正規表現
 ID_Disable = 絞り込みを無効
 L_CurrentSeed = 現在Seed
@@ -215,7 +214,7 @@ dgv_ID_rand64 = 乱数値
 dgv_ID_state = Seed
 L_ClkCorrection = 針の補正
 ! End
-----------------------TTT------------------------------------
+----------------------TTT------------------------------
 ! TinyTimelineTool = Tiny Timeline Tool
 GB_Cali = Calibration
 L_Mainframe = Main RNG Frame
@@ -232,7 +231,7 @@ tiny_portalsync = シンクロ
 tiny_slot = スロット
 tiny_state = Tiny State
 ! End
--------------------Gen7MainRNGTool----------------------------
+-------------------Gen7MainRNGTool---------------------
 ! Gen7MainRNGTool = Gen7 Main RNG Tool
 InputBox = 針入力
 Back = 1つ戻る
@@ -253,7 +252,7 @@ Startup = Open on startup
 Raining = 雨
 Fidget = 主人公の動き
 ! End
--------------------Gen7EggSeedFinder----------------------------
+-------------------Gen7EggSeedFinder-------------------
 ! Gen7EggSeedFinder = Gen7 Egg Seed Finder
 B_EggSeed127 = Go!
 Magikarp = 127 Magikarp Calculator
@@ -265,7 +264,7 @@ B_DelNature = 1つ戻る
 B_TinySearch = 計算
 B_Abort7 = キャンセル
 ! End
--------------------NTRHelper--------------------------------------
+-------------------NTRHelper---------------------------
 ! NTRHelper = NTR Helper
 B_OneClick = One Click
 B_Connect = Connect
@@ -276,7 +275,7 @@ B_Start = スタート
 B_Stop = キャンセル
 L_Speed = Bot Speed
 ! End
--------------------MTSeedFinder--------------------------------------
+-------------------MTSeedFinder------------------------
 ! Gen6MTSeedFinder = Gen6 Main RNG Seed Finder
 B_Abort6 = キャンセル
 B_MTSearch = 計算
@@ -298,7 +297,7 @@ dgv_Seed_frame2 = 消費2
 dgv_Seed_nature2 = 性格2
 dgv_Seed_gender = 性別
 ! End
--------------------Profile View--------------------------------------
+-------------------Profile View------------------------
 ! ProfileView = Profile View
 L_Description = Description:
 L_GameVersion = バージョン:

@@ -245,6 +245,15 @@ namespace Pk3DSRNGTool
             {".\nReject {0} times",",\nand then reject {0} times" },
             {".\n拒绝 {0} 次", ",\n然后拒绝 {0} 次" },
         };
+        public static readonly string[][] TRIGGER_STR =
+        {
+            new string[] { "Make a step", "Close the menu" },
+            new string[] { "Make a step", "Close the menu" },
+            new string[] { "Make a step", "Close the menu" },
+            new string[] { "Make a step", "Close the menu" },
+            new string[] { "Make a step", "Close the menu" },
+            new string[] { "走一步", "关菜单" },
+        };
         public readonly static string[] FacilityName =
         {
             "Big Dream","Gold Rush","Treasure Hunt",

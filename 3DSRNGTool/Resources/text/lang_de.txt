@@ -14,7 +14,7 @@
 - DO NOT CHANGE THIS SECTION EXCEPT FORM NAME & TITLE
 ! MainForm = 3DS RNG Tool
 - Change stuff below this line, not above.
----------------------Global Setting------------------------
+---------------------Global Setting--------------------
 L_Seed = Seed
 L_TSV = TSV
 L_GameVersion = Spiel Version
@@ -36,13 +36,10 @@ M_Option = Optionen
 M_Language = Optionen
 M_Profile = Profile Manager
 M_Exit = Ende
----------------------TabPage1----------------------------------
----
+---------------------TabPage1--------------------------
 Sta_Setting = Stationäre Einstellung
 L_Poke = Pokemon
 ShinyLocked = Shiny Sperre
-Wild = Wild
-Stationary = Stationaer
 AlwaysSynced = Immer Synchro
 Fix3v = 3DVs
 AssumeSynced = Synchronisieren?
@@ -127,7 +124,7 @@ dgv_rand64 = Random Number
 dgv_PID = PID
 dgv_EC = EC
 dgv_time = Echtzeit
----------------------TabPage2----------------------------------
+---------------------TabPage2--------------------------
 EventSetting = Event Einstellung
 Event_IV_Fix0 = KP
 Event_IV_Fix1 = Atk
@@ -149,7 +146,7 @@ L_Species = Pokemon
 L_Forme = Form
 NoDex = Kein Dex Eintrag
 RB_TimelineLeap = Timeline Leap
----------------------TabPage3----------------------------------
+---------------------TabPage3--------------------------
 Wild_Setting = Wilde Pokemon Einstellungen
 L_Location = Ort
 L_Slots = Slots
@@ -166,9 +163,9 @@ Overview = Overview
 L_BiteDelay = Bite Delay
 L_Weather = Weather
 L_Ally = Ally
----------------------TabPage4----------------------------------
+L_TriggerMethod = Trigger
+---------------------TabPage4--------------------------
 TinyMT_Status = Aktueller Status
----
 Parents_Info = Eltern Infomation
 L_Egg_H = KP
 L_Egg_A = Atk
@@ -206,7 +203,7 @@ SetAsAfter = Setze den Status, nachdem du dieses Ei erhalten hast
 SetAsStarting = Als Startrahmen festlegen
 SetAsFidget = Set as Fidget Frame
 DumpAcceptList = Dump Accept Egg List
----------------------TabPage5----------------------------------
+---------------------TabPage5--------------------------
 ID_RE = Regulärer Ausdruck
 ID_Disable = Filter deaktivieren
 L_CurrentSeed = Aktueller Seed
@@ -217,7 +214,7 @@ dgv_ID_rand64 = Randon Number
 dgv_ID_state = Tiny State
 L_ClkCorrection = Uhr Korrektur
 ! End
-----------------------TTT------------------------------------
+----------------------TTT------------------------------
 ! TinyTimelineTool = Tiny Timeline Tool
 GB_Cali = Calibration
 L_Mainframe = Haupt-RNG-Rahmen
@@ -234,7 +231,7 @@ tiny_portalsync = PSync
 tiny_slot = Slot
 tiny_state = Tiny State
 ! End
--------------------Gen7MainRNGTool----------------------------
+-------------------Gen7MainRNGTool---------------------
 ! Gen7MainRNGTool = Gen7 Main RNG Tool
 InputBox = Eingabefeld
 Back = Zurück
@@ -255,7 +252,7 @@ Startup = Beim Start öffnen
 Raining = Regen
 Fidget = Fidget
 ! End
--------------------Gen7EggSeedFinder----------------------------
+-------------------Gen7EggSeedFinder-------------------
 ! Gen7EggSeedFinder = Gen7 Ei Seed Finder
 B_EggSeed127 = Los!
 Magikarp = 127 Karpador Rechner
@@ -267,7 +264,7 @@ B_DelNature = Löschen
 B_TinySearch = Suchen
 B_Abort7 = Abbruch
 ! End
--------------------NTRHelper--------------------------------------
+-------------------NTRHelper---------------------------
 ! NTRHelper = NTR Helfer
 B_OneClick = 1 Klick
 B_Connect = Verbinden
@@ -278,7 +275,7 @@ B_Start = Start
 B_Stop = Stop
 L_Speed = Bot Speed
 ! End
--------------------MTSeedFinder--------------------------------------
+-------------------MTSeedFinder------------------------
 ! Gen6MTSeedFinder = Gen6 Haupt-RNG-Seed finder
 B_Abort6 = Abbruch
 B_MTSearch = Suchen
@@ -300,7 +297,7 @@ dgv_Seed_frame2 = Frame2
 dgv_Seed_nature2 = Wesen2
 dgv_Seed_gender = Geschlecht
 ! End
--------------------Profile View--------------------------------------
+-------------------Profile View------------------------
 ! ProfileView = Profile View
 L_Description = Description:
 L_GameVersion = Spiel:

@@ -370,6 +370,10 @@ namespace Pk3DSRNGTool
             Event_Species.Items.AddRange(new string[] { "-" }.Concat(speciestr.Skip(1).Take(Gen6 ? 721 : IsUltra ? 807 : 802)).ToArray());
             Event_Species.SelectedIndex = 0;
 
+            TriggerMethod.Items.Clear();
+            TriggerMethod.Items.AddRange(NONE_STR.Skip(lindex).Take(1).Concat(TRIGGER_STR[lindex]).ToArray());
+            TriggerMethod.SelectedIndex = 0;
+
             // display something upon loading
             Nature.CheckBoxItems[0].Checked = true;
             Nature.CheckBoxItems[0].Checked = false;
@@ -455,6 +459,7 @@ namespace Pk3DSRNGTool
             }
             SpecialOnly.Visible = Gen7 && Method == 2 && CB_Category.SelectedIndex > 0 || gen7sos;
             FishingPanel.Visible = Bubbling.Visible = gen7fishing;
+            L_TriggerMethod.Visible = TriggerMethod.Visible = gen7misc && (ea as MiscEncounter7).DelayType1 == 1;
             L_Correction.Visible = Correction.Visible = LinearDelay;
             L_Delay2.Visible = Delay2.Visible = gen7misc;
             Raining.Visible = Gen7 && !gen7sos;
@@ -879,6 +884,7 @@ namespace Pk3DSRNGTool
                         Timedelay.Value = m.Delay1;
                         Delay2.Value = m.Delay2;
                     }
+                    L_TriggerMethod.Visible = TriggerMethod.Visible = m.DelayType1 == 1;
                 }
                 ChainLength.Maximum = 255;
             }
@@ -1398,7 +1404,7 @@ namespace Pk3DSRNGTool
                 }
                 else if (gen7misc)
                 {
-                    RNGPool.DelayType = (ea as MiscEncounter7).DelayType1;
+                    RNGPool.DelayType = TriggerMethod.Visible && TriggerMethod.SelectedIndex > 0 ? (byte)(TriggerMethod.SelectedIndex + 2) : (ea as MiscEncounter7).DelayType1;
                     RNGPool.WildCry = (ea as MiscEncounter7).Cry;
                     setting7.DelayType = (ea as MiscEncounter7).DelayType2;
                     setting7.DelayTime = (int)Delay2.Value / 2;
