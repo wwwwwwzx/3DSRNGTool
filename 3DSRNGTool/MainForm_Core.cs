@@ -223,10 +223,8 @@ namespace Pk3DSRNGTool
                 Search7_Timeline();
             else if (AroundTarget.Checked)
                 Search7_AroundTarget();
-            else if (gen7fidgettimeline && MenuMethod.Checked)
-                Search7_MenuMethod();
             else if (RB_TimelineLeap.Checked)
-                Search7_TimelineLeap();
+                Search7_TimelineLeap(IsEvent ? 0 : 1);
             else
                 Search7_Normal();
         }
@@ -520,19 +518,15 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void Search7_MenuMethod()
+        private void Search7_TimelineLeap(int LeapType = 0)
         {
             int start = (int)Frame_min.Value;
             int target = (int)TargetFrame.Value;
             int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0];
-            int mindelay = (int)Math.Round(DelayMin.Value * 30);
-            int maxdelay = (int)Math.Round(DelayMax.Value * 30);
+            int mindelay = IsEvent ? 300 : (int)Math.Round(DelayMin.Value * 30);
+            int maxdelay = IsEvent ? Totaldelay : (int)Math.Round(DelayMax.Value * 30);
             int starttime = Totaldelay - maxdelay;
             int endtime = Totaldelay - mindelay;
-
-            List<int> Framelist = new List<int>();
-            List<ModelStatus> statuslist = new List<ModelStatus>();
-            List<int> timelist = new List<int>();
 
             // Intialize
             SFMT sfmt = new SFMT(Seed.Value);
@@ -544,52 +538,11 @@ namespace Pk3DSRNGTool
             int frame = start;
             for (int i = 0; i < starttime; i++)
                 frame += status.NextState();
-
-            // Search
-            int Tmpframe, bakframe1, bakframe2 = 0;
-            ModelStatus stmp, bak1, bak2 = null;
-            for (int i = Math.Max(0, starttime); i < endtime; i++, frame += status.NextState())
-            {
-                Tmpframe = frame;
-                stmp = status.Clone();
-
-                // Leap!
-                stmp.fidget_cd = 3;
-
-                bak1 = stmp.Clone();
-                bakframe1 = Tmpframe;
-
-                // Check if hit
-                while (Tmpframe < target)
-                    Tmpframe += stmp.NextState();
-                if (Tmpframe == target)
-                {
-                    Framelist.Add(frame);
-                    timelist.Add(i);
-                    bak2 = bak1.Clone();
-                    bakframe2 = bakframe1;
-                    statuslist.Add(stmp.Clone());
-                }
-            }
-
-            if (Framelist.Count > 0) JumpFrame.Value = Framelist.Last();
-            LeapPrompt(Framelist, target, bakframe2, bak2, maxdelay + 10, statuslist, timelist);
-        }
-
-        private void Search7_TimelineLeap()
-        {
-            int start = (int)Frame_min.Value;
-            int target = (int)TargetFrame.Value;
-            int frame = start;
-            int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0] - 300; // 10 seconds ahead
-
-            // Intialize
-            SFMT sfmt = new SFMT(Seed.Value);
-            for (int i = 0; i < start; i++)
+            for (int i = start; i < frame; i++)
                 sfmt.Next();
-            ModelStatus status = new ModelStatus(Modelnum, sfmt);
-            getsetting(sfmt);
 
+            getsetting(sfmt);
+            
             if (Totaldelay > 20000)
             {
                 Error("Too away from target!");
@@ -604,20 +557,28 @@ namespace Pk3DSRNGTool
             int frameadvance;
             int Tmpframe, bakframe1, bakframe2 = 0;
             ModelStatus stmp, bak1, bak2 = null;
-            for (int i = 0; i < Totaldelay; i++)
+            for (int i = Math.Max(0, starttime); i < endtime; i++)
             {
                 Tmpframe = frame;
                 stmp = status.Clone();
 
                 // Leap!
-                for (int j = 0; j < 19; j++)
-                    Tmpframe += stmp.NextState();
-                RNGPool.Rewind(Tmpframe - frame);
-                RNGPool.CopyStatus(stmp);
-                RNGPool.igenerator.Generate();
-                frameadvance = RNGPool.index - (Tmpframe - frame);
-                Tmpframe += frameadvance; stmp.frameshift(frameadvance);
-                Tmpframe += stmp.NextState();
+                switch (LeapType)
+                {
+                    case 0: // WC7
+                        for (int j = 0; j < 19; j++)
+                            Tmpframe += stmp.NextState();
+                        RNGPool.Rewind(Tmpframe - frame);
+                        RNGPool.CopyStatus(stmp);
+                        RNGPool.igenerator.Generate();
+                        frameadvance = RNGPool.index - (Tmpframe - frame);
+                        Tmpframe += frameadvance; stmp.frameshift(frameadvance);
+                        Tmpframe += stmp.NextState();
+                        break;
+                    case 1: // Menu
+                        stmp.fidget_cd = 3;
+                        break;
+                }
 
                 bak1 = stmp.Clone();
                 bakframe1 = Tmpframe;
@@ -641,18 +602,14 @@ namespace Pk3DSRNGTool
                     RNGPool.AddNext(sfmt);
             }
 
-            if (Framelist.Count > 0) Frame_max.Value = Framelist.Last();
-            LeapPrompt(Framelist, target, bakframe2, bak2, Totaldelay, statuslist, timelist);
-        }
-
-        private void LeapPrompt(List<int> Framelist, int target, int startframe, ModelStatus startstatus, int delay, List<ModelStatus> statuslist, List<int> timelist)
-        {
             if (Framelist.Count > 0)
             {
                 int frame0 = Framelist.Last();
+                Frame_max.Value = frame0;
+                if (!IsEvent) JumpFrame.Value = frame0;
                 if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0} (Frame1) and then at {1} (Frame2).\n\nYes: Check new timeline / No: Check the spread", frame0, target)) == DialogResult.Yes)
                 {
-                    Search7_TimelineLeap1(startframe, target, startstatus, delay);
+                    Search7_TimelineLeap1(bakframe2, target, bak2, maxdelay);
                     foreach (var f in Frames) f.Frame0 = frame0;
                 }
                 else

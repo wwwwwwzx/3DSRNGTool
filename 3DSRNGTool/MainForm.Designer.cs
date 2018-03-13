@@ -208,6 +208,8 @@
             this.M_Items = new System.Windows.Forms.ComboBox();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
+            this.L_TriggerMethod = new System.Windows.Forms.Label();
+            this.TriggerMethod = new System.Windows.Forms.ComboBox();
             this.SOS = new System.Windows.Forms.CheckBox();
             this.SOSPanel = new System.Windows.Forms.Panel();
             this.Weather = new System.Windows.Forms.ComboBox();
@@ -431,8 +433,6 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.L_TriggerMethod = new System.Windows.Forms.Label();
-            this.TriggerMethod = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.DGVMS.SuspendLayout();
@@ -2363,6 +2363,23 @@
             this.Wild_Setting.TabStop = false;
             this.Wild_Setting.Text = "野外遇敌设置";
             // 
+            // L_TriggerMethod
+            // 
+            this.L_TriggerMethod.AutoSize = true;
+            this.L_TriggerMethod.Location = new System.Drawing.Point(164, 196);
+            this.L_TriggerMethod.Name = "L_TriggerMethod";
+            this.L_TriggerMethod.Size = new System.Drawing.Size(55, 13);
+            this.L_TriggerMethod.TabIndex = 122;
+            this.L_TriggerMethod.Text = "触发方式";
+            // 
+            // TriggerMethod
+            // 
+            this.TriggerMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TriggerMethod.Location = new System.Drawing.Point(225, 192);
+            this.TriggerMethod.Name = "TriggerMethod";
+            this.TriggerMethod.Size = new System.Drawing.Size(88, 21);
+            this.TriggerMethod.TabIndex = 121;
+            // 
             // SOS
             // 
             this.SOS.AutoSize = true;
@@ -3331,6 +3348,7 @@
             this.RB_TimelineLeap.TabIndex = 103;
             this.RB_TimelineLeap.Text = "时间线跳跃";
             this.RB_TimelineLeap.UseVisualStyleBackColor = true;
+            this.RB_TimelineLeap.CheckedChanged += new System.EventHandler(this.RB_TimelineLeap_CheckedChanged);
             // 
             // Tip
             // 
@@ -5097,23 +5115,6 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
-            // 
-            // L_TriggerMethod
-            // 
-            this.L_TriggerMethod.AutoSize = true;
-            this.L_TriggerMethod.Location = new System.Drawing.Point(164, 196);
-            this.L_TriggerMethod.Name = "L_TriggerMethod";
-            this.L_TriggerMethod.Size = new System.Drawing.Size(55, 13);
-            this.L_TriggerMethod.TabIndex = 122;
-            this.L_TriggerMethod.Text = "触发方式";
-            // 
-            // TriggerMethod
-            // 
-            this.TriggerMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TriggerMethod.Location = new System.Drawing.Point(225, 192);
-            this.TriggerMethod.Name = "TriggerMethod";
-            this.TriggerMethod.Size = new System.Drawing.Size(88, 21);
-            this.TriggerMethod.TabIndex = 121;
             // 
             // MainForm
             // 

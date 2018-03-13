@@ -728,7 +728,7 @@ namespace Pk3DSRNGTool
             Correction.Minimum = 1; Correction.Maximum = 50;
             ConsiderDelay.Visible = Timedelay.Visible = label10.Visible = Method < 4; // not show in toolkit
             label10.Text = Gen7 ? "+4F" : "F";
-            RB_TimelineLeap.Visible = Gen7 && Method == 1;
+            RB_TimelineLeap.Visible = Gen7 && IsEvent;
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
@@ -800,7 +800,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            Fidget.Enabled = CreateTimeline.Checked;
+            Fidget.Enabled = MenuMethod.Enabled = CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -809,6 +809,11 @@ namespace Pk3DSRNGTool
                 AssumeSynced.Checked &= AssumeSynced.Enabled = !CreateTimeline.Checked && B_OpenTool.Visible;
             }
             NPC_ValueChanged(null, null);
+        }
+        
+        private void RB_TimelineLeap_CheckedChanged(object sender, EventArgs e)
+        {
+            MenuMethod.Checked = RB_TimelineLeap.Checked;
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -1069,7 +1074,7 @@ namespace Pk3DSRNGTool
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
-                FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
+                RB_TimelineLeap.Visible = FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
                 if (!AlwaysSynced.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
@@ -1078,6 +1083,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             FidgetPanel.Visible = false;
+            RB_TimelineLeap.Visible = IsEvent && Gen7;
             ShinyMark.Visible = IsBank;
         }
 
@@ -1596,7 +1602,7 @@ namespace Pk3DSRNGTool
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
             dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
-            dgv_frame0.Visible = gen7fishing && CreateTimeline.Checked || gen7fidgettimeline && MenuMethod.Checked && !CreateTimeline.Checked || RB_TimelineLeap.Checked;
+            dgv_frame0.Visible = gen7fishing && CreateTimeline.Checked || RB_TimelineLeap.Checked;
             dgv_Frame.HeaderText = gen7fishing || dgv_frame0.Visible ? !Overview.Checked || dgv_frame0.Visible ? dgv_IDframe.HeaderText + "2" : dgv_IDframe.HeaderText + "1" : dgv_IDframe.HeaderText;
             DGV.DataSource = Frames;
             DGV.CellFormatting += new DataGridViewCellFormattingEventHandler(DGV_CellFormatting);
