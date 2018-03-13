@@ -46,7 +46,7 @@ namespace Pk3DSRNGTool
                     remain_frame[i] = -5;
             }
             if (raining && (phase = !phase))
-                frameshift(2);
+                cnt += frameshift(2);
             return cnt;
         }
 
@@ -59,11 +59,11 @@ namespace Pk3DSRNGTool
             return delay1 + delay2;
         }
 
-        public void frameshift(int n)
+        public int frameshift(int n)
         {
             for (int i = 0; i < n; i++)
                 sfmt.Next();
-            cnt += n;
+            return n;
         }
 
         public void CopyTo(ModelStatus st)

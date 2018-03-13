@@ -572,7 +572,7 @@ namespace Pk3DSRNGTool
                         RNGPool.CopyStatus(stmp);
                         RNGPool.igenerator.Generate();
                         frameadvance = RNGPool.index - (Tmpframe - frame);
-                        Tmpframe += frameadvance; stmp.frameshift(frameadvance);
+                        Tmpframe += stmp.frameshift(frameadvance);
                         Tmpframe += stmp.NextState();
                         break;
                     case 1: // Menu
