@@ -1671,7 +1671,7 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 232, idx = 2, // Dividing Peak Tunnel
-                NPC = 2, LevelMin = 17,
+                NPC = 5, LevelMin = 17,
                 SlotType = 42, Species = new[] {767},
             },
             new MiscEncounter7

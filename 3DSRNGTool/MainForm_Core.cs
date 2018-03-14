@@ -362,6 +362,8 @@ namespace Pk3DSRNGTool
                 ulong rand = 0;
                 do
                 {
+                    RNGPool.modelnumber = Modelnum;
+                    RNGPool.ResetModelStatus();
                     var result = RNGPool.Generate7() as Result7;
                     EC = result.EC;
                     RNGPool.AddNext(sfmt);
