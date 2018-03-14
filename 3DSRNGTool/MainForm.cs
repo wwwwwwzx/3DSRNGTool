@@ -813,7 +813,7 @@ namespace Pk3DSRNGTool
             }
             NPC_ValueChanged(null, null);
         }
-        
+
         private void RB_TimelineLeap_CheckedChanged(object sender, EventArgs e)
         {
             MenuMethod.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
@@ -821,8 +821,9 @@ namespace Pk3DSRNGTool
 
         private void SetLeapRange()
         {
-            DelayMin.Value = Method == 0 && FidgetPanel.Visible ? 1 : 10;
-            DelayMax.Value = Method == 0 && FidgetPanel.Visible ? 3 : 100;
+            bool shortleaptype = getLeapType() == 1;
+            DelayMin.Value = shortleaptype ? 1 : 10;
+            DelayMax.Value = shortleaptype ? 3 : 100;
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -1227,11 +1228,9 @@ namespace Pk3DSRNGTool
         {
             if (IsEvent)
                 return 0;
-            if (FidgetPanel.Visible && MenuMethod.Checked)
+            if (FidgetPanel.Visible)
                 return 1;
-            if (!(FormPM as PKM7).IsPelago)
-                return 2;
-            return -1;
+            return 2;
         }
 
         private IGenerator getGenerator(byte method)

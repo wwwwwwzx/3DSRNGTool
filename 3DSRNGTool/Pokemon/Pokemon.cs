@@ -45,7 +45,7 @@ namespace Pk3DSRNGTool
             switch (Species)
             {
                 case 025 when this is PKM7 pm7 && pm7.Gift:
-                    return speciestr[025] + (pm7.OTTSV == null ? " (Surf)" : " (Movie)");
+                    return speciestr[025] + (pm7.OTTSV == null ? " (Surf)" : " (Partner)");
                 case 132 when Nature < 25:
                     return speciestr[132] + " (" + StringItem.naturestr[Nature] + ")";
                 case 718 when Forme == 1 || Forme == 2:
