@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
         private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
-        private bool gen7fidgettimeline => FidgetPanel.Visible && (Fidget.Checked || MenuMethod.Checked);
+        private bool gen7fidgettimeline => FidgetPanel.Visible && (Fidget.Checked || Menu.Checked);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
         private bool gen7misc => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4 && !SOS.Checked;
@@ -39,6 +39,7 @@ namespace Pk3DSRNGTool
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
+        private bool MenuMethod { get => FidgetPanel.Visible; set => FidgetPanel.Visible = value; }
         private byte lastgen;
         private EncounterArea ea;
         private bool IsNight => Night.Checked;
@@ -803,7 +804,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            Fidget.Enabled = MenuMethod.Enabled = CreateTimeline.Checked;
+            Fidget.Enabled = Menu.Enabled = CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -816,7 +817,7 @@ namespace Pk3DSRNGTool
 
         private void RB_TimelineLeap_CheckedChanged(object sender, EventArgs e)
         {
-            MenuMethod.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
+            Menu.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
         }
 
         private void SetLeapRange()
@@ -953,9 +954,9 @@ namespace Pk3DSRNGTool
 
         private void Fidget_CheckedChanged(object sender, EventArgs e)
         {
-            if (MenuMethod.Checked && Fidget.Checked)
-                (sender == Fidget ? MenuMethod : Fidget).Checked = false;
-            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || MenuMethod.Checked;
+            if (Menu.Checked && Fidget.Checked)
+                (sender == Fidget ? Menu : Fidget).Checked = false;
+            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || Menu.Checked;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
@@ -1083,7 +1084,7 @@ namespace Pk3DSRNGTool
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
-                FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
+                MenuMethod = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
                 RB_TimelineLeap.Visible = !pm7.IsPelago;
                 SetLeapRange();
                 if (!AlwaysSynced.Checked && FormPM.Ability == 0)
@@ -1093,7 +1094,7 @@ namespace Pk3DSRNGTool
                 }
                 return;
             }
-            FidgetPanel.Visible = false;
+            MenuMethod = false;
             RB_TimelineLeap.Visible = Gen7 && IsEvent;
             ShinyMark.Visible = IsBank;
         }
@@ -1228,7 +1229,7 @@ namespace Pk3DSRNGTool
         {
             if (IsEvent)
                 return 0;
-            if (FidgetPanel.Visible)
+            if (MenuMethod)
                 return 1;
             return 2;
         }

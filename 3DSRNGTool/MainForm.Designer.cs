@@ -332,7 +332,7 @@
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
             this.FidgetPanel = new System.Windows.Forms.Panel();
-            this.MenuMethod = new System.Windows.Forms.CheckBox();
+            this.Menu = new System.Windows.Forms.CheckBox();
             this.Boy = new System.Windows.Forms.RadioButton();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.Girl = new System.Windows.Forms.RadioButton();
@@ -3845,7 +3845,7 @@
             // 
             // FidgetPanel
             // 
-            this.FidgetPanel.Controls.Add(this.MenuMethod);
+            this.FidgetPanel.Controls.Add(this.Menu);
             this.FidgetPanel.Controls.Add(this.Boy);
             this.FidgetPanel.Controls.Add(this.JumpFrame);
             this.FidgetPanel.Controls.Add(this.Girl);
@@ -3857,14 +3857,14 @@
             // 
             // MenuMethod
             // 
-            this.MenuMethod.AutoSize = true;
-            this.MenuMethod.Location = new System.Drawing.Point(5, 36);
-            this.MenuMethod.Name = "MenuMethod";
-            this.MenuMethod.Size = new System.Drawing.Size(53, 17);
-            this.MenuMethod.TabIndex = 110;
-            this.MenuMethod.Text = "Menu";
-            this.MenuMethod.UseVisualStyleBackColor = true;
-            this.MenuMethod.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            this.Menu.AutoSize = true;
+            this.Menu.Location = new System.Drawing.Point(5, 36);
+            this.Menu.Name = "MenuMethod";
+            this.Menu.Size = new System.Drawing.Size(53, 17);
+            this.Menu.TabIndex = 110;
+            this.Menu.Text = "Menu";
+            this.Menu.UseVisualStyleBackColor = true;
+            this.Menu.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
             // 
             // Boy
             // 
@@ -5648,7 +5648,7 @@
         private System.Windows.Forms.Label L_Ally;
         private System.Windows.Forms.CheckBox SOS;
         private System.Windows.Forms.Panel FidgetPanel;
-        private System.Windows.Forms.CheckBox MenuMethod;
+        private System.Windows.Forms.CheckBox Menu;
         private System.Windows.Forms.RadioButton RB_TimelineLeap;
         private System.Windows.Forms.Label L_TriggerMethod;
         private System.Windows.Forms.ComboBox TriggerMethod;
