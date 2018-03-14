@@ -224,7 +224,7 @@ namespace Pk3DSRNGTool
             else if (AroundTarget.Checked)
                 Search7_AroundTarget();
             else if (RB_TimelineLeap.Checked)
-                Search7_TimelineLeap(IsEvent ? 0 : 1);
+                Search7_TimelineLeap();
             else
                 Search7_Normal();
         }
@@ -520,13 +520,13 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void Search7_TimelineLeap(int LeapType = 0)
+        private void Search7_TimelineLeap()
         {
             int start = (int)Frame_min.Value;
             int target = (int)TargetFrame.Value;
             int Totaldelay = FuncUtil.CalcFrame(Seed.Value, start, target, Modelnum)[0];
-            int mindelay = IsEvent ? 300 : (int)Math.Round(DelayMin.Value * 30);
-            int maxdelay = IsEvent ? Totaldelay : (int)Math.Round(DelayMax.Value * 30);
+            int mindelay = (int)Math.Round(DelayMin.Value * 30);
+            int maxdelay = (int)Math.Round(DelayMax.Value * 30);
             int starttime = Totaldelay - maxdelay;
             int endtime = Totaldelay - mindelay;
 
@@ -544,18 +544,13 @@ namespace Pk3DSRNGTool
                 sfmt.Next();
 
             getsetting(sfmt);
-            
-            if (Totaldelay > 20000)
-            {
-                Error("Too away from target!");
-                return;
-            }
 
             List<int> Framelist = new List<int>();
             List<ModelStatus> statuslist = new List<ModelStatus>();
             List<int> timelist = new List<int>();
 
             // Search
+            int LeapType = getLeapType();
             int frameadvance;
             int Tmpframe, bakframe1, bakframe2 = 0;
             ModelStatus stmp, bak1, bak2 = null;
@@ -579,6 +574,12 @@ namespace Pk3DSRNGTool
                         break;
                     case 1: // Menu
                         stmp.fidget_cd = 3;
+                        break;
+                    case 2: // Dialogue
+                        Tmpframe += stmp.NextState();
+                        Tmpframe += stmp.NextState();
+                        Tmpframe += stmp.frameshift(1);
+                        Tmpframe += stmp.NextState();
                         break;
                 }
 

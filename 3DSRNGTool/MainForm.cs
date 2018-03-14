@@ -782,6 +782,7 @@ namespace Pk3DSRNGTool
             MM_CheckedChanged(null, null);
             CreateTimeline_CheckedChanged(null, null);
             DoubleEverstone(null, null);
+            SetLeapRange();
 
             switch (Method)
             {
@@ -815,7 +816,13 @@ namespace Pk3DSRNGTool
         
         private void RB_TimelineLeap_CheckedChanged(object sender, EventArgs e)
         {
-            MenuMethod.Checked = RB_TimelineLeap.Checked;
+            MenuMethod.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
+        }
+
+        private void SetLeapRange()
+        {
+            DelayMin.Value = Method == 0 && FidgetPanel.Visible ? 1 : 10;
+            DelayMax.Value = Method == 0 && FidgetPanel.Visible ? 3 : 100;
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)
@@ -948,7 +955,6 @@ namespace Pk3DSRNGTool
             if (MenuMethod.Checked && Fidget.Checked)
                 (sender == Fidget ? MenuMethod : Fidget).Checked = false;
             JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || MenuMethod.Checked;
-            DelayMin.Visible = DelayMax.Visible = label14.Visible = MenuMethod.Checked;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
@@ -1077,6 +1083,8 @@ namespace Pk3DSRNGTool
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
                 RB_TimelineLeap.Visible = FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
+                RB_TimelineLeap.Visible |= pm7.Gift;
+                SetLeapRange();
                 if (!AlwaysSynced.Checked && FormPM.Ability == 0)
                 {
                     Sta_AbilityLocked.Checked = true;
@@ -1213,6 +1221,17 @@ namespace Pk3DSRNGTool
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(rng, buffersize);
+        }
+
+        private int getLeapType()
+        {
+            if (IsEvent)
+                return 0;
+            if (FidgetPanel.Visible && MenuMethod.Checked)
+                return 1;
+            if (FormPM.Gift)
+                return 2;
+            return -1;
         }
 
         private IGenerator getGenerator(byte method)

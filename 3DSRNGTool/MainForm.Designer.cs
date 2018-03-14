@@ -291,6 +291,10 @@
             this.L_Event_PID = new System.Windows.Forms.Label();
             this.TP_StationaryRNG = new System.Windows.Forms.TabPage();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.LeapRangePanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.DelayMax = new System.Windows.Forms.NumericUpDown();
+            this.DelayMin = new System.Windows.Forms.NumericUpDown();
             this.RB_TimelineLeap = new System.Windows.Forms.RadioButton();
             this.Tip = new System.Windows.Forms.PictureBox();
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
@@ -328,9 +332,6 @@
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
             this.FidgetPanel = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.DelayMax = new System.Windows.Forms.NumericUpDown();
-            this.DelayMin = new System.Windows.Forms.NumericUpDown();
             this.MenuMethod = new System.Windows.Forms.CheckBox();
             this.Boy = new System.Windows.Forms.RadioButton();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
@@ -483,6 +484,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Event_TID)).BeginInit();
             this.TP_StationaryRNG.SuspendLayout();
             this.RNGInfo.SuspendLayout();
+            this.LeapRangePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
             this.timedelaypanel.SuspendLayout();
@@ -499,8 +503,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame_min)).BeginInit();
             this.Sta_Setting.SuspendLayout();
             this.FidgetPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).BeginInit();
@@ -3314,6 +3316,7 @@
             // 
             // RNGInfo
             // 
+            this.RNGInfo.Controls.Add(this.LeapRangePanel);
             this.RNGInfo.Controls.Add(this.RB_TimelineLeap);
             this.RNGInfo.Controls.Add(this.Tip);
             this.RNGInfo.Controls.Add(this.TargetFrame);
@@ -3338,6 +3341,58 @@
             this.RNGInfo.TabIndex = 91;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "乱数信息";
+            // 
+            // LeapRangePanel
+            // 
+            this.LeapRangePanel.Controls.Add(this.label14);
+            this.LeapRangePanel.Controls.Add(this.DelayMax);
+            this.LeapRangePanel.Controls.Add(this.DelayMin);
+            this.LeapRangePanel.Location = new System.Drawing.Point(121, 200);
+            this.LeapRangePanel.Name = "LeapRangePanel";
+            this.LeapRangePanel.Size = new System.Drawing.Size(131, 33);
+            this.LeapRangePanel.TabIndex = 104;
+            this.LeapRangePanel.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(58, 13);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 13);
+            this.label14.TabIndex = 127;
+            this.label14.Text = "~";
+            // 
+            // DelayMax
+            // 
+            this.DelayMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayMax.Location = new System.Drawing.Point(74, 7);
+            this.DelayMax.Name = "DelayMax";
+            this.DelayMax.Size = new System.Drawing.Size(48, 22);
+            this.DelayMax.TabIndex = 125;
+            this.DelayMax.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // DelayMin
+            // 
+            this.DelayMin.DecimalPlaces = 1;
+            this.DelayMin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelayMin.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.DelayMin.Location = new System.Drawing.Point(4, 7);
+            this.DelayMin.Name = "DelayMin";
+            this.DelayMin.Size = new System.Drawing.Size(53, 22);
+            this.DelayMin.TabIndex = 126;
+            this.DelayMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // RB_TimelineLeap
             // 
@@ -3790,9 +3845,6 @@
             // 
             // FidgetPanel
             // 
-            this.FidgetPanel.Controls.Add(this.label14);
-            this.FidgetPanel.Controls.Add(this.DelayMax);
-            this.FidgetPanel.Controls.Add(this.DelayMin);
             this.FidgetPanel.Controls.Add(this.MenuMethod);
             this.FidgetPanel.Controls.Add(this.Boy);
             this.FidgetPanel.Controls.Add(this.JumpFrame);
@@ -3800,58 +3852,8 @@
             this.FidgetPanel.Controls.Add(this.Fidget);
             this.FidgetPanel.Location = new System.Drawing.Point(6, 185);
             this.FidgetPanel.Name = "FidgetPanel";
-            this.FidgetPanel.Size = new System.Drawing.Size(393, 65);
+            this.FidgetPanel.Size = new System.Drawing.Size(217, 68);
             this.FidgetPanel.TabIndex = 97;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(308, 28);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(14, 13);
-            this.label14.TabIndex = 124;
-            this.label14.Text = "~";
-            this.label14.Visible = false;
-            // 
-            // DelayMax
-            // 
-            this.DelayMax.DecimalPlaces = 1;
-            this.DelayMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelayMax.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.DelayMax.Location = new System.Drawing.Point(329, 22);
-            this.DelayMax.Name = "DelayMax";
-            this.DelayMax.Size = new System.Drawing.Size(53, 22);
-            this.DelayMax.TabIndex = 122;
-            this.DelayMax.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.DelayMax.Visible = false;
-            // 
-            // DelayMin
-            // 
-            this.DelayMin.DecimalPlaces = 1;
-            this.DelayMin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelayMin.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.DelayMin.Location = new System.Drawing.Point(249, 22);
-            this.DelayMin.Name = "DelayMin";
-            this.DelayMin.Size = new System.Drawing.Size(53, 22);
-            this.DelayMin.TabIndex = 123;
-            this.DelayMin.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.DelayMin.Visible = false;
             // 
             // MenuMethod
             // 
@@ -5205,6 +5207,10 @@
             this.TP_StationaryRNG.ResumeLayout(false);
             this.RNGInfo.ResumeLayout(false);
             this.RNGInfo.PerformLayout();
+            this.LeapRangePanel.ResumeLayout(false);
+            this.LeapRangePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).EndInit();
             this.timedelaypanel.ResumeLayout(false);
@@ -5226,8 +5232,6 @@
             this.Sta_Setting.PerformLayout();
             this.FidgetPanel.ResumeLayout(false);
             this.FidgetPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DelayMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DelayMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShinyMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetMon)).EndInit();
@@ -5645,12 +5649,13 @@
         private System.Windows.Forms.CheckBox SOS;
         private System.Windows.Forms.Panel FidgetPanel;
         private System.Windows.Forms.CheckBox MenuMethod;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown DelayMax;
-        private System.Windows.Forms.NumericUpDown DelayMin;
         private System.Windows.Forms.RadioButton RB_TimelineLeap;
         private System.Windows.Forms.Label L_TriggerMethod;
         private System.Windows.Forms.ComboBox TriggerMethod;
+        private System.Windows.Forms.Panel LeapRangePanel;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown DelayMax;
+        private System.Windows.Forms.NumericUpDown DelayMin;
     }
 }
 
