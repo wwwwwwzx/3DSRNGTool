@@ -1082,8 +1082,8 @@ namespace Pk3DSRNGTool
                 Raining.Checked = Raining.Enabled = pm7.Raining;
                 Raining.Enabled |= pm7.Conceptual;
                 ShinyMark.Visible = pm7.UltraWormhole;
-                RB_TimelineLeap.Visible = FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
-                RB_TimelineLeap.Visible |= pm7.Gift;
+                FidgetPanel.Visible = pm7.Conceptual || pm7.DelayType > 0 || pm7.Unstable;
+                RB_TimelineLeap.Visible = !pm7.IsPelago;
                 SetLeapRange();
                 if (!AlwaysSynced.Checked && FormPM.Ability == 0)
                 {
@@ -1093,7 +1093,7 @@ namespace Pk3DSRNGTool
                 return;
             }
             FidgetPanel.Visible = false;
-            RB_TimelineLeap.Visible = IsEvent && Gen7;
+            RB_TimelineLeap.Visible = Gen7 && IsEvent;
             ShinyMark.Visible = IsBank;
         }
 
@@ -1229,7 +1229,7 @@ namespace Pk3DSRNGTool
                 return 0;
             if (FidgetPanel.Visible && MenuMethod.Checked)
                 return 1;
-            if (FormPM.Gift)
+            if (!(FormPM as PKM7).IsPelago)
                 return 2;
             return -1;
         }
