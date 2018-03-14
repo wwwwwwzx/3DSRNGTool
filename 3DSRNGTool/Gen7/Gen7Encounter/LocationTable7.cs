@@ -1604,7 +1604,7 @@ namespace Pk3DSRNGTool
             new FishingArea7
             {
                 Location = 162, // Poni Breaker Coast
-                NPC = 3,
+                NPC = 2,
                 LevelMax = 44,
                 SlotType = 11,
                 Species = new[] {129,320,318,369},
@@ -1695,8 +1695,8 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 064, idx = 1, // Hano Beach
-                NPC = 5, LevelMin = 22,
-                DelayType1 = 3, Cry = true,
+                NPC = 3, LevelMin = 22,
+                DelayType1 = 3,
                 SlotType = 40, Species = new[] {120, 769},
             },
             new MiscEncounter7
@@ -1734,7 +1734,7 @@ namespace Pk3DSRNGTool
             new MiscEncounter7
             {
                 Location = 162, idx = 2, // Poni Breaker Coast
-                NPC = 1, LevelMin = 41,
+                NPC = 3, LevelMin = 41,
                 SlotType = 45, Species = new[] {320, 321, 693},
             },
             new MiscEncounter7
@@ -1825,7 +1825,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 064, // Hano Beach
                 NPC = 5, LevelMin = 21,
-                DelayType1 = 3, Cry = true,
+                DelayType1 = 3,
                 SlotType = 41, Species = new[] {120, 769},
             },
             new MiscEncounter7

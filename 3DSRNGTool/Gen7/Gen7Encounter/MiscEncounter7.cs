@@ -10,7 +10,7 @@ namespace Pk3DSRNGTool
         public byte NPC, DelayType1 = 1, DelayType2 = 1;
         public int Delay1 = 4, Delay2 = 90;
         public byte SlotType;
-        public bool Cry;
+        public bool Cry => Location == 064;
 
         public byte LevelMin;
         private byte _LevelMax;
