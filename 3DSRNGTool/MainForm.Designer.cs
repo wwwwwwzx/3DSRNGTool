@@ -3366,6 +3366,11 @@
             // 
             this.DelayMax.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DelayMax.Location = new System.Drawing.Point(74, 7);
+            this.DelayMax.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.DelayMax.Name = "DelayMax";
             this.DelayMax.Size = new System.Drawing.Size(48, 22);
             this.DelayMax.TabIndex = 125;
@@ -3855,11 +3860,11 @@
             this.FidgetPanel.Size = new System.Drawing.Size(217, 68);
             this.FidgetPanel.TabIndex = 97;
             // 
-            // MenuMethod
+            // Menu
             // 
             this.Menu.AutoSize = true;
             this.Menu.Location = new System.Drawing.Point(5, 36);
-            this.Menu.Name = "MenuMethod";
+            this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(53, 17);
             this.Menu.TabIndex = 110;
             this.Menu.Text = "Menu";
