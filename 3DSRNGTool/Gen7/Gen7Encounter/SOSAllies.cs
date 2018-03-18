@@ -82,7 +82,7 @@ namespace Pk3DSRNGTool
             if (IsUltra && LocationIndex == 124 && species != 0) // Haina Desert
             {
                 var tmp = Enumerable.Repeat(species, 7).ToArray();
-                tmp[5] = Ver == 7 ? 622 : 643;
+                tmp[5] = Ver == 7 ? 622 : 343;
                 return tmp;
             }
             var candidacies = Table.Where(t => t.Species == species);
@@ -163,8 +163,8 @@ namespace Pk3DSRNGTool
         private static readonly HashSet<int> WeatherLocations = new HashSet<int>
         {
             134, 090, 120, 184,
-            124, 146,
-            114,
+            114, 146,
+            124,
         };
         public enum Weather
         {
@@ -182,9 +182,9 @@ namespace Pk3DSRNGTool
                 case Weather.Rain when Location == 134: tmp[0] = IsNight ? 186 : 062; tmp[1] = 061; break; // Poli Line
                 case Weather.Rain when Location == 090 || Location == 120: tmp[1] = 704; break; // Goomy
                 case Weather.Rain when Location == 184: tmp[1] = 705; break; // Siggoo
-                case Weather.Hail when Location == 124 || Location == 146 && IsUltra && Index == 1: tmp[1] = 704; break; // Vanillite
-                case Weather.Hail when Location == 146: if (IsUltra) tmp[0] = 706; tmp[1] = 705; break; // Vanillish
-                case Weather.Sand when Location == 114: tmp[1] = 444; break; // Gabite
+                case Weather.Hail when Location == 114 || Location == 146 && IsUltra && Index == 1: tmp[1] = 582; break; // Vanillite
+                case Weather.Hail when Location == 146: if (IsUltra) tmp[0] = 584; tmp[1] = 583; break; // Vanillish + Vaniluxe
+                case Weather.Sand when Location == 124: tmp[1] = 444; break; // Gabite
             }
             return tmp;
         }
