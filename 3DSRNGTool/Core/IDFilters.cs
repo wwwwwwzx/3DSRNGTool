@@ -20,12 +20,12 @@ namespace Pk3DSRNGTool.Core
             if (IDList.Length > 0 && IDType == 2)
                 fullidlist = new HashSet<uint>(ToFullID());
         }
-        
+
         private IEnumerable<uint> ToFullID()
         {
             foreach (string A in IDList)
             {
-                string input = A.Replace(" ",string.Empty); // Remove spaces
+                string input = A.Replace(" ", string.Empty); // Remove spaces
                 int index = input.LastIndexOf("//");        // Allow Comments
                 if (index > 0)
                     input = input.Substring(0, index);
@@ -43,15 +43,8 @@ namespace Pk3DSRNGTool.Core
         private IEnumerable<int> ToTSVList()
         {
             foreach (string A in TSVList)
-            {
-                if (!int.TryParse(A, out int val))
-                    continue;
-
-                if (0 > val || val > 4095)
-                    continue;
-
-                yield return val;
-            }
+                if (int.TryParse(A, out int val) && -1 < val && val < 4096)
+                    yield return val;
         }
 
         private bool CheckID(IDResult ID)
@@ -66,14 +59,14 @@ namespace Pk3DSRNGTool.Core
             }
         }
 
-        private bool CheckID(string ID) 
+        private bool CheckID(string ID)
             => RE ? IDList.Any(id => System.Text.RegularExpressions.Regex.IsMatch(ID, id))
                   : IDList.Any(id => id != "" && ID.IndexOf(id, System.StringComparison.Ordinal) >= 0);
 
-        private bool CheckID(uint ID) 
+        private bool CheckID(uint ID)
             => fullidlist.Contains(ID);
 
-        private bool CheckTSV(IDResult ID) 
+        private bool CheckTSV(IDResult ID)
             => tsvlist.Contains(ID.TSV);
 
         private bool CheckRand(IDResult ID)
