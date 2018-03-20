@@ -271,8 +271,18 @@ namespace Pk3DSRNGTool
         private void getshiftedsync(int shift)
         {
             int max = results.Count;
-            for (int i = shift; i < max; i++)
-                results[i - shift].sync = ReferenceList[results[i].HitIndex].Rand2;
+            int idxmax = ReferenceList.Count;
+            int framehit;
+            for (int i = 0; i < max; i++)
+            {
+                framehit = results[i].HitIndex + shift;
+                if (framehit >= idxmax)
+                {
+                    results = results.Take(i).ToList(); // Remove Tail Data
+                    break;
+                }
+                results[i].sync = ReferenceList[framehit].Rand2;
+            }
         }
 
         private void MarkFS()
