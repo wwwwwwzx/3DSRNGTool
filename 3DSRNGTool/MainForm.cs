@@ -1280,12 +1280,14 @@ namespace Pk3DSRNGTool
         {
             IDFilters f = new IDFilters();
             if (Filter_SID.Checked) f.IDType = 1;
-            else if (Filter_G7TID.Checked) f.IDType = 2;
+            else if (Filter_FullID.Checked) f.IDType = 2;
+            else if (Filter_G7TID.Checked) f.IDType = 3;
             f.Skip = ID_Disable.Checked;
             f.RE = ID_RE.Checked;
             f.IDList = ID_List.Lines;
             f.TSVList = TSV_List.Lines;
             f.RandList = RandList.Lines;
+            f.ParseString();
             return f;
         }
 

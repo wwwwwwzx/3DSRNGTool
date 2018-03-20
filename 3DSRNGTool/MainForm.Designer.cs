@@ -144,6 +144,7 @@
             this.Filter_ID = new System.Windows.Forms.GroupBox();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
             this.Filter_G7TID = new System.Windows.Forms.RadioButton();
+            this.Filter_FullID = new System.Windows.Forms.RadioButton();
             this.ID_Disable = new System.Windows.Forms.CheckBox();
             this.Filter_SID = new System.Windows.Forms.RadioButton();
             this.RandList = new System.Windows.Forms.TextBox();
@@ -1424,6 +1425,7 @@
             // 
             // Filter_ID
             // 
+            this.Filter_ID.Controls.Add(this.Filter_FullID);
             this.Filter_ID.Controls.Add(this.Filter_TID);
             this.Filter_ID.Controls.Add(this.Filter_G7TID);
             this.Filter_ID.Controls.Add(this.ID_Disable);
@@ -1443,7 +1445,7 @@
             // Filter_TID
             // 
             this.Filter_TID.AutoSize = true;
-            this.Filter_TID.Location = new System.Drawing.Point(23, 22);
+            this.Filter_TID.Location = new System.Drawing.Point(15, 22);
             this.Filter_TID.Name = "Filter_TID";
             this.Filter_TID.Size = new System.Drawing.Size(43, 17);
             this.Filter_TID.TabIndex = 0;
@@ -1454,18 +1456,27 @@
             // 
             this.Filter_G7TID.AutoSize = true;
             this.Filter_G7TID.Checked = true;
-            this.Filter_G7TID.Location = new System.Drawing.Point(23, 90);
+            this.Filter_G7TID.Location = new System.Drawing.Point(15, 126);
             this.Filter_G7TID.Name = "Filter_G7TID";
             this.Filter_G7TID.Size = new System.Drawing.Size(57, 17);
             this.Filter_G7TID.TabIndex = 2;
-            this.Filter_G7TID.TabStop = true;
             this.Filter_G7TID.Text = "G7TID";
             this.Filter_G7TID.UseVisualStyleBackColor = true;
+            // 
+            // Filter_FullID
+            // 
+            this.Filter_FullID.AutoSize = true;
+            this.Filter_FullID.Location = new System.Drawing.Point(15, 91);
+            this.Filter_FullID.Name = "Filter_FullID";
+            this.Filter_FullID.Size = new System.Drawing.Size(66, 17);
+            this.Filter_FullID.TabIndex = 114;
+            this.Filter_FullID.Text = "TID/SID";
+            this.Filter_FullID.UseVisualStyleBackColor = true;
             // 
             // ID_Disable
             // 
             this.ID_Disable.AutoSize = true;
-            this.ID_Disable.Location = new System.Drawing.Point(459, 243);
+            this.ID_Disable.Location = new System.Drawing.Point(493, 244);
             this.ID_Disable.Name = "ID_Disable";
             this.ID_Disable.Size = new System.Drawing.Size(91, 17);
             this.ID_Disable.TabIndex = 113;
@@ -1475,7 +1486,7 @@
             // Filter_SID
             // 
             this.Filter_SID.AutoSize = true;
-            this.Filter_SID.Location = new System.Drawing.Point(23, 56);
+            this.Filter_SID.Location = new System.Drawing.Point(15, 56);
             this.Filter_SID.Name = "Filter_SID";
             this.Filter_SID.Size = new System.Drawing.Size(43, 17);
             this.Filter_SID.TabIndex = 1;
@@ -1485,7 +1496,7 @@
             // RandList
             // 
             this.RandList.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RandList.Location = new System.Drawing.Point(459, 19);
+            this.RandList.Location = new System.Drawing.Point(474, 19);
             this.RandList.Multiline = true;
             this.RandList.Name = "RandList";
             this.RandList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1510,14 +1521,14 @@
             this.ID_List.Multiline = true;
             this.ID_List.Name = "ID_List";
             this.ID_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ID_List.Size = new System.Drawing.Size(110, 218);
+            this.ID_List.Size = new System.Drawing.Size(176, 218);
             this.ID_List.TabIndex = 107;
             this.ID_List.WordWrap = false;
             // 
             // L_CurrentSeed
             // 
             this.L_CurrentSeed.AutoSize = true;
-            this.L_CurrentSeed.Location = new System.Drawing.Point(383, 25);
+            this.L_CurrentSeed.Location = new System.Drawing.Point(395, 25);
             this.L_CurrentSeed.Name = "L_CurrentSeed";
             this.L_CurrentSeed.Size = new System.Drawing.Size(69, 13);
             this.L_CurrentSeed.TabIndex = 112;
@@ -1526,18 +1537,18 @@
             // TSV_List
             // 
             this.TSV_List.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV_List.Location = new System.Drawing.Point(263, 20);
+            this.TSV_List.Location = new System.Drawing.Point(304, 20);
             this.TSV_List.Multiline = true;
             this.TSV_List.Name = "TSV_List";
             this.TSV_List.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TSV_List.Size = new System.Drawing.Size(114, 218);
+            this.TSV_List.Size = new System.Drawing.Size(73, 218);
             this.TSV_List.TabIndex = 108;
             this.TSV_List.WordWrap = false;
             // 
             // Filter_TSV
             // 
             this.Filter_TSV.AutoSize = true;
-            this.Filter_TSV.Location = new System.Drawing.Point(219, 25);
+            this.Filter_TSV.Location = new System.Drawing.Point(270, 23);
             this.Filter_TSV.Name = "Filter_TSV";
             this.Filter_TSV.Size = new System.Drawing.Size(28, 13);
             this.Filter_TSV.TabIndex = 111;
@@ -5357,6 +5368,7 @@
         private System.Windows.Forms.GroupBox Filter_ID;
         private System.Windows.Forms.RadioButton Filter_TID;
         private System.Windows.Forms.RadioButton Filter_G7TID;
+        private System.Windows.Forms.RadioButton Filter_FullID;
         private System.Windows.Forms.CheckBox ID_Disable;
         private System.Windows.Forms.RadioButton Filter_SID;
         private System.Windows.Forms.TextBox RandList;
