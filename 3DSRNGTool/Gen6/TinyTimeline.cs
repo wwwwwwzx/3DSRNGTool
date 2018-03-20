@@ -11,7 +11,6 @@ namespace Pk3DSRNGTool
         private List<TinyCall> list = new List<TinyCall>();
         public TinyMT Tinyrng;
         public int Currentframe;
-        public byte csync;
         public TinyStatus(uint[] seed)
         {
             Tinyrng = new TinyMT(seed);

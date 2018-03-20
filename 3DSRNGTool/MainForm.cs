@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
         private bool IsUltra => Ver > 6;
         private bool gen6timeline => Gen6 && CreateTimeline.Checked && TTT.HasSeed;
         private bool gen6timeline_available => Gen6 && (Method == 0 && !AlwaysSynced.Checked || Method == 2 && !IsHorde);
-        private bool gen7fidgettimeline => FidgetPanel.Visible && (Fidget.Checked || Menu.Checked);
+        private bool gen7fidgettimeline => FidgetPanel.Visible && (Fidget.Checked || XMenu.Checked);
         private bool gen7honey => Gen7 && Method == 2 && CB_Category.SelectedIndex < 3 && !SOS.Checked;
         private bool gen7fishing => Gen7 && Method == 2 && CB_Category.SelectedIndex == 3 && !SOS.Checked;
         private bool gen7misc => Gen7 && Method == 2 && CB_Category.SelectedIndex == 4 && !SOS.Checked;
@@ -804,7 +804,7 @@ namespace Pk3DSRNGTool
         {
             Frame_max.Visible = label7.Visible =
             ConsiderDelay.Enabled = !(L_StartingPoint.Visible = CreateTimeline.Checked);
-            Fidget.Enabled = Menu.Enabled = CreateTimeline.Checked;
+            Fidget.Enabled = XMenu.Enabled = CreateTimeline.Checked;
             if (CreateTimeline.Checked)
                 ConsiderDelay.Checked = true;
             if (Gen6)
@@ -817,7 +817,7 @@ namespace Pk3DSRNGTool
 
         private void RB_TimelineLeap_CheckedChanged(object sender, EventArgs e)
         {
-            Menu.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
+            XMenu.Checked = LeapRangePanel.Visible = RB_TimelineLeap.Checked;
         }
 
         private void SetLeapRange()
@@ -954,9 +954,9 @@ namespace Pk3DSRNGTool
 
         private void Fidget_CheckedChanged(object sender, EventArgs e)
         {
-            if (Menu.Checked && Fidget.Checked)
-                (sender == Fidget ? Menu : Fidget).Checked = false;
-            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || Menu.Checked;
+            if (XMenu.Checked && Fidget.Checked)
+                (sender == Fidget ? XMenu : Fidget).Checked = false;
+            JumpFrame.Visible = Boy.Visible = Girl.Visible = Fidget.Checked || XMenu.Checked;
         }
 
         private void TargetFrame_ValueChanged(object sender, EventArgs e)

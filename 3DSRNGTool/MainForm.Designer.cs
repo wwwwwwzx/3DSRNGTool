@@ -333,7 +333,7 @@
             this.AroundTarget = new System.Windows.Forms.RadioButton();
             this.Sta_Setting = new System.Windows.Forms.GroupBox();
             this.FidgetPanel = new System.Windows.Forms.Panel();
-            this.Menu = new System.Windows.Forms.CheckBox();
+            this.XMenu = new System.Windows.Forms.CheckBox();
             this.Boy = new System.Windows.Forms.RadioButton();
             this.JumpFrame = new System.Windows.Forms.NumericUpDown();
             this.Girl = new System.Windows.Forms.RadioButton();
@@ -3861,7 +3861,7 @@
             // 
             // FidgetPanel
             // 
-            this.FidgetPanel.Controls.Add(this.Menu);
+            this.FidgetPanel.Controls.Add(this.XMenu);
             this.FidgetPanel.Controls.Add(this.Boy);
             this.FidgetPanel.Controls.Add(this.JumpFrame);
             this.FidgetPanel.Controls.Add(this.Girl);
@@ -3871,16 +3871,16 @@
             this.FidgetPanel.Size = new System.Drawing.Size(217, 68);
             this.FidgetPanel.TabIndex = 97;
             // 
-            // Menu
+            // XMenu
             // 
-            this.Menu.AutoSize = true;
-            this.Menu.Location = new System.Drawing.Point(5, 36);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(53, 17);
-            this.Menu.TabIndex = 110;
-            this.Menu.Text = "Menu";
-            this.Menu.UseVisualStyleBackColor = true;
-            this.Menu.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
+            this.XMenu.AutoSize = true;
+            this.XMenu.Location = new System.Drawing.Point(5, 36);
+            this.XMenu.Name = "Menu";
+            this.XMenu.Size = new System.Drawing.Size(53, 17);
+            this.XMenu.TabIndex = 110;
+            this.XMenu.Text = "Menu";
+            this.XMenu.UseVisualStyleBackColor = true;
+            this.XMenu.CheckedChanged += new System.EventHandler(this.Fidget_CheckedChanged);
             // 
             // Boy
             // 
@@ -5665,7 +5665,7 @@
         private System.Windows.Forms.Label L_Ally;
         private System.Windows.Forms.CheckBox SOS;
         private System.Windows.Forms.Panel FidgetPanel;
-        private System.Windows.Forms.CheckBox Menu;
+        private System.Windows.Forms.CheckBox XMenu;
         private System.Windows.Forms.RadioButton RB_TimelineLeap;
         private System.Windows.Forms.Label L_TriggerMethod;
         private System.Windows.Forms.ComboBox TriggerMethod;

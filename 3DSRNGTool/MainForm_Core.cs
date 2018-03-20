@@ -424,7 +424,7 @@ namespace Pk3DSRNGTool
 
                 if (frame >= FirstJumpFrame) // Find the first call
                 {
-                    status.fidget_cd = Menu.Checked ? 3 : 1;
+                    status.fidget_cd = XMenu.Checked ? 3 : 1;
                     FirstJumpFrame = int.MaxValue; // Disable this part
                 }
                 byte Jumpflag = (byte)(status.fidget_cd == 1 ? 1 : 0);
