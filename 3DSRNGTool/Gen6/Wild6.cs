@@ -114,7 +114,7 @@ namespace Pk3DSRNGTool
 
             // Item generated after pkm
             rt.Item = TinyRand(100);
-            rt.ItemStr = getitemstr(rt.Item, CompoundEye);
+            rt.ItemStr = StringItem.helditemStr[getItem(rt.Item, CompoundEye)];
         }
 
         public override RNGResult Generate()
@@ -139,7 +139,7 @@ namespace Pk3DSRNGTool
                 {
                     results[i].Synchronize = Hrt.Sync;
                     results[i].Item = Hrt.HeldItems[i];
-                    results[i].ItemStr = getitemstr(Hrt.HeldItems[i], CompoundEye);
+                    results[i].ItemStr = StringItem.helditemStr[getItem(Hrt.HeldItems[i], CompoundEye)];
                 }
                 if (Hrt.HA != 0)
                     results[Hrt.HA - 1].Ability = 3;
@@ -238,15 +238,15 @@ namespace Pk3DSRNGTool
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
-        public static string getitemstr(int rand, bool compoundeye = false)
+        public static byte getItem(int rand, bool compoundeye = false)
         {
             if (rand < (compoundeye ? 60 : 50))
-                return StringItem.helditemStr[0]; // 50%
+                return 0; // 50%
             if (rand < (compoundeye ? 80 : 55))
-                return StringItem.helditemStr[1]; // 5%
+                return 1; // 5%
             if (rand < (compoundeye ? 85 : 56))
-                return StringItem.helditemStr[2]; // 1%
-            return StringItem.helditemStr[3]; // None
+                return 2; // 1%
+            return 3; // None
         }
 
         // XY 1.5 sub_74BED4

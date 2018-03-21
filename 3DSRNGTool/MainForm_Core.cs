@@ -121,9 +121,9 @@ namespace Pk3DSRNGTool
             if (SlotSpecies.SelectedIndex > 0)
             {
                 var Hordespecies = (ea as HordeArea).getSpecies(Ver, (byte)SlotSpecies.SelectedIndex);
-                L_HordeInfo.Text = "Species: " + string.Join(" \t", Hordespecies.Select(t => StringItem.speciestr[t])) + "\n";
+                L_HordeInfo.Text = "Species: " + string.Join(" \t", Hordespecies.Select(t => StringItem.speciestr[t])) + Environment.NewLine;
             }
-            L_HordeInfo.Text += RNGPool.horde?.ToString() ?? "";
+            L_HordeInfo.Text += RNGPool.horde?.ToString() ?? string.Empty;
             getsetting(rng);
             // Start
             for (int i = min; i <= max; i++, RNGPool.AddNext(rng))

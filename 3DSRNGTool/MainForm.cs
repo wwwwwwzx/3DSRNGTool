@@ -24,7 +24,7 @@ namespace Pk3DSRNGTool
         private bool IsBank => Method == 0 && ((FormPM as PKM6)?.Bank ?? false);
         private bool IsPelago => Method == 0 && ((FormPM as PKM7)?.IsPelago ?? false);
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
-        private bool FullInfoHorde => IsHorde && TTT.HasSeed && TTT.Method.SelectedIndex == 5; // all info of Horde is known
+        private bool FullInfoHorde => IsHorde && TTT.HasSeed && TTT.Method.SelectedIndex == 2; // all info of Horde is known
         private bool Gen6 => Ver < 5;
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;

@@ -25,13 +25,13 @@ namespace Pk3DSRNGTool
         public byte Slot;
         public byte HA; // 0 for no HA, 1-5 means HA Slot
         public byte[] HeldItems = new byte[5];
-        public string ItemString => string.Join(",", HeldItems.Select(t => Wild6.getitemstr(t)));
+        public string ItemString => string.Join(",", HeldItems.Select(t => StringItem.helditemStr[Wild6.getItem(t)]));
 
         public override string ToString()
         {
-            string o = "Sync: " + FuncUtil.Bool2Str(Sync) + "  ";
-            o += "Encounter Slot: " + Slot.ToString() + "  ";
-            o += "Hidden Power Positon: " + (HA == 0 ? "None" : HA.ToString()) + "\n";
+            string o = "Sync: " + FuncUtil.Bool2Str(Sync);
+            o += "   Encounter Slot: " + Slot.ToString();
+            o += "   HA Position: " + (HA == 0 ? StringItem.NONE_STR[StringItem.language] : HA.ToString());
             return o;
         }
 

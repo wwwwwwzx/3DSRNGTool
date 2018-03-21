@@ -116,8 +116,8 @@ namespace Pk3DSRNGTool
             public int framemax;
             public TinyStatus tinystate;
 
-            public bool Rand2 => rand < 0x80000000;
-            public byte Rand(uint n) => (byte)((rand * (ulong)n) >> 32);
+            public bool R2 => rand < 0x80000000;
+            public byte R100 => (byte)((rand * 100ul) >> 32);
             public Frame_Tiny Clone()
             {
                 return new Frame_Tiny
@@ -280,7 +280,7 @@ namespace Pk3DSRNGTool
                     results = results.Take(i).ToList(); // Remove Tail Data
                     break;
                 }
-                results[i].sync = ReferenceList[framehit].Rand2;
+                results[i].sync = ReferenceList[framehit].R2;
             }
         }
 
@@ -297,10 +297,10 @@ namespace Pk3DSRNGTool
                     results = results.Take(i).ToList(); // Remove Tail Data
                     break;
                 }
-                results[i].sync = ReferenceList[j++].Rand2;
-                results[i].enctr = ReferenceList[j++].Rand(100);
-                results[i].slot = Wild6.getFSSlot(SlotNum, ReferenceList[j++].Rand(100));
-                results[i].item = getItem(ReferenceList[++j].Rand(100));
+                results[i].sync = ReferenceList[j++].R2;
+                results[i].enctr = ReferenceList[j++].R100;
+                results[i].slot = Wild6.getFSSlot(SlotNum, ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[++j].R100);
             }
         }
 
@@ -316,9 +316,10 @@ namespace Pk3DSRNGTool
                     results = results.Take(i).ToList(); // Remove Tail Data
                     break;
                 }
-                results[i].sync = ReferenceList[j++].Rand2;
+                results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
-                results[i].item = getItem(ReferenceList[++j].Rand(100));
+                results[i].flute = Wild6.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
         }
 
@@ -342,22 +343,12 @@ namespace Pk3DSRNGTool
                     results = results.Take(i).ToList(); // Remove Tail Data
                     break;
                 }
-                results[i].sync = ReferenceList[j++].Rand2;
-                results[i].enctr = ReferenceList[j++].Rand(100);
-                results[i].slot = getfishingslot(ReferenceList[j++].Rand(100));
-                results[i].item = getItem(ReferenceList[++j].Rand(100));
+                results[i].sync = ReferenceList[j++].R2;
+                results[i].enctr = ReferenceList[j++].R100;
+                results[i].slot = getfishingslot(ReferenceList[j++].R100);
+                results[i].flute = Wild6.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
-        }
-
-        private static byte getItem(uint rand)
-        {
-            if (rand < 50)
-                return 0;
-            if (rand < 55)
-                return 1;
-            if (rand < 56)
-                return 2;
-            return 3;
         }
 
         private static byte getfishingslot(uint rand)

@@ -3,12 +3,13 @@
 This part of RNG use SFMT 32bits mode, reseeded when battle starts.
 
 #### 1) Calls for help: Rand % 100 < Rate1, Pass
-Rate1 =  H * AO * BCR.
+Rate1 =  H * AO * BCR, capped at 100.
 - H: HP Status Bonus (HP Bar Color)
   - 1/5 < HP < 1/2 (Yellow): **x3**
   - HP < 1/5 (Red): **x5**
 - AO: Adrenaline Orb Bonus. If used **x2**
 - [BCR](https://pastebin.com/W59vsi0H) : Basic call rate, depends on species and form, can be 3, 6, 9, 15. (0 means ally call is impossible)
+
 #### 2) Ally appears: Rand % 100 < Rate2, Pass
 Rate2 = 4 * A * S1 * S2 * S3 * BCR. Rounded to the nearest multiple of 1/4096 and finally the nearest integer, capped at 100.
 - A: Lead Pokemon Ability Bonus. If Ability is Intimidate / Unnerve / Pressure: **x1.2 (0x4CCC/0x4000)**
@@ -22,15 +23,16 @@ Rate1 % x Rate2 %
 #### 3) Lead Ability Check - Rand % 100
 - **Synchronize/Static/Magnetic/Pressure/Hustle/Vital Spirit**: >= 50 Pass. < 50 Fail.
 - **CuteCharm**: < 67 Pass, >=67 Fail
-#### 4) If weather is active, Rand % 100 for weather slots
+#### 4) If weather is active, besides Sunny Day, Rand % 100 for weather slots
 Each encounter area have 2 weather slots per weather (Rain, Snow, Sandstorm)
-- **0**: Weather slot 1(1%), Skip next
-- **1-10**: Weather slot 2(10%), Skip next
+- **0**: Weather slot 1(1%), Skip next step
+- **1-10**: Weather slot 2(10%), Skip next step
 - **11-99:** Regular SOS Slot
 #### 5) Regular SOS slots - Rand % 100
 Slot 1-7: 1% / 1% / 1% / 10% / 10% / 10% / 67%
 #### 6) Level - Rand % (max - min + 1)
 #### 7) Black/White flute level modifier - Rand % 100 
+- Not working in gen7
 
 ### Pokemon Generation from main RNG
 
