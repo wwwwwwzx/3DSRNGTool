@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Pk3DSRNGTool
 {
@@ -254,9 +255,7 @@ namespace Pk3DSRNGTool
 
         private void log(string msg)
         {
-            // Independent thread..
-            var t = new Thread(() => parseLogMsg(msg));
-            t.Start();
+            new Task(() => parseLogMsg(msg)).Start();
 #if DEBUG
             try
             {
