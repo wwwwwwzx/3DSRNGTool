@@ -7,7 +7,7 @@
         public override bool ShinyLocked { get => Bank || _ShinyLocked || OTTSV != null; protected set => _ShinyLocked = value; }
         public override bool AlwaysSync => base.AlwaysSync || Bank;
 
-        public bool IsSoaring => Delay == 88; 
+        public bool IsSoaring => Delay == 88;
         public bool Bank; // Bank = PokemonLink or Transporter
         public byte NumOfPkm = 1; // number of Pokemon Generated
         public byte Cry = 0xFF; // Cry delay
@@ -303,36 +303,25 @@
             },
             new PokemonList
             {
-                Text = "Cave Drop",
+                Text = "Ambush Encounter",
                 List = new[]
                 {
+                   // Cave Drop
                    new PKM6 { Species = 527, Delay = 76 }, // Woobat
                    new PKM6 { Species = 597, Delay = 76 }, // Ferroseed
                    new PKM6 { Species = 168, Delay = 76 }, // Ariados
                    new PKM6 { Species = 714, Delay = 76 }, // Noibat
                    new PKM6 { Species = 075, Delay = 76 }, // Graveler
-                }
-            },
-            new PokemonList
-            {
-                Text = "Rustling Bush",
-                List = new[]
-                {
+                   // Rustling Bush
                    new PKM6 { Species = 543, Delay = 54 }, // Venipede
                    new PKM6 { Species = 531, Delay = 54 }, // Audino
                    new PKM6 { Species = 632, Delay = 54 }, // Durant
                    new PKM6 { Species = 631, Delay = 54 }, // Heatmor
-                }
-            },
-            new PokemonList
-            {
-                Text = "Trash Can",
-                List = new[]
-                {
-                    new PKM6 { Species = 568, Delay = 18, Unstable = true, }, // Trubbish
-                    new PKM6 { Species = 569, Delay = 18, Unstable = true, }, // Garbodor
-                    new PKM6 { Species = 354, Delay = 18, Unstable = true, }, // Banette
-                    new PKM6 { Species = 479, Delay = 18, Unstable = true, }, // Rotom
+                   // Trash Can
+                   new PKM6 { Species = 568, Delay = 18, Unstable = true, }, // Trubbish
+                   new PKM6 { Species = 569, Delay = 18, Unstable = true, }, // Garbodor
+                   new PKM6 { Species = 354, Delay = 18, Unstable = true, }, // Banette
+                   new PKM6 { Species = 479, Delay = 18, Unstable = true, }, // Rotom
                 }
             },
         };
