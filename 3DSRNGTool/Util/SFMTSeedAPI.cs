@@ -11,8 +11,8 @@ namespace Pk3DSRNGTool
         public static List<Result> request(string needle, bool IsID, bool IsUltra)
         {
             Root root;
-            var url = (IsUltra ? "https://rng-api.poyo.club/usm/" : "http://49.212.217.137:19937/gen7/")
-                    + "sfmt/seed" + (IsID ? "/id" : string.Empty) + $"?needle={needle}";
+            var url = "https://rng-api.odanado.com" + (IsUltra ? "/usm" : "/sm")
+                    + "/sfmt/seed" + (IsID ? "/id" : string.Empty) + $"?needle={needle}";
             string jsonStr;
             using (var webClient = new WebClient())
             {
