@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using static PKHeX.Util;
 
 namespace Pk3DSRNGTool
 {
@@ -32,7 +31,7 @@ namespace Pk3DSRNGTool
             {
                 var LatestVersion = new System.Net.WebClient().DownloadString("https://raw.githubusercontent.com/wwwwwwzx/3DSRNGTool/master/version.txt");
                 if (HasNewerVersion(LatestVersion))
-                    if (Prompt(MessageBoxButtons.YesNo, "New version detected. Start to download?") == DialogResult.Yes)
+                    if (FormUtil.Prompt(MessageBoxButtons.YesNo, "New version detected. Start to download?") == DialogResult.Yes)
                     {
                         System.Diagnostics.Process.Start(StringItem.GITHUB + "releases/download/" + LatestVersion + "/3DSRNGTool.exe");
                         Program.mainform.Close();
@@ -40,7 +39,7 @@ namespace Pk3DSRNGTool
             }
             catch (Exception ex)
             {
-                Error("Please download manually as an error occured: " + ex.Message);
+                FormUtil.Error("Please download manually as an error occured: " + ex.Message);
             }
         }
     }

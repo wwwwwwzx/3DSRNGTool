@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
-using static PKHeX.Util;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
@@ -19,7 +18,7 @@ namespace Pk3DSRNGTool
             var dumper = new BVBreaker(Video1.Text, Video2.Text);
             if (dumper.gen == -1)
             {
-                Alert(FILEERRORSTR[language]);
+                FormUtil.Alert(FILEERRORSTR[language]);
                 return;
             }
 
@@ -36,7 +35,7 @@ namespace Pk3DSRNGTool
             if (output.Length > 0)
                 MessageBox.Show(output, "Successful Dump!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                Alert("Dump failed! Please check your battle video files are correct");
+                FormUtil.Alert("Dump failed! Please check your battle video files are correct");
         }
 
         private void FileDrop(object sender, DragEventArgs e)

@@ -77,14 +77,14 @@
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_hitidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_enctr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_sync = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_synced = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RealTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
@@ -555,14 +555,14 @@
             this.tiny_index,
             this.tiny_hitidx,
             this.tiny_enctr,
-            this.tiny_sync,
-            this.tiny_slot,
-            this.tiny_item,
+            this.dgv_synced,
+            this.dgv_slot,
+            this.dgv_item,
             this.tiny_ha,
             this.tiny_high16bit,
             this.tiny_rand100,
-            this.tiny_state,
-            this.RealTime});
+            this.dgv_state,
+            this.dgv_time});
             this.MainDGV.ContextMenuStrip = this.CMS;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
@@ -622,29 +622,29 @@
             this.tiny_enctr.ReadOnly = true;
             this.tiny_enctr.Width = 45;
             // 
-            // tiny_sync
+            // dgv_synced
             // 
-            this.tiny_sync.DataPropertyName = "Sync";
-            this.tiny_sync.HeaderText = "Sync";
-            this.tiny_sync.Name = "tiny_sync";
-            this.tiny_sync.ReadOnly = true;
-            this.tiny_sync.Width = 40;
+            this.dgv_synced.DataPropertyName = "Sync";
+            this.dgv_synced.HeaderText = "Sync";
+            this.dgv_synced.Name = "dgv_synced";
+            this.dgv_synced.ReadOnly = true;
+            this.dgv_synced.Width = 40;
             // 
-            // tiny_slot
+            // dgv_slot
             // 
-            this.tiny_slot.DataPropertyName = "Slot";
-            this.tiny_slot.HeaderText = "Slot";
-            this.tiny_slot.Name = "tiny_slot";
-            this.tiny_slot.ReadOnly = true;
-            this.tiny_slot.Width = 40;
+            this.dgv_slot.DataPropertyName = "Slot";
+            this.dgv_slot.HeaderText = "Slot";
+            this.dgv_slot.Name = "dgv_slot";
+            this.dgv_slot.ReadOnly = true;
+            this.dgv_slot.Width = 40;
             // 
-            // tiny_item
+            // dgv_item
             // 
-            this.tiny_item.DataPropertyName = "Item";
-            this.tiny_item.HeaderText = "Item";
-            this.tiny_item.Name = "tiny_item";
-            this.tiny_item.ReadOnly = true;
-            this.tiny_item.Width = 40;
+            this.dgv_item.DataPropertyName = "Item";
+            this.dgv_item.HeaderText = "Item";
+            this.dgv_item.Name = "dgv_item";
+            this.dgv_item.ReadOnly = true;
+            this.dgv_item.Width = 40;
             // 
             // tiny_ha
             // 
@@ -673,25 +673,25 @@
             this.tiny_rand100.ReadOnly = true;
             this.tiny_rand100.Width = 40;
             // 
-            // tiny_state
+            // dgv_state
             // 
-            this.tiny_state.DataPropertyName = "Status";
+            this.dgv_state.DataPropertyName = "Status";
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny_state.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tiny_state.HeaderText = "Tiny Status";
-            this.tiny_state.Name = "tiny_state";
-            this.tiny_state.ReadOnly = true;
-            this.tiny_state.Width = 255;
+            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_state.HeaderText = "Tiny Status";
+            this.dgv_state.Name = "dgv_state";
+            this.dgv_state.ReadOnly = true;
+            this.dgv_state.Width = 255;
             // 
-            // RealTime
+            // dgv_time
             // 
-            this.RealTime.DataPropertyName = "RealTime";
+            this.dgv_time.DataPropertyName = "RealTime";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.RealTime.DefaultCellStyle = dataGridViewCellStyle4;
-            this.RealTime.HeaderText = "Real Time";
-            this.RealTime.Name = "RealTime";
-            this.RealTime.ReadOnly = true;
-            this.RealTime.Width = 160;
+            this.dgv_time.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_time.HeaderText = "Real Time";
+            this.dgv_time.Name = "dgv_time";
+            this.dgv_time.ReadOnly = true;
+            this.dgv_time.Width = 160;
             // 
             // TinyTimelineTool
             // 
@@ -768,13 +768,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_hitidx;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_enctr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_sync;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_slot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_synced;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RealTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
     }
 }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Pk3DSRNGTool.Controls;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
-using static PKHeX.Util;
+using static Pk3DSRNGTool.FormUtil;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
@@ -289,12 +289,12 @@ namespace Pk3DSRNGTool
             curlanguage = lang;
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(curlanguage);
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture;
-            TranslateInterface(this, curlanguage); // Translate the UI to language.
+            this.TranslateInterface(curlanguage); // Translate the UI to language.
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();
-            TranslateInterface(TTT, lang);
-            TranslateInterface(gen7tool, lang);
-            TranslateInterface(ntrhelper, lang);
+            TTT?.TranslateInterface(lang);
+            gen7tool?.TranslateInterface(lang);
+            ntrhelper?.TranslateInterface(lang);
             Text = Text + $" v{Updater.CurrentVersion}" + "Beta";
 
             naturestr = getStringList("Natures", curlanguage);
@@ -1737,7 +1737,7 @@ namespace Pk3DSRNGTool
         //Gen6
         private void OpenTinyTool(object sender, EventArgs e)
         {
-            TranslateInterface(TTT, curlanguage);
+            TTT.TranslateInterface(curlanguage);
             TTT.Show();
             TTT.Focus();
         }
@@ -1806,7 +1806,7 @@ namespace Pk3DSRNGTool
         private void M_NTRHelper_Click(object sender, EventArgs e)
         {
             if (ntrhelper == null) ntrhelper = new NTRHelper();
-            TranslateInterface(ntrhelper, curlanguage);
+            ntrhelper.TranslateInterface(curlanguage);
             ntrhelper.Show();
             ntrhelper.Focus();
         }
@@ -1901,7 +1901,7 @@ namespace Pk3DSRNGTool
                 gen7tool.UpdatePara(NPC.Value, TargetFrame.Value);
                 gen7tool.Startup.Checked = Properties.Settings.Default.OpenGen7Tool;
             }
-            TranslateInterface(gen7tool, curlanguage);
+            gen7tool.TranslateInterface(curlanguage);
             gen7tool.Show();
             gen7tool.Focus();
         }

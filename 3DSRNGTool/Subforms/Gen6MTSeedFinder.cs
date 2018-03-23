@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static PKHeX.Util;
+using static Pk3DSRNGTool.FormUtil;
 
 namespace Pk3DSRNGTool
 {
@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public Gen6MTSeedFinder()
         {
             InitializeComponent();
-            TranslateInterface(this, Properties.Settings.Default.Language);
+            this.TranslateInterface();
             DGV_Seed.AutoGenerateColumns = false;
             Wild_Nature.Items.AddRange(StringItem.naturestr);
             Wild_Nature.SelectedIndex = 0;

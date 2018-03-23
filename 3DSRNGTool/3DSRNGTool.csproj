@@ -238,6 +238,7 @@
     <Compile Include="Util\NtrClient.cs" />
     <Compile Include="Util\NTRSeedAPI.cs" />
     <Compile Include="Util\SFMTSeedAPI.cs" />
+    <Compile Include="Util\Translator.cs" />
     <Compile Include="Util\Updater.cs" />
     <Compile Include="RNG\DeepCopy.cs" />
     <Compile Include="RNG\IRNG.cs" />

@@ -90,7 +90,7 @@ namespace Pk3DSRNGTool
             if (!NTRHelper.ntrclient?.DebuggerEnabled ?? true)
             {
                 Program.mainform.TryToConnectNTR(true);
-                PKHeX.Util.Error("Connection lost, please double check your setup:\n(1) Disable PSS communications.\n(2) Use One Click function.");
+                FormUtil.Error("Connection lost, please double check your setup:\n(1) Disable PSS communications.\n(2) Use One Click function.");
                 return;
             }
             NTRHelper.ntrclient.ReadTiny("TTT");
@@ -198,9 +198,9 @@ namespace Pk3DSRNGTool
             tiny_ha.Visible = Method.SelectedIndex == 2;
             tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
-            tiny_slot.Visible = Method.SelectedIndex > 1;
-            tiny_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
-            tiny_item.Visible = Method.SelectedIndex > 1;
+            dgv_slot.Visible = Method.SelectedIndex > 1;
+            dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
+            dgv_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
         }
 

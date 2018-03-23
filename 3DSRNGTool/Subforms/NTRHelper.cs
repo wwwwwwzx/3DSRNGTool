@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static PKHeX.Util;
 
 namespace Pk3DSRNGTool
 {
@@ -42,7 +41,7 @@ namespace Pk3DSRNGTool
             catch
             {
                 OnDisconnected(false);
-                Error("Unable to connect the console");
+                FormUtil.Error("Unable to connect the console");
             }
         }
 
@@ -117,7 +116,7 @@ namespace Pk3DSRNGTool
                     return;
                 if (Ver < 2)
                 {
-                    Error("Not implemented yet");
+                    FormUtil.Error("Not implemented yet");
                     return;
                 }
                 Start();

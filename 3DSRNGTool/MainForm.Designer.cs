@@ -142,9 +142,9 @@
             this.label22 = new System.Windows.Forms.Label();
             this.ID_Tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.Filter_ID = new System.Windows.Forms.GroupBox();
+            this.Filter_FullID = new System.Windows.Forms.RadioButton();
             this.Filter_TID = new System.Windows.Forms.RadioButton();
             this.Filter_G7TID = new System.Windows.Forms.RadioButton();
-            this.Filter_FullID = new System.Windows.Forms.RadioButton();
             this.ID_Disable = new System.Windows.Forms.CheckBox();
             this.Filter_SID = new System.Windows.Forms.RadioButton();
             this.RandList = new System.Windows.Forms.TextBox();
@@ -1442,6 +1442,16 @@
             this.Filter_ID.TabIndex = 114;
             this.Filter_ID.TabStop = false;
             // 
+            // Filter_FullID
+            // 
+            this.Filter_FullID.AutoSize = true;
+            this.Filter_FullID.Location = new System.Drawing.Point(15, 91);
+            this.Filter_FullID.Name = "Filter_FullID";
+            this.Filter_FullID.Size = new System.Drawing.Size(66, 17);
+            this.Filter_FullID.TabIndex = 114;
+            this.Filter_FullID.Text = "TID/SID";
+            this.Filter_FullID.UseVisualStyleBackColor = true;
+            // 
             // Filter_TID
             // 
             this.Filter_TID.AutoSize = true;
@@ -1460,18 +1470,9 @@
             this.Filter_G7TID.Name = "Filter_G7TID";
             this.Filter_G7TID.Size = new System.Drawing.Size(57, 17);
             this.Filter_G7TID.TabIndex = 2;
+            this.Filter_G7TID.TabStop = true;
             this.Filter_G7TID.Text = "G7TID";
             this.Filter_G7TID.UseVisualStyleBackColor = true;
-            // 
-            // Filter_FullID
-            // 
-            this.Filter_FullID.AutoSize = true;
-            this.Filter_FullID.Location = new System.Drawing.Point(15, 91);
-            this.Filter_FullID.Name = "Filter_FullID";
-            this.Filter_FullID.Size = new System.Drawing.Size(66, 17);
-            this.Filter_FullID.TabIndex = 114;
-            this.Filter_FullID.Text = "TID/SID";
-            this.Filter_FullID.UseVisualStyleBackColor = true;
             // 
             // ID_Disable
             // 
@@ -3875,7 +3876,7 @@
             // 
             this.XMenu.AutoSize = true;
             this.XMenu.Location = new System.Drawing.Point(5, 36);
-            this.XMenu.Name = "Menu";
+            this.XMenu.Name = "XMenu";
             this.XMenu.Size = new System.Drawing.Size(53, 17);
             this.XMenu.TabIndex = 110;
             this.XMenu.Text = "Menu";

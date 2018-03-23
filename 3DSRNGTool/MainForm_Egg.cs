@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static PKHeX.Util;
+using static Pk3DSRNGTool.FormUtil;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool

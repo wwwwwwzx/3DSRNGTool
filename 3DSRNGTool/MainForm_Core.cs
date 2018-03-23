@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
-using static PKHeX.Util;
 
 namespace Pk3DSRNGTool
 {
@@ -59,7 +58,7 @@ namespace Pk3DSRNGTool
         {
             if (!TTT.HasSeed)
             {
-                Error("Please Calibrate Timeline");
+                FormUtil.Error("Please Calibrate Timeline");
                 return;
             }
 
@@ -610,7 +609,7 @@ namespace Pk3DSRNGTool
                 int frame0 = Framelist.Last();
                 Frame_max.Value = frame0;
                 if (!IsEvent) JumpFrame.Value = frame0;
-                if (Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0} (Frame1) and then at {1} (Frame2).\n\nYes: Check new timeline / No: Check the spread", frame0, target)) == DialogResult.Yes)
+                if (FormUtil.Prompt(MessageBoxButtons.YesNo, string.Format("Hit A at {0} (Frame1) and then at {1} (Frame2).\n\nYes: Check new timeline / No: Check the spread", frame0, target)) == DialogResult.Yes)
                 {
                     Search7_TimelineLeap1(bakframe2, target, bak2, maxdelay);
                     foreach (var f in Frames) f.Frame0 = frame0;
@@ -619,7 +618,7 @@ namespace Pk3DSRNGTool
                     Search7_TimelineLeap2(Framelist, statuslist, target, timelist);
             }
             else
-                Error(StringItem.NORESULT_STR[StringItem.language]);
+                FormUtil.Error(StringItem.NORESULT_STR[StringItem.language]);
         }
 
         private void Search7_TimelineLeap1(int newstartframe, int targetframe, ModelStatus status, int totaltime)

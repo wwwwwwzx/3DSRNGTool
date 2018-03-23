@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static PKHeX.Util;
+using static Pk3DSRNGTool.FormUtil;
 
 namespace Pk3DSRNGTool
 {
@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
         public Gen7EggSeedFinder()
         {
             InitializeComponent();
-            TranslateInterface(this, Properties.Settings.Default.Language);
+            this.TranslateInterface();
             NatureInput.Items.AddRange(StringItem.naturestr.Select((str,i) => i.ToString("D2") + " - " + str).ToArray());
         }
         private void Gen7EggSeedFinder_FormClosing(object sender, FormClosingEventArgs e)

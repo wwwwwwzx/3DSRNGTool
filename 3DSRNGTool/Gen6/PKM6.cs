@@ -303,7 +303,7 @@
             },
             new PokemonList
             {
-                Text = "Ambush Encounter",
+                Text = "Ambush Encounters",
                 List = new[]
                 {
                    // Cave Drop

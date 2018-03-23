@@ -4,7 +4,6 @@ using System.Linq;
 using System.IO;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
-using static PKHeX.Util;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
@@ -155,7 +154,7 @@ namespace Pk3DSRNGTool
             }
             catch
             {
-                Error(INVALID_STR[language]);
+                FormUtil.Error(INVALID_STR[language]);
                 return;
             }
             int length = Clk_List.Length;

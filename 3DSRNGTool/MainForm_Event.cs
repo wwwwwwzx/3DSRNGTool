@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static PKHeX.Util;
 using static Pk3DSRNGTool.StringItem;
 
 namespace Pk3DSRNGTool
@@ -80,7 +79,7 @@ namespace Pk3DSRNGTool
             };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 if (!ReadWc(openFileDialog1.FileName))
-                    Error(FILEERRORSTR[lindex]);
+                    FormUtil.Error(FILEERRORSTR[lindex]);
         }
 
         private void DropEnter(object sender, DragEventArgs e)
@@ -92,7 +91,7 @@ namespace Pk3DSRNGTool
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (files.Length > 0 && !ReadWc(files[0]))
-                Error(FILEERRORSTR[lindex]);
+                FormUtil.Error(FILEERRORSTR[lindex]);
         }
 
         private void IDChanged(object sender, EventArgs e)
