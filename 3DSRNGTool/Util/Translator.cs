@@ -11,7 +11,8 @@ namespace Pk3DSRNGTool
     {
         private static readonly Dictionary<string, TranslationContext> Context = new Dictionary<string, TranslationContext>();
         internal static void TranslateInterface(this Control form, string lang = null) => TranslateForm(form, GetContext(lang ?? Settings.Default.Language));
-        
+
+        private static string GetTranslationFileNameExternal(string lang) => $"lang_{lang}.txt";
         private static TranslationContext GetContext(string lang)
         {
             if (Context.TryGetValue(lang, out var context))
@@ -43,18 +44,22 @@ namespace Pk3DSRNGTool
 
         private static IEnumerable<string> GetTranslationFile(string lang)
         {
+            var ExternalFile = GetTranslationFileNameExternal(lang);
             // Check to see if a the translation file exists in the same folder as the executable
-            if (File.Exists($"lang_{lang}.txt"))
+            if (File.Exists(ExternalFile))
             {
-                try { return File.ReadAllLines($"lang_{lang}.txt"); }
+                try { return File.ReadAllLines(ExternalFile); }
                 catch { /* In use? Just return the internal resource. */ }
             }
             object txt = Resources.ResourceManager.GetObject($"lang_{lang}");
             if (txt == null) return null;
-            return ((string)txt).Split(new[] { "\n" },StringSplitOptions.None)
+            return ((string)txt).Split(new[] { "\n" }, StringSplitOptions.None)
                                 .Select(i => i.Trim()).ToArray();
         }
 
+
+        private static readonly string[] DontTranslateKeywords = { "label", "TID", "SID"};
+        private static bool translatable(string name) => !DontTranslateKeywords.Any(name.Contains);
         private static IEnumerable<object> GetTranslatableControls(Control f)
         {
             foreach (var z in f.GetChildrenOfType<Control>())
@@ -68,18 +73,19 @@ namespace Pk3DSRNGTool
 
                     case DataGridView dgv:
                         foreach (var col in dgv.Columns.OfType<DataGridViewColumn>())
-                            yield return col;
-                        break;
+                            if (translatable(col.Name))
+                                yield return col;
+                        goto default;
 
                     default:
-                        if (string.IsNullOrWhiteSpace(z.Name) || z.Name.Contains("label"))
+                        if (string.IsNullOrWhiteSpace(z.Name) || !translatable(z.Name))
                             break;
 
                         if (z.ContextMenuStrip != null) // control has attached menustrip
                             foreach (var obj in GetToolStripMenuItems(z.ContextMenuStrip))
                                 yield return obj;
 
-                        if (z is TextBox || z is MaskedTextBox || z is LinkLabel 
+                        if (z is TextBox || z is MaskedTextBox || z is LinkLabel
                             || z is NumericUpDown || z is ComboBox)
                             break; // undesirable to modify, ignore
 
@@ -123,6 +129,7 @@ namespace Pk3DSRNGTool
             }
         }
 
+#if DEBUG
         public static void UpdateAll(string baseLanguage, IEnumerable<string> others)
         {
             var basecontext = GetContext(baseLanguage);
@@ -137,8 +144,9 @@ namespace Pk3DSRNGTool
         {
             var results = Context.Select(z => new { Lang = z.Key, Lines = z.Value.Write() });
             foreach (var c in results)
-                File.WriteAllLines($"lang_{c.Lang}.txt", c.Lines);
+                File.WriteAllLines(GetTranslationFileNameExternal(c.Lang), c.Lines);
         }
+#endif
     }
 
     public class TranslationContext

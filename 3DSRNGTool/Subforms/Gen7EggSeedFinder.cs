@@ -68,16 +68,16 @@ namespace Pk3DSRNGTool
             tinyfinder.Clear();
             tinyfinder.SetFinder(nature, ShinyCharm.Checked);
             tinyfinder.Search();
-            B_TinySearch.Visible = false;
-            B_Abort7.Visible = true;
+            B_Search.Visible = false;
+            B_Abort.Visible = true;
         }
 
         private void B_Abort7_Click(object sender, EventArgs e)
         {
             tinyfinder.Abort();
-            B_TinySearch.Visible = true;
-            B_Abort7.Visible = false;
-            L_Progress7.Text = sender == B_Abort7 ? "Cancelled" : "Done";
+            B_Search.Visible = true;
+            B_Abort.Visible = false;
+            L_Progress7.Text = sender == B_Abort ? "Cancelled" : "Done";
             if (tinyfinder.seedlist.Count == 1)
             {
                 var seed = tinyfinder.seedlist[0];

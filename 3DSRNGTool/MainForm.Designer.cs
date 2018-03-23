@@ -155,7 +155,7 @@
             this.Filter_TSV = new System.Windows.Forms.Label();
             this.TP_EggRNG = new System.Windows.Forms.TabPage();
             this.Parents_Info = new System.Windows.Forms.GroupBox();
-            this.MT_SeedKey = new System.Windows.Forms.GroupBox();
+            this.GB_EggSeed = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.Key0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -324,7 +324,7 @@
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.CreateTimeline = new System.Windows.Forms.RadioButton();
             this.EggNumber = new System.Windows.Forms.RadioButton();
-            this.B_Search = new System.Windows.Forms.Button();
+            this.B_Calc = new System.Windows.Forms.Button();
             this.TimeSpan = new System.Windows.Forms.NumericUpDown();
             this.RB_FrameRange = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -447,7 +447,7 @@
             this.Filter_ID.SuspendLayout();
             this.TP_EggRNG.SuspendLayout();
             this.Parents_Info.SuspendLayout();
-            this.MT_SeedKey.SuspendLayout();
+            this.GB_EggSeed.SuspendLayout();
             this.TinyMT_Status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV1)).BeginInit();
@@ -1568,7 +1568,7 @@
             // 
             // Parents_Info
             // 
-            this.Parents_Info.Controls.Add(this.MT_SeedKey);
+            this.Parents_Info.Controls.Add(this.GB_EggSeed);
             this.Parents_Info.Controls.Add(this.B_Template);
             this.Parents_Info.Controls.Add(this.NidoType);
             this.Parents_Info.Controls.Add(this.ConsiderOtherTSV);
@@ -1613,18 +1613,18 @@
             this.Parents_Info.TabStop = false;
             this.Parents_Info.Text = "父母信息";
             // 
-            // MT_SeedKey
+            // GB_EggSeed
             // 
-            this.MT_SeedKey.Controls.Add(this.label19);
-            this.MT_SeedKey.Controls.Add(this.Key0);
-            this.MT_SeedKey.Controls.Add(this.label20);
-            this.MT_SeedKey.Controls.Add(this.Key1);
-            this.MT_SeedKey.Location = new System.Drawing.Point(275, 2);
-            this.MT_SeedKey.Name = "MT_SeedKey";
-            this.MT_SeedKey.Size = new System.Drawing.Size(127, 103);
-            this.MT_SeedKey.TabIndex = 102;
-            this.MT_SeedKey.TabStop = false;
-            this.MT_SeedKey.Text = "Egg Seed";
+            this.GB_EggSeed.Controls.Add(this.label19);
+            this.GB_EggSeed.Controls.Add(this.Key0);
+            this.GB_EggSeed.Controls.Add(this.label20);
+            this.GB_EggSeed.Controls.Add(this.Key1);
+            this.GB_EggSeed.Location = new System.Drawing.Point(275, 2);
+            this.GB_EggSeed.Name = "GB_EggSeed";
+            this.GB_EggSeed.Size = new System.Drawing.Size(127, 103);
+            this.GB_EggSeed.TabIndex = 102;
+            this.GB_EggSeed.TabStop = false;
+            this.GB_EggSeed.Text = "Egg Seed";
             // 
             // label19
             // 
@@ -3340,7 +3340,7 @@
             this.RNGInfo.Controls.Add(this.L_TargetFrame);
             this.RNGInfo.Controls.Add(this.CreateTimeline);
             this.RNGInfo.Controls.Add(this.EggNumber);
-            this.RNGInfo.Controls.Add(this.B_Search);
+            this.RNGInfo.Controls.Add(this.B_Calc);
             this.RNGInfo.Controls.Add(this.TimeSpan);
             this.RNGInfo.Controls.Add(this.RB_FrameRange);
             this.RNGInfo.Controls.Add(this.label7);
@@ -3762,15 +3762,15 @@
             this.EggNumber.Text = "蛋数";
             this.EggNumber.UseVisualStyleBackColor = true;
             // 
-            // B_Search
+            // B_Calc
             // 
-            this.B_Search.Location = new System.Drawing.Point(140, 237);
-            this.B_Search.Name = "B_Search";
-            this.B_Search.Size = new System.Drawing.Size(92, 28);
-            this.B_Search.TabIndex = 90;
-            this.B_Search.Text = "检索";
-            this.B_Search.UseVisualStyleBackColor = true;
-            this.B_Search.Click += new System.EventHandler(this.Search_Click);
+            this.B_Calc.Location = new System.Drawing.Point(140, 237);
+            this.B_Calc.Name = "B_Calc";
+            this.B_Calc.Size = new System.Drawing.Size(92, 28);
+            this.B_Calc.TabIndex = 90;
+            this.B_Calc.Text = "计算";
+            this.B_Calc.UseVisualStyleBackColor = true;
+            this.B_Calc.Click += new System.EventHandler(this.Search_Click);
             // 
             // TimeSpan
             // 
@@ -5179,8 +5179,8 @@
             this.TP_EggRNG.ResumeLayout(false);
             this.Parents_Info.ResumeLayout(false);
             this.Parents_Info.PerformLayout();
-            this.MT_SeedKey.ResumeLayout(false);
-            this.MT_SeedKey.PerformLayout();
+            this.GB_EggSeed.ResumeLayout(false);
+            this.GB_EggSeed.PerformLayout();
             this.TinyMT_Status.ResumeLayout(false);
             this.TinyMT_Status.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.M_IV0)).EndInit();
@@ -5380,7 +5380,7 @@
         private System.Windows.Forms.Label Filter_TSV;
         private System.Windows.Forms.TabPage TP_EggRNG;
         private System.Windows.Forms.GroupBox Parents_Info;
-        private System.Windows.Forms.GroupBox MT_SeedKey;
+        private System.Windows.Forms.GroupBox GB_EggSeed;
         private System.Windows.Forms.Label label19;
         private Controls.HexMaskedTextBox Key0;
         private System.Windows.Forms.Label label20;
@@ -5520,7 +5520,7 @@
         private System.Windows.Forms.Label L_TargetFrame;
         private System.Windows.Forms.RadioButton CreateTimeline;
         private System.Windows.Forms.RadioButton EggNumber;
-        private System.Windows.Forms.Button B_Search;
+        private System.Windows.Forms.Button B_Calc;
         private System.Windows.Forms.NumericUpDown TimeSpan;
         private System.Windows.Forms.RadioButton RB_FrameRange;
         private System.Windows.Forms.Label label7;

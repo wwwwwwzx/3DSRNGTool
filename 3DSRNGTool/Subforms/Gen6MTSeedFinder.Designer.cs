@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.RB_1Wild = new System.Windows.Forms.RadioButton();
             this.RB_2Wild = new System.Windows.Forms.RadioButton();
             this.label35 = new System.Windows.Forms.Label();
@@ -42,10 +42,10 @@
             this.dgv_Seed_Nature1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Seed_frame2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Seed_nature2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_Seed_gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B_MTSearch = new System.Windows.Forms.Button();
+            this.dgv_gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B_Search = new System.Windows.Forms.Button();
             this.Gen6PBar = new System.Windows.Forms.ProgressBar();
-            this.B_Abort6 = new System.Windows.Forms.Button();
+            this.B_Abort = new System.Windows.Forms.Button();
             this.WildPanel2 = new System.Windows.Forms.Panel();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.Wild2_Fmin = new System.Windows.Forms.NumericUpDown();
             this.Wild2_Fmax = new System.Windows.Forms.NumericUpDown();
             this.WildPanel1 = new System.Windows.Forms.Panel();
-            this.L_WildNature = new System.Windows.Forms.Label();
+            this.L_Nature = new System.Windows.Forms.Label();
             this.Wild_Nature = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.L_WildFrameRange2 = new System.Windows.Forms.Label();
@@ -170,8 +170,8 @@
             this.dgv_Seed_Nature1,
             this.dgv_Seed_frame2,
             this.dgv_Seed_nature2,
-            this.dgv_Seed_gender});
-            this.DGV_Seed.Location = new System.Drawing.Point(382, 22);
+            this.dgv_gender});
+            this.DGV_Seed.Location = new System.Drawing.Point(384, 22);
             this.DGV_Seed.Name = "DGV_Seed";
             this.DGV_Seed.RowHeadersWidth = 18;
             this.DGV_Seed.Size = new System.Drawing.Size(318, 287);
@@ -180,9 +180,9 @@
             // dgv_Seed_seed
             // 
             this.dgv_Seed_seed.DataPropertyName = "Seed";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.Format = "X8";
-            this.dgv_Seed_seed.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Format = "X8";
+            this.dgv_Seed_seed.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Seed_seed.HeaderText = "Seed";
             this.dgv_Seed_seed.Name = "dgv_Seed_seed";
             this.dgv_Seed_seed.Width = 65;
@@ -215,23 +215,23 @@
             this.dgv_Seed_nature2.Name = "dgv_Seed_nature2";
             this.dgv_Seed_nature2.Width = 55;
             // 
-            // dgv_Seed_gender
+            // dgv_gender
             // 
-            this.dgv_Seed_gender.DataPropertyName = "Gender";
-            this.dgv_Seed_gender.HeaderText = "Gender";
-            this.dgv_Seed_gender.Name = "dgv_Seed_gender";
-            this.dgv_Seed_gender.Visible = false;
-            this.dgv_Seed_gender.Width = 45;
+            this.dgv_gender.DataPropertyName = "Gender";
+            this.dgv_gender.HeaderText = "Gender";
+            this.dgv_gender.Name = "dgv_gender";
+            this.dgv_gender.Visible = false;
+            this.dgv_gender.Width = 45;
             // 
-            // B_MTSearch
+            // B_Search
             // 
-            this.B_MTSearch.Location = new System.Drawing.Point(278, 228);
-            this.B_MTSearch.Name = "B_MTSearch";
-            this.B_MTSearch.Size = new System.Drawing.Size(90, 25);
-            this.B_MTSearch.TabIndex = 132;
-            this.B_MTSearch.Text = "Search";
-            this.B_MTSearch.UseVisualStyleBackColor = true;
-            this.B_MTSearch.Click += new System.EventHandler(this.B_MTSearch_Click);
+            this.B_Search.Location = new System.Drawing.Point(278, 228);
+            this.B_Search.Name = "B_Search";
+            this.B_Search.Size = new System.Drawing.Size(90, 25);
+            this.B_Search.TabIndex = 132;
+            this.B_Search.Text = "Search";
+            this.B_Search.UseVisualStyleBackColor = true;
+            this.B_Search.Click += new System.EventHandler(this.B_MTSearch_Click);
             // 
             // Gen6PBar
             // 
@@ -240,15 +240,15 @@
             this.Gen6PBar.Size = new System.Drawing.Size(328, 23);
             this.Gen6PBar.TabIndex = 131;
             // 
-            // B_Abort6
+            // B_Abort
             // 
-            this.B_Abort6.Location = new System.Drawing.Point(278, 228);
-            this.B_Abort6.Name = "B_Abort6";
-            this.B_Abort6.Size = new System.Drawing.Size(90, 25);
-            this.B_Abort6.TabIndex = 134;
-            this.B_Abort6.Text = "Abort";
-            this.B_Abort6.UseVisualStyleBackColor = true;
-            this.B_Abort6.Click += new System.EventHandler(this.B_Abort6_Click);
+            this.B_Abort.Location = new System.Drawing.Point(278, 228);
+            this.B_Abort.Name = "B_Abort";
+            this.B_Abort.Size = new System.Drawing.Size(90, 25);
+            this.B_Abort.TabIndex = 134;
+            this.B_Abort.Text = "Abort";
+            this.B_Abort.UseVisualStyleBackColor = true;
+            this.B_Abort.Click += new System.EventHandler(this.B_Abort6_Click);
             // 
             // WildPanel2
             // 
@@ -415,7 +415,7 @@
             // 
             // WildPanel1
             // 
-            this.WildPanel1.Controls.Add(this.L_WildNature);
+            this.WildPanel1.Controls.Add(this.L_Nature);
             this.WildPanel1.Controls.Add(this.Wild_Nature);
             this.WildPanel1.Controls.Add(this.label34);
             this.WildPanel1.Controls.Add(this.L_WildFrameRange2);
@@ -431,14 +431,14 @@
             this.WildPanel1.Size = new System.Drawing.Size(353, 128);
             this.WildPanel1.TabIndex = 137;
             // 
-            // L_WildNature
+            // L_Nature
             // 
-            this.L_WildNature.AutoSize = true;
-            this.L_WildNature.Location = new System.Drawing.Point(202, 91);
-            this.L_WildNature.Name = "L_WildNature";
-            this.L_WildNature.Size = new System.Drawing.Size(39, 13);
-            this.L_WildNature.TabIndex = 127;
-            this.L_WildNature.Text = "Nature";
+            this.L_Nature.AutoSize = true;
+            this.L_Nature.Location = new System.Drawing.Point(202, 91);
+            this.L_Nature.Name = "L_Nature";
+            this.L_Nature.Size = new System.Drawing.Size(39, 13);
+            this.L_Nature.TabIndex = 127;
+            this.L_Nature.Text = "Nature";
             // 
             // Wild_Nature
             // 
@@ -563,8 +563,8 @@
             this.Controls.Add(this.Gen6PBar);
             this.Controls.Add(this.WildPanel2);
             this.Controls.Add(this.WildPanel1);
-            this.Controls.Add(this.B_MTSearch);
-            this.Controls.Add(this.B_Abort6);
+            this.Controls.Add(this.B_Search);
+            this.Controls.Add(this.B_Abort);
             this.Name = "Gen6MTSeedFinder";
             this.Text = "Gen6MTSeedFinder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Gen6MTSeedFinder_FormClosing);
@@ -594,15 +594,8 @@
         private System.Windows.Forms.Label L_SeedRange;
         private System.Windows.Forms.Label L_Progress6;
         private System.Windows.Forms.DataGridView DGV_Seed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_seed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_frame1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_Nature1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_frame2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_nature2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_gender;
-        private System.Windows.Forms.Button B_MTSearch;
         private System.Windows.Forms.ProgressBar Gen6PBar;
-        private System.Windows.Forms.Button B_Abort6;
+        private System.Windows.Forms.Button B_Abort;
         private System.Windows.Forms.Panel WildPanel2;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
@@ -617,7 +610,7 @@
         private System.Windows.Forms.NumericUpDown Wild2_Fmin;
         private System.Windows.Forms.NumericUpDown Wild2_Fmax;
         private System.Windows.Forms.Panel WildPanel1;
-        private System.Windows.Forms.Label L_WildNature;
+        private System.Windows.Forms.Label L_Nature;
         private System.Windows.Forms.ComboBox Wild_Nature;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label L_WildFrameRange2;
@@ -628,5 +621,12 @@
         private System.Windows.Forms.Label L_WildIVRange;
         private System.Windows.Forms.TextBox Wild_upper;
         private System.Windows.Forms.TextBox Wild_lower;
+        private System.Windows.Forms.Button B_Search;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_seed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_frame1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_Nature1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_frame2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Seed_nature2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gender;
     }
 }

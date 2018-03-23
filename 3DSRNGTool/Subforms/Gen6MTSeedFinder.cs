@@ -80,18 +80,18 @@ namespace Pk3DSRNGTool
             AdjustDGVSeedColumn();
             DGV_Seed.CurrentCell = null;
             DGV_Seed.DataSource = new BindingSource(new List<Frame_Seed>(), null);
-            B_MTSearch.Visible = false;
-            B_Abort6.Visible = true;
+            B_Search.Visible = false;
+            B_Abort.Visible = true;
             RB_1Wild.Enabled = RB_2Wild.Enabled = false;
         }
 
         private void B_Abort6_Click(object sender, EventArgs e)
         {
             mtfinder.Abort();
-            B_MTSearch.Visible = true;
-            B_Abort6.Visible = false;
+            B_Search.Visible = true;
+            B_Abort.Visible = false;
             RB_1Wild.Enabled = RB_2Wild.Enabled = true;
-            L_Progress6.Text = sender == B_Abort6 ? "Cancelled" : "Done";
+            L_Progress6.Text = sender == B_Abort ? "Cancelled" : "Done";
             if (mtfinder.seedlist.Count == 1)
                 Program.mainform.globalseed = mtfinder.seedlist[0].Seed;
             Alert($"Found {mtfinder.seedlist.Count} Frame(s)");

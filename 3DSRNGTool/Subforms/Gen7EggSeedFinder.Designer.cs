@@ -34,15 +34,15 @@
             this.B_EggSeed127 = new System.Windows.Forms.Button();
             this.GB_TinyFinder = new System.Windows.Forms.GroupBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
-            this.B_DelNature = new System.Windows.Forms.Button();
+            this.B_Back = new System.Windows.Forms.Button();
             this.NatureInput = new System.Windows.Forms.ComboBox();
             this.L_Progress7 = new System.Windows.Forms.Label();
             this.Gen7PBar = new System.Windows.Forms.ProgressBar();
             this.EggSeedList = new System.Windows.Forms.ListBox();
             this.L_NatureList = new System.Windows.Forms.Label();
             this.NatureList = new System.Windows.Forms.TextBox();
-            this.B_Abort7 = new System.Windows.Forms.Button();
-            this.B_TinySearch = new System.Windows.Forms.Button();
+            this.B_Abort = new System.Windows.Forms.Button();
+            this.B_Search = new System.Windows.Forms.Button();
             this.Magikarp.SuspendLayout();
             this.GB_TinyFinder.SuspendLayout();
             this.SuspendLayout();
@@ -88,22 +88,22 @@
             // GB_TinyFinder
             // 
             this.GB_TinyFinder.Controls.Add(this.ShinyCharm);
-            this.GB_TinyFinder.Controls.Add(this.B_DelNature);
+            this.GB_TinyFinder.Controls.Add(this.B_Back);
             this.GB_TinyFinder.Controls.Add(this.NatureInput);
             this.GB_TinyFinder.Controls.Add(this.L_Progress7);
             this.GB_TinyFinder.Controls.Add(this.Gen7PBar);
             this.GB_TinyFinder.Controls.Add(this.EggSeedList);
             this.GB_TinyFinder.Controls.Add(this.L_NatureList);
             this.GB_TinyFinder.Controls.Add(this.NatureList);
-            this.GB_TinyFinder.Controls.Add(this.B_Abort7);
-            this.GB_TinyFinder.Controls.Add(this.B_TinySearch);
+            this.GB_TinyFinder.Controls.Add(this.B_Abort);
+            this.GB_TinyFinder.Controls.Add(this.B_Search);
             this.GB_TinyFinder.Location = new System.Drawing.Point(318, 9);
             this.GB_TinyFinder.Name = "GB_TinyFinder";
             this.GB_TinyFinder.Size = new System.Drawing.Size(308, 244);
             this.GB_TinyFinder.TabIndex = 106;
             this.GB_TinyFinder.TabStop = false;
             // 
-            // checkBox1
+            // ShinyCharm
             // 
             this.ShinyCharm.AutoSize = true;
             this.ShinyCharm.Location = new System.Drawing.Point(212, 72);
@@ -113,15 +113,15 @@
             this.ShinyCharm.Text = "ShinyCharm";
             this.ShinyCharm.UseVisualStyleBackColor = true;
             // 
-            // B_DelNature
+            // B_Back
             // 
-            this.B_DelNature.Location = new System.Drawing.Point(125, 67);
-            this.B_DelNature.Name = "B_DelNature";
-            this.B_DelNature.Size = new System.Drawing.Size(61, 25);
-            this.B_DelNature.TabIndex = 118;
-            this.B_DelNature.Text = "删去";
-            this.B_DelNature.UseVisualStyleBackColor = true;
-            this.B_DelNature.Click += new System.EventHandler(this.B_DelNature_Click);
+            this.B_Back.Location = new System.Drawing.Point(125, 67);
+            this.B_Back.Name = "B_Back";
+            this.B_Back.Size = new System.Drawing.Size(61, 25);
+            this.B_Back.TabIndex = 118;
+            this.B_Back.Text = "删去";
+            this.B_Back.UseVisualStyleBackColor = true;
+            this.B_Back.Click += new System.EventHandler(this.B_DelNature_Click);
             // 
             // NatureInput
             // 
@@ -173,26 +173,26 @@
             this.NatureList.Size = new System.Drawing.Size(212, 22);
             this.NatureList.TabIndex = 24;
             // 
-            // B_Abort7
+            // B_Abort
             // 
-            this.B_Abort7.Location = new System.Drawing.Point(233, 101);
-            this.B_Abort7.Name = "B_Abort7";
-            this.B_Abort7.Size = new System.Drawing.Size(61, 25);
-            this.B_Abort7.TabIndex = 99;
-            this.B_Abort7.Text = "中断";
-            this.B_Abort7.UseVisualStyleBackColor = true;
-            this.B_Abort7.Visible = false;
-            this.B_Abort7.Click += new System.EventHandler(this.B_Abort7_Click);
+            this.B_Abort.Location = new System.Drawing.Point(233, 101);
+            this.B_Abort.Name = "B_Abort";
+            this.B_Abort.Size = new System.Drawing.Size(61, 25);
+            this.B_Abort.TabIndex = 99;
+            this.B_Abort.Text = "中断";
+            this.B_Abort.UseVisualStyleBackColor = true;
+            this.B_Abort.Visible = false;
+            this.B_Abort.Click += new System.EventHandler(this.B_Abort7_Click);
             // 
-            // B_TinySearch
+            // B_Search
             // 
-            this.B_TinySearch.Location = new System.Drawing.Point(233, 101);
-            this.B_TinySearch.Name = "B_TinySearch";
-            this.B_TinySearch.Size = new System.Drawing.Size(61, 25);
-            this.B_TinySearch.TabIndex = 26;
-            this.B_TinySearch.Text = "检索";
-            this.B_TinySearch.UseVisualStyleBackColor = true;
-            this.B_TinySearch.Click += new System.EventHandler(this.B_TinySearch_Click);
+            this.B_Search.Location = new System.Drawing.Point(233, 101);
+            this.B_Search.Name = "B_Search";
+            this.B_Search.Size = new System.Drawing.Size(61, 25);
+            this.B_Search.TabIndex = 26;
+            this.B_Search.Text = "检索";
+            this.B_Search.UseVisualStyleBackColor = true;
+            this.B_Search.Click += new System.EventHandler(this.B_TinySearch_Click);
             // 
             // Gen7EggSeedFinder
             // 
@@ -220,15 +220,15 @@
         private System.Windows.Forms.RichTextBox RTB_EggSeed;
         private System.Windows.Forms.Button B_EggSeed127;
         private System.Windows.Forms.GroupBox GB_TinyFinder;
-        private System.Windows.Forms.Button B_DelNature;
+        private System.Windows.Forms.Button B_Back;
         private System.Windows.Forms.ComboBox NatureInput;
         private System.Windows.Forms.Label L_Progress7;
         private System.Windows.Forms.ProgressBar Gen7PBar;
         private System.Windows.Forms.ListBox EggSeedList;
         private System.Windows.Forms.Label L_NatureList;
         private System.Windows.Forms.TextBox NatureList;
-        private System.Windows.Forms.Button B_TinySearch;
-        private System.Windows.Forms.Button B_Abort7;
+        private System.Windows.Forms.Button B_Search;
+        private System.Windows.Forms.Button B_Abort;
         private System.Windows.Forms.Label L_Magikarp;
         private System.Windows.Forms.CheckBox ShinyCharm;
     }

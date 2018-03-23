@@ -733,7 +733,7 @@ namespace Pk3DSRNGTool
             RB_EggShortest.Visible =
             EggPanel.Visible = EggNumber.Visible = Method == 3 && !mainrngegg;
             CreateTimeline.Visible = TimeSpan.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked || gen6timeline_available;
-            B_Search.Enabled = !(Ver == 4 && 0 < Method);
+            B_Calc.Enabled = !(Ver == 4 && 0 < Method);
 
             if (0 == Method || Method == 2)
             {
@@ -769,7 +769,7 @@ namespace Pk3DSRNGTool
             Gen6EggPanel.Visible = Gen6 && Method == 3;
             NoDex.Visible = Gen7 && Method == 1;
 
-            MT_SeedKey.Visible =
+            GB_EggSeed.Visible =
             RNGPanel.Visible = Gen6;
             B_IVInput.Visible = Gen7 && ByIVs.Checked;
             Raining.Visible =

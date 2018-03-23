@@ -66,16 +66,16 @@
             this.RB_ID = new System.Windows.Forms.RadioButton();
             this.Frame_max = new System.Windows.Forms.NumericUpDown();
             this.L_SeedResult = new System.Windows.Forms.Label();
-            this.Search = new System.Windows.Forms.Button();
+            this.B_Search = new System.Windows.Forms.Button();
             this.Frame_min = new System.Windows.Forms.NumericUpDown();
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.TimeCalculator = new System.Windows.Forms.GroupBox();
+            this.Raining = new System.Windows.Forms.CheckBox();
+            this.Fidget = new System.Windows.Forms.CheckBox();
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.B_Calc = new System.Windows.Forms.Button();
             this.NPC = new System.Windows.Forms.NumericUpDown();
             this.L_NPC = new System.Windows.Forms.Label();
-            this.Fidget = new System.Windows.Forms.CheckBox();
-            this.Raining = new System.Windows.Forms.CheckBox();
             this.InputBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Offset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_min)).BeginInit();
@@ -461,7 +461,7 @@
             this.SearchSeedBox.Controls.Add(this.RB_ID);
             this.SearchSeedBox.Controls.Add(this.Frame_max);
             this.SearchSeedBox.Controls.Add(this.L_SeedResult);
-            this.SearchSeedBox.Controls.Add(this.Search);
+            this.SearchSeedBox.Controls.Add(this.B_Search);
             this.SearchSeedBox.Controls.Add(this.Frame_min);
             this.SearchSeedBox.Location = new System.Drawing.Point(12, 155);
             this.SearchSeedBox.Name = "SearchSeedBox";
@@ -554,15 +554,15 @@
             this.L_SeedResult.TabIndex = 6;
             this.L_SeedResult.Text = "检索结果";
             // 
-            // Search
+            // B_Search
             // 
-            this.Search.Location = new System.Drawing.Point(141, 125);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(72, 27);
-            this.Search.TabIndex = 21;
-            this.Search.Text = "检索";
-            this.Search.UseVisualStyleBackColor = true;
-            this.Search.Click += new System.EventHandler(this.Search_Click);
+            this.B_Search.Location = new System.Drawing.Point(141, 125);
+            this.B_Search.Name = "B_Search";
+            this.B_Search.Size = new System.Drawing.Size(72, 27);
+            this.B_Search.TabIndex = 21;
+            this.B_Search.Text = "检索";
+            this.B_Search.UseVisualStyleBackColor = true;
+            this.B_Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // Frame_min
             // 
@@ -623,6 +623,26 @@
             this.TimeCalculator.TabStop = false;
             this.TimeCalculator.Text = "Time Calculator";
             // 
+            // Raining
+            // 
+            this.Raining.AutoSize = true;
+            this.Raining.Location = new System.Drawing.Point(179, 77);
+            this.Raining.Name = "Raining";
+            this.Raining.Size = new System.Drawing.Size(62, 17);
+            this.Raining.TabIndex = 108;
+            this.Raining.Text = "Raining";
+            this.Raining.UseVisualStyleBackColor = true;
+            // 
+            // Fidget
+            // 
+            this.Fidget.AutoSize = true;
+            this.Fidget.Location = new System.Drawing.Point(179, 35);
+            this.Fidget.Name = "Fidget";
+            this.Fidget.Size = new System.Drawing.Size(55, 17);
+            this.Fidget.TabIndex = 107;
+            this.Fidget.Text = "Fidget";
+            this.Fidget.UseVisualStyleBackColor = true;
+            // 
             // L_TargetFrame
             // 
             this.L_TargetFrame.AutoSize = true;
@@ -664,26 +684,6 @@
             this.L_NPC.Size = new System.Drawing.Size(29, 13);
             this.L_NPC.TabIndex = 105;
             this.L_NPC.Text = "NPC";
-            // 
-            // Fidget
-            // 
-            this.Fidget.AutoSize = true;
-            this.Fidget.Location = new System.Drawing.Point(179, 35);
-            this.Fidget.Name = "Fidget";
-            this.Fidget.Size = new System.Drawing.Size(55, 17);
-            this.Fidget.TabIndex = 107;
-            this.Fidget.Text = "Fidget";
-            this.Fidget.UseVisualStyleBackColor = true;
-            // 
-            // Raining
-            // 
-            this.Raining.AutoSize = true;
-            this.Raining.Location = new System.Drawing.Point(179, 77);
-            this.Raining.Name = "Raining";
-            this.Raining.Size = new System.Drawing.Size(62, 17);
-            this.Raining.TabIndex = 108;
-            this.Raining.Text = "Raining";
-            this.Raining.UseVisualStyleBackColor = true;
             // 
             // Gen7MainRNGTool
             // 
@@ -745,7 +745,7 @@
         private System.Windows.Forms.GroupBox SearchSeedBox;
         private System.Windows.Forms.RadioButton RB_ID;
         private System.Windows.Forms.Label L_clocklist;
-        private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.Button B_Search;
         private System.Windows.Forms.Label L_SeedResult;
         private System.Windows.Forms.TextBox Clock_List;
         private System.Windows.Forms.RadioButton RB_QR;
