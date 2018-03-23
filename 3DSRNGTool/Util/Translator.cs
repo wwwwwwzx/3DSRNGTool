@@ -57,8 +57,7 @@ namespace Pk3DSRNGTool
                                 .Select(i => i.Trim()).ToArray();
         }
 
-
-        private static readonly string[] DontTranslateKeywords = { "label", "TID", "SID"};
+        private static readonly string[] DontTranslateKeywords = { "label", "TID", "SID", };
         private static bool translatable(string name) => !DontTranslateKeywords.Any(name.Contains);
         private static IEnumerable<object> GetTranslatableControls(Control f)
         {
@@ -177,6 +176,7 @@ namespace Pk3DSRNGTool
             return fallback;
         }
 
+#if DEBUG
         public IEnumerable<string> Write(char separator = '=')
         {
             return Translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains("."));
@@ -196,5 +196,6 @@ namespace Pk3DSRNGTool
             foreach (var kvp in other.Translation)
                 Translation.Remove(kvp.Key);
         }
+#endif
     }
 }
