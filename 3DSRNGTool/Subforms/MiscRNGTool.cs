@@ -16,8 +16,8 @@ namespace Pk3DSRNGTool
             UpdateInfo(updategame: true, updateseed: true);
             System.Reflection.PropertyInfo dgvPropertyInfo = typeof(DataGridView).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            dgvPropertyInfo.SetValue(dataGridView1, true, null);
-            dataGridView1.AutoGenerateColumns = false;
+            dgvPropertyInfo.SetValue(DGV, true, null);
+            DGV.AutoGenerateColumns = false;
             Range.Maximum = Value.Maximum = uint.MaxValue;
             JumpFrame.Maximum =
             StartingFrame.Maximum = MaxResults.Maximum = FuncUtil.MAXFRAME;
@@ -51,17 +51,25 @@ namespace Pk3DSRNGTool
             OPower.SelectedIndex = 0;
 
             RNG_SelectedIndexChanged(null, null);
-            L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
 
             Slot.BlankText = "-";
             Slot.CheckBoxItems[0].Checked = true;
             Slot.CheckBoxItems[0].Checked = false;
+            Translate();
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
             this.Parent = null;
             e.Cancel = true;
+        }
+
+        private void Translate()
+        {
+            this.TranslateInterface();
+            L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
+            for (int i = 0; i < 4; i++)
+                Game.Items[i] = StringItem.GAMEVERSION_STR[StringItem.language, i + 5];
         }
 
         public void UpdateInfo(int catchrate = -1, int HP = -1, bool updateseed = false, bool updategame = false)
@@ -121,8 +129,8 @@ namespace Pk3DSRNGTool
             Frame_Misc.X64 = RNG.SelectedIndex == 0;
             switch (RNG.SelectedIndex)
             {
-                case 0 when !Createtimeline.Checked: Search7(); break;
-                case 0 when Createtimeline.Checked: Search7_Timeline(); break;
+                case 0 when !CreateTimeline.Checked: Search7(); break;
+                case 0 when CreateTimeline.Checked: Search7_Timeline(); break;
                 case 1: Search7_Battle(); break;
                 case 2: Search6(); break;
                 case 3: Search6_Battle(); break;
@@ -470,8 +478,8 @@ namespace Pk3DSRNGTool
         {
             dgv_trainer.Visible =
             dgv_facility.Visible =
-            dgv_hit.Visible = dgv_status.Visible =
-            dgv_clock.Visible = dgv_blink.Visible =
+            dgv_hit.Visible =
+            dgv_clock.Visible = dgv_mark.Visible =
             dgv_rand64.Visible = RNG.SelectedIndex == 0;
             dgv_facility.Visible &= FestivalPlaza;
             dgv_trainer.Visible &= BattleTree;
@@ -482,12 +490,12 @@ namespace Pk3DSRNGTool
             dgv_adv.Visible = SOS;
             dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
-            dgv_realtime.Visible = (RNG.SelectedIndex & 1) == 0;
-            dgv_status.Visible = RNG.SelectedIndex > 1;
-            dgv_status.Width = RNG.SelectedIndex == 2 ? 78 : 260;
-            dataGridView1.DataSource = Frames;
-            dataGridView1.CurrentCell = null;
-            if (Frames.Count > 0) dataGridView1.FirstDisplayedScrollingRowIndex = 0;
+            dgv_time.Visible = (RNG.SelectedIndex & 1) == 0;
+            dgv_state.Visible = RNG.SelectedIndex > 1;
+            dgv_state.Width = RNG.SelectedIndex == 2 ? 78 : 260;
+            DGV.DataSource = Frames;
+            DGV.CurrentCell = null;
+            if (Frames.Count > 0) DGV.FirstDisplayedScrollingRowIndex = 0;
         }
         #endregion
 
@@ -520,9 +528,9 @@ namespace Pk3DSRNGTool
             }
             RB_Random.Checked = true;
             RB_Pokerus.Visible = (RNG.SelectedIndex & 1) == 0;
-            NPC.Visible = L_NPC.Visible = RNG.SelectedIndex == 0;
+            NPC.Visible = label_NPC.Visible = RNG.SelectedIndex == 0;
             ShowHideTab(TP_Timeline, RNG.SelectedIndex == 0, 0);
-            Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = Createtimeline.Checked;
+            Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = CreateTimeline.Checked;
             ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);
             ShowHideTab(TP_BattleTree, RNG.SelectedIndex == 0, 3);
             ShowHideTab(TP_Capture, (RNG.SelectedIndex & 1) == 1, 1);
@@ -530,6 +538,7 @@ namespace Pk3DSRNGTool
             OPower.Visible = RNG.SelectedIndex == 3;
             ShowHideTab(TP_SOS, RNG.SelectedIndex == 1, 2);
             ShowHideTab(TP_SOS2, RNG.SelectedIndex == 1 && Filters.TabPages.Contains(TP_SOS2), 3);
+            Translate();
         }
 
         private void ShowHideTab(TabPage tab, bool enable, int index = 1)
