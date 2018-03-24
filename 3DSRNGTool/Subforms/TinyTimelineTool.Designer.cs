@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CMS = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetAsCurrent = new System.Windows.Forms.ToolStripMenuItem();
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
@@ -146,16 +146,16 @@
             // CMS
             // 
             this.CMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyStatusToolStripMenuItem});
+            this.SetAsCurrent});
             this.CMS.Name = "CMS";
             this.CMS.Size = new System.Drawing.Size(138, 26);
             // 
-            // copyStatusToolStripMenuItem
+            // SetAsCurrent
             // 
-            this.copyStatusToolStripMenuItem.Name = "copyStatusToolStripMenuItem";
-            this.copyStatusToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.copyStatusToolStripMenuItem.Text = "Copy Status";
-            this.copyStatusToolStripMenuItem.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
+            this.SetAsCurrent.Name = "SetAsCurrent";
+            this.SetAsCurrent.Size = new System.Drawing.Size(137, 22);
+            this.SetAsCurrent.Text = "Copy Status";
+            this.SetAsCurrent.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
             // 
             // Frame1
             // 
@@ -603,7 +603,7 @@
             this.tiny_index.HeaderText = "Index";
             this.tiny_index.Name = "tiny_index";
             this.tiny_index.ReadOnly = true;
-            this.tiny_index.Width = 35;
+            this.tiny_index.Width = 40;
             // 
             // tiny_hitidx
             // 
@@ -612,7 +612,7 @@
             this.tiny_hitidx.Name = "tiny_hitidx";
             this.tiny_hitidx.ReadOnly = true;
             this.tiny_hitidx.Visible = false;
-            this.tiny_hitidx.Width = 35;
+            this.tiny_hitidx.Width = 40;
             // 
             // tiny_enctr
             // 
@@ -652,7 +652,7 @@
             this.tiny_ha.HeaderText = "HA";
             this.tiny_ha.Name = "tiny_ha";
             this.tiny_ha.ReadOnly = true;
-            this.tiny_ha.Width = 35;
+            this.tiny_ha.Width = 40;
             // 
             // tiny_high16bit
             // 
@@ -668,7 +668,7 @@
             // tiny_rand100
             // 
             this.tiny_rand100.DataPropertyName = "Rand100";
-            this.tiny_rand100.HeaderText = "M100";
+            this.tiny_rand100.HeaderText = "R(100)";
             this.tiny_rand100.Name = "tiny_rand100";
             this.tiny_rand100.ReadOnly = true;
             this.tiny_rand100.Width = 40;
@@ -744,7 +744,7 @@
         private System.Windows.Forms.ComboBox Type1;
         private System.Windows.Forms.GroupBox GB_Adj;
         private System.Windows.Forms.ContextMenuStrip CMS;
-        private System.Windows.Forms.ToolStripMenuItem copyStatusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SetAsCurrent;
         private System.Windows.Forms.ComboBox Type3;
         private System.Windows.Forms.NumericUpDown Frame3;
         public System.Windows.Forms.ComboBox Method;

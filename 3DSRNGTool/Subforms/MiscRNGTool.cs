@@ -55,7 +55,6 @@ namespace Pk3DSRNGTool
             Slot.BlankText = "-";
             Slot.CheckBoxItems[0].Checked = true;
             Slot.CheckBoxItems[0].Checked = false;
-            Translate();
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -66,10 +65,15 @@ namespace Pk3DSRNGTool
 
         private void Translate()
         {
-            this.TranslateInterface();
-            L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
-            for (int i = 0; i < 4; i++)
-                Game.Items[i] = StringItem.GAMEVERSION_STR[StringItem.language, i + 5];
+            try
+            {
+                this.TranslateInterface();
+                L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
+                for (int i = 0; i < 4; i++)
+                    Game.Items[i] = StringItem.GAMEVERSION_STR[StringItem.language, i + 5];
+                Intimidate.Text = StringItem.abilitystr?[22] ?? string.Empty;
+            }
+            catch { };
         }
 
         public void UpdateInfo(int catchrate = -1, int HP = -1, bool updateseed = false, bool updategame = false)
@@ -329,7 +333,7 @@ namespace Pk3DSRNGTool
             else if (SOS)
             {
                 SOSRNG.ChainLength = (int)ChainLength.Value;
-                SOSRNG.Weather = Weather.Checked;
+                SOSRNG.Weather = L_Weather.Checked;
 
                 int Rate1 = (int)CB_CallRate.SelectedValue * (int)HPBarColor.SelectedValue;
                 if (AO.Checked)
@@ -483,7 +487,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.Visible = RNG.SelectedIndex == 0;
             dgv_facility.Visible &= FestivalPlaza;
             dgv_trainer.Visible &= BattleTree;
-            dgv_rand32.Visible = RNG.SelectedIndex != 0;
+            dgv_rand.Visible = RNG.SelectedIndex != 0;
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_capture.Visible = (RNG.SelectedIndex & 1) == 1 && ShowCapture;
@@ -528,7 +532,7 @@ namespace Pk3DSRNGTool
             }
             RB_Random.Checked = true;
             RB_Pokerus.Visible = (RNG.SelectedIndex & 1) == 0;
-            NPC.Visible = label_NPC.Visible = RNG.SelectedIndex == 0;
+            NPC.Visible = L_NPC.Visible = RNG.SelectedIndex == 0;
             ShowHideTab(TP_Timeline, RNG.SelectedIndex == 0, 0);
             Fidget.Enabled = Raining.Enabled = Boy.Enabled = Girl.Enabled = JumpFrame.Enabled = CreateTimeline.Checked;
             ShowHideTab(TP_FP, RNG.SelectedIndex == 0, 2);

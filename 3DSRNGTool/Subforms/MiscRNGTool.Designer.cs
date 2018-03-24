@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,10 +37,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
             this.L_Delay = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
-            this.label_NPC = new System.Windows.Forms.Label();
             this.MaxResults = new System.Windows.Forms.NumericUpDown();
             this.L_MaxResults = new System.Windows.Forms.Label();
             this.NPC = new System.Windows.Forms.NumericUpDown();
@@ -49,16 +48,33 @@
             this.L_StartingFrame = new System.Windows.Forms.Label();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_RNG = new System.Windows.Forms.Label();
             this.RNG = new System.Windows.Forms.ComboBox();
+            this.L_NPC = new System.Windows.Forms.Label();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_adv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_hit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_facility = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_SOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_npcstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.B_ResetFrame = new System.Windows.Forms.Button();
             this.Range = new System.Windows.Forms.NumericUpDown();
             this.Value = new System.Windows.Forms.NumericUpDown();
             this.Compare = new System.Windows.Forms.ComboBox();
             this.RB_Random = new System.Windows.Forms.RadioButton();
             this.RB_Pokerus = new System.Windows.Forms.RadioButton();
-            this.L_Current = new System.Windows.Forms.Label();
+            this.L_CurrentSeed = new System.Windows.Forms.Label();
             this.CurrentText = new System.Windows.Forms.TextBox();
             this.B_Calc = new System.Windows.Forms.Button();
             this.Filters = new System.Windows.Forms.TabControl();
@@ -79,7 +95,7 @@
             this.Status = new System.Windows.Forms.ComboBox();
             this.DexBonus = new System.Windows.Forms.ComboBox();
             this.BallBonus = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.L_Dex = new System.Windows.Forms.Label();
             this.L_Ball = new System.Windows.Forms.Label();
             this.CatchRate = new System.Windows.Forms.NumericUpDown();
             this.L_CatchRate = new System.Windows.Forms.Label();
@@ -106,40 +122,23 @@
             this.L_Streak = new System.Windows.Forms.Label();
             this.Streak = new System.Windows.Forms.NumericUpDown();
             this.TP_SOS = new System.Windows.Forms.TabPage();
-            this.L_ChainLength = new System.Windows.Forms.Label();
+            this.L_Length = new System.Windows.Forms.Label();
             this.ChainLength = new System.Windows.Forms.NumericUpDown();
             this.HPBarColor = new System.Windows.Forms.ComboBox();
             this.L_HPBarColor = new System.Windows.Forms.Label();
             this.LastCallFail = new System.Windows.Forms.CheckBox();
             this.SupperEffective = new System.Windows.Forms.CheckBox();
             this.SameCaller = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Intimidate = new System.Windows.Forms.CheckBox();
             this.AO = new System.Windows.Forms.CheckBox();
-            this.Weather = new System.Windows.Forms.CheckBox();
+            this.L_Weather = new System.Windows.Forms.CheckBox();
             this.L_CallRate = new System.Windows.Forms.Label();
             this.CB_CallRate = new System.Windows.Forms.ComboBox();
             this.TP_SOS2 = new System.Windows.Forms.TabPage();
             this.Sync = new System.Windows.Forms.CheckBox();
-            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.L_Slot = new System.Windows.Forms.Label();
             this.HA = new System.Windows.Forms.CheckBox();
-            this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_adv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_hit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_mark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_facility = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_pokerus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_trainer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_capture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_SOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_randn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_rand32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_npcstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slot = new Pk3DSRNGTool.Controls.CheckBoxComboBox();
             this.RNGInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxResults)).BeginInit();
@@ -170,7 +169,6 @@
             this.RNGInfo.BackColor = System.Drawing.Color.Transparent;
             this.RNGInfo.Controls.Add(this.L_Delay);
             this.RNGInfo.Controls.Add(this.Delay);
-            this.RNGInfo.Controls.Add(this.label_NPC);
             this.RNGInfo.Controls.Add(this.MaxResults);
             this.RNGInfo.Controls.Add(this.L_MaxResults);
             this.RNGInfo.Controls.Add(this.NPC);
@@ -178,8 +176,9 @@
             this.RNGInfo.Controls.Add(this.L_StartingFrame);
             this.RNGInfo.Controls.Add(this.Seed);
             this.RNGInfo.Controls.Add(this.label2);
-            this.RNGInfo.Controls.Add(this.label1);
+            this.RNGInfo.Controls.Add(this.L_RNG);
             this.RNGInfo.Controls.Add(this.RNG);
+            this.RNGInfo.Controls.Add(this.L_NPC);
             this.RNGInfo.Location = new System.Drawing.Point(12, 12);
             this.RNGInfo.Name = "RNGInfo";
             this.RNGInfo.Size = new System.Drawing.Size(209, 215);
@@ -190,7 +189,7 @@
             // L_Delay
             // 
             this.L_Delay.AutoSize = true;
-            this.L_Delay.Location = new System.Drawing.Point(14, 185);
+            this.L_Delay.Location = new System.Drawing.Point(12, 184);
             this.L_Delay.Name = "L_Delay";
             this.L_Delay.Size = new System.Drawing.Size(34, 13);
             this.L_Delay.TabIndex = 51;
@@ -199,7 +198,7 @@
             // Delay
             // 
             this.Delay.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delay.Location = new System.Drawing.Point(54, 180);
+            this.Delay.Location = new System.Drawing.Point(51, 180);
             this.Delay.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -208,15 +207,6 @@
             this.Delay.Name = "Delay";
             this.Delay.Size = new System.Drawing.Size(49, 22);
             this.Delay.TabIndex = 50;
-            // 
-            // label_NPC
-            // 
-            this.label_NPC.AutoSize = true;
-            this.label_NPC.Location = new System.Drawing.Point(117, 185);
-            this.label_NPC.Name = "label_NPC";
-            this.label_NPC.Size = new System.Drawing.Size(29, 13);
-            this.label_NPC.TabIndex = 49;
-            this.label_NPC.Text = "NPC";
             // 
             // MaxResults
             // 
@@ -239,9 +229,9 @@
             // NPC
             // 
             this.NPC.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NPC.Location = new System.Drawing.Point(152, 180);
+            this.NPC.Location = new System.Drawing.Point(159, 180);
             this.NPC.Name = "NPC";
-            this.NPC.Size = new System.Drawing.Size(42, 22);
+            this.NPC.Size = new System.Drawing.Size(35, 22);
             this.NPC.TabIndex = 48;
             // 
             // StartingFrame
@@ -283,14 +273,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Seed";
             // 
-            // label1
+            // L_RNG
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "RNG";
+            this.L_RNG.AutoSize = true;
+            this.L_RNG.Location = new System.Drawing.Point(12, 32);
+            this.L_RNG.Name = "L_RNG";
+            this.L_RNG.Size = new System.Drawing.Size(31, 13);
+            this.L_RNG.TabIndex = 1;
+            this.L_RNG.Text = "RNG";
             // 
             // RNG
             // 
@@ -306,6 +296,15 @@
             this.RNG.Size = new System.Drawing.Size(104, 21);
             this.RNG.TabIndex = 1;
             this.RNG.SelectedIndexChanged += new System.EventHandler(this.RNG_SelectedIndexChanged);
+            // 
+            // L_NPC
+            // 
+            this.L_NPC.AutoSize = true;
+            this.L_NPC.Location = new System.Drawing.Point(102, 184);
+            this.L_NPC.Name = "L_NPC";
+            this.L_NPC.Size = new System.Drawing.Size(29, 13);
+            this.L_NPC.TabIndex = 49;
+            this.L_NPC.Text = "NPC";
             // 
             // DGV
             // 
@@ -323,7 +322,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_Frame,
             this.dgv_adv,
@@ -337,19 +336,171 @@
             this.dgv_SOS,
             this.dgv_randn,
             this.dgv_state,
-            this.dgv_rand32,
+            this.dgv_rand,
             this.dgv_rand64,
             this.dgv_time,
             this.dgv_npcstatus});
             this.DGV.Location = new System.Drawing.Point(227, 12);
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
-            this.DGV.RowHeadersWidth = 18;
+            this.DGV.RowHeadersWidth = 14;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.DGV.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV.Size = new System.Drawing.Size(445, 456);
+            this.DGV.Size = new System.Drawing.Size(445, 458);
             this.DGV.TabIndex = 1;
+            // 
+            // dgv_Frame
+            // 
+            this.dgv_Frame.DataPropertyName = "Frame";
+            this.dgv_Frame.HeaderText = "Frame";
+            this.dgv_Frame.Name = "dgv_Frame";
+            this.dgv_Frame.ReadOnly = true;
+            this.dgv_Frame.Width = 55;
+            // 
+            // dgv_adv
+            // 
+            this.dgv_adv.DataPropertyName = "Advance";
+            dataGridViewCellStyle2.Format = "+#";
+            this.dgv_adv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_adv.HeaderText = "Adv.";
+            this.dgv_adv.Name = "dgv_adv";
+            this.dgv_adv.ReadOnly = true;
+            this.dgv_adv.Visible = false;
+            this.dgv_adv.Width = 40;
+            // 
+            // dgv_hit
+            // 
+            this.dgv_hit.DataPropertyName = "ActualFrame";
+            this.dgv_hit.HeaderText = "Actual Hit";
+            this.dgv_hit.Name = "dgv_hit";
+            this.dgv_hit.ReadOnly = true;
+            this.dgv_hit.Visible = false;
+            this.dgv_hit.Width = 55;
+            // 
+            // dgv_mark
+            // 
+            this.dgv_mark.DataPropertyName = "Blinkflag";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_mark.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_mark.HeaderText = "Blink";
+            this.dgv_mark.Name = "dgv_mark";
+            this.dgv_mark.ReadOnly = true;
+            this.dgv_mark.Width = 40;
+            // 
+            // dgv_clock
+            // 
+            this.dgv_clock.DataPropertyName = "Clock";
+            this.dgv_clock.HeaderText = "Clk";
+            this.dgv_clock.Name = "dgv_clock";
+            this.dgv_clock.ReadOnly = true;
+            this.dgv_clock.Width = 40;
+            // 
+            // dgv_facility
+            // 
+            this.dgv_facility.DataPropertyName = "Facility";
+            this.dgv_facility.HeaderText = "Facility";
+            this.dgv_facility.Name = "dgv_facility";
+            this.dgv_facility.ReadOnly = true;
+            this.dgv_facility.Visible = false;
+            this.dgv_facility.Width = 160;
+            // 
+            // dgv_pokerus
+            // 
+            this.dgv_pokerus.DataPropertyName = "Pokerus";
+            this.dgv_pokerus.HeaderText = "Pokerus";
+            this.dgv_pokerus.Name = "dgv_pokerus";
+            this.dgv_pokerus.ReadOnly = true;
+            this.dgv_pokerus.Width = 55;
+            // 
+            // dgv_trainer
+            // 
+            this.dgv_trainer.DataPropertyName = "Trainer";
+            this.dgv_trainer.HeaderText = "TrainerID";
+            this.dgv_trainer.Name = "dgv_trainer";
+            this.dgv_trainer.ReadOnly = true;
+            this.dgv_trainer.Visible = false;
+            this.dgv_trainer.Width = 55;
+            // 
+            // dgv_capture
+            // 
+            this.dgv_capture.DataPropertyName = "Capture";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_capture.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_capture.HeaderText = "Capture";
+            this.dgv_capture.Name = "dgv_capture";
+            this.dgv_capture.ReadOnly = true;
+            this.dgv_capture.Visible = false;
+            this.dgv_capture.Width = 70;
+            // 
+            // dgv_SOS
+            // 
+            this.dgv_SOS.DataPropertyName = "SOS";
+            this.dgv_SOS.HeaderText = "SOS";
+            this.dgv_SOS.Name = "dgv_SOS";
+            this.dgv_SOS.ReadOnly = true;
+            this.dgv_SOS.Visible = false;
+            this.dgv_SOS.Width = 200;
+            // 
+            // dgv_randn
+            // 
+            this.dgv_randn.DataPropertyName = "RandN";
+            this.dgv_randn.HeaderText = "R(N)";
+            this.dgv_randn.Name = "dgv_randn";
+            this.dgv_randn.ReadOnly = true;
+            this.dgv_randn.Width = 40;
+            // 
+            // dgv_state
+            // 
+            this.dgv_state.DataPropertyName = "CurrentSeed";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_state.HeaderText = "Curr Seed";
+            this.dgv_state.Name = "dgv_state";
+            this.dgv_state.ReadOnly = true;
+            this.dgv_state.Visible = false;
+            // 
+            // dgv_rand
+            // 
+            this.dgv_rand.DataPropertyName = "Rand32";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Format = "X8";
+            this.dgv_rand.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_rand.HeaderText = "Random#";
+            this.dgv_rand.Name = "dgv_rand";
+            this.dgv_rand.ReadOnly = true;
+            this.dgv_rand.Visible = false;
+            this.dgv_rand.Width = 70;
+            // 
+            // dgv_rand64
+            // 
+            this.dgv_rand64.DataPropertyName = "Rand64";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Format = "X16";
+            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_rand64.HeaderText = "Random Number";
+            this.dgv_rand64.Name = "dgv_rand64";
+            this.dgv_rand64.ReadOnly = true;
+            this.dgv_rand64.Width = 123;
+            // 
+            // dgv_time
+            // 
+            this.dgv_time.DataPropertyName = "Realtime";
+            this.dgv_time.HeaderText = "Time";
+            this.dgv_time.Name = "dgv_time";
+            this.dgv_time.ReadOnly = true;
+            this.dgv_time.Width = 80;
+            // 
+            // dgv_npcstatus
+            // 
+            this.dgv_npcstatus.DataPropertyName = "NPCStatus";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_npcstatus.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_npcstatus.HeaderText = "NPC";
+            this.dgv_npcstatus.Name = "dgv_npcstatus";
+            this.dgv_npcstatus.ReadOnly = true;
+            this.dgv_npcstatus.Visible = false;
+            this.dgv_npcstatus.Width = 40;
             // 
             // B_ResetFrame
             // 
@@ -424,21 +575,21 @@
             this.RB_Pokerus.UseVisualStyleBackColor = true;
             this.RB_Pokerus.CheckedChanged += new System.EventHandler(this.Method_CheckedChanged);
             // 
-            // L_Current
+            // L_CurrentSeed
             // 
-            this.L_Current.AutoSize = true;
-            this.L_Current.Location = new System.Drawing.Point(8, 23);
-            this.L_Current.Name = "L_Current";
-            this.L_Current.Size = new System.Drawing.Size(41, 13);
-            this.L_Current.TabIndex = 52;
-            this.L_Current.Text = "Current";
+            this.L_CurrentSeed.AutoSize = true;
+            this.L_CurrentSeed.Location = new System.Drawing.Point(8, 23);
+            this.L_CurrentSeed.Name = "L_CurrentSeed";
+            this.L_CurrentSeed.Size = new System.Drawing.Size(41, 13);
+            this.L_CurrentSeed.TabIndex = 52;
+            this.L_CurrentSeed.Text = "Current";
             // 
             // CurrentText
             // 
             this.CurrentText.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentText.Location = new System.Drawing.Point(63, 20);
+            this.CurrentText.Location = new System.Drawing.Point(92, 20);
             this.CurrentText.Name = "CurrentText";
-            this.CurrentText.Size = new System.Drawing.Size(127, 22);
+            this.CurrentText.Size = new System.Drawing.Size(98, 22);
             this.CurrentText.TabIndex = 54;
             // 
             // B_Calc
@@ -553,7 +704,7 @@
             this.TP_Misc.Controls.Add(this.B_ResetFrame);
             this.TP_Misc.Controls.Add(this.CurrentText);
             this.TP_Misc.Controls.Add(this.Range);
-            this.TP_Misc.Controls.Add(this.L_Current);
+            this.TP_Misc.Controls.Add(this.L_CurrentSeed);
             this.TP_Misc.Controls.Add(this.Value);
             this.TP_Misc.Controls.Add(this.RB_Pokerus);
             this.TP_Misc.Controls.Add(this.Compare);
@@ -576,7 +727,7 @@
             this.TP_Capture.Controls.Add(this.Status);
             this.TP_Capture.Controls.Add(this.DexBonus);
             this.TP_Capture.Controls.Add(this.BallBonus);
-            this.TP_Capture.Controls.Add(this.label7);
+            this.TP_Capture.Controls.Add(this.L_Dex);
             this.TP_Capture.Controls.Add(this.L_Ball);
             this.TP_Capture.Controls.Add(this.CatchRate);
             this.TP_Capture.Controls.Add(this.L_CatchRate);
@@ -684,14 +835,14 @@
             this.BallBonus.Size = new System.Drawing.Size(47, 21);
             this.BallBonus.TabIndex = 52;
             // 
-            // label7
+            // L_Dex
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 107);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "Dex Caught";
+            this.L_Dex.AutoSize = true;
+            this.L_Dex.Location = new System.Drawing.Point(4, 107);
+            this.L_Dex.Name = "L_Dex";
+            this.L_Dex.Size = new System.Drawing.Size(63, 13);
+            this.L_Dex.TabIndex = 59;
+            this.L_Dex.Text = "Dex Caught";
             // 
             // L_Ball
             // 
@@ -1045,17 +1196,16 @@
             // 
             // TP_SOS
             // 
-            this.TP_SOS.Controls.Add(this.L_ChainLength);
+            this.TP_SOS.Controls.Add(this.L_Length);
             this.TP_SOS.Controls.Add(this.ChainLength);
             this.TP_SOS.Controls.Add(this.HPBarColor);
             this.TP_SOS.Controls.Add(this.L_HPBarColor);
             this.TP_SOS.Controls.Add(this.LastCallFail);
             this.TP_SOS.Controls.Add(this.SupperEffective);
             this.TP_SOS.Controls.Add(this.SameCaller);
-            this.TP_SOS.Controls.Add(this.checkBox1);
             this.TP_SOS.Controls.Add(this.Intimidate);
             this.TP_SOS.Controls.Add(this.AO);
-            this.TP_SOS.Controls.Add(this.Weather);
+            this.TP_SOS.Controls.Add(this.L_Weather);
             this.TP_SOS.Controls.Add(this.L_CallRate);
             this.TP_SOS.Controls.Add(this.CB_CallRate);
             this.TP_SOS.Location = new System.Drawing.Point(4, 22);
@@ -1066,14 +1216,14 @@
             this.TP_SOS.Text = "SOS";
             this.TP_SOS.UseVisualStyleBackColor = true;
             // 
-            // L_ChainLength
+            // L_Length
             // 
-            this.L_ChainLength.AutoSize = true;
-            this.L_ChainLength.Location = new System.Drawing.Point(113, 43);
-            this.L_ChainLength.Name = "L_ChainLength";
-            this.L_ChainLength.Size = new System.Drawing.Size(40, 13);
-            this.L_ChainLength.TabIndex = 66;
-            this.L_ChainLength.Text = "Length";
+            this.L_Length.AutoSize = true;
+            this.L_Length.Location = new System.Drawing.Point(113, 43);
+            this.L_Length.Name = "L_Length";
+            this.L_Length.Size = new System.Drawing.Size(40, 13);
+            this.L_Length.TabIndex = 66;
+            this.L_Length.Text = "Length";
             // 
             // ChainLength
             // 
@@ -1136,16 +1286,6 @@
             this.SameCaller.Text = "Same Caller";
             this.SameCaller.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(118, 95);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(71, 17);
-            this.checkBox1.TabIndex = 60;
-            this.checkBox1.Text = "Intimidate";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Intimidate
             // 
             this.Intimidate.AutoSize = true;
@@ -1168,15 +1308,15 @@
             this.AO.Text = "Adrenaline Orb";
             this.AO.UseVisualStyleBackColor = true;
             // 
-            // Weather
+            // L_Weather
             // 
-            this.Weather.AutoSize = true;
-            this.Weather.Location = new System.Drawing.Point(118, 70);
-            this.Weather.Name = "Weather";
-            this.Weather.Size = new System.Drawing.Size(67, 17);
-            this.Weather.TabIndex = 55;
-            this.Weather.Text = "Weather";
-            this.Weather.UseVisualStyleBackColor = true;
+            this.L_Weather.AutoSize = true;
+            this.L_Weather.Location = new System.Drawing.Point(118, 70);
+            this.L_Weather.Name = "L_Weather";
+            this.L_Weather.Size = new System.Drawing.Size(67, 17);
+            this.L_Weather.TabIndex = 55;
+            this.L_Weather.Text = "Weather";
+            this.L_Weather.UseVisualStyleBackColor = true;
             // 
             // L_CallRate
             // 
@@ -1199,9 +1339,9 @@
             // TP_SOS2
             // 
             this.TP_SOS2.Controls.Add(this.Sync);
-            this.TP_SOS2.Controls.Add(this.Slot);
             this.TP_SOS2.Controls.Add(this.L_Slot);
             this.TP_SOS2.Controls.Add(this.HA);
+            this.TP_SOS2.Controls.Add(this.Slot);
             this.TP_SOS2.Location = new System.Drawing.Point(4, 22);
             this.TP_SOS2.Name = "TP_SOS2";
             this.TP_SOS2.Padding = new System.Windows.Forms.Padding(3);
@@ -1213,12 +1353,31 @@
             // Sync
             // 
             this.Sync.AutoSize = true;
-            this.Sync.Location = new System.Drawing.Point(15, 24);
+            this.Sync.Location = new System.Drawing.Point(20, 83);
             this.Sync.Name = "Sync";
             this.Sync.Size = new System.Drawing.Size(94, 17);
             this.Sync.TabIndex = 94;
             this.Sync.Text = "Sync Success";
             this.Sync.UseVisualStyleBackColor = true;
+            // 
+            // L_Slot
+            // 
+            this.L_Slot.AutoSize = true;
+            this.L_Slot.Location = new System.Drawing.Point(17, 27);
+            this.L_Slot.Name = "L_Slot";
+            this.L_Slot.Size = new System.Drawing.Size(25, 13);
+            this.L_Slot.TabIndex = 71;
+            this.L_Slot.Text = "Slot";
+            // 
+            // HA
+            // 
+            this.HA.AutoSize = true;
+            this.HA.Location = new System.Drawing.Point(20, 110);
+            this.HA.Name = "HA";
+            this.HA.Size = new System.Drawing.Size(90, 17);
+            this.HA.TabIndex = 70;
+            this.HA.Text = "Hidden Ability";
+            this.HA.UseVisualStyleBackColor = true;
             // 
             // Slot
             // 
@@ -1239,181 +1398,10 @@
             "7 (67%)",
             "W1 (1%)",
             "W2 (10%)"});
-            this.Slot.Location = new System.Drawing.Point(51, 57);
+            this.Slot.Location = new System.Drawing.Point(20, 48);
             this.Slot.Name = "Slot";
             this.Slot.Size = new System.Drawing.Size(100, 21);
             this.Slot.TabIndex = 93;
-            // 
-            // L_Slot
-            // 
-            this.L_Slot.AutoSize = true;
-            this.L_Slot.Location = new System.Drawing.Point(12, 60);
-            this.L_Slot.Name = "L_Slot";
-            this.L_Slot.Size = new System.Drawing.Size(25, 13);
-            this.L_Slot.TabIndex = 71;
-            this.L_Slot.Text = "Slot";
-            // 
-            // HA
-            // 
-            this.HA.AutoSize = true;
-            this.HA.Location = new System.Drawing.Point(15, 98);
-            this.HA.Name = "HA";
-            this.HA.Size = new System.Drawing.Size(90, 17);
-            this.HA.TabIndex = 70;
-            this.HA.Text = "Hidden Ability";
-            this.HA.UseVisualStyleBackColor = true;
-            // 
-            // dgv_Frame
-            // 
-            this.dgv_Frame.DataPropertyName = "Frame";
-            this.dgv_Frame.HeaderText = "Frame";
-            this.dgv_Frame.Name = "dgv_Frame";
-            this.dgv_Frame.ReadOnly = true;
-            this.dgv_Frame.Width = 55;
-            // 
-            // dgv_adv
-            // 
-            this.dgv_adv.DataPropertyName = "Advance";
-            dataGridViewCellStyle2.Format = "+#";
-            this.dgv_adv.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_adv.HeaderText = "Adv.";
-            this.dgv_adv.Name = "dgv_adv";
-            this.dgv_adv.ReadOnly = true;
-            this.dgv_adv.Visible = false;
-            this.dgv_adv.Width = 40;
-            // 
-            // dgv_hit
-            // 
-            this.dgv_hit.DataPropertyName = "ActualFrame";
-            this.dgv_hit.HeaderText = "Actual Hit";
-            this.dgv_hit.Name = "dgv_hit";
-            this.dgv_hit.ReadOnly = true;
-            this.dgv_hit.Visible = false;
-            this.dgv_hit.Width = 55;
-            // 
-            // dgv_mark
-            // 
-            this.dgv_mark.DataPropertyName = "Blinkflag";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_mark.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_mark.HeaderText = "Blink";
-            this.dgv_mark.Name = "dgv_mark";
-            this.dgv_mark.ReadOnly = true;
-            this.dgv_mark.Width = 35;
-            // 
-            // dgv_clock
-            // 
-            this.dgv_clock.DataPropertyName = "Clock";
-            this.dgv_clock.HeaderText = "Clk";
-            this.dgv_clock.Name = "dgv_clock";
-            this.dgv_clock.ReadOnly = true;
-            this.dgv_clock.Width = 35;
-            // 
-            // dgv_facility
-            // 
-            this.dgv_facility.DataPropertyName = "Facility";
-            this.dgv_facility.HeaderText = "Facility";
-            this.dgv_facility.Name = "dgv_facility";
-            this.dgv_facility.ReadOnly = true;
-            this.dgv_facility.Visible = false;
-            this.dgv_facility.Width = 160;
-            // 
-            // dgv_pokerus
-            // 
-            this.dgv_pokerus.DataPropertyName = "Pokerus";
-            this.dgv_pokerus.HeaderText = "Pokerus";
-            this.dgv_pokerus.Name = "dgv_pokerus";
-            this.dgv_pokerus.ReadOnly = true;
-            this.dgv_pokerus.Width = 55;
-            // 
-            // dgv_trainer
-            // 
-            this.dgv_trainer.DataPropertyName = "Trainer";
-            this.dgv_trainer.HeaderText = "TrainerID";
-            this.dgv_trainer.Name = "dgv_trainer";
-            this.dgv_trainer.ReadOnly = true;
-            this.dgv_trainer.Visible = false;
-            this.dgv_trainer.Width = 55;
-            // 
-            // dgv_capture
-            // 
-            this.dgv_capture.DataPropertyName = "Capture";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_capture.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_capture.HeaderText = "Capture";
-            this.dgv_capture.Name = "dgv_capture";
-            this.dgv_capture.ReadOnly = true;
-            this.dgv_capture.Visible = false;
-            this.dgv_capture.Width = 70;
-            // 
-            // dgv_SOS
-            // 
-            this.dgv_SOS.DataPropertyName = "SOS";
-            this.dgv_SOS.HeaderText = "SOS";
-            this.dgv_SOS.Name = "dgv_SOS";
-            this.dgv_SOS.ReadOnly = true;
-            this.dgv_SOS.Visible = false;
-            this.dgv_SOS.Width = 200;
-            // 
-            // dgv_randn
-            // 
-            this.dgv_randn.DataPropertyName = "RandN";
-            this.dgv_randn.HeaderText = "RN";
-            this.dgv_randn.Name = "dgv_randn";
-            this.dgv_randn.ReadOnly = true;
-            this.dgv_randn.Width = 40;
-            // 
-            // dgv_state
-            // 
-            this.dgv_state.DataPropertyName = "CurrentSeed";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_state.HeaderText = "Curr Seed";
-            this.dgv_state.Name = "dgv_state";
-            this.dgv_state.ReadOnly = true;
-            this.dgv_state.Visible = false;
-            // 
-            // dgv_rand32
-            // 
-            this.dgv_rand32.DataPropertyName = "Rand32";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.Format = "X8";
-            this.dgv_rand32.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv_rand32.HeaderText = "Random#";
-            this.dgv_rand32.Name = "dgv_rand32";
-            this.dgv_rand32.ReadOnly = true;
-            this.dgv_rand32.Visible = false;
-            this.dgv_rand32.Width = 70;
-            // 
-            // dgv_rand64
-            // 
-            this.dgv_rand64.DataPropertyName = "Rand64";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.Format = "X16";
-            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgv_rand64.HeaderText = "Random Number";
-            this.dgv_rand64.Name = "dgv_rand64";
-            this.dgv_rand64.ReadOnly = true;
-            this.dgv_rand64.Width = 123;
-            // 
-            // dgv_time
-            // 
-            this.dgv_time.DataPropertyName = "Realtime";
-            this.dgv_time.HeaderText = "Time";
-            this.dgv_time.Name = "dgv_time";
-            this.dgv_time.ReadOnly = true;
-            this.dgv_time.Width = 80;
-            // 
-            // dgv_npcstatus
-            // 
-            this.dgv_npcstatus.DataPropertyName = "NPCStatus";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_npcstatus.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv_npcstatus.HeaderText = "NPC";
-            this.dgv_npcstatus.Name = "dgv_npcstatus";
-            this.dgv_npcstatus.ReadOnly = true;
-            this.dgv_npcstatus.Visible = false;
-            this.dgv_npcstatus.Width = 40;
             // 
             // MiscRNGTool
             // 
@@ -1467,7 +1455,7 @@
 
         private System.Windows.Forms.GroupBox RNGInfo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_RNG;
         private System.Windows.Forms.ComboBox RNG;
         private Controls.HexMaskedTextBox Seed;
         private System.Windows.Forms.NumericUpDown MaxResults;
@@ -1477,10 +1465,10 @@
         private System.Windows.Forms.DataGridView DGV;
         private System.Windows.Forms.Label L_Delay;
         private System.Windows.Forms.NumericUpDown Delay;
-        private System.Windows.Forms.Label label_NPC;
+        private System.Windows.Forms.Label L_NPC;
         private System.Windows.Forms.NumericUpDown NPC;
         private System.Windows.Forms.Button B_Calc;
-        private System.Windows.Forms.Label L_Current;
+        private System.Windows.Forms.Label L_CurrentSeed;
         private System.Windows.Forms.TextBox CurrentText;
         private System.Windows.Forms.RadioButton RB_Pokerus;
         private System.Windows.Forms.RadioButton RB_Random;
@@ -1497,7 +1485,7 @@
         private System.Windows.Forms.NumericUpDown HPCurr;
         private System.Windows.Forms.ComboBox DexBonus;
         private System.Windows.Forms.ComboBox BallBonus;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label L_Dex;
         private System.Windows.Forms.Label L_Ball;
         private System.Windows.Forms.NumericUpDown CatchRate;
         private System.Windows.Forms.Label L_CatchRate;
@@ -1534,7 +1522,7 @@
         private System.Windows.Forms.NumericUpDown JumpFrame;
         private System.Windows.Forms.Label L_CallRate;
         private System.Windows.Forms.ComboBox CB_CallRate;
-        private System.Windows.Forms.CheckBox Weather;
+        private System.Windows.Forms.CheckBox L_Weather;
         private System.Windows.Forms.CheckBox Intimidate;
         private System.Windows.Forms.CheckBox AO;
         private System.Windows.Forms.CheckBox LastCallFail;
@@ -1542,9 +1530,8 @@
         private System.Windows.Forms.CheckBox SameCaller;
         private System.Windows.Forms.ComboBox HPBarColor;
         private System.Windows.Forms.Label L_HPBarColor;
-        private System.Windows.Forms.Label L_ChainLength;
+        private System.Windows.Forms.Label L_Length;
         private System.Windows.Forms.NumericUpDown ChainLength;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox OPower;
         private System.Windows.Forms.TabPage TP_SOS2;
         private System.Windows.Forms.Label L_Slot;
@@ -1563,7 +1550,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_randn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_npcstatus;

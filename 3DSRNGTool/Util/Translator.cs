@@ -57,8 +57,6 @@ namespace Pk3DSRNGTool
                                 .Select(i => i.Trim()).ToArray();
         }
 
-        private static readonly string[] DontTranslateKeywords = { "label", "TID", "SID", };
-        private static bool translatable(string name) => !DontTranslateKeywords.Any(name.Contains);
         private static IEnumerable<object> GetTranslatableControls(Control f)
         {
             foreach (var z in f.GetChildrenOfType<Control>())
@@ -72,12 +70,11 @@ namespace Pk3DSRNGTool
 
                     case DataGridView dgv:
                         foreach (var col in dgv.Columns.OfType<DataGridViewColumn>())
-                            if (translatable(col.Name))
-                                yield return col;
+                            yield return col;
                         goto default;
 
                     default:
-                        if (string.IsNullOrWhiteSpace(z.Name) || !translatable(z.Name))
+                        if (string.IsNullOrWhiteSpace(z.Name) || z.Name.Contains("label"))
                             break;
 
                         if (z.ContextMenuStrip != null) // control has attached menustrip
@@ -150,12 +147,13 @@ namespace Pk3DSRNGTool
 
     public class TranslationContext
     {
-        public bool AddNew { get; set; } = true;
-        public bool RemoveUsedKeys { get; set; } = false;
+        private const char separator = '=';
+        public static bool AddNew = false;
+        public static bool RemoveUsedKeys = false;
         private readonly Dictionary<string, string> Translation = new Dictionary<string, string>();
-        public TranslationContext(IEnumerable<string> content, char separator = '=')
+        public TranslationContext(IEnumerable<string> content)
         {
-            var entries = content.Select(z => z.Split(separator)).Where(z => z.Length == 2);
+            var entries = content.Select(z => z.Split(new[] { separator }, 2));
             foreach (var r in entries.Where(z => !Translation.ContainsKey(z[0])))
                 Translation.Add(r[0], r[1]);
         }
@@ -177,9 +175,11 @@ namespace Pk3DSRNGTool
         }
 
 #if DEBUG
-        public IEnumerable<string> Write(char separator = '=')
+        public IEnumerable<string> Write()
         {
-            return Translation.Select(z => $"{z.Key}{separator}{z.Value}").OrderBy(z => z.Contains("."));
+            return Translation.Select(z => $"{z.Key}{separator}{z.Value}")
+                              .OrderBy(z => z.Contains(".") && z.IndexOf('.') < z.IndexOf('='))
+                              .ThenBy(z => z);
         }
 
         public void UpdateFrom(TranslationContext other)

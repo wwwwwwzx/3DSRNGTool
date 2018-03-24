@@ -42,7 +42,7 @@
             this.StartClockInput = new System.Windows.Forms.RadioButton();
             this.Clock_List = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
-            this.Back = new System.Windows.Forms.Button();
+            this.B_Back = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -114,7 +114,7 @@
             this.InputBox.Controls.Add(this.StartClockInput);
             this.InputBox.Controls.Add(this.Clock_List);
             this.InputBox.Controls.Add(this.button10);
-            this.InputBox.Controls.Add(this.Back);
+            this.InputBox.Controls.Add(this.B_Back);
             this.InputBox.Controls.Add(this.button7);
             this.InputBox.Controls.Add(this.button11);
             this.InputBox.Controls.Add(this.button6);
@@ -138,7 +138,7 @@
             // Offset
             // 
             this.Offset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Offset.Location = new System.Drawing.Point(110, 107);
+            this.Offset.Location = new System.Drawing.Point(118, 107);
             this.Offset.Maximum = new decimal(new int[] {
             16,
             0,
@@ -266,15 +266,15 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.Get_Clock_Number);
             // 
-            // Back
+            // B_Back
             // 
-            this.Back.Location = new System.Drawing.Point(166, 96);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(72, 27);
-            this.Back.TabIndex = 7;
-            this.Back.Text = "后退";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
+            this.B_Back.Location = new System.Drawing.Point(166, 96);
+            this.B_Back.Name = "B_Back";
+            this.B_Back.Size = new System.Drawing.Size(72, 27);
+            this.B_Back.TabIndex = 7;
+            this.B_Back.Text = "后退";
+            this.B_Back.UseVisualStyleBackColor = true;
+            this.B_Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // button7
             // 
@@ -728,7 +728,7 @@
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.RadioButton StartClockInput;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Button B_Back;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button6;

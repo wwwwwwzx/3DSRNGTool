@@ -120,7 +120,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.M_NTRHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.M_KeyBV = new System.Windows.Forms.ToolStripMenuItem();
-            this.MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.M_MiscRNGTool = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Option = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Profile = new System.Windows.Forms.ToolStripMenuItem();
             this.M_Language = new System.Windows.Forms.ToolStripMenuItem();
@@ -1151,7 +1151,7 @@
             this.toolStripSeparator2,
             this.M_NTRHelper,
             this.M_KeyBV,
-            this.MiscRNGTool});
+            this.M_MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
             this.M_Tool.Size = new System.Drawing.Size(48, 20);
             this.M_Tool.Text = "Tools";
@@ -1201,12 +1201,12 @@
             this.M_KeyBV.Text = "KeyBV";
             this.M_KeyBV.Click += new System.EventHandler(this.M_keyBVTool_Click);
             // 
-            // MiscRNGTool
+            // M_MiscRNGTool
             // 
-            this.MiscRNGTool.Name = "MiscRNGTool";
-            this.MiscRNGTool.Size = new System.Drawing.Size(195, 22);
-            this.MiscRNGTool.Text = "Misc. RNG Tool";
-            this.MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
+            this.M_MiscRNGTool.Name = "M_MiscRNGTool";
+            this.M_MiscRNGTool.Size = new System.Drawing.Size(195, 22);
+            this.M_MiscRNGTool.Text = "Misc. RNG Tool";
+            this.M_MiscRNGTool.Click += new System.EventHandler(this.MiscRNGTool_Click);
             // 
             // M_Option
             // 
@@ -1584,7 +1584,6 @@
             this.Parents_Info.Controls.Add(this.L_Egg_A);
             this.Parents_Info.Controls.Add(this.Homogeneity);
             this.Parents_Info.Controls.Add(this.L_Egg_D);
-            this.Parents_Info.Controls.Add(this.L_Ditto);
             this.Parents_Info.Controls.Add(this.M_IV0);
             this.Parents_Info.Controls.Add(this.M_IV1);
             this.Parents_Info.Controls.Add(this.F_IV4);
@@ -1606,6 +1605,7 @@
             this.Parents_Info.Controls.Add(this.M_ditto);
             this.Parents_Info.Controls.Add(this.F_Items);
             this.Parents_Info.Controls.Add(this.M_Items);
+            this.Parents_Info.Controls.Add(this.L_Ditto);
             this.Parents_Info.Location = new System.Drawing.Point(6, 6);
             this.Parents_Info.Name = "Parents_Info";
             this.Parents_Info.Size = new System.Drawing.Size(405, 273);
@@ -5653,7 +5653,7 @@
         private System.Windows.Forms.Label L_BiteDelay;
         private System.Windows.Forms.Label L_Lead;
         private System.Windows.Forms.ComboBox LeadAbility;
-        private System.Windows.Forms.ToolStripMenuItem MiscRNGTool;
+        private System.Windows.Forms.ToolStripMenuItem M_MiscRNGTool;
         private System.Windows.Forms.CheckBox ShinyRemind;
         private System.Windows.Forms.Label L_SOSRNGFrame;
         private System.Windows.Forms.NumericUpDown SOSRNGFrame;
