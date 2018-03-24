@@ -6,9 +6,14 @@ using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
-    [Serializable()]
     public class TinyStatus
     {
+        private struct TinyCall
+        {
+            public int frame, type;
+            public TinyCall(int f, int t) { frame = f; type = t; }
+        }
+
         private List<TinyCall> list = new List<TinyCall>();
         public TinyMT Tinyrng;
         public int Currentframe;
@@ -16,23 +21,16 @@ namespace Pk3DSRNGTool
         {
             Tinyrng = new TinyMT(seed);
         }
+        public TinyStatus Clone() => new TinyStatus(Tinyrng.status)
+        {
+            Currentframe = Currentframe,
+            list = new List<TinyCall>(list),
+        };
 
         public void Next() => Tinyrng.Next();
         public uint Nextuint() => Tinyrng.Nextuint();
         public byte Rand(int n) => (byte)((Tinyrng.Nextuint() * (ulong)n) >> 32);
         public bool Rand2 => Tinyrng.Nextuint() < 0x80000000;
-
-        [Serializable()]
-        private struct TinyCall
-        {
-            public int frame;
-            public int type;
-            public TinyCall(int f, int t)
-            {
-                frame = f;
-                type = t;
-            }
-        }
 
         public void Addfront(int f, int t) => list.Add(new TinyCall(f, t));
         public void Add(int f, int t)
@@ -149,7 +147,7 @@ namespace Pk3DSRNGTool
                 newdata.Index = i++;
                 newdata.state = State;
                 newdata.framemin = Currentframe;
-                newdata.tinystate = (TinyStatus)Status.DeepCopy();
+                newdata.tinystate = Status.Clone();
                 Status.AdvancetoNextCall(out newdata.rand);
                 newdata.framemax = Currentframe;
                 ReferenceList.Add(newdata);
@@ -161,7 +159,7 @@ namespace Pk3DSRNGTool
                 newdata.Index = i++;
                 newdata.state = State;
                 newdata.framemin = Currentframe;
-                newdata.tinystate = (TinyStatus)Status.DeepCopy();
+                newdata.tinystate = Status.Clone();
                 Status.AdvancetoNextCall(out newdata.rand);
                 newdata.framemax = Currentframe;
                 ReferenceList.Add(newdata);
@@ -186,7 +184,7 @@ namespace Pk3DSRNGTool
         private int getidxAfterDelay(TinyStatus src, int Current, int startindex)
         {
             // No Cry
-            var st = (TinyStatus)src.DeepCopy();
+            var st = src.Clone();
             st.Currentframe = Current;
 
             // Delay

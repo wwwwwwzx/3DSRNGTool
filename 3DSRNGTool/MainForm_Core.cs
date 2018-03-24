@@ -86,7 +86,7 @@ namespace Pk3DSRNGTool
                 {
                     while (j < min)
                         j += 2;
-                    RNGPool.tinystatus = (TinyStatus)tinyframe.tinystate.DeepCopy();
+                    RNGPool.tinystatus = tinyframe.tinystate.Clone();
                     RNGPool.tinystatus.Currentframe = j;
                     RNGResult result = RNGPool.Generate6();
                     if (!filter.CheckResult(result))
