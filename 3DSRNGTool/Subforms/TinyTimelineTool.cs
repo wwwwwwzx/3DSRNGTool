@@ -20,9 +20,9 @@ namespace Pk3DSRNGTool
             Type3.SelectedIndex =
             Type2.SelectedIndex =
             Type1.SelectedIndex = 0;
-            Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = Frame_max.Maximum = FuncUtil.MAXFRAME;
+            Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = TargetFrame.Maximum = FuncUtil.MAXFRAME;
             Frame1.Value = Frame2.Value = Frame3.Value = 500;
-            Frame_max.Value = 100000;
+            TargetFrame.Value = 100000;
         }
         public void UpdateTypeComboBox(int[] type)
         {
@@ -79,7 +79,7 @@ namespace Pk3DSRNGTool
             {
                 SkipList.Add(Next);
                 ((NumericUpDown)Controls.Find("Frame" + SkipList.Count.ToString(), true).FirstOrDefault()).Value = Curr;
-                ((ComboBox)Controls.Find("Type" + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type;
+                try { ((ComboBox)Controls.Find("Type" + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type; } catch { };
                 B_Create_Click(null, null);
             }
             return;
@@ -138,11 +138,15 @@ namespace Pk3DSRNGTool
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
+            int target = (int)TargetFrame.Value;
             if (ConsiderDelay.Checked && list.Count > 0)
             {
-                int targetframeindex = list.FindIndex(t => t.framemin < state.Maxframe && state.Maxframe <= t.framemax);
-                MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
-                MainDGV.Rows[targetframeindex].Selected = true;
+                int targetframeindex = list.FindIndex(t => t.framemin < target && target <= t.framemax);
+                if (targetframeindex > 0)
+                {
+                    MainDGV.FirstDisplayedScrollingRowIndex = Math.Max(0, targetframeindex - 5);
+                    MainDGV.Rows[targetframeindex].Selected = true;
+                }
             }
             Method_Changed();
         }
@@ -153,7 +157,7 @@ namespace Pk3DSRNGTool
             {
                 Status = new TinyStatus(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
-                Maxframe = (int)Frame_max.Value,
+                Maxframe = (int)TargetFrame.Value + 5000,
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,
                 Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
             };
@@ -175,13 +179,13 @@ namespace Pk3DSRNGTool
             if (list.Count <= index)
                 return;
             var row = MainDGV.Rows[index];
-            if (Method.SelectedIndex == 3 && list[index].enctr < 13)
+            if (tiny_enctr.Visible && list[index].enctr < Frame_Tiny.thershold && Frame_Tiny.thershold < 50)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (Method.SelectedIndex == 4 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
 
-        private void copyStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetAsCurrent_Click(object sender, EventArgs e)
         {
             try
             {
@@ -279,7 +283,7 @@ namespace Pk3DSRNGTool
                 case 6: // Rock Smash
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
                     Parameters.Visible = false;
-                    Delay.Value = 14;
+                    ConsiderDelay.Checked = true;
                     break;
                 case 7: // Cave Shadow
                     Parameters.Visible = false;

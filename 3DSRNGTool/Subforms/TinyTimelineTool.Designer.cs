@@ -44,7 +44,7 @@
             this.Frame1 = new System.Windows.Forms.NumericUpDown();
             this.B_Create = new System.Windows.Forms.Button();
             this.L_Mainframe = new System.Windows.Forms.Label();
-            this.Frame_max = new System.Windows.Forms.NumericUpDown();
+            this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
             this.L_TypeNum = new System.Windows.Forms.Label();
@@ -88,7 +88,7 @@
             this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
             this.GB_Cali.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
@@ -156,7 +156,7 @@
             this.SetAsCurrent.Name = "SetAsCurrent";
             this.SetAsCurrent.Size = new System.Drawing.Size(137, 22);
             this.SetAsCurrent.Text = "Copy Status";
-            this.SetAsCurrent.Click += new System.EventHandler(this.copyStatusToolStripMenuItem_Click);
+            this.SetAsCurrent.Click += new System.EventHandler(this.SetAsCurrent_Click);
             // 
             // Frame1
             // 
@@ -192,18 +192,18 @@
             this.L_Mainframe.TabIndex = 111;
             this.L_Mainframe.Text = "Main RNG Frame";
             // 
-            // Frame_max
+            // TargetFrame
             // 
-            this.Frame_max.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Frame_max.Increment = new decimal(new int[] {
+            this.TargetFrame.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TargetFrame.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.Frame_max.Location = new System.Drawing.Point(95, 62);
-            this.Frame_max.Name = "Frame_max";
-            this.Frame_max.Size = new System.Drawing.Size(88, 22);
-            this.Frame_max.TabIndex = 112;
+            this.TargetFrame.Location = new System.Drawing.Point(95, 62);
+            this.TargetFrame.Name = "TargetFrame";
+            this.TargetFrame.Size = new System.Drawing.Size(88, 22);
+            this.TargetFrame.TabIndex = 112;
             // 
             // L_TargetFrame
             // 
@@ -424,7 +424,7 @@
             this.GB_Adj.Controls.Add(this.CryFrame);
             this.GB_Adj.Controls.Add(this.L_Method);
             this.GB_Adj.Controls.Add(this.Method);
-            this.GB_Adj.Controls.Add(this.Frame_max);
+            this.GB_Adj.Controls.Add(this.TargetFrame);
             this.GB_Adj.Controls.Add(this.L_TargetFrame);
             this.GB_Adj.Location = new System.Drawing.Point(5, 318);
             this.GB_Adj.Name = "GB_Adj";
@@ -719,7 +719,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TinyTimelineTool_FormClosing);
             this.CMS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Frame_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).EndInit();
@@ -746,7 +746,7 @@
         private System.Windows.Forms.NumericUpDown Frame1;
         private System.Windows.Forms.Button B_Create;
         private System.Windows.Forms.Label L_Mainframe;
-        private System.Windows.Forms.NumericUpDown Frame_max;
+        public System.Windows.Forms.NumericUpDown TargetFrame;
         private System.Windows.Forms.Label L_TargetFrame;
         private System.Windows.Forms.GroupBox GB_Cali;
         private System.Windows.Forms.ComboBox Type2;

@@ -175,7 +175,7 @@ namespace Pk3DSRNGTool
                 case 2: MarkHorde(); break;
                 case 3: MarkFS(); break;
                 case 4: MarkNormalWild(); break;
-                case 5: if (splittimeline) MarkFishing(); break;
+                case 5: MarkFishing(); break;
                 case 6: MarkRockSmash(); break;
                 case 7: MarkNormalWild(); break;
             }
@@ -183,35 +183,36 @@ namespace Pk3DSRNGTool
 
         private int getidxAfterDelay(TinyStatus src, int Current, int startindex)
         {
-            // No Cry
             var st = src.Clone();
             st.Currentframe = Current;
 
             // Delay
-            if (CryFrame == -1)
-                st.time_elapse(Delay);
-            else
-            {
-                st.time_elapse(CryFrame);
-                st.Next();
-                st.time_elapse(Delay - CryFrame);
-            }
-
-            // More method here
             switch (Method)
             {
-                case 5:
+                case 5:                 // Fishing
+                    st.time_elapse(Delay);
                     for (int i = 3 * PM_Num; i > 0; i--)
                         st.Next();
                     st.time_elapse(132);
                     st.time_elapse(st.Rand(7) * 30 + 60);
                     break;
-                case 6:
-                    for (int i = 3; i > 0; i--)
+                case 6:                 // Rock Smash
+                    st.time_elapse(16);
+                    for (int i = 3; i > 0; i--) // Memory for Rock Smasher
                         st.Next();
-                    st.time_elapse(52);
+                    st.time_elapse(Delay - 228);
                     st.Next(); // Rand(240)
                     st.time_elapse(212);
+                    break;
+                default:
+                    if (CryFrame == -1) // No Cry
+                        st.time_elapse(Delay);
+                    else
+                    {
+                        st.time_elapse(CryFrame);
+                        st.Next();
+                        st.time_elapse(Delay - CryFrame);
+                    }
                     break;
             }
 
@@ -317,7 +318,7 @@ namespace Pk3DSRNGTool
                     return 4;
                 return 5;
             }
-            Frame_Tiny.thershold = 33; // Should be 1/3
+            Frame_Tiny.thershold = 1;
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
             for (int i = 0; i < max; i++)
@@ -328,11 +329,11 @@ namespace Pk3DSRNGTool
                     results = results.Take(i).ToList(); // Remove Tail Data
                     break;
                 }
-                results[i].enctr = ReferenceList[j++].R100;
+                results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = getrocksmashslot(ReferenceList[j++].R100);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
         }
 
@@ -351,7 +352,7 @@ namespace Pk3DSRNGTool
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
         }
 
@@ -387,7 +388,7 @@ namespace Pk3DSRNGTool
                 results[i].enctr = ReferenceList[j++].R100;
                 results[i].slot = getfishingslot(ReferenceList[j++].R100);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
         }
     }

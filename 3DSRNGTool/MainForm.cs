@@ -963,6 +963,7 @@ namespace Pk3DSRNGTool
         private void TargetFrame_ValueChanged(object sender, EventArgs e)
         {
             gen7tool?.UpdatePara(target: TargetFrame.Value);
+            TTT.TargetFrame.Value = TargetFrame.Value;
         }
 
         private void Sta_AbilityLocked_CheckedChanged(object sender, EventArgs e)
