@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Pk3DSRNGTool.RNG;
+using Pk3DSRNGTool.Core;
 
 namespace Pk3DSRNGTool
 {
@@ -177,7 +178,7 @@ namespace Pk3DSRNGTool
                 case 3: MarkFS(); break;
                 case 4: MarkNormalWild(); break;
                 case 5: if (splittimeline) MarkFishing(); break;
-                case 6:
+                case 6: MarkRockSmash(); break;
                 case 7: MarkNormalWild(); break;
             }
         }
@@ -210,8 +211,8 @@ namespace Pk3DSRNGTool
                 case 6:
                     for (int i = 3; i > 0; i--)
                         st.Next();
-                    st.time_elapse(52); // To-do
-                    st.Next();
+                    st.time_elapse(52);
+                    st.Next(); // Rand(240)
                     st.time_elapse(212);
                     break;
             }
@@ -304,10 +305,31 @@ namespace Pk3DSRNGTool
             }
         }
 
+        private void MarkRockSmash()
+        {
+            Frame_Tiny.thershold = 33; // Should be 1/3
+            int max = results.Count;
+            int idxmax = ReferenceList.Count - 5;
+            for (int i = 0; i < max; i++)
+            {
+                int j = results[i].HitIndex;
+                if (j >= idxmax)
+                {
+                    results = results.Take(i).ToList(); // Remove Tail Data
+                    break;
+                }
+                results[i].enctr = ReferenceList[j++].R100;
+                results[i].sync = ReferenceList[j++].R2;
+                results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
+                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j++].R100);
+            }
+        }
+
         private void MarkNormalWild()
         {
             int max = results.Count;
-            int idxmax = ReferenceList.Count - 3;
+            int idxmax = ReferenceList.Count - 4;
             for (int i = 0; i < max; i++)
             {
                 int j = results[i].HitIndex;
@@ -318,7 +340,7 @@ namespace Pk3DSRNGTool
                 }
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
-                results[i].flute = Wild6.getFluteBoost(ReferenceList[j++].R100);
+                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
         }
@@ -346,7 +368,7 @@ namespace Pk3DSRNGTool
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].enctr = ReferenceList[j++].R100;
                 results[i].slot = getfishingslot(ReferenceList[j++].R100);
-                results[i].flute = Wild6.getFluteBoost(ReferenceList[j++].R100);
+                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
         }

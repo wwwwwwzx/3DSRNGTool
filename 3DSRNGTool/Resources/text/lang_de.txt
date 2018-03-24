@@ -287,6 +287,7 @@ TinyTimelineTool.L_Method=Methode
 TinyTimelineTool.L_Type=Advance Type
 TinyTimelineTool.L_TypeNum=# of Advance Type
 TinyTimelineTool.tiny_enctr=Enctr?
+TinyTimelineTool.tiny_flute=Flute
 TinyTimelineTool.tiny_ha=HA
 TinyTimelineTool.tiny_hitidx=Hit
 TinyTimelineTool.tiny_index=Index

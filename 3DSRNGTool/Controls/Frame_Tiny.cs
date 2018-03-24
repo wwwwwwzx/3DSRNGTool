@@ -18,7 +18,7 @@ namespace Pk3DSRNGTool
         public int framemax;
         public TinyStatus tinystate;
         public HordeResults horde;
-        public byte flute;
+        public byte Flute { get; set; }
         public byte item;
 
         public bool unhitable => framemin == framemax;

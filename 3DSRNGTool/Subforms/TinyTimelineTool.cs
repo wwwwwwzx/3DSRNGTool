@@ -196,9 +196,10 @@ namespace Pk3DSRNGTool
         private void Method_Changed()
         {
             tiny_ha.Visible = Method.SelectedIndex == 2;
-            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5;
+            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
             dgv_slot.Visible = Method.SelectedIndex > 1;
+            tiny_flute.Visible = Method.SelectedIndex > 3;
             dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             dgv_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;

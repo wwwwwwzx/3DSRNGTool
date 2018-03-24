@@ -104,5 +104,16 @@
             new byte[] { 60,40 }, // 48
             new byte[] { 50,50 },
         };
+        
+        public static byte getFluteBoost(ulong Rand100)
+        {
+            if (Rand100 < 40)
+                return 1;
+            if (Rand100 < 70)
+                return 2;
+            if (Rand100 < 90)
+                return 3;
+            return 4;
+        }
     }
 }

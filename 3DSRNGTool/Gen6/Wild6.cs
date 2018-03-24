@@ -32,6 +32,8 @@ namespace Pk3DSRNGTool
         public bool CompoundEye;    // For held item
         public byte PartyPKM;       // For fishing
         public byte EncounterRate;
+        public sbyte Flute;         // +1/-1/0
+        public byte FluteBoost;
 
         // ORAS v1.4 sub_78D900
         private void CheckLeadAbility()
@@ -62,7 +64,7 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime - 228);
                     tiny_Advance(1);
                     RNGPool.time_elapse6(212);
-                    RNGResult.IsPokemon = TinyRand(100) < 30; // To-do
+                    RNGResult.IsPokemon = TinyRand(3) == 0; // 0 for Pokemon, 1 for item, 2 for nothing
                     break;
                 case EncounterType.CaveShadow:
                     RNGPool.time_elapse6(32);
@@ -109,8 +111,8 @@ namespace Pk3DSRNGTool
                     break;
             }
 
-            // Something before generation
-            tiny_Advance(1);
+            // Flute
+            FluteBoost = getFluteBoost(TinyRand(100));
 
             // Item generated after pkm
             rt.Item = TinyRand(100);
@@ -163,7 +165,7 @@ namespace Pk3DSRNGTool
         private void Generate_Once(ResultW6 rt)
         {
             //Level
-            rt.Level = LevelModifierPass ? ModifiedLevel : SlotLevel[slot];
+            rt.Level = (byte)((LevelModifierPass ? ModifiedLevel : SlotLevel[slot]) + (Flute * FluteBoost));
 
             //Encryption Constant
             rt.EC = getrand;
@@ -263,17 +265,6 @@ namespace Pk3DSRNGTool
                 return 3;
             }
             return 0;
-        }
-
-        public static byte getFluteBoost(ulong Rand100)
-        {
-            if (Rand100 < 40)
-                return 1;
-            if (Rand100 < 70)
-                return 2;
-            if (Rand100 < 90)
-                return 3;
-            return 4;
         }
     }
 }

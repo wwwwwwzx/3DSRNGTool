@@ -79,6 +79,7 @@
             this.tiny_enctr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_synced = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiny_flute = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -557,6 +558,7 @@
             this.tiny_enctr,
             this.dgv_synced,
             this.dgv_slot,
+            this.tiny_flute,
             this.dgv_item,
             this.tiny_ha,
             this.tiny_high16bit,
@@ -637,6 +639,14 @@
             this.dgv_slot.Name = "dgv_slot";
             this.dgv_slot.ReadOnly = true;
             this.dgv_slot.Width = 40;
+            // 
+            // tiny_flute
+            // 
+            this.tiny_flute.DataPropertyName = "Flute";
+            this.tiny_flute.HeaderText = "Flute";
+            this.tiny_flute.Name = "tiny_flute";
+            this.tiny_flute.ReadOnly = true;
+            this.tiny_flute.Width = 40;
             // 
             // dgv_item
             // 
@@ -770,6 +780,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_enctr;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_synced;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_flute;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
