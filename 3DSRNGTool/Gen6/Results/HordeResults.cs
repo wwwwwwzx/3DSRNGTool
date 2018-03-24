@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
             for (int i = 3 * PKMNUM + (IsXY ? 27 : 15); i > 0; i--)
                 rng.Next();
             Sync = rng.Nextuint() < 0x80000000;
-            Slot = Core.WildRNG.getSlot(Rand(rng, 100), 2);
+            Slot = Core.WildRNG.getSlot(Rand(rng, 100), 3);
             if (Rand(rng, 100) < 20) // 78de5c
                 HA = (byte)(Rand(rng, 5) + 1); // 78de70
             for (int i = IsXY ? 1 : 6; i > 0; i--)

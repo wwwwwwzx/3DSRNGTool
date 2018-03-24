@@ -63,15 +63,15 @@ namespace Pk3DSRNGTool
             e.Cancel = true;
         }
 
-        private void Translate()
+        public void Translate()
         {
             try
             {
-                this.TranslateInterface();
                 L_TrainerName.Text = StringItem.ANY_STR[StringItem.language];
                 for (int i = 0; i < 4; i++)
                     Game.Items[i] = StringItem.GAMEVERSION_STR[StringItem.language, i + 5];
                 Intimidate.Text = StringItem.abilitystr?[22] ?? string.Empty;
+                this.TranslateInterface();
             }
             catch { };
         }
