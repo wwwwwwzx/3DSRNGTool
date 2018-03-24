@@ -307,6 +307,18 @@ namespace Pk3DSRNGTool
 
         private void MarkRockSmash()
         {
+            byte getrocksmashslot(uint rand)
+            {
+                if (rand < 50)
+                    return 1;
+                if (rand < 80)
+                    return 2;
+                if (rand < 95)
+                    return 3;
+                if (rand < 99)
+                    return 4;
+                return 5;
+            }
             Frame_Tiny.thershold = 33; // Should be 1/3
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
@@ -320,7 +332,7 @@ namespace Pk3DSRNGTool
                 }
                 results[i].enctr = ReferenceList[j++].R100;
                 results[i].sync = ReferenceList[j++].R2;
-                results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
+                results[i].slot = getrocksmashslot(ReferenceList[j++].R100);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
@@ -354,6 +366,14 @@ namespace Pk3DSRNGTool
 
         public void MarkFishing()
         {
+            byte getfishingslot(uint rand)
+            {
+                if (rand < 50)
+                    return 1;
+                if (rand < 95)
+                    return 2;
+                return 3;
+            }
             Frame_Tiny.thershold = 98;
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
@@ -371,15 +391,6 @@ namespace Pk3DSRNGTool
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j++].R100);
             }
-        }
-
-        private static byte getfishingslot(uint rand)
-        {
-            if (rand < 50)
-                return 1;
-            if (rand < 95)
-                return 2;
-            return 3;
         }
     }
 }
