@@ -177,10 +177,10 @@ namespace Pk3DSRNGTool
                 case 1: MarkSync(false); break;
                 case 2: MarkHorde(); break;
                 case 3: MarkEncounter(FS: true); break;
-                case 4: MarkNormalWild(); break;
+                case 4: MarkEncounter(Check: false); break;
                 case 5: MarkEncounter(Fishing: true); break;
                 case 6: MarkRockSmash(); break;
-                case 7: MarkNormalWild(); break;
+                case 7: MarkEncounter(Check: false); break;
                 case 8: MarkEncounter(); break;
             }
         }
@@ -288,9 +288,9 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void MarkEncounter(bool FS = false, bool Fishing = false)
+        private void MarkEncounter(bool FS = false, bool Fishing = false, bool Check = true)
         {
-            Frame_Tiny.thershold = (byte)(FS ? 13 : Fishing ? 98 : Parameter);
+            Frame_Tiny.thershold = (byte)(!Check ? 0 : FS ? 13 : Fishing ? 98 : Parameter);
             byte SlotType = (byte)(FS ? SlotNum + 47 : Fishing ? 3 : 2);
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
@@ -303,7 +303,7 @@ namespace Pk3DSRNGTool
                     break;
                 }
                 results[i].sync = ReferenceList[j++].R2;
-                results[i].enctr = ReferenceList[j++].R100;
+                if (Check) results[i].enctr = ReferenceList[j++].R100;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j].R100);
@@ -326,25 +326,6 @@ namespace Pk3DSRNGTool
                 results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
-                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j].R100);
-            }
-        }
-
-        private void MarkNormalWild()
-        {
-            int max = results.Count;
-            int idxmax = ReferenceList.Count - 4;
-            for (int i = 0; i < max; i++)
-            {
-                int j = results[i].HitIndex;
-                if (j >= idxmax)
-                {
-                    results = results.Take(i).ToList(); // Remove Tail Data
-                    break;
-                }
-                results[i].sync = ReferenceList[j++].R2;
-                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 2);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
