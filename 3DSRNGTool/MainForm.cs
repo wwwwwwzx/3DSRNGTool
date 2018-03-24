@@ -1781,6 +1781,9 @@ namespace Pk3DSRNGTool
                     case EncounterType.CaveShadow:
                         TTT.Method.SelectedIndex = 7;
                         break;
+                    case EncounterType.Normal:
+                        TTT.Method.SelectedIndex = 8;
+                        break;
                     default:
                         TTT.Method.SelectedIndex = 0;
                         break;
@@ -1880,6 +1883,11 @@ namespace Pk3DSRNGTool
                         case 0x736F64:
                             var delay3 = TinyStatus.getcooldown3(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
                             TTT.Calibrate(3, CurrentFrame, CurrentFrame + delay3);
+                            break;
+
+                        // Running NPC
+                        case 0x7D3B28:
+                            TTT.Calibrate(6, CurrentFrame, CurrentFrame + 16);
                             break;
 
                         default:

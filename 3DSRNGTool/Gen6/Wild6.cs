@@ -95,14 +95,14 @@ namespace Pk3DSRNGTool
             {
                 case EncounterType.FriendSafari:
                     RNGResult.IsPokemon = TinyRand(100) < 13;
-                    rt.Slot = slot = getFSSlot(SlotNum, TinyRand(100));
+                    rt.Slot = slot = getSlot(TinyRand(100), (byte)(SlotNum + 47));
                     break;
+                case EncounterType.Normal:
                 case EncounterType.OldRod:
                 case EncounterType.GoodRod:
                 case EncounterType.SuperRod:
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
-                    rt.Slot = getslot6();
-                    break;
+                    goto default;
                 case EncounterType.PokeRadar:
                     rt.Slot = IsShinyLocked ? slot = 1 : getslot6();
                     break;
@@ -249,22 +249,6 @@ namespace Pk3DSRNGTool
             if (rand < (compoundeye ? 85 : 56))
                 return 2; // 1%
             return 3; // None
-        }
-
-        // XY 1.5 sub_74BED4
-        public static byte getFSSlot(int SlotNum, int Rand100)
-        {
-            if (SlotNum == 2)
-                return (byte)(Rand100 < 50 ? 1 : 2);
-            else if (SlotNum == 3)
-            {
-                if (Rand100 < 34)
-                    return 1;
-                if (Rand100 < 67)
-                    return 2;
-                return 3;
-            }
-            return 0;
         }
     }
 }

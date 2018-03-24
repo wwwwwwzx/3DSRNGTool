@@ -45,6 +45,18 @@
             return slot = (byte)SlotSplitter.Length;
         }
 
+        public static byte getSlot(int rand, byte SlotType)
+        {
+            var SlotSplitter = SlotDistribution[SlotType];
+            for (byte i = 1; i < SlotSplitter.Length; i++)
+            {
+                rand -= SlotSplitter[i - 1];
+                if (rand < 0)
+                    return i;
+            }
+            return (byte)SlotSplitter.Length;
+        }
+
         public readonly static byte[][] SlotDistribution = new byte[][]
         {
             new byte[] { 20,20,10,10,10,10,10,5,4,1 }, //SuMo Normal
@@ -103,6 +115,8 @@
             new byte[] { 30,20,15,35, },
             new byte[] { 60,40 }, // 48
             new byte[] { 50,50 },
+            // FS XY 1.5 sub_74BED4
+            new byte[] { 34,33,33 },
         };
         
         public static byte getFluteBoost(ulong Rand100)

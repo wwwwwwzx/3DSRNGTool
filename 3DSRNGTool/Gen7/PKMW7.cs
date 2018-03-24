@@ -25,7 +25,7 @@
                     new PKMW7 { Species = 000, Level = 55, Conceptual = true, Rate = new byte[] { 30 } },
 
                     new PKMW7 { Species = 793, Level = 55, Location = new []{100,082}, Rate = new byte[]{80,30},},    // Nihilego
-                    new PKMW7 { Species = 794, Level = 65, Location = new []{040}, Rate = new byte[]{30}, Version = GameVersion.SN,},    // Buzzwole
+                    new PKMW7 { Species = 794, Level = 65, Location = new []{040}, Rate = new byte[]{30}, Version = GameVersion.SN,},   // Buzzwole
                     new PKMW7 { Species = 795, Level = 60, Location = new []{046}, Rate = new byte[]{50}, Version = GameVersion.MN,},   // Pheromosa
                     new PKMW7 { Species = 796, Level = 65, Location = new []{346,076}, Rate = new byte[]{15,30},},    // Xurkitree
                     new PKMW7 { Species = 797, Level = 65, Location = new []{134,124}, Rate = new byte[]{30,30}, Version = GameVersion.MN,},    // Celesteela

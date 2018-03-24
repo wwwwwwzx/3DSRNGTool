@@ -212,33 +212,6 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public static byte getgen6slot(uint rand)
-        {
-            if (rand < 0x1999999A) //0-9
-                return 1;
-            if (rand < 0x33333334) //10-19
-                return 2;
-            if (rand < 0x4CCCCCCD) //20-29
-                return 3;
-            if (rand < 0x66666667) //30-39
-                return 4;
-            if (rand < 0x80000000) //40-49
-                return 5;
-            if (rand < 0x9999999A) //50-59
-                return 6;
-            if (rand < 0xB3333333) //60-69
-                return 7;
-            if (rand < 0xCCCCCCCD) //70-79
-                return 8;
-            if (rand < 0xE6666666) //80-99
-                return 9;
-            if (rand < 0xF3333333) //90-94
-                return 10;
-            if (rand < 0xFD70A3D7) //95-98
-                return 11;
-            return 12; //99
-        }
-
         public static int getstartingframe(int gameversion, int method)
         {
             if (gameversion < 5 || method == 3) // Gen6 or egg

@@ -75,8 +75,11 @@ namespace Pk3DSRNGTool
                     break;
                 case 5: // Cry 0x3F05BC
                     break;
-                case 6: // Groudon/Kyogre 0x7BE438
-                    Add(Currentframe + getcooldown5(rand), 6);
+                case 6: // Running NPC 0x7D3B28
+                    Add(Currentframe + 16, 6);
+                    break;
+                case 7: // Groudon/Kyogre 0x7BE438
+                    Add(Currentframe + getcooldown5(rand), 7);
                     break;
             }
         }
@@ -173,11 +176,12 @@ namespace Pk3DSRNGTool
                 case 0: MarkSync(true); break;
                 case 1: MarkSync(false); break;
                 case 2: MarkHorde(); break;
-                case 3: MarkFS(); break;
+                case 3: MarkEncounter(FS: true); break;
                 case 4: MarkNormalWild(); break;
-                case 5: MarkFishing(); break;
+                case 5: MarkEncounter(Fishing: true); break;
                 case 6: MarkRockSmash(); break;
                 case 7: MarkNormalWild(); break;
+                case 8: MarkEncounter(); break;
             }
         }
 
@@ -284,9 +288,10 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void MarkFS()
+        private void MarkEncounter(bool FS = false, bool Fishing = false)
         {
-            Frame_Tiny.thershold = 13;
+            Frame_Tiny.thershold = (byte)(FS ? 13 : Fishing ? 98 : Parameter);
+            byte SlotType = (byte)(FS ? SlotNum + 47 : Fishing ? 3 : 2);
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
             for (int i = 0; i < max; i++)
@@ -299,25 +304,14 @@ namespace Pk3DSRNGTool
                 }
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].enctr = ReferenceList[j++].R100;
-                results[i].slot = Wild6.getFSSlot(SlotNum, ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[++j].R100);
+                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
+                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
         }
 
         private void MarkRockSmash()
         {
-            byte getrocksmashslot(uint rand)
-            {
-                if (rand < 50)
-                    return 1;
-                if (rand < 80)
-                    return 2;
-                if (rand < 95)
-                    return 3;
-                if (rand < 99)
-                    return 4;
-                return 5;
-            }
             Frame_Tiny.thershold = 1;
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
@@ -331,7 +325,7 @@ namespace Pk3DSRNGTool
                 }
                 results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
                 results[i].sync = ReferenceList[j++].R2;
-                results[i].slot = getrocksmashslot(ReferenceList[j++].R100);
+                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
@@ -350,7 +344,7 @@ namespace Pk3DSRNGTool
                     break;
                 }
                 results[i].sync = ReferenceList[j++].R2;
-                results[i].slot = FuncUtil.getgen6slot(ReferenceList[j++].rand);
+                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 2);
                 results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[j].R100);
             }
@@ -361,35 +355,6 @@ namespace Pk3DSRNGTool
             int max = results.Count;
             for (int i = 0; i < max; i++)
                 results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num);
-        }
-
-        public void MarkFishing()
-        {
-            byte getfishingslot(uint rand)
-            {
-                if (rand < 50)
-                    return 1;
-                if (rand < 95)
-                    return 2;
-                return 3;
-            }
-            Frame_Tiny.thershold = 98;
-            int max = results.Count;
-            int idxmax = ReferenceList.Count - 5;
-            for (int i = 0; i < max; i++)
-            {
-                int j = results[i].HitIndex;
-                if (j >= idxmax)
-                {
-                    results = results.Take(i).ToList(); // Remove Tail Data
-                    break;
-                }
-                results[i].sync = ReferenceList[j++].R2;
-                results[i].enctr = ReferenceList[j++].R100;
-                results[i].slot = getfishingslot(ReferenceList[j++].R100);
-                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j].R100);
-            }
         }
     }
 }

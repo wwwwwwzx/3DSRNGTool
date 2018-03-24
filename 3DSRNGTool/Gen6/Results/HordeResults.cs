@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
             for (int i = 3 * PKMNUM + (IsXY ? 27 : 15); i > 0; i--)
                 rng.Next();
             Sync = rng.Nextuint() < 0x80000000;
-            Slot = HordeSlot(Rand(rng, 100));
+            Slot = Core.WildRNG.getSlot(Rand(rng, 100), 2);
             if (Rand(rng, 100) < 20) // 78de5c
                 HA = (byte)(Rand(rng, 5) + 1); // 78de70
             for (int i = IsXY ? 1 : 6; i > 0; i--)
@@ -35,15 +35,6 @@ namespace Pk3DSRNGTool
             return o;
         }
 
-        private static byte HordeSlot(uint rand)
-        {
-            if (rand < 60)
-                return 1;
-            if (rand < 95)
-                return 2;
-            return 3;
-        }
-
-        private static uint Rand(TinyMT rng, ulong n) => (uint)((rng.Nextuint() * n) >> 32);
+        private static int Rand(TinyMT rng, ulong n) => (int)((rng.Nextuint() * n) >> 32);
     }
 }

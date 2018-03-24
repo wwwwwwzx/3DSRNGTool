@@ -11,6 +11,7 @@
         OldRod,
         GoodRod,
         SuperRod,
+        Normal,
     }
 
     public class PKMW6 : Pokemon
@@ -21,6 +22,14 @@
 
         public readonly static PokemonList[] Species_XY =
         {
+            new PokemonList
+            {
+                Text = "Normal Wild",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Normal, Delay = 6 },
+                }
+            },
             new PokemonList
             {
                 Text = "Horde",
@@ -83,6 +92,14 @@
 
         public readonly static PokemonList[] Species_ORAS =
         {
+            new PokemonList
+            {
+                Text = "Normal Wild",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.Normal, Delay = 6 },
+                }
+            },
             new PokemonList
             {
                 Text = "Horde",

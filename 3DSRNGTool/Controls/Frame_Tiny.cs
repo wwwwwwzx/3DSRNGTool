@@ -27,7 +27,7 @@ namespace Pk3DSRNGTool
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
         public char Sync => sync ?? horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
         public string Encounter => enctr < thershold || thershold == 1 ? enctr.ToString() : "X";
-        public string HA => horde == null || horde.HA == 0 ?  "-" : horde.HA.ToString();
+        public string HA => horde == null || horde.HA == 0 ? "-" : horde.HA.ToString();
         public string Item => horde == null ? StringItem.helditemStr[item] : horde.ItemString;
 
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
@@ -42,7 +42,7 @@ namespace Pk3DSRNGTool
                     return (byte)slot;
                 if (horde != null)
                     return horde.Slot;
-                return FuncUtil.getgen6slot(rand);
+                return Core.WildRNG.getSlot((int)rand, 2);
             }
         }
     }

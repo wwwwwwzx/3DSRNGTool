@@ -9,8 +9,8 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
-        public static readonly int[] typelist = { -1, 0, 1, 3, 4 };
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring" };
+        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC" };
         public TinyTimelineTool()
         {
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == TypeNum.Value || type < 0 || type > 3)    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || type > 6)    // All used
             {
                 B_Stop_Click(null, null);
                 return;
@@ -200,7 +200,7 @@ namespace Pk3DSRNGTool
         private void Method_Changed()
         {
             tiny_ha.Visible = Method.SelectedIndex == 2;
-            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex == 5 || Method.SelectedIndex == 6;
+            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex > 4;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
             dgv_slot.Visible = Method.SelectedIndex > 1;
             tiny_flute.Visible = Method.SelectedIndex > 3;
@@ -242,15 +242,15 @@ namespace Pk3DSRNGTool
                 case 1: // Portal/soaring
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
-                    Parameters.Value = 1;
+                    Parameters.Value = 6;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 2: // Horde
                     Parameters.Maximum = 6;
-                    Parameters.Minimum = 0;
-                    Parameters.Value = 1;
+                    Parameters.Minimum = 1;
+                    Parameters.Value = 6;
                     TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     ConsiderDelay.Enabled = Delay.Enabled = false;
                     ConsiderDelay.Checked = false;
@@ -273,7 +273,7 @@ namespace Pk3DSRNGTool
                 case 5: // Fishing
                     Parameters.Maximum = 6;
                     Parameters.Minimum = 1;
-                    Parameters.Value = 1;
+                    Parameters.Value = 6;
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
                     Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
@@ -292,6 +292,14 @@ namespace Pk3DSRNGTool
                     Delay.Value = 78;
                     Cry.Checked = true;
                     CryFrame.Value = 32;
+                    break;
+                case 8: // Normal Wilds
+                    Parameters.Maximum = 99;
+                    Parameters.Minimum = 0;
+                    Parameters.Value = 5;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
+                    Delay.Value = 6;
+                    TTTToolTip.SetToolTip(Parameters, "Encounter Rate");
                     break;
                 default:
                     Parameters.Visible = false;
