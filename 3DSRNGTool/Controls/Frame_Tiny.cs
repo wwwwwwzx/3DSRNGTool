@@ -18,7 +18,7 @@ namespace Pk3DSRNGTool
         public int framemax;
         public TinyStatus tinystate;
         public HordeResults horde;
-        public byte Flute { get; set; }
+        public byte flute;
         public byte item;
 
         public bool unhitable => framemin == framemax;
@@ -27,8 +27,9 @@ namespace Pk3DSRNGTool
         public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
         public char Sync => sync ?? horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
         public string Encounter => enctr < thershold || thershold == 1 ? enctr.ToString() : "X";
-        public string HA => horde == null || horde.HA == 0 ? "-" : horde.HA.ToString();
-        public string Item => horde == null ? StringItem.helditemStr[item] : horde.ItemString;
+        public string HA => horde?.HA == 0 ? "-" : horde.HA.ToString();
+        public string Item => horde?.ItemString ?? StringItem.helditemStr[item];
+        public string Flute => horde?.FluteString ?? flute.ToString();
 
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public ushort High16bit => (ushort)(rand >> 16);

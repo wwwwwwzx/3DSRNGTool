@@ -306,7 +306,7 @@ namespace Pk3DSRNGTool
                 results[i].sync = ReferenceList[j++].R2;
                 if (Check) results[i].enctr = ReferenceList[j++].R100;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
-                if (IsORAS) results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                if (IsORAS) results[i].flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[++j].R100);
             }
         }
@@ -327,7 +327,7 @@ namespace Pk3DSRNGTool
                 results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
-                if (IsORAS) results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                if (IsORAS) results[i].flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
                 results[i].item = Wild6.getItem(ReferenceList[++j].R100);
             }
         }

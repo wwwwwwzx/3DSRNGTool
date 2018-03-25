@@ -28,6 +28,7 @@ namespace Pk3DSRNGTool
         public byte[] FluteBoosts = new byte[5];
         public byte[] HeldItems = new byte[5];
         public string ItemString => string.Join(",", HeldItems.Select(t => StringItem.helditemStr[Wild6.getItem(t)]));
+        public string FluteString => FluteBoosts[0] == 0 ? null : string.Join(",", FluteBoosts.Select(f => f.ToString()));
 
         public override string ToString()
         {

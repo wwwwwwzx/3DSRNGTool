@@ -22,7 +22,6 @@ namespace Pk3DSRNGTool
             Type1.SelectedIndex = 0;
             Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = TargetFrame.Maximum = FuncUtil.MAXFRAME;
             Frame1.Value = Frame2.Value = Frame3.Value = 500;
-            TargetFrame.Value = 100000;
         }
         public void UpdateTypeComboBox(int[] type)
         {
@@ -53,6 +52,7 @@ namespace Pk3DSRNGTool
                 tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
+        private bool IsORAS => Program.mainform.IsORAS && new[] { 2, 5, 6, 8 }.Contains(Method.SelectedIndex);
         public bool HasSeed => Gen6Tiny.Any(t => t != 0);
         private void Update_Click(object sender, EventArgs e)
         {
@@ -162,6 +162,7 @@ namespace Pk3DSRNGTool
                 Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
                 Method = (byte)Method.SelectedIndex,
                 Parameter = (int)Parameters.Value,
+                IsORAS = IsORAS,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
             if (Frame2.Value > Frame1.Value)
@@ -170,7 +171,6 @@ namespace Pk3DSRNGTool
                 if (Frame3.Value > Frame2.Value)
                     line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
             }
-            line.IsORAS = Program.mainform.IsORAS && new[] { 2, 5, 6, 8 }.Contains(line.Method);
             return line;
         }
 
@@ -190,7 +190,7 @@ namespace Pk3DSRNGTool
         {
             try
             {
-                var seed = (string)MainDGV.CurrentRow.Cells["tiny_state"].Value;
+                var seed = (string)MainDGV.CurrentRow.Cells["dgv_state"].Value;
                 Gen6Tiny = FuncUtil.SeedStr2Array(seed) ?? Gen6Tiny;
             }
             catch (NullReferenceException)
@@ -204,7 +204,8 @@ namespace Pk3DSRNGTool
             tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex > 4;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
             dgv_slot.Visible = Method.SelectedIndex > 1;
-            tiny_flute.Visible = Method.SelectedIndex > 4 && Program.mainform.IsORAS;
+            tiny_flute.Visible = IsORAS;
+            tiny_flute.Width = Method.SelectedIndex == 2 ? 60 : 40;
             dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             dgv_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
