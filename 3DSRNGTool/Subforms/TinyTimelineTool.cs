@@ -134,7 +134,7 @@ namespace Pk3DSRNGTool
             list = new List<Frame_Tiny>();
             Frame_Tiny.Startingframe = (int)Frame1.Value;
             var state = gettimeline();
-            state.Generate(ConsiderDelay.Checked);
+            state.Generate(splittimeline: ConsiderDelay.Checked);
             list = state.results;
             MainDGV.DataSource = list;
             MainDGV.CurrentCell = null;
@@ -153,9 +153,8 @@ namespace Pk3DSRNGTool
 
         public TinyTimeline gettimeline()
         {
-            var line = new TinyTimeline()
+            var line = new TinyTimeline(Gen6Tiny)
             {
-                TimelineStatus = new TinyStatus(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
                 Maxframe = (int)TargetFrame.Value + 5000,
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,

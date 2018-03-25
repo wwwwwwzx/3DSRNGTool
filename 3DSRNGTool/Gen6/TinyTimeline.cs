@@ -95,21 +95,26 @@ namespace Pk3DSRNGTool
 
     public class TinyTimeline
     {
-        public const int Buffer = 100;
+        private const int Buffer = 100;
 
-        public bool IsORAS;
+        public TinyTimeline(uint[] Seeds) { TimelineStatus = new TinyStatus(Seeds); }
         public int Startingframe;
         public int Maxframe;
         public byte Method;
         public int Parameter;
-        public TinyStatus TimelineStatus;
+        private int PM_Num => Parameter;
+        private int SlotNum => Parameter;
+        public bool IsORAS;
         public void Add(int f, int t) => TimelineStatus.Add(f, t);
-        public uint getrand => TimelineStatus.Nextuint();
-        public int Currentframe { get => TimelineStatus.Currentframe; set => TimelineStatus.Currentframe = value; }
 
-        // Not in the timeline
+        public List<Frame_Tiny> results;
+        public int TinyLength => results.Count;
+
+        // For timeline splitting
         public int Delay;
         public int CryFrame;
+        private TinyStatus TimelineStatus;
+        private List<TinyTimeSpan> ReferenceList;
 
         private struct TinyTimeSpan
         {
@@ -143,17 +148,14 @@ namespace Pk3DSRNGTool
             framemax = TimelineStatus.Currentframe,
         };
 
-        public int TinyLength => results.Count;
-        private List<TinyTimeSpan> ReferenceList;
-        public List<Frame_Tiny> results;
         public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
 
         public void Generate(bool splittimeline = false, bool ForMainForm = false)
         {
-            Currentframe = Startingframe - 2;
+            TimelineStatus.Currentframe = Startingframe - 2;
             int i = 0;
             ReferenceList = new List<TinyTimeSpan>();
-            while (Currentframe <= Maxframe)
+            while (TimelineStatus.Currentframe <= Maxframe)
                 ReferenceList.Add(getNewSpan(i++));
             int imax = i + Buffer;
             for (; i < imax;)
@@ -176,6 +178,7 @@ namespace Pk3DSRNGTool
                 case 7: MarkEncounter(Check: false); break;
                 case 8: MarkEncounter(); break;
             }
+            ReferenceList.Clear();
         }
 
         private int getidxAfterDelay(TinyStatus src, int Current, int startindex)
@@ -214,11 +217,11 @@ namespace Pk3DSRNGTool
             }
 
             // Check hit idx
-            var hitstate = st.Tinyrng.status;
+            var hitstate = st.Status;
             for (int i = startindex; i < ReferenceList.Count; i++)
                 if (ReferenceList[i].tinystate.Status.SequenceEqual(hitstate))
                     return i;
-            return -1;
+            return int.MaxValue;
         }
 
         private void SplitTimeline()
@@ -256,9 +259,6 @@ namespace Pk3DSRNGTool
                 results.Add(newdata);
             }
         }
-
-        private int PM_Num => Parameter;
-        private int SlotNum => Parameter;
 
         private void MarkSync(bool Instant) => getshiftedsync(Instant ? 0 : 3 * PM_Num);
 
