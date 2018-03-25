@@ -5,7 +5,7 @@ namespace Pk3DSRNGTool
 {
     public static class Updater
     {
-        public static string CurrentVersion = "1.0.1";
+        public static string CurrentVersion = "1.0.2";
 
         public static void CheckUpdate()
         {
@@ -31,7 +31,7 @@ namespace Pk3DSRNGTool
             {
                 var LatestVersion = new System.Net.WebClient().DownloadString("https://raw.githubusercontent.com/wwwwwwzx/3DSRNGTool/master/version.txt");
                 if (HasNewerVersion(LatestVersion))
-                    if (FormUtil.Prompt(MessageBoxButtons.YesNo, "New version detected. Start to download?") == DialogResult.Yes)
+                    if (FormUtil.Prompt(MessageBoxButtons.YesNo, $"New version (v{LatestVersion}) detected. Start to download?") == DialogResult.Yes)
                     {
                         System.Diagnostics.Process.Start(StringItem.GITHUB + "releases/download/" + LatestVersion + "/3DSRNGTool.exe");
                         Program.mainform.Close();
