@@ -66,7 +66,7 @@ namespace Pk3DSRNGTool
             int min = Math.Max((int)Frame_min.Value, RNGPool.timeline.Startingframe + 2);
             int max = (int)TimeSpan.Value * 60 + min;
             RNGPool.timeline.Maxframe = max;
-            RNGPool.timeline.Generate(Method == 0); // Consider Stationary delay
+            RNGPool.timeline.Generate(ForMainForm: true);
             int listlength = RNGPool.timeline.TinyLength;
 
             // Prepare
@@ -92,7 +92,7 @@ namespace Pk3DSRNGTool
                     if (!filter.CheckResult(result))
                         continue;
                     Frames.Add(new Frame(result, frame: j, time: j - min));
-                    Frames.Last()._tinystate = new PRNGState(tinyframe.state);
+                    Frames.Last()._tinystate = new PRNGState(tinyframe.tinystate.Status);
                     if (Frames.Count > 100000)
                         return;
                 }

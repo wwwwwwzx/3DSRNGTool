@@ -155,7 +155,7 @@ namespace Pk3DSRNGTool
         {
             var line = new TinyTimeline()
             {
-                Status = new TinyStatus(Gen6Tiny),
+                TimelineStatus = new TinyStatus(Gen6Tiny),
                 Startingframe = (int)Frame1.Value,
                 Maxframe = (int)TargetFrame.Value + 5000,
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,

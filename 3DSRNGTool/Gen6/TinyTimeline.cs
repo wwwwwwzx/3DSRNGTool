@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
             list = new List<TinyCall>(list),
         };
 
+        public uint[] Status => Tinyrng.status;
         public void Next() => Tinyrng.Next();
         public uint Nextuint() => Tinyrng.Nextuint();
         public byte Rand(int n) => (byte)((Tinyrng.Nextuint() * (ulong)n) >> 32);
@@ -44,15 +45,15 @@ namespace Pk3DSRNGTool
         {
             int Target = Currentframe + Delay;
             while (list.Last().frame < Target)
-                AdvancetoNextCall(out uint dumb);
+                AdvancetoNextCall();
             Currentframe = Target;
         }
 
-        public void AdvancetoNextCall(out uint rand)
+        public uint AdvancetoNextCall()
         {
-            rand = Tinyrng.Nextuint();
+            uint rand = Tinyrng.Nextuint();
             if (list.Count == 0)
-                return;
+                return rand;
             Currentframe = list.Last().frame;
             var calltype = list.Last().type;
             list.RemoveAt(list.Count - 1);
@@ -82,6 +83,7 @@ namespace Pk3DSRNGTool
                     Add(Currentframe + getcooldown5(rand), 7);
                     break;
             }
+            return rand;
         }
 
         public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
@@ -100,11 +102,10 @@ namespace Pk3DSRNGTool
         public int Maxframe;
         public byte Method;
         public int Parameter;
-        public TinyStatus Status;
-        public void Add(int f, int t) => Status.Add(f, t);
-        public uint getrand => Status.Tinyrng.Nextuint();
-        public int Currentframe { get => Status.Currentframe; set => Status.Currentframe = value; }
-        public uint[] State => (uint[])Status.Tinyrng.status.Clone();
+        public TinyStatus TimelineStatus;
+        public void Add(int f, int t) => TimelineStatus.Add(f, t);
+        public uint getrand => TimelineStatus.Nextuint();
+        public int Currentframe { get => TimelineStatus.Currentframe; set => TimelineStatus.Currentframe = value; }
 
         // Not in the timeline
         public int Delay;
@@ -113,7 +114,6 @@ namespace Pk3DSRNGTool
         private struct TinyTimeSpan
         {
             public int Index;
-            public uint[] state;
             public uint rand;
             public int framemin;
             public int framemax;
@@ -126,7 +126,6 @@ namespace Pk3DSRNGTool
                 return new Frame_Tiny
                 {
                     Index = Index,
-                    state = (uint[])state.Clone(),
                     rand = rand,
                     framemin = framemin,
                     framemax = framemax,
@@ -135,43 +134,36 @@ namespace Pk3DSRNGTool
             }
         }
 
+        private TinyTimeSpan getNewSpan(int index) => new TinyTimeSpan()
+        {
+            Index = index,
+            tinystate = TimelineStatus.Clone(),
+            framemin = TimelineStatus.Currentframe,
+            rand = TimelineStatus.AdvancetoNextCall(),
+            framemax = TimelineStatus.Currentframe,
+        };
+
         public int TinyLength => results.Count;
         private List<TinyTimeSpan> ReferenceList;
         public List<Frame_Tiny> results;
         public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
 
-        public void Generate(bool splittimeline = false)
+        public void Generate(bool splittimeline = false, bool ForMainForm = false)
         {
             Currentframe = Startingframe - 2;
             int i = 0;
             ReferenceList = new List<TinyTimeSpan>();
             while (Currentframe <= Maxframe)
-            {
-                var newdata = new TinyTimeSpan();
-                newdata.Index = i++;
-                newdata.state = State;
-                newdata.framemin = Currentframe;
-                newdata.tinystate = Status.Clone();
-                Status.AdvancetoNextCall(out newdata.rand);
-                newdata.framemax = Currentframe;
-                ReferenceList.Add(newdata);
-            }
+                ReferenceList.Add(getNewSpan(i++));
             int imax = i + Buffer;
             for (; i < imax;)
-            {
-                var newdata = new TinyTimeSpan();
-                newdata.Index = i++;
-                newdata.state = State;
-                newdata.framemin = Currentframe;
-                newdata.tinystate = Status.Clone();
-                Status.AdvancetoNextCall(out newdata.rand);
-                newdata.framemax = Currentframe;
-                ReferenceList.Add(newdata);
-            }
-            if (splittimeline)
+                ReferenceList.Add(getNewSpan(i++));
+            if (splittimeline || ForMainForm && Method < 2)
                 SplitTimeline(); // Consider delay effect
             else
                 results = ReferenceList.Select(t => t.Clone()).ToList();
+            if (ForMainForm && Method > 1)
+                return;
             switch (Method)
             {
                 case 0: MarkSync(true); break;
@@ -224,10 +216,8 @@ namespace Pk3DSRNGTool
             // Check hit idx
             var hitstate = st.Tinyrng.status;
             for (int i = startindex; i < ReferenceList.Count; i++)
-            {
-                if (ReferenceList[i].state.SequenceEqual(hitstate))
+                if (ReferenceList[i].tinystate.Status.SequenceEqual(hitstate))
                     return i;
-            }
             return -1;
         }
 
@@ -336,7 +326,7 @@ namespace Pk3DSRNGTool
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num, IsORAS);
+                results[i].horde = new HordeResults(new TinyMT(results[i].tinystate.Status), PM_Num, IsORAS);
         }
     }
 }

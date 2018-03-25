@@ -12,7 +12,6 @@ namespace Pk3DSRNGTool
         public bool? sync;
         public byte? slot;
         public byte enctr;
-        public uint[] state;
         public uint rand;
         public int framemin;
         public int framemax;
@@ -24,7 +23,7 @@ namespace Pk3DSRNGTool
         public bool unhitable => framemin == framemax;
         public bool rand2 => rand < 0x80000000;
 
-        public string Status => string.Join(",", state.Select(v => v.ToString("X8")).Reverse());
+        public string Status => string.Join(",", tinystate.Status.Select(v => v.ToString("X8")).Reverse());
         public char Sync => sync ?? horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
         public string Encounter => enctr < thershold || thershold == 1 ? enctr.ToString() : "X";
         public string HA => horde?.HA == 0 ? "-" : horde.HA.ToString();

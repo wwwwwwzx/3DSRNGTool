@@ -313,7 +313,7 @@ namespace Pk3DSRNGTool
             ulong N = (ulong)Range.Value;
 
             CaptureResult.Details = SOSResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
-            var capture7 = new Capture7();
+            var capture7 = new Capture();
             if (Filters.SelectedTab == TP_Capture)
             {
                 capture7.HPCurr = (uint)HPCurr.Value;
@@ -431,9 +431,10 @@ namespace Pk3DSRNGTool
             ulong N = (ulong)Range.Value;
 
             CaptureResult.Details = CB_Detail.Checked || Filters.SelectedTab == TP_Misc;
-            var capture6 = new Capture6();
+            var capture6 = new Capture();
             if (Filters.SelectedTab == TP_Capture)
             {
+                capture6.Gen6 = true;
                 capture6.HPCurr = (uint)HPCurr.Value;
                 capture6.HPMax = (uint)HPMax.Value;
                 capture6.CatchRate = (byte)CatchRate.Value;

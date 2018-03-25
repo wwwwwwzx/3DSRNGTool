@@ -16,10 +16,11 @@ namespace Pk3DSRNGTool.Core
         public override string ToString() => Details ? result_raw : result_shake;
     }
 
-    public abstract class Capture
+    public class Capture
     {
         protected static uint getrand => RNGPool.getrand;
 
+        public bool Gen6;
         public uint HPMax;
         public uint HPCurr;
         public byte CatchRate;
@@ -48,39 +49,10 @@ namespace Pk3DSRNGTool.Core
                 ShakeRate = (ushort)(A == 0 ? 0 : Math.Floor(65536.0 / Round(Math.Pow(Round(255 / (A / 4096.0)), 3.0 / 16))));
         }
 
-        public abstract CaptureResult Catch();
-    }
-
-    public class Capture6 : Capture
-    {
-        public override CaptureResult Catch()
+        public CaptureResult Catch()
         {
             var output = new CaptureResult();
-            output.CriticalVal = (byte)(getrand >> 24);
-            output.Total = (byte)(output.CriticalVal < CriticalRate ? 1 : 4);
-            if (AlwaysCapture)
-                output.Shake = output.Total;
-            else
-            {
-                for (byte i = 1; i <= output.Total; i++)
-                {
-                    ushort low16bits = (ushort)getrand;
-                    if (low16bits > output.MaxRandom)
-                        output.MaxRandom = low16bits;
-                    if (low16bits < ShakeRate && output.Shake == i - 1)
-                        output.Shake = i;
-                }
-            }
-            return output;
-        }
-    }
-
-    public class Capture7 : Capture
-    {
-        public override CaptureResult Catch()
-        {
-            var output = new CaptureResult();
-            output.CriticalVal = (byte)getrand;
+            output.CriticalVal = Gen6 ? (byte)(getrand >> 24) : (byte)getrand;
             output.Total = (byte)(output.CriticalVal < CriticalRate ? 1 : 4);
             if (AlwaysCapture)
                 output.Shake = output.Total;
