@@ -115,7 +115,7 @@
             // 
             // NTR_Timer
             // 
-            this.NTR_Timer.Interval = 1000;
+            this.NTR_Timer.Interval = 100;
             this.NTR_Timer.Tick += new System.EventHandler(this.NTRTick);
             // 
             // B_Help

@@ -89,8 +89,8 @@ namespace Pk3DSRNGTool
         {
             if (!NTRHelper.ntrclient?.DebuggerEnabled ?? true)
             {
-                Program.mainform.TryToConnectNTR(true);
-                FormUtil.Error("Connection lost, please double check your setup:\n(1) Disable PSS communications.\n(2) Use One Click function.");
+                if (FormUtil.Prompt(MessageBoxButtons.RetryCancel, "Connection lost, please double check your setup:\n(1) Disable PSS communications.\n(2) Use One Click function.") == DialogResult.Retry)
+                    Program.mainform.TryToConnectNTR(true);
                 return;
             }
             NTRHelper.ntrclient.ReadTiny("TTT");
@@ -160,6 +160,8 @@ namespace Pk3DSRNGTool
                 Maxframe = (int)TargetFrame.Value + 5000,
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,
                 Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
+                Method = (byte)Method.SelectedIndex,
+                Parameter = (int)Parameters.Value,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
             if (Frame2.Value > Frame1.Value)
@@ -168,8 +170,7 @@ namespace Pk3DSRNGTool
                 if (Frame3.Value > Frame2.Value)
                     line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
             }
-            line.Method = (byte)Method.SelectedIndex;
-            line.Parameter = (int)Parameters.Value;
+            line.IsORAS = Program.mainform.IsORAS && new[] { 2, 5, 6, 8 }.Contains(line.Method);
             return line;
         }
 
@@ -203,10 +204,11 @@ namespace Pk3DSRNGTool
             tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex > 4;
             tiny_high16bit.Visible = Method.SelectedIndex == 4;
             dgv_slot.Visible = Method.SelectedIndex > 1;
-            tiny_flute.Visible = Method.SelectedIndex > 3;
+            tiny_flute.Visible = Method.SelectedIndex > 4 && Program.mainform.IsORAS;
             dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             dgv_item.Visible = Method.SelectedIndex > 1;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
+            tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
 
         private void MainDGV_MouseDown(object sender, MouseEventArgs e)
@@ -295,8 +297,8 @@ namespace Pk3DSRNGTool
                     break;
                 case 8: // Normal Wilds
                     Parameters.Maximum = 99;
-                    Parameters.Minimum = 0;
-                    Parameters.Value = 5;
+                    Parameters.Minimum = 1;
+                    Parameters.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
                     Delay.Value = 6;
                     TTTToolTip.SetToolTip(Parameters, "Encounter Rate");

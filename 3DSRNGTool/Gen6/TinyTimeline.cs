@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
@@ -37,7 +36,8 @@ namespace Pk3DSRNGTool
         {
             if (t < 0) return;
             list.Add(new TinyCall(f, t));
-            list = list.OrderByDescending(e => e.frame).ToList();
+            if (list.Count > 1)
+                list = list.OrderByDescending(e => e.frame).ThenBy(e => e.type).ToList();
         }
 
         public void time_elapse(int Delay)
@@ -95,6 +95,7 @@ namespace Pk3DSRNGTool
     {
         public const int Buffer = 100;
 
+        public bool IsORAS;
         public int Startingframe;
         public int Maxframe;
         public byte Method;
@@ -305,8 +306,8 @@ namespace Pk3DSRNGTool
                 results[i].sync = ReferenceList[j++].R2;
                 if (Check) results[i].enctr = ReferenceList[j++].R100;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
-                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j].R100);
+                if (IsORAS) results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[++j].R100);
             }
         }
 
@@ -326,8 +327,8 @@ namespace Pk3DSRNGTool
                 results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
                 results[i].sync = ReferenceList[j++].R2;
                 results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
-                results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getItem(ReferenceList[j].R100);
+                if (IsORAS) results[i].Flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                results[i].item = Wild6.getItem(ReferenceList[++j].R100);
             }
         }
 
@@ -335,7 +336,7 @@ namespace Pk3DSRNGTool
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num);
+                results[i].horde = new HordeResults(new TinyMT(results[i].state), PM_Num, IsORAS);
         }
     }
 }

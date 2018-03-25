@@ -41,7 +41,7 @@ namespace Pk3DSRNGTool
         {
             get
             {
-                var list = LeadAbilityIndex.Select((t, i) => new ComboItem(abilitystr[t], i)).ToArray();
+                var list = LeadAbilityIndex.Select((t, i) => new ComboItem(abilitystr[t], i)).Concat( new[] { new ComboItem("Black Flute", 9), new ComboItem("White Flute", 10) }).ToArray();
                 list[2].Text += genderstr[1];
                 list[3].Text += genderstr[2];
                 list[7].Text += " | " + abilitystr[60]; // Suction cups|Sticky Hold

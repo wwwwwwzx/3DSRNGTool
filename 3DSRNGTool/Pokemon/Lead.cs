@@ -23,5 +23,7 @@
 
         // Level
         PressureHustleSpirit,
+        BlackFlute,
+        WhiteFlute,
     }
 }

@@ -17,7 +17,10 @@
         protected bool CuteCharmPass;
         protected bool StaticMagnetPass;
         protected bool LevelModifierPass;
-        
+
+        public sbyte Flute;         // +1/-1/0
+        public byte FluteBoost;
+
         public byte[] SlotSplitter;
         public int[] SpecForm;
 
@@ -118,7 +121,7 @@
             // FS XY 1.5 sub_74BED4
             new byte[] { 34,33,33 },
         };
-        
+
         public static byte getFluteBoost(ulong Rand100)
         {
             if (Rand100 < 40)
@@ -128,6 +131,18 @@
             if (Rand100 < 90)
                 return 3;
             return 4;
+        }
+        public void ModifyLevel(RNGResult rt, int levelboost = 0)
+        {
+            levelboost += Flute * FluteBoost;
+            if (levelboost == 0)
+                return;
+            var level = rt.Level + levelboost;
+            if (level > 100)
+                level = 100;
+            else if (level < 1)
+                level = 1;
+            rt.Level = (byte)level;
         }
     }
 }

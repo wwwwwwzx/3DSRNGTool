@@ -114,7 +114,7 @@ namespace Pk3DSRNGTool
             // Prepare
             if (FullInfoHorde)
             {
-                RNGPool.horde = new HordeResults(new TinyMT(TTT.Gen6Tiny), (int)TTT.Parameters.Value);
+                RNGPool.horde = new HordeResults(new TinyMT(TTT.Gen6Tiny), (int)TTT.Parameters.Value, IsORAS);
                 SlotSpecies.SelectedValue = slotspecies[RNGPool.horde.Slot - 1];
             }
             if (SlotSpecies.SelectedIndex > 0)

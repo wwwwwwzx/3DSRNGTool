@@ -26,6 +26,7 @@ namespace Pk3DSRNGTool
         private bool IsHorde => Method == 2 && (FormPM as PKMW6)?.Type == EncounterType.Horde;
         private bool FullInfoHorde => IsHorde && TTT.HasSeed && TTT.Method.SelectedIndex == 2; // all info of Horde is known
         private bool Gen6 => Ver < 5;
+        public bool IsORAS => Ver == 2 || Ver == 3;
         private bool IsTransporter => Ver == 4;
         private bool Gen7 => 5 <= Ver && Ver < 9;
         private bool IsUltra => Ver > 6;
@@ -1130,6 +1131,7 @@ namespace Pk3DSRNGTool
                 {
                     Special_th.Enabled = true;
                     Special_th.Value = pmw6.IsFishing ? 49 : 0;
+                    if (pmw6.Type == EncounterType.Normal) Special_th.Value = 5;
                 }
                 return;
             }
@@ -1356,7 +1358,7 @@ namespace Pk3DSRNGTool
             }
             EventRNG e = Gen6 ? (EventRNG)new Event6() : new Event7();
             if (e is Event6 e6)
-                e6.IsORAS = Ver > 1;
+                e6.IsORAS = IsORAS;
             else if (e is Event7 e7)
                 e7.NoDex = NoDex.Checked;
             e.Species = (short)Event_Species.SelectedIndex;
@@ -1399,6 +1401,8 @@ namespace Pk3DSRNGTool
                 case Lead.CuteCharmF: setting.CuteCharmGender = 1; break;
                 case Lead.CuteCharmM: setting.CuteCharmGender = 2; break;
                 case Lead.PressureHustleSpirit: setting.ModifiedLevel = 101; break;
+                case Lead.BlackFlute: setting.Flute = +1; break;
+                case Lead.WhiteFlute: setting.Flute = -1; break;
             }
             setting.TSV = (int)TSV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
@@ -1470,6 +1474,7 @@ namespace Pk3DSRNGTool
                     if (pmw6.Conceptual)
                         setting6.BlankGenderRatio = (int)GenderRatio.SelectedValue;
                     setting6.Wildtype = pmw6.Type;
+                    setting6.IsORAS = IsORAS;
                     switch (pmw6.Type)
                     {
                         case EncounterType.Horde:
@@ -1525,12 +1530,15 @@ namespace Pk3DSRNGTool
                                 setting6.SlotLevel[i] = RS_area.Level[i - 1];
                             }
                             break;
+                        case EncounterType.Normal:
+                            if (gen6timeline) setting6.EncounterRate = (byte)Special_th.Value;
+                            goto default;
                         default:
                             var area = ea as EncounterArea6;
                             setting6.SpecForm = new int[13];
                             setting6.SlotLevel = new byte[13];
                             slottype = 2;
-                            if (slotspecies.Length == 0 || area == null)
+                            if (area == null || slotspecies.Length == 0)
                                 break;
                             for (int i = 1; i < 13; i++)
                             {
@@ -1887,6 +1895,7 @@ namespace Pk3DSRNGTool
 
                         // Running NPC
                         case 0x7D3B28:
+                        case 0x7D3F28:
                             TTT.Calibrate(6, CurrentFrame, CurrentFrame + 16);
                             break;
 

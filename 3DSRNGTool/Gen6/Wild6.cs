@@ -32,8 +32,8 @@ namespace Pk3DSRNGTool
         public bool CompoundEye;    // For held item
         public byte PartyPKM;       // For fishing
         public byte EncounterRate;
-        public sbyte Flute;         // +1/-1/0
-        public byte FluteBoost;
+
+        public bool IsORAS;
 
         // ORAS v1.4 sub_78D900
         private void CheckLeadAbility()
@@ -112,7 +112,11 @@ namespace Pk3DSRNGTool
             }
 
             // Flute
-            FluteBoost = getFluteBoost(TinyRand(100));
+            if (IsORAS)
+                FluteBoost = getFluteBoost(TinyRand(100));
+
+            // Something
+            tiny_Advance(1);
 
             // Item generated after pkm
             rt.Item = TinyRand(100);
@@ -157,6 +161,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 5; i++)
             {
                 slot = results[i].Slot = (byte)(i + 1);
+                FluteBoost = Hrt?.FluteBoosts[i] ?? 0;
                 Generate_Once(results[i]);
             }
             return results;
@@ -165,7 +170,8 @@ namespace Pk3DSRNGTool
         private void Generate_Once(ResultW6 rt)
         {
             //Level
-            rt.Level = (byte)((LevelModifierPass ? ModifiedLevel : SlotLevel[slot]) + (Flute * FluteBoost));
+            rt.Level = LevelModifierPass ? ModifiedLevel : SlotLevel[slot];
+            ModifyLevel(rt);
 
             //Encryption Constant
             rt.EC = getrand;
