@@ -2,7 +2,7 @@
 {
     public class TinyMT : IRNG, IRNGState
     {
-        public uint[] status { get; set; }
+        public uint[] status;
         public const uint mat1 = 0x8f7011ee;
         public const uint mat2 = 0xfc78ff1f;
         public const uint tmat = 0x3793fdff;

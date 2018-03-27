@@ -293,7 +293,7 @@ namespace Pk3DSRNGTool
             this.TranslateInterface(curlanguage); // Translate the UI to language.
             Properties.Settings.Default.Language = curlanguage;
             Properties.Settings.Default.Save();
-            TTT?.TranslateInterface(lang);
+            TTT?.Translate();
             gen7tool?.TranslateInterface(lang);
             ntrhelper?.TranslateInterface(lang);
             miscrngtool?.Translate();
@@ -1747,8 +1747,8 @@ namespace Pk3DSRNGTool
         //Gen6
         private void OpenTinyTool(object sender, EventArgs e)
         {
+            TTT.Translate();
             UpdateTTTMethod();
-            TTT.TranslateInterface(curlanguage);
             TTT.Show();
             TTT.Focus();
         }

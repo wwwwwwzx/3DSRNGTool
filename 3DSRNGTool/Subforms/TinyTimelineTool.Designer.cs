@@ -519,16 +519,6 @@
             // Method
             // 
             this.Method.FormattingEnabled = true;
-            this.Method.Items.AddRange(new object[] {
-            "Instant Sync",
-            "Cutscenes Sync",
-            "Horde",
-            "Friend Safari",
-            "PokeRadar",
-            "Fishing",
-            "Rock Smash",
-            "Cave Shadow",
-            "Normal Wild"});
             this.Method.Location = new System.Drawing.Point(51, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);

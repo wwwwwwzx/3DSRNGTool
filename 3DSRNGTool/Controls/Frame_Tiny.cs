@@ -25,6 +25,7 @@ namespace Pk3DSRNGTool
 
         public string Status => string.Join(",", tinystate.Status.Select(v => v.ToString("X8")).Reverse());
         public char Sync => sync ?? horde?.Sync ?? rand < 0x80000000 ? 'O' : 'X';
+        public byte Slot => slot ?? horde?.Slot ?? Core.WildRNG.getSlot(Rand100, 2);
         public string Encounter => enctr < thershold || thershold == 1 ? enctr.ToString() : "X";
         public string HA => horde?.HA == 0 ? "-" : horde.HA.ToString();
         public string Item => horde?.ItemString ?? StringItem.helditemStr[item];
@@ -34,16 +35,5 @@ namespace Pk3DSRNGTool
         public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : $"{framemin + 2}~{framemax} ({framemax - framemin})";
         public string RealTime => framemin == framemax ? "-" : FuncUtil.Convert2timestr((framemin + 2 - Startingframe) / 60.0) + " ~ " + FuncUtil.Convert2timestr((framemax - Startingframe) / 60.0);
-        public byte Slot
-        {
-            get
-            {
-                if (slot != null)
-                    return (byte)slot;
-                if (horde != null)
-                    return horde.Slot;
-                return Core.WildRNG.getSlot((int)rand, 2);
-            }
-        }
     }
 }

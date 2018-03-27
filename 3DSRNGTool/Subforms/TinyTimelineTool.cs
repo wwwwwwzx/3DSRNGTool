@@ -11,17 +11,24 @@ namespace Pk3DSRNGTool
         #region Basic UI
         public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, };
         public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC" };
+        private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing", "Rock Smash", "Cave Shadow", "Normal Wild", };
         public TinyTimelineTool()
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
             UpdateTypeComboBox(typelist);
-            Method.SelectedIndex =
             Type3.SelectedIndex =
             Type2.SelectedIndex =
             Type1.SelectedIndex = 0;
             Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = TargetFrame.Maximum = FuncUtil.MAXFRAME;
             Frame1.Value = Frame2.Value = Frame3.Value = 500;
+        }
+        public void Translate()
+        {
+            this.TranslateInterface();
+            Method.Items.Clear();
+            Method.Items.AddRange(methodlist.Select(s => StringItem.Translate(s)).ToArray());
+            Method.SelectedIndex = 0;
         }
         public void UpdateTypeComboBox(int[] type)
         {
