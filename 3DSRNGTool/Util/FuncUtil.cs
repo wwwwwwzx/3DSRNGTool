@@ -36,7 +36,7 @@ namespace Pk3DSRNGTool
         public static void getblinkflaglist(int min, int max, SFMT sfmt, int ModelNumber = 1)
         {
             blinkflaglist = new byte[max - min + 2];
-            SFMT st = (SFMT)sfmt.DeepCopy();
+            SFMT st = new SFMT(sfmt);
             if (ModelNumber == 1)
                 MarkNoNPCFlag(st, min, max);
             else

@@ -713,7 +713,7 @@ namespace Pk3DSRNGTool
             // Advance
             for (int i = 0; i < min; i++)
                 rng.Next();
-            TinyMT Seedrng = (TinyMT)rng.DeepCopy();
+            TinyMT Seedrng = new TinyMT(rng.status);
             // Prepare
             getsetting(rng);
             // Start

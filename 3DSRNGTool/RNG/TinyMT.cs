@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace Pk3DSRNGTool.RNG
+﻿namespace Pk3DSRNGTool.RNG
 {
-    [Serializable()]
     public class TinyMT : IRNG, IRNGState
     {
         public uint[] status { get; set; }

@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool
 
         public ModelStatus(byte n, SFMT st)
         {
-            sfmt = (SFMT)st.DeepCopy();
+            sfmt = new SFMT(st);
             Modelnumber = n;
             remain_frame = new int[n];
         }
