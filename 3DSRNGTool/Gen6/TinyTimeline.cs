@@ -148,8 +148,6 @@ namespace Pk3DSRNGTool
             framemax = TimelineStatus.Currentframe,
         };
 
-        public Frame_Tiny FindFrame(int frame) => results?.FirstOrDefault(t => t.framemin < frame && frame <= t.framemax);
-
         public void Generate(bool splittimeline = false, bool ForMainForm = false)
         {
             TimelineStatus.Currentframe = Startingframe - 2;

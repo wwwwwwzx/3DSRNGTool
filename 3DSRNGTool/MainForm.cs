@@ -1211,7 +1211,7 @@ namespace Pk3DSRNGTool
             }
             if (Gen6)
             {
-                RNGPool.AssumeSynced = AssumeSynced.Checked;
+                RNGPool.TinySynced = AssumeSynced.Checked;
                 switch (Method)
                 {
                     case 1: buffersize = 80; break;
@@ -1747,6 +1747,7 @@ namespace Pk3DSRNGTool
         //Gen6
         private void OpenTinyTool(object sender, EventArgs e)
         {
+            UpdateTTTMethod();
             TTT.TranslateInterface(curlanguage);
             TTT.Show();
             TTT.Focus();

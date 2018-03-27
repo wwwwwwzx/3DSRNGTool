@@ -62,12 +62,12 @@ namespace Pk3DSRNGTool
                 return;
             }
 
-            RNGPool.timeline = TTT.gettimeline();
-            int min = Math.Max((int)Frame_min.Value, RNGPool.timeline.Startingframe + 2);
+            var timeline = TTT.gettimeline();
+            int min = Math.Max((int)Frame_min.Value, timeline.Startingframe + 2);
             int max = (int)TimeSpan.Value * 60 + min;
-            RNGPool.timeline.Maxframe = max;
-            RNGPool.timeline.Generate(ForMainForm: true);
-            int listlength = RNGPool.timeline.TinyLength;
+            timeline.Maxframe = max;
+            timeline.Generate(ForMainForm: true);
+            int listlength = timeline.TinyLength;
 
             // Prepare
             var rng = new MersenneTwister(Seed.Value);
@@ -77,11 +77,12 @@ namespace Pk3DSRNGTool
 
             for (int i = 0; i < listlength; i++)
             {
-                var tinyframe = RNGPool.timeline.results[i];
+                var tinyframe = timeline.results[i];
                 if (tinyframe.unhitable)
                     continue;
                 if (tinyframe.framemax < min)
                     continue;
+                RNGPool.TinySynced = tinyframe.sync == true; // For stationary
                 for (int j = tinyframe.framemin + 2; j <= tinyframe.framemax; j += 2, RNGPool.AddNext(rng), RNGPool.AddNext(rng))
                 {
                     while (j < min)

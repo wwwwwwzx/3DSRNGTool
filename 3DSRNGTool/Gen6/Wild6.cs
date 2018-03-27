@@ -52,7 +52,7 @@ namespace Pk3DSRNGTool
             if (RNGPool.tinystatus == null)
             {
                 rt.Slot = slot = 1;
-                rt.Synchronize = RNGPool.AssumeSynced;
+                rt.Synchronize = RNGPool.TinySynced;
                 return;
             }
             // Delay
@@ -153,7 +153,7 @@ namespace Pk3DSRNGTool
             else
             {
                 for (int i = 0; i < 5; i++)
-                    results[i].Synchronize = RNGPool.AssumeSynced;
+                    results[i].Synchronize = RNGPool.TinySynced;
             }
 
             // Something

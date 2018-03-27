@@ -50,7 +50,6 @@ namespace Pk3DSRNGTool.Core
             RandList64 = null;
             RNGStateStr = null;
             tinystatus = null;
-            timeline = null;
             horde = null;
             DelayType = 0;
             RNGResult.IsPokemon = true;
@@ -124,10 +123,8 @@ namespace Pk3DSRNGTool.Core
 
         #region Gen6 Tiny Timeline
         // Without timeline input
-        public static bool AssumeSynced;
-
+        public static bool TinySynced;
         public static TinyStatus tinystatus;
-        public static TinyTimeline timeline;
         public static HordeResults horde;
 
         public static void time_elapse6(int i) => tinystatus.time_elapse(i); // Only Tiny Advance according to timeline. i.e. MT not advance

@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public int Target; // Index of target pkm
         public string GenderList; // Gender list of Bank
         public bool InstantSync; // Call Sync Function once battle starts, otherwise advance 3/4 * number of party pokemon
-        public bool tinysync => RNGPool.tinystatus == null ? RNGPool.AssumeSynced : RNGPool.timeline.FindFrame(RNGPool.tinystatus.Currentframe)?.sync ?? false;
+        public bool tinysync => RNGPool.TinySynced;
         private bool getSync => AlwaysSync || tinysync;
 
         public override RNGResult Generate()
