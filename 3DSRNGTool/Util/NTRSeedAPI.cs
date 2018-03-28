@@ -16,6 +16,7 @@ namespace Pk3DSRNGTool
         private uint IDOffset;
         private uint NfcOffset;
         private uint TinyBPOffset;
+        private uint TinySoaringOffset;
         private bool DataReady;
         public byte[] Data { get; private set; }
         public bool OneClick;
@@ -58,7 +59,7 @@ namespace Pk3DSRNGTool
                     BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x08c52808; IDOffset = 0x08C79C3C; break;
                 case 2:
                 case 3:
-                    TinyBPOffset = 0x175CEC;
+                    TinyBPOffset = 0x175CEC; TinySoaringOffset = 0x164714;
                     BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
                 case 4:
                     break;
@@ -130,13 +131,15 @@ namespace Pk3DSRNGTool
         public void SetBreakPoint()
         {
             bpadd(TinyBPOffset, "code"); bpdis(2);
+            if (Gameversion == 2 || Gameversion == 3)
+            { bpadd(TinySoaringOffset, "code"); bpdis(3); }
             bpadd(BPOffset, "code"); // Add break point
             SendMsg("Breakpoint Set");
             resume();
         }
 
-        public void EnableBP() => bpena(2);
-        public void DisableBP() { bpdis(2); resume(); }
+        public void EnableBP(bool Soaring = false) => bpena(Soaring ? 3u : 2u);
+        public void DisableBP() { bpdis(2); bpdis(3); resume(); }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4)
         {

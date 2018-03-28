@@ -105,7 +105,7 @@ namespace Pk3DSRNGTool
             B_Cali.Visible = false;
             SkipList.Clear();
             Type2.SelectedValue = Type3.SelectedValue = -1;
-            NTRHelper.ntrclient.EnableBP();
+            NTRHelper.ntrclient.EnableBP((int)Type1.SelectedValue == 4);
         }
         private void Cry_EnabledChanged(object sender, EventArgs e)
         {
