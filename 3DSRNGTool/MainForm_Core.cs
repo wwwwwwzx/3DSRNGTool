@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     break;
             }
         }
@@ -94,7 +94,7 @@ namespace Pk3DSRNGTool
                         continue;
                     Frames.Add(new Frame(result, frame: j, time: j - min));
                     Frames.Last()._tinystate = new PRNGState(tinyframe.tinystate.Status);
-                    if (Frames.Count > 100000)
+                    if (Frames.Count > MAX_RESULTS_NUM)
                         return;
                 }
             }
@@ -135,7 +135,7 @@ namespace Pk3DSRNGTool
                         continue;
                     Frames.Add(new Frame(result, frame: i, time: i - min));
                 }
-                if (Frames.Count > 500000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     break;
             }
         }
@@ -171,7 +171,7 @@ namespace Pk3DSRNGTool
                 if (!filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: i, time: i - min));
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     return;
             }
         }
@@ -280,7 +280,7 @@ namespace Pk3DSRNGTool
                 }
                 while (frameadvance > 0);
 
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     return;
                 // Backup current status
                 status.CopyTo(stmp);
@@ -440,7 +440,7 @@ namespace Pk3DSRNGTool
 
                 Frames.Add(new Frame(result, frame: Currentframe, time: i * 2, blink: Jumpflag));
 
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     break;
             }
             if (Frames.FirstOrDefault()?.FrameNum == (int)Frame_min.Value)
@@ -509,7 +509,7 @@ namespace Pk3DSRNGTool
 
                 RNGPool.Load();
 
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     break;
 
                 // Move to next Frame, Update RNGPool
@@ -692,7 +692,7 @@ namespace Pk3DSRNGTool
                 if (!(filter.CheckResult(result) || ShinyRemind.Checked && CheckRandomNumber(result.RandNum)))
                     continue;
                 Frames.Add(new Frame(result, frame: i));
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     return;
             }
         }
@@ -734,7 +734,7 @@ namespace Pk3DSRNGTool
                 if (i < min || !filter.CheckResult(result))
                     continue;
                 Frames.Add(new Frame(result, frame: frame - advance, eggnum: i + 1));
-                if (Frames.Count > 100000)
+                if (Frames.Count > MAX_RESULTS_NUM)
                     break;
             }
             if (!gotresult)

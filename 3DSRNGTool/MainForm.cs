@@ -14,6 +14,7 @@ namespace Pk3DSRNGTool
     public partial class MainForm : Form
     {
         #region global variables
+        private int MAX_RESULTS_NUM = 100000;
         public int Ver { get => Gameversion.SelectedIndex; set => Gameversion.SelectedIndex = value; }
         public string VersionStr => L_GameVersion.Text + ": " + Gameversion.SelectedItem.ToString();
         private Pokemon[] Pokemonlist;
