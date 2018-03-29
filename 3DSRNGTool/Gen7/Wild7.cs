@@ -91,7 +91,7 @@ namespace Pk3DSRNGTool
             else if (Crabrawler)
             {
                 CheckLeadAbility(getrand % 100);
-                rt.Slot = 1;
+                rt.Slot = slot = 1;
                 rt.Level = ModifiedLevel;
             }
             else if (NormalSlot) // Normal wild
