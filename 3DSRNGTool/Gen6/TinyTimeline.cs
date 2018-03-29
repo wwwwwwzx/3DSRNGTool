@@ -101,9 +101,10 @@ namespace Pk3DSRNGTool
         public int Startingframe;
         public int Maxframe;
         public byte Method;
-        public int Parameter;
-        private int PM_Num => Parameter;
-        private int SlotNum => Parameter;
+        public int PartySize;
+        public int SlotNum;
+        public int EncounterRate;
+        public int ChainLength;
         public bool IsORAS;
         public void Add(int f, int t) => TimelineStatus.Add(f, t);
 
@@ -189,7 +190,7 @@ namespace Pk3DSRNGTool
             {
                 case 5:                 // Fishing
                     st.time_elapse(Delay);
-                    for (int i = 3 * PM_Num; i > 0; i--)
+                    for (int i = 3 * PartySize; i > 0; i--)
                         st.Next();
                     st.time_elapse(132);
                     st.time_elapse(st.Rand(7) * 30 + 60);
@@ -258,7 +259,7 @@ namespace Pk3DSRNGTool
             }
         }
 
-        private void MarkSync(bool Instant) => getshiftedsync(Instant ? 0 : 3 * PM_Num);
+        private void MarkSync(bool Instant) => getshiftedsync(Instant ? 0 : 3 * PartySize);
 
         private void getshiftedsync(int shift)
         {
@@ -279,7 +280,7 @@ namespace Pk3DSRNGTool
 
         private void MarkEncounter(bool FS = false, bool Fishing = false, bool Check = true)
         {
-            Frame_Tiny.thershold = (byte)(!Check ? 0 : FS ? 13 : Fishing ? 98 : Parameter);
+            Frame_Tiny.thershold = (byte)(!Check ? 0 : EncounterRate);
             byte SlotType = (byte)(FS ? SlotNum + 47 : Fishing ? 3 : 2);
             int max = results.Count;
             int idxmax = ReferenceList.Count - 5;
@@ -324,7 +325,7 @@ namespace Pk3DSRNGTool
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].horde = new HordeResults(new TinyMT(results[i].tinystate.Status), PM_Num, IsORAS);
+                results[i].horde = new HordeResults(new TinyMT(results[i].tinystate.Status), PartySize, IsORAS);
         }
     }
 }

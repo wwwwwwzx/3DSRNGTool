@@ -1510,7 +1510,7 @@ namespace Pk3DSRNGTool
                             var Rod_area = ea as RodArea;
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[4];
-                            setting6.PartyPKM = (byte)TTT.Parameters.Value;
+                            setting6.PartyPKM = (byte)TTT.PartyNum.Value;
                             setting6.EncounterRate = (byte)Special_th.Value;
                             slottype = 3;
                             setting6._PIDroll_count = 2 * (int)ChainLength.Value;

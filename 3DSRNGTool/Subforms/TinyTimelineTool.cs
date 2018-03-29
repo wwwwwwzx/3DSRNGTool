@@ -167,7 +167,10 @@ namespace Pk3DSRNGTool
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,
                 Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
                 Method = (byte)Method.SelectedIndex,
-                Parameter = (int)Parameters.Value,
+                PartySize = (int)PartyNum.Value,
+                SlotNum = (int)SlotNum.Value,
+                EncounterRate = EncounterRate.Visible ? (int)EncounterRate.Value : 0,
+                ChainLength = (int)ChainLength.Value,
                 IsORAS = IsORAS,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
@@ -231,68 +234,55 @@ namespace Pk3DSRNGTool
 
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Parameters.Visible = true;
+            L_PartySize.Visible = L_SlotNum.Visible = L_Rate.Visible = L_Length.Visible =
+            PartyNum.Visible = SlotNum.Visible = EncounterRate.Visible = ChainLength.Visible = false;
             ConsiderDelay.Enabled = Delay.Enabled = true;
             Cry.Enabled = CryFrame.Enabled = false;
             Cry.Checked = false;
             CryFrame.Value = 0;
             TypeNum.Value = 1;
-            TTTToolTip.RemoveAll();
             UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
             switch (Method.SelectedIndex)
             {
                 case 0: // Instant Sync
                     Cry.Enabled = CryFrame.Enabled = true;
-                    Parameters.Visible = false;
                     break;
                 case 1: // Portal/soaring
-                    Parameters.Maximum = 6;
-                    Parameters.Minimum = 1;
-                    Parameters.Value = 6;
+                    L_PartySize.Visible = PartyNum.Visible = true;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
-                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 2: // Horde
-                    Parameters.Maximum = 6;
-                    Parameters.Minimum = 1;
-                    Parameters.Value = 6;
-                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
+                    L_PartySize.Visible = PartyNum.Visible = true;
                     ConsiderDelay.Enabled = Delay.Enabled = false;
                     ConsiderDelay.Checked = false;
                     Delay.Value = 0;
                     break;
                 case 3: // FS
-                    Parameters.Maximum = 3;
-                    Parameters.Minimum = 2;
-                    Parameters.Value = 3;
+                    L_SlotNum.Visible = SlotNum.Visible = true;
+                    L_Rate.Visible = EncounterRate.Visible = true;
+                    EncounterRate.Value = 13;
                     Delay.Value = 6;
-                    TTTToolTip.SetToolTip(Parameters, "Number of Encounter Slots");
                     break;
                 case 4: // Pokeradar
-                    Parameters.Maximum = 40;
-                    Parameters.Minimum = 0;
-                    Parameters.Value = 40;
+                    L_PartySize.Visible = PartyNum.Visible = true;
+                    L_Length.Visible = ChainLength.Visible = true;
                     Delay.Value = 14;
-                    TTTToolTip.SetToolTip(Parameters, "Chain Length");
                     break;
                 case 5: // Fishing
-                    Parameters.Maximum = 6;
-                    Parameters.Minimum = 1;
-                    Parameters.Value = 6;
+                    L_PartySize.Visible = PartyNum.Visible = true;
+                    L_Rate.Visible = EncounterRate.Visible = true;
+                    EncounterRate.Value = 98;
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
                     Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
                     Delay.Value = 14;
-                    TTTToolTip.SetToolTip(Parameters, "Number of Party Pokemon");
                     break;
                 case 6: // Rock Smash
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
-                    Parameters.Visible = false;
                     ConsiderDelay.Checked = true;
                     break;
                 case 7: // Cave Shadow
-                    Parameters.Visible = false;
                     TypeNum.Value = 2;
                     Delay.Enabled = false;
                     Delay.Value = 78;
@@ -300,15 +290,10 @@ namespace Pk3DSRNGTool
                     CryFrame.Value = 32;
                     break;
                 case 8: // Normal Wilds
-                    Parameters.Maximum = 99;
-                    Parameters.Minimum = 1;
-                    Parameters.Value = 1;
+                    L_Rate.Visible = EncounterRate.Visible = true;
+                    EncounterRate.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
                     Delay.Value = 6;
-                    TTTToolTip.SetToolTip(Parameters, "Encounter Rate");
-                    break;
-                default:
-                    Parameters.Visible = false;
                     break;
             }
         }
