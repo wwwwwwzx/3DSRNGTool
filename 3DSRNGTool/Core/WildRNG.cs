@@ -134,6 +134,8 @@
         }
         public void ModifyLevel(RNGResult rt, int levelboost = 0)
         {
+            if (LevelModifierPass)
+                rt.Level = ModifiedLevel;
             levelboost += Flute * FluteBoost;
             if (levelboost == 0)
                 return;

@@ -85,8 +85,8 @@ namespace Pk3DSRNGTool
                 else
                     rt.Slot = StaticMagnetPass ? getsmslot(getsosrand) : getslot((int)(getsosrand % 100));
                 rt.Level = (byte)(getsosrand % (uint)(Levelmax - Levelmin + 1) + Levelmin);
-                if (LevelModifierPass) rt.Level = ModifiedLevel;
-                SOSRNG.Advance(1); // Flute boost (% 100)
+                FluteBoost = getFluteBoost(getsosrand % 100);
+                ModifyLevel(rt);
             }
             else if (Crabrawler)
             {
@@ -99,8 +99,8 @@ namespace Pk3DSRNGTool
                 CheckLeadAbility(getrand % 100);
                 rt.Slot = StaticMagnetPass ? getsmslot(getrand) : getslot((int)(getrand % 100));
                 rt.Level = (byte)(getrand % (ulong)(Levelmax - Levelmin + 1) + Levelmin);
-                if (LevelModifierPass) rt.Level = ModifiedLevel;
-                Advance(1); // Flute boost (% 100)
+                FluteBoost = getFluteBoost(getrand % 100);
+                ModifyLevel(rt);
                 if (IsMinior) rt.Forme = (byte)(getrand % 7);
             }
             else // UB or QR

@@ -170,7 +170,7 @@ namespace Pk3DSRNGTool
         private void Generate_Once(ResultW6 rt)
         {
             //Level
-            rt.Level = LevelModifierPass ? ModifiedLevel : SlotLevel[slot];
+            rt.Level = SlotLevel[slot];
             ModifyLevel(rt);
 
             //Encryption Constant
