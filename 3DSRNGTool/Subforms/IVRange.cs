@@ -4,26 +4,23 @@ namespace Pk3DSRNGTool
 {
     public partial class IVRange : Form
     {
-        public MainForm parentform => Program.mainform;
         public IVRange()
         {
             InitializeComponent();
-            foreach (string t in Judge_Str)
-            {
-                this.H.Items.Add(t);
-                this.A.Items.Add(t);
-                this.B.Items.Add(t);
-                this.C.Items.Add(t);
-                this.D.Items.Add(t);
-                this.S.Items.Add(t);
-            }
+            var t = new[] { "-", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, };
+            this.H.Items.AddRange(t);
+            this.A.Items.AddRange(t);
+            this.B.Items.AddRange(t);
+            this.C.Items.AddRange(t);
+            this.D.Items.AddRange(t);
+            this.S.Items.AddRange(t);
             Reset();
         }
 
         private void B_Save_Click(object sender, System.EventArgs e)
         {
             Hide();
-            parentform.IVlow = new[] {
+            Program.mainform.IVlow = new[] {
             IVjudge(H.SelectedIndex, true),
             IVjudge(A.SelectedIndex, true),
             IVjudge(B.SelectedIndex, true),
@@ -31,7 +28,7 @@ namespace Pk3DSRNGTool
             IVjudge(D.SelectedIndex, true),
             IVjudge(S.SelectedIndex, true),
             };
-            parentform.IVup = new[] {
+            Program.mainform.IVup = new[] {
             IVjudge(H.SelectedIndex, false),
             IVjudge(A.SelectedIndex, false),
             IVjudge(B.SelectedIndex, false),
@@ -72,8 +69,5 @@ namespace Pk3DSRNGTool
             for (int i = 1; i <= judge.Length; i++)
                 H.Items[i] = A.Items[i] = B.Items[i] = C.Items[i] = D.Items[i] = S.Items[i] = judge[i - 1];
         }
-
-        public readonly static string[] Judge_Str = { "-", "最棒", "了不起", "非常好", "相当好", "一般般", "也许不行" };
-        public readonly static string[] Stat_Str = { "HP", "攻击", "防御", "特攻", "特防", "速度" };
     }
 }
