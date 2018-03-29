@@ -14,7 +14,7 @@ Rate1 =  H * AO * BCR, capped at 100.
 Rate2 = 4 * A * S1 * S2 * S3 * BCR. Rounded to the nearest multiple of 1/4096 and finally the nearest integer, capped at 100.
 - A: Lead Pokemon Ability Bonus. If Ability is Intimidate / Unnerve / Pressure: **x1.2 (0x4CCC/0x4000)**
 - S1: If the Pokemon called for help last turn and is calling for help this turn: **x1.5**
-- S2: If the ally Pokemon that was called was hit with supereffective attack on the first turn it appeared: **x2**
+- S2: If the ally Pokemon that was called was hit with super-effective attack on the first turn it appeared: **x2**
 - S3: If the Pokemon called for help, but none appeared, the previous turn: **x3**
 
 #### Note: Actual Chance of SOS Call Success
@@ -32,7 +32,7 @@ Each encounter area have 2 weather slots per weather (Rain, Snow, Sandstorm)
 Slot 1-7: 1% / 1% / 1% / 10% / 10% / 10% / 67%
 #### 6) Level - Rand % (max - min + 1)
 #### 7) Black/White flute level modifier - Rand % 100 
-- Not working in gen7
+- Unaccessible items from normal game play.
 
 ### Pokemon Generation from main RNG
 

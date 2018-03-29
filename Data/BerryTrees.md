@@ -2,7 +2,7 @@
 
 Random % 6
 
-Delay = 8
+Delay = 8F
 
 Final Screen  
 ![Final Screen](https://i.imgur.com/k0N4PnW.png)

@@ -31,7 +31,10 @@ Each Pokemon in your party will consume 3 to 4 RNG values from TinyMT, which wil
 
 According to the [mechanics](https://pastebin.com/h1RHL7nR), there are several ways we can do:
 
-- Enhance the memory intensity of your party Pokemon
+- Enhance the memory intensity of your party Pokemon. (Recommended)
+	- Do several random battles to increase the intensity. Other types of low probability memory events like running away or beating Pokemon will increase the intensity of original memory type.
+	- Check the memory intensity with Memory Girl. In XY, she stands outside the PC in Anistar City. In ORAS, she stands outside the PC in LilyCove City
+	- "The Pokemon fondly remembers that .." indicates the memory intensity was maxed out.
 - Let all your party Pokemon have the same memory type as the new event.
 
 **Note: 3DSRNGTool will assume you have already solved this issue and advance 3 frames per Pokemon.**
