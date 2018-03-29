@@ -185,7 +185,6 @@
             this.L_Egg_A = new System.Windows.Forms.Label();
             this.Homogeneity = new System.Windows.Forms.CheckBox();
             this.L_Egg_D = new System.Windows.Forms.Label();
-            this.L_Ditto = new System.Windows.Forms.Label();
             this.M_IV0 = new System.Windows.Forms.NumericUpDown();
             this.M_IV1 = new System.Windows.Forms.NumericUpDown();
             this.F_IV4 = new System.Windows.Forms.NumericUpDown();
@@ -207,6 +206,7 @@
             this.M_ditto = new System.Windows.Forms.CheckBox();
             this.F_Items = new System.Windows.Forms.ComboBox();
             this.M_Items = new System.Windows.Forms.ComboBox();
+            this.L_Ditto = new System.Windows.Forms.Label();
             this.TP_WildRNG = new System.Windows.Forms.TabPage();
             this.Wild_Setting = new System.Windows.Forms.GroupBox();
             this.L_TriggerMethod = new System.Windows.Forms.Label();
@@ -1947,15 +1947,6 @@
             this.L_Egg_D.TabIndex = 36;
             this.L_Egg_D.Text = "特防";
             // 
-            // L_Ditto
-            // 
-            this.L_Ditto.AutoSize = true;
-            this.L_Ditto.Location = new System.Drawing.Point(22, 26);
-            this.L_Ditto.Name = "L_Ditto";
-            this.L_Ditto.Size = new System.Drawing.Size(43, 13);
-            this.L_Ditto.TabIndex = 31;
-            this.L_Ditto.Text = "百变怪\r\n";
-            // 
             // M_IV0
             // 
             this.M_IV0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2324,6 +2315,15 @@
             this.M_Items.TabIndex = 10;
             this.M_Items.SelectedIndexChanged += new System.EventHandler(this.DoubleEverstone);
             // 
+            // L_Ditto
+            // 
+            this.L_Ditto.AutoSize = true;
+            this.L_Ditto.Location = new System.Drawing.Point(22, 26);
+            this.L_Ditto.Name = "L_Ditto";
+            this.L_Ditto.Size = new System.Drawing.Size(43, 13);
+            this.L_Ditto.TabIndex = 31;
+            this.L_Ditto.Text = "百变怪";
+            // 
             // TP_WildRNG
             // 
             this.TP_WildRNG.Controls.Add(this.Wild_Setting);
@@ -2622,7 +2622,7 @@
             this.CB_3rdSlotUnlocked.AutoSize = true;
             this.CB_3rdSlotUnlocked.Checked = true;
             this.CB_3rdSlotUnlocked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_3rdSlotUnlocked.Location = new System.Drawing.Point(142, 158);
+            this.CB_3rdSlotUnlocked.Location = new System.Drawing.Point(167, 196);
             this.CB_3rdSlotUnlocked.Name = "CB_3rdSlotUnlocked";
             this.CB_3rdSlotUnlocked.Size = new System.Drawing.Size(98, 17);
             this.CB_3rdSlotUnlocked.TabIndex = 97;

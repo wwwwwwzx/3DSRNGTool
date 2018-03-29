@@ -1132,7 +1132,8 @@ namespace Pk3DSRNGTool
                 {
                     Special_th.Enabled = true;
                     Special_th.Value = pmw6.IsFishing ? 49 : 0;
-                    if (pmw6.Type == EncounterType.Normal) Special_th.Value = 5;
+                    if (pmw6.Type == EncounterType.Normal) Special_th.Value = 1;
+                    if (pmw6.Type == EncounterType.FriendSafari) Special_th.Value = 13;
                 }
                 return;
             }
@@ -1769,6 +1770,8 @@ namespace Pk3DSRNGTool
             {
                 L_HordeInfo.Visible = IsHorde;
                 TTT.Delay.Value = Timedelay.Value;
+                TTT.EncounterRate.Value = Special_th.Value;
+                TTT.SlotNum.Value = CB_3rdSlotUnlocked.Checked ? 3 : 2;
                 switch (pw.Type)
                 {
                     case EncounterType.Horde:
