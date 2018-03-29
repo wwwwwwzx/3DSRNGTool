@@ -103,7 +103,7 @@ namespace Pk3DSRNGTool
             if (Program.mainform.Ver < 5)
                 Program.mainform.Ver = 5;
             L_Gameversion.Text = Program.mainform.VersionStr;
-            if (Clock_List.Text.Count(c => c == ',') < 7)
+            if (Clock_List.Text.Count(c => c == ',') < (RB_ID.Checked ? 8 : 7))
             {
                 SeedResults.Text = "";
                 return;
