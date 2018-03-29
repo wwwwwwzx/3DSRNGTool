@@ -1898,6 +1898,7 @@ namespace Pk3DSRNGTool
                         // Running NPC
                         case 0x7D3B28:
                         case 0x7D3F28:
+                        case 0x78A983:
                             TTT.Calibrate(6, CurrentFrame, CurrentFrame + 16);
                             break;
 

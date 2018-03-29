@@ -99,7 +99,6 @@
     <Compile Include="Core\RNGPool.cs" />
     <Compile Include="Core\RNGResult.cs" />
     <Compile Include="Core\StationaryRNG.cs" />
-    <Compile Include="Gen6\DexNav.cs" />
     <Compile Include="Gen6\Egg6.cs" />
     <Compile Include="Gen6\Gen6Encounter\FishingArea.cs" />
     <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
@@ -113,7 +112,6 @@
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
-    <Compile Include="Gen6\Results\DexNavResult.cs" />
     <Compile Include="Gen6\Results\HordeResults.cs" />
     <Compile Include="Gen6\Results\ResultE6.cs" />
     <Compile Include="Gen6\Results\ResultW6.cs" />
