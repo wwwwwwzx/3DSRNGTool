@@ -324,15 +324,15 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < 4; i++)
                 Event_PIDType.Items[i] = PIDTYPE_STR[lindex, i];
 
-            for (int i = 0; i < 3; i++)
-                ParentNature.Items[i] = Ball.Items[i] = PARENTS_STR[lindex, i];
+            ParentNature.Items[1] = Ball.Items[1] = M_ditto.Text;
+            ParentNature.Items[2] = Ball.Items[2] = F_ditto.Text;
 
             for (int i = 0; i < Gameversion.Items.Count; i++)
                 Gameversion.Items[i] = GAMEVERSION_STR[lindex, i];
 
-            IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR[lindex]);
-            Frame.Parents[1] = PARENTS_STR[lindex, 1];
-            Frame.Parents[2] = PARENTS_STR[lindex, 2];
+            IVInputer.Translate(IVJUDGE_STR[lindex], STATS_STR);
+            Frame.Parents[1] = M_ditto.Text;
+            Frame.Parents[2] = F_ditto.Text;
             dgv_wurmpleevo.HeaderText = speciestr[265];
             dgv_frame0.HeaderText = dgv_IDframe.HeaderText + "1";
 

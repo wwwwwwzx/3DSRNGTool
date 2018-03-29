@@ -134,15 +134,6 @@ namespace Pk3DSRNGTool
             { "Random", "Nonshiny", "Shiny", "Specified"},
             { "随机", "必不闪", "必闪", "特定"},
         };
-        public static readonly string[,] PARENTS_STR =
-        {
-            { "-", "Male", "Female"},
-            { "-", "先親", "後親"},
-            { "-", "Mâle", "Femelle"},
-            { "-", "Männl.", "Weibl."},
-            { "-", "Macho", "Hembra"},
-            { "-", "父方", "母方"},
-        };
         public static readonly string[,] SYNC_STR =
         {
             { "Always Synced", "Can not be Synced" },
@@ -169,15 +160,6 @@ namespace Pk3DSRNGTool
             { "Accept", "Reject" },
             { "Accept", "Reject" },
             { "接受", "拒绝" },
-        };
-        public static readonly string[][] STATS_STR =
-        {
-            new string[] { "HP", "Atk", "Def", "SpA", "SpD", "Spe" },
-            new string[] { "HP", "攻撃", "防御", "特攻", "特防", "素早さ" },
-            new string[] { "PV", "Attaque", "Defense", "Atq Spé", "Def Spé", "Vitesse" },
-            new string[] { "KP", "Atk", "Def", "SpA", "SpD", "Spe" },
-            new string[] { "PS", "Ata", "Def", "AtEsp", "DfEsp", "Vel" },
-            new string[] { "HP", "攻击", "防御", "特攻", "特防", "速度" },
         };
         public static readonly string[][] IVJUDGE_STR =
         {

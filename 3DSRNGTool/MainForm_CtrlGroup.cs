@@ -84,6 +84,7 @@ namespace Pk3DSRNGTool
                 St2.Value = value[2]; St3.Value = value[3];
             }
         }
+        private string[] STATS_STR => new[] { L_H.Text, L_A.Text, L_B.Text, L_C.Text, L_D.Text, L_S.Text, };
         private NumericUpDown[] EventIV => new[] { EventIV0, EventIV1, EventIV2, EventIV3, EventIV4, EventIV5, };
         private CheckBox[] EventIVLocked => new[] { Event_IV_Fix0, Event_IV_Fix1, Event_IV_Fix2, Event_IV_Fix3, Event_IV_Fix4, Event_IV_Fix5, };
         private List<Controls.ComboItem> Locationlist = new List<Controls.ComboItem>();
