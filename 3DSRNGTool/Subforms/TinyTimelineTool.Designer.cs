@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label0 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -82,7 +81,6 @@
             this.tiny_flute = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny_high16bit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -552,30 +550,29 @@
             this.tiny_flute,
             this.dgv_item,
             this.tiny_ha,
-            this.tiny_high16bit,
             this.tiny_rand100,
             this.dgv_state,
             this.dgv_time});
             this.MainDGV.ContextMenuStrip = this.CMS;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MainDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MainDGV.DefaultCellStyle = dataGridViewCellStyle4;
             this.MainDGV.Location = new System.Drawing.Point(200, 12);
             this.MainDGV.Name = "MainDGV";
             this.MainDGV.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.MainDGV.RowHeadersWidth = 18;
             this.MainDGV.Size = new System.Drawing.Size(574, 515);
             this.MainDGV.TabIndex = 108;
@@ -655,17 +652,6 @@
             this.tiny_ha.ReadOnly = true;
             this.tiny_ha.Width = 40;
             // 
-            // tiny_high16bit
-            // 
-            this.tiny_high16bit.DataPropertyName = "High16bit";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.Format = "X4";
-            this.tiny_high16bit.DefaultCellStyle = dataGridViewCellStyle2;
-            this.tiny_high16bit.HeaderText = "High16";
-            this.tiny_high16bit.Name = "tiny_high16bit";
-            this.tiny_high16bit.ReadOnly = true;
-            this.tiny_high16bit.Width = 45;
-            // 
             // tiny_rand100
             // 
             this.tiny_rand100.DataPropertyName = "Rand100";
@@ -677,8 +663,8 @@
             // dgv_state
             // 
             this.dgv_state.DataPropertyName = "Status";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_state.HeaderText = "Tiny Status";
             this.dgv_state.Name = "dgv_state";
             this.dgv_state.ReadOnly = true;
@@ -687,8 +673,8 @@
             // dgv_time
             // 
             this.dgv_time.DataPropertyName = "RealTime";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_time.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_time.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_time.HeaderText = "Real Time";
             this.dgv_time.Name = "dgv_time";
             this.dgv_time.ReadOnly = true;
@@ -774,7 +760,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_flute;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiny_high16bit;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;

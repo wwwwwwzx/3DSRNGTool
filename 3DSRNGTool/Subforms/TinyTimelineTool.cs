@@ -188,8 +188,6 @@ namespace Pk3DSRNGTool
             var row = MainDGV.Rows[index];
             if (tiny_enctr.Visible && list[index].enctr < Frame_Tiny.thershold && Frame_Tiny.thershold < 50)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
-            if (Method.SelectedIndex == 4 && list[index].High16bit < Math.Ceiling(65535 / (8200 - 200 * (Double)Parameters.Value)))
-                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
 
         private void SetAsCurrent_Click(object sender, EventArgs e)
@@ -208,7 +206,6 @@ namespace Pk3DSRNGTool
         {
             tiny_ha.Visible = Method.SelectedIndex == 2;
             tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex > 4;
-            tiny_high16bit.Visible = Method.SelectedIndex == 4;
             dgv_slot.Visible = Method.SelectedIndex > 1;
             tiny_flute.Visible = IsORAS;
             tiny_flute.Width = Method.SelectedIndex == 2 ? 60 : 40;

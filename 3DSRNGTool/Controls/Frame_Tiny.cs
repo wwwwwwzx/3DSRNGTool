@@ -32,7 +32,6 @@ namespace Pk3DSRNGTool
         public string Flute => horde?.FluteString ?? flute.ToString();
 
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
-        public ushort High16bit => (ushort)(rand >> 16);
         public string FrameRange => framemin == framemax ? "-" : $"{framemin + 2}~{framemax} ({framemax - framemin})";
         public string RealTime => framemin == framemax ? "-" : FuncUtil.Convert2timestr((framemin + 2 - Startingframe) / 60.0) + " ~ " + FuncUtil.Convert2timestr((framemax - Startingframe) / 60.0);
     }
