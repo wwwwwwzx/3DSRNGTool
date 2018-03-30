@@ -90,6 +90,7 @@
             this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
@@ -639,6 +640,7 @@
             this.MainDGV.Size = new System.Drawing.Size(575, 538);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
+            this.MainDGV.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDGV_CellMouseEnter);
             this.MainDGV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainDGV_MouseDown);
             // 
             // tiny_MTFRange
@@ -882,5 +884,6 @@
         private System.Windows.Forms.Label L_SlotNum;
         private System.Windows.Forms.Label L_Rate;
         private System.Windows.Forms.Label L_Length;
+        private System.Windows.Forms.ToolTip DGVToolTip;
     }
 }

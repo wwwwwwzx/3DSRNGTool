@@ -106,12 +106,14 @@
     <Compile Include="Gen6\ID6.cs" />
     <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
     <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />
+    <Compile Include="Gen6\PokeRadar.cs" />
     <Compile Include="Gen6\Pokerus6.cs" />
     <Compile Include="Gen6\TinyTimeline.cs" />
     <Compile Include="Gen6\Wild6.cs" />
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
+    <Compile Include="Gen6\Results\PokeRadarResult.cs" />
     <Compile Include="Gen6\Results\HordeResults.cs" />
     <Compile Include="Gen6\Results\ResultE6.cs" />
     <Compile Include="Gen6\Results\ResultW6.cs" />

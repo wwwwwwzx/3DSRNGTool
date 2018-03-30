@@ -127,17 +127,14 @@ namespace Pk3DSRNGTool
 
             public bool R2 => rand < 0x80000000;
             public byte R100 => (byte)((rand * 100ul) >> 32);
-            public Frame_Tiny Clone()
+            public Frame_Tiny Clone() => new Frame_Tiny
             {
-                return new Frame_Tiny
-                {
-                    Index = Index,
-                    rand = rand,
-                    framemin = framemin,
-                    framemax = framemax,
-                    tinystate = tinystate,
-                };
-            }
+                Index = Index,
+                rand = rand,
+                framemin = framemin,
+                framemax = framemax,
+                tinystate = tinystate,
+            };
         }
 
         private TinyTimeSpan getNewSpan(int index) => new TinyTimeSpan()
@@ -171,7 +168,7 @@ namespace Pk3DSRNGTool
                 case 1: MarkSync(false); break;
                 case 2: MarkHorde(); break;
                 case 3: MarkEncounter(FS: true); break;
-                case 4: MarkEncounter(Check: false); break;
+                case 4: MarkEncounter(Check: false); MarkRadar(); break;
                 case 5: MarkEncounter(Fishing: true); break;
                 case 6: MarkRockSmash(); break;
                 case 7: MarkEncounter(Check: false); break;
@@ -326,6 +323,13 @@ namespace Pk3DSRNGTool
             int max = results.Count;
             for (int i = 0; i < max; i++)
                 results[i].horde = new HordeResults(new TinyMT(results[i].tinystate.Status), PartySize, IsORAS);
+        }
+
+        private void MarkRadar()
+        {
+            int max = results.Count;
+            for (int i = 0; i < max; i++)
+                results[i].radar = PokeRadar.Generate(new TinyMT(results[i].tinystate.Status), PartySize, ChainLength);
         }
     }
 }

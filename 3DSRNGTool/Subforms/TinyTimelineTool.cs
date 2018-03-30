@@ -191,6 +191,8 @@ namespace Pk3DSRNGTool
             var row = MainDGV.Rows[index];
             if (tiny_enctr.Visible && list[index].enctr < Frame_Tiny.thershold && Frame_Tiny.thershold < 50)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            if (list[index].radar?.Shiny == true)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
         }
 
         private void SetAsCurrent_Click(object sender, EventArgs e)
@@ -296,6 +298,28 @@ namespace Pk3DSRNGTool
                     Delay.Value = 6;
                     break;
             }
+        }
+
+        private void MainDGV_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex < 0 || e.RowIndex < 0)
+            {
+                DGVToolTip.Hide(this);
+                DGVToolTip.ToolTipTitle = null;
+                return;
+            }
+            System.Drawing.Rectangle cellRect = MainDGV.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            if (list[e.RowIndex].radar != null)
+            {
+                DGVToolTip.ToolTipTitle = $"Pokeradar Result of Index{list[e.RowIndex].Index}:";
+                DGVToolTip.Show(string.Format(string.Join("\n", list[e.RowIndex].radar.Overview))
+                    , this,
+                    MainDGV.Location.X + cellRect.X + cellRect.Size.Width,
+                    MainDGV.Location.Y + cellRect.Y + cellRect.Size.Height,
+                    8000);
+                return;
+            }
+            DGVToolTip.Hide(this);
         }
     }
 }
