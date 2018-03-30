@@ -26,7 +26,7 @@ namespace Pk3DSRNGTool
         // RNG
         private static TinyMT rng;
         private static byte Rand(ulong n) => (byte)((rng.Nextuint() * n) >> 32);
-        public PokeRadar(uint[] src, int PKMNUM, int Chainlength, bool Boost = true)
+        public PokeRadar(uint[] src, int PKMNUM, int Chainlength, bool Boost)
         {
             rng = new TinyMT(src);
 
@@ -34,8 +34,7 @@ namespace Pk3DSRNGTool
                 rng.Next();
 
             music = Rand(100);
-            if (Boost && music < 50)
-                Boost = false;
+            Boost &= music >= 50;
 
             // 4 Pokemon patches
             byte ring = 0;
@@ -50,9 +49,7 @@ namespace Pk3DSRNGTool
                 if (Rand(100) < GoodRate[ring])
                 {
                     rng.Next();
-                    if (Chainlength > 40)
-                        Boost = true;
-                    ulong Chance = Boost ? 100 : (ulong)(8100 - Chainlength * 200);
+                    ulong Chance = Boost || Chainlength >= 40 ? 100 : (ulong)(8100 - Chainlength * 200);
                     patches[ring].state = (byte)(rng.Nextuint() * Chance <= uint.MaxValue ? 2 : 1);
                 }
             }
