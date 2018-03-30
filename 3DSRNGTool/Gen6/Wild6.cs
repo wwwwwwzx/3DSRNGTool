@@ -36,9 +36,9 @@ namespace Pk3DSRNGTool
         public bool IsORAS;
 
         // ORAS v1.4 sub_78D900
-        private void CheckLeadAbility()
+        private void CheckLeadAbility(byte? lead = null)
         {
-            var rand100 = TinyRand(100);
+            byte rand100 = lead ?? TinyRand(100);
             SynchroPass = rand100 < 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 < 50;
@@ -141,9 +141,10 @@ namespace Pk3DSRNGTool
             // Use results from tiny
             if (Hrt != null)
             {
+                CheckLeadAbility(Hrt.Lead);
                 for (int i = 0; i < 5; i++)
                 {
-                    results[i].Synchronize = Hrt.Sync;
+                    results[i].Synchronize = SynchroPass;
                     results[i].Item = Hrt.HeldItems[i];
                     results[i].ItemStr = StringItem.helditemStr[getItem(Hrt.HeldItems[i], CompoundEye)];
                 }
