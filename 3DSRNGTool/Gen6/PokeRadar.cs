@@ -32,7 +32,7 @@ namespace Pk3DSRNGTool
                     if (Chainlength > 40)
                         Music = true;
                     ulong Chance = Music ? 100 : (ulong)(8100 - Chainlength * 200);
-                    rt.patches[ring].state = (byte)(getrand(Chance) == 0 ? 2 : 1);
+                    rt.patches[ring].state = (byte)(rng.Nextuint() * Chance <= uint.MaxValue ? 2 : 1);
                 }
             }
 
