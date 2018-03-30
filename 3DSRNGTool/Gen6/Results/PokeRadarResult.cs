@@ -13,18 +13,8 @@ namespace Pk3DSRNGTool
         {
             get
             {
-                var a = new[]
-                {
-                    "#########",
-                    "#########",
-                    "#########",
-                    "#########",
-                    "####C####",
-                    "#########",
-                    "#########",
-                    "#########",
-                    "#########",
-                }.Select(str => str.ToCharArray()).ToArray();
+                var a = new bool[9].Select(b => Enumerable.Repeat('#',9).ToArray()).ToArray(); // 9x9 '#'
+                a[4][4] = 'C'; // Center
                 foreach (var p in patches)
                     if (a[p.Y][p.X] == '#')
                         a[p.Y][p.X] = p.State;
