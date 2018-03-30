@@ -113,8 +113,7 @@
     <Compile Include="Gen6\Event6.cs" />
     <Compile Include="Gen6\PKM6.cs" />
     <Compile Include="Gen6\PKMW6.cs" />
-    <Compile Include="Gen6\Results\PokeRadarResult.cs" />
-    <Compile Include="Gen6\Results\HordeResults.cs" />
+    <Compile Include="Gen6\Horde.cs" />
     <Compile Include="Gen6\Results\ResultE6.cs" />
     <Compile Include="Gen6\Results\ResultW6.cs" />
     <Compile Include="Gen6\Results\Result6.cs" />

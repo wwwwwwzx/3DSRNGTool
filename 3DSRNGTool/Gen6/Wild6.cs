@@ -132,7 +132,7 @@ namespace Pk3DSRNGTool
             return rt;
         }
 
-        public ResultW6[] Generate_Horde(HordeResults Hrt = null)
+        public ResultW6[] Generate_Horde(Horde Hrt = null)
         {
             var results = new ResultW6[5];
             for (int i = 0; i < 5; i++)

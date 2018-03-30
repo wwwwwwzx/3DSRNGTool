@@ -125,7 +125,7 @@ namespace Pk3DSRNGTool.Core
         // Without timeline input
         public static bool TinySynced;
         public static TinyStatus tinystatus;
-        public static HordeResults horde;
+        public static Horde horde;
 
         public static void time_elapse6(int i) => tinystatus.time_elapse(i); // Only Tiny Advance according to timeline. i.e. MT not advance
         public static void AdvanceTiny() => tinystatus.Tinyrng.Next();

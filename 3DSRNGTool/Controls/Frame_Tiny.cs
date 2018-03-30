@@ -16,8 +16,8 @@ namespace Pk3DSRNGTool
         public int framemin;
         public int framemax;
         public TinyStatus tinystate;
-        public HordeResults horde;
-        public PokeRadarResult radar;
+        public Horde horde;
+        public PokeRadar radar;
         public byte flute;
         public byte item;
 

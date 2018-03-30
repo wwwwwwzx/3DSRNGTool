@@ -3,45 +3,59 @@ using Pk3DSRNGTool.RNG;
 
 namespace Pk3DSRNGTool
 {
-    public static class DexNav
+    public class DexNav
     {
-        public static DexNavResult Generate(TinyMT rng)
+        // Result
+        public byte Lead;
+        public bool Sync => Lead < 50;
+        public int LevelBoost;
+        public byte FluteBoost;
+        public bool HA;
+        public byte Potential;
+        public bool EggMove;
+        public byte HeldItem;
+        public bool ForcedShiny;
+
+        // RNG
+        private static TinyMT rng;
+        private static int Rand(ulong n) => (int)((rng.Nextuint() * n) >> 32);
+        public DexNav(uint[] src)
         {
-            var rt = new DexNavResult();
+            rng = new TinyMT(src);
 
             // Something
             rng.Next();
 
             // Boost
-            bool Boost = ChainLength > 0 && (ChainLength + 1) % 5 == 0 || (rng.Nextuint() * 100ul) >> 32 < 4;  // sub_40295C
+            bool Boost = ChainLength > 0 && (ChainLength + 1) % 5 == 0 || Rand(100) < 4;  // sub_40295C
             byte Grade = GetGrade;
 
             // Sync
-            rt.Lead = (byte)((rng.Nextuint() * 100ul) >> 32);
+            Lead = (byte)Rand(100);
 
             // Something
             rng.Next();
 
             // Level
-            rt.LevelBoost = ChainLength / 5 + (Boost ? 10 : 0);
-            rt.FluteBoost = Wild6.getFluteBoost((rng.Nextuint() * 100ul) >> 32);
+            LevelBoost = ChainLength / 5 + (Boost ? 10 : 0);
+            FluteBoost = Core.WildRNG.getFluteBoost((ulong)Rand(100));
 
             // Hidden Ability
-            rt.HA = ((rng.Nextuint() * 100ul) >> 32) < HARate[Grade];
+            HA = Rand(100) < HARate[Grade];
 
             // IVs
             int Index;
             for (Index = 2; Index >= 0; Index--)
-                if (((rng.Nextuint() * 100ul) >> 32) < IVRate[3 * Grade + Index])
+                if (Rand(100) < IVRate[3 * Grade + Index])
                     break;
             Index += Boost ? 2 : 1;
-            rt.Potential = (byte)Math.Min(3, Index);
+            Potential = (byte)Math.Min(3, Index);
 
             // Egg Move
-            rt.EggMove = ((rng.Nextuint() * 100ul) >> 32) < EggMoveRate[Grade] || Boost;
+            EggMove = Rand(100) < EggMoveRate[Grade] || Boost;
 
             // Held Item
-            int tmp = (int)((rng.Nextuint() * 100ul) >> 32);
+            int tmp = Rand(100);
             for (Index = 0; Index < 2; Index++)
             {
                 tmp -= HeldItemRate[Grade * 2 + Index];
@@ -52,7 +66,7 @@ namespace Pk3DSRNGTool
             }
             if (Index >= 2)
                 Index = 3;
-            rt.HeldItem = (byte)Index;
+            HeldItem = (byte)Index;
 
             // Shiny Checks
             int CheckCount = ShinyCharm ? 3 : 1;
@@ -72,12 +86,11 @@ namespace Pk3DSRNGTool
                 TargetValue = 6 * SearchLevel;
 
             for (int i = 0; i < CheckCount; i++)
-                if (((rng.Nextuint() * 10000ul) >> 32) < TargetValue * 0.01)
-                    rt.ForcedShiny = true;
-
-            return rt;
+                if (Rand(10000) < TargetValue * 0.01)
+                    ForcedShiny = true;
         }
 
+        // Global variables
         public static int SearchLevel;
         public static int ChainLength;
         public static bool ShinyCharm;

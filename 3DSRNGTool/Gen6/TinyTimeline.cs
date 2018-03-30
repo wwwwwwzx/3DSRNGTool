@@ -323,14 +323,14 @@ namespace Pk3DSRNGTool
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].horde = new HordeResults(new TinyMT(results[i].tinystate.Status), PartySize, IsORAS);
+                results[i].horde = new Horde(results[i].tinystate.Status, PartySize, IsORAS);
         }
 
         private void MarkRadar()
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].radar = PokeRadar.Generate(new TinyMT(results[i].tinystate.Status), PartySize, ChainLength, Boost);
+                results[i].radar = new PokeRadar(results[i].tinystate.Status, PartySize, ChainLength, Boost);
         }
     }
 }
