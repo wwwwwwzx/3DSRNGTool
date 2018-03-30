@@ -7,8 +7,8 @@ namespace Pk3DSRNGTool
         public byte music;
         public Patch[] patches = new Patch[5];
 
-        public char Music => music < 2 ? 'A' : music > 49 ? 'M' : 'X';
-        public bool Shiny => music > 49 && patches.Any(p => p.state == 2);
+        public char Music => music < 2 ? 'A' : music > 49 ? 'M' : '-';
+        public bool Shiny => patches.Any(p => p.state == 2);
         public string[] Overview
         {
             get

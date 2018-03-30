@@ -105,6 +105,7 @@ namespace Pk3DSRNGTool
         public int SlotNum;
         public int EncounterRate;
         public int ChainLength;
+        public bool Boost;
         public bool IsORAS;
         public void Add(int f, int t) => TimelineStatus.Add(f, t);
 
@@ -329,7 +330,7 @@ namespace Pk3DSRNGTool
         {
             int max = results.Count;
             for (int i = 0; i < max; i++)
-                results[i].radar = PokeRadar.Generate(new TinyMT(results[i].tinystate.Status), PartySize, ChainLength);
+                results[i].radar = PokeRadar.Generate(new TinyMT(results[i].tinystate.Status), PartySize, ChainLength, Boost);
         }
     }
 }

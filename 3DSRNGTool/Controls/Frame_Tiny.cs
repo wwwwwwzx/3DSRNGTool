@@ -31,6 +31,7 @@ namespace Pk3DSRNGTool
         public string HA => horde?.HA == 0 ? "-" : horde.HA.ToString();
         public string Item => horde?.ItemString ?? StringItem.helditemStr[item];
         public string Flute => horde?.FluteString ?? flute.ToString();
+        public char Music => radar?.Music ?? '-';
 
         public byte Rand100 => (byte)((rand * 100ul) >> 32);
         public string FrameRange => framemin == framemax ? "-" : $"{framemin + 2}~{framemax} ({framemax - framemin})";

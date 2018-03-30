@@ -14,6 +14,8 @@ namespace Pk3DSRNGTool
             var rt = new PokeRadarResult();
 
             rt.music = getrand(100);
+            if (Music && rt.music < 50)
+                Music = false;
 
             byte ring = 0;
             for (; ring < 4; ring++)

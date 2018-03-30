@@ -172,6 +172,7 @@ namespace Pk3DSRNGTool
                 EncounterRate = EncounterRate.Visible ? (int)EncounterRate.Value : 0,
                 ChainLength = (int)ChainLength.Value,
                 IsORAS = IsORAS,
+                Boost = Boost.Checked,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
             if (Frame2.Value > Frame1.Value)
@@ -190,6 +191,8 @@ namespace Pk3DSRNGTool
                 return;
             var row = MainDGV.Rows[index];
             if (tiny_enctr.Visible && list[index].enctr < Frame_Tiny.thershold && Frame_Tiny.thershold < 50)
+                row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            if (!Boost.Checked && list[index].radar?.music < 2)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             if (list[index].radar?.Shiny == true)
                 row.DefaultCellStyle.BackColor = System.Drawing.Color.LightCyan;
@@ -216,6 +219,7 @@ namespace Pk3DSRNGTool
             tiny_flute.Width = Method.SelectedIndex == 2 ? 60 : 40;
             dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
             dgv_item.Visible = Method.SelectedIndex > 1;
+            dgv_music.Visible = Method.SelectedIndex == 4;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
             tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
@@ -236,6 +240,7 @@ namespace Pk3DSRNGTool
 
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Boost.Visible =
             L_PartySize.Visible = L_SlotNum.Visible = L_Rate.Visible = L_Length.Visible =
             PartyNum.Visible = SlotNum.Visible = EncounterRate.Visible = ChainLength.Visible = false;
             ConsiderDelay.Enabled = Delay.Enabled = true;
@@ -267,6 +272,7 @@ namespace Pk3DSRNGTool
                     Delay.Value = 6;
                     break;
                 case 4: // Pokeradar
+                    Boost.Visible =
                     L_PartySize.Visible = PartyNum.Visible = true;
                     L_Length.Visible = ChainLength.Visible = true;
                     Delay.Value = 14;

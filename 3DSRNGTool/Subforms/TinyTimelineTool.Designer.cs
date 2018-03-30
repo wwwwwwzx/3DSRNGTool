@@ -54,6 +54,10 @@
             this.Type2 = new System.Windows.Forms.ComboBox();
             this.Frame2 = new System.Windows.Forms.NumericUpDown();
             this.Type1 = new System.Windows.Forms.ComboBox();
+            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.B_Stop = new System.Windows.Forms.Button();
             this.B_Cali = new System.Windows.Forms.Button();
             this.GB_Adj = new System.Windows.Forms.GroupBox();
@@ -73,6 +77,7 @@
             this.CryFrame = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
             this.Method = new System.Windows.Forms.ComboBox();
+            this.Boost = new System.Windows.Forms.CheckBox();
             this.MainDGV = new System.Windows.Forms.DataGridView();
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,12 +89,9 @@
             this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_music = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiny3 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny2 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny0 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
-            this.tiny1 = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.CMS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
@@ -352,6 +354,54 @@
             this.Type1.Size = new System.Drawing.Size(76, 21);
             this.Type1.TabIndex = 112;
             // 
+            // tiny3
+            // 
+            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny3.Location = new System.Drawing.Point(40, 26);
+            this.tiny3.Mask = "AAAAAAAA";
+            this.tiny3.Name = "tiny3";
+            this.tiny3.Size = new System.Drawing.Size(63, 22);
+            this.tiny3.TabIndex = 100;
+            this.tiny3.Text = "00000000";
+            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny3.Value = ((uint)(0u));
+            // 
+            // tiny2
+            // 
+            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny2.Location = new System.Drawing.Point(40, 54);
+            this.tiny2.Mask = "AAAAAAAA";
+            this.tiny2.Name = "tiny2";
+            this.tiny2.Size = new System.Drawing.Size(63, 22);
+            this.tiny2.TabIndex = 101;
+            this.tiny2.Text = "00000000";
+            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny2.Value = ((uint)(0u));
+            // 
+            // tiny0
+            // 
+            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny0.Location = new System.Drawing.Point(40, 111);
+            this.tiny0.Mask = "AAAAAAAA";
+            this.tiny0.Name = "tiny0";
+            this.tiny0.Size = new System.Drawing.Size(63, 22);
+            this.tiny0.TabIndex = 103;
+            this.tiny0.Text = "00000000";
+            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny0.Value = ((uint)(0u));
+            // 
+            // tiny1
+            // 
+            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiny1.Location = new System.Drawing.Point(40, 82);
+            this.tiny1.Mask = "AAAAAAAA";
+            this.tiny1.Name = "tiny1";
+            this.tiny1.Size = new System.Drawing.Size(63, 22);
+            this.tiny1.TabIndex = 102;
+            this.tiny1.Text = "00000000";
+            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tiny1.Value = ((uint)(0u));
+            // 
             // B_Stop
             // 
             this.B_Stop.Location = new System.Drawing.Point(120, 110);
@@ -393,6 +443,7 @@
             this.GB_Adj.Controls.Add(this.Method);
             this.GB_Adj.Controls.Add(this.TargetFrame);
             this.GB_Adj.Controls.Add(this.L_TargetFrame);
+            this.GB_Adj.Controls.Add(this.Boost);
             this.GB_Adj.Location = new System.Drawing.Point(5, 318);
             this.GB_Adj.Name = "GB_Adj";
             this.GB_Adj.Size = new System.Drawing.Size(189, 195);
@@ -571,7 +622,7 @@
             // 
             this.L_Method.AutoSize = true;
             this.L_Method.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_Method.Location = new System.Drawing.Point(7, 30);
+            this.L_Method.Location = new System.Drawing.Point(13, 30);
             this.L_Method.Name = "L_Method";
             this.L_Method.Size = new System.Drawing.Size(43, 13);
             this.L_Method.TabIndex = 116;
@@ -580,11 +631,21 @@
             // Method
             // 
             this.Method.FormattingEnabled = true;
-            this.Method.Location = new System.Drawing.Point(51, 26);
+            this.Method.Location = new System.Drawing.Point(57, 26);
             this.Method.Name = "Method";
             this.Method.Size = new System.Drawing.Size(88, 21);
             this.Method.TabIndex = 115;
             this.Method.SelectedIndexChanged += new System.EventHandler(this.Method_SelectedIndexChanged);
+            // 
+            // Boost
+            // 
+            this.Boost.AutoSize = true;
+            this.Boost.Location = new System.Drawing.Point(151, 30);
+            this.Boost.Name = "Boost";
+            this.Boost.Size = new System.Drawing.Size(33, 17);
+            this.Boost.TabIndex = 135;
+            this.Boost.Text = "B";
+            this.Boost.UseVisualStyleBackColor = true;
             // 
             // MainDGV
             // 
@@ -614,6 +675,7 @@
             this.dgv_item,
             this.tiny_ha,
             this.tiny_rand100,
+            this.dgv_music,
             this.dgv_state,
             this.dgv_time});
             this.MainDGV.ContextMenuStrip = this.CMS;
@@ -724,6 +786,15 @@
             this.tiny_rand100.ReadOnly = true;
             this.tiny_rand100.Width = 40;
             // 
+            // dgv_music
+            // 
+            this.dgv_music.DataPropertyName = "Music";
+            this.dgv_music.HeaderText = "Music";
+            this.dgv_music.Name = "dgv_music";
+            this.dgv_music.ReadOnly = true;
+            this.dgv_music.Visible = false;
+            this.dgv_music.Width = 40;
+            // 
             // dgv_state
             // 
             this.dgv_state.DataPropertyName = "Status";
@@ -743,54 +814,6 @@
             this.dgv_time.Name = "dgv_time";
             this.dgv_time.ReadOnly = true;
             this.dgv_time.Width = 160;
-            // 
-            // tiny3
-            // 
-            this.tiny3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny3.Location = new System.Drawing.Point(40, 26);
-            this.tiny3.Mask = "AAAAAAAA";
-            this.tiny3.Name = "tiny3";
-            this.tiny3.Size = new System.Drawing.Size(63, 22);
-            this.tiny3.TabIndex = 100;
-            this.tiny3.Text = "00000000";
-            this.tiny3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny3.Value = ((uint)(0u));
-            // 
-            // tiny2
-            // 
-            this.tiny2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny2.Location = new System.Drawing.Point(40, 54);
-            this.tiny2.Mask = "AAAAAAAA";
-            this.tiny2.Name = "tiny2";
-            this.tiny2.Size = new System.Drawing.Size(63, 22);
-            this.tiny2.TabIndex = 101;
-            this.tiny2.Text = "00000000";
-            this.tiny2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny2.Value = ((uint)(0u));
-            // 
-            // tiny0
-            // 
-            this.tiny0.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny0.Location = new System.Drawing.Point(40, 111);
-            this.tiny0.Mask = "AAAAAAAA";
-            this.tiny0.Name = "tiny0";
-            this.tiny0.Size = new System.Drawing.Size(63, 22);
-            this.tiny0.TabIndex = 103;
-            this.tiny0.Text = "00000000";
-            this.tiny0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny0.Value = ((uint)(0u));
-            // 
-            // tiny1
-            // 
-            this.tiny1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiny1.Location = new System.Drawing.Point(40, 82);
-            this.tiny1.Mask = "AAAAAAAA";
-            this.tiny1.Name = "tiny1";
-            this.tiny1.Size = new System.Drawing.Size(63, 22);
-            this.tiny1.TabIndex = 102;
-            this.tiny1.Text = "00000000";
-            this.tiny1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tiny1.Value = ((uint)(0u));
             // 
             // TinyTimelineTool
             // 
@@ -865,6 +888,15 @@
         public System.Windows.Forms.NumericUpDown Delay;
         public System.Windows.Forms.CheckBox ConsiderDelay;
         private Controls.HexMaskedTextBox tiny3;
+        public System.Windows.Forms.NumericUpDown ChainLength;
+        public System.Windows.Forms.NumericUpDown SlotNum;
+        public System.Windows.Forms.NumericUpDown EncounterRate;
+        private System.Windows.Forms.Label L_PartySize;
+        private System.Windows.Forms.Label L_SlotNum;
+        private System.Windows.Forms.Label L_Rate;
+        private System.Windows.Forms.Label L_Length;
+        private System.Windows.Forms.ToolTip DGVToolTip;
+        public System.Windows.Forms.CheckBox Boost;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_MTFRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_index;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_hitidx;
@@ -875,15 +907,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_music;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
-        public System.Windows.Forms.NumericUpDown ChainLength;
-        public System.Windows.Forms.NumericUpDown SlotNum;
-        public System.Windows.Forms.NumericUpDown EncounterRate;
-        private System.Windows.Forms.Label L_PartySize;
-        private System.Windows.Forms.Label L_SlotNum;
-        private System.Windows.Forms.Label L_Rate;
-        private System.Windows.Forms.Label L_Length;
-        private System.Windows.Forms.ToolTip DGVToolTip;
     }
 }
