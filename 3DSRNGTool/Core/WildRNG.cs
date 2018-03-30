@@ -13,6 +13,7 @@
         public byte CuteCharmGender;
         public byte ModifiedLevel;
 
+        protected abstract void CheckLeadAbility(ulong rand100);
         protected bool SynchroPass;
         protected bool CuteCharmPass;
         protected bool StaticMagnetPass;

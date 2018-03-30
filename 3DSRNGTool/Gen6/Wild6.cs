@@ -36,9 +36,8 @@ namespace Pk3DSRNGTool
         public bool IsORAS;
 
         // ORAS v1.4 sub_78D900
-        private void CheckLeadAbility(byte? lead = null)
+        protected override void CheckLeadAbility(ulong rand100)
         {
-            byte rand100 = lead ?? TinyRand(100);
             SynchroPass = rand100 < 50;
             CuteCharmPass = CuteCharmGender > 0 && rand100 < 67;
             StaticMagnetPass = StaticMagnet && rand100 < 50;
@@ -87,7 +86,7 @@ namespace Pk3DSRNGTool
                     break;
             }
 
-            CheckLeadAbility();
+            CheckLeadAbility(TinyRand(100));
             rt.Synchronize = SynchroPass;
 
             // Encounter Slot and Others
