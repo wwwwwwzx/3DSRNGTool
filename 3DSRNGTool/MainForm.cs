@@ -1922,7 +1922,7 @@ namespace Pk3DSRNGTool
                         // XY ID
                         case 0x42BDF8 when !IsORAS:
                             var delay5 = TinyStatus.getcooldown5(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
-                            TTT.Calibrate(7, CurrentFrame, CurrentFrame + delay5);
+                            TTT.Calibrate(5, CurrentFrame, CurrentFrame + delay5);
                             break;
 
                         default:

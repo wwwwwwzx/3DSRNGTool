@@ -9,10 +9,10 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
-        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, 7, };
+        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 5, 6, };
         private const string FRAME = "Frame";
         private const string TYPE = "Type";
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC", "XY ID" };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "XY ID", "Running NPC", };
         private IEnumerable<ComboBox> getTypeList()
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
@@ -88,7 +88,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == TypeNum.Value || type < 0 || type > 7)    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || type > 6)    // All used
             {
                 B_Stop_Click(null, null);
                 return;

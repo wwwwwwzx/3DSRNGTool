@@ -73,31 +73,29 @@ namespace Pk3DSRNGTool
                 case 4: // Soaring 0x726ED4
                     Add(Currentframe + getcooldown4(rand), 4);
                     break;
-                case 5: // Cry 0x3F05BC
+                case 5: // XY ID 0x42BDF8
+                    Add(Currentframe + getcooldown5(rand), 5);
                     break;
                 case 6: // Running NPC 0x7D3B28
                     Add(Currentframe + 16, 6);
                     break;
-                case 7: // XY ID
-                    Add(Currentframe + getcooldown5(rand), 7);
-                    break;
                     /*
-                    case 8: // Battle
-                        Add(Currentframe + getcooldown6(rand), 8);
+                    case 7: // Battle
+                        Add(Currentframe + getcooldown6(rand), 7);
                         break;
-                    case 9: // Groudon/Kyogre 0x7BE438
-                        Add(Currentframe + getcooldown7(rand), 9);
+                    case 8: // Groudon/Kyogre 0x7BE438
+                        Add(Currentframe + getcooldown7(rand), 8);
                         break;
                     */
             }
             return rand;
         }
 
-        public static int getcooldown1(uint rand) => (int)(((rand * 60ul) >> 32) * 2 + 124);
+        public static int getcooldown1(uint rand) => (int)((rand * 60ul) >> 32) * 2 + 124;
         public static int getcooldown2(uint rand) => rand > 0x55555555 ? 12 : 20;
-        public static int getcooldown3(uint rand) => (int)(((rand * 90ul) >> 32) * 2 + 780);
+        public static int getcooldown3(uint rand) => (int)((rand * 90ul) >> 32) * 2 + 780;
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
-        public static int getcooldown5(uint rand) => (int)(542 - ((rand * 180ul) >> 32) * 2);
+        public static int getcooldown5(uint rand) => 542 - (int)((rand * 180ul) >> 32) * 2;
         /*
         public static int getcooldown6(uint rand) => (int)(((rand * 240ul) >> 32) + 251);
         public static int getcooldown7(uint rand) => (int)(((rand * 10ul) >> 32) * 30 + 60);
