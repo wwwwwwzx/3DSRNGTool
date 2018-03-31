@@ -228,14 +228,16 @@ namespace Pk3DSRNGTool
 
         private void Method_Changed()
         {
-            tiny_ha.Visible = Method.SelectedIndex == 2;
-            tiny_enctr.Visible = Method.SelectedIndex == 3 || Method.SelectedIndex > 4;
-            dgv_slot.Visible = Method.SelectedIndex > 1;
+            int method = Method.SelectedIndex;
+            bool Wild = method > 1 && method != 9;
+            tiny_enctr.Visible = method == 3 || method > 4 && method != 9;
+            dgv_slot.Visible = dgv_item.Visible = Wild;
+            bool horde = method == 2;
+            tiny_ha.Visible = horde;
+            tiny_flute.Width = horde ? 60 : 40;
+            dgv_item.Width = horde ? 125 : 40;
+            dgv_music.Visible = method == 4;
             tiny_flute.Visible = IsORAS;
-            tiny_flute.Width = Method.SelectedIndex == 2 ? 60 : 40;
-            dgv_item.Width = Method.SelectedIndex == 2 ? 125 : 40;
-            dgv_item.Visible = Method.SelectedIndex > 1;
-            dgv_music.Visible = Method.SelectedIndex == 4;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
             tiny_hitidx.Visible = ConsiderDelay.Checked;
         }

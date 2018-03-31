@@ -499,6 +499,7 @@
             this.Parameter2.Name = "Parameter2";
             this.Parameter2.Size = new System.Drawing.Size(34, 22);
             this.Parameter2.TabIndex = 128;
+            this.Parameter2.Visible = false;
             // 
             // label5
             // 
@@ -553,11 +554,7 @@
             this.Parameter1.Name = "Parameter1";
             this.Parameter1.Size = new System.Drawing.Size(29, 22);
             this.Parameter1.TabIndex = 117;
-            this.Parameter1.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
+            this.Parameter1.Visible = false;
             // 
             // Cry
             // 

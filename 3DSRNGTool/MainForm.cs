@@ -1866,6 +1866,8 @@ namespace Pk3DSRNGTool
                     return;
                 case "TTT":
                     TTT.Gen6Tiny = (uint[])data;
+                    if (TTT.Method.SelectedIndex == 9)
+                        goto case "IDSeed";
                     return;
                 case "BreakPoint":
                     int CurrentFrame = NTRHelper.ntrclient.getCurrentFrame();
