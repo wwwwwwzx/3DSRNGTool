@@ -320,7 +320,7 @@ namespace Pk3DSRNGTool
                     break;
                 case 9: // XY ID
                     TypeNum.Value = 4;
-                    UpdateTypeComboBox(new[] { -1, 7 });
+                    UpdateTypeComboBox(new[] { -1, 5 });
                     Delay.Value = 724;
                     break;
             }

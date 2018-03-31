@@ -112,13 +112,8 @@ namespace Pk3DSRNGTool
             try
             {
                 int Ver = Program.mainform.Ver;
-                if (Ver == 4)
+                if (Ver < 2 || Ver == 4) // XY or transporter
                     return;
-                if (Ver < 2)
-                {
-                    FormUtil.Error("Not implemented yet");
-                    return;
-                }
                 Start();
                 if (Ver > 4)
                     G7IDBot();
@@ -132,6 +127,7 @@ namespace Pk3DSRNGTool
         {
             B_MashA.Enabled = B_A.Enabled = B_Start.Enabled = true;
             B_Stop.Enabled = false;
+            ntrclient.disconnect();
         }
 
         private bool Botting => B_Stop.Enabled;
