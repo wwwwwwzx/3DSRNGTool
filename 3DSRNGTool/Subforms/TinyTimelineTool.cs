@@ -10,18 +10,30 @@ namespace Pk3DSRNGTool
     {
         #region Basic UI
         public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, };
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC" };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC", };
+        private IEnumerable<ComboBox> getTypeList()
+        {
+            for (int i = 1; i <= TypeNum.Maximum; i++)
+                yield return ((ComboBox)Controls.Find("Type" + i.ToString(), true).First());
+        }
+        private IEnumerable<NumericUpDown> getFrameList()
+        {
+            for (int i = 1; i <= TypeNum.Maximum; i++)
+                yield return ((NumericUpDown)Controls.Find("Frame" + i.ToString(), true).First());
+        }
+
         private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing", "Rock Smash", "Cave Shadow", "Normal Wild", };
         public TinyTimelineTool()
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
+            TypeNum.Maximum = 4; TypeNum.Minimum = 1;
             UpdateTypeComboBox(typelist);
-            Type3.SelectedIndex =
-            Type2.SelectedIndex =
-            Type1.SelectedIndex = 0;
-            Frame1.Maximum = Frame2.Maximum = Frame3.Maximum = TargetFrame.Maximum = FuncUtil.MAXFRAME;
-            Frame1.Value = Frame2.Value = Frame3.Value = 500;
+            foreach (var c in getFrameList())
+            {
+                c.Maximum = FuncUtil.MAXFRAME;
+                c.Value = 500;
+            }
         }
         public void Translate()
         {
@@ -33,15 +45,13 @@ namespace Pk3DSRNGTool
         public void UpdateTypeComboBox(int[] type)
         {
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t)).Where(t => type.Contains(t.Value));
-            Type1.DisplayMember = "Text";
-            Type1.ValueMember = "Value";
-            Type1.DataSource = new BindingSource(List.Skip(1), null);
-            Type2.DisplayMember = "Text";
-            Type2.ValueMember = "Value";
-            Type2.DataSource = new BindingSource(List, null);
-            Type3.DisplayMember = "Text";
-            Type3.ValueMember = "Value";
-            Type3.DataSource = new BindingSource(List, null);
+            foreach (var c in getTypeList())
+            {
+                c.DisplayMember = "Text";
+                c.ValueMember = "Value";
+                c.DataSource = new BindingSource(List.Skip(c == Type1 ? 1 : 0), null);
+                c.SelectedIndex = 0;
+            }
         }
         private void TinyTimelineTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -104,7 +114,8 @@ namespace Pk3DSRNGTool
             B_Stop.Visible = true;
             B_Cali.Visible = false;
             SkipList.Clear();
-            Type2.SelectedValue = Type3.SelectedValue = -1;
+            foreach (var c in getTypeList())
+                c.SelectedValue = -1;
             NTRHelper.ntrclient.EnableBP((int)Type1.SelectedValue == 4);
         }
         private void Cry_EnabledChanged(object sender, EventArgs e)
@@ -122,8 +133,8 @@ namespace Pk3DSRNGTool
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
             {
-                Controls.Find("Frame" + i.ToString(), true).FirstOrDefault().Enabled = i <= TypeNum.Value;
-                Controls.Find("Type" + i.ToString(), true).FirstOrDefault().Enabled = i <= TypeNum.Value;
+                Controls.Find("Frame" + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
+                Controls.Find("Type" + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
             }
         }
         private void Type_EnabledChanged(object sender, EventArgs e)
@@ -167,19 +178,21 @@ namespace Pk3DSRNGTool
                 CryFrame = Cry.Checked ? (int)CryFrame.Value : -1,
                 Delay = ConsiderDelay.Checked ? (int)Delay.Value : 0,
                 Method = (byte)Method.SelectedIndex,
-                PartySize = (int)PartyNum.Value,
-                SlotNum = (int)SlotNum.Value,
-                EncounterRate = EncounterRate.Visible ? (int)EncounterRate.Value : 0,
-                ChainLength = (int)ChainLength.Value,
+                P1 = (int)Parameter1.Value,
+                P2 = Parameter2.Visible ? (int)Parameter2.Value : 0,
                 IsORAS = IsORAS,
                 Boost = Boost.Checked,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
-            if (Frame2.Value > Frame1.Value)
+            var frame = Frame1.Value;
+            for (int i = 2; i <= TypeNum.Maximum; i++)
             {
-                line.Add((int)Frame2.Value, (int)Type2.SelectedValue);
-                if (Frame3.Value > Frame2.Value)
-                    line.Add((int)Frame3.Value, (int)Type3.SelectedValue);
+                var f = (NumericUpDown)Controls.Find("Frame" + i.ToString(), true).First();
+                var t = (ComboBox)Controls.Find("Type" + i.ToString(), true).First();
+                if (!f.Enabled || f.Value < frame || (int)t.SelectedValue == -1)
+                    return line;
+                frame = f.Value;
+                line.Add((int)f.Value, (int)t.SelectedValue);
             }
             return line;
         }
@@ -241,8 +254,7 @@ namespace Pk3DSRNGTool
         private void Method_SelectedIndexChanged(object sender, EventArgs e)
         {
             Boost.Visible =
-            L_PartySize.Visible = L_SlotNum.Visible = L_Rate.Visible = L_Length.Visible =
-            PartyNum.Visible = SlotNum.Visible = EncounterRate.Visible = ChainLength.Visible = false;
+            L_PartySize.Visible = L_SlotNum.Visible = L_Rate.Visible = L_Length.Visible = false;
             ConsiderDelay.Enabled = Delay.Enabled = true;
             Cry.Enabled = CryFrame.Enabled = false;
             Cry.Checked = false;
@@ -255,32 +267,30 @@ namespace Pk3DSRNGTool
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 1: // Portal/soaring
-                    L_PartySize.Visible = PartyNum.Visible = true;
+                    L_PartySize.Visible = true;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 2: // Horde
-                    L_PartySize.Visible = PartyNum.Visible = true;
+                    L_PartySize.Visible = true;
                     ConsiderDelay.Enabled = Delay.Enabled = false;
                     ConsiderDelay.Checked = false;
                     Delay.Value = 0;
                     break;
                 case 3: // FS
-                    L_SlotNum.Visible = SlotNum.Visible = true;
-                    L_Rate.Visible = EncounterRate.Visible = true;
-                    EncounterRate.Value = 13;
+                    L_SlotNum.Visible = L_Rate.Visible = true;
+                    Parameter2.Value = 13;
                     Delay.Value = 6;
                     break;
                 case 4: // Pokeradar
                     Boost.Visible =
-                    L_PartySize.Visible = PartyNum.Visible = true;
-                    L_Length.Visible = ChainLength.Visible = true;
+                    L_PartySize.Visible =
+                    L_Length.Visible = true;
                     Delay.Value = 14;
                     break;
                 case 5: // Fishing
-                    L_PartySize.Visible = PartyNum.Visible = true;
-                    L_Rate.Visible = EncounterRate.Visible = true;
-                    EncounterRate.Value = 98;
+                    L_PartySize.Visible = L_Rate.Visible = true;
+                    Parameter2.Value = 98;
                     UpdateTypeComboBox(new[] { -1, 0, 1 });
                     Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
@@ -298,8 +308,8 @@ namespace Pk3DSRNGTool
                     CryFrame.Value = 32;
                     break;
                 case 8: // Normal Wilds
-                    L_Rate.Visible = EncounterRate.Visible = true;
-                    EncounterRate.Value = 1;
+                    L_Rate.Visible = true;
+                    Parameter2.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
                     Delay.Value = 6;
                     break;
@@ -326,6 +336,41 @@ namespace Pk3DSRNGTool
                 return;
             }
             DGVToolTip.Hide(this);
+        }
+
+        private void L_PartySize_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Parameter1.Visible = L_PartySize.Visible)
+            {
+                Parameter1.Maximum = 6;
+                Parameter1.Minimum = 1;
+                Parameter1.Value = 6;
+            }
+        }
+        private void L_SlotNum_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Parameter1.Visible = L_SlotNum.Visible)
+            {
+                Parameter1.Maximum = 3;
+                Parameter1.Minimum = 2;
+                Parameter1.Value = 3;
+            }
+        }
+        private void L_Rate_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Parameter2.Visible = L_Rate.Visible)
+            {
+                Parameter2.Maximum = 99;
+                Parameter2.Minimum = 1;
+            }
+        }
+        private void L_Length_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Parameter2.Visible = L_Length.Visible)
+            {
+                Parameter2.Maximum = 40;
+                Parameter2.Minimum = 0;
+            }
         }
     }
 }

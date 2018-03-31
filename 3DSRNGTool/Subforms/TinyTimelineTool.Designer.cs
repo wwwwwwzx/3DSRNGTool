@@ -46,6 +46,8 @@
             this.TargetFrame = new System.Windows.Forms.NumericUpDown();
             this.L_TargetFrame = new System.Windows.Forms.Label();
             this.GB_Cali = new System.Windows.Forms.GroupBox();
+            this.Type4 = new System.Windows.Forms.ComboBox();
+            this.Frame4 = new System.Windows.Forms.NumericUpDown();
             this.L_TypeNum = new System.Windows.Forms.Label();
             this.TypeNum = new System.Windows.Forms.NumericUpDown();
             this.L_Type = new System.Windows.Forms.Label();
@@ -61,23 +63,21 @@
             this.B_Stop = new System.Windows.Forms.Button();
             this.B_Cali = new System.Windows.Forms.Button();
             this.GB_Adj = new System.Windows.Forms.GroupBox();
-            this.L_PartySize = new System.Windows.Forms.Label();
             this.L_SlotNum = new System.Windows.Forms.Label();
             this.L_Rate = new System.Windows.Forms.Label();
             this.L_Length = new System.Windows.Forms.Label();
-            this.ChainLength = new System.Windows.Forms.NumericUpDown();
-            this.SlotNum = new System.Windows.Forms.NumericUpDown();
-            this.EncounterRate = new System.Windows.Forms.NumericUpDown();
+            this.Parameter2 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
             this.ConsiderDelay = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.PartyNum = new System.Windows.Forms.NumericUpDown();
+            this.Parameter1 = new System.Windows.Forms.NumericUpDown();
             this.Cry = new System.Windows.Forms.CheckBox();
             this.CryFrame = new System.Windows.Forms.NumericUpDown();
             this.L_Method = new System.Windows.Forms.Label();
             this.Method = new System.Windows.Forms.ComboBox();
             this.Boost = new System.Windows.Forms.CheckBox();
+            this.L_PartySize = new System.Windows.Forms.Label();
             this.MainDGV = new System.Windows.Forms.DataGridView();
             this.tiny_MTFRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_index = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,15 +97,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Frame1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).BeginInit();
             this.GB_Cali.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).BeginInit();
             this.GB_Adj.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SlotNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EncounterRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameter2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CryFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).BeginInit();
             this.SuspendLayout();
@@ -184,7 +183,7 @@
             // B_Create
             // 
             this.B_Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_Create.Location = new System.Drawing.Point(112, 519);
+            this.B_Create.Location = new System.Drawing.Point(118, 549);
             this.B_Create.Name = "B_Create";
             this.B_Create.Size = new System.Drawing.Size(76, 29);
             this.B_Create.TabIndex = 110;
@@ -227,6 +226,8 @@
             // 
             // GB_Cali
             // 
+            this.GB_Cali.Controls.Add(this.Type4);
+            this.GB_Cali.Controls.Add(this.Frame4);
             this.GB_Cali.Controls.Add(this.L_TypeNum);
             this.GB_Cali.Controls.Add(this.TypeNum);
             this.GB_Cali.Controls.Add(this.L_Type);
@@ -249,10 +250,34 @@
             this.GB_Cali.Controls.Add(this.B_Cali);
             this.GB_Cali.Location = new System.Drawing.Point(5, 12);
             this.GB_Cali.Name = "GB_Cali";
-            this.GB_Cali.Size = new System.Drawing.Size(189, 300);
+            this.GB_Cali.Size = new System.Drawing.Size(189, 325);
             this.GB_Cali.TabIndex = 115;
             this.GB_Cali.TabStop = false;
             this.GB_Cali.Text = "Calibration";
+            // 
+            // Type4
+            // 
+            this.Type4.Enabled = false;
+            this.Type4.FormattingEnabled = true;
+            this.Type4.Location = new System.Drawing.Point(101, 291);
+            this.Type4.Name = "Type4";
+            this.Type4.Size = new System.Drawing.Size(76, 21);
+            this.Type4.TabIndex = 124;
+            this.Type4.EnabledChanged += new System.EventHandler(this.Type_EnabledChanged);
+            // 
+            // Frame4
+            // 
+            this.Frame4.Enabled = false;
+            this.Frame4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Frame4.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.Frame4.Location = new System.Drawing.Point(15, 292);
+            this.Frame4.Name = "Frame4";
+            this.Frame4.Size = new System.Drawing.Size(73, 22);
+            this.Frame4.TabIndex = 123;
             // 
             // L_TypeNum
             // 
@@ -268,24 +293,9 @@
             // 
             this.TypeNum.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TypeNum.Location = new System.Drawing.Point(127, 149);
-            this.TypeNum.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.TypeNum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.TypeNum.Name = "TypeNum";
             this.TypeNum.Size = new System.Drawing.Size(43, 22);
             this.TypeNum.TabIndex = 118;
-            this.TypeNum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.TypeNum.ValueChanged += new System.EventHandler(this.TypeNum_ValueChanged);
             // 
             // L_Type
@@ -425,18 +435,15 @@
             // 
             // GB_Adj
             // 
-            this.GB_Adj.Controls.Add(this.L_PartySize);
             this.GB_Adj.Controls.Add(this.L_SlotNum);
             this.GB_Adj.Controls.Add(this.L_Rate);
             this.GB_Adj.Controls.Add(this.L_Length);
-            this.GB_Adj.Controls.Add(this.ChainLength);
-            this.GB_Adj.Controls.Add(this.SlotNum);
-            this.GB_Adj.Controls.Add(this.EncounterRate);
+            this.GB_Adj.Controls.Add(this.Parameter2);
             this.GB_Adj.Controls.Add(this.label5);
             this.GB_Adj.Controls.Add(this.Delay);
             this.GB_Adj.Controls.Add(this.ConsiderDelay);
             this.GB_Adj.Controls.Add(this.label4);
-            this.GB_Adj.Controls.Add(this.PartyNum);
+            this.GB_Adj.Controls.Add(this.Parameter1);
             this.GB_Adj.Controls.Add(this.Cry);
             this.GB_Adj.Controls.Add(this.CryFrame);
             this.GB_Adj.Controls.Add(this.L_Method);
@@ -444,22 +451,13 @@
             this.GB_Adj.Controls.Add(this.TargetFrame);
             this.GB_Adj.Controls.Add(this.L_TargetFrame);
             this.GB_Adj.Controls.Add(this.Boost);
-            this.GB_Adj.Location = new System.Drawing.Point(5, 318);
+            this.GB_Adj.Controls.Add(this.L_PartySize);
+            this.GB_Adj.Location = new System.Drawing.Point(5, 343);
             this.GB_Adj.Name = "GB_Adj";
             this.GB_Adj.Size = new System.Drawing.Size(189, 195);
             this.GB_Adj.TabIndex = 117;
             this.GB_Adj.TabStop = false;
             this.GB_Adj.Text = "Adjustment";
-            // 
-            // L_PartySize
-            // 
-            this.L_PartySize.AutoSize = true;
-            this.L_PartySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_PartySize.Location = new System.Drawing.Point(11, 60);
-            this.L_PartySize.Name = "L_PartySize";
-            this.L_PartySize.Size = new System.Drawing.Size(31, 13);
-            this.L_PartySize.TabIndex = 134;
-            this.L_PartySize.Text = "Party";
             // 
             // L_SlotNum
             // 
@@ -470,6 +468,7 @@
             this.L_SlotNum.Size = new System.Drawing.Size(25, 13);
             this.L_SlotNum.TabIndex = 133;
             this.L_SlotNum.Text = "Slot";
+            this.L_SlotNum.VisibleChanged += new System.EventHandler(this.L_SlotNum_VisibleChanged);
             // 
             // L_Rate
             // 
@@ -480,6 +479,7 @@
             this.L_Rate.Size = new System.Drawing.Size(30, 13);
             this.L_Rate.TabIndex = 132;
             this.L_Rate.Text = "Rate";
+            this.L_Rate.VisibleChanged += new System.EventHandler(this.L_Rate_VisibleChanged);
             // 
             // L_Length
             // 
@@ -490,45 +490,15 @@
             this.L_Length.Size = new System.Drawing.Size(40, 13);
             this.L_Length.TabIndex = 131;
             this.L_Length.Text = "Length";
+            this.L_Length.VisibleChanged += new System.EventHandler(this.L_Length_VisibleChanged);
             // 
-            // ChainLength
+            // Parameter2
             // 
-            this.ChainLength.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChainLength.Location = new System.Drawing.Point(144, 56);
-            this.ChainLength.Name = "ChainLength";
-            this.ChainLength.Size = new System.Drawing.Size(34, 22);
-            this.ChainLength.TabIndex = 130;
-            // 
-            // SlotNum
-            // 
-            this.SlotNum.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SlotNum.Location = new System.Drawing.Point(59, 56);
-            this.SlotNum.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.SlotNum.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.SlotNum.Name = "SlotNum";
-            this.SlotNum.Size = new System.Drawing.Size(29, 22);
-            this.SlotNum.TabIndex = 129;
-            this.SlotNum.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // EncounterRate
-            // 
-            this.EncounterRate.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EncounterRate.Location = new System.Drawing.Point(144, 56);
-            this.EncounterRate.Name = "EncounterRate";
-            this.EncounterRate.Size = new System.Drawing.Size(34, 22);
-            this.EncounterRate.TabIndex = 128;
+            this.Parameter2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Parameter2.Location = new System.Drawing.Point(144, 56);
+            this.Parameter2.Name = "Parameter2";
+            this.Parameter2.Size = new System.Drawing.Size(34, 22);
+            this.Parameter2.TabIndex = 128;
             // 
             // label5
             // 
@@ -576,24 +546,14 @@
             this.label4.TabIndex = 124;
             this.label4.Text = "F";
             // 
-            // PartyNum
+            // Parameter1
             // 
-            this.PartyNum.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartyNum.Location = new System.Drawing.Point(59, 56);
-            this.PartyNum.Maximum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.PartyNum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.PartyNum.Name = "PartyNum";
-            this.PartyNum.Size = new System.Drawing.Size(29, 22);
-            this.PartyNum.TabIndex = 117;
-            this.PartyNum.Value = new decimal(new int[] {
+            this.Parameter1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Parameter1.Location = new System.Drawing.Point(59, 56);
+            this.Parameter1.Name = "Parameter1";
+            this.Parameter1.Size = new System.Drawing.Size(29, 22);
+            this.Parameter1.TabIndex = 117;
+            this.Parameter1.Value = new decimal(new int[] {
             6,
             0,
             0,
@@ -647,6 +607,17 @@
             this.Boost.Text = "B";
             this.Boost.UseVisualStyleBackColor = true;
             // 
+            // L_PartySize
+            // 
+            this.L_PartySize.AutoSize = true;
+            this.L_PartySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_PartySize.Location = new System.Drawing.Point(11, 60);
+            this.L_PartySize.Name = "L_PartySize";
+            this.L_PartySize.Size = new System.Drawing.Size(31, 13);
+            this.L_PartySize.TabIndex = 134;
+            this.L_PartySize.Text = "Party";
+            this.L_PartySize.VisibleChanged += new System.EventHandler(this.L_PartySize_VisibleChanged);
+            // 
             // MainDGV
             // 
             this.MainDGV.AllowUserToAddRows = false;
@@ -699,7 +670,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MainDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.MainDGV.RowHeadersWidth = 18;
-            this.MainDGV.Size = new System.Drawing.Size(575, 538);
+            this.MainDGV.Size = new System.Drawing.Size(586, 566);
             this.MainDGV.TabIndex = 108;
             this.MainDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MainDGV_CellFormatting);
             this.MainDGV.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDGV_CellMouseEnter);
@@ -819,7 +790,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 562);
+            this.ClientSize = new System.Drawing.Size(798, 590);
             this.Controls.Add(this.GB_Adj);
             this.Controls.Add(this.GB_Cali);
             this.Controls.Add(this.B_Create);
@@ -834,16 +805,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.TargetFrame)).EndInit();
             this.GB_Cali.ResumeLayout(false);
             this.GB_Cali.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Frame4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TypeNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Frame2)).EndInit();
             this.GB_Adj.ResumeLayout(false);
             this.GB_Adj.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SlotNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EncounterRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameter2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Delay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Parameter1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CryFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDGV)).EndInit();
             this.ResumeLayout(false);
@@ -875,7 +845,7 @@
         public System.Windows.Forms.ComboBox Method;
         private System.Windows.Forms.Label L_Method;
         private System.Windows.Forms.Label L_Type;
-        public System.Windows.Forms.NumericUpDown PartyNum;
+        public System.Windows.Forms.NumericUpDown Parameter1;
         private System.Windows.Forms.DataGridView MainDGV;
         public System.Windows.Forms.Button B_Cali;
         public System.Windows.Forms.Button B_Stop;
@@ -888,9 +858,7 @@
         public System.Windows.Forms.NumericUpDown Delay;
         public System.Windows.Forms.CheckBox ConsiderDelay;
         private Controls.HexMaskedTextBox tiny3;
-        public System.Windows.Forms.NumericUpDown ChainLength;
-        public System.Windows.Forms.NumericUpDown SlotNum;
-        public System.Windows.Forms.NumericUpDown EncounterRate;
+        public System.Windows.Forms.NumericUpDown Parameter2;
         private System.Windows.Forms.Label L_PartySize;
         private System.Windows.Forms.Label L_SlotNum;
         private System.Windows.Forms.Label L_Rate;
@@ -910,5 +878,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_music;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
+        private System.Windows.Forms.ComboBox Type4;
+        private System.Windows.Forms.NumericUpDown Frame4;
     }
 }

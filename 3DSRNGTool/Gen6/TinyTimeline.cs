@@ -35,7 +35,6 @@ namespace Pk3DSRNGTool
         public void Addfront(int f, int t) => list.Add(new TinyCall(f, t));
         public void Add(int f, int t)
         {
-            if (t < 0) return;
             list.Add(new TinyCall(f, t));
             if (list.Count > 1)
                 list = list.OrderByDescending(e => e.frame).ThenBy(e => e.type).ToList();
@@ -105,10 +104,12 @@ namespace Pk3DSRNGTool
         public int Startingframe;
         public int Maxframe;
         public byte Method;
-        public int PartySize;
-        public int SlotNum;
-        public int EncounterRate;
-        public int ChainLength;
+        public int P1;
+        public int P2;
+        public int PartySize => P1;
+        public int SlotNum => P1;
+        public int EncounterRate => P2;
+        public int ChainLength => P2;
         public bool Boost;
         public bool IsORAS;
         public void Add(int f, int t) => TimelineStatus.Add(f, t);

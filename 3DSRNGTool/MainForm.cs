@@ -1511,7 +1511,7 @@ namespace Pk3DSRNGTool
                             var Rod_area = ea as RodArea;
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[4];
-                            setting6.PartyPKM = (byte)TTT.PartyNum.Value;
+                            setting6.PartyPKM = (byte)TTT.Parameter1.Value;
                             setting6.EncounterRate = (byte)Special_th.Value;
                             slottype = 3;
                             setting6._PIDroll_count = 2 * (int)ChainLength.Value;
@@ -1770,8 +1770,9 @@ namespace Pk3DSRNGTool
             {
                 L_HordeInfo.Visible = IsHorde;
                 TTT.Delay.Value = Timedelay.Value;
-                TTT.EncounterRate.Value = Special_th.Value;
-                TTT.SlotNum.Value = CB_3rdSlotUnlocked.Checked ? 3 : 2;
+                TTT.Parameter2.Value = Special_th.Value;
+                if (CB_3rdSlotUnlocked.Visible)
+                    TTT.Parameter1.Value = CB_3rdSlotUnlocked.Checked ? 3 : 2;
                 switch (pw.Type)
                 {
                     case EncounterType.Horde:
