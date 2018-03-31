@@ -1041,6 +1041,11 @@ namespace Pk3DSRNGTool
         public void B_gettiny_Click(object sender, EventArgs e)
         {
             NTRHelper.ntrclient.ReadTiny("IDSeed");
+            if (Ver < 2)
+            {
+                OpenTinyTool(null, null);
+                TTT.Method.SelectedIndex = 9;
+            }
         }
         #endregion
 
