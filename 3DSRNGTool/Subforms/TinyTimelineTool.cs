@@ -9,26 +9,29 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
-        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, };
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC", };
+        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 6, 7, };
+        private const string FRAME = "Frame";
+        private const string TYPE = "Type";
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "Running NPC", "XY ID" };
         private IEnumerable<ComboBox> getTypeList()
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
-                yield return ((ComboBox)Controls.Find("Type" + i.ToString(), true).First());
+                yield return ((ComboBox)Controls.Find(TYPE + i.ToString(), true).First());
         }
         private IEnumerable<NumericUpDown> getFrameList()
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
-                yield return ((NumericUpDown)Controls.Find("Frame" + i.ToString(), true).First());
+                yield return ((NumericUpDown)Controls.Find(FRAME + i.ToString(), true).First());
         }
 
-        private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing", "Rock Smash", "Cave Shadow", "Normal Wild", };
+        private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing", "Rock Smash", "Cave Shadow", "Normal Wild", "XY ID RNG" };
         public TinyTimelineTool()
         {
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
             TypeNum.Maximum = 4; TypeNum.Minimum = 1;
             UpdateTypeComboBox(typelist);
+            TargetFrame.Maximum = FuncUtil.MAXFRAME;
             foreach (var c in getFrameList())
             {
                 c.Maximum = FuncUtil.MAXFRAME;
@@ -85,7 +88,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == TypeNum.Value || type < 0 || type > 6)    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || type > 7)    // All used
             {
                 B_Stop_Click(null, null);
                 return;
@@ -95,8 +98,8 @@ namespace Pk3DSRNGTool
             else
             {
                 SkipList.Add(Next);
-                ((NumericUpDown)Controls.Find("Frame" + SkipList.Count.ToString(), true).FirstOrDefault()).Value = Curr;
-                try { ((ComboBox)Controls.Find("Type" + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type; } catch { };
+                ((NumericUpDown)Controls.Find(FRAME + SkipList.Count.ToString(), true).FirstOrDefault()).Value = Curr;
+                try { ((ComboBox)Controls.Find(TYPE + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type; } catch { };
                 B_Create_Click(null, null);
             }
             return;
@@ -114,7 +117,7 @@ namespace Pk3DSRNGTool
             B_Stop.Visible = true;
             B_Cali.Visible = false;
             SkipList.Clear();
-            foreach (var c in getTypeList())
+            foreach (var c in getTypeList().Skip(1))
                 c.SelectedValue = -1;
             NTRHelper.ntrclient.EnableBP((int)Type1.SelectedValue == 4);
         }
@@ -133,8 +136,8 @@ namespace Pk3DSRNGTool
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
             {
-                Controls.Find("Frame" + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
-                Controls.Find("Type" + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
+                Controls.Find(FRAME + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
+                Controls.Find(TYPE + i.ToString(), true).First().Enabled = i <= TypeNum.Value;
             }
         }
         private void Type_EnabledChanged(object sender, EventArgs e)
@@ -187,8 +190,8 @@ namespace Pk3DSRNGTool
             var frame = Frame1.Value;
             for (int i = 2; i <= TypeNum.Maximum; i++)
             {
-                var f = (NumericUpDown)Controls.Find("Frame" + i.ToString(), true).First();
-                var t = (ComboBox)Controls.Find("Type" + i.ToString(), true).First();
+                var f = (NumericUpDown)Controls.Find(FRAME + i.ToString(), true).First();
+                var t = (ComboBox)Controls.Find(TYPE + i.ToString(), true).First();
                 if (!f.Enabled || f.Value < frame || (int)t.SelectedValue == -1)
                     return line;
                 frame = f.Value;
@@ -312,6 +315,11 @@ namespace Pk3DSRNGTool
                     Parameter2.Value = 1;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
                     Delay.Value = 6;
+                    break;
+                case 9: // XY ID
+                    TypeNum.Value = 4;
+                    UpdateTypeComboBox(new[] { -1, 7 });
+                    Delay.Value = 720;
                     break;
             }
         }

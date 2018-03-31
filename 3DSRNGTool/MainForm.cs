@@ -1912,6 +1912,12 @@ namespace Pk3DSRNGTool
                             TTT.Calibrate(4, CurrentFrame, CurrentFrame + delay4);
                             break;
 
+                        // XY ID
+                        case 0x42BDF8 when !IsORAS:
+                            var delay5 = TinyStatus.getcooldown5(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
+                            TTT.Calibrate(7, CurrentFrame, CurrentFrame + delay5);
+                            break;
+
                         default:
                             TTT.Calibrate(-1, 0, 0);
                             Error("Unknown Timeline Type");

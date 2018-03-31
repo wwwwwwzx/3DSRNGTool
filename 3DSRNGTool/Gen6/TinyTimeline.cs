@@ -78,22 +78,30 @@ namespace Pk3DSRNGTool
                 case 6: // Running NPC 0x7D3B28
                     Add(Currentframe + 16, 6);
                     break;
-                case 7: // Groudon/Kyogre 0x7BE438
+                case 7: // XY ID
                     Add(Currentframe + getcooldown5(rand), 7);
                     break;
-                case 8: // Battle
-                    Add(Currentframe + getcooldown6(rand), 8);
-                    break;
+                    /*
+                    case 8: // Battle
+                        Add(Currentframe + getcooldown6(rand), 8);
+                        break;
+                    case 9: // Groudon/Kyogre 0x7BE438
+                        Add(Currentframe + getcooldown7(rand), 9);
+                        break;
+                    */
             }
             return rand;
         }
 
-        public static int getcooldown1(uint rand) => (int)((((rand * 60ul) >> 32) * 2 + 124));
+        public static int getcooldown1(uint rand) => (int)(((rand * 60ul) >> 32) * 2 + 124);
         public static int getcooldown2(uint rand) => rand > 0x55555555 ? 12 : 20;
-        public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 780));
+        public static int getcooldown3(uint rand) => (int)(((rand * 90ul) >> 32) * 2 + 780);
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
-        public static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
-        public static int getcooldown6(uint rand) => (int)((((rand * 240ul) >> 32)  + 251));
+        public static int getcooldown5(uint rand) => (int)(542 - ((rand * 180ul) >> 32) * 2);
+        /*
+        public static int getcooldown6(uint rand) => (int)(((rand * 240ul) >> 32) + 251);
+        public static int getcooldown7(uint rand) => (int)(((rand * 10ul) >> 32) * 30 + 60);
+        */
     }
 
     public class TinyTimeline

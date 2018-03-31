@@ -3,7 +3,7 @@
 This is an RNG Tool for main 3DS Pokemon games. Some parts should work with [PokeCalcNTR](https://gbatemp.net/threads/pokecalcntr-for-gen-6-the-rng-tool-suite-for-the-3ds.473221/) using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
-- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, wild Pokemon(75%), Eggs and ID(90%).
+- Gen6 RNG. including stationary Pokemon, Mystery Gift Pokemon, wild Pokemon(75%), Eggs and ID.
 - Transporter RNG for transferred Virtual Console Pokemon.
 - Gen7 stationary, Mystery Gift and wild Pokemon RNG from my SMEncounterRNGTool.
 - Gen7 egg RNG and ID RNG based on Quandra's [PokemonSunMoonRNGTool](https://github.com/Quandra/PokemonSunMoonRNGTool) 
