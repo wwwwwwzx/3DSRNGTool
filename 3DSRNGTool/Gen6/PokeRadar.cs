@@ -65,7 +65,8 @@ namespace Pk3DSRNGTool
             };
         }
 
-        public static byte[] GoodRate = { 23, 43, 63, 83 }; // 33 53 73 93 when?
+        public static byte[] GoodRate = { 23, 43, 63, 83 };
+        // public static byte[] GoodRate2 = { 33, 53, 73, 93 };  When last chained by capture
     }
 
     public struct Patch

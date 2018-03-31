@@ -82,6 +82,9 @@ namespace Pk3DSRNGTool
                 case 7: // Groudon/Kyogre 0x7BE438
                     Add(Currentframe + getcooldown5(rand), 7);
                     break;
+                case 8: // Battle
+                    Add(Currentframe + getcooldown6(rand), 8);
+                    break;
             }
             return rand;
         }
@@ -91,6 +94,7 @@ namespace Pk3DSRNGTool
         public static int getcooldown3(uint rand) => (int)((((rand * 90ul) >> 32) * 2 + 780));
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
         public static int getcooldown5(uint rand) => (int)((((rand * 10ul) >> 32) * 30 + 60));
+        public static int getcooldown6(uint rand) => (int)((((rand * 240ul) >> 32)  + 251));
     }
 
     public class TinyTimeline
