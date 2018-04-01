@@ -465,7 +465,7 @@ namespace Pk3DSRNGTool
                 RNGPool.Rewind(0);
                 RNGPool.Advance(delay);
                 if (filter.Random)
-                    f.RandN = (int)(RNGPool.getrand % N);
+                    f.RandN = (int)((RNGPool.getrand * N) >> 32);
                 if (ShowCapture)
                 {
                     RNGPool.Rewind(0);
