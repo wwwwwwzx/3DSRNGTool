@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             this.RNGInfo = new System.Windows.Forms.GroupBox();
+            this.TTT = new System.Windows.Forms.CheckBox();
             this.L_Delay = new System.Windows.Forms.Label();
             this.Delay = new System.Windows.Forms.NumericUpDown();
             this.MaxResults = new System.Windows.Forms.NumericUpDown();
@@ -167,6 +168,7 @@
             // RNGInfo
             // 
             this.RNGInfo.BackColor = System.Drawing.Color.Transparent;
+            this.RNGInfo.Controls.Add(this.TTT);
             this.RNGInfo.Controls.Add(this.L_Delay);
             this.RNGInfo.Controls.Add(this.Delay);
             this.RNGInfo.Controls.Add(this.MaxResults);
@@ -185,6 +187,17 @@
             this.RNGInfo.TabIndex = 0;
             this.RNGInfo.TabStop = false;
             this.RNGInfo.Text = "RNGInfo";
+            // 
+            // TTT
+            // 
+            this.TTT.AutoSize = true;
+            this.TTT.Location = new System.Drawing.Point(66, 69);
+            this.TTT.Name = "TTT";
+            this.TTT.Size = new System.Drawing.Size(59, 17);
+            this.TTT.TabIndex = 116;
+            this.TTT.Text = "TTT ->";
+            this.TTT.UseVisualStyleBackColor = true;
+            this.TTT.CheckedChanged += new System.EventHandler(this.TTT_CheckedChanged);
             // 
             // L_Delay
             // 
@@ -1554,5 +1567,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_rand64;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_npcstatus;
+        private System.Windows.Forms.CheckBox TTT;
     }
 }

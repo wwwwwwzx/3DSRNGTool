@@ -424,7 +424,7 @@ namespace Pk3DSRNGTool
 
         private void Search6_Battle()
         {
-            TinyMT tiny = new TinyMT(Seed.Value);
+            TinyMT tiny = TTT.Checked ? new TinyMT(Program.mainform.TinySeeds) : new TinyMT(Seed.Value);
             int frame = (int)StartingFrame.Value;
             int loopcount = (int)MaxResults.Value;
             int delay = (int)Delay.Value;
@@ -543,6 +543,8 @@ namespace Pk3DSRNGTool
             OPower.Visible = RNG.SelectedIndex == 3;
             ShowHideTab(TP_SOS, RNG.SelectedIndex == 1, 2);
             ShowHideTab(TP_SOS2, RNG.SelectedIndex == 1 && Filters.TabPages.Contains(TP_SOS2), 3);
+            TTT.Visible = RNG.SelectedIndex == 3;
+            Seed.Enabled = !TTT.Visible || !TTT.Checked;
             Translate();
         }
 
@@ -560,6 +562,11 @@ namespace Pk3DSRNGTool
         private void Method_CheckedChanged(object sender, EventArgs e)
         {
             Range.Enabled = Compare.Enabled = Value.Enabled = RB_Random.Checked;
+        }
+
+        private void TTT_CheckedChanged(object sender, EventArgs e)
+        {
+            Seed.Enabled = !TTT.Checked;
         }
 
         private void B_ResetFrame_Click(object sender, EventArgs e)

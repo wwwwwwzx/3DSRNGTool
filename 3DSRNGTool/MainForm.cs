@@ -54,6 +54,7 @@ namespace Pk3DSRNGTool
         List<Frame> Frames = new List<Frame>();
         List<Frame_ID> IDFrames = new List<Frame_ID>();
         List<int> OtherTSVList = new List<int>();
+        public uint[] TinySeeds => TTT.Gen6Tiny;
         #endregion
 
         public MainForm()
