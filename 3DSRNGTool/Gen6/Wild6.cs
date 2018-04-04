@@ -22,6 +22,7 @@ namespace Pk3DSRNGTool
         public bool HA;
         public bool IsShinyLocked;
         public int _PIDroll_count;
+        private bool IsUnown => SpecForm[slot] == 201;
         protected override int PIDroll_count => _PIDroll_count;
         public int _ivcnt = -1;
         protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
@@ -169,6 +170,9 @@ namespace Pk3DSRNGTool
 
         private void Generate_Once(ResultW6 rt)
         {
+            //Species
+            rt.Species = (short)(SpecForm[slot] & 0x7FF);
+
             //Level
             rt.Level = SlotLevel[slot];
             ModifyLevel(rt);
@@ -209,6 +213,9 @@ namespace Pk3DSRNGTool
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
+
+            //Form
+            if (IsUnown) rt.Forme = (byte)rand(28);
 
             //Gender
             rt.Gender = (byte)(RandomGender[slot] ? CuteCharmPass ? CuteCharmGender : (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);
