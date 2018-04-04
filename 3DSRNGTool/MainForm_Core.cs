@@ -680,6 +680,12 @@ namespace Pk3DSRNGTool
             var rng = new TinyMT(Status);
             int min = (int)Frame_min.Value;
             int max = (int)Frame_max.Value;
+
+            bool CheckRandomNumber(uint rn)
+            {
+                int sv = (int)Pokemon.getTSV(rn);
+                return sv == TSV.Value || ConsiderOtherTSV.Checked && OtherTSVList.Contains(sv);
+            }
             // Advance
             for (int i = 0; i < min; i++)
                 rng.Next();
@@ -695,12 +701,6 @@ namespace Pk3DSRNGTool
                 if (Frames.Count > MAX_RESULTS_NUM)
                     return;
             }
-        }
-
-        private bool CheckRandomNumber(uint rn)
-        {
-            int sv = (int)((rn >> 16) ^ (rn & 0xFFFF)) >> 4;
-            return sv == TSV.Value || ConsiderOtherTSV.Checked && OtherTSVList.Contains(sv);
         }
 
         private void Search7_EggList()
