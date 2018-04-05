@@ -38,6 +38,7 @@ dgv_delay=Delay
 dgv_EC=暗号化定数
 dgv_eggnum=受取
 dgv_encounter=Enctr?
+dgv_form=すがた
 dgv_Frame=消費
 dgv_gen7ID=G7TID
 dgv_gender=性別

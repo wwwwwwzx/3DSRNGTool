@@ -38,6 +38,7 @@ dgv_delay=Delai
 dgv_EC=EC
 dgv_eggnum=Numéro de l'oeuf
 dgv_encounter=Sauvage?
+dgv_form=Form
 dgv_Frame=Frame
 dgv_gen7ID=G7TID
 dgv_gender=Sexe

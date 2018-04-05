@@ -41,6 +41,7 @@ namespace Pk3DSRNGTool
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
+        private bool ShowForme => slotspecies.Any(new[] { 201, 774 }.Contains);
         private bool MenuMethod { get => FidgetPanel.Visible; set => FidgetPanel.Visible = value; }
         private byte lastgen;
         private EncounterArea ea;
@@ -1635,6 +1636,7 @@ namespace Pk3DSRNGTool
             DumpAcceptList.Visible = RB_EggShortest.Checked;
             dgv_wurmpleevo.Visible = Advanced.Checked && Method == 3 && Egg_GenderRatio.SelectedIndex == 1;
             dgv_ball.Visible = Gen7 && Method == 3;
+            dgv_form.Visible = ShowForme;
             dgv_adv.Visible = Gen7 && Method == 3 && !MainRNGEgg.Checked || IsBank || Gen6 && IsEvent;
             dgv_shift.Visible = dgv_time.Visible = !IsBank && (Gen6 || Method < 3 || MainRNGEgg.Checked);
             dgv_delay.Visible = dgv_mark.Visible = dgv_rand64.Visible = Gen7 && Method < 3 || MainRNGEgg.Checked;

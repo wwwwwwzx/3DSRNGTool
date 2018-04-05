@@ -38,6 +38,7 @@ dgv_delay=Retraso
 dgv_EC=EC
 dgv_eggnum=Número de Huevo
 dgv_encounter=Enctr?
+dgv_form=Form
 dgv_Frame=Fotograma
 dgv_gen7ID=G7TID
 dgv_gender=Género

@@ -58,6 +58,7 @@ namespace Pk3DSRNGTool
         public byte Level => rt.Level;
         public string Ball => Parents[(rt as EggResult)?.Ball ?? (rt as ResultME7)?.Ball ?? 0];
         public string Item => (rt as WildResult)?.ItemStr ?? string.Empty;
+        public char Forme => rt.Species == 201 ? Pokemon.getUnownLetter(rt.Forme) : rt.Species == 774 ? Pokemon.getMiniorColor(rt.Forme) : '-';
         public uint Rand => (rt as Result6)?.RandNum ?? (rt as EggResult)?.RandNum ?? 0;
         public ulong Rand64 => (rt as Result7)?.RandNum ?? (rt as EggResult)?.EggSeed ?? 0;
         public uint PID => rt.PID;

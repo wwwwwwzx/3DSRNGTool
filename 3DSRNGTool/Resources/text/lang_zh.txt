@@ -38,6 +38,7 @@ dgv_delay=延时
 dgv_EC=加密常数
 dgv_eggnum=蛋数
 dgv_encounter=遇敌
+dgv_form=形态
 dgv_Frame=帧
 dgv_gen7ID=7代ID
 dgv_gender=性别

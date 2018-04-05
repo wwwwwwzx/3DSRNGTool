@@ -232,6 +232,15 @@ namespace Pk3DSRNGTool
         };
 
         public static bool InAlolanDex(int Species, bool IsUltra) => Species > 721 || AlolanForms.Contains(Species) || AlolanDex_SM.Contains(Species) || IsUltra && AlolanDex_USUM.Contains(Species);
+        
+        public static char getUnownLetter(int form)
+        {
+            if (form < 26)
+                return (char)('A' + form);
+            return form == 26 ? '!' : '?';
+        }
+
+        public static char getMiniorColor(int form) => "ROYGBIV".ToCharArray()[form];
         #endregion
     }
 }

@@ -239,7 +239,7 @@ namespace Pk3DSRNGTool
                 }
                 PersonalInfo info = PersonalTable.ORAS.getFormeEntry(SpecForm[i] & 0x7FF, SpecForm[i] >> 11);
                 byte genderratio = (byte)info.Gender;
-                IV3[i] = info.EggGroups[0] == 0xF;
+                IV3[i] = info.EggGroups[0] == 0xF && !(Pokemon.BabyMons.Contains(SpecForm[i] & 0x7FF) && IsORAS);
                 Gender[i] = FuncUtil.getGenderRatio(genderratio);
                 RandomGender[i] = FuncUtil.IsRandomGender(genderratio);
                 if (Static && info.Types.Contains(Pokemon.electric) || Magnet && info.Types.Contains(Pokemon.steel)) // Collect slots

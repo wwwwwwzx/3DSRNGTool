@@ -38,6 +38,7 @@ dgv_delay=Delay
 dgv_EC=EC
 dgv_eggnum=Egg#
 dgv_encounter=Enctr?
+dgv_form=Form
 dgv_Frame=Frame
 dgv_gen7ID=G7TID
 dgv_gender=Gender

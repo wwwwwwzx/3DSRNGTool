@@ -30,11 +30,29 @@ namespace Pk3DSRNGTool
                     TableNow = IsXY ? Fishing_XY : Fishing_ORAS;
                     break;
                 default:
-                    TableNow = null; return null;
+                    TableNow = IsXY ? null : ORASTable;
+                    break;
             }
-            return TableNow.Select(t => t.Locationidx).ToArray();
+            return TableNow?.Select(t => t.Locationidx).ToArray();
         }
 
+        public static readonly EncounterArea_ORAS[] ORASTable =
+        {
+            new EncounterArea_ORAS(),
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 1,
+                Species = new[] { 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, },
+                Level = new byte[] { 38, 37, 36, 38, 37, 36, 38, 37, 36, 36, 37, 38},
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 2,
+                Species = new[] { 602, 602, 602, 530, 530, 530, 132, 132, 132, 132, 132, 132, },
+                Level = new byte[] { 38, 37, 36, 38, 37, 36, 38, 37, 36, 36, 37, 38},
+            },
+        };
+        
         #region Horde
         public readonly static HordeArea_ORAS[] Horde_ORAS =
         {
