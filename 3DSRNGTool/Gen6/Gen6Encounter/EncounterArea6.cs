@@ -8,13 +8,13 @@ namespace Pk3DSRNGTool
     {
         public override int Locationidx => Location + (idx << 9);
         public override int[] Species { get; set; } = new int[0];
-        public byte[] Level;
+        public virtual byte[] Level { get; set; }
     }
 
     public class EncounterArea_XY : EncounterArea6
     {
-        private readonly static int[] XList = {};
-        private readonly static int[] YList = {};
+        private readonly static int[] XList = { };
+        private readonly static int[] YList = { };
 
         public override bool VersionDifference => Species.Any(i => XList.Contains(i));
 
@@ -42,6 +42,16 @@ namespace Pk3DSRNGTool
         public override bool VersionDifference => Species.Any(i => ORList.Contains(i));
 
         public override int[] getSpecies(int ver, bool IsNight) => getSpecies(ver == 3);
+
+        public bool IsMirage => 326 <= Location && Location <= 332;
+
+        private int[] species = new int[0];
+        private int[] MirageSpecies => species.SelectMany(s => Enumerable.Repeat(s, 3)).ToArray(); // AAABBBCCCDDD
+        public override int[] Species { get => IsMirage ? MirageSpecies : species; set => species = value; }
+
+        private byte[] level;
+        private readonly static byte[] MirageLevel = { 38, 37, 36, 38, 37, 36, 38, 37, 36, 36, 37, 38 };
+        public override byte[] Level { get => IsMirage ? MirageLevel : level; set => level = value; }
 
         private int[] getSpecies(bool IsAS)
         {

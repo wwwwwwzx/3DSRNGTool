@@ -41,15 +41,83 @@ namespace Pk3DSRNGTool
             new EncounterArea_ORAS(),
             new EncounterArea_ORAS
             {
+                Location = 326, idx = 1,
+                Species = new[] { 205, 205, 440, 440, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 2,
+                Species = new[] { 531, 531, 531, 191, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 3,
+                Species = new[] { 402, 402, 636, 636, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 4,
+                Species = new[] { 114, 432, 191, 548, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 5,
+                Species = new[] { 114, 432, 191, 037, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 6,
+                Species = new[] { 114, 431, 191, 572, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 7,
+                Species = new[] { 114, 432, 191, 421, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 326, idx = 8,
+                Species = new[] { 191, 191, 548, 531, },
+            },
+            new EncounterArea_ORAS
+            {
                 Location = 328, idx = 1,
-                Species = new[] { 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, 201, },
-                Level = new byte[] { 38, 37, 36, 38, 37, 36, 38, 37, 36, 36, 37, 38},
+                Species = new[] { 201, 201, 201, 201, },
             },
             new EncounterArea_ORAS
             {
                 Location = 328, idx = 2,
-                Species = new[] { 602, 602, 602, 530, 530, 530, 132, 132, 132, 132, 132, 132, },
-                Level = new byte[] { 38, 37, 36, 38, 37, 36, 38, 37, 36, 36, 37, 38},
+                Species = new[] { 602, 530, 132, 132, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 3,
+                Species = new[] { 602, 602, 079, 079, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 4,
+                Species = new[] { 599, 599, 602, 602, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 5,
+                Species = new[] { 599, 602, 530, 095, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 6,
+                Species = new[] { 602, 602, 563, 079, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 7,
+                Species = new[] { 599, 599, 563, 563, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 328, idx = 8,
+                Species = new[] { 602, 602, 095, 095, },
             },
         };
         
