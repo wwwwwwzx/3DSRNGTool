@@ -70,7 +70,7 @@ namespace Pk3DSRNGTool
             rt.Nature = NatureLocked ? Nature : (byte)(getrand % 25);
 
             //Gender
-            rt.Gender = GenderLocked || !IsRandomGender ? Gender : (byte)(getrand % 252 >= SettingGender ? 1 : 2);
+            rt.Gender = GenderLocked ? Gender : (byte)(getrand % 252 >= Gender ? 1 : 2);
             return rt;
         }
     }

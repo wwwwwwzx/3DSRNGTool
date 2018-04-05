@@ -16,15 +16,12 @@
         public uint EC;
         public uint PID;
 
-        protected bool IsRandomGender;
-        protected byte SettingGender;
-
         public virtual void Delay() { }
         public abstract RNGResult Generate();
         public virtual void GetGenderSetting()
         {
-            IsRandomGender = FuncUtil.IsRandomGender(info.Gender);
-            SettingGender = FuncUtil.getGenderRatio(info.Gender);
+            Gender = GenderLocked ? Gender : FuncUtil.getGenderRatio(info.Gender);
+            GenderLocked |= !FuncUtil.IsRandomGender(info.Gender);
         }
     }
 }
