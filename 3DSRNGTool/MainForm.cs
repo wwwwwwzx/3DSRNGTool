@@ -1059,7 +1059,7 @@ namespace Pk3DSRNGTool
             // Load from personal table
             var t = Gen6 ? PersonalTable.ORAS.getFormeEntry(Species, Forme) : PersonalTable.USUM.getFormeEntry(Species, Forme);
             BS = new[] { t.HP, t.ATK, t.DEF, t.SPA, t.SPD, t.SPE };
-            GenderRatio.SelectedValue = t.Gender;
+            GenderRatio.SelectedValue = Species == 0 ? 0x7F : t.Gender;
             Fix3v.Checked = t.EggGroups[0] == 0x0F && (Ver < 2 || !Pokemon.BabyMons.Contains(Species)); // Undiscovered Group
             miscrngtool.UpdateInfo(catchrate: t.CatchRate, HP: Filter_Lv.Value == 0 ? -1 : (((t.HP * 2 + 31) * (int)Filter_Lv.Value) / 100) + (int)Filter_Lv.Value + 10);
 

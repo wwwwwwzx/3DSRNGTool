@@ -7,8 +7,8 @@ namespace Pk3DSRNGTool
     public abstract class EncounterArea6 : EncounterArea
     {
         public override int Locationidx => Location + (idx << 9);
-        public override int[] Species { get; set; } = new int[12];
-        public byte[] Level = new byte[12];
+        public override int[] Species { get; set; } = new int[0];
+        public byte[] Level;
     }
 
     public class EncounterArea_XY : EncounterArea6

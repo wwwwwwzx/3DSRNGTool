@@ -51,7 +51,7 @@ namespace Pk3DSRNGTool
         {
             if (RNGPool.tinystatus == null)
             {
-                rt.Slot = slot = 1;
+                rt.Slot = slot = 0;
                 rt.Synchronize = RNGPool.TinySynced;
                 return;
             }
@@ -231,8 +231,6 @@ namespace Pk3DSRNGTool
             {
                 if (SpecForm[i] == 0)
                 {
-                    if (i == 0)
-                        continue;
                     Gender[i] = FuncUtil.getGenderRatio(BlankGenderRatio);
                     RandomGender[i] = FuncUtil.IsRandomGender(BlankGenderRatio);
                     continue;
