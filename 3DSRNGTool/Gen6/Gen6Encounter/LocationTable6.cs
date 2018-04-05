@@ -119,6 +119,86 @@ namespace Pk3DSRNGTool
                 Location = 328, idx = 8,
                 Species = new[] { 602, 602, 095, 095, },
             },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 1,
+                Species = new[] { 517, 517, 132, 132, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 2,
+                Species = new[] { 049, 523, 178, 114, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 3,
+                Species = new[] { 049, 523, 178, 053, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 4,
+                Species = new[] { 049, 523, 178, 555, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 5,
+                Species = new[] { 049, 523, 178, 556, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 6,
+                Species = new[] { 531, 531, 531, 178, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 7,
+                Species = new[] { 432, 432, 137, 137, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 330, idx = 8,
+                Species = new[] { 555, 555, 636, 636, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 1,
+                Species = new[] { 178, 178, 517, 137, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 2,
+                Species = new[] { 205, 232, 401, 627, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 3,
+                Species = new[] { 205, 232, 401, 629, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 4,
+                Species = new[] { 205, 232, 401, 203, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 5,
+                Species = new[] { 205, 232, 401, 234, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 6,
+                Species = new[] { 531, 531, 440, 114, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 7,
+                Species = new[] { 523, 523, 239, 239, },
+            },
+            new EncounterArea_ORAS
+            {
+                Location = 332, idx = 8,
+                Species = new[] { 555, 555, 240, 240, },
+            },
         };
         
         #region Horde
