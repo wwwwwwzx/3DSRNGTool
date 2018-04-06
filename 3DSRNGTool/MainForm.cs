@@ -41,7 +41,7 @@ namespace Pk3DSRNGTool
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
-        private bool ShowForme => slotspecies.Any(new[] { 201, 774 }.Contains);
+        private bool ShowForme => Method == 2 && slotspecies.Any(new[] { 201, 774 }.Contains);
         private bool MenuMethod { get => FidgetPanel.Visible; set => FidgetPanel.Visible = value; }
         private byte lastgen;
         private EncounterArea ea;
