@@ -39,6 +39,7 @@ namespace Pk3DSRNGTool
         public static readonly EncounterArea_ORAS[] ORASTable =
         {
             new EncounterArea_ORAS(),
+            #region Mirage Spots
             new EncounterArea_ORAS
             {
                 Location = 326, idx = 1,
@@ -199,8 +200,9 @@ namespace Pk3DSRNGTool
                 Location = 332, idx = 8,
                 Species = new[] { 555, 555, 240, 240, },
             },
+            #endregion
         };
-        
+
         #region Horde
         public readonly static HordeArea_ORAS[] Horde_ORAS =
         {

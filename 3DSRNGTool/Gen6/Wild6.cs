@@ -227,6 +227,8 @@ namespace Pk3DSRNGTool
             RandomGender = new bool[SpecForm.Length];
             Gender = new byte[SpecForm.Length];
             var smslot = new int[0].ToList();
+            if (SpecForm.Distinct().Count(t => t != 0) == 1)
+                SpecForm[0] = SpecForm[1];
             for (int i = 0; i < SpecForm.Length; i++)
             {
                 if (SpecForm[i] == 0)
