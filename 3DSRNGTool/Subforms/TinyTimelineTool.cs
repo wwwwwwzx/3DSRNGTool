@@ -236,7 +236,7 @@ namespace Pk3DSRNGTool
             tiny_ha.Visible = horde;
             tiny_flute.Width = horde ? 60 : 40;
             dgv_item.Width = horde ? 125 : 40;
-            dgv_music.Visible = method == 4;
+            dgv_bgm.Visible = method == 4;
             tiny_flute.Visible = IsORAS;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
             tiny_hitidx.Visible = ConsiderDelay.Checked;

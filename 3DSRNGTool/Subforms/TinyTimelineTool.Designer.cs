@@ -89,7 +89,7 @@
             this.dgv_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_ha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiny_rand100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_music = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_bgm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DGVToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -643,7 +643,7 @@
             this.dgv_item,
             this.tiny_ha,
             this.tiny_rand100,
-            this.dgv_music,
+            this.dgv_bgm,
             this.dgv_state,
             this.dgv_time});
             this.MainDGV.ContextMenuStrip = this.CMS;
@@ -754,14 +754,14 @@
             this.tiny_rand100.ReadOnly = true;
             this.tiny_rand100.Width = 40;
             // 
-            // dgv_music
+            // dgv_bgm
             // 
-            this.dgv_music.DataPropertyName = "Music";
-            this.dgv_music.HeaderText = "Music";
-            this.dgv_music.Name = "dgv_music";
-            this.dgv_music.ReadOnly = true;
-            this.dgv_music.Visible = false;
-            this.dgv_music.Width = 40;
+            this.dgv_bgm.DataPropertyName = "Music";
+            this.dgv_bgm.HeaderText = "BGM";
+            this.dgv_bgm.Name = "dgv_bgm";
+            this.dgv_bgm.ReadOnly = true;
+            this.dgv_bgm.Visible = false;
+            this.dgv_bgm.Width = 40;
             // 
             // dgv_state
             // 
@@ -872,7 +872,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_ha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiny_rand100;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_music;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_bgm;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_time;
         private System.Windows.Forms.ComboBox Type4;

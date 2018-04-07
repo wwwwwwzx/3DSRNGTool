@@ -54,7 +54,8 @@ namespace Pk3DSRNGTool
             object txt = Resources.ResourceManager.GetObject($"lang_{lang}");
             if (txt == null) return null;
             return ((string)txt).Split(new[] { "\n" }, StringSplitOptions.None)
-                                .Select(i => i.Trim()).ToArray();
+                                .Select(i => i.Trim())
+                                .Where(i => !string.IsNullOrEmpty(i)).ToArray();
         }
 
         private static IEnumerable<object> GetTranslatableControls(Control f)
@@ -126,6 +127,20 @@ namespace Pk3DSRNGTool
         }
 
 #if DEBUG
+        private static readonly string[] Languages = StringItem.langlist.Skip(1).ToArray();
+        private const string DefaultLanguage = "en";
+        public static void UpdateTranslations(bool CheckUnUsed = false)
+        {
+            TranslationContext.AddNew = true;
+            UpdateAll(DefaultLanguage, Languages);
+            if (CheckUnUsed)
+            {
+                TranslationContext.RemoveUsedKeys = true;
+                UpdateAll(DefaultLanguage, Languages);
+            }
+            DumpAll(); // dump current to file
+        }
+
         public static void UpdateAll(string baseLanguage, IEnumerable<string> others)
         {
             var basecontext = GetContext(baseLanguage);
@@ -147,13 +162,13 @@ namespace Pk3DSRNGTool
 
     public class TranslationContext
     {
-        private const char separator = '=';
-        public static bool AddNew = false;
-        public static bool RemoveUsedKeys = false;
+        public const char Separator = '=';
+        public static bool AddNew;
+        public static bool RemoveUsedKeys;
         private readonly Dictionary<string, string> Translation = new Dictionary<string, string>();
         public TranslationContext(IEnumerable<string> content)
         {
-            var entries = content.Select(z => z.Split(new[] { separator }, 2));
+            var entries = content.Select(z => z.Split(new[] { Separator }, 2));
             foreach (var r in entries.Where(z => !Translation.ContainsKey(z[0])))
                 Translation.Add(r[0], r[1]);
         }
@@ -175,26 +190,56 @@ namespace Pk3DSRNGTool
         }
 
 #if DEBUG
+        public static readonly string[] banlist =
+        {
+            "MainForm.B_AddProfile",
+            "MainForm.B_IVInput",
+            "MainForm.dgv_frame0",
+            "MainForm.dgv_Lv",
+            "MainForm.dgv_pid",
+            "MainForm.dgv_SID",
+            "MainForm.dgv_TID",
+            "MainForm.dgv_TSV",
+            "MainForm.dgv_wurmpleevo",
+            "MainForm.Filter_FullID",
+            "MainForm.Filter_G7TID",
+            "MainForm.Filter_SID",
+            "MainForm.Filter_TID",
+            "MainForm.Filter_TSV",
+            "MainForm.GB_RNGGEN7ID",
+            "MainForm.L_EC",
+            "MainForm.L_Event_TSV",
+            "MainForm.L_PID",
+            "MainForm.L_SID",
+            "MainForm.L_SOSRNGSeed",
+            "MainForm.L_TID",
+            "MainForm.M_KeyBV",
+            "MainForm.RNGPanel",
+            "MiscRNGTool.TTT",
+            "MiscRNGTool.dgv_randn",
+            "Gen6MTSeedFinder.dgv_Seed_seed",
+            "Gen6MTSeedFinder.L_Progress6",
+            "Gen7EggSeedFinder.L_Progress7",
+            "TinyTimelineTool.boost",
+            "TinyTimelineTool.dgv_bgm",
+            "TinyTimelineTool.tiny_rand100",
+            "NTRHelper.B_A",
+            "NTRHelper.JPN",
+            "NTRHelper.L_NTRLog",
+        };
+
         public IEnumerable<string> Write()
         {
-            return Translation.Select(z => $"{z.Key}{separator}{z.Value}")
+            return Translation.Where(z => !banlist.Any(z.Key.Contains))
+                              .Select(z => $"{z.Key}{Separator}{z.Value}")
                               .OrderBy(z => z.Contains(".") && z.IndexOf('.') < z.IndexOf('='))
                               .ThenBy(z => z);
         }
 
         public void UpdateFrom(TranslationContext other)
         {
-            bool oldAdd = AddNew;
-            AddNew = true;
             foreach (var kvp in other.Translation)
                 GetTranslatedText(kvp.Key, kvp.Value);
-            AddNew = oldAdd;
-        }
-
-        public void RemoveKeys(TranslationContext other)
-        {
-            foreach (var kvp in other.Translation)
-                Translation.Remove(kvp.Key);
         }
 #endif
     }

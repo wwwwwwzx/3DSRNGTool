@@ -380,7 +380,7 @@
             this.Ability = new System.Windows.Forms.ComboBox();
             this.L_gender = new System.Windows.Forms.Label();
             this.Gender = new System.Windows.Forms.ComboBox();
-            this.L_nature = new System.Windows.Forms.Label();
+            this.L_Nature = new System.Windows.Forms.Label();
             this.L_HP = new System.Windows.Forms.Label();
             this.StatPanel = new System.Windows.Forms.Panel();
             this.L_Stats = new System.Windows.Forms.Label();
@@ -3930,7 +3930,7 @@
             this.Filters.Controls.Add(this.Ability);
             this.Filters.Controls.Add(this.L_gender);
             this.Filters.Controls.Add(this.Gender);
-            this.Filters.Controls.Add(this.L_nature);
+            this.Filters.Controls.Add(this.L_Nature);
             this.Filters.Controls.Add(this.L_HP);
             this.Filters.Controls.Add(this.StatPanel);
             this.Filters.Controls.Add(this.BlinkFOnly);
@@ -4571,14 +4571,14 @@
             this.Gender.Size = new System.Drawing.Size(74, 21);
             this.Gender.TabIndex = 38;
             // 
-            // L_nature
+            // L_Nature
             // 
-            this.L_nature.AutoSize = true;
-            this.L_nature.Location = new System.Drawing.Point(288, 141);
-            this.L_nature.Name = "L_nature";
-            this.L_nature.Size = new System.Drawing.Size(31, 13);
-            this.L_nature.TabIndex = 35;
-            this.L_nature.Text = "性格";
+            this.L_Nature.AutoSize = true;
+            this.L_Nature.Location = new System.Drawing.Point(288, 141);
+            this.L_Nature.Name = "L_Nature";
+            this.L_Nature.Size = new System.Drawing.Size(31, 13);
+            this.L_Nature.TabIndex = 35;
+            this.L_Nature.Text = "性格";
             // 
             // L_HP
             // 
@@ -5545,7 +5545,7 @@
         private System.Windows.Forms.CheckBox ShinyOnly;
         private System.Windows.Forms.Label L_gender;
         private System.Windows.Forms.ComboBox Gender;
-        private System.Windows.Forms.Label L_nature;
+        private System.Windows.Forms.Label L_Nature;
         private System.Windows.Forms.Label L_HP;
         private System.Windows.Forms.Label L_S;
         private System.Windows.Forms.Label L_C;
