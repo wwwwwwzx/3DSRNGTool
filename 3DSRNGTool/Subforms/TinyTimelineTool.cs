@@ -369,18 +369,12 @@ namespace Pk3DSRNGTool
         private void L_Rate_VisibleChanged(object sender, EventArgs e)
         {
             if (Parameter2.Visible = L_Rate.Visible)
-            {
                 Parameter2.Maximum = 99;
-                Parameter2.Minimum = 1;
-            }
         }
         private void L_Length_VisibleChanged(object sender, EventArgs e)
         {
             if (Parameter2.Visible = L_Length.Visible)
-            {
                 Parameter2.Maximum = 255;
-                Parameter2.Minimum = 0;
-            }
         }
     }
 }

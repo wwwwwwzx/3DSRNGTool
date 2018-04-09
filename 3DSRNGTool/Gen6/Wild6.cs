@@ -51,7 +51,6 @@ namespace Pk3DSRNGTool
         {
             if (RNGPool.tinystatus == null)
             {
-                rt.Slot = slot = 0;
                 rt.Synchronize = RNGPool.TinySynced;
                 return;
             }
@@ -93,6 +92,8 @@ namespace Pk3DSRNGTool
             // Encounter Slot and Others
             switch (Wildtype)
             {
+                case EncounterType.PokeRadar when IsShinyLocked: // Not first encounter, skip slot check
+                    break;
                 case EncounterType.FriendSafari:
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate; // 13%
                     rt.Slot = slot = getSlot(TinyRand(100), (byte)(SlotNum + 47));
@@ -103,9 +104,6 @@ namespace Pk3DSRNGTool
                 case EncounterType.SuperRod:
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
                     goto default;
-                case EncounterType.PokeRadar:
-                    rt.Slot = IsShinyLocked ? slot = 0 : getslot6();
-                    break;
                 default:
                     rt.Slot = getslot6();
                     break;
