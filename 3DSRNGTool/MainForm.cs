@@ -1504,9 +1504,9 @@ namespace Pk3DSRNGTool
                             setting6.SlotLevel = new[] { (byte)Filter_Lv.Value };
                             break;
                         case EncounterType.FriendSafari:
+                            slottype = (byte)(CB_3rdSlotUnlocked.Checked ? 50 : 49);
                             setting6._ivcnt = 2;
                             setting6._PIDroll_count = 4;
-                            setting6.SlotNum = (byte)(CB_3rdSlotUnlocked.Checked ? 3 : 2);
                             setting6.HA = CB_HAUnlocked.Checked;
                             setting6.EncounterRate = (byte)Special_th.Value;
                             setting6.SpecForm = new int[4];

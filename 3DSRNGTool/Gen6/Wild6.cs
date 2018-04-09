@@ -27,7 +27,6 @@ namespace Pk3DSRNGTool
         public int _ivcnt = -1;
         protected override int PerfectIVCount => System.Math.Max(_ivcnt, IV3[slot] ? 3 : 0);
         public int BlankGenderRatio;
-        public byte SlotNum;        // For friend safari
 
         public byte[] SlotLevel;
         public bool CompoundEye;    // For held item
@@ -94,14 +93,11 @@ namespace Pk3DSRNGTool
             {
                 case EncounterType.PokeRadar when IsShinyLocked: // Not first encounter, skip slot check
                     break;
-                case EncounterType.FriendSafari:
-                    RNGResult.IsPokemon = TinyRand(100) < EncounterRate; // 13%
-                    rt.Slot = slot = getSlot(TinyRand(100), (byte)(SlotNum + 47));
-                    break;
                 case EncounterType.Normal:
                 case EncounterType.OldRod:
                 case EncounterType.GoodRod:
                 case EncounterType.SuperRod:
+                case EncounterType.FriendSafari:  // 13%
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
                     goto default;
                 default:
