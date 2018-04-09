@@ -104,7 +104,7 @@ namespace Pk3DSRNGTool
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
                     goto default;
                 case EncounterType.PokeRadar:
-                    rt.Slot = IsShinyLocked ? slot = 1 : getslot6();
+                    rt.Slot = IsShinyLocked ? slot = 0 : getslot6();
                     break;
                 default:
                     rt.Slot = getslot6();

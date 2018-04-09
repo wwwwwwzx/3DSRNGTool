@@ -378,7 +378,7 @@ namespace Pk3DSRNGTool
         {
             if (Parameter2.Visible = L_Length.Visible)
             {
-                Parameter2.Maximum = 40;
+                Parameter2.Maximum = 255;
                 Parameter2.Minimum = 0;
             }
         }

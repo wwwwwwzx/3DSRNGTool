@@ -203,9 +203,6 @@
             this.L_HordeInfo = new System.Windows.Forms.Label();
             this.CB_3rdSlotUnlocked = new System.Windows.Forms.CheckBox();
             this.CB_HAUnlocked = new System.Windows.Forms.CheckBox();
-            this.FirstEncounter = new System.Windows.Forms.CheckBox();
-            this.L_WildIVsCnt = new System.Windows.Forms.Label();
-            this.WildIVsCnt = new System.Windows.Forms.NumericUpDown();
             this.L_Rate = new System.Windows.Forms.Label();
             this.Special_th = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -469,7 +466,6 @@
             this.FishingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiteDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).BeginInit();
@@ -2101,9 +2097,6 @@
             this.Wild_Setting.Controls.Add(this.L_HordeInfo);
             this.Wild_Setting.Controls.Add(this.CB_3rdSlotUnlocked);
             this.Wild_Setting.Controls.Add(this.CB_HAUnlocked);
-            this.Wild_Setting.Controls.Add(this.FirstEncounter);
-            this.Wild_Setting.Controls.Add(this.L_WildIVsCnt);
-            this.Wild_Setting.Controls.Add(this.WildIVsCnt);
             this.Wild_Setting.Controls.Add(this.L_Rate);
             this.Wild_Setting.Controls.Add(this.Special_th);
             this.Wild_Setting.Controls.Add(this.label9);
@@ -2386,41 +2379,6 @@
             this.CB_HAUnlocked.TabIndex = 96;
             this.CB_HAUnlocked.Text = "梦特已解锁";
             this.CB_HAUnlocked.UseVisualStyleBackColor = true;
-            // 
-            // FirstEncounter
-            // 
-            this.FirstEncounter.AutoSize = true;
-            this.FirstEncounter.Location = new System.Drawing.Point(183, 158);
-            this.FirstEncounter.Name = "FirstEncounter";
-            this.FirstEncounter.Size = new System.Drawing.Size(50, 17);
-            this.FirstEncounter.TabIndex = 95;
-            this.FirstEncounter.Text = "初遇";
-            this.FirstEncounter.UseVisualStyleBackColor = true;
-            // 
-            // L_WildIVsCnt
-            // 
-            this.L_WildIVsCnt.AutoSize = true;
-            this.L_WildIVsCnt.Location = new System.Drawing.Point(8, 160);
-            this.L_WildIVsCnt.Name = "L_WildIVsCnt";
-            this.L_WildIVsCnt.Size = new System.Drawing.Size(74, 13);
-            this.L_WildIVsCnt.TabIndex = 94;
-            this.L_WildIVsCnt.Text = "保底个体V数";
-            this.L_WildIVsCnt.Visible = false;
-            // 
-            // WildIVsCnt
-            // 
-            this.WildIVsCnt.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WildIVsCnt.Location = new System.Drawing.Point(107, 155);
-            this.WildIVsCnt.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.WildIVsCnt.Name = "WildIVsCnt";
-            this.WildIVsCnt.Size = new System.Drawing.Size(44, 22);
-            this.WildIVsCnt.TabIndex = 93;
-            this.WildIVsCnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.WildIVsCnt.Visible = false;
             // 
             // L_Rate
             // 
@@ -5214,7 +5172,6 @@
             this.FishingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BiteDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChainLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WildIVsCnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Special_th)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Lv_min)).EndInit();
@@ -5414,9 +5371,6 @@
         private System.Windows.Forms.GroupBox Wild_Setting;
         private System.Windows.Forms.CheckBox CB_3rdSlotUnlocked;
         private System.Windows.Forms.CheckBox CB_HAUnlocked;
-        private System.Windows.Forms.CheckBox FirstEncounter;
-        private System.Windows.Forms.Label L_WildIVsCnt;
-        private System.Windows.Forms.NumericUpDown WildIVsCnt;
         private System.Windows.Forms.Label L_Rate;
         private System.Windows.Forms.NumericUpDown Special_th;
         private System.Windows.Forms.Label label9;

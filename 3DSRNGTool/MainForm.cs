@@ -473,7 +473,7 @@ namespace Pk3DSRNGTool
             L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
             ChainLength.Visible = L_ChainLength.Visible = gen7sos;
             var pmw6 = FormPM as PKMW6;
-            FirstEncounter.Visible = L_WildIVsCnt.Visible = WildIVsCnt.Visible = pmw6?.Type == EncounterType.PokeRadar;
+            ChainLength.Visible = L_ChainLength.Visible |= pmw6?.Type == EncounterType.PokeRadar;
             CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6?.Type == EncounterType.FriendSafari;
             ChainLength.Visible = L_ChainLength.Visible |= (pmw6?.IsFishing ?? false);
             if (IsPelago)
@@ -914,7 +914,6 @@ namespace Pk3DSRNGTool
                 ea = LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
                 if (FormPM is PKMW6 pm && pm.IsFishing)
                 {
-                    ChainLength.Maximum = 20;
                     Special_th.Value = SuctionCups ? 98 : 49;
                     ea = (ea as FishingArea6).GetRodArea(pm.Type);
                 }
@@ -1497,12 +1496,12 @@ namespace Pk3DSRNGTool
                             }
                             break;
                         case EncounterType.PokeRadar:
-                            setting6.IsShinyLocked = !FirstEncounter.Checked;
-                            if (FirstEncounter.Checked)
+                            setting6.IsShinyLocked = ChainLength.Value > 0;
+                            if (ChainLength.Value == 0) // First Encounter
                                 goto default;
-                            setting6._ivcnt = (int)WildIVsCnt.Value;
-                            setting6.SpecForm = new[] { 0, 0 };
-                            setting6.SlotLevel = new byte[] { 0, (byte)Filter_Lv.Value };
+                            setting6._ivcnt = Math.Min(3, (int)ChainLength.Value / 20);
+                            setting6.SpecForm = new int[1];
+                            setting6.SlotLevel = new[] { (byte)Filter_Lv.Value };
                             break;
                         case EncounterType.FriendSafari:
                             setting6._ivcnt = 2;
@@ -1510,8 +1509,8 @@ namespace Pk3DSRNGTool
                             setting6.SlotNum = (byte)(CB_3rdSlotUnlocked.Checked ? 3 : 2);
                             setting6.HA = CB_HAUnlocked.Checked;
                             setting6.EncounterRate = (byte)Special_th.Value;
-                            setting6.SpecForm = new[] { 0, 0, 0, 0 };
-                            setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
+                            setting6.SpecForm = new int[4];
+                            setting6.SlotLevel = new byte[] { 30, 30, 30, 30 };
                             break;
                         case EncounterType.OldRod:
                         case EncounterType.GoodRod:
@@ -1522,7 +1521,7 @@ namespace Pk3DSRNGTool
                             setting6.PartyPKM = (byte)TTT.Parameter1.Value;
                             setting6.EncounterRate = (byte)Special_th.Value;
                             slottype = 3;
-                            setting6._PIDroll_count = 2 * (int)ChainLength.Value;
+                            setting6._PIDroll_count = Math.Min(40, 2 * (int)ChainLength.Value);
                             for (int i = 1; i < 4; i++)
                             {
                                 setting6.SpecForm[i] = slotspecies[i - 1];
