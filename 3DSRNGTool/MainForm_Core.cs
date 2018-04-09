@@ -74,6 +74,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < min; i++)
                 rng.Next();
             getsetting(rng);
+            Frame.standard = (int)(TargetFrame.Value - min);
 
             for (int i = 0; i < listlength; i++)
             {

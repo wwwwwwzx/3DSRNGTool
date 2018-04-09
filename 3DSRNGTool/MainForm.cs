@@ -41,7 +41,7 @@ namespace Pk3DSRNGTool
         private bool gen7sos => Gen7 && Method == 2 && SOS.Checked;
         private bool SuctionCups => LeadAbility.SelectedIndex == (int)Lead.SuctionCups;
         private bool LinearDelay => IsPelago || gen7honey;
-        private bool ShowForme => Method == 2 && slotspecies.Any(new[] { 201, 774 }.Contains);
+        private bool ShowForme => Method == 2 && ea != null && slotspecies.Any(new[] { 201, 774 }.Contains);
         private bool MenuMethod { get => FidgetPanel.Visible; set => FidgetPanel.Visible = value; }
         private byte lastgen;
         private EncounterArea ea;
@@ -1232,7 +1232,7 @@ namespace Pk3DSRNGTool
                 if (IsTransporter)
                     buffersize += 2000;
                 if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
-                    buffersize += 400; // 132 +240
+                    buffersize += 400; // 132 + 240
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
             RNGPool.CreateBuffer(rng, buffersize);
@@ -1509,6 +1509,7 @@ namespace Pk3DSRNGTool
                             setting6._PIDroll_count = 4;
                             setting6.SlotNum = (byte)(CB_3rdSlotUnlocked.Checked ? 3 : 2);
                             setting6.HA = CB_HAUnlocked.Checked;
+                            setting6.EncounterRate = (byte)Special_th.Value;
                             setting6.SpecForm = new[] { 0, 0, 0, 0 };
                             setting6.SlotLevel = new byte[] { 0, 30, 30, 30 };
                             break;

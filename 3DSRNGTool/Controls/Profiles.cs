@@ -115,7 +115,11 @@ namespace Pk3DSRNGTool
 
         public static void ReadProfiles()
         {
-            string file = Environment.CurrentDirectory + @"\profiles.xml";
+            string file = Environment.CurrentDirectory + @"\profiles_3dsrngtool.xml";
+            bool WriteNew = !File.Exists(file);
+
+            if (WriteNew)
+                file = Environment.CurrentDirectory + @"\profiles.xml"; // try the old format
 
             if (File.Exists(file))
             {
@@ -126,6 +130,9 @@ namespace Pk3DSRNGTool
                     {
                         GameProfiles = (BindingList<Profile>)xmlDeserializer.Deserialize(txtReader);
                     }
+                    GameProfiles = new BindingList<Profile>(GameProfiles.Where(t => t != null && !string.IsNullOrEmpty(t.Description)).ToList()); // Remove empty entry
+                    if (WriteNew && GameProfiles.Count > 0)
+                        WriteProfiles();
                 }
                 catch (Exception ex)
                 {
@@ -136,7 +143,7 @@ namespace Pk3DSRNGTool
 
         public static void WriteProfiles()
         {
-            string file = Environment.CurrentDirectory + @"\profiles.xml";
+            string file = Environment.CurrentDirectory + @"\profiles_3dsrngtool.xml";
 
             try
             {

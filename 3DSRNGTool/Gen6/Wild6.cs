@@ -94,7 +94,7 @@ namespace Pk3DSRNGTool
             switch (Wildtype)
             {
                 case EncounterType.FriendSafari:
-                    RNGResult.IsPokemon = TinyRand(100) < 13;
+                    RNGResult.IsPokemon = TinyRand(100) < EncounterRate; // 13%
                     rt.Slot = slot = getSlot(TinyRand(100), (byte)(SlotNum + 47));
                     break;
                 case EncounterType.Normal:
