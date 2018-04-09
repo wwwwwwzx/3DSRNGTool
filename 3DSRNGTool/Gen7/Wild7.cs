@@ -159,8 +159,7 @@ namespace Pk3DSRNGTool
             rt.Gender = RandomGender[slot] ? (CuteCharmPass ? CuteCharmGender : (byte)(getrand % 252 >= Gender[slot] ? 1 : 2)) : Gender[slot];
 
             //Item
-            rt.Item = (byte)(SOS ? getsosrand % 100 : NormalSlot ? getrand % 100 : 100);
-            rt.ItemStr = getitemstr(rt.Item, CompoundEye);
+            rt.Item = getHeldItem(SOS ? getsosrand % 100 : NormalSlot ? getrand % 100 : 100, CompoundEye);
 
             if (Fishing && rt.IsSpecial)
                 rt.Slot = getHookedItemSlot(rt.SpecialVal); //Fishing item slots
@@ -197,13 +196,13 @@ namespace Pk3DSRNGTool
 
         private byte getsmslot(ulong rand) => slot = StaticMagnetSlot[rand % NStaticMagnetSlot];
 
-        public static string getitemstr(int rand, bool CompoundEye = false)
+        public static byte getHeldItem(ulong rand, bool CompoundEye = false)
         {
-            if (rand < (CompoundEye ? 60 : 50))
-                return StringItem.helditemStr[0]; // 50%
-            if (rand < (CompoundEye ? 80 : 55))
-                return StringItem.helditemStr[1]; // 5%
-            return StringItem.helditemStr[3]; // None
+            if (rand < (CompoundEye ? 60u : 50))
+                return 0; // 50%
+            if (rand < (CompoundEye ? 80u : 55))
+                return 1; // 5%
+            return 3; // None
         }
 
         public static byte getSpecialRate(int category)

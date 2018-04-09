@@ -13,7 +13,7 @@ namespace Pk3DSRNGTool
         public byte HA; // 0 for no HA, 1-5 means HA Slot
         public byte[] FluteBoosts = new byte[5];
         public byte[] HeldItems = new byte[5];
-        public string ItemString => string.Join(",", HeldItems.Select(t => StringItem.helditemStr[Wild6.getItem(t)]));
+        public string ItemString => string.Join(",", HeldItems.Select(t => StringItem.helditemStr[Wild6.getHeldItem(t)]));
         public string FluteString => FluteBoosts[0] == 0 ? null : string.Join(",", FluteBoosts.Select(f => f.ToString()));
         public override string ToString()
             => "Sync: " + FuncUtil.Bool2Str(Sync)

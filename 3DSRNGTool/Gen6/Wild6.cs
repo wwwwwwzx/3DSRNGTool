@@ -113,8 +113,7 @@ namespace Pk3DSRNGTool
             tiny_Advance(1);
 
             // Item generated after pkm
-            rt.Item = TinyRand(100);
-            rt.ItemStr = StringItem.helditemStr[getItem(rt.Item, CompoundEye)];
+            rt.Item = getHeldItem(TinyRand(100), CompoundEye);
         }
 
         public override RNGResult Generate()
@@ -139,8 +138,7 @@ namespace Pk3DSRNGTool
                 for (int i = 0; i < 5; i++)
                 {
                     results[i].Synchronize = SynchroPass;
-                    results[i].Item = Hrt.HeldItems[i];
-                    results[i].ItemStr = StringItem.helditemStr[getItem(Hrt.HeldItems[i], CompoundEye)];
+                    results[i].Item = getHeldItem(Hrt.HeldItems[i], CompoundEye);
                 }
                 if (Hrt.HA != 0)
                     results[Hrt.HA - 1].Ability = 3;
@@ -247,7 +245,7 @@ namespace Pk3DSRNGTool
             _PIDroll_count += ShinyCharm && !IsShinyLocked ? 3 : 1;
         }
 
-        public static byte getItem(int rand, bool compoundeye = false)
+        public static byte getHeldItem(int rand, bool compoundeye = false)
         {
             if (rand < (compoundeye ? 60 : 50))
                 return 0; // 50%

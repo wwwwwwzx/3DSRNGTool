@@ -8,6 +8,5 @@ namespace Pk3DSRNGTool
         public byte? SpecialVal;
         public bool IsSpecial { get; set; } //UB or QR
         public byte Item { get; set; }
-        public string ItemStr { get; set; }
     }
 }
