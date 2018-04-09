@@ -27,7 +27,7 @@ namespace Pk3DSRNGTool
         {
             if (this is PKMW6 pmw6 && pmw6.Type == EncounterType.Fishing)
             {
-                switch (pmw6.Species)
+                switch (Species)
                 {
                     case 129: return "Old Rod";
                     case 349: return "Good Rod";

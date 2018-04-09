@@ -73,10 +73,9 @@ namespace Pk3DSRNGTool
                     RNGPool.time_elapse6(RNGPool.DelayTime);
                     tiny_Advance(3 * PartyPKM);
                     RNGPool.time_elapse6(132);
-                    Advance(132);
                     var fishingdelay = TinyRand(7) * 30 + 60;
                     RNGPool.time_elapse6(fishingdelay);
-                    Advance(fishingdelay);
+                    Advance(132 + fishingdelay); // Main RNG Advance due to the RANDOM delay
                     break;
                 default:
                     RNGPool.time_elapse6(RNGPool.DelayTime);
