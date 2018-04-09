@@ -25,13 +25,13 @@ namespace Pk3DSRNGTool
         private static string[] speciestr => StringItem.speciestr;
         public override string ToString()
         {
-            if (this is PKMW6 pmw6 && pmw6.IsFishing)
+            if (this is PKMW6 pmw6 && pmw6.Type == EncounterType.Fishing)
             {
-                switch (pmw6.Type)
+                switch (pmw6.Species)
                 {
-                    case EncounterType.OldRod: return "Old Rod";
-                    case EncounterType.GoodRod: return "Good Rod";
-                    case EncounterType.SuperRod: return "Super Rod";
+                    case 129: return "Old Rod";
+                    case 349: return "Good Rod";
+                    case 130: return "Super Rod";
                 }
             }
             if (Conceptual) return "-";

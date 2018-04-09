@@ -475,7 +475,7 @@ namespace Pk3DSRNGTool
             var pmw6 = FormPM as PKMW6;
             ChainLength.Visible = L_ChainLength.Visible |= pmw6?.Type == EncounterType.PokeRadar;
             CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6?.Type == EncounterType.FriendSafari;
-            ChainLength.Visible = L_ChainLength.Visible |= (pmw6?.IsFishing ?? false);
+            ChainLength.Visible = L_ChainLength.Visible |= pmw6?.Type == EncounterType.Fishing;
             if (IsPelago)
             {
                 Correction.Minimum = 0; Correction.Maximum = 255;
@@ -507,7 +507,7 @@ namespace Pk3DSRNGTool
                 SyncNature.SelectedIndex = 0;
 
             // Suction Cups
-            if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
+            if ((FormPM as PKMW6)?.Type == EncounterType.Fishing)
                 Special_th.Value = SuctionCups ? 98 : 49;
         }
 
@@ -912,10 +912,10 @@ namespace Pk3DSRNGTool
             else if (Gen6)
             {
                 ea = LocationTable6.TableNow.FirstOrDefault(t => t.Locationidx == (int)MetLocation.SelectedValue);
-                if (FormPM is PKMW6 pm && pm.IsFishing)
+                if (FormPM is PKMW6 pm && pm.Type == EncounterType.Fishing)
                 {
                     Special_th.Value = SuctionCups ? 98 : 49;
-                    ea = (ea as FishingArea6).GetRodArea(pm.Type);
+                    ea = (ea as FishingArea6).GetRodArea(pm.Species);
                 }
             }
 
@@ -1137,9 +1137,13 @@ namespace Pk3DSRNGTool
                 else if (FormPM is PKMW6 pmw6)
                 {
                     Special_th.Enabled = true;
-                    Special_th.Value = pmw6.IsFishing ? 49 : 0;
-                    if (pmw6.Type == EncounterType.Normal) Special_th.Value = 1;
-                    if (pmw6.Type == EncounterType.FriendSafari) Special_th.Value = 13;
+                    switch (pmw6.Type)
+                    {
+                        case EncounterType.Normal: Special_th.Value = 1; break;
+                        case EncounterType.FriendSafari: Special_th.Value = 13; break;
+                        case EncounterType.Fishing: Special_th.Value = 49; break;
+                        default: Special_th.Value = 0; break;
+                    }
                 }
                 return;
             }
@@ -1230,7 +1234,7 @@ namespace Pk3DSRNGTool
                     buffersize += RNGPool.DelayTime;
                 if (IsTransporter)
                     buffersize += 2000;
-                if (FormPM is PKMW6 pmw6 && pmw6.IsFishing)
+                if ((FormPM as PKMW6)?.Type == EncounterType.Fishing)
                     buffersize += 400; // 132 + 240
                 Frame.standard = (int)TargetFrame.Value - (int)(AroundTarget.Checked ? TargetFrame.Value - 100 : Frame_min.Value);
             }
@@ -1512,9 +1516,7 @@ namespace Pk3DSRNGTool
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[] { 30, 30, 30, 30 };
                             break;
-                        case EncounterType.OldRod:
-                        case EncounterType.GoodRod:
-                        case EncounterType.SuperRod:
+                        case EncounterType.Fishing:
                             var Rod_area = ea as RodArea;
                             setting6.SpecForm = new int[4];
                             setting6.SlotLevel = new byte[4];
@@ -1792,9 +1794,7 @@ namespace Pk3DSRNGTool
                     case EncounterType.PokeRadar:
                         TTT.Method.SelectedIndex = 4;
                         break;
-                    case EncounterType.OldRod:
-                    case EncounterType.GoodRod:
-                    case EncounterType.SuperRod:
+                    case EncounterType.Fishing:
                         TTT.Method.SelectedIndex = 5;
                         break;
                     case EncounterType.RockSmash:

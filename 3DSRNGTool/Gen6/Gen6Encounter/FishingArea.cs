@@ -37,16 +37,16 @@ namespace Pk3DSRNGTool
         public override int[] Species { get; set; } = new int[9];
         public byte[] Level = new byte[9];
         public override int[] getSpecies(int ver, bool IsNight) => new int[3]; // Not using
-        public RodArea GetRodArea(EncounterType type)
+        public RodArea GetRodArea(int RodSpecies)
         {
             int startingindex = 0;
             var sp = new int[3];
             var lvl = new byte[3];
-            switch (type)
+            switch (RodSpecies)
             {
-                case EncounterType.OldRod: startingindex = 0; break;
-                case EncounterType.GoodRod: startingindex = 3; break;
-                case EncounterType.SuperRod: startingindex = 6; break;
+                case 129: startingindex = 0; break;
+                case 349: startingindex = 3; break;
+                case 130: startingindex = 6; break;
             }
             for (int i = 0; i < 3; i++)
             {

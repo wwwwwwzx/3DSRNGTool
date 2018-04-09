@@ -8,9 +8,7 @@
         FriendSafari,
         CaveShadow,
         Trap,
-        OldRod,
-        GoodRod,
-        SuperRod,
+        Fishing,
         Normal,
     }
 
@@ -18,7 +16,6 @@
     {
         public override GameVersion Version { get; protected set; } = GameVersion.Gen6;
         public EncounterType Type { get; private set; }
-        public bool IsFishing => Type == EncounterType.OldRod || Type == EncounterType.GoodRod || Type == EncounterType.SuperRod;
 
         public readonly static PokemonList[] Species_XY =
         {
@@ -51,9 +48,9 @@
                 Text = "Fishing",
                 List = new[]
                 {
-                    new PKMW6 { Conceptual = true, Type = EncounterType.OldRod, Delay = 14 },
-                    new PKMW6 { Conceptual = true, Type = EncounterType.GoodRod, Delay = 14 },
-                    new PKMW6 { Conceptual = true, Type = EncounterType.SuperRod, Delay = 14 },
+                    new PKMW6 { Conceptual = true, Species = 129, Type = EncounterType.Fishing, Delay = 14 }, // OldRod
+                    new PKMW6 { Conceptual = true, Species = 349, Type = EncounterType.Fishing, Delay = 14 }, // GoodRod
+                    new PKMW6 { Conceptual = true, Species = 130, Type = EncounterType.Fishing, Delay = 14 }, // SuperRod
                 }
             },
             new PokemonList
@@ -121,9 +118,9 @@
                 Text = "Fishing",
                 List = new[]
                 {
-                    new PKMW6 { Conceptual = true, Type = EncounterType.OldRod, Delay = 14 },
-                    new PKMW6 { Conceptual = true, Type = EncounterType.GoodRod, Delay = 14 },
-                    new PKMW6 { Conceptual = true, Type = EncounterType.SuperRod, Delay = 14 },
+                    new PKMW6 { Conceptual = true, Species = 129, Type = EncounterType.Fishing, Delay = 14 }, // OldRod
+                    new PKMW6 { Conceptual = true, Species = 349, Type = EncounterType.Fishing, Delay = 14 }, // GoodRod
+                    new PKMW6 { Conceptual = true, Species = 130, Type = EncounterType.Fishing, Delay = 14 }, // SuperRod
                 }
             },
         };

@@ -69,9 +69,7 @@ namespace Pk3DSRNGTool
                     tiny_Advance(1);
                     RNGPool.time_elapse6(46);
                     break;
-                case EncounterType.OldRod:
-                case EncounterType.GoodRod:
-                case EncounterType.SuperRod:
+                case EncounterType.Fishing:
                     RNGPool.time_elapse6(RNGPool.DelayTime);
                     tiny_Advance(3 * PartyPKM);
                     RNGPool.time_elapse6(132);
@@ -94,9 +92,7 @@ namespace Pk3DSRNGTool
                 case EncounterType.PokeRadar when IsShinyLocked: // Not first encounter, skip slot check
                     break;
                 case EncounterType.Normal:
-                case EncounterType.OldRod:
-                case EncounterType.GoodRod:
-                case EncounterType.SuperRod:
+                case EncounterType.Fishing:
                 case EncounterType.FriendSafari:  // 13%
                     RNGResult.IsPokemon = TinyRand(100) < EncounterRate;
                     goto default;

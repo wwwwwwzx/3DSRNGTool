@@ -24,9 +24,7 @@ namespace Pk3DSRNGTool
                 case EncounterType.Trap:
                     TableNow = IsXY ? Trap_XY : null;
                     break;
-                case EncounterType.OldRod:
-                case EncounterType.GoodRod:
-                case EncounterType.SuperRod:
+                case EncounterType.Fishing:
                     TableNow = IsXY ? Fishing_XY : Fishing_ORAS;
                     break;
                 default:
