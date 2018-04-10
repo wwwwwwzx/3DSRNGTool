@@ -1198,6 +1198,8 @@ namespace Pk3DSRNGTool
                 RNGPool.HoneyDelay = IsUltra ? 63 : 93;
                 RNGPool.ultrawild = IsUltra && Method == 2;
 
+                if (Method == 0 && RNGPool.DelayType == 4 && ((int)Timedelay.Value & 1) == 1)
+                    RNGPool.DelayType = 6;
                 if (Method == 2)
                 {
                     Frame.SpecialSlotStr = gen7wildtypestr[gen7sos ? 0 : CB_Category.SelectedIndex];
