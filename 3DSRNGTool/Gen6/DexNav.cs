@@ -6,6 +6,8 @@ namespace Pk3DSRNGTool
     public class DexNav
     {
         // Result
+        public bool Triggered => FluteBoost > 0;
+        public byte AdditionalDelay;
         public byte Lead;
         public bool Sync => Lead < 50;
         public int LevelBoost;
@@ -22,7 +24,39 @@ namespace Pk3DSRNGTool
         public DexNav(uint[] src)
         {
             rng = new TinyMT(src);
+            
+            if (!Trigger())
+                return;
 
+            // Do 4 times check, adds 2 delay if fail once.
+            for (; AdditionalDelay < 8; AdditionalDelay += 2)
+                for (int i = 0; i < 5; i++)
+                    if (FindPatch())
+                        goto Found;
+
+            return;
+
+            Found: Generate();
+        }
+
+        public bool Trigger()
+        {
+            // Normal step trigger
+            rng.Next();     // sync
+            rng.Next();     // Encounter Rate
+            // DexNav trigger
+            return Rand(100) < 50;
+        }
+
+        public bool FindPatch()
+        {
+            for (int i = 0; i < 3; i++) // 0x76E8C4 0x76E8E0 0x76E8EC
+                rng.Next();
+            return true;  // To-do
+        }
+
+        public DexNav Generate()
+        {
             // Something
             rng.Next();
 
@@ -34,6 +68,9 @@ namespace Pk3DSRNGTool
             Lead = (byte)Rand(100);
 
             // Something
+            for (int i = 0; i < 12; i++)
+                if (Rand(100) < 30)
+                    break;
             rng.Next();
 
             // Level
