@@ -167,7 +167,7 @@ namespace Pk3DSRNGTool
             int imax = i + Buffer;
             for (; i < imax;)
                 ReferenceList.Add(getNewSpan(i++));
-            if (splittimeline || ForMainForm && Method < 2)
+            if (splittimeline || ForMainForm && (Method < 2 || Method == 10))
                 SplitTimeline(); // Consider delay effect
             else
                 results = ReferenceList.Select(t => t.Clone()).ToList();
