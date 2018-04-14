@@ -103,7 +103,6 @@ namespace Pk3DSRNGTool
                 try { ((ComboBox)Controls.Find(TYPE + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type; } catch { };
                 B_Create_Click(null, null);
             }
-            return;
         }
 
         private void B_Cali_Click(object sender, EventArgs e)

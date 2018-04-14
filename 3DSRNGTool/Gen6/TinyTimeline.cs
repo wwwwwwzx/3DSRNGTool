@@ -222,7 +222,7 @@ namespace Pk3DSRNGTool
                         st.Next();
                         st.time_elapse(60);
                     }
-                    else                // Groudon
+                    else               // Groudon
                         st.time_elapse(180);
                     for (int i = 3 * PartySize; i > 0; i--) // Memory
                         st.Next();
@@ -288,76 +288,55 @@ namespace Pk3DSRNGTool
 
         private void getshiftedsync(int shift)
         {
-            int max = results.Count;
-            int idxmax = ReferenceList.Count;
-            int framehit;
-            for (int i = 0; i < max; i++)
-            {
-                framehit = results[i].HitIndex + shift;
-                if (framehit >= idxmax)
-                {
-                    results = results.Take(i).ToList(); // Remove Tail Data
-                    break;
-                }
-                results[i].sync = ReferenceList[framehit].R2;
-            }
+            int idxmax = ReferenceList.Count - shift;
+            results = results.TakeWhile(r => r.HitIndex < idxmax).ToList();  // Remove tail data
+            foreach (var rt in results)
+                rt.sync = ReferenceList[rt.HitIndex + shift].R2;
         }
 
         private void MarkEncounter(bool FS = false, bool Fishing = false, bool Check = true)
         {
             Frame_Tiny.thershold = (byte)(!Check ? 0 : EncounterRate);
             byte SlotType = (byte)(FS ? SlotNum + 47 : Fishing ? 3 : 2);
-            int max = results.Count;
-            int idxmax = ReferenceList.Count - 5;
-            for (int i = 0; i < max; i++)
+            int idxmax = ReferenceList.Count - 6;
+            results = results.TakeWhile(r => r.HitIndex < idxmax).ToList();  // Remove tail data
+            foreach (var rt in results)
             {
-                int j = results[i].HitIndex;
-                if (j >= idxmax)
-                {
-                    results = results.Take(i).ToList(); // Remove Tail Data
-                    break;
-                }
-                results[i].sync = ReferenceList[j++].R2;
-                if (Check) results[i].enctr = ReferenceList[j++].R100;
-                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
-                if (IsORAS) results[i].flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getHeldItem(ReferenceList[++j].R100);
+                int j = rt.HitIndex;
+                rt.sync = ReferenceList[j++].R2;
+                if (Check) rt.enctr = ReferenceList[j++].R100;
+                rt.slot = WildRNG.getSlot(ReferenceList[j++].R100, SlotType);
+                if (IsORAS) rt.flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                rt.item = Wild6.getHeldItem(ReferenceList[++j].R100);
             }
         }
 
         private void MarkRockSmash()
         {
             Frame_Tiny.thershold = 1;
-            int max = results.Count;
-            int idxmax = ReferenceList.Count - 5;
-            for (int i = 0; i < max; i++)
+            int idxmax = ReferenceList.Count - 6;
+            results = results.TakeWhile(r => r.HitIndex < idxmax).ToList();  // Remove tail data
+            foreach (var rt in results)
             {
-                int j = results[i].HitIndex;
-                if (j >= idxmax)
-                {
-                    results = results.Take(i).ToList(); // Remove Tail Data
-                    break;
-                }
-                results[i].enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
-                results[i].sync = ReferenceList[j++].R2;
-                results[i].slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
-                if (IsORAS) results[i].flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
-                results[i].item = Wild6.getHeldItem(ReferenceList[++j].R100);
+                int j = rt.HitIndex;
+                rt.enctr = (byte)((ReferenceList[j++].rand * 3ul) >> 32);
+                rt.sync = ReferenceList[j++].R2;
+                rt.slot = WildRNG.getSlot(ReferenceList[j++].R100, 4);
+                if (IsORAS) rt.flute = WildRNG.getFluteBoost(ReferenceList[j++].R100);
+                rt.item = Wild6.getHeldItem(ReferenceList[++j].R100);
             }
         }
 
         private void MarkHorde()
         {
-            int max = results.Count;
-            for (int i = 0; i < max; i++)
-                results[i].horde = new Horde(results[i].tinystate.Status, PartySize, IsORAS);
+            foreach (var rt in results)
+                rt.horde = new Horde(rt.tinystate.Status, PartySize, IsORAS);
         }
 
         private void MarkRadar()
         {
-            int max = results.Count;
-            for (int i = 0; i < max; i++)
-                results[i].radar = new PokeRadar(results[i].tinystate.Status, PartySize, ChainLength, Boost);
+            foreach (var rt in results)
+                rt.radar = new PokeRadar(rt.tinystate.Status, PartySize, ChainLength, Boost);
         }
     }
 }
