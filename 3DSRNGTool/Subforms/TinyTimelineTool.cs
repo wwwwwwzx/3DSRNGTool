@@ -89,7 +89,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == TypeNum.Value || type < 0 || !typelist.Contains(type))    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || type > typelist.Last())    // All used
             {
                 B_Stop_Click(null, null);
                 return;

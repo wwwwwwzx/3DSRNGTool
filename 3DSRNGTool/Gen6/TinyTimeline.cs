@@ -81,11 +81,11 @@ namespace Pk3DSRNGTool
                     Add(Currentframe + 16, 6);
                     break;
                 case 7: // Groudon/Kyogre 0x7BE438
-                    Add(Currentframe + getcooldown7(rand), 8);
+                    Add(Currentframe + getcooldown7(rand), 7);
                     break;
                     /*
-                    case 7: // Battle
-                        Add(Currentframe + getcooldown6(rand), 7);
+                    case 8: // Battle
+                        Add(Currentframe + getcooldown6(rand), 8);
                         break;
                     */
             }
