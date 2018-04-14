@@ -473,6 +473,7 @@ namespace Pk3DSRNGTool
             L_SOSRNGFrame.Visible = L_SOSRNGSeed.Visible = SOSRNGFrame.Visible = SOSRNGSeed.Visible =
             ChainLength.Visible = L_ChainLength.Visible = gen7sos;
             var pmw6 = FormPM as PKMW6;
+            L_HordeInfo.Visible = IsHorde;
             ChainLength.Visible = L_ChainLength.Visible |= pmw6?.Type == EncounterType.PokeRadar;
             CB_HAUnlocked.Visible = CB_3rdSlotUnlocked.Visible = pmw6?.Type == EncounterType.FriendSafari;
             ChainLength.Visible = L_ChainLength.Visible |= pmw6?.Type == EncounterType.Fishing;
@@ -1777,10 +1778,10 @@ namespace Pk3DSRNGTool
                 TTT.Delay.Value = Timedelay.Value;
                 if (p.IsSoaring) TTT.Delay.Value = 14;
                 if (TTT.Cry.Checked = p.Cry != 255) TTT.CryFrame.Value = 8;
+                if (p.Species == 382 || p.Species == 383) TTT.Method.SelectedIndex = 10;
             }
             if (Method == 2 && FormPM is PKMW6 pw)
             {
-                L_HordeInfo.Visible = IsHorde;
                 TTT.Delay.Value = Timedelay.Value;
                 TTT.Parameter2.Value = Special_th.Value;
                 if (CB_3rdSlotUnlocked.Visible)
@@ -1928,6 +1929,12 @@ namespace Pk3DSRNGTool
                         case 0x42BDF8 when !IsORAS:
                             var delay5 = TinyStatus.getcooldown5(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
                             TTT.Calibrate(5, CurrentFrame, CurrentFrame + delay5);
+                            break;
+
+                        // Kyogre/Groundon
+                        case 0x7BE43C when IsORAS:
+                            var delay7 = TinyStatus.getcooldown7(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());
+                            TTT.Calibrate(7, CurrentFrame, CurrentFrame + delay7);
                             break;
 
                         default:

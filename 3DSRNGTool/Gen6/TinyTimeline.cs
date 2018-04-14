@@ -79,12 +79,12 @@ namespace Pk3DSRNGTool
                 case 6: // Running NPC 0x7D3B28
                     Add(Currentframe + 16, 6);
                     break;
+                case 7: // Groudon/Kyogre 0x7BE438
+                    Add(Currentframe + getcooldown7(rand), 8);
+                    break;
                     /*
                     case 7: // Battle
                         Add(Currentframe + getcooldown6(rand), 7);
-                        break;
-                    case 8: // Groudon/Kyogre 0x7BE438
-                        Add(Currentframe + getcooldown7(rand), 8);
                         break;
                     */
             }
@@ -96,10 +96,8 @@ namespace Pk3DSRNGTool
         public static int getcooldown3(uint rand) => (int)((rand * 90ul) >> 32) * 2 + 780;
         public static int getcooldown4(uint rand) => rand % 3 == 0 ? 360 : 180;
         public static int getcooldown5(uint rand) => 542 - (int)((rand * 180ul) >> 32) * 2;
-        /*
-        public static int getcooldown6(uint rand) => (int)(((rand * 240ul) >> 32) + 251);
         public static int getcooldown7(uint rand) => (int)(((rand * 10ul) >> 32) * 30 + 60);
-        */
+        // public static int getcooldown6(uint rand) => (int)(((rand * 240ul) >> 32) + 251);
     }
 
     public class TinyTimeline
@@ -172,7 +170,7 @@ namespace Pk3DSRNGTool
                 SplitTimeline(); // Consider delay effect
             else
                 results = ReferenceList.Select(t => t.Clone()).ToList();
-            if (ForMainForm && Method > 1)
+            if (ForMainForm && 1 < Method && Method < 9)
                 return;
             switch (Method)
             {
@@ -185,6 +183,7 @@ namespace Pk3DSRNGTool
                 case 6: MarkRockSmash(); break;
                 case 7: MarkEncounter(Check: false); break;
                 case 8: MarkEncounter(); break;
+                case 10: MarkSync(false); break;
             }
             ReferenceList.Clear();
         }
@@ -211,6 +210,13 @@ namespace Pk3DSRNGTool
                     st.time_elapse(Delay - 228);
                     st.Next(); // Rand(240)
                     st.time_elapse(212);
+                    break;
+                case 10:               // Kyogre/Groundon (double cry)
+                    st.time_elapse(Delay - 178); // 146
+                    st.Next();
+                    st.time_elapse(118);
+                    st.Next();
+                    st.time_elapse(60);
                     break;
                 default:
                     if (CryFrame == -1) // No Cry

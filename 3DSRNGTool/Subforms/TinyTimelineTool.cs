@@ -9,10 +9,10 @@ namespace Pk3DSRNGTool
     public partial class TinyTimelineTool : Form
     {
         #region Basic UI
-        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 5, 6, };
+        public static readonly int[] typelist = { -1, 0, 1, 3, 4, 5, 6, 7, };
         private const string FRAME = "Frame";
         private const string TYPE = "Type";
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "XY ID", "Running NPC", };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "XY ID", "Running NPC", "G/K" };
         private IEnumerable<ComboBox> getTypeList()
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
@@ -24,7 +24,8 @@ namespace Pk3DSRNGTool
                 yield return ((NumericUpDown)Controls.Find(FRAME + i.ToString(), true).First());
         }
 
-        private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing", "Rock Smash", "Cave Shadow", "Normal Wild", "XY ID RNG" };
+        private static readonly string[] methodlist = { "Instant Sync", "Cutscenes Sync", "Horde", "Friend Safari", "Poke Radar", "Fishing",
+                                                        "Rock Smash", "Cave Shadow", "Normal Wild", "XY ID RNG", "Groudon/Kyogre", };
         public TinyTimelineTool()
         {
             InitializeComponent();
@@ -322,6 +323,12 @@ namespace Pk3DSRNGTool
                     TypeNum.Value = 4;
                     UpdateTypeComboBox(new[] { -1, 5 });
                     Delay.Value = 724;
+                    break;
+                case 10: // Kyogre/Grondon
+                    TypeNum.Value = 3;
+                    L_PartySize.Visible = true;
+                    UpdateTypeComboBox(new[] { -1, 0, 1, 7 });
+                    Delay.Value = 324;
                     break;
             }
         }
