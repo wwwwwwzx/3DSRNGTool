@@ -1771,6 +1771,12 @@ namespace Pk3DSRNGTool
         {
             if (!B_OpenTool.Visible)
                 return;
+            if (Method == 0 && Gen6 && (FormPM.Species == 382 || FormPM.Species == 383))
+            {
+                TTT.Method.SelectedIndex = 10;
+                TTT.Delay.Value = FormPM.Species == 382 ? 324 : 326;
+                return;
+            }
             if (Method == 0 && FormPM is PKM6 p)
             {
                 TTT.Method.SelectedIndex = p.InstantSync ? 0 : 1;
@@ -1778,7 +1784,6 @@ namespace Pk3DSRNGTool
                 TTT.Delay.Value = Timedelay.Value;
                 if (p.IsSoaring) TTT.Delay.Value = 14;
                 if (TTT.Cry.Checked = p.Cry != 255) TTT.CryFrame.Value = 8;
-                if (p.Species == 382 || p.Species == 383) TTT.Method.SelectedIndex = 10;
             }
             if (Method == 2 && FormPM is PKMW6 pw)
             {
@@ -1905,7 +1910,7 @@ namespace Pk3DSRNGTool
                             TTT.Calibrate(2, CurrentFrame, CurrentFrame + delay2);
                             break;
 
-                        // Stretch
+                        // Fidget
                         case 0x70B108:
                         case 0x736F64:
                             var delay3 = TinyStatus.getcooldown3(NTRHelper.ntrclient.ReadTinyRNG().Nextuint());

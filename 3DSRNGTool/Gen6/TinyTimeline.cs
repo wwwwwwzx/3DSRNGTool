@@ -39,6 +39,7 @@ namespace Pk3DSRNGTool
             if (list.Count > 1)
                 list = list.OrderByDescending(e => e.frame).ThenBy(e => e.type).ToList();
         }
+        public void RemoveType(int t) => list.RemoveAll(c => c.type == t);
 
         public void time_elapse(int Delay)
         {
@@ -67,7 +68,7 @@ namespace Pk3DSRNGTool
                 case 2: // Blink 0x72B9FC
                     Add(Currentframe + getcooldown2(rand), 1);
                     break;
-                case 3: // Stretch 0x70B108
+                case 3: // Fidget 0x70B108
                     Add(Currentframe + getcooldown3(rand), 3);
                     break;
                 case 4: // Soaring 0x726ED4
@@ -183,7 +184,7 @@ namespace Pk3DSRNGTool
                 case 6: MarkRockSmash(); break;
                 case 7: MarkEncounter(Check: false); break;
                 case 8: MarkEncounter(); break;
-                case 10: MarkSync(false); break;
+                case 10: MarkSync(true); break;
             }
             ReferenceList.Clear();
         }
@@ -192,6 +193,7 @@ namespace Pk3DSRNGTool
         {
             var st = src.Clone();
             st.Currentframe = Current;
+            st.RemoveType(3); // Remove fidget
 
             // Delay
             switch (Method)
@@ -211,12 +213,20 @@ namespace Pk3DSRNGTool
                     st.Next(); // Rand(240)
                     st.time_elapse(212);
                     break;
-                case 10:               // Kyogre/Groundon (double cry)
-                    st.time_elapse(Delay - 178); // 146
+                case 10:
+                    st.time_elapse(146);
                     st.Next();
-                    st.time_elapse(118);
-                    st.Next();
-                    st.time_elapse(60);
+                    if (Delay == 324)  // Kyogre
+                    {
+                        st.time_elapse(118);
+                        st.Next();
+                        st.time_elapse(60);
+                    }
+                    else                // Groudon
+                        st.time_elapse(180);
+                    for (int i = 3 * PartySize; i > 0; i--) // Memory
+                        st.Next();
+                    st.time_elapse(124);
                     break;
                 default:
                     if (CryFrame == -1) // No Cry

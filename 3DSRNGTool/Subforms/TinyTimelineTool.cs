@@ -12,7 +12,7 @@ namespace Pk3DSRNGTool
         public static readonly int[] typelist = { -1, 0, 1, 3, 4, 5, 6, 7, };
         private const string FRAME = "Frame";
         private const string TYPE = "Type";
-        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Stretch", "Soaring", "XY ID", "Running NPC", "G/K" };
+        public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Fidget", "Soaring", "XY ID", "Running NPC", "G/K" };
         private IEnumerable<ComboBox> getTypeList()
         {
             for (int i = 1; i <= TypeNum.Maximum; i++)
@@ -89,7 +89,7 @@ namespace Pk3DSRNGTool
         public List<int> SkipList = new List<int>();
         public void Calibrate(int type, int Curr, int Next)
         {
-            if (SkipList.Count == TypeNum.Value || type < 0 || type > 6)    // All used
+            if (SkipList.Count == TypeNum.Value || type < 0 || !typelist.Contains(type))    // All used
             {
                 B_Stop_Click(null, null);
                 return;
@@ -230,11 +230,11 @@ namespace Pk3DSRNGTool
         private void Method_Changed()
         {
             int method = Method.SelectedIndex;
-            bool Wild = method > 1 && method != 9;
-            tiny_enctr.Visible = method == 3 || method > 4 && method != 9;
+            bool Wild = method > 1 && method < 9;
             dgv_slot.Visible = dgv_item.Visible = Wild;
             bool horde = method == 2;
             tiny_ha.Visible = horde;
+            tiny_enctr.Visible = Wild && !(horde || method == 4);
             tiny_flute.Width = horde ? 60 : 40;
             dgv_item.Width = horde ? 125 : 40;
             dgv_bgm.Visible = method == 4;
@@ -329,6 +329,7 @@ namespace Pk3DSRNGTool
                     L_PartySize.Visible = true;
                     UpdateTypeComboBox(new[] { -1, 0, 1, 7 });
                     Delay.Value = 324;
+                    ConsiderDelay.Checked = true;
                     break;
             }
         }
