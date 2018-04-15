@@ -93,32 +93,35 @@ namespace Pk3DSRNGTool
             return true;
         }
 
-        private int BPReached;
+        private bool Initial;
         private bool getBP(string logmsg)
         {
-            if (!(logmsg.Contains("breakpoint ") && logmsg.Contains(" hit")))
+            string BPSTR = "breakpoint ";
+            if (!(logmsg.Contains(BPSTR) && logmsg.Contains(" hit")))
                 return false;
-            string bpid = " lr:";
-            string splitlog = "0x" + logmsg.Substring(logmsg.IndexOf(bpid, StringComparison.Ordinal) + bpid.Length, 8);
-            uint address = Convert.ToUInt32(splitlog, 16);
-            if (address == 0)
+            uint address = getvalue(logmsg, " lr:");
+            uint bpnum = getvalue(logmsg, BPSTR, 1);
+            if (bpnum == 1)
             {
-                BPReached = 0; SetBreakPoint();
+                Initial = true; SetBreakPoint();
             }
-            else if (address > 0x7000000 || address == BPOffset)
+            else if (bpnum == 2)
             {
                 ReadSeed(); resume();
-                if (BPReached == 0)
+                if (Initial)
                 {
+                    Initial = false;
                     ReadTiny("IDSeed");
                     ReadTSV();
                 }
-                BPReached++;
             }
             else
                 SendMsg(address, "BreakPoint");
             return true;
         }
+
+        private uint getvalue(string logmsg, string key, int digit = 8)
+            => Convert.ToUInt32("0x" + logmsg.Substring(logmsg.IndexOf(key, StringComparison.Ordinal) + key.Length, digit), 16);
 
         public void DebuggerMode()
         {
@@ -130,16 +133,16 @@ namespace Pk3DSRNGTool
 
         public void SetBreakPoint()
         {
-            bpadd(TinyBPOffset, "code"); bpdis(2);
-            if (Gameversion == 2 || Gameversion == 3)
-            { bpadd(TinySoaringOffset, "code"); bpdis(3); }
             bpadd(BPOffset, "code"); // Add break point
+            bpadd(TinyBPOffset, "code"); bpdis(3);
+            if (Gameversion == 2 || Gameversion == 3)
+            { bpadd(TinySoaringOffset, "code"); bpdis(4); }
             SendMsg("Breakpoint Set");
             resume();
         }
 
-        public void EnableBP(bool Soaring = false) => bpena(Soaring ? 3u : 2u);
-        public void DisableBP() { bpdis(2); bpdis(3); resume(); }
+        public void EnableBP(bool Soaring = false) => bpena(Soaring ? 4u : 3u);
+        public void DisableBP() { bpdis(3); bpdis(4); resume(); }
 
         public byte[] SingleThreadRead(uint addr, uint size = 4)
         {
