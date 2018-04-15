@@ -6,7 +6,8 @@ namespace Pk3DSRNGTool
     public class DexNav
     {
         // Result
-        public bool Triggered => FluteBoost > 0;
+        public bool Success;
+        public int X, Y; // Patch location. Origin is at leftupper corner
         public byte AdditionalDelay;
         public byte Lead;
         public bool Sync => Lead < 50;
@@ -24,19 +25,21 @@ namespace Pk3DSRNGTool
         public DexNav(uint[] src)
         {
             rng = new TinyMT(src);
-            
+
             if (!Trigger())
                 return;
 
             // Do 4 times check, adds 2 delay if fail once.
             for (; AdditionalDelay < 8; AdditionalDelay += 2)
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++) // check 5 patches per 2 frames
                     if (FindPatch())
-                        goto Found;
-
-            return;
-
-            Found: Generate();
+                    {
+                        Generate();
+                        PostCheck();
+                        if (Success)
+                            return;
+                        break;
+                    }
         }
 
         public bool Trigger()
@@ -50,12 +53,21 @@ namespace Pk3DSRNGTool
 
         public bool FindPatch()
         {
-            for (int i = 0; i < 3; i++) // 0x76E8C4 0x76E8E0 0x76E8EC
-                rng.Next();
+            switch (Rand(4))
+            {
+                case 0: // Up
+                    X = -9 + Rand(18); Y = -9 + Rand(3); break;
+                case 1: // Left
+                    X = -9 + Rand(3); Y = -7 + Rand(14); break;
+                case 2: // Right
+                    X = 7 + Rand(3); Y = -7 + Rand(14); break;
+                case 3: // Down
+                    X = -9 + Rand(18); Y = 7 + Rand(3); break;
+            }
             return true;  // To-do
         }
 
-        public DexNav Generate()
+        public bool Generate()
         {
             // Something
             rng.Next();
@@ -67,7 +79,7 @@ namespace Pk3DSRNGTool
             // Sync
             Lead = (byte)Rand(100);
 
-            // Something
+            // Something - todo
             for (int i = 0; i < 12; i++)
                 if (Rand(100) < 30)
                     break;
@@ -125,6 +137,18 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < CheckCount; i++)
                 if (Rand(10000) < TargetValue * 0.01)
                     ForcedShiny = true;
+        }
+
+        private void PostCheck()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                rng.Next(); // 78B520
+                rng.Next(); // 78B598
+                Success = true; // To-do
+                if (Success)
+                    return;
+            }
         }
 
         // Global variables
