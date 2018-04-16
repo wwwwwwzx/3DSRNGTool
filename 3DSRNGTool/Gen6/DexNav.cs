@@ -7,8 +7,11 @@ namespace Pk3DSRNGTool
     {
         // Result
         public bool Success;
-        public int X, Y; // Patch location. Origin is at leftupper corner
+        public int X, Y; // Shaking location. Direction: X → and Y ↓
         public byte AdditionalDelay;
+        public int Slot;
+        public int Slottype; // 0 Grass; 1 Tall Grass; 2 Surf; 3 DexNav
+        public bool Boost;
         public byte Lead;
         public bool Sync => Lead < 50;
         public int LevelBoost;
@@ -67,23 +70,28 @@ namespace Pk3DSRNGTool
             return true;  // To-do
         }
 
-        public bool Generate()
+        public void Generate()
         {
-            // Something
-            rng.Next();
+            // Slot type
+            Slottype = Rand(100) < 30 && HasDexNav ? 3 : EncounterType; // sub_770A4D
 
             // Boost
-            bool Boost = ChainLength > 0 && (ChainLength + 1) % 5 == 0 || Rand(100) < 4;  // sub_40295C
-            byte Grade = GetGrade;
+            Boost = ChainLength > 0 && (ChainLength + 1) % 5 == 0 || Rand(100) < 4;  // sub_40295C
 
             // Sync
             Lead = (byte)Rand(100);
 
-            // Something - todo
-            for (int i = 0; i < 12; i++)
+            // Slot
+            for (Slot = SlotNum[Slottype] - 1; Slot >= 0; Slot--) // sub_7705F4
                 if (Rand(100) < 30)
                     break;
+            Slot = Math.Max(0, Slot);
+
+            // Something
             rng.Next();
+
+            // sub_7D8728 : the Core part
+            byte Grade = GetGrade;
 
             // Level
             LevelBoost = ChainLength / 5 + (Boost ? 10 : 0);
@@ -152,6 +160,8 @@ namespace Pk3DSRNGTool
         }
 
         // Global variables
+        public static byte EncounterType; // 0 Grass; 1 Tall Grass; 2 Surf
+        public static bool HasDexNav; // DexNav mons matches encounter type
         public static int SearchLevel;
         public static int ChainLength;
         public static bool ShinyCharm;
@@ -175,6 +185,7 @@ namespace Pk3DSRNGTool
             }
         }
 
+        public static sbyte[] SlotNum = { 12, 12, 5, 3 }; // Grass / Tall Grass / Surf / DexNav
         public static byte[] HARate = { 0, 0, 5, 15, 20, 25 }; // dword_7E6860[6]
         public static byte[] IVRate = // dword_7E6890[18]
         {
