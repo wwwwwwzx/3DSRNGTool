@@ -175,24 +175,25 @@ namespace Pk3DSRNGTool
             }
         }
 
-        public static byte[] HARate = { 0, 0, 5, 15, 20, 25 };
-        public static byte[] IVRate =
+        public static byte[] HARate = { 0, 0, 5, 15, 20, 25 }; // dword_7E6860[6]
+        public static byte[] IVRate = // dword_7E6890[18]
         {
             0,0,0,
             10,0,0,
+            15,10,0,
             20,15,5,
             15,20,5,
             10,25,10,
         };
-        public static byte[] EggMoveRate = { 20, 50, 55, 60, 65, 80 };
-        public static byte[] HeldItemRate =
+        public static byte[] EggMoveRate = { 20, 50, 55, 60, 65, 80 }; // dword_7E6878[6]
+        public static byte[] HeldItemRate = // byte_7E68D8[12]
         {
             40,10,
             40,10,
             45,15,
             50,20,
             50,20,
-            50,20,
+            50,30,
         };
     }
 }
