@@ -170,20 +170,14 @@ namespace Pk3DSRNGTool
         {
             get
             {
-                if (SearchLevel < 5)
-                    return 0;
-                if (SearchLevel < 10)
-                    return 1;
-                if (SearchLevel < 25)
-                    return 2;
-                if (SearchLevel < 50)
-                    return 3;
-                if (SearchLevel < 100)
-                    return 4;
+                for (byte g = 0; g < 5; g++)
+                    if (SearchLevel < GradeRange[g])
+                        return g;
                 return 5;
             }
         }
 
+        public byte GradeRange = { 5, 10, 25, 50, 100 };
         public static sbyte[] SlotNum = { 12, 12, 5, 3 }; // Grass / Tall Grass / Surf / DexNav
         public static byte[] HARate = { 0, 0, 5, 15, 20, 25 }; // dword_7E6860[6]
         public static byte[] IVRate = // dword_7E6890[18]
