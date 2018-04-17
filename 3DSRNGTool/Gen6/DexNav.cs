@@ -29,20 +29,17 @@ namespace Pk3DSRNGTool
         {
             rng = new TinyMT(src);
 
-            if (!Trigger())
-                return;
-
-            // Do 4 times check, adds 2 delay if fail once.
-            for (; AdditionalDelay < 8; AdditionalDelay += 2)
-                for (int i = 0; i < 5; i++) // check 5 patches per 2 frames
-                    if (FindPatch())
-                    {
-                        Generate();
-                        PostCheck();
-                        if (Success)
-                            return;
-                        break;
-                    }
+            if (ActiveSearch || Trigger())                        // Active Search or triggered by every 20 steps
+                for (; AdditionalDelay < 8; AdditionalDelay += 2) // Do 4 times check, adds 2 delay if fail once.
+                    for (int i = 0; i < 5; i++)                   // check at most 5 patches per visual
+                        if (FindPatch())
+                        {
+                            Generate();
+                            PostCheck();
+                            if (Success)
+                                return;
+                            break;
+                        }
         }
 
         public bool Trigger()
@@ -82,10 +79,11 @@ namespace Pk3DSRNGTool
             Lead = (byte)Rand(100);
 
             // Slot
-            for (Slot = SlotNum[Slottype] - 1; Slot >= 0; Slot--) // sub_7705F4
-                if (Rand(100) < 30)
-                    break;
-            Slot = Math.Max(0, Slot);
+            if (!ActiveSearch)
+                for (Slot = SlotNum[Slottype] - 1; Slot >= 0; Slot--) // sub_7705F4
+                    if (Rand(100) < 30)
+                        break;
+            if (Slot < 0) Slot = 0;
 
             // Something
             rng.Next();
@@ -160,6 +158,7 @@ namespace Pk3DSRNGTool
         }
 
         // Global variables
+        public static bool ActiveSearch;
         public static byte EncounterType; // 0 Grass; 1 Tall Grass; 2 Surf
         public static bool HasDexNav; // DexNav mons matches encounter type
         public static int SearchLevel;
