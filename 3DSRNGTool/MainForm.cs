@@ -1774,7 +1774,6 @@ namespace Pk3DSRNGTool
             if (Method == 0 && Gen6 && (FormPM.Species == 382 || FormPM.Species == 383))
             {
                 TTT.Method.SelectedIndex = 10;
-                TTT.Delay.Value = FormPM.Species == 382 ? 324 : 326;
                 return;
             }
             if (Method == 0 && FormPM is PKM6 p)
@@ -1947,7 +1946,6 @@ namespace Pk3DSRNGTool
                             Error("Unknown Timeline Type");
                             return;
                     }
-                    NTRHelper.ntrclient.resume();
                     return;
             }
         }

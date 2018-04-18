@@ -56,11 +56,11 @@ namespace Pk3DSRNGTool
                 case 0:
                 case 1:
                     TinyBPOffset = 0x174DB4;
-                    BPOffset = 0x1d4088; MTOffset = 0x8c52848; TinyOffset = 0x08c52808; IDOffset = 0x08C79C3C; break;
+                    BPOffset = 0x1254F8; MTOffset = 0x8c52848; TinyOffset = 0x08c52808; IDOffset = 0x08C79C3C; break;
                 case 2:
                 case 3:
                     TinyBPOffset = 0x175CEC; TinySoaringOffset = 0x164714;
-                    BPOffset = 0x1e790c; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
+                    BPOffset = 0x125EC8; MTOffset = 0x8c59e44; TinyOffset = 0x08c59E04; IDOffset = 0x08C81340; break;
                 case 4:
                     break;
                 case 5:
@@ -75,7 +75,6 @@ namespace Pk3DSRNGTool
             SendMsg(Gameversion, "Version");
             if (Gameversion < 4)
             {
-                ReadTiny("IDSeed");
                 ReadTSV();
                 if (OneClick)
                     DebuggerMode();
@@ -93,30 +92,27 @@ namespace Pk3DSRNGTool
             return true;
         }
 
-        private bool Initial;
+        private byte BPReached;
         private bool getBP(string logmsg)
         {
             string BPSTR = "breakpoint ";
             if (!(logmsg.Contains(BPSTR) && logmsg.Contains(" hit")))
                 return false;
-            uint address = getvalue(logmsg, " lr:");
             uint bpnum = getvalue(logmsg, BPSTR, 1);
             if (bpnum == 1)
             {
-                Initial = true; SetBreakPoint();
+                BPReached = 0; SetBreakPoint();
             }
             else if (bpnum == 2)
             {
-                ReadSeed(); resume();
-                if (Initial)
-                {
-                    Initial = false;
-                    ReadTiny("IDSeed");
+                if (MTOffset == getvalue(logmsg, "r0:"))
+                    SendMsg(getvalue(logmsg, "r1:"), "Seed");
+                if (BPReached++ <= 1)
                     ReadTSV();
-                }
             }
             else
-                SendMsg(address, "BreakPoint");
+                SendMsg(getvalue(logmsg, " lr:"), "BreakPoint");
+            resume();
             return true;
         }
 
@@ -138,7 +134,6 @@ namespace Pk3DSRNGTool
             if (Gameversion == 2 || Gameversion == 3)
             { bpadd(TinySoaringOffset, "code"); bpdis(4); }
             SendMsg("Breakpoint Set");
-            resume();
         }
 
         public void EnableBP(bool Soaring = false) => bpena(Soaring ? 4u : 3u);
@@ -161,7 +156,7 @@ namespace Pk3DSRNGTool
         }
 
         // Gen7 Connection Patch
-        private const uint nfcVal = 0xE3A01000;
+        private const uint nfcVal = 0xE3A01000; // MOV R1 #0 ; R1 = 0
         private void WriteWifiPatch()
         {
             byte[] command = BitConverter.GetBytes(nfcVal);
@@ -174,7 +169,7 @@ namespace Pk3DSRNGTool
 
         public void ReadSeed()
         {
-            var seed_ay = SingleThreadRead(Gameversion < 5 ? MTOffset + 4 : SFMTOffset, 0x4);// MT[0]/SFMT
+            var seed_ay = SingleThreadRead(SFMTOffset, 0x4); // SFMT
             if (seed_ay == null)
                 return;
             uint seed = BitConverter.ToUInt32(seed_ay, 0);
@@ -186,7 +181,7 @@ namespace Pk3DSRNGTool
             byte[] tiny = ReadTiny();
             if (tiny == null)
                 return;
-            uint[] tinyseeds = new[]
+            uint[] tinyseeds =
             {
                 BitConverter.ToUInt32(tiny, 0),
                 BitConverter.ToUInt32(tiny, 4),
@@ -218,6 +213,8 @@ namespace Pk3DSRNGTool
             var TID = BitConverter.ToUInt16(FullID, 0);
             var SID = BitConverter.ToUInt16(FullID, 2);
             SendMsg((TID ^ SID) >> 4, "TSV");
+            if (TID == 0 && SID == 0 && Gameversion < 4) // New gen6 save
+                ReadTiny("IDSeed");
         }
 
         public const int FrameMax = 10000000;

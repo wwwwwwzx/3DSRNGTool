@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
     {
         #region Basic UI
         public static readonly int[] typelist = { -1, 0, 1, 3, 4, 5, 6, 7, };
+        private int[] CurrentTypes;
         private const string FRAME = "Frame";
         private const string TYPE = "Type";
         public static readonly string[] typestrlist = { "-", "Blink(+2)", "Blink(+1)", "Fidget", "Soaring", "XY ID", "Running NPC", "G/K" };
@@ -46,8 +47,9 @@ namespace Pk3DSRNGTool
             Method.Items.AddRange(methodlist.Select(s => StringItem.Translate(s)).ToArray());
             Method.SelectedIndex = 0;
         }
-        public void UpdateTypeComboBox(int[] type)
+        public void UpdateTypeComboBox(params int[] type)
         {
+            CurrentTypes = (int[])type.Clone();
             var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t)).Where(t => type.Contains(t.Value));
             foreach (var c in getTypeList())
             {
@@ -73,7 +75,7 @@ namespace Pk3DSRNGTool
                 tiny2.Value = value[2]; tiny3.Value = value[3];
             }
         }
-        private bool IsORAS => Program.mainform.IsORAS && new[] { 2, 5, 6, 8 }.Contains(Method.SelectedIndex);
+        private bool IsORASWild => Program.mainform.IsORAS && new[] { 2, 5, 6, 8 }.Contains(Method.SelectedIndex);
         public bool HasSeed => Gen6Tiny.Any(t => t != 0);
         private void Update_Click(object sender, EventArgs e)
         {
@@ -90,17 +92,16 @@ namespace Pk3DSRNGTool
         public void Calibrate(int type, int Curr, int Next)
         {
             if (SkipList.Count == TypeNum.Value || type < 0 || type > typelist.Last())    // All used
-            {
                 B_Stop_Click(null, null);
-                return;
-            }
-            if (SkipList.IndexOf(Curr) > -1) // Skip
+            else if (SkipList.IndexOf(Curr) > -1)  // Skip
                 SkipList[SkipList.IndexOf(Curr)] = Next;
+            else if (!CurrentTypes.Contains(type)) // Not in typelist
+                FormUtil.Error($"Invalid Advance Type: {typestrlist[type]}");
             else
             {
                 SkipList.Add(Next);
                 ((NumericUpDown)Controls.Find(FRAME + SkipList.Count.ToString(), true).FirstOrDefault()).Value = Curr;
-                try { ((ComboBox)Controls.Find(TYPE + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type; } catch { };
+                ((ComboBox)Controls.Find(TYPE + SkipList.Count.ToString(), true).FirstOrDefault()).SelectedValue = type;
                 B_Create_Click(null, null);
             }
         }
@@ -183,7 +184,7 @@ namespace Pk3DSRNGTool
                 Method = (byte)Method.SelectedIndex,
                 P1 = (int)Parameter1.Value,
                 P2 = Parameter2.Visible ? (int)Parameter2.Value : 0,
-                IsORAS = IsORAS,
+                IsORAS = IsORASWild,
                 Boost = Boost.Checked,
             };
             line.Add((int)Frame1.Value, (int)Type1.SelectedValue);
@@ -237,7 +238,7 @@ namespace Pk3DSRNGTool
             tiny_flute.Width = horde ? 60 : 40;
             dgv_item.Width = horde ? 125 : 40;
             dgv_bgm.Visible = method == 4;
-            tiny_flute.Visible = IsORAS;
+            tiny_flute.Visible = IsORASWild;
             tiny_rand100.Visible = !ConsiderDelay.Checked;
             tiny_hitidx.Visible = ConsiderDelay.Checked;
         }
@@ -265,7 +266,7 @@ namespace Pk3DSRNGTool
             Cry.Checked = false;
             CryFrame.Value = 0;
             TypeNum.Value = 1;
-            UpdateTypeComboBox(new[] { -1, 0, 1, 3 });
+            UpdateTypeComboBox(-1, 0, 1, 3);
             switch (Method.SelectedIndex)
             {
                 case 0: // Instant Sync
@@ -273,7 +274,7 @@ namespace Pk3DSRNGTool
                     break;
                 case 1: // Portal/soaring
                     L_PartySize.Visible = true;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3, 4 });
+                    UpdateTypeComboBox(-1, 0, 1, 3, 4);
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 2: // Horde
@@ -296,13 +297,13 @@ namespace Pk3DSRNGTool
                 case 5: // Fishing
                     L_PartySize.Visible = L_Rate.Visible = true;
                     Parameter2.Value = 98;
-                    UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    UpdateTypeComboBox(-1, 0, 1);
                     Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
                     Delay.Value = 14;
                     break;
                 case 6: // Rock Smash
-                    UpdateTypeComboBox(new[] { -1, 0, 1 });
+                    UpdateTypeComboBox(-1, 0, 1);
                     ConsiderDelay.Checked = true;
                     break;
                 case 7: // Cave Shadow
@@ -315,19 +316,19 @@ namespace Pk3DSRNGTool
                 case 8: // Normal Wilds
                     L_Rate.Visible = true;
                     Parameter2.Value = 1;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 3, 6 });
+                    UpdateTypeComboBox(-1, 0, 1, 3, 6);
                     Delay.Value = 6;
                     break;
                 case 9: // XY ID
                     TypeNum.Value = 4;
-                    UpdateTypeComboBox(new[] { -1, 5 });
+                    UpdateTypeComboBox(-1, 5);
                     Delay.Value = 724;
                     break;
                 case 10: // Kyogre/Grondon
                     TypeNum.Value = 3;
                     L_PartySize.Visible = true;
-                    UpdateTypeComboBox(new[] { -1, 0, 1, 7 });
-                    Delay.Value = 324;
+                    UpdateTypeComboBox(-1, 0, 1, 7);
+                    Delay.Value = Program.mainform.Ver == 3 ? 324 : 326;
                     ConsiderDelay.Checked = true;
                     break;
             }
