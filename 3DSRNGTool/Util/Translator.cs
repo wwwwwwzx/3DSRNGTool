@@ -86,8 +86,7 @@ namespace Pk3DSRNGTool
                             || z is NumericUpDown || z is ComboBox)
                             break; // undesirable to modify, ignore
 
-                        if (!string.IsNullOrWhiteSpace(z.Text))
-                            yield return z;
+                        yield return z;
                         break;
                 }
             }
