@@ -1779,7 +1779,7 @@ namespace Pk3DSRNGTool
             if (Method == 0 && FormPM is PKM6 p)
             {
                 TTT.Method.SelectedIndex = p.InstantSync ? 0 : 1;
-                TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { -1, 4 } : new[] { -1, 0, 1, 3 });
+                TTT.UpdateTypeComboBox(p.IsSoaring ? new[] { 4 } : new[] { 0, 1, 3 });
                 TTT.Delay.Value = Timedelay.Value;
                 if (p.IsSoaring) TTT.Delay.Value = 14;
                 if (TTT.Cry.Checked = p.Cry != 255) TTT.CryFrame.Value = 8;

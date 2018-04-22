@@ -32,7 +32,6 @@ namespace Pk3DSRNGTool
             InitializeComponent();
             MainDGV.AutoGenerateColumns = false;
             TypeNum.Maximum = 4; TypeNum.Minimum = 1;
-            UpdateTypeComboBox(typelist);
             TargetFrame.Maximum = FuncUtil.MAXFRAME;
             foreach (var c in getFrameList())
             {
@@ -50,7 +49,7 @@ namespace Pk3DSRNGTool
         public void UpdateTypeComboBox(params int[] type)
         {
             CurrentTypes = (int[])type.Clone();
-            var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t)).Where(t => type.Contains(t.Value));
+            var List = typelist.Select((t, i) => new ComboItem(typestrlist[i], t)).Where(t => t.Value == -1 || type.Contains(t.Value));
             foreach (var c in getTypeList())
             {
                 c.DisplayMember = "Text";
@@ -266,7 +265,7 @@ namespace Pk3DSRNGTool
             Cry.Checked = false;
             CryFrame.Value = 0;
             TypeNum.Value = 1;
-            UpdateTypeComboBox(-1, 0, 1, 3);
+            UpdateTypeComboBox(0, 1, 3);
             switch (Method.SelectedIndex)
             {
                 case 0: // Instant Sync
@@ -274,7 +273,7 @@ namespace Pk3DSRNGTool
                     break;
                 case 1: // Portal/soaring
                     L_PartySize.Visible = true;
-                    UpdateTypeComboBox(-1, 0, 1, 3, 4);
+                    UpdateTypeComboBox(0, 1, 3, 4);
                     Cry.Enabled = CryFrame.Enabled = true;
                     break;
                 case 2: // Horde
@@ -297,13 +296,13 @@ namespace Pk3DSRNGTool
                 case 5: // Fishing
                     L_PartySize.Visible = L_Rate.Visible = true;
                     Parameter2.Value = 98;
-                    UpdateTypeComboBox(-1, 0, 1);
+                    UpdateTypeComboBox(0, 1);
                     Delay.Enabled = false;
                     ConsiderDelay.Checked = true;
                     Delay.Value = 14;
                     break;
                 case 6: // Rock Smash
-                    UpdateTypeComboBox(-1, 0, 1);
+                    UpdateTypeComboBox(0, 1);
                     ConsiderDelay.Checked = true;
                     break;
                 case 7: // Cave Shadow
@@ -316,18 +315,18 @@ namespace Pk3DSRNGTool
                 case 8: // Normal Wilds
                     L_Rate.Visible = true;
                     Parameter2.Value = 1;
-                    UpdateTypeComboBox(-1, 0, 1, 3, 6);
+                    UpdateTypeComboBox(0, 1, 3, 6);
                     Delay.Value = 6;
                     break;
                 case 9: // XY ID
                     TypeNum.Value = 4;
-                    UpdateTypeComboBox(-1, 5);
+                    UpdateTypeComboBox(5);
                     Delay.Value = 724;
                     break;
                 case 10: // Kyogre/Grondon
                     TypeNum.Value = 3;
                     L_PartySize.Visible = true;
-                    UpdateTypeComboBox(-1, 0, 1, 7);
+                    UpdateTypeComboBox(0, 1, 7);
                     Delay.Value = Program.mainform.Ver == 3 ? 324 : 326;
                     ConsiderDelay.Checked = true;
                     break;
