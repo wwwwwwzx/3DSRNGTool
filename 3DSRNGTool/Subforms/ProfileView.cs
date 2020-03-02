@@ -23,6 +23,7 @@ namespace Pk3DSRNGTool.Subforms
                 Description.Text = Profile.Description;
                 Gameversion.SelectedIndex = Profile.GameVersion;
                 TSV.Value = Profile.TSV;
+                TRV.Value = Profile.TRV;
                 ShinyCharm.Checked = Profile.ShinyCharm;
                 Key3.Value = Profile.Seeds[3];
                 Key2.Value = Profile.Seeds[2];
@@ -75,6 +76,7 @@ namespace Pk3DSRNGTool.Subforms
                 Description = Description.Text,
                 GameVersion = Gameversion.SelectedIndex,
                 TSV = (ushort)TSV.Value,
+                TRV = (byte)TRV.Value,
                 ShinyCharm = ShinyCharm.Checked,
                 Seeds = new uint[]
                 {
@@ -108,6 +110,7 @@ namespace Pk3DSRNGTool.Subforms
         private void B_Current_Click(object sender, EventArgs e)
         {
             TSV.Value = Properties.Settings.Default.TSV;
+            TRV.Value = Properties.Settings.Default.TRV;
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             if ((Gameversion.SelectedIndex = Program.mainform.Ver) > 4)
             {

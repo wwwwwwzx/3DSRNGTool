@@ -34,6 +34,7 @@
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
             this.TSV = new System.Windows.Forms.NumericUpDown();
             this.GB_EggSeed = new System.Windows.Forms.GroupBox();
+            this.TRV = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.L_Description = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.TextBox();
             this.B_Current = new System.Windows.Forms.Button();
+            this.L_TRV = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TSV)).BeginInit();
             this.GB_EggSeed.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +131,17 @@
             this.GB_EggSeed.TabIndex = 10;
             this.GB_EggSeed.TabStop = false;
             this.GB_EggSeed.Text = "Egg Seeds";
+            // 
+            // TRV
+            // 
+            this.TRV.Location = new System.Drawing.Point(190, 63);
+            this.TRV.Mask = "A";
+            this.TRV.Name = "TRV";
+            this.TRV.Size = new System.Drawing.Size(22, 20);
+            this.TRV.TabIndex = 15;
+            this.TRV.Text = "0";
+            this.TRV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TRV.Value = ((uint)(0u));
             // 
             // label4
             // 
@@ -254,11 +267,22 @@
             this.B_Current.UseVisualStyleBackColor = true;
             this.B_Current.Click += new System.EventHandler(this.B_Current_Click);
             // 
+            // L_TRV
+            // 
+            this.L_TRV.Location = new System.Drawing.Point(153, 66);
+            this.L_TRV.Name = "L_TRV";
+            this.L_TRV.Size = new System.Drawing.Size(31, 13);
+            this.L_TRV.TabIndex = 16;
+            this.L_TRV.Text = "TRV:";
+            this.L_TRV.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // ProfileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(235, 293);
+            this.Controls.Add(this.L_TRV);
+            this.Controls.Add(this.TRV);
             this.Controls.Add(this.B_Current);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.L_Description);
@@ -302,5 +326,7 @@
         private System.Windows.Forms.Label L_Description;
         private System.Windows.Forms.TextBox Description;
         private System.Windows.Forms.Button B_Current;
+        private Controls.HexMaskedTextBox TRV;
+        private System.Windows.Forms.Label L_TRV;
     }
 }

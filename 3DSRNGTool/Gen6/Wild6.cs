@@ -176,7 +176,10 @@ namespace Pk3DSRNGTool
                     if (IsShinyLocked)
                         rt.PID ^= 0x10000000;
                     else
+                    {
                         rt.Shiny = true;
+                        rt.SquareShiny = rt.PRV == TRV;
+                    }
                     break;
                 }
             }

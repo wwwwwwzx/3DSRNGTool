@@ -7,6 +7,7 @@
         public byte Synchro_Stat;
         public bool IV3;
         public int TSV;
+        public byte TRV;
         public bool IsShinyLocked;
         public bool IsForcedShiny;
         public bool ShinyCharm;

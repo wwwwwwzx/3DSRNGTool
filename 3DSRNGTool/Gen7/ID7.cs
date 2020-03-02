@@ -9,6 +9,7 @@ namespace Pk3DSRNGTool
         public ushort TID { get; }
         public ushort SID { get; }
         public ushort TSV { get; }
+        public byte TRV { get; }
         public uint G7TID { get; }
 
         public byte Clock { get; }
@@ -20,6 +21,7 @@ namespace Pk3DSRNGTool
             TID = (ushort)tmp;
             SID = (ushort)(tmp >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
+            TRV = (byte)((TID ^ SID) & 0xF);
             G7TID = tmp % 1000000;
             Clock = (byte)(rand % 17);
         }

@@ -89,6 +89,7 @@ namespace Pk3DSRNGTool
             Key1.Value = (uint)(Eggseed >> 32);
             ShinyCharm.Checked = Properties.Settings.Default.ShinyCharm;
             TSV.Value = Properties.Settings.Default.TSV;
+            TRV.Value = Properties.Settings.Default.TRV;
             Loadlist(Properties.Settings.Default.TSVList);
             Advanced.Checked = Properties.Settings.Default.Advance;
             Status = new uint[] { Properties.Settings.Default.ST0, Properties.Settings.Default.ST1, Properties.Settings.Default.ST2, Properties.Settings.Default.ST3 };
@@ -419,6 +420,10 @@ namespace Pk3DSRNGTool
         {
             Properties.Settings.Default.TSV = (short)TSV.Value;
         }
+        private void TRV_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.TRV = (byte)TRV.Value;
+        }
 
         private void ShinyCharm_CheckedChanged(object sender, EventArgs e)
         {
@@ -538,7 +543,10 @@ namespace Pk3DSRNGTool
             Isforcedshiny = false;
             ShinyLocked.Text = SHINY_STR[Math.Max(lindex, 0), 0];
         }
-
+        private void ShinyOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            SquareShinyOnly.Visible = ShinyOnly.Checked;
+        }
         private void Reset_Click(object sender, EventArgs e)
         {
             PerfectIVs.Value = Method == 0 && Fix3v.Checked ? 3 : 0;
@@ -678,6 +686,7 @@ namespace Pk3DSRNGTool
             var profile = Profiles.GameProfiles[CB_Profile.SelectedIndex];
             Gameversion.SelectedIndex = profile.GameVersion;
             TSV.Value = profile.TSV;
+            TRV.Value = profile.TRV;
             ShinyCharm.Checked = profile.ShinyCharm;
             if (Gen7)
                 Status = profile.Seeds;
@@ -1276,6 +1285,7 @@ namespace Pk3DSRNGTool
             BS = ByStats.Checked ? BS : null,
             Stats = ByStats.Checked ? Stats : null,
             ShinyOnly = ShinyOnly.Checked,
+            SquareShinyOnly = SquareShinyOnly.Checked,
             Skip = DisableFilters.Checked,
             PerfectIVs = (byte)PerfectIVs.Value,
 
@@ -1315,6 +1325,7 @@ namespace Pk3DSRNGTool
             StationaryRNG setting = Gen6 ? new Stationary6() : (StationaryRNG)new Stationary7();
             setting.Synchro_Stat = (byte)(SyncNature.SelectedIndex - 1);
             setting.TSV = (int)TSV.Value;
+            setting.TRV = (byte)TRV.Value;
             setting.Level = (byte)Filter_Lv.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
@@ -1420,6 +1431,7 @@ namespace Pk3DSRNGTool
                 case Lead.WhiteFlute: setting.Flute = -1; break;
             }
             setting.TSV = (int)TSV.Value;
+            setting.TRV = (byte)TRV.Value;
             setting.ShinyCharm = ShinyCharm.Checked;
 
             int slottype = 0;
@@ -1579,6 +1591,7 @@ namespace Pk3DSRNGTool
             setting.FemaleItem = (byte)F_Items.SelectedIndex;
             setting.ShinyCharm = ShinyCharm.Checked;
             setting.TSV = (ushort)TSV.Value;
+            setting.TRV = (byte)TRV.Value;
             setting.Gender = FuncUtil.getGenderRatio((int)Egg_GenderRatio.SelectedValue);
             if (setting is Egg7 setting7)
             {
@@ -1605,6 +1618,7 @@ namespace Pk3DSRNGTool
             return new MainEggRNG()
             {
                 TSV = (int)TSV.Value,
+                TRV = (byte)TRV.Value,
                 ConsiderOtherTSV = ConsiderOtherTSV.Checked,
                 OtherTSVs = OtherTSVList.ToArray()
             };
@@ -1648,7 +1662,7 @@ namespace Pk3DSRNGTool
             dgv_rand64.Visible |= Gen6 && Method == 3;
             dgv_rand64.HeaderText = COLUMN_STR[lindex][Gen6 ? 1 : 0];
             dgv_eggnum.Visible = EggNumber.Checked || RB_EggShortest.Checked;
-            dgv_pid.Visible = dgv_psv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
+            dgv_pid.Visible = dgv_psv.Visible = dgv_prv.Visible = Method < 3 || ShinyCharm.Checked || MM.Checked || MainRNGEgg.Checked || Gen6 && RB_Accept.Checked;
             dgv_pid.Visible &= dgv_EC.Visible = Advanced.Checked;
             dgv_frame0.Visible = gen7fishing && CreateTimeline.Checked || RB_TimelineLeap.Checked;
             dgv_Frame.HeaderText = gen7fishing || dgv_frame0.Visible ? !Overview.Checked || dgv_frame0.Visible ? dgv_IDframe.HeaderText + "2" : dgv_IDframe.HeaderText + "1" : dgv_IDframe.HeaderText;
@@ -1696,7 +1710,7 @@ namespace Pk3DSRNGTool
             var row = DGV.Rows[index];
 
             if (result.Shiny)
-                row.DefaultCellStyle.BackColor = Color.LightCyan;
+                row.DefaultCellStyle.BackColor = result.SquareShiny ? Color.Aqua : Color.LightCyan;
             if (Gen6 && Method == 3)
             {
                 if (!MM.Checked && !ShinyCharm.Checked)

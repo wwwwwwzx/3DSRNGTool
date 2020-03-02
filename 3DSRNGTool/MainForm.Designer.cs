@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,6 +38,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties1 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties2 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
             Pk3DSRNGTool.Controls.CheckBoxProperties checkBoxProperties3 = new Pk3DSRNGTool.Controls.CheckBoxProperties();
@@ -53,6 +54,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Advanced = new System.Windows.Forms.CheckBox();
             this.ShinyCharm = new System.Windows.Forms.CheckBox();
@@ -75,6 +77,7 @@
             this.dgv_TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_TSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_TRV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_clock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ID_rand64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -326,6 +329,7 @@
             this.AlwaysSynced = new System.Windows.Forms.CheckBox();
             this.Fix3v = new System.Windows.Forms.CheckBox();
             this.Filters = new System.Windows.Forms.GroupBox();
+            this.SquareShinyOnly = new System.Windows.Forms.CheckBox();
             this.ShinyRemind = new System.Windows.Forms.CheckBox();
             this.Filter_Lv = new System.Windows.Forms.NumericUpDown();
             this.L_S = new System.Windows.Forms.Label();
@@ -401,6 +405,8 @@
             this.L_Profile = new System.Windows.Forms.Label();
             this.B_AddProfile = new System.Windows.Forms.Button();
             this.Seed = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
+            this.L_TRV = new System.Windows.Forms.Label();
+            this.TRV = new Pk3DSRNGTool.Controls.HexMaskedTextBox();
             this.dgv_eggnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_frame0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -417,6 +423,7 @@
             this.dgv_synced = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_hiddenpower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_psv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_prv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_ability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -565,7 +572,7 @@
             // 
             this.L_TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_TSV.AutoSize = true;
-            this.L_TSV.Location = new System.Drawing.Point(829, 17);
+            this.L_TSV.Location = new System.Drawing.Point(784, 17);
             this.L_TSV.Name = "L_TSV";
             this.L_TSV.Size = new System.Drawing.Size(28, 13);
             this.L_TSV.TabIndex = 84;
@@ -575,7 +582,7 @@
             // 
             this.L_Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_Seed.AutoSize = true;
-            this.L_Seed.Location = new System.Drawing.Point(727, 17);
+            this.L_Seed.Location = new System.Drawing.Point(682, 17);
             this.L_Seed.Name = "L_Seed";
             this.L_Seed.Size = new System.Drawing.Size(32, 13);
             this.L_Seed.TabIndex = 83;
@@ -585,7 +592,7 @@
             // 
             this.TSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TSV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TSV.Location = new System.Drawing.Point(859, 12);
+            this.TSV.Location = new System.Drawing.Point(814, 12);
             this.TSV.Maximum = new decimal(new int[] {
             4095,
             0,
@@ -629,6 +636,7 @@
             this.dgv_synced,
             this.dgv_hiddenpower,
             this.dgv_psv,
+            this.dgv_prv,
             this.dgv_gender,
             this.dgv_ability,
             this.dgv_delay,
@@ -646,25 +654,25 @@
             this.dgv_time,
             this.dgv_tinystate});
             this.DGV.ContextMenuStrip = this.DGVMS;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV.DefaultCellStyle = dataGridViewCellStyle13;
-            this.DGV.Location = new System.Drawing.Point(12, 340);
-            this.DGV.Name = "DGV";
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.Format = "D6";
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV.DefaultCellStyle = dataGridViewCellStyle14;
+            this.DGV.Location = new System.Drawing.Point(12, 340);
+            this.DGV.Name = "DGV";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Format = "D6";
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DGV.RowHeadersWidth = 18;
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DGV.RowTemplate.Height = 21;
@@ -746,7 +754,7 @@
             "Moon",
             "Ultra Sun",
             "Ultra Moon"});
-            this.Gameversion.Location = new System.Drawing.Point(646, 13);
+            this.Gameversion.Location = new System.Drawing.Point(601, 13);
             this.Gameversion.Name = "Gameversion";
             this.Gameversion.Size = new System.Drawing.Size(78, 21);
             this.Gameversion.TabIndex = 91;
@@ -756,7 +764,7 @@
             // 
             this.L_GameVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.L_GameVersion.AutoSize = true;
-            this.L_GameVersion.Location = new System.Drawing.Point(573, 17);
+            this.L_GameVersion.Location = new System.Drawing.Point(528, 17);
             this.L_GameVersion.Name = "L_GameVersion";
             this.L_GameVersion.Size = new System.Drawing.Size(55, 13);
             this.L_GameVersion.TabIndex = 90;
@@ -777,6 +785,7 @@
             this.dgv_TID,
             this.dgv_SID,
             this.dgv_TSV,
+            this.dgv_TRV,
             this.dgv_clock,
             this.dgv_ID_rand,
             this.dgv_ID_rand64,
@@ -802,8 +811,8 @@
             // dgv_gen7ID
             // 
             this.dgv_gen7ID.DataPropertyName = "G7TID";
-            dataGridViewCellStyle15.Format = "D6";
-            this.dgv_gen7ID.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle16.Format = "D6";
+            this.dgv_gen7ID.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgv_gen7ID.HeaderText = "Gen7TID";
             this.dgv_gen7ID.Name = "dgv_gen7ID";
             this.dgv_gen7ID.Width = 60;
@@ -811,8 +820,8 @@
             // dgv_TID
             // 
             this.dgv_TID.DataPropertyName = "TID";
-            dataGridViewCellStyle16.Format = "D5";
-            this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle17.Format = "D5";
+            this.dgv_TID.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgv_TID.HeaderText = "TID";
             this.dgv_TID.Name = "dgv_TID";
             this.dgv_TID.Width = 50;
@@ -820,8 +829,8 @@
             // dgv_SID
             // 
             this.dgv_SID.DataPropertyName = "SID";
-            dataGridViewCellStyle17.Format = "D5";
-            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.Format = "D5";
+            this.dgv_SID.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_SID.HeaderText = "SID";
             this.dgv_SID.Name = "dgv_SID";
             this.dgv_SID.Width = 50;
@@ -829,11 +838,21 @@
             // dgv_TSV
             // 
             this.dgv_TSV.DataPropertyName = "TSV";
-            dataGridViewCellStyle18.Format = "D4";
-            this.dgv_TSV.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle19.Format = "D4";
+            this.dgv_TSV.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgv_TSV.HeaderText = "TSV";
             this.dgv_TSV.Name = "dgv_TSV";
             this.dgv_TSV.Width = 40;
+            // 
+            // dgv_TRV
+            // 
+            this.dgv_TRV.DataPropertyName = "TRV";
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.Format = "X1";
+            this.dgv_TRV.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgv_TRV.HeaderText = "TRV";
+            this.dgv_TRV.Name = "dgv_TRV";
+            this.dgv_TRV.Width = 40;
             // 
             // dgv_clock
             // 
@@ -845,9 +864,9 @@
             // dgv_ID_rand
             // 
             this.dgv_ID_rand.DataPropertyName = "Rand";
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle19.Format = "X8";
-            this.dgv_ID_rand.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle21.Format = "X8";
+            this.dgv_ID_rand.DefaultCellStyle = dataGridViewCellStyle21;
             this.dgv_ID_rand.HeaderText = "Rand#";
             this.dgv_ID_rand.Name = "dgv_ID_rand";
             this.dgv_ID_rand.Width = 75;
@@ -855,9 +874,9 @@
             // dgv_ID_rand64
             // 
             this.dgv_ID_rand64.DataPropertyName = "Rand64";
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle20.Format = "X16";
-            this.dgv_ID_rand64.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle22.Format = "X16";
+            this.dgv_ID_rand64.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgv_ID_rand64.HeaderText = "Random Number";
             this.dgv_ID_rand64.Name = "dgv_ID_rand64";
             this.dgv_ID_rand64.Width = 130;
@@ -865,8 +884,8 @@
             // dgv_ID_state
             // 
             this.dgv_ID_state.DataPropertyName = "Status";
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Consolas", 9F);
-            this.dgv_ID_state.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Consolas", 9F);
+            this.dgv_ID_state.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgv_ID_state.HeaderText = "Status";
             this.dgv_ID_state.Name = "dgv_ID_state";
             this.dgv_ID_state.Width = 260;
@@ -879,7 +898,7 @@
             this.M_Option});
             this.MS_Toolkit.Location = new System.Drawing.Point(4, 6);
             this.MS_Toolkit.Name = "MS_Toolkit";
-            this.MS_Toolkit.Size = new System.Drawing.Size(117, 24);
+            this.MS_Toolkit.Size = new System.Drawing.Size(115, 24);
             this.MS_Toolkit.TabIndex = 93;
             this.MS_Toolkit.Text = "Toolkit";
             // 
@@ -895,7 +914,7 @@
             this.M_KeyBV,
             this.M_MiscRNGTool});
             this.M_Tool.Name = "M_Tool";
-            this.M_Tool.Size = new System.Drawing.Size(48, 20);
+            this.M_Tool.Size = new System.Drawing.Size(46, 20);
             this.M_Tool.Text = "Tools";
             // 
             // M_Gen7MainRNGTool
@@ -2492,7 +2511,7 @@
             this.L_Slots.AutoSize = true;
             this.L_Slots.Location = new System.Drawing.Point(203, 116);
             this.L_Slots.Name = "L_Slots";
-            this.L_Slots.Size = new System.Drawing.Size(31, 13);
+            this.L_Slots.Size = new System.Drawing.Size(28, 13);
             this.L_Slots.TabIndex = 66;
             this.L_Slots.Text = "种类";
             // 
@@ -2787,7 +2806,7 @@
             this.GenderLocked.AutoSize = true;
             this.GenderLocked.Location = new System.Drawing.Point(126, 245);
             this.GenderLocked.Name = "GenderLocked";
-            this.GenderLocked.Size = new System.Drawing.Size(74, 17);
+            this.GenderLocked.Size = new System.Drawing.Size(71, 17);
             this.GenderLocked.TabIndex = 44;
             this.GenderLocked.Text = "固定性别";
             this.GenderLocked.UseVisualStyleBackColor = true;
@@ -2994,7 +3013,7 @@
             this.L_Species.AutoSize = true;
             this.L_Species.Location = new System.Drawing.Point(12, 27);
             this.L_Species.Name = "L_Species";
-            this.L_Species.Size = new System.Drawing.Size(31, 13);
+            this.L_Species.Size = new System.Drawing.Size(28, 13);
             this.L_Species.TabIndex = 74;
             this.L_Species.Text = "种类";
             // 
@@ -3658,7 +3677,7 @@
             this.L_GenderList.AutoSize = true;
             this.L_GenderList.Location = new System.Drawing.Point(6, 202);
             this.L_GenderList.Name = "L_GenderList";
-            this.L_GenderList.Size = new System.Drawing.Size(190, 13);
+            this.L_GenderList.Size = new System.Drawing.Size(181, 13);
             this.L_GenderList.TabIndex = 105;
             this.L_GenderList.Text = "性别列表(0:无性别,1:有性别,2:梦幻)";
             // 
@@ -3801,7 +3820,7 @@
             this.L_Category.AutoSize = true;
             this.L_Category.Location = new System.Drawing.Point(7, 15);
             this.L_Category.Name = "L_Category";
-            this.L_Category.Size = new System.Drawing.Size(31, 13);
+            this.L_Category.Size = new System.Drawing.Size(28, 13);
             this.L_Category.TabIndex = 74;
             this.L_Category.Text = "分类";
             // 
@@ -3819,7 +3838,7 @@
             this.L_GenderRatio.AutoSize = true;
             this.L_GenderRatio.Location = new System.Drawing.Point(187, 54);
             this.L_GenderRatio.Name = "L_GenderRatio";
-            this.L_GenderRatio.Size = new System.Drawing.Size(43, 13);
+            this.L_GenderRatio.Size = new System.Drawing.Size(40, 13);
             this.L_GenderRatio.TabIndex = 72;
             this.L_GenderRatio.Text = "性别比";
             // 
@@ -3857,6 +3876,7 @@
             // 
             // Filters
             // 
+            this.Filters.Controls.Add(this.SquareShinyOnly);
             this.Filters.Controls.Add(this.ShinyRemind);
             this.Filters.Controls.Add(this.Filter_Lv);
             this.Filters.Controls.Add(this.L_S);
@@ -3899,6 +3919,18 @@
             this.Filters.TabIndex = 4;
             this.Filters.TabStop = false;
             this.Filters.Text = "筛选";
+            // 
+            // SquareShinyOnly
+            // 
+            this.SquareShinyOnly.AutoSize = true;
+            this.SquareShinyOnly.Location = new System.Drawing.Point(363, 221);
+            this.SquareShinyOnly.Margin = new System.Windows.Forms.Padding(0);
+            this.SquareShinyOnly.Name = "SquareShinyOnly";
+            this.SquareShinyOnly.Size = new System.Drawing.Size(35, 17);
+            this.SquareShinyOnly.TabIndex = 102;
+            this.SquareShinyOnly.Text = "◆";
+            this.SquareShinyOnly.UseVisualStyleBackColor = true;
+            this.SquareShinyOnly.Visible = false;
             // 
             // ShinyRemind
             // 
@@ -4306,6 +4338,7 @@
             this.ShinyOnly.TabIndex = 8;
             this.ShinyOnly.Text = "仅异色帧";
             this.ShinyOnly.UseVisualStyleBackColor = true;
+            this.ShinyOnly.CheckedChanged += new System.EventHandler(this.ShinyOnly_CheckedChanged);
             // 
             // ParentNature
             // 
@@ -4393,7 +4426,7 @@
             this.L_Slot.AutoSize = true;
             this.L_Slot.Location = new System.Drawing.Point(193, 55);
             this.L_Slot.Name = "L_Slot";
-            this.L_Slot.Size = new System.Drawing.Size(31, 13);
+            this.L_Slot.Size = new System.Drawing.Size(28, 13);
             this.L_Slot.TabIndex = 82;
             this.L_Slot.Text = "种类";
             // 
@@ -4517,7 +4550,7 @@
             this.L_gender.AutoSize = true;
             this.L_gender.Location = new System.Drawing.Point(193, 108);
             this.L_gender.Name = "L_gender";
-            this.L_gender.Size = new System.Drawing.Size(31, 13);
+            this.L_gender.Size = new System.Drawing.Size(28, 13);
             this.L_gender.TabIndex = 39;
             this.L_gender.Text = "性别";
             // 
@@ -4798,7 +4831,7 @@
             "Moon",
             "Ultra Sun",
             "Ultra Moon"});
-            this.CB_Profile.Location = new System.Drawing.Point(451, 13);
+            this.CB_Profile.Location = new System.Drawing.Point(406, 13);
             this.CB_Profile.Name = "CB_Profile";
             this.CB_Profile.Size = new System.Drawing.Size(87, 21);
             this.CB_Profile.TabIndex = 95;
@@ -4807,7 +4840,7 @@
             // L_Profile
             // 
             this.L_Profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Profile.Location = new System.Drawing.Point(381, 16);
+            this.L_Profile.Location = new System.Drawing.Point(336, 16);
             this.L_Profile.Name = "L_Profile";
             this.L_Profile.Size = new System.Drawing.Size(64, 15);
             this.L_Profile.TabIndex = 94;
@@ -4817,7 +4850,7 @@
             // B_AddProfile
             // 
             this.B_AddProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_AddProfile.Location = new System.Drawing.Point(547, 13);
+            this.B_AddProfile.Location = new System.Drawing.Point(502, 13);
             this.B_AddProfile.Name = "B_AddProfile";
             this.B_AddProfile.Size = new System.Drawing.Size(20, 21);
             this.B_AddProfile.TabIndex = 96;
@@ -4829,7 +4862,7 @@
             // 
             this.Seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Seed.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seed.Location = new System.Drawing.Point(759, 12);
+            this.Seed.Location = new System.Drawing.Point(714, 12);
             this.Seed.Mask = "AAAAAAAA";
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(64, 22);
@@ -4838,6 +4871,30 @@
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Seed.Value = ((uint)(0u));
             this.Seed.TextChanged += new System.EventHandler(this.Seed_ValueChanged);
+            // 
+            // L_TRV
+            // 
+            this.L_TRV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_TRV.AutoSize = true;
+            this.L_TRV.Location = new System.Drawing.Point(874, 17);
+            this.L_TRV.Name = "L_TRV";
+            this.L_TRV.Size = new System.Drawing.Size(29, 13);
+            this.L_TRV.TabIndex = 97;
+            this.L_TRV.Text = "TRV";
+            // 
+            // TRV
+            // 
+            this.TRV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TRV.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TRV.Location = new System.Drawing.Point(906, 12);
+            this.TRV.Mask = "A";
+            this.TRV.Name = "TRV";
+            this.TRV.Size = new System.Drawing.Size(16, 22);
+            this.TRV.TabIndex = 98;
+            this.TRV.Text = "0";
+            this.TRV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TRV.Value = ((uint)(0u));
+            this.TRV.TextChanged += new System.EventHandler(this.TRV_ValueChanged);
             // 
             // dgv_eggnum
             // 
@@ -4961,6 +5018,16 @@
             this.dgv_psv.Name = "dgv_psv";
             this.dgv_psv.Width = 40;
             // 
+            // dgv_prv
+            // 
+            this.dgv_prv.DataPropertyName = "PRV";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle5.Format = "X1";
+            this.dgv_prv.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_prv.HeaderText = "PRV";
+            this.dgv_prv.Name = "dgv_prv";
+            this.dgv_prv.Width = 20;
+            // 
             // dgv_gender
             // 
             this.dgv_gender.DataPropertyName = "GenderStr";
@@ -4978,9 +5045,9 @@
             // dgv_delay
             // 
             this.dgv_delay.DataPropertyName = "Delay";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "+0;-#";
-            this.dgv_delay.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "+0;-#";
+            this.dgv_delay.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_delay.HeaderText = "延时";
             this.dgv_delay.Name = "dgv_delay";
             this.dgv_delay.Width = 40;
@@ -5035,9 +5102,9 @@
             // dgv_rand
             // 
             this.dgv_rand.DataPropertyName = "Rand";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle6.Format = "X8";
-            this.dgv_rand.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle7.Format = "X8";
+            this.dgv_rand.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_rand.HeaderText = "乱数值";
             this.dgv_rand.Name = "dgv_rand";
             this.dgv_rand.Width = 65;
@@ -5045,9 +5112,9 @@
             // dgv_rand64
             // 
             this.dgv_rand64.DataPropertyName = "Rand64";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle7.Format = "X16";
-            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle8.Format = "X16";
+            this.dgv_rand64.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_rand64.HeaderText = "乱数值64";
             this.dgv_rand64.Name = "dgv_rand64";
             this.dgv_rand64.Visible = false;
@@ -5056,9 +5123,9 @@
             // dgv_pid
             // 
             this.dgv_pid.DataPropertyName = "PID";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle8.Format = "X8";
-            this.dgv_pid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle9.Format = "X8";
+            this.dgv_pid.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_pid.HeaderText = "PID";
             this.dgv_pid.Name = "dgv_pid";
             this.dgv_pid.Width = 65;
@@ -5066,9 +5133,9 @@
             // dgv_EC
             // 
             this.dgv_EC.DataPropertyName = "EC";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9F);
-            dataGridViewCellStyle9.Format = "X8";
-            this.dgv_EC.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9F);
+            dataGridViewCellStyle10.Format = "X8";
+            this.dgv_EC.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_EC.HeaderText = "加密常数";
             this.dgv_EC.Name = "dgv_EC";
             this.dgv_EC.Width = 65;
@@ -5076,8 +5143,8 @@
             // dgv_state
             // 
             this.dgv_state.DataPropertyName = "State";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_state.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_state.HeaderText = "状态";
             this.dgv_state.Name = "dgv_state";
             this.dgv_state.Visible = false;
@@ -5086,8 +5153,8 @@
             // dgv_time
             // 
             this.dgv_time.DataPropertyName = "RealTime";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgv_time.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgv_time.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgv_time.HeaderText = "时间";
             this.dgv_time.Name = "dgv_time";
             this.dgv_time.Width = 80;
@@ -5095,8 +5162,8 @@
             // dgv_tinystate
             // 
             this.dgv_tinystate.DataPropertyName = "TinyState";
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 9F);
-            this.dgv_tinystate.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Consolas", 9F);
+            this.dgv_tinystate.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgv_tinystate.HeaderText = "Tiny状态";
             this.dgv_tinystate.Name = "dgv_tinystate";
             this.dgv_tinystate.Visible = false;
@@ -5107,6 +5174,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 612);
+            this.Controls.Add(this.TRV);
+            this.Controls.Add(this.L_TRV);
             this.Controls.Add(this.B_AddProfile);
             this.Controls.Add(this.CB_Profile);
             this.Controls.Add(this.MS_Toolkit);
@@ -5275,15 +5344,6 @@
         private System.Windows.Forms.ToolTip DGVToolTip;
         private System.Windows.Forms.DataGridView DGV;
         private System.Windows.Forms.ToolStripMenuItem SetAsStarting;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_IDframe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gen7ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.MenuStrip MS_Toolkit;
         private System.Windows.Forms.ToolStripMenuItem M_Tool;
         private System.Windows.Forms.ToolStripMenuItem M_Gen7MainRNGTool;
@@ -5606,6 +5666,19 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown DelayMax;
         private System.Windows.Forms.NumericUpDown DelayMin;
+        private System.Windows.Forms.Label L_TRV;
+        private Controls.HexMaskedTextBox TRV;
+        private System.Windows.Forms.CheckBox SquareShinyOnly;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_IDframe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gen7ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_SID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TRV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_clock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_rand64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ID_state;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_eggnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_frame0;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_Frame;
@@ -5622,6 +5695,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_synced;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_hiddenpower;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_psv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_prv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ability;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_delay;

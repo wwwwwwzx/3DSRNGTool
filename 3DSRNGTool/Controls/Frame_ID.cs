@@ -14,6 +14,7 @@ namespace Pk3DSRNGTool
 
         public int FrameNum { get; private set; }
         public ushort TSV => id.TSV;
+        public byte TRV => id.TRV;
         public ushort TID => id.TID;
         public ushort SID => id.SID;
 

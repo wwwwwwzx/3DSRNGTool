@@ -3,6 +3,7 @@
     public abstract class WildRNG : IGenerator
     {
         public int TSV;
+        public byte TRV;
         public bool ShinyCharm;
         public byte Synchro_Stat;
         public bool Static;

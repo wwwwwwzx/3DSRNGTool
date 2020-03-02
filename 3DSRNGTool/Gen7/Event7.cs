@@ -30,7 +30,8 @@ namespace Pk3DSRNGTool
             {
                 case 0: //Random PID
                     rt.PID = (uint)getrand;
-                    rt.Shiny = rt.PSV == TSV;
+                    if (rt.Shiny = rt.PSV == TSV)
+                        rt.SquareShiny = rt.PRV == TRV;
                     break;
                 case 1: //Random NonShiny
                     rt.PID = (uint)getrand;
@@ -40,12 +41,14 @@ namespace Pk3DSRNGTool
                 case 2: //Random Shiny
                     rt.PID = (uint)getrand;
                     rt.Shiny = true;
+                    rt.SquareShiny = true;
                     if (OtherInfo)
                         rt.PID = (uint)(((TID ^ SID ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF));
                     break;
                 case 3: //Specified
                     rt.PID = PID;
-                    rt.Shiny = rt.PSV == TSV;
+                    if (rt.Shiny = rt.PSV == TSV)
+                        rt.SquareShiny = rt.PRV == TRV;
                     break;
             }
 

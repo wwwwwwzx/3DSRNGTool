@@ -15,7 +15,7 @@ namespace Pk3DSRNGTool.Controls
         public uint Value
         {
             get => uint.TryParse(Text, System.Globalization.NumberStyles.HexNumber, null, out uint value) ? value : 0;
-            set => Text = value.ToString("X8");
+            set => Text = value.ToString("X" + Mask.Length.ToString());
         }
 
         protected override void OnEnter(EventArgs e)

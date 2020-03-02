@@ -3,6 +3,7 @@
     public abstract class EventRNG : IPKM, IGenerator
     {
         public ushort TSV;
+        public byte TRV;
         public byte IVsCount;
         public bool YourID;
         public bool IsEgg;
