@@ -65,6 +65,20 @@ namespace Pk3DSRNGTool
                 }
             }
 
+            private ushort _TRV;
+            public ushort TRV
+            {
+                get { return _TRV; }
+                set
+                {
+                    if (_TRV != value)
+                    {
+                        _TRV = value;
+                        NotifyChanged("TRV");
+                    }
+                }
+            }
+
             private bool _ShinyCharm;
             [DisplayName("Shiny Charm?")]
             public bool ShinyCharm

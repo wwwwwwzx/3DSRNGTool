@@ -50,6 +50,7 @@ namespace Pk3DSRNGTool
         public char Sync => rt.Synchronize ? 'O' : 'X';
         public string HiddenPower => StringItem.hpstr[rt.hiddenpower + 1];
         public uint PSV => rt.PSV;
+        public uint PRV => rt.PRV;
         public string GenderStr => StringItem.genderstr[rt.Gender];
         public string AbilityStr => StringItem.abilitynumstr[rt.Ability];
         public int Delay => (rt as Result7)?.FrameDelayUsed ?? 0;

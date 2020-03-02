@@ -7,6 +7,7 @@ namespace Pk3DSRNGTool.Core
         public bool[] Nature;
         public bool[] HPType;
         public bool ShinyOnly;
+        public bool SquareShinyOnly;
         public byte Ability;
         public byte Gender;
         public int[] IVup, IVlow, Stats;
@@ -74,8 +75,13 @@ namespace Pk3DSRNGTool.Core
                  if (Ball != 0 && Ball != egg.Ball || 
                     NatureInheritance != 0 && (egg.BE_InheritParents == true ? 1 : 2) != NatureInheritance)
                     return false;
-            if (ShinyOnly && !result.Shiny)
-                return false;
+            if (ShinyOnly)
+            {
+                if (!result.Shiny)
+                    return false;
+                if (SquareShinyOnly && !result.SquareShiny)
+                    return false;
+            }
             if (BS == null ? !CheckIVs(result) : !CheckStats(result))
                 return false;
             if (!CheckHiddenPower(result))

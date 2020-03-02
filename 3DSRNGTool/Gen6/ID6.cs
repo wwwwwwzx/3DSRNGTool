@@ -11,6 +11,7 @@ namespace Pk3DSRNGTool
         public ushort TID { get; }
         public ushort SID { get; }
         public ushort TSV { get; }
+        public byte TRV { get; }
 
         public ID6(TinyMT rng)
         {
@@ -19,6 +20,7 @@ namespace Pk3DSRNGTool
             TID = (ushort)RandNum;
             SID = (ushort)(RandNum >> 16);
             TSV = (ushort)((TID ^ SID) >> 4);
+            TRV = (byte)((TID ^ SID) & 0xF);
         }
     }
 }

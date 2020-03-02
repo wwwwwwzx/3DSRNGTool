@@ -5,5 +5,6 @@
         ushort TID { get; }
         ushort SID { get; }
         ushort TSV { get; }
+        byte TRV { get; }
     }
 }

@@ -62,13 +62,17 @@ namespace Pk3DSRNGTool
                     if (IsShinyLocked)
                         rt.PID ^= 0x10000000;
                     else
+                    {
                         rt.Shiny = true;
+                        rt.SquareShiny = rt.PRV == TRV;
+                    }
                     break;
                 }
                 else if (IsForcedShiny)
                 {
                     rt.Shiny = true;
-                    rt.PID = (uint)((((TSV << 4) ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF)); // Not accurate
+                    rt.SquareShiny = true;
+                    rt.PID = (uint)(((((TSV << 4) + TRV) ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF));
                 }
             }
 
@@ -158,6 +162,7 @@ namespace Pk3DSRNGTool
             rt.PID = getpid;
             var tmp = rt.PSV;
             rt.Shiny = tmp == TSV || ConsiderOtherTSV && OtherTSVs.Contains((int)tmp);
+            rt.SquareShiny = tmp == TSV && rt.PRV == TRV;
             return rt;
         }
     }

@@ -88,7 +88,12 @@ namespace Pk3DSRNGTool
                 for (int i = PID_Rerollcount; i > 0; i--)
                 {
                     egg.PID = getrand;
-                    if (egg.PSV == TSV) { egg.Shiny = true; return egg; }
+                    if (egg.PSV == TSV) 
+                    { 
+                        egg.Shiny = true;
+                        egg.SquareShiny = egg.PRV == TRV;
+                        return egg; 
+                    }
                 }
 
             // Other TSVs
