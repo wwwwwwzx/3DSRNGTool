@@ -1404,12 +1404,16 @@ namespace Pk3DSRNGTool
             e.Gender = (byte)Event_Gender.SelectedIndex;
             e.IsEgg = IsEgg.Checked;
             if (e.YourID)
+            {
                 e.TSV = (ushort)TSV.Value;
+                e.TRV = (byte)TRV.Value;
+            }
             else
             {
                 e.TID = (ushort)Event_TID.Value;
                 e.SID = (ushort)Event_SID.Value;
                 e.TSV = (ushort)((e.TID ^ e.SID) >> 4);
+                e.TRV = (byte)((e.TID ^ e.SID) & 0xF);
                 e.PID = Event_PID.Value;
             }
             e.GetGenderSetting();
