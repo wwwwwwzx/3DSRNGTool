@@ -31,7 +31,8 @@ namespace Pk3DSRNGTool
             string output = string.Empty;
             while (slot < 6 && null != (pkx = dumper.TryGetPKM(slot++)) && pkx.species != 0)
                 output += (slot == 1 ? string.Empty : Environment.NewLine)
-                    + speciestr[pkx.species] + "\tTSV: " + pkx.TSV.ToString("D4");
+                    + speciestr[pkx.species] + "\tTSV: " + pkx.TSV.ToString("D4")
+                    +"\tTRV: " + pkx.TSV.ToString("X1");
             if (output.Length > 0)
                 MessageBox.Show(output, "Successful Dump!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else

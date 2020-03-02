@@ -1875,6 +1875,9 @@ namespace Pk3DSRNGTool
                 case "TSV":
                     TSV.Value = (int)data;
                     return;
+                case "TRV":
+                    TRV.Value = (byte)data;
+                    return;
                 case "Seed":
                     Seed.Value = (uint)data;
                     return;

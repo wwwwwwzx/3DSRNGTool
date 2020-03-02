@@ -19,6 +19,7 @@ namespace Pk3DSRNGTool
         public ushort TID => BitConverter.ToUInt16(Data, 0xC);
         public ushort SID => BitConverter.ToUInt16(Data, 0xE);
         public ushort TSV => (ushort)((TID ^ SID) >> 4);
+        public byte TRV => (byte)((TID ^ SID) & 0xF);
         public bool IsCorrupted
         {
             get
