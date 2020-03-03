@@ -8,7 +8,8 @@ namespace Pk3DSRNGTool
         private static ulong getrand => RNGPool.getrand64;
         private static void time_elapse(int n) => RNGPool.time_elapse7(n);
         private static void Advance(int n) => RNGPool.Advance(n);
-        
+
+        private bool Fateful;
         private bool IsPelago;
         public byte PelagoShift;
         public bool Trade;
@@ -64,7 +65,7 @@ namespace Pk3DSRNGTool
                     else
                     {
                         rt.Shiny = true;
-                        rt.SquareShiny = rt.PRV == TRV;
+                        rt.SquareShiny = Fateful || rt.PRV == TRV;
                     }
                     break;
                 }
@@ -142,6 +143,7 @@ namespace Pk3DSRNGTool
             {
                 TSV = (int)pm7.OTTSV;
                 Trade = !pm7.Gift;
+                Fateful = pm7.Gift;
             }
             if (pm7.iv3)
                 PerfectIVCount = 3;
