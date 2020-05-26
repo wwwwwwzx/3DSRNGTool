@@ -80,7 +80,7 @@ namespace Pk3DSRNGTool
                 {
                     egg.Shiny = true;
                     egg.SquareShiny = egg.PRV == TRV;
-                    return egg;
+                    break;
                 }
             }
 
