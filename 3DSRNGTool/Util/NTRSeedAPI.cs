@@ -212,8 +212,7 @@ namespace Pk3DSRNGTool
                 return;
             var TID = BitConverter.ToUInt16(FullID, 0);
             var SID = BitConverter.ToUInt16(FullID, 2);
-            SendMsg((TID ^ SID) >> 4, "TSV");
-            SendMsg((TID ^ SID) & 0xF, "TRV");
+            SendMsg(TID ^ SID, "TSV");
             if (TID == 0 && SID == 0 && Gameversion < 4) // New gen6 save
                 ReadTiny("IDSeed");
         }

@@ -1877,10 +1877,8 @@ namespace Pk3DSRNGTool
                     Gameversion.SelectedIndex = newver;
                     return;
                 case "TSV":
-                    TSV.Value = (int)data;
-                    return;
-                case "TRV":
-                    TRV.Value = (byte)data;
+                    TSV.Value = (int)data >> 4;
+                    TRV.Value = (byte)((int)data & 0xF);
                     return;
                 case "Seed":
                     Seed.Value = (uint)data;
