@@ -77,8 +77,8 @@
             new byte[] { 25,25,35,15, },
             new byte[] { 25,25,25,05,05,15, }, // 9
             new byte[] { 15,15,15,35,05,15, },
-            new byte[] { 44,30,25,01, }, // 11
-            new byte[] { 40,25,25,10, },
+            new byte[] { 44,30,01,25, }, // 11  // Swap Feebas (1%) and Basculin (25%) slots
+            new byte[] { 40,25,10,25, },
             new byte[] { 55,40,05 }, // 13
             new byte[] { 45,20,35, },
             new byte[] { 50,30,05,15 }, // 15

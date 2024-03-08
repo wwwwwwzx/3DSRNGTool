@@ -1529,7 +1529,7 @@ namespace Pk3DSRNGTool
                 NPC = 2, Lapras = true,
                 LevelMax = 16,
                 SlotType = 11,
-                Species = new[] {129,118,550,349},
+                Species = new[] {129,118,349,550},
             },
             new FishingArea7
             {

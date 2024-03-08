@@ -124,6 +124,7 @@ namespace Pk3DSRNGTool.Core
         #region Gen6 Tiny Timeline
         // Without timeline input
         public static bool TinySynced;
+        public static byte HASlot;  // Horde HA, will be used in Main Form
         public static TinyStatus tinystatus;
         public static Horde horde;
 
