@@ -10,6 +10,7 @@ namespace Pk3DSRNGTool
         private static uint rand => RNGPool.getrand;
         public static byte Rate1 = 3;
         public static byte Rate2 = 3;
+        public static bool[] RandomIVs = new bool[6];
         public static SOSResult Generate()
         {
             var rt = new SOSResult();
@@ -24,14 +25,16 @@ namespace Pk3DSRNGTool
                 rt.Slot = getWeatherSlot(rand % 100);
             if (rt.Slot == 0)
                 rt.Slot = getSOSSlot(rand % 100);
-            rt.Level = (byte)(rand % 4);
+            rt.Level = (byte)(rand % (uint)(MaxLevel - MinLevel + 1) + MinLevel);
             RNGPool.Advance(1);
 
             rt.HeldItem = (byte)(rand % 100);
 
             // Chaining bonus
+            RandomIVs.CopyTo(rt.BumpedIVs, 0);
             while (rt.BumpedIVs.Count(iv => iv) < FlawlessCount)
                 rt.BumpedIVs[rand % 6] = true;
+
             rt.HA = rand % 100 < HARate;
 
             if (rt.Call1 >= Rate1)
@@ -60,6 +63,7 @@ namespace Pk3DSRNGTool
         }
 
         public static bool Weather;
+        public static byte MinLevel, MaxLevel;
         public static byte getWeatherSlot(uint tmp)
         {
             if (tmp < 1)  // 1%

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 using Pk3DSRNGTool.RNG;
 using Pk3DSRNGTool.Core;
@@ -21,7 +22,7 @@ namespace Pk3DSRNGTool
             Range.Maximum = Value.Maximum = uint.MaxValue;
             JumpFrame.Maximum =
             StartingFrame.Maximum = MaxResults.Maximum = FuncUtil.MAXFRAME;
-            MaxResults.Value = 200000;
+            MaxResults.Value = 5000;
 
             BallBonus.DisplayMember = "Text";
             BallBonus.ValueMember = "Value";
@@ -55,6 +56,7 @@ namespace Pk3DSRNGTool
             Slot.BlankText = "-";
             Slot.CheckBoxItems[0].Checked = true;
             Slot.CheckBoxItems[0].Checked = false;
+
         }
         private void MiscRNGTool_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -76,7 +78,7 @@ namespace Pk3DSRNGTool
             catch { };
         }
 
-        public void UpdateInfo(int catchrate = -1, int HP = -1, bool updateseed = false, bool updategame = false)
+        public void UpdateInfo(int catchrate = -1, int HP = -1, bool updateseed = false, bool updategame = false, byte LevelMin = 1, byte LevelMax = 100)
         {
             if (updateseed && RNG.SelectedIndex != 1)
                 Seed.Value = (uint)Properties.Settings.Default.Seed;
@@ -89,6 +91,15 @@ namespace Pk3DSRNGTool
                 HPMax.Value = HP;
             if (catchrate > -1)
                 CatchRate.Value = catchrate;
+            try
+            {
+                minLevel.Value = LevelMin;
+                maxLevel.Value = LevelMax;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                minLevel.Value = 1;
+            }
         }
 
         #region Core
@@ -101,10 +112,12 @@ namespace Pk3DSRNGTool
                 Pokerus = RB_Pokerus.Visible && RB_Pokerus.Checked && Filters.SelectedTab == TP_Misc,
                 Capture = Filters.SelectedTab == TP_Capture,
                 Success = SuccessOnly.Checked,
-                SOS = SOS,
+                SOS = IsSOS,
+                IgnoreSOSFilters = NoSOSFilters.Checked,
                 Sync = Sync.Checked,
-                HA = HA.Checked && SOS,
-                Slot = SOS ? Slot.CheckBoxItems.Select(e => e.Checked).ToArray() : null,
+                HA = HA.Checked && IsSOS,
+                TargetLevel = (byte)Desired_Level.Value,
+                Slot = IsSOS ? Slot.CheckBoxItems.Select(e => e.Checked).ToArray() : null,
                 CurrentSeed = string.IsNullOrWhiteSpace(CurrentText.Text) || Filters.SelectedTab != TP_Misc ? null : CurrentText.Text.ToUpper(),
                 Random = RB_Random.Checked && Filters.SelectedTab == TP_Misc,
                 CompareType = (byte)Compare.SelectedIndex,
@@ -135,7 +148,7 @@ namespace Pk3DSRNGTool
             {
                 case 0 when !CreateTimeline.Checked: Search7(); break;
                 case 0 when CreateTimeline.Checked: Search7_Timeline(); break;
-                case 1: Search7_Battle(); break;
+                case 1: Search7_Battle(false, null); break;
                 case 2: Search6(); break;
                 case 3: Search6_Battle(); break;
             }
@@ -148,10 +161,11 @@ namespace Pk3DSRNGTool
         private bool FestivalPlaza => filter.FacilityFilter != null;
         private bool BattleTree => filter.TrainerFilter != null;
         private bool ShowCapture => Filters.SelectedTab == TP_Capture || Filters.SelectedTab == TP_Misc;
-        private bool SOS => Filters.SelectedTab == TP_SOS || Filters.SelectedTab == TP_SOS2;
-        private bool ShowSOS => SOS || Filters.SelectedTab == TP_Misc;
+        private bool IsSOS => Filters.SelectedTab == TP_SOS || Filters.SelectedTab == TP_SOS2;
+        private bool ShowSOS => IsSOS || Filters.SelectedTab == TP_Misc;
         private ulong N;
-        private int Timedelay;
+        private int Timedelay, PathSelectedIndex;
+        private byte PathRate2;
         private void setupgenerator()
         {
             Timedelay = (int)Delay.Value / 2;
@@ -220,7 +234,7 @@ namespace Pk3DSRNGTool
                 do
                 {
                     var f = new Frame_Misc();
-                    f.Frame = i;
+                    f.Index = i;
                     f.Rand64 = RNGPool.getcurrent64;
                     f.Blink = FuncUtil.blinkflaglist[i - min];
                     f.realtime = 2 * frametime;
@@ -269,7 +283,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i <= loopcount; i++)
             {
                 var f = new Frame_Misc();
-                f.Frame = frame;
+                f.Index = frame;
                 f.Rand64 = RNGPool.getcurrent64;
                 f.realtime = 2 * i;
                 f.status = (int[])status.remain_frame.Clone();
@@ -299,16 +313,17 @@ namespace Pk3DSRNGTool
 
                 Frames.Add(f);
             }
-            if (Frames.FirstOrDefault()?.Frame == (int)StartingFrame.Value)
+            if (Frames.FirstOrDefault()?.Index == (int)StartingFrame.Value)
                 Frames[0].Blink = FuncUtil.blinkflaglist[0];
         }
         #endregion
 
-        private void Search7_Battle()
+        #region gen7battle / SOS
+        private void Search7_Battle(bool pathFinder, List<Frame_Misc> PathList)
         {
             SFMT sfmt = new SFMT(Seed.Value);
-            int frame = (int)StartingFrame.Value;
-            int loopcount = (int)MaxResults.Value;
+            int frame = pathFinder ? 0 : (int)StartingFrame.Value; //Path finder can't find the correct steps if starting frame != 0
+            int loopcount = pathFinder ? PathSelectedIndex : (int)MaxResults.Value; //No reason in searching results higher than the target index
             int delay = (int)Delay.Value;
             ulong N = (ulong)Range.Value;
 
@@ -330,10 +345,16 @@ namespace Pk3DSRNGTool
                 L_output.Text = CB_Detail.Checked ? string.Format("Critical {0:P}  \tShake {1:P}", criticalchance, shakechance)
                     : string.Format("Critical {0:P}  \tSuccess {1:P}", criticalchance, capturechance);
             }
-            else if (SOS)
+            else if (IsSOS)
             {
                 SOSRNG.ChainLength = (int)ChainLength.Value;
                 SOSRNG.Weather = L_Weather.Checked;
+                SOSRNG.MinLevel = (byte)minLevel.Value;
+                SOSRNG.MaxLevel = (byte)maxLevel.Value;
+
+                //Perfect IVs affect the steps so they should NOT be accounted for the Path finder
+                for (byte i = 1; i <= 6; i++)
+                    SOSRNG.RandomIVs[i - 1] = pathFinder ? false : MainFrameIVs.CheckBoxItems[i].Checked;
 
                 int Rate1 = (int)CB_CallRate.SelectedValue * (int)HPBarColor.SelectedValue;
                 if (AO.Checked)
@@ -342,16 +363,9 @@ namespace Pk3DSRNGTool
                     Rate1 = 100;
                 SOSRNG.Rate1 = (byte)Rate1;
 
-                double Rate2 = (int)CB_CallRate.SelectedValue * (Intimidate.Checked ? 0x4CCC : 0x4000) / 4096.0;
-                if (SameCaller.Checked)
-                    Rate2 *= 1.5;
-                if (SupperEffective.Checked)
-                    Rate2 *= 2;
-                if (LastCallFail.Checked)
-                    Rate2 *= 3;
-                if (Rate2 > 100)
-                    Rate2 = 100.0;
-                SOSRNG.Rate2 = (byte)Math.Round(Rate2);
+                //If the function is called from SOSPathFinder, Rate2 has been already calculated there.
+                //Otherwise, it is calculated based on the UI settings
+                SOSRNG.Rate2 = pathFinder ? PathRate2 : CalcRate2(LastCallSucceed.Checked, LastCallFail.Checked);
             }
 
             for (int i = 0; i < frame; i++)
@@ -362,7 +376,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < loopcount; i++, RNGPool.AddNext(sfmt, AutoCheck: false))
             {
                 var f = new Frame_Misc();
-                f.Frame = frame++;
+                f.Index = frame++;
                 f.Rand32 = RNGPool.getcurrent;
 
                 RNGPool.Rewind(0);
@@ -380,12 +394,109 @@ namespace Pk3DSRNGTool
                     f.Srt = SOSRNG.Generate();
                 }
 
-                if (!filter.check(f))
+                if (!filter.check(f) && !pathFinder)    //PathFinder should calculate all indexes so it ignores filters
                     continue;
 
-                Frames.Add(f);
+                if (!pathFinder)
+                    Frames.Add(f);                      //"Frames" is the list which is connected to the datagridview
+                else
+                    PathList.Add(f);                    //"PathList" is the list(s) used for calculating the steps
             }
         }
+
+        private byte CalcRate2(bool LasCallSucceeded, bool LastCallFailed)
+        {
+            double Rate2 = (int)CB_CallRate.SelectedValue * (Intimidate.Checked ? 0x4CCC : 0x4000) / 4096.0;
+            if (LasCallSucceeded)
+                Rate2 *= 1.5;
+            //if (SupperEffective.Checked)
+            //Rate2 *= 2;
+            if (LastCallFailed)
+                Rate2 *= 3;
+            if (Rate2 > 100)
+                Rate2 = 100.0;
+
+            return (byte)Math.Round(Rate2);
+        }
+
+        private void SOSPathFinder(int SelectedIndex)
+        {
+            PathSelectedIndex = SelectedIndex + 1;
+
+            //We need 3 lists with the possible results/events
+
+            //List 1: Last turn -> No call
+            List<Frame_Misc> Nothing = new List<Frame_Misc>();
+            PathRate2 = CalcRate2(false, false);
+            Search7_Battle(true, Nothing);
+
+            //List 2: Last turn -> Call and succeed
+            List<Frame_Misc> CallOnly = new List<Frame_Misc>();
+            PathRate2 = CalcRate2(true, false);
+            Search7_Battle(true, CallOnly);
+
+            //List 3: Last turn -> Call + Last turn -> Calll and fail
+            List<Frame_Misc> Both = new List<Frame_Misc>();
+            PathRate2 = CalcRate2(true, true);
+            Search7_Battle(true, Both);
+
+            string steps = "No path found";
+
+            try
+            {
+                //Case: Target index calls and succeeds no matter what
+                if (Nothing[SelectedIndex].Advance > 2)
+                    steps = "1. Thunder Wave/Glare before index " + SelectedIndex.ToString()
+                        + "\n2. Advance turns until index " + SelectedIndex.ToString()
+                        + "\n3. At index " + SelectedIndex.ToString() + ", heal => Target appears";
+
+                //Case: Target index calls and succeeds only if: (Target index - 2) has called and failed
+                else if (Both[SelectedIndex].Advance > 2 && Nothing[SelectedIndex - 2].Advance == 2)
+                    steps = "1. Thunder Wave/Glare before index " + (SelectedIndex - 2).ToString()
+                        + "\n2. Heal at index " + (SelectedIndex - 2).ToString() + " => Calls and fails => Lands at index " + SelectedIndex.ToString()
+                        + "\n3. At index " + SelectedIndex.ToString() + ", advance turn => Target appears";
+
+                //Case: Target index calls and succeeds only if: one of the previous indexes has called and succeed + the advances land on the target index
+                else if (CallOnly[SelectedIndex].Advance > 2)
+                    for (byte d = 1; d <= 25; d++)
+                    {
+                        if (Nothing[SelectedIndex - d].Advance != 1)
+                        {
+                            if (Nothing[SelectedIndex - d].Index + Nothing[SelectedIndex - d].Advance == CallOnly[SelectedIndex].Index)
+                            {
+                                steps = "1. Thunder Wave/Glare before index " + (SelectedIndex - d).ToString()
+                                    + "\n2. At index " + (SelectedIndex - d).ToString() + ", heal => New ally appears " +
+                                    "(Should not have any perfect IVs from main RNG) => Lands at index " + SelectedIndex.ToString()
+                                    + "\n3. At index " + SelectedIndex.ToString() + ", knock out the new ally => Target appears";
+                                break;
+                            }
+                            else if (Both[SelectedIndex - d].Index + Both[SelectedIndex - d].Advance == CallOnly[SelectedIndex].Index)
+                            {
+                                if (Nothing[SelectedIndex - d - 2].Advance == 2)
+                                    steps = "1. Thunder Wave/Glare before index " + (SelectedIndex - d - 2).ToString()
+                                        + "\n2. Heal at index " + (SelectedIndex - d - 2).ToString() + " => Calls and fails => Lands at index " + (SelectedIndex - d).ToString()
+                                        + "\n3. At index " + (SelectedIndex - d).ToString() + ", advance turn => New ally appears " +
+                                        "(Should not have any perfect IVs from main RNG) => Lands at index " + SelectedIndex.ToString()
+                                        + "\n4. At idnex " + SelectedIndex.ToString() + ", knock out the new ally => Target appears";
+                            }
+                        }
+                    }
+
+                new Thread(() =>
+                {
+                    if (steps.Equals("No path found"))
+                        MessageBox.Show(steps, "Unhittable Index", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(steps, "Steps", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }).Start();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Index outside the range. Path can't be calculated.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+        #endregion
 
         private void Search6()
         {
@@ -403,7 +514,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < loopcount; i++, RNGPool.AddNext(MT))
             {
                 var f = new Frame_Misc();
-                f.Frame = frame++;
+                f.Index = frame++;
                 f.Rand32 = RNGPool.getcurrent;
                 f.realtime = i;
                 f.st = RNGPool.getcurrentstate;
@@ -458,7 +569,7 @@ namespace Pk3DSRNGTool
             for (int i = 0; i < loopcount; i++, RNGPool.AddNext(tiny, AutoCheck: false))
             {
                 var f = new Frame_Misc();
-                f.Frame = frame++;
+                f.Index = frame++;
                 f.Rand32 = RNGPool.getcurrent;
                 f.st = RNGPool.getcurrentstate;
 
@@ -492,7 +603,7 @@ namespace Pk3DSRNGTool
             dgv_hit.Visible &= Delay.Value > 1;
             dgv_pokerus.Visible = filter.Pokerus;
             dgv_capture.Visible = (RNG.SelectedIndex & 1) == 1 && ShowCapture;
-            dgv_adv.Visible = SOS;
+            dgv_adv.Visible = IsSOS;
             dgv_SOS.Visible = RNG.SelectedIndex == 1 && ShowSOS;
             dgv_randn.Visible = filter.Random;
             dgv_time.Visible = (RNG.SelectedIndex & 1) == 0;
@@ -519,17 +630,19 @@ namespace Pk3DSRNGTool
                     HelpMdName = "BattleTree";
                 else if (selected == TP_FP)
                     HelpMdName = "FestivalPlazaFacilities";
-                else if (selected == TP_SOS)
-                    HelpMdName = "SOSCall";
+                //else if (selected == TP_SOS)
+                    //HelpMdName = "SOSCall";
                 else
                     selected.Controls.Remove(B_Help);
-                if (selected == TP_Capture || selected == TP_SOS)
+                if (selected == TP_Capture)
                 {
                     selected.Controls.Add(CB_Detail);
                     selected.Controls.Add(SuccessOnly);
                 }
                 if (selected == TP_SOS)
                     ShowHideTab(TP_SOS2, true, 3);
+                if (selected == TP_SOS2)
+                    selected.Controls.Add(SuccessOnly);
             }
             RB_Random.Checked = true;
             RB_Pokerus.Visible = (RNG.SelectedIndex & 1) == 0;
@@ -562,6 +675,38 @@ namespace Pk3DSRNGTool
         private void Method_CheckedChanged(object sender, EventArgs e)
         {
             Range.Enabled = Compare.Enabled = Value.Enabled = RB_Random.Checked;
+        }
+
+        private void MiscSetAsCurrent_Click(object sender, EventArgs e)
+        {
+            if (DGV.Rows.Count > 0)                         //Only if datagridview has at least 1 row
+                try
+                {
+                    StartingFrame.Value = Convert.ToInt32(DGV.SelectedCells[0].Value);
+                }
+                catch (ArgumentOutOfRangeException) { }     //If user clicks outside the datagridview
+        }
+        private void FindPath_Click(object sender, EventArgs e)
+        {
+            if (dgv_SOS.Visible && !dgv_capture.Visible)    //Show when DGV has SOS results only
+                try
+                {
+                    SOSPathFinder(Convert.ToInt32(DGV.SelectedCells[0].Value));
+                }
+                catch (ArgumentOutOfRangeException) { }     //If user clicks outside the datagridview
+                catch (FormatException) { }                 //If user clicks outside the datagridview and the wrong cell is selected
+        }
+
+        private void DGV_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && DGV.Rows.Count > 0)
+            {
+                try
+                {
+                    DGV.CurrentCell = DGV.Rows[e.RowIndex].Cells[0];
+                }
+                catch { }   //Do nothing if the user clicks in a cell header
+            }
         }
 
         private void TTT_CheckedChanged(object sender, EventArgs e)
@@ -653,12 +798,15 @@ namespace Pk3DSRNGTool
         private static readonly float[] OPowerList = { 1.0f, 1.5f, 2.0f, 2.5f };
 
         private static readonly ComboItem[] CallRateList = new[] { 3, 6, 9, 15, 0, }.Select(t => new ComboItem(t.ToString(), t)).ToArray();
+
         private static readonly ComboItem[] HPBarBonusList =
         {
             new ComboItem("Red <=1/5", 5),
             new ComboItem("Yellow 1/5~1/2", 3),
             new ComboItem("Green >1/2", 1),
         };
+
         #endregion
+
     }
 }

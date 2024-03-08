@@ -11,8 +11,10 @@ namespace Pk3DSRNGTool
         public override int[] Species { get; set; } = new int[3];
         public byte[] Level = new byte[3];
 
-        private readonly static int[] XList = { 692, 693 }; // Ignore Basculin form difference
-        private readonly static int[] YList = { 690, 691 };
+        // Starmie -> Cloyster
+        // Clauncher family -> Skrelp family
+        private readonly static int[] XList = { 121, 692, 693 }; // Ignore Basculin form difference
+        private readonly static int[] YList = { 91, 690, 691 };
 
         public override bool VersionDifference => Species.Any(i => XList.Contains(i));
         public override int[] getSpecies(int ver, bool IsNight)
