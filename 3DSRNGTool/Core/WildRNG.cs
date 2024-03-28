@@ -69,45 +69,48 @@
             new byte[] { 10,10,10,10,10,10,10,10,10,5,4,1 }, // Gen6
             new byte[] { 60,35,5 }, // Horde / Fishing
             new byte[] { 50,30,15,4,1 }, // Rock Smash
-            // Gen7 Fishing
-            // USUM
-            new byte[] { 90,10 }, // 5
+
+            // Fishing USUM
+            new byte[] { 90,10 }, // 5              - Seaward Cave, Paniola Town
             new byte[] { 40,60 },
-            new byte[] { 35,35,05,25, }, // 7
+            new byte[] { 35,35,05,25, }, // 7       - Kala'e Bay
             new byte[] { 25,25,35,15, },
-            new byte[] { 25,25,25,05,05,15, }, // 9
+            new byte[] { 25,25,25,05,05,15, }, // 9 - Melemele Sea (Hau’oli City Beachfront)
             new byte[] { 15,15,15,35,05,15, },
-            new byte[] { 44,30,01,25, }, // 11  // Swap Feebas (1%) and Basculin (25%) slots
+            new byte[] { 44,30,01,25, }, // 11      - Brooklet Hill
             new byte[] { 40,25,10,25, },
-            new byte[] { 55,40,05 }, // 13
-            new byte[] { 45,20,35, },
-            new byte[] { 50,30,05,15 }, // 15
+            new byte[] { 55,40,05 }, // 13          - Brooklet Hill (Totem), Seafolk Village, Akala Outskirts, Routes 13, 14
+            new byte[] { 40,25,35, },
+            new byte[] { 50,30,05,15 }, // 15       - Route 8
             new byte[] { 40,20,35,05 },
-            new byte[] { 20,15,50,15 }, // 17
+            new byte[] { 20,15,50,15 }, // 17       - Route 9
             new byte[] { 10,05,80,05 },
-            new byte[] { 50,40,05,05 }, // 19
+            new byte[] { 50,40,05,05 }, // 19       - Route 15
             new byte[] { 20,10,35,35 },
-            new byte[] { 45,25,05,25 }, // 21
+            new byte[] { 45,25,05,25 }, // 21       - Vast Poni Canyon USUM
             new byte[] { 25,20,35,20 },
-            new byte[] { 59,40,01 }, // 23
+            new byte[] { 59,40,01 }, // 23          - Poni Meadow SMUSUM, Poni Gauntlet SMUSUM, Vast Poni Canyon SM
             new byte[] { 50,40,10 },
-            // SM
-            new byte[] { 99,01, }, // 25
+
+            // Fishing SM
+            new byte[] { 99,01, }, // 25            - Seaward Cave, Paniola Town
             new byte[] { 50,50, },
-            new byte[] { 79,20,01, }, // 27
+            new byte[] { 79,20,01, }, // 27         - Kala'e Bay, Brooklet Hill (Totem), Secluded Shore, Routes 13, 14, 15
             new byte[] { 50,30,20, },
-            new byte[] { 78,20,01,01, }, // 29
+            new byte[] { 78,20,01,01, }, // 29      - Melemele Sea (Hau’oli City Beachfront)
             new byte[] { 20,20,40,20, },
-            new byte[] { 70,29,01, }, // 31
+            new byte[] { 70,29,01, }, // 31         - Brooklet Hill
             new byte[] { 50,45,05, },
-            new byte[] { 79,20,01, }, // 33
+            new byte[] { 79,20,01, }, // 33         - Routes 7, 8, Akala Outskirts
             new byte[] { 60,20,20, },
-            new byte[] { 15,10,70,05 }, // 35
+            new byte[] { 15,10,70,05 }, // 35       - Route 9
             new byte[] { 15,10,70,05 },
-            new byte[] { 79,20,01, }, // 37
+            new byte[] { 79,20,01, }, // 37         - Seafolk Village, Poni Wilds, Poni Breaker Coast
             new byte[] { 50,40,10, },
+
             // SOS
             new byte[] { 1,1,1,10,10,10,67, }, //39
+
             // Others
             new byte[] { 70,30, }, // 40
             new byte[] { 80,20, }, // 41
@@ -115,12 +118,19 @@
             new byte[] { 50,15,30,5, }, // 43
             new byte[] { 70,20,10, }, // 44
             new byte[] { 70,10,20 }, // 45
+
             // Missing Fishing
-            new byte[] { 40,30,25,05, }, // 46
+            new byte[] { 40,30,25,05, }, // 46      - Malie Garden USUM
             new byte[] { 30,20,15,35, },
-            new byte[] { 60,40 }, // 48
+            new byte[] { 60,40 }, // 48             - Malie Garden SM
             new byte[] { 50,50 },
+            new byte[] { 55,40,05 }, // 50          - Route 7 USUM
+            new byte[] { 45,20,35 },
+            new byte[] { 49,40,10,01 }, // 52       - Poni Breaker Coast USUM
+            new byte[] { 40,30,20,10 },
+
             // FS XY 1.5 sub_74BED4
+            new byte[] { 50,50 }, // 54
             new byte[] { 34,33,33 },
         };
 

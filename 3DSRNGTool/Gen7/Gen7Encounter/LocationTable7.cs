@@ -1543,7 +1543,7 @@ namespace Pk3DSRNGTool
             {
                 Location = 056, // Route 7
                 LevelMax = 18,
-                SlotType = 13,
+                SlotType = 50,
                 Species = new[] {129,746,120},
             },
             new FishingArea7
@@ -1606,7 +1606,7 @@ namespace Pk3DSRNGTool
                 Location = 162, // Poni Breaker Coast
                 NPC = 2,
                 LevelMax = 44,
-                SlotType = 11,
+                SlotType = 52,
                 Species = new[] {129,320,318,369},
             },
             new FishingArea7
