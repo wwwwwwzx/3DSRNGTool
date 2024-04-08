@@ -11,7 +11,8 @@ namespace Pk3DSRNGTool.Core
         public byte Ability;
         public byte Gender;
         public int[] IVup, IVlow, Stats;
-        public byte PerfectIVs;
+        public byte PerfectIVValue;
+        public byte PerfectIVCount;
         public bool Skip;
         public int[] BS;
 
@@ -27,7 +28,7 @@ namespace Pk3DSRNGTool.Core
             for (int i = 0; i < 6; i++)
                 if (IVlow[i] > result.IVs[i] || result.IVs[i] > IVup[i])
                     return false;
-            if (result.IVs.Count(e => e == 31) < PerfectIVs)
+            if (result.IVs.Count(e => e >= PerfectIVValue) < PerfectIVCount)
                 return false;
             return true;
         }
@@ -117,7 +118,7 @@ namespace Pk3DSRNGTool.Core
                 "Gender = " +  Gender.ToString(),
                 "IVup = " + string.Join(",", IVup),
                 "IVlow = " + string.Join(",", IVlow),
-                "Number of Perfect IVs = " +  PerfectIVs.ToString(),
+                "Number of Perfect IVs = " +  PerfectIVCount.ToString(),
             };
         }
     }

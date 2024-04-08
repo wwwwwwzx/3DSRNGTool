@@ -19,8 +19,8 @@ namespace Pk3DSRNGTool
         }
 
         public EncounterType Wildtype;
-        public bool HA;
-        public bool IsShinyLocked;
+        public bool HA, DexNavHA;
+        public bool IsShinyLocked, IsForcedShiny6;
         public int _PIDroll_count;
         private bool IsUnown => SpecForm[slot] == 201;
         protected override int PIDroll_count => _PIDroll_count;
@@ -142,6 +142,9 @@ namespace Pk3DSRNGTool
             {
                 for (int i = 0; i < 5; i++)
                     results[i].Synchronize = RNGPool.TinySynced;
+
+                if (RNGPool.HASlot != 0)    // User can set the HA slot (TinyMT) in Main Form instead of TTT
+                        results[RNGPool.HASlot - 1].Ability = 3;
             }
 
             // Something
@@ -171,15 +174,24 @@ namespace Pk3DSRNGTool
             for (int i = PIDroll_count; i > 0; i--)
             {
                 rt.PID = getrand;
-                if (rt.PSV == TSV)
+                if (!IsForcedShiny6)
                 {
-                    if (IsShinyLocked)
-                        rt.PID ^= 0x10000000;
-                    else
+                    if (rt.PSV == TSV)
                     {
-                        rt.Shiny = true;
-                        rt.SquareShiny = rt.PRV == TRV;
+                        if (IsShinyLocked)
+                            rt.PID ^= 0x10000000;
+                        else
+                        {
+                            rt.Shiny = true;
+                            rt.SquareShiny = rt.PRV == TRV;
+                        }
+                        break;
                     }
+                }
+                else    // if (IsForcedShiny6)
+                {
+                    rt.Shiny = rt.SquareShiny = true;
+                    rt.PID = (uint)(((((TSV << 4) + TRV) ^ (rt.PID & 0xFFFF)) << 16) + (rt.PID & 0xFFFF));
                     break;
                 }
             }
@@ -199,13 +211,14 @@ namespace Pk3DSRNGTool
                     rt.IVs[i] = (int)(getrand >> 27);
 
             //Ability
-            rt.Ability = (byte)(rt.Ability < 3 ? (HA ? rand(3) : (getrand >> 31)) + 1 : 3);
+            rt.Ability = (byte)(DexNavHA ? 3 : rt.Ability < 3 ? (HA ? rand(3) : (getrand >> 31)) + 1 : 3);
 
             //Nature
             rt.Nature = (byte)(rt.Synchronize & Synchro_Stat < 25 ? Synchro_Stat : rand(25));
 
             //Form
-            if (IsUnown) rt.Forme = (byte)rand(28);
+            if (IsUnown) 
+                rt.Forme = (byte)rand(28);
 
             //Gender
             rt.Gender = (byte)(RandomGender[slot] ? CuteCharmPass ? CuteCharmGender : (rand(252) >= Gender[slot] ? 1 : 2) : Gender[slot]);

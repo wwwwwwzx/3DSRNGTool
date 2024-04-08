@@ -120,7 +120,7 @@ namespace Pk3DSRNGTool
         private void AdjustDGVSeedColumn()
         {
             DGV_Seed.Columns["dgv_Seed_frame2"].Visible = DGV_Seed.Columns["dgv_Seed_nature2"].Visible = RB_2Wild.Checked;
-            DGV_Seed.Columns["dgv_Seed_gender"].Visible = RB_1Wild.Checked;
+            DGV_Seed.Columns["dgv_gender"].Visible = RB_1Wild.Checked;  // Prevent NullReferenceException
         }
         
         private void RB_CheckedChanged(object sender, EventArgs e)

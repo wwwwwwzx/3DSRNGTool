@@ -10,6 +10,7 @@
         Trap,
         Fishing,
         Normal,
+        DexNav,
     }
 
     public class PKMW6 : Pokemon
@@ -123,6 +124,15 @@
                     new PKMW6 { Conceptual = true, Species = 130, Type = EncounterType.Fishing, Delay = 14 }, // SuperRod
                 }
             },
+            new PokemonList
+            {
+                Text = "DexNav",
+                List = new[]
+                {
+                    new PKMW6 { Conceptual = true, Type = EncounterType.DexNav, Delay = 14 },
+                }
+            },
+
         };
     }
 }

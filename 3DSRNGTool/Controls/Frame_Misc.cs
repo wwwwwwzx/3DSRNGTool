@@ -8,9 +8,9 @@ namespace Pk3DSRNGTool
         public static bool X64;
         private static readonly string[] blinkmarks = { "-", "★", "?", "? ★", "E" };
 
-        public int Frame { get; set; }
+        public int Index { get; set; }
         public int frameused;
-        public int ActualFrame => Frame + frameused;
+        public int ActualFrame => Index + frameused;
         public int Advance => Srt?.Advance ?? 0;
         public int realtime = -1;
         public string Realtime => realtime > -1 ? FuncUtil.Convert2timestr(realtime / 60.0) : string.Empty;
@@ -43,6 +43,7 @@ namespace Pk3DSRNGTool
     {
         public bool Capture;
         public bool SOS;
+        public bool IgnoreSOSFilters;
         public bool Success;
         public bool Sync;
         public bool[] Slot;
@@ -51,6 +52,7 @@ namespace Pk3DSRNGTool
         public bool Random;
         public byte CompareType;
         public int Value;
+        public byte TargetLevel;
         public string CurrentSeed;
         public FPFacility FacilityFilter;
         public BTTrainer TrainerFilter;
@@ -70,7 +72,7 @@ namespace Pk3DSRNGTool
                     case 2: if (f.RandN != Value) return false; break;
                 }
             }
-            if (SOS)
+            if (SOS && !IgnoreSOSFilters)   // Option for disabling filters like in Main Form
             {
                 if (Success && !f.Srt.Success)
                     return false;
@@ -79,6 +81,8 @@ namespace Pk3DSRNGTool
                 if (Sync && !f.Srt.Sync)
                     return false;
                 if (Slot.Any(n => n) && !Slot[f.Srt.Slot])
+                    return false;
+                if (!(TargetLevel == f.Srt.Level || TargetLevel == 0))  // SOS desired level
                     return false;
             }
             if (Capture && Success && !f.Crt.Gotta)
