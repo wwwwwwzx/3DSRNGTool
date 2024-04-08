@@ -5,7 +5,7 @@ namespace Pk3DSRNGTool
 {
     public static class Updater
     {
-        public static string CurrentVersion = "1.0.5";
+        public static string CurrentVersion = "1.0.6";
 
         public static void CheckUpdate()
         {
