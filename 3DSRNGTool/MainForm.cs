@@ -325,7 +325,7 @@ namespace Pk3DSRNGTool
             gen7tool?.TranslateInterface(lang);
             ntrhelper?.TranslateInterface(lang);
             miscrngtool?.Translate();
-            Text = Text + $" v{Updater.CurrentVersion}" + "Beta";
+            Text = Text + $" v{Updater.CurrentVersion}";
 
             naturestr = getStringList("Natures", curlanguage);
             hpstr = getStringList("Types", curlanguage);
