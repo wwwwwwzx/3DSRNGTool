@@ -25,8 +25,8 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
    - Zep715 for figuring out tons of infomation from the assembly
    - Shiny_Sylveon for contributions to Gen6 Egg RNG
 - [odanado](https://github.com/odanado) for making Gen7 RNG API, which make us find initial seed mush faster.
-- [Kaphotics](https://github.com/kwsch) for PkHeX, KeyBV and Pk3DS. I borrowed some code from the PKHeX Core Library and extracted ROM info using Pk3DS.
-- [44670](https://github.com/44670) for NTRClient.
+- [Kaphotics](https://github.com/kwsch) for [PKHeX](https://github.com/kwsch/PKHeX), [KeyBV](https://github.com/kwsch/KeyBV) and [pk3DS](https://github.com/kwsch/pk3DS). I borrowed some code from the PKHeX Core Library and extracted ROM info using pk3DS.
+- [44670](https://github.com/44670) for [NTRClient](https://github.com/Hartie95/NTRClient).
 
 ## Final Screen
 
