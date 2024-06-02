@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Net;
+using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -10,20 +10,17 @@ namespace Pk3DSRNGTool
     {
         public static List<Result> request(string needle, bool IsID, bool IsUltra)
         {
-            Root root;
-            var url = "https://rng-api.odanado.com" + (IsUltra ? "/usm" : "/sm")
-                    + "/sfmt/seed" + (IsID ? "/id" : string.Empty) + $"?needle={needle}";
-            string jsonStr;
-            using (var webClient = new WebClient())
-            {
-                jsonStr = webClient.DownloadString(url);
-            }
+            var url = $"https://rng-api.odanado.com{(IsUltra ? "/usm" : "/sm")}/sfmt/seed{(IsID ? "/id" : string.Empty)}?needle={needle}";
 
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonStr)))
-            {
-                var serializer = new DataContractJsonSerializer(typeof(Root));
-                root = (Root)serializer.ReadObject(ms);
-            }
+            using var httpClient = new HttpClient();
+            var response = httpClient.GetAsync(url).Result;
+            response.EnsureSuccessStatusCode();
+            string jsonStr = response.Content.ReadAsStringAsync().Result;
+
+            using var ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonStr));
+            var serializer = new DataContractJsonSerializer(typeof(Root));
+            var root = (Root)serializer.ReadObject(ms);
+
             return root?.results;
         }
 
