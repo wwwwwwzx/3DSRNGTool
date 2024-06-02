@@ -1,10 +1,23 @@
 version: 1.0.6.{build}
 image: Visual Studio 2022
 configuration: Release
+before_build:
+  - ps: |
+      $ErrorActionPreference = 'Stop'
+      $url = 'https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100/dotnet-sdk-8.0.100-win-x64.zip'
+      $dotnetPath = "$env:LOCALAPPDATA\dotnet"
+      $zipPath = "$env:LOCALAPPDATA\dotnet-sdk-8.0.100-win-x64.zip"
+      Invoke-WebRequest -Uri $url -OutFile $zipPath
+      Expand-Archive -Path $zipPath -DestinationPath $dotnetPath
+      [System.Environment]::SetEnvironmentVariable('PATH', "$dotnetPath;" + [System.Environment]::GetEnvironmentVariable('PATH', [System.EnvironmentVariableTarget]::Machine), [System.EnvironmentVariableTarget]::Machine)
+install:
+  - ps: dotnet restore 3DSRNGTool.sln
 build:
   verbosity: minimal
 after_build:
-- cmd: 7z a 3DSRNGTool.zip .\3DSRNGTool\bin\Release\3DSRNGTool.exe
+  - mkdir "3DS RNG Tool"
+  - copy .\3DSRNGTool\bin\Release\net8.0-windows\win-x64\*.* "3DS RNG Tool"
+  - 7z a 3DSRNGTool.zip "3DS RNG Tool\*"
 artifacts:
-- path: 3DSRNGTool.zip
-  name: 3DSRNGTool
+  - path: 3DSRNGTool.zip
+    name: 3DSRNGTool
