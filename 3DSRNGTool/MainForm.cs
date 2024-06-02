@@ -67,7 +67,7 @@ namespace Pk3DSRNGTool
         #region Form Loading
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //Updater.CheckUpdate();
+            Updater.CheckUpdate();
             Type dgvtype = typeof(DataGridView);
             System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
                  | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
