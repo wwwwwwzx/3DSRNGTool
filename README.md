@@ -1,5 +1,4 @@
-# 3DS RNG Tool [![Build status](https://ci.appveyor.com/api/projects/status/p58tu8nai3cqexuq/branch/master?svg=true)](https://ci.appveyor.com/project/wwwwwwzx/3dsrngtool/branch/master)
-
+# 3DS RNG Tool [![Build status](https://github.com/wwwwwwzx/3DSRNGTool/actions/workflows/ci.yml/badge.svg)](https://github.com/wwwwwwzx/3DSRNGTool/actions/workflows/ci.yml)
 This is an RNG Tool for main 3DS Pokemon games. Some parts should work with [PokeCalcNTR](https://gbatemp.net/threads/pokecalcntr-for-gen-6-the-rng-tool-suite-for-the-3ds.473221/) using NTR-CFW.
 
 This tool is a complete rewrite based off my SMEncounterRNGTool with largely improved performance and the following features:
