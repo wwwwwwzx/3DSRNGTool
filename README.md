@@ -19,14 +19,14 @@ This tool is a complete rewrite based off my SMEncounterRNGTool with largely imp
 
 ## Credit
 
-- Zaksabeast, Zep715, Real96, Admiral Fish and Shiny_Sylveon for great teamworks on gen6 development  
+- [Zaksabeast](https://github.com/zaksabeast), [Zep715](https://github.com/zep715), [Real96](https://github.com/Real96), [Admiral Fish](https://github.com/Admiral-Fish) and [Shiny_Sylveon](https://github.com/ShinySylveon04) for great teamworks on gen6 development  
    - Zaksabeast and Admiral Fish for building up the plugin
    - Real96 for testing and lots of good advice
    - Zep715 for figuring out tons of infomation from the assembly
    - Shiny_Sylveon for contributions to Gen6 Egg RNG
 - odanado for making Gen7 RNG API, which make us find initial seed mush faster.
-- Kaphotics for PkHeX, KeyBV and Pk3DS. I borrowed some code from the PKHeX Core Library and extracted ROM info using Pk3DS.
-- 44670 for NTRClient.
+- [Kaphotics](https://github.com/kwsch) for PkHeX, KeyBV and Pk3DS. I borrowed some code from the PKHeX Core Library and extracted ROM info using Pk3DS.
+- [44670](https://github.com/44670) for NTRClient.
 
 ## Final Screen
 
