@@ -1,0 +1,31 @@
+name: CI
+
+on: [pull_request, push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build 3DSRNGTool
+        run: dotnet build --configuration Release --verbosity minimal
+
+      - name: Package 3DSRNGTool
+        run: |
+          mkdir upload\3DSRNGTool
+          mv 3DSRNGTool\bin\Release\net8.0-windows\win-x64\* upload\3DSRNGTool
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 3DSRNGTool
+          path: upload
