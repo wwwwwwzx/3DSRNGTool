@@ -15,9 +15,9 @@ install:
 build:
   verbosity: minimal
 after_build:
-  - mkdir 3DSRNGTool
-  - copy .\3DSRNGTool\bin\Release\net8.0-windows\win-x64\*.* 3DSRNGTool
-  - 7z a 3DSRNGTool.zip 3DSRNGTool\*
+  - mkdir 3DS RNG Tool
+  - copy .\3DSRNGTool\bin\Release\net8.0-windows\win-x64\*.* 3DS RNG Tool
+  - 7z a 3DSRNGTool.zip 3DS RNG Tool\*
 artifacts:
   - path: 3DSRNGTool.zip
     name: 3DSRNGTool
