@@ -19,7 +19,7 @@ namespace Pk3DSRNGTool.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -301,21 +301,31 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=Fähig. Sperre
+        ///Advanced=Erweitert
+        ///AlwaysSynced=Immer Synchro
+        ///AroundTarget=±100 Frame
+        ///AssumeSynced=Synchronisieren?
+        ///B_Abort=Abbruch
+        ///B_Back=Zurück
+        ///B_Calc=Berechnung
+        ///B_EggReset=Reset
+        ///B_Fast=Fast Mode
+        ///B_GetTiny=I&apos;m Lazy
+        ///B_Open=Import...
+        ///B_OpenTool=Tiny Timeline Tool
+        ///B_Search=Suchen
+        ///B_Stop=Stop
+        ///B_Template=Vorlage
+        ///B_TSVList=TSV Liste
+        ///BlinkFOnly=Nur Blink F
+        ///Boy=Boy
+        ///Bubbling=Bubbling
+        ///ByIVs=DVs
+        ///ByStats=Werte
+        ///CB_3rdSlotUnlocked=3rd Slot Entsperrt
+        ///CB_HAUnlocked=VF Entsperrt
+        ///Conside [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_de {
             get {
@@ -324,21 +334,30 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=Ability Locked
+        ///Advanced=Advanced
+        ///AlwaysSynced=Always Synced
+        ///AroundTarget=±100 Frame
+        ///AssumeSynced=Assume Synced
+        ///B_Abort=Abort
+        ///B_Back=Back
+        ///B_Calc=Calculate
+        ///B_EggReset=Reset
+        ///B_Fast=Fast Mode
+        ///B_GetTiny=I&apos;m Lazy
+        ///B_Open=Import...
+        ///B_OpenTool=Tiny Timeline Tool
+        ///B_Search=Search
+        ///B_Stop=Stop
+        ///B_Template=Template
+        ///B_TSVList=Edit TSV List
+        ///BlinkFOnly=Blink F Only
+        ///Boy=Boy
+        ///Bubbling=Bubbling
+        ///ByIVs=Using IVs
+        ///ByStats=Using Stats
+        ///CB_3rdSlotUnlocked=3rd Slot Unlocked
+        ///CB_HAUnlocked=HA Unlocked        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
             get {
@@ -347,21 +366,29 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=Habilidad Bloqueada
+        ///Advanced=Avanzado
+        ///AlwaysSynced=Siempre Sincronizado
+        ///AroundTarget=±100 Fotogramas
+        ///AssumeSynced=Asume Sincronización
+        ///B_Abort=Abortar
+        ///B_Back=Suprimir
+        ///B_Calc=Calcular
+        ///B_EggReset=Reiniciar
+        ///B_Fast=Modo Rápido
+        ///B_GetTiny=I&apos;m Lazy
+        ///B_Open=Importar...
+        ///B_OpenTool=Tiny Timeline Tool
+        ///B_Search=Buscar
+        ///B_Stop=Detener
+        ///B_Template=Plantilla
+        ///B_TSVList=Editar Lista de TSV
+        ///BlinkFOnly=Solo Blink F
+        ///Boy=Boy
+        ///Bubbling=Bubbling
+        ///ByIVs=Usando IVs
+        ///ByStats=Usando Estadísticas
+        ///CB_3rdSl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_es {
             get {
@@ -370,21 +397,29 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=Capacité spéciale définie
+        ///Advanced=Avancé
+        ///AlwaysSynced=Synchro garanti
+        ///AroundTarget=±100 Frames
+        ///AssumeSynced=Syncrho supposé
+        ///B_Abort=Annuler
+        ///B_Back=Précédent
+        ///B_Calc=Calculer
+        ///B_EggReset=Reset
+        ///B_Fast=Mode rapide
+        ///B_GetTiny=I&apos;m Lazy
+        ///B_Open=Importer
+        ///B_OpenTool=Tiny Timeline Tool
+        ///B_Search=Chercher
+        ///B_Stop=Stop
+        ///B_Template=Modèle
+        ///B_TSVList=Editer la liste de TSV
+        ///BlinkFOnly=Blink Frames uniquement
+        ///Boy=Boy
+        ///Bubbling=Bubbling
+        ///ByIVs=En utilisant les IVs
+        ///ByStats=En utilisant les Stats
+        ///C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_fr {
             get {
@@ -393,21 +428,32 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS RN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=Ability Locked
+        ///Advanced=Advanced
+        ///AlwaysSynced=Always Synced
+        ///AroundTarget=±100 Frame
+        ///AssumeSynced=Assume Synced
+        ///B_Abort=キャンセル
+        ///B_Back=1つ戻る
+        ///B_Calc=計算
+        ///B_EggReset=リセット
+        ///B_Fast=Fast Mode
+        ///B_GetTiny=I&apos;m Lazy
+        ///B_Open=Import...
+        ///B_OpenTool=Tiny Timeline Tool
+        ///B_Search=検索
+        ///B_Stop=キャンセル
+        ///B_Template=Template
+        ///B_TSVList=TSVリスト
+        ///BlinkFOnly=まばたきのみ
+        ///Boy=男の子
+        ///Bubbling=Bubbling
+        ///ByIVs=個体値検索
+        ///ByStats=実数値検索
+        ///CB_3rdSlotUnlocked=3rd Slot Unlocked
+        ///CB_HAUnlocked=HA Unlocked
+        ///ConsiderDelay=Consider Delay
+        ///Con [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_ja {
             get {
@@ -416,21 +462,39 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ! Interface Customization File
-        ///! lang_en.txt = English
-        ///! lang_jp.txt = Japanese
-        ///! lang_fr.txt = French
-        ///! lang_de.txt = German
-        ///! lang_es.txt = Spanish
-        ///! lang_it.txt = Italian
-        ///! lang_ko.txt = Korean
-        ///! lang_cn.txt = Simplified Chinese
-        ///! lang_zh.txt = Traditional Chinese
-        ///! lang_pt.txt = Portuguese
-        ///! Make sure that each edit has a &apos; = &apos; between Control name and new Text!
-        ///! -----------------------------------------------------
-        ///- DO NOT CHANGE THIS SECTION EXCEPT FORM NAME &amp; TITLE
-        ///! MainForm = 3DS乱数工 [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to AbilityLocked=固定特性
+        ///Advanced=高级模式
+        ///AlwaysSynced=必定同步
+        ///AroundTarget=±100帧
+        ///AssumeSynced=假定同步成功
+        ///B_Abort=终止
+        ///B_Back=消去
+        ///B_Calc=计算
+        ///B_EggReset=重设
+        ///B_Fast=快速模式
+        ///B_GetTiny=同步ID Seed
+        ///B_Open=导入
+        ///B_OpenTool=TinyMT 时间线工具
+        ///B_Search=检索
+        ///B_Stop=停止
+        ///B_Template=模板
+        ///B_TSVList=TSV列表
+        ///BlinkFOnly=仅眨眼帧
+        ///Boy=男孩
+        ///Bubbling=波纹
+        ///ByIVs=通过个体值
+        ///ByStats=通过能力值
+        ///CB_3rdSlotUnlocked=第三只已解锁
+        ///CB_HAUnlocked=梦特已解锁
+        ///ConsiderDelay=考虑延迟
+        ///ConsiderOtherTSV=其他TSV异色
+        ///CreateTimeline=生成时间线/秒
+        ///Day=白天
+        ///dgv_A=Atk
+        ///dgv_ability=特性
+        ///dgv_adv=消耗
+        ///dgv_B=Def
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_zh {
             get {
@@ -571,7 +635,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to —
+        ///   Looks up a localized string similar to -
         ///Stench
         ///Drizzle
         ///Speed Boost
@@ -675,7 +739,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
+        ///   Looks up a localized string similar to -
         ///Puanteur
         ///Crachin
         ///Turbo
@@ -720,7 +784,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Magnépiège
         ///Anti-Bruit
         ///Cuvette
-        ///Sable Vol [rest of string was truncated]&quot;;.
+        ///Sable Vo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_fr {
             get {
@@ -729,7 +793,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ―
+        ///   Looks up a localized string similar to -
         ///あくしゅう
         ///あめふらし
         ///かそく
@@ -813,7 +877,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ―
+        ///   Looks up a localized string similar to -
         ///恶臭
         ///降雨
         ///加速
@@ -1128,7 +1192,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///   Looks up a localized string similar to ——————
         ///
         ///Mysteriöser Ort
         ///
@@ -1176,7 +1240,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///Vegetationshöhle
         ///Prüfungsbereich
-        ///Vegetati [rest of string was truncated]&quot;;.
+        ///Vegetationsh [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Location_sm_de {
             get {
@@ -1246,7 +1310,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to －
+        ///   Looks up a localized string similar to ——————
         ///
         ///Lugar misterioso
         ///
@@ -1294,7 +1358,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///Cueva Sotobosque
         ///Sala de la Prueba
-        ///Cueva  [rest of string was truncated]&quot;;.
+        ///C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Location_sm_es {
             get {
@@ -1303,7 +1367,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///   Looks up a localized string similar to ——————
         ///
         ///Endroit mystérieux
         ///
@@ -1351,7 +1415,8 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///Grotte Verdoyante
         ///Zone de l’Épreuve
-        ///Grotte Verdoyant [rest of string was truncated]&quot;;.
+        ///Grotte Verdoyante
+        ///R [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Location_sm_fr {
             get {
@@ -1360,7 +1425,7 @@ namespace Pk3DSRNGTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to －－－－－－－－－－
+        ///   Looks up a localized string similar to ——————
         ///
         ///なぞのばしょ
         ///
@@ -1442,7 +1507,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///[~ 80]
         ///
-        /// [rest of string was truncated]&quot;;.
+        ///ヴェラか [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Location_sm_ja {
             get {

@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -131,7 +130,6 @@ namespace Pk3DSRNGTool.Controls
         /// </returns>
         protected override CreateParams CreateParams
         {
-            [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
             get
             {
                 CreateParams cp = base.CreateParams;
@@ -415,7 +413,6 @@ namespace Pk3DSRNGTool.Controls
         /// <param name="m">
         ///     The Windows <see cref="T:System.Windows.Forms.Message" /> to process.
         /// </param>
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (InternalProcessResizing(ref m, false))
@@ -430,13 +427,11 @@ namespace Pk3DSRNGTool.Controls
         /// </summary>
         /// <param name="m">The message.</param>
         /// <returns>true, if the WndProc method from the base class shouldn't be invoked.</returns>
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public bool ProcessResizing(ref Message m)
         {
             return InternalProcessResizing(ref m, true);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         private bool InternalProcessResizing(ref Message m, bool contentControl)
         {
             if (m.Msg == NativeMethods.WM_NCACTIVATE && m.WParam != IntPtr.Zero && childPopup != null &&
@@ -459,7 +454,6 @@ namespace Pk3DSRNGTool.Controls
             return false;
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         private bool OnGetMinMaxInfo(ref Message m)
         {
             var minmax = (NativeMethods.MINMAXINFO) Marshal.PtrToStructure(m.LParam, typeof (NativeMethods.MINMAXINFO));

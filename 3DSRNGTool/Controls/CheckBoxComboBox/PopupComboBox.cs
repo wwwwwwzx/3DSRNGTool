@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace Pk3DSRNGTool.Controls
@@ -78,7 +77,6 @@ namespace Pk3DSRNGTool.Controls
         /// <param name="m">
         ///     The Windows <see cref="T:System.Windows.Forms.Message" /> to process.
         /// </param>
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == (NativeMethods.WM_REFLECT + NativeMethods.WM_COMMAND))

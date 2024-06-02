@@ -1,391 +1,68 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{38B5FE0E-E1D0-48D7-A1C0-D610B821F014}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+    <Description>Pokémon 3DS RNG Tool</Description>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Pk3DSRNGTool</RootNamespace>
     <AssemblyName>3DSRNGTool</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationIcon>Resources\FollowmeTogetic.ico</ApplicationIcon>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Controls\Frame.cs" />
-    <Compile Include="Controls\Frame_ID.cs" />
-    <Compile Include="Controls\Frame_Misc.cs" />
-    <Compile Include="Controls\Frame_Seed.cs" />
-    <Compile Include="Controls\Frame_Tiny.cs" />
-    <Compile Include="Controls\GenderListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\Profiles.cs" />
-    <Compile Include="Controls\CheckBoxComboBox\CheckBoxComboBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\CheckBoxComboBox\CheckBoxComboBox.Designer.cs">
-      <DependentUpon>CheckBoxComboBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ComboItem.cs" />
-    <Compile Include="Controls\CheckBoxComboBox\GripBounds.cs" />
-    <Compile Include="Controls\HexMaskedTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CheckBoxComboBox\NativeMethods.cs" />
-    <Compile Include="Controls\CheckBoxComboBox\Popup.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CheckBoxComboBox\Popup.Designer.cs">
-      <DependentUpon>Popup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CheckBoxComboBox\PopupComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CheckBoxComboBox\PopupComboBox.Designer.cs">
-      <DependentUpon>PopupComboBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\StringItem.cs" />
-    <Compile Include="Core\Capture.cs" />
-    <Compile Include="Core\EncounterArea.cs" />
-    <Compile Include="Core\IDFilters.cs" />
-    <Compile Include="Core\IDResult.cs" />
-    <Compile Include="Core\EggResult.cs" />
-    <Compile Include="Core\EggRNG.cs" />
-    <Compile Include="Core\IGenerator.cs" />
-    <Compile Include="Core\WildResult.cs" />
-    <Compile Include="Core\WildRNG.cs" />
-    <Compile Include="Core\EventRNG.cs" />
-    <Compile Include="Core\RNGFilters.cs" />
-    <Compile Include="Core\RNGPool.cs" />
-    <Compile Include="Core\RNGResult.cs" />
-    <Compile Include="Core\StationaryRNG.cs" />
-    <Compile Include="Gen6\Egg6.cs" />
-    <Compile Include="Gen6\Gen6Encounter\FishingArea.cs" />
-    <Compile Include="Gen6\Gen6Encounter\HordeArea6.cs" />
-    <Compile Include="Gen6\Gen6Encounter\RockSmashArea6.cs" />
-    <Compile Include="Gen6\ID6.cs" />
-    <Compile Include="Gen6\Gen6Encounter\EncounterArea6.cs" />
-    <Compile Include="Gen6\Gen6Encounter\LocationTable6.cs" />
-    <Compile Include="Gen6\PokeRadar.cs" />
-    <Compile Include="Gen6\Pokerus6.cs" />
-    <Compile Include="Gen6\TinyTimeline.cs" />
-    <Compile Include="Gen6\Wild6.cs" />
-    <Compile Include="Gen6\Event6.cs" />
-    <Compile Include="Gen6\PKM6.cs" />
-    <Compile Include="Gen6\PKMW6.cs" />
-    <Compile Include="Gen6\Horde.cs" />
-    <Compile Include="Gen6\Results\ResultE6.cs" />
-    <Compile Include="Gen6\Results\ResultW6.cs" />
-    <Compile Include="Gen6\Results\Result6.cs" />
-    <Compile Include="Gen6\Stationary6.cs" />
-    <Compile Include="Gen7\BTTrainer.cs" />
-    <Compile Include="Gen7\FPFacility.cs" />
-    <Compile Include="Gen7\Gen7Encounter\EncounterArea7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\LocationTable7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\FishingArea7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\MiscEncounter7.cs" />
-    <Compile Include="Gen7\Gen7Encounter\SOSAllies.cs" />
-    <Compile Include="Gen7\Pokerus7.cs" />
-    <Compile Include="Gen7\Results\ResultME7.cs" />
-    <Compile Include="Gen7\Results\ResultE7.cs" />
-    <Compile Include="Gen7\Results\ResultW7.cs" />
-    <Compile Include="Gen7\Results\Result7.cs" />
-    <Compile Include="Gen7\Results\SOSResult.cs" />
-    <Compile Include="Gen7\ID7.cs" />
-    <Compile Include="Gen7\Egg7.cs" />
-    <Compile Include="Gen7\PKMW7.cs" />
-    <Compile Include="Gen7\Event7.cs" />
-    <Compile Include="Gen7\ModelStatus.cs" />
-    <Compile Include="Gen7\PKM7.cs" />
-    <Compile Include="Gen7\SOSRNG.cs" />
-    <Compile Include="Gen7\Wild7.cs" />
-    <Compile Include="Gen7\Stationary7.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm_CtrlGroup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_Event.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_Egg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm_Core.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pokemon\Lead.cs" />
-    <Compile Include="Pokemon\PKX.cs" />
-    <Compile Include="Pokemon\Pokemon.cs" />
-    <Compile Include="Pokemon\IPKM.cs" />
-    <Compile Include="Pokemon\GameVersion.cs" />
-    <Compile Include="Pokemon\PersonalInfo.cs" />
-    <Compile Include="Pokemon\PersonalInfoORAS.cs" />
-    <Compile Include="Pokemon\PersonalInfoUSUM.cs" />
-    <Compile Include="Pokemon\PersonalTable.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <None Remove="Resources\**" />
+    <EmbeddedResource Include="Resources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Gen6MTSeedFinder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Gen6MTSeedFinder.Designer.cs">
-      <DependentUpon>Gen6MTSeedFinder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\Gen7EggSeedFinder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Gen7EggSeedFinder.Designer.cs">
-      <DependentUpon>Gen7EggSeedFinder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\Gen7MainRNGTool.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Gen7MainRNGTool.Designer.cs">
-      <DependentUpon>Gen7MainRNGTool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\KeyBV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\KeyBV.Designer.cs">
-      <DependentUpon>KeyBV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\MiscRNGTool.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\MiscRNGTool.Designer.cs">
-      <DependentUpon>MiscRNGTool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\NTRHelper.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\NTRHelper.Designer.cs">
-      <DependentUpon>NTRHelper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\ProfileManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\ProfileManager.Designer.cs">
-      <DependentUpon>ProfileManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\ProfileView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\ProfileView.Designer.cs">
-      <DependentUpon>ProfileView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\TinyTimelineTool.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\TinyTimelineTool.Designer.cs">
-      <DependentUpon>TinyTimelineTool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Util\BVBreaker.cs" />
-    <Compile Include="Util\NTRBot.cs" />
-    <Compile Include="Util\TinySeedFinder.cs" />
-    <Compile Include="Util\MTSeedFinder.cs" />
-    <Compile Include="Util\FormUtil.cs" />
-    <Compile Include="Util\FuncUtil.cs" />
-    <Compile Include="Util\Gen7EggPath.cs" />
-    <Compile Include="Util\MagikarpCalc.cs" />
-    <Compile Include="Util\NtrClient.cs" />
-    <Compile Include="Util\NTRSeedAPI.cs" />
-    <Compile Include="Util\SFMTSeedAPI.cs" />
-    <Compile Include="Util\Translator.cs" />
-    <Compile Include="Util\Updater.cs" />
-    <Compile Include="RNG\IRNG.cs" />
-    <Compile Include="RNG\IRNGState.cs" />
-    <Compile Include="RNG\MT.cs" />
-    <Compile Include="RNG\SFMT.cs" />
-    <Compile Include="RNG\TinyMT.cs" />
-    <Compile Include="Subforms\TSVListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\TSVListForm.Designer.cs">
-      <DependentUpon>TSVListForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\IVTemplate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\IVTemplate.Designer.cs">
-      <DependentUpon>IVTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\IVRange.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\IVRange.Designer.cs">
-      <DependentUpon>IVRange.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
+  
   <ItemGroup>
-    <None Include="Resources\text\lang_zh.txt" />
-    <None Include="Resources\text\lang_en.txt" />
-    <None Include="Resources\text\lang_fr.txt" />
-    <None Include="Resources\text\lang_de.txt" />
-    <None Include="Resources\text\lang_es.txt" />
-    <None Include="Resources\text\lang_ja.txt" />
-    <None Include="Resources\bytes\personal_ao" />
-    <None Include="Resources\bytes\personal_uu" />
-    <None Include="Resources\text\text_Genderratio_zh.txt" />
-    <None Include="Resources\text\text_Genderratio_en.txt" />
-    <None Include="Resources\text\text_Genderratio_fr.txt" />
-    <None Include="Resources\text\text_Genderratio_de.txt" />
-    <None Include="Resources\text\text_Genderratio_es.txt" />
-    <None Include="Resources\text\text_Genderratio_ja.txt" />
-    <None Include="Resources\text\text_Natures_zh.txt" />
-    <None Include="Resources\text\text_Natures_en.txt" />
-    <None Include="Resources\text\text_Natures_fr.txt" />
-    <None Include="Resources\text\text_Natures_de.txt" />
-    <None Include="Resources\text\text_Natures_es.txt" />
-    <None Include="Resources\text\text_Natures_ja.txt" />
-    <None Include="Resources\text\text_Species_zh.txt" />
-    <None Include="Resources\text\text_Species_en.txt" />
-    <None Include="Resources\text\text_Species_fr.txt" />
-    <None Include="Resources\text\text_Species_de.txt" />
-    <None Include="Resources\text\text_Species_es.txt" />
-    <None Include="Resources\text\text_Species_ja.txt" />
-    <None Include="Resources\text\text_Types_zh.txt" />
-    <None Include="Resources\text\text_Types_en.txt" />
-    <None Include="Resources\text\text_Types_fr.txt" />
-    <None Include="Resources\text\text_Types_de.txt" />
-    <None Include="Resources\text\text_Types_es.txt" />
-    <None Include="Resources\text\text_Types_ja.txt" />
-    <None Include="Resources\text\text_Location_sm_zh.txt" />
-    <None Include="Resources\text\text_Location_sm_en.txt" />
-    <None Include="Resources\text\text_Location_sm_fr.txt" />
-    <None Include="Resources\text\text_Location_sm_de.txt" />
-    <None Include="Resources\text\text_Location_sm_es.txt" />
-    <None Include="Resources\text\text_Location_sm_ja.txt" />
-    <None Include="Resources\text\text_Items_zh.txt" />
-    <None Include="Resources\text\text_Items_en.txt" />
-    <None Include="Resources\text\text_Items_fr.txt" />
-    <None Include="Resources\text\text_Items_de.txt" />
-    <None Include="Resources\text\text_Items_es.txt" />
-    <None Include="Resources\text\text_Items_ja.txt" />
-    <None Include="Resources\text\text_Location_xy_zh.txt" />
-    <None Include="Resources\text\text_Location_xy_en.txt" />
-    <None Include="Resources\text\text_Location_xy_fr.txt" />
-    <None Include="Resources\text\text_Location_xy_de.txt" />
-    <None Include="Resources\text\text_Location_xy_es.txt" />
-    <None Include="Resources\text\text_Location_xy_ja.txt" />
-    <None Include="Resources\text\text_Abilities_de.txt" />
-    <None Include="Resources\text\text_Abilities_en.txt" />
-    <None Include="Resources\text\text_Abilities_es.txt" />
-    <None Include="Resources\text\text_Abilities_fr.txt" />
-    <None Include="Resources\text\text_Abilities_ja.txt" />
-    <None Include="Resources\text\text_Abilities_zh.txt" />
+    <EmbeddedResource Update="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  
   <ItemGroup>
-    <None Include="Resources\FollowmeTogetic.ico" />
-    <None Include="Resources\pic\Clock_00.jpg" />
-    <None Include="Resources\pic\Clock_01.jpg" />
-    <None Include="Resources\pic\Clock_02.jpg" />
-    <None Include="Resources\pic\Clock_03.jpg" />
-    <None Include="Resources\pic\Clock_04.jpg" />
-    <None Include="Resources\pic\Clock_05.jpg" />
-    <None Include="Resources\pic\Clock_06.jpg" />
-    <None Include="Resources\pic\Clock_07.jpg" />
-    <None Include="Resources\pic\Clock_08.jpg" />
-    <None Include="Resources\pic\Clock_09.jpg" />
-    <None Include="Resources\pic\Clock_10.jpg" />
-    <None Include="Resources\pic\Clock_11.jpg" />
-    <None Include="Resources\pic\Clock_12.jpg" />
-    <None Include="Resources\pic\Clock_13.jpg" />
-    <None Include="Resources\pic\Clock_14.jpg" />
-    <None Include="Resources\pic\Clock_15.jpg" />
-    <None Include="Resources\pic\Clock_16.jpg" />
-    <None Include="Resources\pic\Shiny.png" />
-    <None Include="Resources\pic\NonShiny.png" />
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pic\Buttons\Save.png" />
-    <None Include="Resources\pic\Buttons\Edit.png" />
-    <None Include="Resources\pic\Buttons\Delete.png" />
-    <None Include="Resources\pic\Buttons\Add.png" />
-    <None Include="Resources\pic\Buttons\Info.png" />
-    <None Include="Resources\pic\Buttons\Arrow_down.png" />
-    <None Include="Resources\pic\Buttons\Arrow_up.png" />
-    <None Include="Resources\pic\Buttons\Cancel.png" />
-    <None Include="Resources\pic\Buttons\Sync.png" />
-    <None Include="Resources\pic\Buttons\Open.png" />
-    <None Include="Resources\pic\Buttons\Reset.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
 </Project>
