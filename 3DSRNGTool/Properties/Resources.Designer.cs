@@ -22,7 +22,7 @@ namespace Pk3DSRNGTool.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Pk3DSRNGTool.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Pk3DSRNGTool.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Pk3DSRNGTool.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Add {
+        internal static System.Drawing.Bitmap Add {
             get {
                 object obj = ResourceManager.GetObject("Add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Arrow_down {
+        internal static System.Drawing.Bitmap Arrow_down {
             get {
                 object obj = ResourceManager.GetObject("Arrow_down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Arrow_up {
+        internal static System.Drawing.Bitmap Arrow_up {
             get {
                 object obj = ResourceManager.GetObject("Arrow_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Cancel {
+        internal static System.Drawing.Bitmap Cancel {
             get {
                 object obj = ResourceManager.GetObject("Cancel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_00 {
+        internal static System.Drawing.Bitmap Clock_00 {
             get {
                 object obj = ResourceManager.GetObject("Clock_00", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_01 {
+        internal static System.Drawing.Bitmap Clock_01 {
             get {
                 object obj = ResourceManager.GetObject("Clock_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_02 {
+        internal static System.Drawing.Bitmap Clock_02 {
             get {
                 object obj = ResourceManager.GetObject("Clock_02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_03 {
+        internal static System.Drawing.Bitmap Clock_03 {
             get {
                 object obj = ResourceManager.GetObject("Clock_03", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +143,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_04 {
+        internal static System.Drawing.Bitmap Clock_04 {
             get {
                 object obj = ResourceManager.GetObject("Clock_04", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_05 {
+        internal static System.Drawing.Bitmap Clock_05 {
             get {
                 object obj = ResourceManager.GetObject("Clock_05", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +163,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_06 {
+        internal static System.Drawing.Bitmap Clock_06 {
             get {
                 object obj = ResourceManager.GetObject("Clock_06", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +173,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_07 {
+        internal static System.Drawing.Bitmap Clock_07 {
             get {
                 object obj = ResourceManager.GetObject("Clock_07", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +183,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_08 {
+        internal static System.Drawing.Bitmap Clock_08 {
             get {
                 object obj = ResourceManager.GetObject("Clock_08", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +193,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_09 {
+        internal static System.Drawing.Bitmap Clock_09 {
             get {
                 object obj = ResourceManager.GetObject("Clock_09", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +203,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_10 {
+        internal static System.Drawing.Bitmap Clock_10 {
             get {
                 object obj = ResourceManager.GetObject("Clock_10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +213,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_11 {
+        internal static System.Drawing.Bitmap Clock_11 {
             get {
                 object obj = ResourceManager.GetObject("Clock_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +223,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_12 {
+        internal static System.Drawing.Bitmap Clock_12 {
             get {
                 object obj = ResourceManager.GetObject("Clock_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +233,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_13 {
+        internal static System.Drawing.Bitmap Clock_13 {
             get {
                 object obj = ResourceManager.GetObject("Clock_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +243,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_14 {
+        internal static System.Drawing.Bitmap Clock_14 {
             get {
                 object obj = ResourceManager.GetObject("Clock_14", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +253,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_15 {
+        internal static System.Drawing.Bitmap Clock_15 {
             get {
                 object obj = ResourceManager.GetObject("Clock_15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +263,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Clock_16 {
+        internal static System.Drawing.Bitmap Clock_16 {
             get {
                 object obj = ResourceManager.GetObject("Clock_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +273,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Delete {
+        internal static System.Drawing.Bitmap Delete {
             get {
                 object obj = ResourceManager.GetObject("Delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +283,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Edit {
+        internal static System.Drawing.Bitmap Edit {
             get {
                 object obj = ResourceManager.GetObject("Edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +293,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Info {
+        internal static System.Drawing.Bitmap Info {
             get {
                 object obj = ResourceManager.GetObject("Info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -327,7 +327,7 @@ namespace Pk3DSRNGTool.Properties {
         ///CB_HAUnlocked=VF Entsperrt
         ///Conside [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_de {
+        internal static string lang_de {
             get {
                 return ResourceManager.GetString("lang_de", resourceCulture);
             }
@@ -359,7 +359,7 @@ namespace Pk3DSRNGTool.Properties {
         ///CB_3rdSlotUnlocked=3rd Slot Unlocked
         ///CB_HAUnlocked=HA Unlocked        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_en {
+        internal static string lang_en {
             get {
                 return ResourceManager.GetString("lang_en", resourceCulture);
             }
@@ -390,7 +390,7 @@ namespace Pk3DSRNGTool.Properties {
         ///ByStats=Usando Estadísticas
         ///CB_3rdSl [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_es {
+        internal static string lang_es {
             get {
                 return ResourceManager.GetString("lang_es", resourceCulture);
             }
@@ -421,7 +421,7 @@ namespace Pk3DSRNGTool.Properties {
         ///ByStats=En utilisant les Stats
         ///C [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_fr {
+        internal static string lang_fr {
             get {
                 return ResourceManager.GetString("lang_fr", resourceCulture);
             }
@@ -455,7 +455,7 @@ namespace Pk3DSRNGTool.Properties {
         ///ConsiderDelay=Consider Delay
         ///Con [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_ja {
+        internal static string lang_ja {
             get {
                 return ResourceManager.GetString("lang_ja", resourceCulture);
             }
@@ -496,7 +496,7 @@ namespace Pk3DSRNGTool.Properties {
         ///dgv_B=Def
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string lang_zh {
+        internal static string lang_zh {
             get {
                 return ResourceManager.GetString("lang_zh", resourceCulture);
             }
@@ -505,7 +505,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap NonShiny {
+        internal static System.Drawing.Bitmap NonShiny {
             get {
                 object obj = ResourceManager.GetObject("NonShiny", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -515,7 +515,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Open {
+        internal static System.Drawing.Bitmap Open {
             get {
                 object obj = ResourceManager.GetObject("Open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -525,7 +525,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] personal_ao {
+        internal static byte[] personal_ao {
             get {
                 object obj = ResourceManager.GetObject("personal_ao", resourceCulture);
                 return ((byte[])(obj));
@@ -535,7 +535,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] personal_uu {
+        internal static byte[] personal_uu {
             get {
                 object obj = ResourceManager.GetObject("personal_uu", resourceCulture);
                 return ((byte[])(obj));
@@ -545,7 +545,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Reset {
+        internal static System.Drawing.Bitmap Reset {
             get {
                 object obj = ResourceManager.GetObject("Reset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -555,7 +555,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Save {
+        internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -565,7 +565,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Shiny {
+        internal static System.Drawing.Bitmap Shiny {
             get {
                 object obj = ResourceManager.GetObject("Shiny", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -575,7 +575,7 @@ namespace Pk3DSRNGTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Sync {
+        internal static System.Drawing.Bitmap Sync {
             get {
                 object obj = ResourceManager.GetObject("Sync", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -628,7 +628,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Magnetfalle
         ///Lärmschutz [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_de {
+        internal static string text_Abilities_de {
             get {
                 return ResourceManager.GetString("text_Abilities_de", resourceCulture);
             }
@@ -681,7 +681,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Soundproof
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_en {
+        internal static string text_Abilities_en {
             get {
                 return ResourceManager.GetString("text_Abilities_en", resourceCulture);
             }
@@ -732,7 +732,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Velo Agua
         ///Imá [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_es {
+        internal static string text_Abilities_es {
             get {
                 return ResourceManager.GetString("text_Abilities_es", resourceCulture);
             }
@@ -786,7 +786,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Cuvette
         ///Sable Vo [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_fr {
+        internal static string text_Abilities_fr {
             get {
                 return ResourceManager.GetString("text_Abilities_fr", resourceCulture);
             }
@@ -870,7 +870,7 @@ namespace Pk3DSRNGTool.Properties {
         ///ヨガパワー
         ///シェルアーマー [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_ja {
+        internal static string text_Abilities_ja {
             get {
                 return ResourceManager.GetString("text_Abilities_ja", resourceCulture);
             }
@@ -987,7 +987,7 @@ namespace Pk3DSRNGTool.Properties {
         ///危险预知
         ///预知梦        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Abilities_zh {
+        internal static string text_Abilities_zh {
             get {
                 return ResourceManager.GetString("text_Abilities_zh", resourceCulture);
             }
@@ -1003,7 +1003,7 @@ namespace Pk3DSRNGTool.Properties {
         ///♂ Nur
         ///♀ Nur.
         /// </summary>
-        public static string text_Genderratio_de {
+        internal static string text_Genderratio_de {
             get {
                 return ResourceManager.GetString("text_Genderratio_de", resourceCulture);
             }
@@ -1019,7 +1019,7 @@ namespace Pk3DSRNGTool.Properties {
         ///♂ Only
         ///♀ Only.
         /// </summary>
-        public static string text_Genderratio_en {
+        internal static string text_Genderratio_en {
             get {
                 return ResourceManager.GetString("text_Genderratio_en", resourceCulture);
             }
@@ -1035,7 +1035,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Solo ♂
         ///Solo ♀.
         /// </summary>
-        public static string text_Genderratio_es {
+        internal static string text_Genderratio_es {
             get {
                 return ResourceManager.GetString("text_Genderratio_es", resourceCulture);
             }
@@ -1051,7 +1051,7 @@ namespace Pk3DSRNGTool.Properties {
         ///♂ Only
         ///♀ Only.
         /// </summary>
-        public static string text_Genderratio_fr {
+        internal static string text_Genderratio_fr {
             get {
                 return ResourceManager.GetString("text_Genderratio_fr", resourceCulture);
             }
@@ -1067,7 +1067,7 @@ namespace Pk3DSRNGTool.Properties {
         ///♂のみ
         ///♀のみ.
         /// </summary>
-        public static string text_Genderratio_ja {
+        internal static string text_Genderratio_ja {
             get {
                 return ResourceManager.GetString("text_Genderratio_ja", resourceCulture);
             }
@@ -1083,7 +1083,7 @@ namespace Pk3DSRNGTool.Properties {
         ///只有♂
         ///只有♀.
         /// </summary>
-        public static string text_Genderratio_zh {
+        internal static string text_Genderratio_zh {
             get {
                 return ResourceManager.GetString("text_Genderratio_zh", resourceCulture);
             }
@@ -1100,7 +1100,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Machtband
         ///Machtkette.
         /// </summary>
-        public static string text_Items_de {
+        internal static string text_Items_de {
             get {
                 return ResourceManager.GetString("text_Items_de", resourceCulture);
             }
@@ -1117,7 +1117,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Power Band
         ///Power Anklet.
         /// </summary>
-        public static string text_Items_en {
+        internal static string text_Items_en {
             get {
                 return ResourceManager.GetString("text_Items_en", resourceCulture);
             }
@@ -1134,7 +1134,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Banda Recia
         ///Franja Recia.
         /// </summary>
-        public static string text_Items_es {
+        internal static string text_Items_es {
             get {
                 return ResourceManager.GetString("text_Items_es", resourceCulture);
             }
@@ -1151,7 +1151,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Bandeau Pouvoir
         ///Chaîne Pouvoir.
         /// </summary>
-        public static string text_Items_fr {
+        internal static string text_Items_fr {
             get {
                 return ResourceManager.GetString("text_Items_fr", resourceCulture);
             }
@@ -1168,7 +1168,7 @@ namespace Pk3DSRNGTool.Properties {
         ///パワーバンド
         ///パワーアンクル.
         /// </summary>
-        public static string text_Items_ja {
+        internal static string text_Items_ja {
             get {
                 return ResourceManager.GetString("text_Items_ja", resourceCulture);
             }
@@ -1185,7 +1185,7 @@ namespace Pk3DSRNGTool.Properties {
         ///力量束带-D
         ///力量护踝-S.
         /// </summary>
-        public static string text_Items_zh {
+        internal static string text_Items_zh {
             get {
                 return ResourceManager.GetString("text_Items_zh", resourceCulture);
             }
@@ -1242,7 +1242,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Prüfungsbereich
         ///Vegetationsh [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_de {
+        internal static string text_Location_sm_de {
             get {
                 return ResourceManager.GetString("text_Location_sm_de", resourceCulture);
             }
@@ -1303,7 +1303,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///Rou [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_en {
+        internal static string text_Location_sm_en {
             get {
                 return ResourceManager.GetString("text_Location_sm_en", resourceCulture);
             }
@@ -1360,7 +1360,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Sala de la Prueba
         ///C [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_es {
+        internal static string text_Location_sm_es {
             get {
                 return ResourceManager.GetString("text_Location_sm_es", resourceCulture);
             }
@@ -1418,7 +1418,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Grotte Verdoyante
         ///R [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_fr {
+        internal static string text_Location_sm_fr {
             get {
                 return ResourceManager.GetString("text_Location_sm_fr", resourceCulture);
             }
@@ -1509,7 +1509,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///ヴェラか [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_ja {
+        internal static string text_Location_sm_ja {
             get {
                 return ResourceManager.GetString("text_Location_sm_ja", resourceCulture);
             }
@@ -1622,7 +1622,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///皇家巨蛋 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_sm_zh {
+        internal static string text_Location_sm_zh {
             get {
                 return ResourceManager.GetString("text_Location_sm_zh", resourceCulture);
             }
@@ -1683,7 +1683,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Menhir-Weg
         ///Cromlexia        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_de {
+        internal static string text_Location_xy_de {
             get {
                 return ResourceManager.GetString("text_Location_xy_de", resourceCulture);
             }
@@ -1744,7 +1744,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Menhir Trail
         ///Geo [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_en {
+        internal static string text_Location_xy_en {
             get {
                 return ResourceManager.GetString("text_Location_xy_en", resourceCulture);
             }
@@ -1801,7 +1801,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Paso de Rhyhorn
         ///Bastión Batalla [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_es {
+        internal static string text_Location_xy_es {
             get {
                 return ResourceManager.GetString("text_Location_xy_es", resourceCulture);
             }
@@ -1858,7 +1858,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Piste Piquante
         ///Château de [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_fr {
+        internal static string text_Location_xy_fr {
             get {
                 return ResourceManager.GetString("text_Location_xy_fr", resourceCulture);
             }
@@ -1941,7 +1941,7 @@ namespace Pk3DSRNGTool.Properties {
         ///
         ///１５ばん [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_ja {
+        internal static string text_Location_xy_ja {
             get {
                 return ResourceManager.GetString("text_Location_xy_ja", resourceCulture);
             }
@@ -2051,7 +2051,7 @@ namespace Pk3DSRNGTool.Properties {
         ///21号道路
         ///最后通道 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Location_xy_zh {
+        internal static string text_Location_xy_zh {
             get {
                 return ResourceManager.GetString("text_Location_xy_zh", resourceCulture);
             }
@@ -2084,7 +2084,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Sacht
         ///Kauzig.
         /// </summary>
-        public static string text_Natures_de {
+        internal static string text_Natures_de {
             get {
                 return ResourceManager.GetString("text_Natures_de", resourceCulture);
             }
@@ -2117,7 +2117,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Careful
         ///Quirky.
         /// </summary>
-        public static string text_Natures_en {
+        internal static string text_Natures_en {
             get {
                 return ResourceManager.GetString("text_Natures_en", resourceCulture);
             }
@@ -2150,7 +2150,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Cauta
         ///Rara.
         /// </summary>
-        public static string text_Natures_es {
+        internal static string text_Natures_es {
             get {
                 return ResourceManager.GetString("text_Natures_es", resourceCulture);
             }
@@ -2183,7 +2183,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Prudent
         ///Bizarre.
         /// </summary>
-        public static string text_Natures_fr {
+        internal static string text_Natures_fr {
             get {
                 return ResourceManager.GetString("text_Natures_fr", resourceCulture);
             }
@@ -2216,7 +2216,7 @@ namespace Pk3DSRNGTool.Properties {
         ///しんちょう
         ///きまぐれ.
         /// </summary>
-        public static string text_Natures_ja {
+        internal static string text_Natures_ja {
             get {
                 return ResourceManager.GetString("text_Natures_ja", resourceCulture);
             }
@@ -2249,7 +2249,7 @@ namespace Pk3DSRNGTool.Properties {
         ///慎重
         ///浮躁.
         /// </summary>
-        public static string text_Natures_zh {
+        internal static string text_Natures_zh {
             get {
                 return ResourceManager.GetString("text_Natures_zh", resourceCulture);
             }
@@ -2317,7 +2317,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Fukano
         ///Arka [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_de {
+        internal static string text_Species_de {
             get {
                 return ResourceManager.GetString("text_Species_de", resourceCulture);
             }
@@ -2380,7 +2380,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Persian
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_en {
+        internal static string text_Species_en {
             get {
                 return ResourceManager.GetString("text_Species_en", resourceCulture);
             }
@@ -2442,7 +2442,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Meowth
         ///Persian [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_es {
+        internal static string text_Species_es {
             get {
                 return ResourceManager.GetString("text_Species_es", resourceCulture);
             }
@@ -2501,7 +2501,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Aéromite
         ///Taupiqu [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_fr {
+        internal static string text_Species_fr {
             get {
                 return ResourceManager.GetString("text_Species_fr", resourceCulture);
             }
@@ -2589,7 +2589,7 @@ namespace Pk3DSRNGTool.Properties {
         ///ギャロップ
         ///ヤ [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_ja {
+        internal static string text_Species_ja {
             get {
                 return ResourceManager.GetString("text_Species_ja", resourceCulture);
             }
@@ -2702,7 +2702,7 @@ namespace Pk3DSRNGTool.Properties {
         ///椰蛋树
         ///卡拉卡拉 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string text_Species_zh {
+        internal static string text_Species_zh {
             get {
                 return ResourceManager.GetString("text_Species_zh", resourceCulture);
             }
@@ -2728,7 +2728,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Unlicht
         ///Fee.
         /// </summary>
-        public static string text_Types_de {
+        internal static string text_Types_de {
             get {
                 return ResourceManager.GetString("text_Types_de", resourceCulture);
             }
@@ -2754,7 +2754,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Dark
         ///Fairy.
         /// </summary>
-        public static string text_Types_en {
+        internal static string text_Types_en {
             get {
                 return ResourceManager.GetString("text_Types_en", resourceCulture);
             }
@@ -2780,7 +2780,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Siniestro
         ///Hada.
         /// </summary>
-        public static string text_Types_es {
+        internal static string text_Types_es {
             get {
                 return ResourceManager.GetString("text_Types_es", resourceCulture);
             }
@@ -2806,7 +2806,7 @@ namespace Pk3DSRNGTool.Properties {
         ///Ténèbres
         ///Fée.
         /// </summary>
-        public static string text_Types_fr {
+        internal static string text_Types_fr {
             get {
                 return ResourceManager.GetString("text_Types_fr", resourceCulture);
             }
@@ -2832,7 +2832,7 @@ namespace Pk3DSRNGTool.Properties {
         ///あく
         ///フェアリー.
         /// </summary>
-        public static string text_Types_ja {
+        internal static string text_Types_ja {
             get {
                 return ResourceManager.GetString("text_Types_ja", resourceCulture);
             }
@@ -2858,7 +2858,7 @@ namespace Pk3DSRNGTool.Properties {
         ///恶
         ///妖精.
         /// </summary>
-        public static string text_Types_zh {
+        internal static string text_Types_zh {
             get {
                 return ResourceManager.GetString("text_Types_zh", resourceCulture);
             }
