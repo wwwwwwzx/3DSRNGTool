@@ -49,7 +49,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 008, idx = 3,
-                Correction = 15, NPC = 2,
+                Correction = 15, NPC = 1,
                 LevelMin = 10,
                 Species = new[] {2,734,731,438,010,011,165,446},
             },
@@ -84,14 +84,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 012, idx = 1,
-                Correction = 21, NPC = 0,
+                Correction = 19, NPC = 0,
                 LevelMin = 07,
                 Species = new[] {16,096,052,734,235,063},
             },
             new EncounterArea_SM
             {
                 Location = 012, idx = 2,
-                Correction = 21, NPC = 1,
+                Correction = 19, NPC = 1,
                 LevelMin = 07,
                 Species = new[] {17,742,058,734,021,235},
             },
@@ -105,14 +105,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 010, idx = 1,
-                Correction = 15, NPC = 0,
+                Correction = 11, NPC = 0,
                 LevelMin = 09,
                 Species = new[] {18,742,021,734,225,056},
             },
             new EncounterArea_SM
             {
                 Location = 010, idx = 2,
-                Correction = 15, NPC = 1,
+                Correction = 11, NPC = 0,
                 LevelMin = 09,
                 Species = new[] {19,742,021,734,056,371},
             },
@@ -210,14 +210,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 052, idx = 1, //5
-                Correction = 21,
+                Correction = 20,
                 LevelMin = 13,
                 Species = new[] {3,506,731,753,736,010,011,012},
             },
             new EncounterArea_SM
             {
                 Location = 052, idx = 2, //5
-                Correction = 21, NPC = 1,
+                Correction = 20, NPC = 1,
                 LevelMin = 18,
                 Species = new[] {4,753,732,438,736,010,011,012},
             },
@@ -301,7 +301,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 056, //7
-                Correction = 11, NPC = 1,
+                Correction = 9, NPC = 1,
                 LevelMin = 16,
                 Species = new[] {26,072,456,278,771},
             },
@@ -315,14 +315,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 058, idx = 2, mark = "Water",//8
-                Correction = 16, NPC = 3,
+                Correction = 16, NPC = 1,
                 LevelMin = 17,
                 Species = new[] {15,072,278,456},
             },
             new EncounterArea_SM
             {
                 Location = 064,
-                Correction = 24, NPC = 1,
+                Correction = 20, NPC = 1,
                 LevelMin = 21,
                 Species = new[] {26,072,456,278,771},
             },
@@ -336,7 +336,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 100, //Diglett's Tunnel
-                Correction = 13,
+                Correction = 12,
                 LevelMin = 19,
                 Species = new[] {0,041,050,041,041},
             },
@@ -360,7 +360,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 132, //Malie City
-                Correction = 09, NPC = 4,
+                Correction = 09, NPC = 0,
                 LevelMin = 24,
                 Species = new[] {13,568,088,735,081},
             },
@@ -374,7 +374,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 106, //10
-                Correction = 19, NPC = 2,
+                Correction = 19, NPC = 1,
                 LevelMin = 24,
                 Species = new[] {22,735,022,674,227,166},
             },
@@ -569,7 +569,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 174, idx = 4, mark = "3F",
-                Correction = 8,
+                Correction = 6,
                 LevelMin = 41,
                 Species = new[] {14,042,051,525,525,703},
             },
@@ -611,21 +611,21 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 166, idx = 2, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 5, NPC = 0,
                 LevelMin = 54,
                 Species = new[] {21,735,732,546,128,241,546},
             },
             new EncounterArea_SM
             {
                 Location = 166, idx = 3, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 5, NPC = 0,
                 LevelMin = 54,
                 Species = new[] {7,735,097,732,546,128,241,546},
             },
             new EncounterArea_SM
             {
                 Location = 166, idx = 4, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 5, NPC = 0,
                 LevelMin = 54,
                 Species = new[] {31,735,732,750,022,546,128,241},
             },
@@ -652,7 +652,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_SM
             {
                 Location = 170, // Poni Gauntlet
-                Correction = 11, NPC = 4,
+                Correction = 11, NPC = 3,
                 LevelMin = 56,
                 Species = new[] {27,735,279,210,055,760},
             },
@@ -672,7 +672,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 008, idx = 2,
-                Correction = 13, NPC = 1,
+                Correction = 13, NPC = 0,
                 LevelMin = 02, LevelMax = 03,
                 Species = new[] {11,734,010,427,010,734,010},
             },
@@ -714,21 +714,21 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 012, idx = 1,
-                Correction = 31, NPC = 1,
+                Correction = 30, NPC = 1,
                 LevelMin = 07,
                 Species = new[] {35,296,023,676,052,235,734,063,096},
             },
             new EncounterArea_USUM
             {
                 Location = 012, idx = 2,
-                Correction = 31,
+                Correction = 30,
                 LevelMin = 07,
                 Species = new[] {35,296,023,058,742,235,734,021,096},
             },
             new EncounterArea_USUM
             {
                 Location = 012, idx = 3,
-                Correction = 32, NPC = 2,
+                Correction = 30, NPC = 1,
                 LevelMin = 07,
                 Species = new[] {35,021,742,058,742,235,734,021,734},
             },
@@ -749,7 +749,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 010, idx = 1,
-                Correction = 19,
+                Correction = 15,
                 LevelMin = 09,
                 Species = new[] {35,742,021,056,701,056,056,742,021},
             },
@@ -849,7 +849,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 050, //4
-                Correction = 08, NPC = 1,
+                Correction = 08, NPC = 0,
                 LevelMin = 11,
                 Species = new[] {41,506,749,736,174,734,731,174,133},
             },
@@ -863,14 +863,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 052, idx = 1, //5
-                Correction = 25,
+                Correction = 22,
                 LevelMin = 13,
                 Species = new[] {43,506,731,736,753,010,011,012},
             },
             new EncounterArea_USUM
             {
                 Location = 052, idx = 2, //5
-                Correction = 25, NPC = 1,
+                Correction = 22, NPC = 1,
                 LevelMin = 18,
                 Species = new[] {37,753,732,438,753,736,010,011,012},
             },
@@ -905,7 +905,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 090, idx = 2, mark = "W",//Lush Jungle - W
-                Correction = 04, NPC = 3,
+                Correction = 04, NPC = 2,
                 LevelMin = 19,
                 Species = new[] {44,753,732,438,011,762,046,764,766,127,732},
             },
@@ -933,14 +933,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 054, idx = 2, //6
-                Correction = 12, NPC = 1,
+                Correction = 12, NPC = 2,
                 LevelMin = 14,
                 Species = new[] {41,506,741,174,736,734,731,174,133},
             },
             new EncounterArea_USUM
             {
                 Location = 056, //7
-                Correction = 13, NPC = 1,
+                Correction = 11, NPC = 1,
                 LevelMin = 16,
                 Species = new[] {26,072,456,278,771},
             },
@@ -954,14 +954,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 058, idx = 2, mark = "Water",//8
-                Correction = 26, NPC = 2,
+                Correction = 26, NPC = 1,
                 LevelMin = 17,
                 Species = new[] {34,072,278,456,458},
             },
             new EncounterArea_USUM
             {
                 Location = 064,
-                Correction = 27, NPC = 1,
+                Correction = 25, NPC = 1,
                 LevelMin = 21,
                 Species = new[] {35,072,456,278,771,072,456,771,771},
             },
@@ -975,7 +975,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 100, //Diglett's Tunnel
-                Correction = 13,
+                Correction = 12,
                 LevelMin = 20,
                 Species = new[] {21,041,050,041,041,041,246},
             },
@@ -989,7 +989,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 094,
-                Correction = 10, NPC = 3,
+                Correction = 10, NPC = 2,
                 LevelMin = 21,
                 Species = new[] {46,735,177,759,278,278,299,759},
             },
@@ -999,7 +999,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 132, //Malie City
-                Correction = 10, NPC = 3,
+                Correction = 10, NPC = 0,
                 LevelMin = 25,
                 Species = new[] {13,568,088,572,081},
             },
@@ -1013,14 +1013,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 106, //10
-                Correction = 19, NPC = 2,
+                Correction = 19, NPC = 1,
                 LevelMin = 26,
                 Species = new[] {22,735,022,674,227,166},
             },
             new EncounterArea_USUM
             {
                 Location = 136, idx = 1, // Hokulani
-                Correction = 28,
+                Correction = 27,
                 LevelMin = 27,
                 Species = new[] {37,605,774,774,173,374,173,132,132},
                 Reverse = true, // Cleffa at night
@@ -1028,7 +1028,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 136, idx = 2, // Hokulani
-                Correction = 28,
+                Correction = 27,
                 LevelMin = 27,
                 Species = new[] {35,605,173,022,774,374,227,239,132},
                 Reverse = true, // Cleffa at night
@@ -1077,7 +1077,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 150, //Megamart
-                Correction = 02, NPC = 1,
+                Correction = 02, NPC = 0,
                 LevelMin = 31,
                 Species = new[] {46,093,042,093,353,353,707,778},
             },
@@ -1105,7 +1105,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 128, //Meadow
-                Correction = 10, NPC = 1,
+                Correction = 10, NPC = 0,
                 LevelMin = 33,
                 Species = new[] {39,743,546,670,741,166,166,166},
             },
@@ -1119,7 +1119,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 120, idx = 2, //17
-                Correction = 10, Raining = true,
+                Correction = 09, Raining = true,
                 LevelMin = 33,
                 Species = new[] {47,735,022,559,227,075,227,625},
             },
@@ -1155,7 +1155,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 146, idx = 5, mark = "Cave",
-                Correction = 07, NPC = 2,
+                Correction = 07, NPC = 0,
                 LevelMin = 48,
                 Species = new[] {22,042,362,359,780,215},
                 Reverse = true,
@@ -1173,7 +1173,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 184, // Exeggutor Island
-                Correction = 09, NPC = 5,
+                Correction = 09, NPC = 4,
                 LevelMin = 42,
                 Species = new[] {35,103,279,102,357,357,127,423,102},
             },
@@ -1187,7 +1187,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 160,
-                Correction = 19, NPC = 5,
+                Correction = 19, NPC = 3,
                 LevelMin = 41,
                 Species = new[] {37,676,279,686,279,210,423,686,686},
             },
@@ -1207,14 +1207,14 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 174, idx = 3, mark = "2F",
-                Correction = 4, NPC = 1,
+                Correction = 4, NPC = 0,
                 LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 4, mark = "3F",
-                Correction = 8,
+                Correction = 7,
                 LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
@@ -1228,21 +1228,21 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 174, idx = 6, mark = "B1F-C",
-                Correction = 8,
+                Correction = 9,
                 LevelMin = 42,
                 Species = new[] {14,042,051,525,525,703},
             },
             new EncounterArea_USUM
             {
                 Location = 174, idx = 7, mark = "B1F-W",
-                Correction = 9, NPC = 1,
+                Correction = 10, NPC = 1,
                 LevelMin = 42,
                 Species = new[] {14,042,055,042,042,042},
             },
             new EncounterArea_USUM
             {
                 Location = 162,
-                Correction = 09, NPC = 1,
+                Correction = 07, NPC = 1,
                 LevelMin = 41,
                 Species = new[] {41,073,423,279,279,457,457,073,131},
             },
@@ -1256,28 +1256,28 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 166, idx = 1, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 10, NPC = 1,
                 LevelMin = 54,
                 Species = new[] {7,735,279,732,546,128,241,546},
             },
             new EncounterArea_USUM
             {
                 Location = 166, idx = 2, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 10, NPC = 0,
                 LevelMin = 54,
                 Species = new[] {21,735,732,546,128,241,546},
             },
             new EncounterArea_USUM
             {
                 Location = 166, idx = 3, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 10, NPC = 2,
                 LevelMin = 54,
                 Species = new[] {7,735,297,732,546,128,241,097},
             },
             new EncounterArea_USUM
             {
                 Location = 166, idx = 4, // Poni Plains
-                Correction = 5, NPC = 1,
+                Correction = 10, NPC = 0,
                 LevelMin = 54,
                 Species = new[] {31,735,732,750,022,546,128,241},
             },
@@ -1306,7 +1306,7 @@ namespace Pk3DSRNGTool
             new EncounterArea_USUM
             {
                 Location = 170, // Poni Gauntlet
-                Correction = 11, NPC = 4,
+                Correction = 11, NPC = 2,
                 LevelMin = 58,
                 Species = new[] {44,108,279,686,760,210,210,055,279,686,686},
             },
